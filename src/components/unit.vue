@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.spell
+  mu-card.unit
     mu-card-header(:title="translate(data.faction.name)", :subTitle="translate(data.type)")
       mu-avatar(:src="data.faction.image", slot="avatar")
     mu-card-media(:title="translate(data.name)", :subTitle="translate(data.category)")
@@ -13,7 +13,7 @@
   import i18n from '../services/i18n'
 
   export default {
-    name: 'Spell',
+    name: 'Unit',
     props: ['data'],
     filters: {
       translate (label) {
@@ -29,6 +29,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  .spell
+  .unit
     margin 5px
 </style>

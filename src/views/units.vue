@@ -1,24 +1,24 @@
 <template lang="pug">
   mu-row(gutter)
     mu-col(width="100", tablet="50", desktop="33")
-      spell(v-for="spell, index in spells", :key="index", :data="spell")
+      unit(v-for="unit, index in units", :key="index", :data="unit")
 </template>
 
 <script>
   import firebase from '../services/firebase'
   import store from '../vuex/store'
-  import spell from '../components/spell'
+  import unit from '../components/unit'
   
   export default {
-    name: 'spells',
+    name: 'units',
     components: {
-      'spell': spell
+      'unit': unit
     },
     created () {
-      store.commit('title', 'lbl_spells')
+      store.commit('title', 'lbl_units')
     },
     firebase: {
-      spells: firebase.ref('spells')
+      units: firebase.ref('units')
     }
   }
 </script>

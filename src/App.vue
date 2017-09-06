@@ -10,6 +10,7 @@
       mu-list
         mu-sub-header {{ 'lbl_wiki' | translate }}
         mu-list-item(:title="translate('lbl_spells')", to="spells", @click="toggle")          
+        mu-list-item(:title="translate('lbl_units')", to="units", @click="toggle")          
 
     transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
       router-view.router
@@ -66,34 +67,10 @@
     @media (min-width 480px)
       .mu-appbar
         height 56px
-    .mu-badge-container
-      &.vit
-        .mu-badge
-          background-color $green
-      &.str
-        .mu-badge
-          background-color $red
-      &.int
-        .mu-badge
-          background-color $blue
-      &.dex
-        .mu-badge
-          background-color $orange
-      &.def
-        .mu-badge
-          background-color $purple
-      &+.mu-badge-container
-        margin-left 2px
-    .mu-item-left
-      width 50px
-      .mu-avatar
-        height 50px
-        width 50px
-        border-radius 5px
-        .mu-avatar-inner img
-          border-radius 5px
     .mu-appbar-title
       display flex
       justify-content center
       align-items center
+    .mu-card
+      opacity 0.85
 </style>

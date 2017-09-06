@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const vuex = new Vuex.Store({
   state: {
     lang: 'es',
-    title: 'lbl_heroyc',
+    title: 'lbl_wyzard',
     menu: false
   },
   mutations: {
