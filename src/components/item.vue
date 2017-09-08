@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.unit
+  mu-card.item
     mu-card-header(:title="translate(data.faction.name)", :subTitle="translate(data.type)")
       mu-avatar(:src="data.faction.image", slot="avatar")
     mu-card-media(:title="translate(data.name)", :subTitle="translate(data.category)")
@@ -13,7 +13,7 @@
   import i18n from '../services/i18n'
 
   export default {
-    name: 'unit',
+    name: 'item',
     props: ['data'],
     methods: {
       translate (label) {
@@ -24,6 +24,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  .unit
+  .item
     margin 5px
 </style>

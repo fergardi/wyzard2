@@ -1,16 +1,38 @@
 <template lang="pug">
   #app
-    mu-appbar.topbar(:title="translate(title)", :zDepth="0")
-      mu-icon-button(icon="menu", slot="left", @click="toggle")
-      mu-icon-button(icon="help", slot="right", to="help")
+
+    mu-paper
+      mu-appbar.topbar(:title="translate(title)", :zDepth="0")
+        mu-icon-button(icon="menu", slot="left", @click="toggle")
+        mu-icon-button(icon="help", slot="right", to="help")
 
     mu-drawer.sidebar(:open="menu", :docked="false", @close="toggle")
-      mu-appbar {{ 'lbl_menu' | translate }}
-        mu-icon-button(icon="menu", slot="left", @click="toggle")
+      mu-paper
+        mu-appbar {{ 'lbl_menu' | translate }}
+          mu-icon-button(icon="menu", slot="left", @click="toggle")
+
       mu-list
-        mu-sub-header {{ 'lbl_wiki' | translate }}
-        mu-list-item(:title="translate('lbl_spells')", to="spells", @click="toggle")          
+        mu-sub-header {{ 'lbl_empire' | translate }}
+        mu-list-item(:title="translate('lbl_build')", to="build", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_sorcery')", to="sorcery", @click="toggle")          
+          mu-icon(slot="left", value="home")
+
+        mu-sub-header {{ 'lbl_magic' | translate }}
+        mu-list-item(:title="translate('lbl_research')", to="research", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_sorcery')", to="sorcery", @click="toggle")          
+          mu-icon(slot="left", value="home")
+
+        mu-sub-header {{ 'lbl_encyclopedia' | translate }}
+        mu-list-item(:title="translate('lbl_buildings')", to="buildings", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_spells')", to="spells", @click="toggle")
+          mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_units')", to="units", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_items')", to="items", @click="toggle")          
+          mu-icon(slot="left", value="home")
 
     transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
       router-view.router
@@ -26,11 +48,6 @@
       toggle () {
         store.commit('toggle')
       },
-      translate (label) {
-        return i18n[store.state.lang][label] || label
-      }
-    },
-    filters: {
       translate (label) {
         return i18n[store.state.lang][label] || label
       }
@@ -73,4 +90,11 @@
       align-items center
     .mu-card
       opacity 0.85
+    .mu-drawer
+      .router-link-active
+        // TODO
+      .mu-sub-header
+        line-height 36px
+      .mu-item-left
+        justify-content center
 </style>

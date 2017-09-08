@@ -1,9 +1,19 @@
+@red: #680600;
+@orange: #ffab00;
+@purple: #e91e63;
+@blue: #004380;
+@green: #006F04;
+@grey: #708486;
+@gold: #ad835a;
+@dark: #1E2329;
+@darken: #14191E;
+
 @import "~muse-ui/less/vars.less"; // default basic variable
 
 @fontFamily: Roboto, Lato, sans-serif;  // font
 
 // primary color and accent color
-@primaryColor: @lightBlue;           // primary color
+@primaryColor: @dark;           // primary color
 @darkerPrimaryColor: @primaryColor;  // darker primary color
 @lighterPrimaryColor: @primaryColor;      // lighter primary color
 @accentColor: @red500;             // accent color
@@ -11,17 +21,17 @@
 @lighterAccentColor: @red500;       // lighter accent color
 
 // text color
-@textColor: @fullWhite;
-@secondaryTextColor: @fullWhite;
-@alternateTextColor: @fullWhite;
-@borderColor: fade(@fullWhite, 50%);
-@disabledColor: fade(@fullWhite, 50%);
+@textColor: @gold;
+@secondaryTextColor: @gold;
+@alternateTextColor: @gold;
+@borderColor: @gold;
+@disabledColor: fade(@gold, 50%);
 
 // background
-@backgroundColor: @blueGrey900;           // background color
-@statusBarBackgroundColor: @blueGrey900; // useless
-@appbarBackgroundColor: @blueGrey900; // useless in the appbar component
-@dialogBackgroundColor: @blueGrey900; // dialogs、 cards、 paper background
+@backgroundColor: @dark;           // background color
+@statusBarBackgroundColor: @darken; // useless
+@appbarBackgroundColor: @darken; // useless in the appbar component
+@dialogBackgroundColor: @darken; // dialogs、 cards、 paper background
 
 // icon color
 @activeIconColor: fade(@fullWhite, 50%);
@@ -30,7 +40,7 @@
 @import "~muse-ui/less/theme-vars.less";  // default component variable
 
 // change the component variable
-@avatarBackgroundColor: lighten(@alternateTextColor, 26%);
+@avatarBackgroundColor: @gold;
 @datePickerHeaderColor: fade(@fullWhite, 12%);
 @timePickerHeaderColor: fade(@fullWhite, 12%);
 @timePickerClockCircleColor: fade(@fullWhite, 12%);
