@@ -1,7 +1,7 @@
 <template lang="pug">
-  mu-row(gutter)
-    mu-col(width="100", tablet="50", desktop="33")
-      spell(v-for="spell, index in spells", :key="index", :data="spell")
+  mu-row
+    mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
+      spell(:data="spell")
 </template>
 
 <script>

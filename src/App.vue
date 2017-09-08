@@ -31,7 +31,9 @@
           mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")          
           mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_title_items')", to="items", @click="toggle")          
+        mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")          
           mu-icon(slot="left", value="home")
 
     transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
@@ -72,7 +74,7 @@
     height 100%
     width 100%
     body
-      background url("https://s-media-cache-ak0.pinimg.com/originals/9f/4e/38/9f4e38d4634f2b584143be34d1324c0a.png") no-repeat center center fixed
+      background url("https://cdn.allwallpaper.in/wallpapers/1920x1200/2705/scrolls-v-skyrim-artwork-dragons-games-towns-1920x1200-wallpaper.jpg") no-repeat center center fixed
       background-size cover
       box-sizing border-box
       user-select none !important

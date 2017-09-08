@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.item
+  mu-card.hero
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction.color") {{ data.name | translate }}
@@ -12,7 +12,7 @@
   import i18n from '../services/i18n'
 
   export default {
-    name: 'item',
+    name: 'hero',
     props: ['data'],
     methods: {
       translate (label) {

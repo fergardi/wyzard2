@@ -1,7 +1,7 @@
 <template lang="pug">
-  mu-row(gutter)
-    mu-col(width="100", tablet="50", desktop="33")
-      building(v-for="item, index in items", :key="index", :data="item")
+  mu-row
+    mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
+      building(:data="building")
 </template>
 
 <script>
@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_buildings')
     },
     firebase: {
-      items: firebase.ref('buildings')
+      buildings: firebase.ref('buildings')
     }
   }
 </script>

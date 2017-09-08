@@ -1,7 +1,7 @@
 <template lang="pug">
-  mu-row(gutter)
-    mu-col(width="100", tablet="50", desktop="33")
-      unit(v-for="unit, index in units", :key="index", :data="unit")
+  mu-row
+    mu-col(width="100", tablet="50", desktop="33", v-for="unit, index in units", :key="index")
+      unit(:data="unit")
 </template>
 
 <script>

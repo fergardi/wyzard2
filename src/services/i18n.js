@@ -32,8 +32,9 @@ export default {
     lbl_title_empire: 'Imperio',
     lbl_title_spells: 'Hechizos',
     lbl_title_units: 'Unidades',
-    lbl_title_items: 'Items',
-    lbl_title_buildings: 'Edificios'
+    lbl_title_artifacts: 'Artefactos',
+    lbl_title_buildings: 'Edificios',
+    lbl_title_heroes: 'Heroes'
   },
   en: {
   }
