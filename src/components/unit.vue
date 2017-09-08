@@ -1,9 +1,8 @@
 <template lang="pug">
   mu-card.unit
-    mu-card-header(:title="translate(data.faction.name)", :subTitle="translate(data.type)")
-      mu-avatar(:src="data.faction.image", slot="avatar")
-    mu-card-media(:title="translate(data.name)", :subTitle="translate(data.category)")
+    mu-card-media
       img(:src="data.image")
+      #title(:class="data.faction.color") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
 </template>
@@ -24,6 +23,4 @@
 </script>
 
 <style lang="stylus" scoped>
-  .unit
-    margin 5px
 </style>

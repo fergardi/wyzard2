@@ -1,24 +1,24 @@
 <template lang="pug">
   mu-row(gutter)
     mu-col(width="100", tablet="50", desktop="33")
-      unit(v-for="unit, index in units", :key="index", :data="unit")
+      building(v-for="item, index in items", :key="index", :data="item")
 </template>
 
 <script>
   import firebase from '../services/firebase'
   import store from '../vuex/store'
-  import unit from '../components/unit'
+  import building from '../components/building'
   
   export default {
-    name: 'units',
+    name: 'buildings',
     components: {
-      'unit': unit
+      'building': building
     },
     created () {
-      store.commit('title', 'lbl_title_units')
+      store.commit('title', 'lbl_title_buildings')
     },
     firebase: {
-      units: firebase.ref('units')
+      items: firebase.ref('buildings')
     }
   }
 </script>

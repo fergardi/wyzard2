@@ -1,17 +1,10 @@
 <template lang="pug">
-  mu-card.spell
+  mu-card.building
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction.color") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
-      .stats
-        mu-chip
-          span {{ 'lbl_stat_level' | translate }} 10
-        mu-chip
-          span {{ 3214325 | format }} {{ 'lbl_stat_mana' | translate }}
-        mu-chip
-          span {{ data.category | translate }}
 </template>
 
 <script>
@@ -19,7 +12,7 @@
   import i18n from '../services/i18n'
 
   export default {
-    name: 'spell',
+    name: 'item',
     props: ['data'],
     methods: {
       translate (label) {

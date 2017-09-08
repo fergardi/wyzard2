@@ -8,30 +8,30 @@
 
     mu-drawer.sidebar(:open="menu", :docked="false", @close="toggle")
       mu-paper
-        mu-appbar {{ 'lbl_menu' | translate }}
+        mu-appbar {{ 'lbl_title_empire' | translate }}
           mu-icon-button(icon="menu", slot="left", @click="toggle")
 
       mu-list
-        mu-sub-header {{ 'lbl_empire' | translate }}
-        mu-list-item(:title="translate('lbl_build')", to="build", @click="toggle")          
+        mu-sub-header {{ 'lbl_title_interior' | translate }}
+        mu-list-item(:title="translate('lbl_title_build')", to="build", @click="toggle")          
           mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_sorcery')", to="sorcery", @click="toggle")          
-          mu-icon(slot="left", value="home")
-
-        mu-sub-header {{ 'lbl_magic' | translate }}
-        mu-list-item(:title="translate('lbl_research')", to="research", @click="toggle")          
-          mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_sorcery')", to="sorcery", @click="toggle")          
+        mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")          
           mu-icon(slot="left", value="home")
 
-        mu-sub-header {{ 'lbl_encyclopedia' | translate }}
-        mu-list-item(:title="translate('lbl_buildings')", to="buildings", @click="toggle")          
+        mu-sub-header {{ 'lbl_title_magic' | translate }}
+        mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")          
           mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_spells')", to="spells", @click="toggle")
+        mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")          
           mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_units')", to="units", @click="toggle")          
+
+        mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
+        mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")          
           mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_items')", to="items", @click="toggle")          
+        mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_items')", to="items", @click="toggle")          
           mu-icon(slot="left", value="home")
 
     transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
@@ -89,7 +89,60 @@
       justify-content center
       align-items center
     .mu-card
-      opacity 0.85
+      opacity 0.95
+      $radius = 5px
+      margin 5px
+      border-radius $radius
+      border 1px solid $gold
+      .mu-card-media
+        display flex
+        justify-content center
+        align-items center
+        img
+          border-top-left-radius $radius
+          border-top-right-radius $radius
+          border-bottom 1px solid $gold
+        #title
+          position absolute
+          bottom -15px
+          padding 5px
+          border-radius 5px
+          min-width 50%
+          max-width 90%
+          text-align center
+          border 1px solid $gold
+          color $gold
+          background-color $dark
+          &.red
+            background-color $red
+          &.green
+            background-color $green
+          &.purple
+            background-color $purple
+          &.blue
+            background-color $blue
+          &.white
+            background-color $white
+          &.dark
+            background-color $dark
+      .mu-card-text
+        color $gold
+        text-align center
+        .stats
+          display flex
+          justify-content center
+          align-items center
+          .mu-chip
+            width 50%
+            color $gold
+            border 1px solid $gold
+            background-color $dark
+            line-height 20px
+            margin 2px
+            font-size 0.8em
+            display flex
+            justify-content center
+            align-items center
     .mu-drawer
       .router-link-active
         // TODO

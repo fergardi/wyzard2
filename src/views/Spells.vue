@@ -15,7 +15,7 @@
       'spell': spell
     },
     created () {
-      store.commit('title', 'lbl_spells')
+      store.commit('title', 'lbl_title_spells')
     },
     firebase: {
       spells: firebase.ref('spells')

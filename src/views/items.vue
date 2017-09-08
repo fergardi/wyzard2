@@ -15,7 +15,7 @@
       'item': item
     },
     created () {
-      store.commit('title', 'lbl_items')
+      store.commit('title', 'lbl_title_items')
     },
     firebase: {
       items: firebase.ref('items')
