@@ -90,6 +90,8 @@
       display flex
       justify-content center
       align-items center
+    .row
+      justify-content flex-start
     .mu-card
       opacity 0.95
       $radius = 5px
@@ -104,6 +106,13 @@
           border-top-left-radius $radius
           border-top-right-radius $radius
           border-bottom 1px solid $gold
+          position relative
+          float left
+          width 250px
+          height 250px
+          background-position 50% 50%
+          background-repeat no-repeat
+          background-size cover
         #title
           position absolute
           bottom -15px
