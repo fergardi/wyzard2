@@ -143,17 +143,20 @@
           display flex
           justify-content center
           align-items center
+          flex-wrap wrap
           .mu-chip
-            width 50%
+            width 40%
             color $gold
             border 1px solid $gold
             background-color $dark
-            line-height 20px
+            line-height 22px
             margin 2px
             font-size 0.8em
             display flex
-            justify-content center
+            justify-content space-between
             align-items center
+            .ra
+              line-height 23px
     .mu-drawer
       .router-link-active
         // TODO
