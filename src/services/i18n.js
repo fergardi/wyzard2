@@ -24,7 +24,15 @@ export default {
     lbl_stat_battle: 'Batalla',
     lbl_stat_level: 'Nivel',
     // buildings
-    lbl_building_node: 'Nodo',
+    lbl_building_node: 'Nodos',
+    lbl_building_territory: 'Terrenos',
+    lbl_building_farm: 'Granjas',
+    lbl_building_village: 'Pueblos',
+    lbl_building_workshop: 'Talleres',
+    lbl_building_guild: 'Gremios',
+    lbl_building_barracks: 'Barracones',
+    lbl_building_fortress: 'Fortalezas',
+    lbl_building_barrier: 'Barreras',
     // titles
     lbl_title_encyclopedia: 'Enciclopedia',
     lbl_title_magic: 'Magia',

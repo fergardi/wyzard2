@@ -1,0 +1,65 @@
+{
+  "node": {
+    "name": "lbl_building_node",
+    "faction": {
+      "color": "black"
+    },
+    "image": "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg"
+  },
+  "territory": {
+    "name": "lbl_building_territory",
+    "faction": {
+      "color": "black"
+    },
+    "image": "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png"
+  },
+  "farm": {
+    "name": "lbl_building_farm",
+    "faction": {
+      "color": "black"
+    },
+    "image": "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg"
+  },
+  "village": {
+    "name": "lbl_building_village",
+    "faction": {
+      "color": "black"
+    },
+    "image": "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg"
+  },
+  "workshop": {
+    "name": "lbl_building_workshop",
+    "faction": {
+      "color": "black"
+    },
+    "image": "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg"
+  },
+  "guild": {
+    "name": "lbl_building_guild",
+    "faction": {
+      "color": "black"
+    },
+    "image": "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg"
+  },
+  "barracks": {
+    "name": "lbl_building_barracks",
+    "faction": {
+      "color": "black"
+    },
+    "image": "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg"
+  },
+  "fortress": {
+    "name": "lbl_building_fortress",
+    "faction": {
+      "color": "black"
+    },
+    "image": "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg"
+  },
+  "barrier": {
+    "name": "lbl_building_barrier",
+    "faction": {
+      "color": "black"
+    },
+    "image": "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg"
+  }
+}

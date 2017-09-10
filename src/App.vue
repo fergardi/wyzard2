@@ -110,10 +110,13 @@
           float left
           width 250px
           height 250px
-          background-position 50% 50%
+          background-position 50% 75%
           background-repeat no-repeat
           background-size cover
+          object-fit cover
+          object-position 50% 15%
         #title
+          font-weight bold
           position absolute
           bottom -15px
           padding 5px
@@ -139,12 +142,16 @@
       .mu-card-text
         color $gold
         text-align center
+        p
+          font-style italic
+          font-size 0.9em
         .stats
           display flex
           justify-content center
           align-items center
           flex-wrap wrap
           .mu-chip
+            cursor initial
             width 40%
             color $gold
             border 1px solid $gold
@@ -159,7 +166,7 @@
               line-height 23px
     .mu-drawer
       .router-link-active
-        // TODO
+        background-color rgba(173, 131, 90, 0.1)
       .mu-sub-header
         line-height 36px
       .mu-item-left
