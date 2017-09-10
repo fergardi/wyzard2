@@ -120,7 +120,7 @@
           background-repeat no-repeat
           background-size cover
           object-fit cover
-          object-position 50% 30%
+          object-position 50% 20%
         #title
           font-weight bold
           position absolute
@@ -175,7 +175,7 @@
       overflow hidden
       .mu-list
         overflow-y auto
-        height 100%
+        height calc(100% - 56px)
         .router-link-active
           background-color rgba(173, 131, 90, 0.1)
         .mu-sub-header

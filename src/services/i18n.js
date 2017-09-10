@@ -15,7 +15,7 @@ export default {
     lbl_unit_cerberus: 'Cerberos',
     lbl_unit_chimera: 'Quimeras',
     lbl_unit_diablo: 'Diablos',
-    lbl_unit_efreet: 'Ifrites',
+    lbl_unit_efreet: 'Ifrits',
     lbl_unit_flame_elemental: 'Elementales de Llamas',
     lbl_unit_goblin: 'Goblins',
     lbl_unit_minotaur: 'Minotauros',

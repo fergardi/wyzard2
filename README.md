@@ -82,7 +82,7 @@
 * Angel https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg
 * Archangel https://i.pinimg.com/600x315/2c/a3/94/2ca394e2b38cfc44681297e639ee5852.jpg
 * White Dragon https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg
-* Dominion https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg
+* Dominion https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg
 ### Spells
 * Exorzice
 * Divine Light
@@ -129,7 +129,7 @@
 
 # Gods
 * God of Death https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg
-* God of Light https://i.pinimg.com/736x/07/6e/4c/076e4c712ba4ef193a1a230f43de1e74--warcraft-art-world-of-warcraft.jpg
+* God of Light https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg
 * God of Life https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg
 * God of Blood https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg
 * God of Magic https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg

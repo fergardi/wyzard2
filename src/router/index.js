@@ -7,6 +7,7 @@ import artifacts from '@/views/artifacts'
 import buildings from '@/views/buildings'
 import heroes from '@/views/heroes'
 import gods from '@/views/gods'
+import factions from '@/views/factions'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/gods',
       name: 'gods',
       component: gods
+    },
+    {
+      path: '/factions',
+      name: 'factions',
+      component: factions
     }
   ]
 })
