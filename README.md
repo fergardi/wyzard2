@@ -1,3 +1,10 @@
+# Factions
+* Holy
+* Mental
+* Nature 
+* Chaos https://artfiles.alphacoders.com/870/87074.jpg
+* Darkness
+
 # Chaos
 ### Units
 * Goblin https://vignette1.wikia.nocookie.net/merp/images/c/c5/Warg-rider.jpg
@@ -38,20 +45,20 @@
 * Tsunami
 ### Heroes
 * Elementalist https://i.pinimg.com/originals/36/d3/cc/36d3cc6491287d8b8733562d231f1215.jpg
-* Alchemist
+* Alchemist https://i.pinimg.com/736x/4c/70/54/4c7054a5b2013c01f03f319a970a216a--fantasy-pictures-character-concept.jpg
 * Wizard https://i.pinimg.com/736x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211--wizard-staff-grand-wizard.jpg
 
 # Nature
 ### Units
 * Elf https://i.pinimg.com/736x/28/21/53/282153c2b3cdb686c3d1c398cc658817--character-concept-character-art.jpg
 * Treant https://cdna.artstation.com/p/assets/images/images/005/293/192/large/dong-geon-son-aaaaaaaa.jpg
-* Golem
-* Cyclops
+* Troll http://media.indiedb.com/cache/images/games/1/15/14944/thumb_620x2000/Ogre.PNG
+* Cyclops http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig
 * Wyvern http://image.zixundingzhi.com/VJQct71GxgL7cpodq7XHkd8gq50=/660x0/full/cd133af48b1c45013a718bfa10e2483af51f1c25
 * Basilisk https://i.pinimg.com/originals/ba/9b/95/ba9b959610b3618cd336d84a2b0db30b.jpg
 * Behemoth http://aidanmoher.com/blog/wp-content/uploads/2011/04/kekai-kotaki-4.jpg
 * Earth Elemental https://i.pinimg.com/originals/7c/46/aa/7c46aac0314c423d4f0fe86ce028b1e7.jpg
-* Green Dragon
+* Green Dragon https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg
 * Hydra https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg
 ### Spells
 * Nature Favor
@@ -67,19 +74,21 @@
 # Holy
 ### Units
 * Crusader https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg
-* Cleric
-* Paladin
+* Cleric https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg
+* Unicorn http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg
+* Pegasus https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg
+* Paladin http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg
 * Light Elemental https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg
 * Angel https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg
 * Archangel https://i.pinimg.com/600x315/2c/a3/94/2ca394e2b38cfc44681297e639ee5852.jpg
-* White Dragon
+* White Dragon https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg
 * Dominion https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg
 ### Spells
 * Exorzice
 * Divine Light
 ### Heroes
-* Merchant
-* Commander
+* Merchant http://3.bp.blogspot.com/-ULmmq0HlJCc/UA7jiJ0VG3I/AAAAAAAAAhk/kDUwRbQ4Sn8/s1600/Merchant_02.jpg
+* Commander https://i.ytimg.com/vi/4vBFdbsnNXc/maxresdefault.jpg
 * Seraph https://i.pinimg.com/originals/c4/26/a9/c426a9e6d0e01bbaf7047c887bb43572.jpg
 
 # Darkness
@@ -118,24 +127,31 @@
 * Fortress http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg
 * Barrier http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg
 
+# Gods
+* God of Death https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg
+* God of Light https://i.pinimg.com/736x/07/6e/4c/076e4c712ba4ef193a1a230f43de1e74--warcraft-art-world-of-warcraft.jpg
+* God of Life https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg
+* God of Blood https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg
+* God of Magic https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg
+
 # Items
 * Book of the Dead https://i.pinimg.com/736x/e9/46/53/e946534a0e16344cb7b6821ea9002bae.jpg
-* Mana Potion
-* Love Elixir
+* Mana Potion https://s-media-cache-ak0.pinimg.com/originals/ee/97/94/ee9794d39f27f465fdc31dabd6cc2a13.jpg
+* Love Elixir https://i.pinimg.com/736x/4f/ed/8e/4fed8e43ff21dd0fac40f50f4c1f534c.jpg
 * Treasure Chest https://i.pinimg.com/originals/1d/f0/29/1df029f0dcf37ee0fbaa896e3a3520e2.jpg
 * Medusa Head https://i.pinimg.com/originals/56/4c/3a/564c3aba0a9820b4aa7336c40cf0aa7f.jpg
 * Dragon Egg https://i.pinimg.com/originals/66/c5/47/66c547d410e5c23f5dcd06dc8be19c88.jpg
-* Magic Compass
-* Broken Mirror
+* Magic Compass https://i.pinimg.com/originals/57/a5/4a/57a54aee9bec3dfab26b97aabdf2b344.jpg
+* Broken Mirror https://orig11.deviantart.net/3526/f/2013/294/d/a/broken_mirror_by_sia_chan-d4ga7wf.jpg
 * Elemental Book https://i.pinimg.com/originals/5d/ef/ae/5defae7572e0a36fe5b9039ac1748eba.jpg
 * Hero Manual https://i.pinimg.com/736x/ee/3b/6f/ee3b6fce2a19c0381a90045d11aa295a--the-book-spell-books.jpg
 * Demon in a Bottle https://i.pinimg.com/736x/35/39/ab/3539ab9ba166329e54e446c4913cc99e--fantasy-items-rpg-items.jpg
-* Live Bait
-* Battle Horn
+* Live Bait http://orig04.deviantart.net/7315/f/2012/243/3/0/wild_sheep_by_gerezon-d5d1hxt.jpg
+* Battle Horn http://
 * Powder Barrel https://i.pinimg.com/736x/d8/98/2b/d8982b44566a42300ee9d3ab656c5e83--world-of-warcraft-cataclysm-warcraft-art.jpg
-* Hourglass
 * Voodoo Doll https://i.pinimg.com/736x/21/1a/66/211a6626a4bd8eddd795be10776301a9.jpg
 * Sacred Bible http://orig01.deviantart.net/e04d/f/2007/135/0/f/the_holy_book_by_djvue.jpg
-* Spider Web
+* Spider Web https://pre06.deviantart.net/8a21/th/pre/i/2014/332/0/c/spider_queen_by_dreadjim-d87xsff.jpg
 * Forbidden Book https://i.pinimg.com/736x/ff/3e/38/ff3e385f25c1a8062dd1c3eb21f35c5a--fantasy-images-art-images.jpg
-* 
+* Attack Flask https://i.pinimg.com/736x/f1/21/7e/f1217e9b6074632c1688683969a8bfaa--fantasy-weapons-fantasy-rpg.jpg
+* Defense Remedy https://i.pinimg.com/originals/07/4c/b2/074cb241b0bad6ed0f9f47ce8de97b64.jpg

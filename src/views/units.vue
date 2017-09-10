@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33", v-for="unit, index in units", :key="index")
-      unit(:data="unit")
+    transition-group.list(name="units", mode="out-in", tag="div", enter-active-class="animated fadeInUp", appear)
+      mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
+        unit(:data="unit")
 </template>
 
 <script>
@@ -24,4 +25,7 @@
 </script>
 
 <style lang="stylus" scoped>
+  .list
+    display flex
+    flex-wrap wrap
 </style>

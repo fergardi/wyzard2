@@ -25,6 +25,8 @@
           mu-icon(slot="left", value="home")
 
         mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
+        mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")          
+          mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")          
           mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
@@ -34,6 +36,8 @@
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")          
           mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")          
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")          
           mu-icon(slot="left", value="home")
 
     transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
@@ -83,6 +87,8 @@
       position fixed
     .router
       padding-top 56px
+    .mu-appbar
+      border-bottom 1px solid
     @media (min-width 480px)
       .mu-appbar
         height 56px
@@ -110,11 +116,11 @@
           float left
           width 250px
           height 250px
-          background-position 50% 75%
+          background-position 50% 50%
           background-repeat no-repeat
           background-size cover
           object-fit cover
-          object-position 50% 15%
+          object-position 50% 30%
         #title
           font-weight bold
           position absolute
@@ -165,10 +171,15 @@
             .ra
               line-height 23px
     .mu-drawer
-      .router-link-active
-        background-color rgba(173, 131, 90, 0.1)
-      .mu-sub-header
-        line-height 36px
-      .mu-item-left
-        justify-content center
+      height 100%
+      overflow hidden
+      .mu-list
+        overflow-y auto
+        height 100%
+        .router-link-active
+          background-color rgba(173, 131, 90, 0.1)
+        .mu-sub-header
+          line-height 36px
+        .mu-item-left
+          justify-content center
 </style>

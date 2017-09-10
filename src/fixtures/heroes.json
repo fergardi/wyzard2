@@ -1,0 +1,137 @@
+{
+  "dragon_rider": {
+    "faction": {
+      "color": "red",
+      "name": "lbl_faction_chaos",
+      "image": "http://"
+    },
+    "image": "http://2.bp.blogspot.com/_FLeEulk_Eto/TMirjV2md3I/AAAAAAAAAG8/81718NhAPhc/s1600/MTG_AkoumDragonrider.jpg",
+    "name": "lbl_hero_dragon_rider"
+  },
+  "succubus": {
+    "faction": {
+      "color": "red",
+      "name": "lbl_faction_chaos",
+      "image": "http://"
+    },
+    "image": "https://i.pinimg.com/originals/56/b1/87/56b187bbeeb11e83b93dc753c5351357.jpg",
+    "name": "lbl_hero_succubus"
+  },
+  "demon_king": {
+    "faction": {
+      "color": "red",
+      "name": "lbl_faction_chaos",
+      "image": "http://"
+    },
+    "image": "https://i.pinimg.com/736x/54/1c/75/541c7521a1d16615546db98e52f85b6b--character-concept-concept-art.jpg",
+    "name": "lbl_hero_demon_king"
+  },
+  "elementalist": {
+    "faction": {
+      "color": "blue",
+      "image:": "http://",
+      "name": "lbl_faction_mental"
+    },
+    "image": "https://i.pinimg.com/originals/36/d3/cc/36d3cc6491287d8b8733562d231f1215.jpg",
+    "name": "lbl_hero_elementalist"
+  },
+  "alchemist": {
+    "faction": {
+      "color": "blue",
+      "image:": "http://",
+      "name": "lbl_faction_mental"
+    },
+    "image": "https://i.pinimg.com/736x/4c/70/54/4c7054a5b2013c01f03f319a970a216a--fantasy-pictures-character-concept.jpg",
+    "name": "lbl_hero_alchemist"
+  },
+  "wizard": {
+    "faction": {
+      "color": "blue",
+      "image:": "http://",
+      "name": "lbl_faction_mental"
+    },
+    "image": "https://i.pinimg.com/736x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211--wizard-staff-grand-wizard.jpg",
+    "name": "lbl_hero_wizard"
+  },
+  "druid": {
+    "faction": {
+      "color": "green",
+      "image": "http://",
+      "name": "lbl_faction_nature"
+    },
+    "image": "https://i.pinimg.com/736x/b5/44/1b/b5441b341974855b1f357d05c6e9f333--character-portraits-fantasy-characters.jpg",
+    "name": "lbl_hero_druid"
+  },
+  "leprechaunt": {
+    "faction": {
+      "color": "green",
+      "image": "http://",
+      "name": "lbl_faction_nature"
+    },
+    "image": "http://2.bp.blogspot.com/-Pli34qcIfSc/Trgld8YFDfI/AAAAAAAAKzw/--Osr2E9TkU/s640/gnomo+mushroom_hunter_by_lordeeas-d39dgzq.jpg",
+    "name": "lbl_hero_leprechaunt"
+  },
+  "dryad": {
+    "faction": {
+      "color": "green",
+      "image": "http://",
+      "name": "lbl_faction_nature"
+    },
+    "image": "https://img06.deviantart.net/6c8e/i/2012/359/4/0/dryad_by_okha-d4w88tu.jpg",
+    "name": "lbl_hero_dryad"
+  },
+  "merchant": {
+    "faction": {
+      "color": "white",
+      "image": "http://",
+      "name": "lbl_faction_holy"
+    },
+    "image": "http://3.bp.blogspot.com/-ULmmq0HlJCc/UA7jiJ0VG3I/AAAAAAAAAhk/kDUwRbQ4Sn8/s1600/Merchant_02.jpg",
+    "name": "lbl_hero_merchant"
+  },
+  "commander": {
+    "faction": {
+      "color": "white",
+      "image": "http://",
+      "name": "lbl_faction_holy"
+    },
+    "image": "https://i.ytimg.com/vi/4vBFdbsnNXc/maxresdefault.jpg",
+    "name": "lbl_hero_commander"
+  },
+  "seraph": {
+    "faction": {
+      "color": "white",
+      "image": "http://",
+      "name": "lbl_faction_holy"
+    },
+    "image": "https://i.pinimg.com/originals/c4/26/a9/c426a9e6d0e01bbaf7047c887bb43572.jpg",
+    "name": "lbl_hero_seraph"
+  },
+  "headless_horseman": {
+    "faction": {
+      "color": "purple",
+      "image": "http://",
+      "name": "lbl_faction_darkness"
+    },
+    "image": "http://www.joblo.com/images_arrownews/main-headless-horseman_MED.jpg",
+    "name": "lbl_hero_headless_horseman"
+  },
+  "necromancer": {
+    "faction": {
+      "color": "purple",
+      "image": "http://",
+      "name": "lbl_faction_darkness"
+    },
+    "image": "https://i.pinimg.com/736x/eb/b9/61/ebb96114e80b514a023b355703c23801--dark-fantasy-fantasy-art.jpg",
+    "name": "lbl_hero_necromancer"
+  },
+  "witch": {
+    "faction": {
+      "color": "purple",
+      "image": "http://",
+      "name": "lbl_faction_darkness"
+    },
+    "image": "https://sentierodelletenebre.files.wordpress.com/2017/02/img_20170203_181416.jpg",
+    "name": "lbl_hero_witch"
+  }
+}

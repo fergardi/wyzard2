@@ -1,0 +1,27 @@
+{
+  "holy": {
+    "color": "white",
+    "name": "lbl_faction_holy",
+    "image": ""
+  },
+  "mental": {
+    "color": "blue",
+    "name": "lbl_faction_mental",
+    "image": ""
+  },
+  "nature": {
+    "color": "green",
+    "name": "lbl_faction_nature",
+    "image": ""
+  },
+  "chaos": {
+    "color": "red",
+    "name": "lbl_faction_chaos",
+    "image": ""
+  },
+  "darkness": {
+    "color": "purple",
+    "name": "lbl_faction_darkness",
+    "image": ""
+  }
+}
