@@ -1,4 +1,67 @@
 {
+  "air_elemental" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
+    "name" : "lbl_unit_air_elemental"
+  },
+  "angel" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg",
+    "name" : "lbl_unit_angel"
+  },
+  "archangel" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/95/5b/bf/955bbf72b20f0f43619f289f99ac4352--mtg-art-angels-among-us.jpg",
+    "name" : "lbl_unit_archangel"
+  },
+  "basilisk" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://i.pinimg.com/originals/ba/9b/95/ba9b959610b3618cd336d84a2b0db30b.jpg",
+    "name" : "lbl_unit_basilisk"
+  },
+  "behemoth" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "http://aidanmoher.com/blog/wp-content/uploads/2011/04/kekai-kotaki-4.jpg",
+    "name" : "lbl_unit_behemoth"
+  },
+  "black_dragon" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg",
+    "name" : "lbl_unit_black_dragon"
+  },
+  "blue_dragon" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/736x/1a/3b/0d/1a3b0d754e88d1a400c6695c2c44a3f4.jpg",
+    "name" : "lbl_unit_blue_dragon"
+  },
   "cerberus" : {
     "faction" : {
       "color" : "red",
@@ -17,6 +80,42 @@
     "image" : "https://i.pinimg.com/originals/7e/77/dc/7e77dc0cae459f56fbedf964fbf73815.jpg",
     "name" : "lbl_unit_chimera"
   },
+  "cleric" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg",
+    "name" : "lbl_unit_cleric"
+  },
+  "crusader" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg",
+    "name" : "lbl_unit_crusader"
+  },
+  "cyclops" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
+    "name" : "lbl_unit_cyclops"
+  },
+  "death_knight" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://i.pinimg.com/736x/76/c1/00/76c100c5882bbc61b7e865514231ebb4--warcraft-art-world-of-warcraft.jpg",
+    "name" : "lbl_unit_death_knight"
+  },
   "diablo" : {
     "faction" : {
       "color" : "red",
@@ -26,6 +125,33 @@
     "image" : "https://www.diabloii.net/gallery/data/543/medium/naga-phroilan1.jpg",
     "name" : "lbl_unit_diablo"
   },
+  "djinn" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://cdnb.artstation.com/p/assets/images/images/006/057/581/large/roman-guro-2016-romanguro-djinn-man.jpg",
+    "name" : "lbl_unit_djinn"
+  },
+  "dominion" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
+    "name" : "lbl_unit_dominion"
+  },
+  "earth_elemental" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://i.pinimg.com/originals/7c/46/aa/7c46aac0314c423d4f0fe86ce028b1e7.jpg",
+    "name" : "lbl_unit_earth_elemental"
+  },
   "efreet" : {
     "faction" : {
       "color" : "red",
@@ -34,6 +160,15 @@
     },
     "image" : "https://vannahscreations.files.wordpress.com/2013/07/20130729-154445.jpg",
     "name" : "lbl_unit_efreet"
+  },
+  "elf" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://i.pinimg.com/736x/28/21/53/282153c2b3cdb686c3d1c398cc658817--character-concept-character-art.jpg",
+    "name" : "lbl_unit_elf"
   },
   "flame_elemental" : {
     "faction" : {
@@ -53,6 +188,78 @@
     "image" : "https://i.pinimg.com/736x/fa/08/71/fa08715e3194b6ee971ebd69913c8838--dark-creatures-fantasy-creatures.jpg",
     "name" : "lbl_unit_goblin"
   },
+  "green_dragon" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg",
+    "name" : "lbl_unit_green_dragon"
+  },
+  "hydra" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg",
+    "name" : "lbl_unit_hydra"
+  },
+  "ice_elemental" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "http://orig10.deviantart.net/d8e2/f/2017/010/0/0/cryofiend_by_ivantao-dav02s9.jpg",
+    "name" : "lbl_unit_ice_elemental"
+  },
+  "leviathan" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg",
+    "name" : "lbl_unit_leviathan"
+  },
+  "lich" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://i.pinimg.com/originals/6d/68/4a/6d684a5c6b7324b0209a1d418f27aff4.jpg",
+    "name" : "lbl_unit_lich"
+  },
+  "light_elemental" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
+    "name" : "lbl_unit_light_elemental"
+  },
+  "mage" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/736x/f7/fc/a9/f7fca9b85702cf6270ebc77d8c0a1af6--dragon-age-origins-videogames.jpg",
+    "name" : "lbl_unit_mage"
+  },
+  "medusa" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/736x/d1/b0/8f/d1b08f4a471d99a29a16255158a436e7--character-concept-character-art.jpg",
+    "name" : "lbl_unit_medusa"
+  },
   "minotaur" : {
     "faction" : {
       "color" : "red",
@@ -62,6 +269,15 @@
     "image" : "http://1.bp.blogspot.com/-mejpb8I-_7Q/Uy5IfH5co2I/AAAAAAAABxI/vis2AxjV6Ko/s1600/Minotaur-Art.jpg",
     "name" : "lbl_unit_minotaur"
   },
+  "naga" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "lbl_faction_ghost"
+    },
+    "image" : "https://i.pinimg.com/736x/9b/49/dc/9b49dc3591095d3cf7235007e0903999--fantasy-concept-art-fantasy-art.jpg",
+    "name" : "lbl_unit_naga"
+  },
   "orc" : {
     "faction" : {
       "color" : "red",
@@ -70,6 +286,24 @@
     },
     "image" : "http://4.bp.blogspot.com/-buoD6cswENo/VPCOVEbYWUI/AAAAAAAAAbw/Pt61XbyfMU0/s1600/ok%C3%A7u%2Borklar.jpg",
     "name" : "lbl_unit_orc"
+  },
+  "paladin" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg",
+    "name" : "lbl_unit_paladin"
+  },
+  "pegasus" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg",
+    "name" : "lbl_unit_pegasus"
   },
   "phoenix" : {
     "faction" : {
@@ -89,59 +323,32 @@
     "image" : "https://orig14.deviantart.net/a038/f/2015/355/a/0/red_dragon_v2_by_sandara-d9kytw1.jpg",
     "name" : "lbl_unit_red_dragon"
   },
-  "mage" : {
+  "skeleton" : {
     "faction" : {
-      "color" : "blue",
+      "color" : "purple",
       "image" : "http://",
-      "name" : "lbl_faction_ghost"
+      "name" : "lbl_faction_darkness"
     },
-    "image" : "https://i.pinimg.com/736x/f7/fc/a9/f7fca9b85702cf6270ebc77d8c0a1af6--dragon-age-origins-videogames.jpg",
-    "name" : "lbl_unit_mage"
+    "image" : "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
+    "name" : "lbl_unit_skeleton"
   },
-  "djinn" : {
+  "smoke_elemental" : {
     "faction" : {
-      "color" : "blue",
+      "color" : "purple",
       "image" : "http://",
-      "name" : "lbl_faction_ghost"
+      "name" : "lbl_faction_darkness"
     },
-    "image" : "https://cdnb.artstation.com/p/assets/images/images/006/057/581/large/roman-guro-2016-romanguro-djinn-man.jpg",
-    "name" : "lbl_unit_djinn"
+    "image" : "http://community.fansshare.com/pic32/w/nocturnality/1200/15519_tumblr_lkwdzvf_qiqa.jpg",
+    "name" : "lbl_unit_smoke_elemental"
   },
-  "medusa" : {
+  "spider" : {
     "faction" : {
-      "color" : "blue",
+      "color" : "purple",
       "image" : "http://",
-      "name" : "lbl_faction_ghost"
+      "name" : "lbl_faction_darkness"
     },
-    "image" : "https://i.pinimg.com/736x/d1/b0/8f/d1b08f4a471d99a29a16255158a436e7--character-concept-character-art.jpg",
-    "name" : "lbl_unit_medusa"
-  },
-  "naga" : {
-    "faction" : {
-      "color" : "blue",
-      "image" : "http://",
-      "name" : "lbl_faction_ghost"
-    },
-    "image" : "https://i.pinimg.com/736x/9b/49/dc/9b49dc3591095d3cf7235007e0903999--fantasy-concept-art-fantasy-art.jpg",
-    "name" : "lbl_unit_naga"
-  },
-  "air_elemental" : {
-    "faction" : {
-      "color" : "blue",
-      "image" : "http://",
-      "name" : "lbl_faction_ghost"
-    },
-    "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
-    "name" : "lbl_unit_air_elemental"
-  },
-  "ice_elemental" : {
-    "faction" : {
-      "color" : "blue",
-      "image" : "http://",
-      "name" : "lbl_faction_ghost"
-    },
-    "image" : "http://orig10.deviantart.net/d8e2/f/2017/010/0/0/cryofiend_by_ivantao-dav02s9.jpg",
-    "name" : "lbl_unit_ice_elemental"
+    "image" : "http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg",
+    "name" : "lbl_unit_spider"
   },
   "storm_elemental" : {
     "faction" : {
@@ -152,6 +359,42 @@
     "image" : "https://i.pinimg.com/originals/87/c7/8e/87c78eb9801fb248f91844881259e0ac.jpg",
     "name" : "lbl_unit_storm_elemental"
   },
+  "treant" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "https://cdna.artstation.com/p/assets/images/images/005/293/192/large/dong-geon-son-aaaaaaaa.jpg",
+    "name" : "lbl_unit_treant"
+  },
+  "troll" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
+    },
+    "image" : "http://media.indiedb.com/cache/images/games/1/15/14944/thumb_620x2000/Ogre.PNG",
+    "name" : "lbl_unit_troll"
+  },
+  "unicorn" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "http://",
+      "name" : "lbl_faction_holy"
+    },
+    "image" : "http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg",
+    "name" : "lbl_unit_unicorn"
+  },
+  "vampire" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://i.pinimg.com/originals/86/ec/49/86ec491c65f763284cf167575836f15f.jpg",
+    "name" : "lbl_unit_vampire"
+  },
   "water_elemental" : {
     "faction" : {
       "color" : "blue",
@@ -161,292 +404,49 @@
     "image" : "https://img07.deviantart.net/8547/i/2011/346/7/d/water_elemental_by_phlip627-d4iy03f.jpg",
     "name" : "lbl_unit_water_elemental"
   },
-  "blue_dragon" : {
+  "werewolf" : {
     "faction" : {
-      "color" : "blue",
+      "color" : "purple",
       "image" : "http://",
-      "name" : "lbl_faction_ghost"
+      "name" : "lbl_faction_darkness"
     },
-    "image" : "https://i.pinimg.com/736x/1a/3b/0d/1a3b0d754e88d1a400c6695c2c44a3f4.jpg",
-    "name" : "lbl_unit_blue_dragon"
+    "image" : "https://alusinefinalmajorproject.files.wordpress.com/2015/04/werewolf-backgrounds.jpg",
+    "name" : "lbl_unit_werewolf"
   },
-  "leviathan" : {
+  "white_dragon" : {
     "faction" : {
-      "color" : "blue",
+      "color" : "white",
       "image" : "http://",
-      "name" : "lbl_faction_ghost"
+      "name" : "lbl_faction_holy"
     },
-    "image" : "https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg",
-    "name" : "lbl_unit_leviathan"
+    "image" : "https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg",
+    "name" : "lbl_unit_white_dragon"
   },
-  "skeleton": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
+  "wraith" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
-    "name": "lbl_unit_skeleton"
+    "image" : "https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg",
+    "name" : "lbl_unit_wraith"
   },
-  "zombie": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
+  "wyvern" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "http://",
+      "name" : "lbl_faction_nature"
     },
-    "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
-    "name": "lbl_unit_zombie"
+    "image" : "http://image.zixundingzhi.com/VJQct71GxgL7cpodq7XHkd8gq50=/660x0/full/cd133af48b1c45013a718bfa10e2483af51f1c25",
+    "name" : "lbl_unit_wyvern"
   },
-  "spider": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
+  "zombie" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg",
-    "name": "lbl_unit_spider"
-  },
-  "werewolf": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://alusinefinalmajorproject.files.wordpress.com/2015/04/werewolf-backgrounds.jpg",
-    "name": "lbl_unit_werewolf"
-  },
-  "wraith": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg",
-    "name": "lbl_unit_wraith"
-  },
-  "lich": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/6d/68/4a/6d684a5c6b7324b0209a1d418f27aff4.jpg",
-    "name": "lbl_unit_lich"
-  },
-  "vampire": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/86/ec/49/86ec491c65f763284cf167575836f15f.jpg",
-    "name": "lbl_unit_vampire"
-  },
-  "death_knight": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/76/c1/00/76c100c5882bbc61b7e865514231ebb4--warcraft-art-world-of-warcraft.jpg",
-    "name": "lbl_unit_death_knight"
-  },
-  "smoke_elemental": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "http://community.fansshare.com/pic32/w/nocturnality/1200/15519_tumblr_lkwdzvf_qiqa.jpg",
-    "name": "lbl_unit_smoke_elemental"
-  },
-  "black_dragon": {
-    "faction": {
-      "color": "purple",
-      "name": "lbl_faction_darkness",
-      "image": "http://"
-    },
-    "image": "https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg",
-    "name": "lbl_unit_black_dragon"
-  },
-  "crusader": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg",
-    "name": "lbl_unit_crusader"
-  },
-  "cleric": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg",
-    "name": "lbl_unit_cleric"
-  },
-  "unicorn": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg",
-    "name": "lbl_unit_unicorn"
-  },
-  "pegasus": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg",
-    "name": "lbl_unit_pegasus"
-  },
-  "paladin": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg",
-    "name": "lbl_unit_paladin"
-  },
-  "light_elemental": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
-    "name": "lbl_unit_light_elemental"
-  },
-  "angel": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg",
-    "name": "lbl_unit_angel"
-  },
-  "archangel": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/600x315/2c/a3/94/2ca394e2b38cfc44681297e639ee5852.jpg",
-    "name": "lbl_unit_archangel"
-  },
-  "white_dragon": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg",
-    "name": "lbl_unit_white_dragon"
-  },
-  "dominion": {
-    "faction": {
-      "color": "white",
-      "name": "lbl_faction_holy",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg",
-    "name": "lbl_unit_dominion"
-  },
-  "elf": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/28/21/53/282153c2b3cdb686c3d1c398cc658817--character-concept-character-art.jpg",
-    "name": "lbl_unit_elf"
-  },
-  "treant": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://cdna.artstation.com/p/assets/images/images/005/293/192/large/dong-geon-son-aaaaaaaa.jpg",
-    "name": "lbl_unit_treant"
-  },
-  "troll": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "http://media.indiedb.com/cache/images/games/1/15/14944/thumb_620x2000/Ogre.PNG",
-    "name": "lbl_unit_troll"
-  },
-  "cyclops": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
-    "name": "lbl_unit_cyclops"
-  },
-  "wyvern": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "http://image.zixundingzhi.com/VJQct71GxgL7cpodq7XHkd8gq50=/660x0/full/cd133af48b1c45013a718bfa10e2483af51f1c25",
-    "name": "lbl_unit_wyvern"
-  },
-  "basilisk": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/ba/9b/95/ba9b959610b3618cd336d84a2b0db30b.jpg",
-    "name": "lbl_unit_basilisk"
-  },
-  "behemoth": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "http://aidanmoher.com/blog/wp-content/uploads/2011/04/kekai-kotaki-4.jpg",
-    "name": "lbl_unit_behemoth"
-  },
-  "earth_elemental": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/originals/7c/46/aa/7c46aac0314c423d4f0fe86ce028b1e7.jpg",
-    "name": "lbl_unit_earth_elemental"
-  },
-  "green_dragon": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg",
-    "name": "lbl_unit_green_dragon"
-  },
-  "hydra": {
-    "faction": {
-      "color": "green",
-      "name": "lbl_faction_nature",
-      "image": "http://"
-    },
-    "image": "https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg",
-    "name": "lbl_unit_hydra"
+    "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+    "name" : "lbl_unit_zombie"
   }
 }

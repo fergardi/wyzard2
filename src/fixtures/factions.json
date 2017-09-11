@@ -1,27 +1,27 @@
 {
-  "holy": {
-    "color": "white",
-    "name": "lbl_faction_holy",
-    "image": ""
+  "chaos" : {
+    "color" : "red",
+    "image" : "https://artfiles.alphacoders.com/870/87074.jpg",
+    "name" : "lbl_faction_chaos"
   },
-  "mental": {
-    "color": "blue",
-    "name": "lbl_faction_mental",
-    "image": ""
+  "darkness" : {
+    "color" : "purple",
+    "image" : "https://i.pinimg.com/originals/8d/a0/d5/8da0d538765100ecfb6c4195d2676cf9.jpg",
+    "name" : "lbl_faction_darkness"
   },
-  "nature": {
-    "color": "green",
-    "name": "lbl_faction_nature",
-    "image": ""
+  "holy" : {
+    "color" : "white",
+    "image" : "https://i.pinimg.com/736x/55/f6/e3/55f6e3524c5e98844b15699767684a40--fantasy-places-fantasy-art.jpg",
+    "name" : "lbl_faction_holy"
   },
-  "chaos": {
-    "color": "red",
-    "name": "lbl_faction_chaos",
-    "image": ""
+  "mental" : {
+    "color" : "blue",
+    "image" : "http://i.imgur.com/8TSZiui.jpg",
+    "name" : "lbl_faction_mental"
   },
-  "darkness": {
-    "color": "purple",
-    "name": "lbl_faction_darkness",
-    "image": ""
+  "nature" : {
+    "color" : "green",
+    "image" : "https://i.pinimg.com/originals/3e/78/ab/3e78ab352d8f9706014e5bc082a3b2f2.jpg",
+    "name" : "lbl_faction_nature"
   }
 }

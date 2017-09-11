@@ -5,11 +5,13 @@
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
-    mu-card-text(v-if="quantity !== undefined")
-      form
-        mu-text-field(type="number", v-model="quantity", icon="", min="0", :fullWidth="true", required)
-    mu-card-actions(v-if="quantity !== undefined")
-      mu-raised-button(primary) Hola
+    template(v-if="construction")
+      mu-card-text
+        form
+          mu-text-field(type="number", v-model="quantity", icon="", min="0", required, :label="translate('lbl_label_quantity')")
+      mu-card-actions
+        mu-raised-button(primary, @click="demolish") {{ 'lbl_button_demolish' | translate }}
+        mu-raised-button(primary, @click="construct") {{ 'lbl_button_construct' | translate }}
 </template>
 
 <script>
@@ -17,9 +19,17 @@
 
   export default {
     name: 'building',
-    props: ['name', 'quantity'],
+    props: ['name', 'quantity', 'construction'],
     created () {
       this.$bindAsObject('data', firebase.ref('buildings').child(this.name))
+    },
+    methods: {
+      demolish () {
+        // TODO
+      },
+      construct () {
+        // TODO
+      }
     }
   }
 </script>

@@ -85,8 +85,26 @@ export default {
     lbl_god_of_blood: 'Dios de la Sangre',
     lbl_god_of_magic: 'Dios de la Magia',
     // items
+    lbl_item_book_of_the_dead: 'Libro de los Muertos',
     lbl_item_mana_potion: 'Poción de Maná',
-    lbl_item_love_potion: 'Poción de Amor',
+    lbl_item_love_elixir: 'Elixir de Amor',
+    lbl_item_treasure_chest: 'Cofre del Tesoro',
+    lbl_item_medusa_head: 'Cabeza de Medusa',
+    lbl_item_dragon_egg: 'Huevo de Dragón',
+    lbl_item_magic_compass: 'Brújula Mágica',
+    lbl_item_broken_mirror: 'Espejo Roto',
+    lbl_item_elemental_book: 'Libro Elemental',
+    lbl_item_hero_manual: 'Manual del Héroe',
+    lbl_item_demon_in_a_bottle: 'Demonio en una Botella',
+    lbl_item_live_bait: 'Cebo Vivo',
+    lbl_item_bonfire: 'Fogata de Campamento',
+    lbl_item_powder_barrel: 'Barril de Pólvora',
+    lbl_item_voodoo_doll: 'Muñeca Voodoo',
+    lbl_item_sacred_bible: 'Biblia Sagrada',
+    lbl_item_spider_web: 'Tela de Araña',
+    lbl_item_forbidden_book: 'Libro Prohibido',
+    lbl_item_attack_flask: 'Frasco de Ataque',
+    lbl_item_defense_remedy: 'Remedio de Defensa',
     // stats
     lbl_stat_offensive: 'Ofensivo',
     lbl_stat_mana: 'Maná',
@@ -116,7 +134,13 @@ export default {
     lbl_title_heroes: 'Heroes',
     lbl_title_gods: 'Dioses',
     lbl_title_factions: 'Facciones',
-    lbl_title_infrastructure: 'Infraestructura'
+    lbl_title_infrastructure: 'Infraestructura',
+    lbl_title_menu: 'Menu',
+    // label
+    lbl_label_quantity: 'Cantidad',
+    // buttons
+    lbl_button_construct: 'Construir',
+    lbl_button_demolish: 'Demoler'
   },
   en: {
   }

@@ -1,9 +1,9 @@
 # Factions
-* Holy
-* Mental
-* Nature 
+* Holy https://i.pinimg.com/736x/55/f6/e3/55f6e3524c5e98844b15699767684a40--fantasy-places-fantasy-art.jpg
+* Mental http://i.imgur.com/8TSZiui.jpg
+* Nature https://i.pinimg.com/originals/3e/78/ab/3e78ab352d8f9706014e5bc082a3b2f2.jpg
 * Chaos https://artfiles.alphacoders.com/870/87074.jpg
-* Darkness
+* Darkness https://i.pinimg.com/originals/8d/a0/d5/8da0d538765100ecfb6c4195d2676cf9.jpg
 
 # Chaos
 ### Units
@@ -129,7 +129,7 @@
 
 # Gods
 * God of Death https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg
-* God of Light https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg
+* God of Light https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg≤
 * God of Life https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg
 * God of Blood https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg
 * God of Magic https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg
@@ -147,7 +147,7 @@
 * Hero Manual https://i.pinimg.com/736x/ee/3b/6f/ee3b6fce2a19c0381a90045d11aa295a--the-book-spell-books.jpg
 * Demon in a Bottle https://i.pinimg.com/736x/35/39/ab/3539ab9ba166329e54e446c4913cc99e--fantasy-items-rpg-items.jpg
 * Live Bait http://orig04.deviantart.net/7315/f/2012/243/3/0/wild_sheep_by_gerezon-d5d1hxt.jpg
-* Battle Horn http://
+* Bonfire https://img10.deviantart.net/646b/i/2014/350/5/9/last_bonfire_by_art1a3t-d8a2fo9.jpg≤
 * Powder Barrel https://i.pinimg.com/736x/d8/98/2b/d8982b44566a42300ee9d3ab656c5e83--world-of-warcraft-cataclysm-warcraft-art.jpg
 * Voodoo Doll https://i.pinimg.com/736x/21/1a/66/211a6626a4bd8eddd795be10776301a9.jpg
 * Sacred Bible http://orig01.deviantart.net/e04d/f/2007/135/0/f/the_holy_book_by_djvue.jpg

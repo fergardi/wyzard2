@@ -1,0 +1,15 @@
+{
+  "fergardi" : {
+    "buildings" : {
+      "barrack" : 0,
+      "barrier" : 8,
+      "farm" : 2,
+      "fortress" : 2,
+      "guild" : 0,
+      "node" : 27,
+      "territory" : 45,
+      "village" : 2,
+      "workshop" : 3
+    }
+  }
+}

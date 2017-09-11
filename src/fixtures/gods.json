@@ -1,47 +1,47 @@
 {
-  "god_of_death": {
-    "faction": {
-      "color": "purple",
-      "image": "",
-      "name": "lbl_faction_darkness"
+  "god_of_blood" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg",
-    "name": "lbl_god_of_death"
+    "image" : "https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg",
+    "name" : "lbl_god_of_blood"
   },
-  "god_of_light": {
-    "faction": {
-      "color": "white",
-      "image": "",
-      "name": "lbl_faction_holy"
+  "god_of_death" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://i.pinimg.com/736x/07/6e/4c/076e4c712ba4ef193a1a230f43de1e74--warcraft-art-world-of-warcraft.jpg",
-    "name": "lbl_god_of_light"
+    "image" : "https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg",
+    "name" : "lbl_god_of_death"
   },
-  "god_of_life": {
-    "faction": {
-      "color": "green",
-      "image": "",
-      "name": "lbl_faction_nature"
+  "god_of_life" : {
+    "faction" : {
+      "color" : "green",
+      "image" : "",
+      "name" : "lbl_faction_nature"
     },
-    "image": "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
-    "name": "lbl_god_of_life"
+    "image" : "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
+    "name" : "lbl_god_of_life"
   },
-  "god_of_blood": {
-    "faction": {
-      "color": "red",
-      "image": "",
-      "name": "lbl_faction_chaos"
+  "god_of_light" : {
+    "faction" : {
+      "color" : "white",
+      "image" : "",
+      "name" : "lbl_faction_holy"
     },
-    "image": "https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg",
-    "name": "lbl_god_of_blood"
+    "image" : "https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg",
+    "name" : "lbl_god_of_light"
   },
-  "god_of_magic": {
-    "faction": {
-      "color": "blue",
-      "image": "",
-      "name": "lbl_faction_mental"
+  "god_of_magic" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "",
+      "name" : "lbl_faction_mental"
     },
-    "image": "https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg",
-    "name": "lbl_god_of_magic"
+    "image" : "https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg",
+    "name" : "lbl_god_of_magic"
   }
 }

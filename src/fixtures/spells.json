@@ -1,0 +1,48 @@
+{
+  "fog" : {
+    "category" : "lbl_stat_enchantment",
+    "faction" : {
+      "color" : "purple",
+      "image" : "dsadas",
+      "name" : "lbl_darkness"
+    },
+    "image" : "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
+    "level" : 10,
+    "name" : "lbl_spell_fog"
+  },
+  "tornado" : {
+    "category" : "lbl_stat_battle",
+    "faction" : {
+      "color" : "green",
+      "image" : "dsadas",
+      "name" : "lbl_nature"
+    },
+    "image" : "https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg",
+    "level" : 10,
+    "name" : "lbl_spell_tornado"
+  },
+  "tsunami" : {
+    "category" : "lbl_stat_instant",
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://game-icons.net/icons/lorc/originals/svg/drop.svg",
+      "name" : "lbl_mental"
+    },
+    "image" : "https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg",
+    "level" : 10,
+    "name" : "lbl_spell_tsunami",
+    "type" : "lbl_stat_offensive"
+  },
+  "volcano" : {
+    "category" : "lbl_stat_enchantment",
+    "faction" : {
+      "color" : "red",
+      "image" : "https://static1.squarespace.com/static/50993219e4b0d2694880ff68/5099d256e4b0d2694882c206/5099d284e4b0d2694882c25b/1352258180491/PRESENTswEPTHREE-7.jpg",
+      "name" : "lbl_chaos"
+    },
+    "image" : "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
+    "level" : 10,
+    "name" : "lbl_spell_volcano",
+    "type" : "lbl_offensive"
+  }
+}

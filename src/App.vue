@@ -2,18 +2,19 @@
   #app
 
     mu-paper
-      mu-appbar.topbar(:title="translate(title)", :zDepth="0")
-        mu-icon-button(icon="menu", slot="left", @click="toggle")
-        mu-icon-button(icon="help", slot="right", to="help")
+      mu-appbar.topbar(:title="translate(title)")
+        mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
+        mu-icon-button.help(icon="help", slot="right", to="help")
 
     mu-drawer.sidebar(:open="menu", :docked="false", @close="toggle")
       mu-paper
-        mu-appbar {{ 'lbl_title_empire' | translate }}
-          mu-icon-button(icon="menu", slot="left", @click="toggle")
+        mu-appbar {{ 'lbl_title_menu' | translate }}
+          mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
+          mu-icon-button.settings(icon="settings", slot="right", to="settings", @click="toggle")
 
       mu-list
         mu-sub-header {{ 'lbl_title_interior' | translate }}
-        mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")          
+        mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value="home")
 
         mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
@@ -58,6 +59,7 @@
 </script>
 
 <style lang="stylus">
+  $opacity = 0.95
   @import './css/colors.styl'
   html
   body
@@ -82,9 +84,6 @@
       overflow-y auto
     .mu-appbar
       border-bottom 1px solid
-    @media (min-width 480px)
-      .mu-appbar
-        height 56px
     .mu-appbar-title
       display flex
       justify-content center
@@ -92,7 +91,7 @@
     .row
       justify-content flex-start
     .mu-card
-      opacity 0.95
+      opacity $opacity
       $radius = 5px
       margin 5px
       border-radius $radius
@@ -144,6 +143,8 @@
         p
           font-style italic
           font-size 0.9em
+        .mu-text-field
+          width 50%
         .stats
           display flex
           justify-content center
@@ -165,13 +166,18 @@
               line-height 23px
       .mu-card-actions
         display flex
-        justify-content flex-end
-        .mu-raised-button
-          color inherit
-          border 1px solid
+        justify-content space-between
+      .mu-raised-button
+        color inherit
+        border 1px solid
+        padding 15px
+        width 49%
+      .mu-raised-button + .mu-raised-button
+        margin-left 5px
     .mu-drawer
       height 100%
       overflow hidden
+      border-right 1px solid
       .mu-list
         overflow-y auto
         height calc(100% - 56px)
@@ -181,4 +187,20 @@
           line-height 36px
         .mu-item-left
           justify-content center
+    @media (min-width 480px)
+      .mu-appbar
+        height 56px
+    @media only screen and (min-width 1080px)
+      #app
+        .sidebar
+          transform translateZ(0)
+          visibility visible
+          opacity $opacity
+          .toggler
+          .settings
+            display none
+        .router
+          padding-left 256px
+      .mu-overlay
+        display none !important
 </style>
