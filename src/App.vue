@@ -1,5 +1,6 @@
 <template lang="pug">
   #app
+    .background
 
     mu-paper
       mu-appbar.topbar(:title="translate(title)")
@@ -67,11 +68,15 @@
     margin 0
     height 100%
     width 100%
-    body
+    box-sizing border-box
+    user-select none !important
+    .background
+      width 100%
+      height 100%
+      position absolute
+      filter grayscale(100%)
       background url("https://cdn.allwallpaper.in/wallpapers/1920x1200/2705/scrolls-v-skyrim-artwork-dragons-games-towns-1920x1200-wallpaper.jpg") no-repeat center center fixed
       background-size cover
-      box-sizing border-box
-      user-select none !important
       z-index -9999
     #app
       height 100%
