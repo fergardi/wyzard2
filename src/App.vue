@@ -83,10 +83,15 @@
       box-sizing border-box
       user-select none !important
       z-index -9999
+    #app
+      height 100%
+      overflow hidden
     .topbar
       position fixed
     .router
-      padding-top 56px
+      margin-top 56px
+      height calc(100% - 56px)
+      overflow-y auto
     .mu-appbar
       border-bottom 1px solid
     @media (min-width 480px)
