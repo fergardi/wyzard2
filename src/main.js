@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './app'
-import router from './router'
+import router from './router/router'
 import VueFire from 'vuefire'
 import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
@@ -10,16 +10,12 @@ import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 // import '../node_modules/muse-ui/dist/theme-light.css'
 // import '../node_modules/muse-ui/dist/theme-dark.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
-
 // UI
 Vue.use(MuseUI)
-
 // mapbox
 window.mapboxgl = require('mapbox-gl')
-
 // firebase
 Vue.use(VueFire)
-
 // filters
 Vue.filter('format', (number) => {
   return number % 1000000
@@ -37,7 +33,14 @@ Vue.filter('ipsum', () => {
 Vue.filter('translate', (label) => {
   return i18n[store.state.lang][label] || label
 })
-
+// mixins
+Vue.mixin({
+  methods: {
+    translate (label) {
+      return i18n[store.state.lang][label] || label
+    }
+  }
+})
 // production
 Vue.config.productionTip = false
 // main app

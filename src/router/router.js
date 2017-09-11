@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import infrastructure from '@/views/infrastructure'
 import spells from '@/views/spells'
 import units from '@/views/units'
 import artifacts from '@/views/artifacts'
@@ -52,6 +53,11 @@ export default new Router({
       path: '/factions',
       name: 'factions',
       component: factions
+    },
+    {
+      path: '/infrastructure',
+      name: 'infrastructure',
+      component: infrastructure
     }
   ]
 })

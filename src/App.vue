@@ -13,15 +13,7 @@
 
       mu-list
         mu-sub-header {{ 'lbl_title_interior' | translate }}
-        mu-list-item(:title="translate('lbl_title_build')", to="build", @click="toggle")          
-          mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")          
-          mu-icon(slot="left", value="home")
-
-        mu-sub-header {{ 'lbl_title_magic' | translate }}
-        mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")          
-          mu-icon(slot="left", value="home")
-        mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")          
+        mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")          
           mu-icon(slot="left", value="home")
 
         mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
@@ -46,16 +38,12 @@
 
 <script>
   import store from './vuex/store'
-  import i18n from './services/i18n'
 
   export default {
     name: 'app',
     methods: {
       toggle () {
         store.commit('toggle')
-      },
-      translate (label) {
-        return i18n[store.state.lang][label] || label
       }
     },
     computed: {
@@ -175,6 +163,12 @@
             align-items center
             .ra
               line-height 23px
+      .mu-card-actions
+        display flex
+        justify-content flex-end
+        .mu-raised-button
+          color inherit
+          border 1px solid
     .mu-drawer
       height 100%
       overflow hidden

@@ -101,7 +101,7 @@ export default {
     lbl_building_village: 'Pueblos',
     lbl_building_workshop: 'Talleres',
     lbl_building_guild: 'Gremios',
-    lbl_building_barracks: 'Barracones',
+    lbl_building_barrack: 'Barracones',
     lbl_building_fortress: 'Fortalezas',
     lbl_building_barrier: 'Barreras',
     // titles
@@ -115,7 +115,8 @@ export default {
     lbl_title_buildings: 'Edificios',
     lbl_title_heroes: 'Heroes',
     lbl_title_gods: 'Dioses',
-    lbl_title_factions: 'Facciones'
+    lbl_title_factions: 'Facciones',
+    lbl_title_infrastructure: 'Infraestructura'
   },
   en: {
   }

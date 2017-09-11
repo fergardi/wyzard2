@@ -1,8 +1,7 @@
 <template lang="pug">
   mu-row
-    transition-group.list(name="units", mode="out-in", tag="div", enter-active-class="animated fadeInUp", appear)
-      mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
-        unit(:data="unit")
+    mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
+      unit(:data="unit")
 </template>
 
 <script>
