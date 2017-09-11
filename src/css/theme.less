@@ -10,15 +10,15 @@
 
 @import "~muse-ui/less/vars.less"; // default basic variable
 
-@fontFamily: Roboto, Lato, sans-serif;  // font
+@fontFamily: Roboto, Lato, sans-serif; // font
 
 // primary color and accent color
-@primaryColor: @dark;           // primary color
-@darkerPrimaryColor: @primaryColor;  // darker primary color
-@lighterPrimaryColor: @primaryColor;      // lighter primary color
-@accentColor: @red500;             // accent color
-@darkerAccentColor: @red500;        // darker accent color
-@lighterAccentColor: @red500;       // lighter accent color
+@primaryColor: @dark; // primary color
+@darkerPrimaryColor: darken(@primaryColor, 50%); // darker primary color
+@lighterPrimaryColor: lighten(@primaryColor, 50%); // lighter primary color
+@accentColor: @red500; // accent color
+@darkerAccentColor: @red500; // darker accent color
+@lighterAccentColor: @red500; // lighter accent color
 
 // text color
 @textColor: @gold;
@@ -28,7 +28,7 @@
 @disabledColor: fade(@gold, 50%);
 
 // background
-@backgroundColor: @dark;           // background color
+@backgroundColor: @dark; // background color
 @statusBarBackgroundColor: @darken; // useless
 @appbarBackgroundColor: @darken; // useless in the appbar component
 @dialogBackgroundColor: @darken; // dialogs、 cards、 paper background
@@ -37,7 +37,7 @@
 @activeIconColor: fade(@fullWhite, 50%);
 @inActiveIconColor: fade(@fullWhite, 50%);
 
-@import "~muse-ui/less/theme-vars.less";  // default component variable
+@import "~muse-ui/less/theme-vars.less"; // default component variable
 
 // change the component variable
 @avatarBackgroundColor: @gold;

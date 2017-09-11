@@ -138,6 +138,7 @@
           &.dark
             background-color $dark
       .mu-card-text
+        // border-top 1px solid
         color $gold
         text-align center
         p
@@ -165,13 +166,15 @@
             .ra
               line-height 23px
       .mu-card-actions
+        // border-top 1px solid
         display flex
         justify-content space-between
       .mu-raised-button
         color inherit
         border 1px solid
-        padding 15px
+        font-weight bold
         width 49%
+        text-transform none
       .mu-raised-button + .mu-raised-button
         margin-left 5px
     .mu-drawer
@@ -190,15 +193,22 @@
     @media (min-width 480px)
       .mu-appbar
         height 56px
+    @media only screen and (max-width 1079px)
+      #app
+        .sidebar
+          border-right 1px solid
     @media only screen and (min-width 1080px)
       #app
         .sidebar
+          border-right none
           transform translateZ(0)
           visibility visible
           opacity $opacity
           .toggler
           .settings
             display none
+          .mu-list
+            border-right 1px solid
         .router
           padding-left 256px
       .mu-overlay

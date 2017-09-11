@@ -24,11 +24,11 @@ Vue.filter('format', (number) => {
       ? (number / 1000).toFixed(2) + 'K'
       : number.toFixed(2)
 })
-Vue.filter('lorem', () => {
+Vue.filter('ipsum', () => {
   return 'Muy lejos, más allá de las montañas de palabras...'
 })
-Vue.filter('ipsum', () => {
-  return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas. Un riachuelo llamado Pons fluye por su pueblo y los abastece con las normas necesarias. Hablamos de un país paraisomático en el que a uno le caen pedazos de frases asadas en la boca. Ni siquiera los todopoderosos signos de puntuación dominan a los textos simulados; una vida, se puede decir, poco ortográfica.'
+Vue.filter('lorem', () => {
+  return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
 })
 Vue.filter('translate', (label) => {
   return i18n[store.state.lang][label] || label
