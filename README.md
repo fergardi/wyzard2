@@ -21,7 +21,7 @@
 * Fire Circle http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg
 * Berserker https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg
 * Volcano https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg
-* Fireball https://cdna.artstation.com/p/assets/images/images/003/552/956/smaller_square/sandeep-karunakaran-the-summoning.jpg
+* Fireball http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg
 * Meteor Shower https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg
 * Blood Pact https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg
 * Mana Drain https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg
