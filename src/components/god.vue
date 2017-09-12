@@ -8,6 +8,7 @@
 </template>
 
 <script>
+  import store from '../vuex/store'
   import firebase from '../services/firebase'
 
   export default {
@@ -20,7 +21,7 @@
     },
     created () {
       this.$bindAsObject('data', firebase.ref('gods').child(this.name))
-      setTimeout(() => { this.show = true }, (this.delay || 1) * 50)
+      setTimeout(() => { this.show = true }, (this.delay || 1) * store.state.delay)
     }
   }
 </script>

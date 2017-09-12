@@ -8,7 +8,8 @@ const vuex = new Vuex.Store({
     lang: 'es',
     title: 'lbl_wyzard',
     menu: false,
-    username: 'fergardi'
+    username: 'fergardi',
+    delay: 50
   },
   mutations: {
     toggle (state) {

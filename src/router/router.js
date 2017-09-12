@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import infrastructure from '@/views/infrastructure'
 import spells from '@/views/spells'
 import units from '@/views/units'
 import artifacts from '@/views/artifacts'
@@ -9,6 +8,8 @@ import buildings from '@/views/buildings'
 import heroes from '@/views/heroes'
 import gods from '@/views/gods'
 import factions from '@/views/factions'
+import infrastructure from '@/views/infrastructure'
+import research from '@/views/research'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/infrastructure',
       name: 'infrastructure',
       component: infrastructure
+    },
+    {
+      path: '/research',
+      name: 'research',
+      component: research
     }
   ]
 })

@@ -18,9 +18,9 @@ window.mapboxgl = require('mapbox-gl')
 Vue.use(VueFire)
 // filters
 Vue.filter('format', (number) => {
-  return number % 1000000
+  return number / 1000000 > 1
     ? (number / 1000000).toFixed(2) + 'M'
-    : number % 1000
+    : number / 1000 > 1
       ? (number / 1000).toFixed(2) + 'K'
       : number.toFixed(2)
 })

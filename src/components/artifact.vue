@@ -9,6 +9,7 @@
 
 <script>
   import firebase from '../services/firebase'
+  import store from '../vuex/store'
 
   export default {
     name: 'artifact',
@@ -20,7 +21,7 @@
     },
     created () {
       this.$bindAsObject('data', firebase.ref('artifacts').child(this.name))
-      setTimeout(() => { this.show = true }, (this.delay || 1) * 50)
+      setTimeout(() => { this.show = true }, (this.delay || 1) * store.state.delay)
     }
   }
 </script>

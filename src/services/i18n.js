@@ -135,12 +135,22 @@ export default {
     lbl_title_gods: 'Dioses',
     lbl_title_factions: 'Facciones',
     lbl_title_infrastructure: 'Infraestructura',
+    lbl_title_research: 'Investigación',
     lbl_title_menu: 'Menu',
+    lbl_title_help: 'Ayuda',
+    lbl_title_resources: 'Recursos',
     // label
     lbl_label_quantity: 'Cantidad',
+    lbl_label_turns: 'Turnos',
+    // resources
+    lbl_resource_gold: 'Oro',
+    lbl_resource_people: 'Personas',
+    lbl_resource_turns: 'Turnos',
+    lbl_resource_mana: 'Maná',
     // buttons
     lbl_button_construct: 'Construir',
-    lbl_button_demolish: 'Demoler'
+    lbl_button_demolish: 'Demoler',
+    lbl_button_research: 'Investigar'
   },
   en: {
   }
