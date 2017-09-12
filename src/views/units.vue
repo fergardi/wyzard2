@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
-      unit(:data="unit")
+      unit(:name="unit['.key']", :delay="index + 1")
 </template>
 
 <script>
@@ -24,7 +24,4 @@
 </script>
 
 <style lang="stylus" scoped>
-  .list
-    display flex
-    flex-wrap wrap
 </style>

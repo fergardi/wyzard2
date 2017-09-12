@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="hero, index in heroes", :key="index")
-      hero(:data="hero")
+      hero(:name="hero['.key']", :delay="index + 1")
 </template>
 
 <script>

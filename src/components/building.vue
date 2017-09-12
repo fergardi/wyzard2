@@ -1,11 +1,11 @@
 <template lang="pug">
-  mu-card.building
+  mu-card.building.animated.fadeInUp(v-if="show")
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
-    template(v-if="construction")
+    template(v-if="quantity !== undefined")
       mu-card-text
         form
           mu-text-field(type="number", v-model="quantity", min="0", required, :label="translate('lbl_label_quantity')")
@@ -19,9 +19,15 @@
 
   export default {
     name: 'building',
-    props: ['name', 'quantity', 'construction'],
+    props: ['name', 'quantity', 'delay'],
+    data () {
+      return {
+        show: false
+      }
+    },
     created () {
       this.$bindAsObject('data', firebase.ref('buildings').child(this.name))
+      setTimeout(() => { this.show = true }, (this.delay || 1) * 50)
     },
     methods: {
       demolish () {

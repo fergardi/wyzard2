@@ -34,8 +34,8 @@
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")          
           mu-icon(slot="left", value="home")
 
-    transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
-      router-view.router
+    // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
+    router-view.router
 </template>
 
 <script>

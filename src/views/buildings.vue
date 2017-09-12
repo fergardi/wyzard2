@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
-      building(:name="building['.key']")
+      building(:name="building['.key']", :delay="index + 1")
 </template>
 
 <script>
