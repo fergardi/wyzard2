@@ -2,7 +2,7 @@
   mu-card.spell.animated.fadeInUp(v-if="show")
     mu-card-media
       img(:src="data.image")
-      #title(:class="data.faction.color") {{ data.name | translate }}
+      #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
       .stats
@@ -47,6 +47,11 @@
     created () {
       this.$bindAsObject('data', firebase.ref('spells').child(this.name))
       setTimeout(() => { this.show = true }, (this.delay || 1) * store.state.delay)
+    },
+    methods: {
+      research () {
+        // TODO
+      }
     }
   }
 </script>

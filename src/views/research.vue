@@ -16,12 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_research')
-      this.$bindAsArray('spells', firebase.ref('users').child(this.username).child('spells'))
-    },
-    computed: {
-      username () {
-        return store.state.username
-      }
+      this.$bindAsArray('spells', firebase.ref('users').child(store.state.username).child('spells'))
     }
   }
 </script>

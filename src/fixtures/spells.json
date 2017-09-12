@@ -1,48 +1,92 @@
 {
-  "fog" : {
-    "category" : "lbl_stat_enchantment",
-    "faction" : {
-      "color" : "purple",
-      "image" : "dsadas",
-      "name" : "lbl_darkness"
+  "eclipse": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
     },
-    "image" : "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
-    "level" : 10,
-    "name" : "lbl_spell_fog"
+    "image": "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
+    "name": "lbl_spell_eclipse"
   },
-  "tornado" : {
-    "category" : "lbl_stat_battle",
-    "faction" : {
-      "color" : "green",
-      "image" : "dsadas",
-      "name" : "lbl_nature"
+  "voodoo": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
     },
-    "image" : "https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg",
-    "level" : 10,
-    "name" : "lbl_spell_tornado"
+    "image": "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
+    "name": "lbl_spell_voodoo"
   },
-  "tsunami" : {
-    "category" : "lbl_stat_instant",
-    "faction" : {
-      "color" : "blue",
-      "image" : "http://game-icons.net/icons/lorc/originals/svg/drop.svg",
-      "name" : "lbl_mental"
+  "plague": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
     },
-    "image" : "https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg",
-    "level" : 10,
-    "name" : "lbl_spell_tsunami",
-    "type" : "lbl_stat_offensive"
+    "image": "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
+    "name": "lbl_spell_plague"
   },
-  "volcano" : {
-    "category" : "lbl_stat_enchantment",
-    "faction" : {
-      "color" : "red",
-      "image" : "https://static1.squarespace.com/static/50993219e4b0d2694880ff68/5099d256e4b0d2694882c206/5099d284e4b0d2694882c25b/1352258180491/PRESENTswEPTHREE-7.jpg",
-      "name" : "lbl_chaos"
+  "curse": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
     },
-    "image" : "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
-    "level" : 10,
-    "name" : "lbl_spell_volcano",
-    "type" : "lbl_offensive"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
+    "name": "lbl_spell_curse"
+  },
+  "fear": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
+    "name": "lbl_spell_fear"
+  },
+  "corruption": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
+    "name": "lbl_spell_corruption"
+  },
+  "coven": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
+    "name": "lbl_spell_coven"
+  },
+  "impurity": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
+    "name": "lbl_spell_impurity"
+  },
+  "bone_wall": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
+    "name": "lbl_spell_bone_wall"
+  },
+  "night_of_the_living_dead": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_darkness",
+      "color": "purple"
+    },
+    "image": "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
+    "name": "lbl_spell_night_of_the_living_dead"
   }
 }

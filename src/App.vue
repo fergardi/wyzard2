@@ -13,33 +13,43 @@
           mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
           mu-icon-button.settings(icon="settings", slot="right", to="settings", @click="toggle")
 
-      mu-sub-header {{ 'lbl_title_resources' | translate }}
-      resources
-
       mu-list
+        mu-sub-header {{ 'lbl_title_resources' | translate }}
+        mu-list-item(:title="translate('lbl_resource_turns')", disabled)
+          mu-icon(slot="left", value="home")
+          mu-badge(slot="after") {{ 100000 | format }}
+        mu-list-item(:title="translate('lbl_resource_gold')", disabled)
+          mu-icon(slot="left", value="home")
+          mu-badge(slot="after") {{ 100000 | format }}
+        mu-list-item(:title="translate('lbl_resource_mana')", disabled)
+          mu-icon(slot="left", value="home")
+          mu-badge(slot="after") {{ 100000 | format }}
+        mu-list-item(:title="translate('lbl_resource_people')", disabled)
+          mu-icon(slot="left", value="home")
+          mu-badge(slot="after") {{ 100000 | format }}
+
+
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
           mu-icon(slot="left", value="home")
 
-        mu-sub-header {{ 'lbl_title_help' | translate }}
-        mu-list-item(:title="translate('lbl_title_encyclopedia')", toggleNested)
-          mu-icon(slot="left", value="search")
-          mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
-          mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle", slot="nested")
-            mu-icon(slot="left", value="home")
+        mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
+        mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
+          mu-icon(slot="left", value="home")
+        mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
+          mu-icon(slot="left", value="home")
 
     // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
     router-view.router
@@ -47,13 +57,9 @@
 
 <script>
   import store from './vuex/store'
-  import resources from './components/resources'
 
   export default {
     name: 'app',
-    components: {
-      'resources': resources
-    },
     methods: {
       toggle () {
         store.commit('toggle')
@@ -208,6 +214,9 @@
           background-color rgba(173, 131, 90, 0.1)
         .mu-sub-header
           line-height 36px
+        .mu-item
+          min-height 36px
+          height 36px
         .mu-item-left
           justify-content center
     @media (min-width 480px)

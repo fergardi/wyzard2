@@ -18,11 +18,15 @@ window.mapboxgl = require('mapbox-gl')
 Vue.use(VueFire)
 // filters
 Vue.filter('format', (number) => {
-  return number / 1000000 > 1
-    ? (number / 1000000).toFixed(2) + 'M'
-    : number / 1000 > 1
-      ? (number / 1000).toFixed(2) + 'K'
-      : number.toFixed(2)
+  return !number
+    ? 0
+    : number / 1000000000 > 1
+      ? (number / 1000000000).toFixed(2) + 'B'
+      : number / 1000000 > 1
+        ? (number / 1000000).toFixed(2) + 'M'
+        : number / 1000 > 1
+          ? (number / 1000).toFixed(2) + 'K'
+          : number.toFixed(2)
 })
 Vue.filter('ipsum', () => {
   return 'Muy lejos, más allá de las montañas de palabras...'

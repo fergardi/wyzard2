@@ -20,7 +20,7 @@
 ### Spells
 * Fire Circle http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg
 * Berserk
-* Volcano
+* Volcano https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg
 * Fireball https://cdna.artstation.com/p/assets/images/images/003/552/956/smaller_square/sandeep-karunakaran-the-summoning.jpg
 * Meteor Shower
 ### Heroes
@@ -42,7 +42,7 @@
 * Leviathan https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg
 ### Spells
 * Shield of Water http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg
-* Tsunami
+* Tsunami https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg
 ### Heroes
 * Elementalist https://i.pinimg.com/originals/36/d3/cc/36d3cc6491287d8b8733562d231f1215.jpg
 * Alchemist https://i.pinimg.com/736x/4c/70/54/4c7054a5b2013c01f03f319a970a216a--fantasy-pictures-character-concept.jpg
@@ -62,7 +62,8 @@
 * Hydra https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg
 ### Spells
 * Nature Favor
-* Hurricane
+* Hurricane http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg
+* Tornado https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg
 * Rust Armor
 * Climate Control
 * Forest Council
@@ -104,12 +105,15 @@
 * Smoke Elemental http://community.fansshare.com/pic32/w/nocturnality/1200/15519_tumblr_lkwdzvf_qiqa.jpg
 * Black Dragon https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg
 ### Spells
-* Fog
-* Voodoo
+* Eclipse https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg
+* Voodoo http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg
 * Plague https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg
 * Curse https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg
-* Fear
-* Lightning Wall https://i.pinimg.com/originals/dc/94/76/dc947693d5138a38b6bd47762f55bb01.jpg
+* Fear https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg
+* Corruption https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg
+* Coven https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg
+* Impurity http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg
+* Bone Wall https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg
 * Night of the Living Dead https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg
 ### Heroes
 * Headless Horseman http://www.joblo.com/images_arrownews/main-headless-horseman_MED.jpg
