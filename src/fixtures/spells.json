@@ -80,13 +80,103 @@
     "image": "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
     "name": "lbl_spell_bone_wall"
   },
-  "night_of_the_living_dead": {
+  "resurrection": {
     "faction": {
       "image": "http://",
       "name": "lbl_faction_darkness",
       "color": "purple"
     },
     "image": "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
-    "name": "lbl_spell_night_of_the_living_dead"
+    "name": "lbl_spell_resurrection"
+  },
+  "fire_circle": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
+    "name": "lbl_spell_fire_circle"
+  },
+  "berserker": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
+    "name": "lbl_spell_berserker"
+  },
+  "volcano": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
+    "name": "lbl_spell_volcano"
+  },
+  "fireball": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://cdna.artstation.com/p/assets/images/images/003/552/956/smaller_square/sandeep-karunakaran-the-summoning.jpg",
+    "name": "lbl_spell_fireball"
+  },
+  "meteor_shower": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
+    "name": "lbl_spell_meteor_shower"
+  },
+  "blood_pact": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
+    "name": "lbl_spell_blood_pact"
+  },
+  "mana_drain": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
+    "name": "lbl_spell_mana_drain"
+  },
+  "inferno": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
+    "name": "lbl_spell_inferno"
+  },
+  "flame_shield": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
+    "name": "lbl_spell_flame_shield"
+  },
+  "war_drums": {
+    "faction": {
+      "image": "http://",
+      "name": "lbl_faction_chaos",
+      "color": "red"
+    },
+    "image": "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
+    "name": "lbl_spell_war_drums"
   }
 }
