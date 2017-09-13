@@ -10,6 +10,7 @@ import gods from '@/views/gods'
 import factions from '@/views/factions'
 import infrastructure from '@/views/infrastructure'
 import research from '@/views/research'
+import census from '@/views/census'
 
 Vue.use(Router)
 
@@ -18,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: spells
+      component: census
     },
     {
       path: '/spells',
@@ -64,6 +65,11 @@ export default new Router({
       path: '/research',
       name: 'research',
       component: research
+    },
+    {
+      path: '/census',
+      name: 'census',
+      component: census
     }
   ]
 })

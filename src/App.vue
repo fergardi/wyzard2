@@ -17,22 +17,26 @@
         mu-sub-header {{ 'lbl_title_resources' | translate }}
         mu-list-item(:title="translate('lbl_resource_turns')", disabled)
           mu-icon(slot="left", value="home")
-          mu-badge(slot="after") {{ 100000 | format }}
+          mu-badge(slot="after") {{ user.turns | format }}
         mu-list-item(:title="translate('lbl_resource_gold')", disabled)
           mu-icon(slot="left", value="home")
-          mu-badge(slot="after") {{ 100000 | format }}
+          mu-badge(slot="after") {{ user.gold | format }}
         mu-list-item(:title="translate('lbl_resource_mana')", disabled)
           mu-icon(slot="left", value="home")
-          mu-badge(slot="after") {{ 100000 | format }}
+          mu-badge(slot="after") {{ user.mana | format }}
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
           mu-icon(slot="left", value="home")
-          mu-badge(slot="after") {{ 100000 | format }}
+          mu-badge(slot="after") {{ user.people | format }}
 
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value="home")
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
+          mu-icon(slot="left", value="home")
+
+        mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+        mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
           mu-icon(slot="left", value="home")
 
         mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
@@ -57,6 +61,7 @@
 
 <script>
   import store from './vuex/store'
+  import firebase from './services/firebase'
 
   export default {
     name: 'app',
@@ -64,6 +69,12 @@
       toggle () {
         store.commit('toggle')
       }
+    },
+    firebase: {
+      user: firebase.ref('users').child(store.state.username)
+    },
+    created () {
+      console.log(this.users)
     },
     computed: {
       menu () {
@@ -203,6 +214,13 @@
         text-transform none
       .mu-raised-button + .mu-raised-button
         margin-left 5px
+    .mu-table
+      .mu-tfoot
+        border-top 1px solid
+        display flex
+        justify-content center
+        align-items center
+        min-height 50px
     .mu-drawer
       height 100%
       overflow hidden

@@ -158,6 +158,7 @@ export default {
     lbl_building_barrack: 'Barracones',
     lbl_building_fortress: 'Fortalezas',
     lbl_building_barrier: 'Barreras',
+    lbl_building_temple: 'Templos',
     // titles
     lbl_title_encyclopedia: 'Enciclopedia',
     lbl_title_magic: 'Magia',
@@ -175,6 +176,8 @@ export default {
     lbl_title_menu: 'Menu',
     lbl_title_help: 'Ayuda',
     lbl_title_resources: 'Recursos',
+    lbl_title_diplomacy: 'Diplomacia',
+    lbl_title_census: 'Censo',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_turns: 'Turnos',
@@ -186,7 +189,11 @@ export default {
     // buttons
     lbl_button_construct: 'Construir',
     lbl_button_demolish: 'Demoler',
-    lbl_button_research: 'Investigar'
+    lbl_button_research: 'Investigar',
+    // table
+    lbl_table_position: 'Posición',
+    lbl_table_name: 'Nombre',
+    lbl_table_karma: 'Karma'
   },
   en: {
   }
