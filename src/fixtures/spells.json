@@ -1,182 +1,362 @@
 {
-  "eclipse": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "berserker" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
-    "name": "lbl_spell_eclipse"
+    "image" : "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
+    "name" : "lbl_spell_berserker"
   },
-  "voodoo": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "blood_pact" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
-    "name": "lbl_spell_voodoo"
+    "image" : "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
+    "name" : "lbl_spell_blood_pact"
   },
-  "plague": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "bone_wall" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
-    "name": "lbl_spell_plague"
+    "image" : "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
+    "name" : "lbl_spell_bone_wall"
   },
-  "curse": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "hypnosis" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
-    "name": "lbl_spell_curse"
+    "image" : "http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg",
+    "name" : "lbl_spell_hypnosis"
   },
-  "fear": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "concentration" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
-    "name": "lbl_spell_fear"
+    "image" : "https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg",
+    "name" : "lbl_spell_concentration"
   },
-  "corruption": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "corruption" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
-    "name": "lbl_spell_corruption"
+    "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
+    "name" : "lbl_spell_corruption"
   },
-  "coven": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "coven" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
-    "name": "lbl_spell_coven"
+    "image" : "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
+    "name" : "lbl_spell_coven"
   },
-  "impurity": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "curse" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
-    "name": "lbl_spell_impurity"
+    "image" : "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
+    "name" : "lbl_spell_curse"
   },
-  "bone_wall": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "create_artifact" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
-    "name": "lbl_spell_bone_wall"
+    "image" : "http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg",
+    "name" : "lbl_spell_create_artifact"
   },
-  "resurrection": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_darkness",
-      "color": "purple"
+  "eclipse" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
-    "name": "lbl_spell_resurrection"
+    "image" : "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
+    "name" : "lbl_spell_eclipse"
   },
-  "fire_circle": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "elemental_gathering" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
-    "name": "lbl_spell_fire_circle"
+    "image" : "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg",
+    "name" : "lbl_spell_elemental_gathering"
   },
-  "berserker": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "fake_gold" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
-    "name": "lbl_spell_berserker"
+    "image" : "https://www.videogamesartwork.com/sites/default/files/images/image/1377175936/dragonscrown_environment_treasure_room.jpg",
+    "name" : "lbl_spell_fake_gold"
   },
-  "volcano": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "fear" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
-    "name": "lbl_spell_volcano"
+    "image" : "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
+    "name" : "lbl_spell_fear"
   },
-  "fireball": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "fire_circle" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg",
-    "name": "lbl_spell_fireball"
+    "image" : "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
+    "name" : "lbl_spell_fire_circle"
   },
-  "meteor_shower": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "fireball" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
-    "name": "lbl_spell_meteor_shower"
+    "image" : "http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg",
+    "name" : "lbl_spell_fireball"
   },
-  "blood_pact": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "flame_shield" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
-    "name": "lbl_spell_blood_pact"
+    "image" : "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
+    "name" : "lbl_spell_flame_shield"
   },
-  "mana_drain": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "haste" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
     },
-    "image": "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
-    "name": "lbl_spell_mana_drain"
+    "image" : "https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg",
+    "name" : "lbl_spell_haste"
   },
-  "inferno": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "necromancy" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
     },
-    "image": "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
-    "name": "lbl_spell_inferno"
+    "image" : "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
+    "name" : "lbl_spell_necromancy"
   },
-  "flame_shield": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "inferno" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
-    "name": "lbl_spell_flame_shield"
+    "image" : "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
+    "name" : "lbl_spell_inferno"
   },
-  "war_drums": {
-    "faction": {
-      "image": "http://",
-      "name": "lbl_faction_chaos",
-      "color": "red"
+  "mana_drain" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
     },
-    "image": "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
-    "name": "lbl_spell_war_drums"
-  }
+    "image" : "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
+    "name" : "lbl_spell_mana_drain"
+  },
+  "mana_shield" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
+    },
+    "image" : "http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg",
+    "name" : "lbl_spell_mana_shield"
+  },
+  "meteor_shower" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
+    },
+    "image" : "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
+    "name" : "lbl_spell_meteor_shower"
+  },
+  "oracle" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
+    },
+    "image" : "https://i.pinimg.com/736x/8c/2a/5d/8c2a5dea3ab7613ae09bf15f09d791f8--mtg-art-dark-fantasy.jpg",
+    "name" : "lbl_spell_oracle"
+  },
+  "plague" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
+    "name" : "lbl_spell_plague"
+  },
+  "resurrection" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
+    "name" : "lbl_spell_resurrection"
+  },
+  "tsunami" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
+    },
+    "image" : "https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg",
+    "name" : "lbl_spell_tsunami"
+  },
+  "volcano" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
+    },
+    "image" : "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
+    "name" : "lbl_spell_volcano"
+  },
+  "voodoo" : {
+    "faction" : {
+      "color" : "purple",
+      "image" : "http://",
+      "name" : "lbl_faction_darkness"
+    },
+    "image" : "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
+    "name" : "lbl_spell_voodoo"
+  },
+  "war_drums" : {
+    "faction" : {
+      "color" : "red",
+      "image" : "http://",
+      "name" : "lbl_faction_chaos"
+    },
+    "image" : "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
+    "name" : "lbl_spell_war_drums"
+  },
+  "wisdom" : {
+    "faction" : {
+      "color" : "blue",
+      "image" : "http://",
+      "name" : "mental"
+    },
+    "image" : "http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg",
+    "name" : "lbl_spell_wisdom"
+  },
+  "divine_protection": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_divine_protection",
+    "image": "https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg"
+  },
+  "break_enchantment": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_break_enchantment",
+    "image": "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg"
+  },
+  "destroy_artifact": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_destroy_artifact",
+    "image": "https://i.pinimg.com/736x/49/e4/15/49e4154df14446703f73d25ab79853f4--wayne-reynolds-renaissance-artists.jpg"
+  },
+  "calm": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_calm",
+    "image": "https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg"
+  },
+  "sunrise": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_sunrise",
+    "image": "http://media.wizards.com/images/magic/daily/ur/ur255_plains.jpg"
+  },
+  "epiphany": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_epiphany",
+    "image": "https://i.pinimg.com/736x/b0/fb/d7/b0fbd7034a5006aae99be4e50a455ac8--mtg-art-game-art.jpg"
+  },
+  "prosperity": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_prosperity",
+    "image": "http://68.media.tumblr.com/da023a7a830bca46226e5681554bc107/tumblr_no5avazBQF1tdmwb4o6_1280.jpg"
+  },
+  "peace": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_peace",
+    "image": "https://i.pinimg.com/736x/78/49/39/78493983540b5c1c03f0ca5a73f1bf6b--noah-bradley-illustration-art.jpg"
+  },
+  "celestial_chorus": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_celestial_chorus",
+    "image": "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg"
+  },
+  "healing_hands": {
+    "faction": {
+      "color": "white",
+      "name": "lbl_faction_holy",
+      "image": "http://"
+    },
+    "name": "lbl_spell_healing_hands",
+    "image": "https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/8/8b/Coliseum_Manager_full.jpg/400px-Coliseum_Manager_full.jpg?version=48bb1690ae524e0b3c3adff1bf77b336"
+  }  
 }

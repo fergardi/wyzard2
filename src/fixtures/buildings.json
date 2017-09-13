@@ -61,5 +61,12 @@
     },
     "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
     "name" : "lbl_building_workshop"
+  },
+  "temple" : {
+    "faction" : {
+      "color" : "black"
+    },
+    "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
+    "name" : "lbl_building_temple"
   }
 }

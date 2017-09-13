@@ -1,5 +1,5 @@
 # Factions
-* Holy https://i.pinimg.com/736x/55/f6/e3/55f6e3524c5e98844b15699767684a40--fantasy-places-fantasy-art.jpg
+* Holy https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg
 * Mental http://i.imgur.com/8TSZiui.jpg
 * Nature https://i.pinimg.com/originals/3e/78/ab/3e78ab352d8f9706014e5bc082a3b2f2.jpg
 * Chaos https://artfiles.alphacoders.com/870/87074.jpg
@@ -46,8 +46,16 @@
 * Blue Dragon https://i.pinimg.com/736x/1a/3b/0d/1a3b0d754e88d1a400c6695c2c44a3f4.jpg
 * Leviathan https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg
 ### Spells
-* Shield of Water http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg
+* Mana Shield http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg
 * Tsunami https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg
+* Elemental Gathering https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg
+* Hypnosis http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg
+* Fake Gold https://www.videogamesartwork.com/sites/default/files/images/image/1377175936/dragonscrown_environment_treasure_room.jpg
+* Wisdom http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg
+* Haste https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg
+* Create Artifact http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg
+* Concentration https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg
+* Oracle https://i.pinimg.com/736x/8c/2a/5d/8c2a5dea3ab7613ae09bf15f09d791f8--mtg-art-dark-fantasy.jpg
 ### Heroes
 * Elementalist https://i.pinimg.com/originals/36/d3/cc/36d3cc6491287d8b8733562d231f1215.jpg
 * Alchemist https://i.pinimg.com/736x/4c/70/54/4c7054a5b2013c01f03f319a970a216a--fantasy-pictures-character-concept.jpg
@@ -71,7 +79,10 @@
 * Tornado https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg
 * Rust Armor
 * Climate Control
-* Forest Council
+* Forest Wrath
+* Beast Council
+* Regenerate https://i.pinimg.com/originals/8f/19/24/8f1924d3218f6a25e5e43d9327eb1531.jpg
+* 
 ### Heroes
 * Druid https://i.pinimg.com/736x/b5/44/1b/b5441b341974855b1f357d05c6e9f333--character-portraits-fantasy-characters.jpg
 * Leprechaunt http://2.bp.blogspot.com/-Pli34qcIfSc/Trgld8YFDfI/AAAAAAAAKzw/--Osr2E9TkU/s640/gnomo+mushroom_hunter_by_lordeeas-d39dgzq.jpg
@@ -88,10 +99,18 @@
 * Angel https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg
 * Archangel https://i.pinimg.com/600x315/2c/a3/94/2ca394e2b38cfc44681297e639ee5852.jpg
 * White Dragon https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg
-* Dominion https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg
+* Dominion http://i.imgur.com/X3ACazo.jpg
 ### Spells
-* Exorzice
-* Divine Light
+* Divine Protection https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg
+* Break Enchantment https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg
+* Destroy Artifact https://i.pinimg.com/736x/49/e4/15/49e4154df14446703f73d25ab79853f4--wayne-reynolds-renaissance-artists.jpg
+* Calm https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg
+* Sunrise http://media.wizards.com/images/magic/daily/ur/ur255_plains.jpg
+* Epiphany https://i.pinimg.com/736x/b0/fb/d7/b0fbd7034a5006aae99be4e50a455ac8--mtg-art-game-art.jpg
+* Prosperity http://68.media.tumblr.com/da023a7a830bca46226e5681554bc107/tumblr_no5avazBQF1tdmwb4o6_1280.jpg
+* Peace https://i.pinimg.com/736x/78/49/39/78493983540b5c1c03f0ca5a73f1bf6b--noah-bradley-illustration-art.jpg
+* Celestial Chorus https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg
+* Healing Hands https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/8/8b/Coliseum_Manager_full.jpg/400px-Coliseum_Manager_full.jpg?version=48bb1690ae524e0b3c3adff1bf77b336
 ### Heroes
 * Merchant http://3.bp.blogspot.com/-ULmmq0HlJCc/UA7jiJ0VG3I/AAAAAAAAAhk/kDUwRbQ4Sn8/s1600/Merchant_02.jpg
 * Commander https://i.ytimg.com/vi/4vBFdbsnNXc/maxresdefault.jpg
@@ -117,9 +136,9 @@
 * Fear https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg
 * Corruption https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg
 * Coven https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg
-* Impurity http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg
+* Necromancy http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg
 * Bone Wall https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg
-* Night of the Living Dead https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg
+* Resurrection https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg
 ### Heroes
 * Headless Horseman http://www.joblo.com/images_arrownews/main-headless-horseman_MED.jpg
 * Necromancer https://i.pinimg.com/736x/eb/b9/61/ebb96114e80b514a023b355703c23801--dark-fantasy-fantasy-art.jpg
@@ -132,9 +151,10 @@
 * Village https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg
 * Workshop https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg
 * Guild https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg
-* Barracks http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg
+* Barrack http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg
 * Fortress http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg
 * Barrier http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg
+* Temple https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg
 
 # Gods
 * God of Death https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg
