@@ -24,12 +24,21 @@
         mu-chip
           i.ra.ra-sword
           span {{ data.category | translate }}
-    template(v-if="quantity !== undefined")
+
+    template(v-if="quantity !== undefined && quantity >= 0")
       mu-card-text
         form
           mu-text-field(type="number", v-model="quantity", min="0", required, :label="translate('lbl_label_turns')")
       mu-card-actions.right
         mu-raised-button(primary, @click="research") {{ 'lbl_button_research' | translate }}
+
+    template(v-if="castable !== undefined && castable === true")
+      mu-card-text
+        form
+          mu-select-field(v-model="selected", :label="translate('lbl_label_mage')")
+            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_select')")
+      mu-card-actions.right
+        mu-raised-button(primary, @click="cast") {{ 'lbl_button_cast' | translate }}
 </template>
 
 <script>
@@ -38,11 +47,15 @@
 
   export default {
     name: 'spell',
-    props: ['name', 'quantity', 'delay'],
+    props: ['name', 'quantity', 'delay', 'castable'],
     data () {
       return {
-        show: false
+        show: false,
+        selected: null
       }
+    },
+    firebase: {
+      users: firebase.ref('users')
     },
     created () {
       this.$bindAsObject('data', firebase.ref('spells').child(this.name))
@@ -50,6 +63,9 @@
     },
     methods: {
       research () {
+        // TODO
+      },
+      cast () {
         // TODO
       }
     }

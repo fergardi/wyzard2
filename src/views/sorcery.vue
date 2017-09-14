@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-      spell(:name="spell['.key']", :quantity="spell['.value']", :delay="index + 1")
+      spell(:name="spell['.key']", :delay="index + 1", :castable="true")
 </template>
 
 <script>
@@ -10,13 +10,15 @@
   import spell from '../components/spell'
   
   export default {
-    name: 'research',
+    name: 'sorcery',
     components: {
       'spell': spell
     },
     created () {
-      store.commit('title', 'lbl_title_research')
-      this.$bindAsArray('spells', firebase.ref('users').child(store.state.username).child('researches'))
+      store.commit('title', 'lbl_title_sorcery')
+    },
+    firebase: {
+      spells: firebase.ref('users').child(store.state.username).child('spells')
     }
   }
 </script>

@@ -52,7 +52,7 @@ export default {
     lbl_unit_chimera: 'Quimeras',
     lbl_unit_diablo: 'Diablos',
     lbl_unit_efreet: 'Ifrits',
-    lbl_unit_flame_elemental: 'Elementales de Llamas',
+    lbl_unit_flame_elemental: 'Elementales de Llama',
     lbl_unit_goblin: 'Goblins',
     lbl_unit_minotaur: 'Minotauros',
     lbl_unit_orc: 'Orcos',
@@ -160,7 +160,7 @@ export default {
     lbl_building_barrier: 'Barreras',
     lbl_building_temple: 'Templos',
     // titles
-    lbl_title_encyclopedia: 'Enciclopedia',
+    lbl_title_knowledge: 'Conocimiento',
     lbl_title_magic: 'Magia',
     lbl_title_interior: 'Interior',
     lbl_title_empire: 'Imperio',
@@ -178,9 +178,12 @@ export default {
     lbl_title_resources: 'Recursos',
     lbl_title_diplomacy: 'Diplomacia',
     lbl_title_census: 'Censo',
+    lbl_title_sorcery: 'Hechicería',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_turns: 'Turnos',
+    lbl_label_mage: 'Mago',
+    lbl_label_select: 'Seleccionar',
     // resources
     lbl_resource_gold: 'Oro',
     lbl_resource_people: 'Personas',
@@ -190,6 +193,7 @@ export default {
     lbl_button_construct: 'Construir',
     lbl_button_demolish: 'Demoler',
     lbl_button_research: 'Investigar',
+    lbl_button_cast: 'Conjurar',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',

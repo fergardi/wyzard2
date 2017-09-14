@@ -13,50 +13,54 @@
           mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
           mu-icon-button.settings(icon="settings", slot="right", to="settings", @click="toggle")
 
-      mu-list
+      mu-list.scroll
         mu-sub-header {{ 'lbl_title_resources' | translate }}
         mu-list-item(:title="translate('lbl_resource_turns')", disabled)
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-hourglass")
           mu-badge(slot="after") {{ user.turns | format }}
         mu-list-item(:title="translate('lbl_resource_gold')", disabled)
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-gold-bar")
           mu-badge(slot="after") {{ user.gold | format }}
         mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-droplet")
           mu-badge(slot="after") {{ user.mana | format }}
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-double-team")
           mu-badge(slot="after") {{ user.people | format }}
 
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-castle-flag")
+
+        mu-sub-header {{ 'lbl_title_magic' | translate }}
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-crystal-ball")
+        mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-fire-ring")
 
         mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
         mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-trophy")
 
-        mu-sub-header {{ 'lbl_title_encyclopedia' | translate }}
+        mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-aries")
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-capitol")
         mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-crystal-wand")
         mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-crossed-axes")
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-potion")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-helmet")
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
-          mu-icon(slot="left", value="home")
+          mu-icon(slot="left", value=":ra ra-bleeding-eye")
 
     // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
-    router-view.router
+    router-view.router.scroll
 </template>
 
 <script>
@@ -71,10 +75,10 @@
       }
     },
     firebase: {
-      user: firebase.ref('users').child(store.state.username)
-    },
-    created () {
-      console.log(this.users)
+      user: {
+        source: firebase.ref('users').child(store.state.username),
+        asObject: true
+      }
     },
     computed: {
       menu () {
@@ -111,6 +115,12 @@
       overflow hidden
     .topbar
       position fixed
+    .scroll::-webkit-scrollbar
+      width 3px
+    .scroll::-webkit-scrollbar-track
+      background transparent
+    .scroll::-webkit-scrollbar-thumb
+      background $gold
     .router
       margin-top 56px
       height calc(100% - 56px)
@@ -182,6 +192,7 @@
           font-style italic
           font-size 0.9em
         .mu-text-field
+        .mu-select-field
           width 50%
         .stats
           display flex

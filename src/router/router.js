@@ -11,6 +11,7 @@ import factions from '@/views/factions'
 import infrastructure from '@/views/infrastructure'
 import research from '@/views/research'
 import census from '@/views/census'
+import sorcery from '@/views/sorcery'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/census',
       name: 'census',
       component: census
+    },
+    {
+      path: '/sorcery',
+      name: 'sorcery',
+      component: sorcery
     }
   ]
 })
