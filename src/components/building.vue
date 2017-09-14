@@ -8,7 +8,7 @@
     template(v-if="quantity !== undefined")
       mu-card-text
         form
-          mu-text-field(type="number", v-model="quantity", min="0", required, :label="translate('lbl_label_quantity')")
+          mu-text-field(type="number", v-model="quantity", min="0", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
       mu-card-actions
         mu-raised-button(primary, @click="demolish") {{ 'lbl_button_demolish' | translate }}
         mu-raised-button(primary, @click="construct") {{ 'lbl_button_construct' | translate }}

@@ -32,6 +32,10 @@
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
+        mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-beer")
+        mu-list-item(:title="translate('lbl_title_religion')", to="religion", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-ankh")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
@@ -191,9 +195,11 @@
         p
           font-style italic
           font-size 0.9em
+        /*
         .mu-text-field
         .mu-select-field
           width 50%
+        */
         .stats
           display flex
           justify-content center
@@ -216,15 +222,17 @@
       .mu-card-actions
         // border-top 1px solid
         display flex
-        justify-content space-between
-      .mu-raised-button
-        color inherit
-        border 1px solid
-        font-weight bold
-        width 49%
-        text-transform none
-      .mu-raised-button + .mu-raised-button
-        margin-left 5px
+        align-items center
+        justify-content center
+        .mu-raised-button
+          flex 1 1 0
+          color inherit
+          border 1px solid
+          font-weight bold
+          width 100%
+          text-transform none
+        .mu-raised-button + .mu-raised-button
+          margin-left 5px
     .mu-table
       .mu-tfoot
         border-top 1px solid

@@ -179,9 +179,10 @@ export default {
     lbl_title_diplomacy: 'Diplomacia',
     lbl_title_census: 'Censo',
     lbl_title_sorcery: 'Hechicería',
+    lbl_title_tavern: 'Taberna',
+    lbl_title_religion: 'Religión',
     // label
     lbl_label_quantity: 'Cantidad',
-    lbl_label_turns: 'Turnos',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
     // resources
@@ -194,6 +195,8 @@ export default {
     lbl_button_demolish: 'Demoler',
     lbl_button_research: 'Investigar',
     lbl_button_cast: 'Conjurar',
+    lbl_button_bid: 'Pujar',
+    lbl_button_offer: 'Ofrecer',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',

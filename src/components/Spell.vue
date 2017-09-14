@@ -25,19 +25,19 @@
           i.ra.ra-sword
           span {{ data.category | translate }}
 
-    template(v-if="quantity !== undefined && quantity >= 0")
+    template(v-if="turns !== undefined && turns >= 0")
       mu-card-text
         form
-          mu-text-field(type="number", v-model="quantity", min="0", required, :label="translate('lbl_label_turns')")
-      mu-card-actions.right
+          mu-text-field(type="number", v-model="turns", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+      mu-card-actions
         mu-raised-button(primary, @click="research") {{ 'lbl_button_research' | translate }}
 
     template(v-if="castable !== undefined && castable === true")
       mu-card-text
         form
-          mu-select-field(v-model="selected", :label="translate('lbl_label_mage')")
+          mu-select-field(v-model="selected", :label="translate('lbl_label_mage')", :fullWidth="true")
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_select')")
-      mu-card-actions.right
+      mu-card-actions
         mu-raised-button(primary, @click="cast") {{ 'lbl_button_cast' | translate }}
 </template>
 
@@ -47,7 +47,7 @@
 
   export default {
     name: 'spell',
-    props: ['name', 'quantity', 'delay', 'castable'],
+    props: ['name', 'turns', 'delay', 'castable'],
     data () {
       return {
         show: false,
@@ -73,6 +73,4 @@
 </script>
 
 <style lang="stylus" scoped>
-  .right
-    justify-content flex-end !important
 </style>
