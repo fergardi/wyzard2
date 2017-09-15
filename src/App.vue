@@ -4,14 +4,14 @@
 
     mu-paper
       mu-appbar.topbar(:title="translate(title)")
-        mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
-        mu-icon-button.help(icon="help", slot="right", to="help")
+        mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
+        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help")
 
-    mu-drawer.sidebar(:open="menu", :docked="false", @close="toggle")
+    mu-drawer.sidebar(:open="menu", :docked="false", :right="right" , :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.toggler(icon="menu", slot="left", @click="toggle")
-          mu-icon-button.settings(icon="settings", slot="right", to="settings", @click="toggle")
+          mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
+          mu-icon-button.settings(icon="settings", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle")
 
       mu-list.scroll
         mu-sub-header {{ 'lbl_title_resources' | translate }}
@@ -73,7 +73,7 @@
           mu-icon(slot="left", value=":ra ra-bleeding-eye")
 
     // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
-    router-view.router.scroll
+    router-view.router.scroll(:class="right ? 'right' : 'left'")
 </template>
 
 <script>
@@ -87,6 +87,11 @@
         store.commit('toggle')
       }
     },
+    created () {
+      this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
+        store.commit('settings', snapshot.val())
+      })
+    },
     firebase: {
       user: {
         source: firebase.ref('users').child(store.state.username),
@@ -99,6 +104,9 @@
       },
       title () {
         return store.state.title
+      },
+      right () {
+        return store.state.settings.navbar
       }
     }
   }
@@ -250,7 +258,10 @@
     .mu-drawer
       height 100%
       overflow hidden
-      border-right 1px solid
+      &.right
+        border-left 1px solid
+      &.left
+        border-right 1px solid
       .mu-list
         overflow-y auto
         height calc(100% - 56px)
@@ -275,8 +286,10 @@
           .toggler
           .settings
             display none
-        .router
+        .router.left
           padding-left 256px
+        .router.right
+          padding-right 256px
       .mu-overlay
         display none !important
 </style>

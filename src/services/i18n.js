@@ -205,7 +205,11 @@ export default {
     lbl_table_name: 'Nombre',
     lbl_table_karma: 'Karma',
     // settings
-    lbl_settings_navbar: 'Invertir menú lateral'
+    lbl_settings_navbar: 'Invertir menú lateral',
+    lbl_settings_language: 'Idioma',
+    // languages
+    lbl_language_spanish: 'Español',
+    lbl_language_english: 'Inglés'
   },
   en: {
   }

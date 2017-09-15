@@ -8,7 +8,11 @@ const vuex = new Vuex.Store({
     lang: 'es',
     title: 'lbl_wyzard',
     menu: false,
-    username: 'fergardi'
+    username: 'fergardi',
+    settings: {
+      lang: 'es',
+      navbar: false
+    }
   },
   mutations: {
     toggle (state) {
@@ -19,6 +23,9 @@ const vuex = new Vuex.Store({
     },
     username (state, username) {
       state.username = username
+    },
+    settings (state, settings) {
+      this.settings = settings
     }
   }
 })

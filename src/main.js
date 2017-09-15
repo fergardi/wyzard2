@@ -35,13 +35,13 @@ Vue.filter('lorem', () => {
   return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
 })
 Vue.filter('translate', (label) => {
-  return i18n[store.state.lang][label] || label
+  return i18n[store.state.settings.lang || store.state.lang][label] || label
 })
 // mixins
 Vue.mixin({
   methods: {
     translate (label) {
-      return i18n[store.state.lang][label] || label
+      return i18n[store.state.settings.lang || store.state.lang][label] || label
     }
   }
 })
