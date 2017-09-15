@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.hero.animated.fadeInUp(v-if="show")
+  mu-card.hero.animated.fadeInUp
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
@@ -16,19 +16,12 @@
 
 <script>
   import firebase from '../services/firebase'
-  import store from '../vuex/store'
 
   export default {
     name: 'hero',
-    props: ['name', 'delay', 'gold', 'level'],
-    data () {
-      return {
-        show: false
-      }
-    },
+    props: ['name', 'gold', 'level'],
     created () {
       this.$bindAsObject('data', firebase.ref('heroes').child(this.name))
-      setTimeout(() => { this.show = true }, (this.delay || 1) * store.state.delay)
     },
     methods: {
       bid () {

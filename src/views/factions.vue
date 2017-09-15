@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="faction, index in factions", :key="index")
-      faction(:name="faction['.key']", :delay="index + 1")
+      faction(:name="faction['.key']")
 </template>
 
 <script>

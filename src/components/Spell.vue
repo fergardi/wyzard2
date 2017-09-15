@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.spell.animated.fadeInUp(v-if="show")
+  mu-card.spell.animated.fadeInUp
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
@@ -45,14 +45,12 @@
 
 <script>
   import firebase from '../services/firebase'
-  import store from '../vuex/store'
 
   export default {
     name: 'spell',
-    props: ['name', 'turns', 'delay', 'castable'],
+    props: ['name', 'turns', 'castable'],
     data () {
       return {
-        show: false,
         selected: null
       }
     },
@@ -61,7 +59,6 @@
     },
     created () {
       this.$bindAsObject('data', firebase.ref('spells').child(this.name))
-      setTimeout(() => { this.show = true }, (this.delay || 1) * store.state.delay)
     },
     methods: {
       research () {
