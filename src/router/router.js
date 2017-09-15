@@ -14,6 +14,7 @@ import census from '@/views/census'
 import sorcery from '@/views/sorcery'
 import tavern from '@/views/tavern'
 import religion from '@/views/religion'
+import kingdom from '@/views/kingdom'
 
 Vue.use(Router)
 
@@ -88,6 +89,11 @@ export default new Router({
       path: '/religion',
       name: 'religion',
       component: religion
+    },
+    {
+      path: '/kingdom',
+      name: 'kingdom',
+      component: kingdom
     }
   ]
 })

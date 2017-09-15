@@ -27,9 +27,14 @@
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
           mu-icon(slot="left", value=":ra ra-double-team")
           mu-badge(slot="after") {{ user.people | format }}
+        mu-list-item(:title="translate('lbl_resource_territory')", disabled)
+          mu-icon(slot="left", value=":ra ra-tower")
+          mu-badge(slot="after") {{ user.territory | format }}
 
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
+        mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-scroll-unfurled")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
         mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
@@ -97,6 +102,7 @@
 
 <style lang="stylus">
   $opacity = 0.95
+  $radius = 5px
   @import './css/colors.styl'
   html
   body
@@ -139,7 +145,6 @@
       justify-content flex-start
     .mu-card
       opacity $opacity
-      $radius = 5px
       margin 5px
       border-radius $radius
       border 1px solid $gold
@@ -234,6 +239,7 @@
         .mu-raised-button + .mu-raised-button
           margin-left 5px
     .mu-table
+      border-radius $radius
       .mu-tfoot
         border-top 1px solid
         display flex

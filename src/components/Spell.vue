@@ -27,6 +27,8 @@
 
     template(v-if="turns !== undefined && turns >= 0")
       mu-card-text
+        mu-linear-progress(mode="determinate", :value="data.turns * 100 / 300")
+      mu-card-text
         form
           mu-text-field(type="number", v-model="turns", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
       mu-card-actions

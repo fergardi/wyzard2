@@ -181,6 +181,7 @@ export default {
     lbl_title_sorcery: 'Hechicería',
     lbl_title_tavern: 'Taberna',
     lbl_title_religion: 'Religión',
+    lbl_title_kingdom: 'Reino',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
@@ -190,6 +191,7 @@ export default {
     lbl_resource_people: 'Personas',
     lbl_resource_turns: 'Turnos',
     lbl_resource_mana: 'Maná',
+    lbl_resource_territory: 'Territorio',
     // buttons
     lbl_button_construct: 'Construir',
     lbl_button_demolish: 'Demoler',
