@@ -182,6 +182,7 @@ export default {
     lbl_title_tavern: 'Taberna',
     lbl_title_religion: 'Religión',
     lbl_title_kingdom: 'Reino',
+    lbl_title_settings: 'Preferencias',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
@@ -202,7 +203,9 @@ export default {
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
-    lbl_table_karma: 'Karma'
+    lbl_table_karma: 'Karma',
+    // settings
+    lbl_settings_navbar: 'Invertir menú lateral'
   },
   en: {
   }

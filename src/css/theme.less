@@ -18,8 +18,8 @@
 @darkerPrimaryColor: darken(@primaryColor, 50%); // darker primary color
 @lighterPrimaryColor: lighten(@primaryColor, 50%); // lighter primary color
 @accentColor: @red500; // accent color
-@darkerAccentColor: @red500; // darker accent color
-@lighterAccentColor: @red500; // lighter accent color
+@darkerAccentColor: darken(@accentColor, 50%); // darker accent color
+@lighterAccentColor: lighten(@accentColor, 50%); // lighter accent color
 
 // text color
 @textColor: @gold;
@@ -35,23 +35,20 @@
 @dialogBackgroundColor: @darken; // dialogs、 cards、 paper background
 
 // icon color
-@activeIconColor: fade(@fullWhite, 50%);
-@inActiveIconColor: fade(@fullWhite, 50%);
+@activeIconColor: fade(@textColor, 50%);
+@inActiveIconColor: fade(@textColor, 50%);
 
 @import "~muse-ui/less/theme-vars.less"; // default component variable
 
-// change the component variable
-@avatarBackgroundColor: @gold;
-@datePickerHeaderColor: fade(@fullWhite, 12%);
-@timePickerHeaderColor: fade(@fullWhite, 12%);
-@timePickerClockCircleColor: fade(@fullWhite, 12%);
-@chipColor: lighten(@alternateTextColor, 12%);
-@floatButtonDisabledColor: lighten(@alternateTextColor, 12%);
-
-@tableRowHoverBackgroundColor: fade(@textColor, 10%);
-@tableRowSelectedBackgroundColor: fade(@textColor, 5%);
-
+// list icons
 @listLeftIconColor: @gold;
+@listRightIconColor: @gold;
+
+// checkboxes
+@checkboxColor: @textColor;
+@checkboxTextColor: @textColor;
+@checkboxDisabledColor: @disabledColor;
+@checkboxCheckedColor: @textColor;
 
 // tables
 @tableBackgroundColor: @dark;
@@ -61,5 +58,17 @@
 @tableRowHoverBackgroundColor: @darken;
 @tableRowStripeBackgroundColor: fade(lighten(@primaryColor, 50%), 40%);
 @tableTheadTextColor: @textColor;
+
+// inputs
+@textFieldTextColor: @textColor;
+@textFieldInputColor: @textColor;
+@textFieldHintColor: @disabledColor;
+@textFieldFocusTextColor: @textColor;
+@textFieldDisabledTextColor: @disabledColor;
+@textFieldErrorTextColor: @red;
+@textFieldLineColor: @borderColor;
+@textFieldFocusLineColor: @borderColor;
+@textFieldErrorLineColor: @accentColor;
+@textFieldDisabledLineColor: @disabledColor;
 
 @import "~muse-ui/less/theme.less"; // style related to theme

@@ -15,6 +15,7 @@ import sorcery from '@/views/sorcery'
 import tavern from '@/views/tavern'
 import religion from '@/views/religion'
 import kingdom from '@/views/kingdom'
+import settings from '@/views/settings'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ export default new Router({
       path: '/kingdom',
       name: 'kingdom',
       component: kingdom
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: settings
     }
   ]
 })

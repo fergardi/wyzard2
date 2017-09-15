@@ -34,7 +34,7 @@
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-scroll-unfurled")
+          mu-icon(slot="left", value=":ra ra-crown")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
         mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
@@ -46,11 +46,15 @@
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-ball")
         mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-fire-ring")
+          mu-icon(slot="left", value=":ra ra-crystal-wand")
 
         mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
         mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
           mu-icon(slot="left", value=":ra ra-trophy")
+
+        mu-sub-header {{ 'lbl_title_account' | translate }}
+        mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
+          mu-icon(slot="left", value="settings")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
@@ -58,7 +62,7 @@
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")
           mu-icon(slot="left", value=":ra ra-capitol")
         mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-crystal-wand")
+          mu-icon(slot="left", value=":ra ra-fire-ring")
         mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crossed-axes")
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
@@ -147,7 +151,7 @@
       opacity $opacity
       margin 5px
       border-radius $radius
-      border 1px solid $gold
+      border 1px solid
       .mu-card-media
         display flex
         justify-content center
@@ -155,7 +159,7 @@
         img
           border-top-left-radius $radius
           border-top-right-radius $radius
-          border-bottom 1px solid $gold
+          border-bottom 1px solid
           position relative
           float left
           width 250px
@@ -174,8 +178,7 @@
           min-width 50%
           max-width 90%
           text-align center
-          border 1px solid $gold
-          color $gold
+          border 1px solid
           background-color $dark
           &.red
             background-color $red
@@ -195,7 +198,6 @@
         padding-top 0
       .mu-card-text
         // border-top 1px solid
-        color $gold
         text-align center
         p
           font-style italic
@@ -213,8 +215,7 @@
           .mu-chip
             cursor initial
             width 40%
-            color $gold
-            border 1px solid $gold
+            border 1px solid
             background-color $dark
             line-height 22px
             margin 2px
