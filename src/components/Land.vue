@@ -38,8 +38,12 @@
 
 <style lang="stylus">
   #map
-    height calc(100vh - 71px)
+    opacity 0.95
+    height calc(100vh - 69px)
     width 100%
     .mapboxgl-ctrl
       display none
+    canvas
+      width 100% !important
+      height 100% !important
 </style>
