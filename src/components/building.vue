@@ -5,6 +5,7 @@
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
+
     template(v-if="quantity !== undefined")
       mu-card-text
         form

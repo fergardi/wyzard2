@@ -39,20 +39,24 @@
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
           mu-icon(slot="left", value=":ra ra-queen-crown")
+        mu-list-item(:title="translate('lbl_title_explore')", to="explore", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-compass")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
-        mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-beer")
-        mu-list-item(:title="translate('lbl_title_religion')", to="religion", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-ankh")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
+        mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-burst-blob")
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-ball")
         mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-wand")
 
         mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+        mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-beer")
+        mu-list-item(:title="translate('lbl_title_religion')", to="religion", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-ankh")
         mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
           mu-icon(slot="left", value=":ra ra-raven")
         mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
@@ -335,5 +339,5 @@
         .router.right
           padding-right 256px
       .mu-overlay
-        // display none !important
+        display none !important
 </style>

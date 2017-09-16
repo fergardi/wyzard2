@@ -186,6 +186,8 @@ export default {
     lbl_title_messages: 'Mensajes',
     lbl_title_account: 'Cuenta',
     lbl_title_enchantments: 'Encantamientos',
+    lbl_title_explore: 'Explorar',
+    lbl_title_meditate: 'Meditar',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',

@@ -17,6 +17,8 @@ import religion from '@/views/religion'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
 import messages from '@/views/messages'
+import explore from '@/views/explore'
+import meditate from '@/views/meditate'
 
 Vue.use(Router)
 
@@ -106,6 +108,16 @@ export default new Router({
       path: '/messages',
       name: 'messages',
       component: messages
+    },
+    {
+      path: '/meditate',
+      name: 'meditate',
+      component: meditate
+    },
+    {
+      path: '/explore',
+      name: 'explore',
+      component: explore
     }
   ]
 })
