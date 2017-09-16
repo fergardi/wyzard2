@@ -184,6 +184,8 @@ export default {
     lbl_title_kingdom: 'Reino',
     lbl_title_settings: 'Preferencias',
     lbl_title_messages: 'Mensajes',
+    lbl_title_account: 'Cuenta',
+    lbl_title_enchantments: 'Encantamientos',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',

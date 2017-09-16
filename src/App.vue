@@ -17,20 +17,24 @@
         mu-sub-header {{ 'lbl_title_resources' | translate }}
         mu-list-item(:title="translate('lbl_resource_turns')", disabled)
           mu-icon(slot="left", value=":ra ra-hourglass")
-          mu-badge(slot="after") {{ user.turns | number }}
+          mu-badge(slot="after") {{ user.turns | numeric }}
         mu-list-item(:title="translate('lbl_resource_gold')", disabled)
           mu-icon(slot="left", value=":ra ra-gold-bar")
-          mu-badge(slot="after") {{ user.gold | number }}
+          mu-badge(slot="after") {{ user.gold | numeric }}
         mu-list-item(:title="translate('lbl_resource_mana')", disabled)
           mu-icon(slot="left", value=":ra ra-droplet")
-          mu-badge(slot="after") {{ user.mana | number }}
+          mu-badge(slot="after") {{ user.mana | numeric }}
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
           mu-icon(slot="left", value=":ra ra-double-team")
-          mu-badge(slot="after") {{ user.people | number }}
+          mu-badge(slot="after") {{ user.people | numeric }}
         mu-list-item(:title="translate('lbl_resource_territory')", disabled)
           mu-icon(slot="left", value=":ra ra-tower")
-          mu-badge(slot="after") {{ user.territory | number }}
+          mu-badge(slot="after") {{ user.territory | numeric }}
 
+        mu-sub-header {{ 'lbl_title_enchantments' | translate }}
+        mu-list-item(v-for="enchantment, index in user.enchantments", :title="translate(enchantment['.key'])", :key="index", disabled)
+          mu-icon(slot="left", value=":ra ra-bleeding-eye")
+          mu-badge(slot="after") {{ enchantment['.value'] | numeric }}
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
@@ -60,7 +64,7 @@
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-aries")
+          mu-icon(slot="left", value=":ra ra-doubled")
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")
           mu-icon(slot="left", value=":ra ra-capitol")
         mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
@@ -72,7 +76,7 @@
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
           mu-icon(slot="left", value=":ra ra-helmet")
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-bleeding-eye")
+          mu-icon(slot="left", value=":ra ra-lightning-storm")
 
     // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
     router-view.router.scroll(:class="right ? 'right' : 'left'")
@@ -93,6 +97,7 @@
       this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
         store.commit('settings', snapshot.val())
       })
+      console.log(this.user)
     },
     firebase: {
       user: {
