@@ -17,19 +17,19 @@
         mu-sub-header {{ 'lbl_title_resources' | translate }}
         mu-list-item(:title="translate('lbl_resource_turns')", disabled)
           mu-icon(slot="left", value=":ra ra-hourglass")
-          mu-badge(slot="after") {{ user.turns | format }}
+          mu-badge(slot="after") {{ user.turns | number }}
         mu-list-item(:title="translate('lbl_resource_gold')", disabled)
           mu-icon(slot="left", value=":ra ra-gold-bar")
-          mu-badge(slot="after") {{ user.gold | format }}
+          mu-badge(slot="after") {{ user.gold | number }}
         mu-list-item(:title="translate('lbl_resource_mana')", disabled)
           mu-icon(slot="left", value=":ra ra-droplet")
-          mu-badge(slot="after") {{ user.mana | format }}
+          mu-badge(slot="after") {{ user.mana | number }}
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
           mu-icon(slot="left", value=":ra ra-double-team")
-          mu-badge(slot="after") {{ user.people | format }}
+          mu-badge(slot="after") {{ user.people | number }}
         mu-list-item(:title="translate('lbl_resource_territory')", disabled)
           mu-icon(slot="left", value=":ra ra-tower")
-          mu-badge(slot="after") {{ user.territory | format }}
+          mu-badge(slot="after") {{ user.territory | number }}
 
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
@@ -49,6 +49,8 @@
           mu-icon(slot="left", value=":ra ra-crystal-wand")
 
         mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+        mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-raven")
         mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
           mu-icon(slot="left", value=":ra ra-trophy")
 
@@ -135,6 +137,30 @@
     #app
       height 100%
       overflow hidden
+    .mu-chip
+      border 1px solid
+      line-height 22px
+      margin 2px
+      font-size 0.8em
+      &.red
+        background-color $red
+      &.green
+        background-color $green
+      &.purple
+        background-color $purple
+      &.blue
+        background-color $blue
+      &.white
+        background-color $white
+      &.dark
+        background-color $dark
+    .right
+      text-align right !important
+    .mu-dialog
+      background-color transparent
+      box-shadow none
+      .mu-dialog-body
+        padding 0
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -249,12 +275,24 @@
           margin-left 5px
     .mu-table
       border-radius $radius
+      .mu-tr
+        cursor pointer
       .mu-tfoot
+        padding 5px
         border-top 1px solid
         display flex
         justify-content center
         align-items center
         min-height 50px
+        .mu-raised-button
+          flex 1 1 0
+          color inherit
+          border 1px solid
+          font-weight bold
+          width 100%
+          text-transform none
+        .mu-raised-button + .mu-raised-button
+          margin-left 5px
     .mu-drawer
       height 100%
       overflow hidden
@@ -291,5 +329,5 @@
         .router.right
           padding-right 256px
       .mu-overlay
-        display none !important
+        // display none !important
 </style>

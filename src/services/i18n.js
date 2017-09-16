@@ -183,6 +183,7 @@ export default {
     lbl_title_religion: 'Religión',
     lbl_title_kingdom: 'Reino',
     lbl_title_settings: 'Preferencias',
+    lbl_title_messages: 'Mensajes',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
@@ -200,12 +201,20 @@ export default {
     lbl_button_cast: 'Conjurar',
     lbl_button_bid: 'Pujar',
     lbl_button_offer: 'Ofrecer',
+    lbl_button_close: 'Cerrar',
+    lbl_button_remove: 'Remove',
+    lbl_button_create: 'Create',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
     lbl_table_karma: 'Karma',
+    lbl_table_from: 'De',
+    lbl_table_datetime: 'Fecha',
+    lbl_table_actions: 'Acciones',
+    lbl_table_subject: 'Asunto',
     // settings
     lbl_settings_navbar: 'Invertir menú lateral',
+    lbl_settings_menu: 'Menu',
     lbl_settings_language: 'Idioma',
     // languages
     lbl_language_spanish: 'Español',

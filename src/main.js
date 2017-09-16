@@ -5,11 +5,14 @@ import VueFire from 'vuefire'
 import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
+import moment from 'moment'
+
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 // import '../node_modules/muse-ui/dist/theme-light.css'
 // import '../node_modules/muse-ui/dist/theme-dark.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
+
 // UI
 Vue.use(MuseUI)
 // mapbox
@@ -17,7 +20,10 @@ window.mapboxgl = require('mapbox-gl')
 // firebase
 Vue.use(VueFire)
 // filters
-Vue.filter('format', (number) => {
+Vue.filter('datetime', (timestamp) => {
+  return moment(timestamp).fromNow()
+})
+Vue.filter('number', (number) => {
   return !number
     ? 0
     : number / 1000000000 > 1
@@ -42,6 +48,9 @@ Vue.mixin({
   methods: {
     translate (label) {
       return i18n[store.state.settings.lang || store.state.lang][label] || label
+    },
+    datetime (timestamp) {
+      return moment(timestamp).fromNow()
     }
   }
 })

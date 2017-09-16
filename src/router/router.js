@@ -16,6 +16,7 @@ import tavern from '@/views/tavern'
 import religion from '@/views/religion'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
+import messages from '@/views/messages'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ export default new Router({
       path: '/settings',
       name: 'settings',
       component: settings
+    },
+    {
+      path: '/messages',
+      name: 'messages',
+      component: messages
     }
   ]
 })

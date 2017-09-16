@@ -11,7 +11,7 @@
           span {{ 'lbl_stat_level' | translate }} 10
         mu-chip
           i.ra.ra-sword
-          span {{ 3214325 | format }} {{ 'lbl_stat_mana' | translate }}
+          span {{ 3214325 | number }} {{ 'lbl_stat_mana' | translate }}
         mu-chip
           i.ra.ra-sword
           span {{ data.category | translate }}

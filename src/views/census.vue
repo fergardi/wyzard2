@@ -11,7 +11,8 @@
           mu-tbody
             mu-tr(v-for="user, index in users", :key="index")
               mu-td {{ index + 1 }}
-              mu-td {{ user['.key'] }}
+              mu-td
+                mu-chip(:class="user.faction.color") {{ user['.key'] }}
               mu-td 0
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")

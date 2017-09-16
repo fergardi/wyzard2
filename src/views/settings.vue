@@ -4,7 +4,7 @@
       mu-card.settings.animated.fadeInUp
         form
           mu-card-text
-            .mu-text-field-label {{ 'lbl_title_menu' | translate }}
+            .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="update")
           mu-card-text
             mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')",  @change="update", :fullWidth="true")
