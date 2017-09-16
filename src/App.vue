@@ -5,7 +5,7 @@
     mu-paper
       mu-appbar.topbar(:title="translate(title)")
         mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help")
+        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help", style="visibility: hidden")
 
     mu-drawer.sidebar(:open="menu", :docked="false", :right="right" , :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
@@ -32,13 +32,13 @@
           mu-badge(slot="after") {{ user.territory | numeric }}
 
         mu-sub-header {{ 'lbl_title_enchantments' | translate }}
-        mu-list-item(v-for="enchantment, index in user.enchantments", :title="translate(enchantment['.key'])", :key="index", disabled)
+        mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
           mu-icon(slot="left", value=":ra ra-bleeding-eye")
-          mu-badge(slot="after") {{ enchantment['.value'] | numeric }}
+          mu-badge(slot="after") {{ enchantment.turns | numeric }}
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-crown")
+          mu-icon(slot="left", value=":ra ra-queen-crown")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
         mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
@@ -97,12 +97,15 @@
       this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
         store.commit('settings', snapshot.val())
       })
-      console.log(this.user)
     },
     firebase: {
       user: {
         source: firebase.ref('users').child(store.state.username),
         asObject: true
+      },
+      enchantments: {
+        source: firebase.ref('users').child(store.state.username).child('enchantments'),
+        asObject: false
       }
     },
     computed: {
@@ -159,8 +162,6 @@
         background-color $white
       &.dark
         background-color $dark
-    .right
-      text-align right !important
     .mu-dialog
       background-color transparent
       box-shadow none

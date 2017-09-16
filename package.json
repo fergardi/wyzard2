@@ -29,7 +29,8 @@
     "vue-router": "^2.6.0",
     "vue2-animate": "^1.0.4",
     "vuefire": "^1.4.3",
-    "vuex": "^2.3.1"
+    "vuex": "^2.3.1",
+    "vuexfire": "^2.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

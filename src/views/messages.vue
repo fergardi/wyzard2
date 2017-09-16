@@ -88,4 +88,6 @@
 </script>
 
 <style lang="stylus" scoped>
+  .right
+    text-align right !important
 </style>
