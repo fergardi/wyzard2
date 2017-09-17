@@ -49,6 +49,8 @@
           mu-icon(slot="left", value=":ra ra-burst-blob")
         mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-ball")
+        mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-quill-ink")
         mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-wand")
 
@@ -283,6 +285,9 @@
           text-transform none
         .mu-raised-button + .mu-raised-button
           margin-left 5px
+    .flex
+      display flex
+      flex-wrap wrap
     .mu-table
       border-radius $radius
       .mu-tr

@@ -19,6 +19,7 @@ import settings from '@/views/settings'
 import messages from '@/views/messages'
 import explore from '@/views/explore'
 import meditate from '@/views/meditate'
+import auction from '@/views/auction'
 
 Vue.use(Router)
 
@@ -118,6 +119,11 @@ export default new Router({
       path: '/explore',
       name: 'explore',
       component: explore
+    },
+    {
+      path: '/auction',
+      name: 'auction',
+      component: auction
     }
   ]
 })

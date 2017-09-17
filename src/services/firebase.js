@@ -13,3 +13,9 @@ const app = Firebase.initializeApp(config)
 const firebase = app.database()
 
 export default firebase
+
+export const auto = function (collection, item) {
+  return firebase.ref(collection).child(item).on('child_added', snapshot => {
+    return snapshot.val()
+  })
+}

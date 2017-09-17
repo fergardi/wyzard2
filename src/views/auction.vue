@@ -1,25 +1,25 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="hero, index in heroes", :key="index")
-        hero(:data="hero", :contract="true")
+      mu-col(width="100", tablet="50", desktop="33", v-for="auction, index in auctions", :key="index")
+        artifact(v-if="auction.name.indexOf('artifact') !== -1", :data="auction", :auction="true")
 </template>
 
 <script>
   import firebase from '../services/firebase'
   import store from '../vuex/store'
-  import hero from '../components/hero'
+  import artifact from '../components/artifact'
   
   export default {
-    name: 'tavern',
+    name: 'auction',
     components: {
-      'hero': hero
+      'artifact': artifact
     },
     created () {
-      store.commit('title', 'lbl_title_tavern')
+      store.commit('title', 'lbl_title_auction')
     },
     firebase: {
-      heroes: firebase.ref('tavern')
+      auctions: firebase.ref('auctions')
     }
   }
 </script>
