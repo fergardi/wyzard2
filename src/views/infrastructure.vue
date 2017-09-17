@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
-      building(:name="building['.key']", :quantity="building['.value']")
+      building.animated.fadeInUp(:name="building['.key']", :quantity="building['.value']", :construction="true")
 </template>
 
 <script>

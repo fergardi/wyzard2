@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.faction.animated.fadeInUp
+  mu-card.faction
     mu-card-media
       img(:src="data.image")
       #title(:class="data.color") {{ data.name | translate }}

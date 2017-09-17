@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="artifact, index in artifacts", :key="index")
-      artifact(:name="artifact['.key']")
+      artifact.animated.fadeInUp(:name="artifact['.key']")
 </template>
 
 <script>

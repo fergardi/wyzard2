@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.spell.animated.fadeInUp
+  mu-card.spell
     mu-card-media
       img(:src="data.image")
       #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
@@ -25,16 +25,16 @@
           i.ra.ra-sword
           span {{ data.category | translate }}
 
-    template(v-if="turns !== undefined && turns >= 0")
+    template(v-if="investigation && quantity >= 0")
       mu-card-text
-        mu-linear-progress(mode="determinate", :value="data.turns * 100 / 300")
+        mu-linear-progress(mode="determinate", size="6", value="50")
       mu-card-text
         form
-          mu-text-field(type="number", v-model="turns", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model="ammount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
       mu-card-actions
         mu-raised-button(primary, @click="research") {{ 'lbl_button_research' | translate }}
 
-    template(v-if="castable !== undefined && castable === true")
+    template(v-if="casting")
       mu-card-text
         form
           mu-select-field(v-model="selected", :label="translate('lbl_label_mage')", :fullWidth="true")
@@ -48,9 +48,10 @@
 
   export default {
     name: 'spell',
-    props: ['name', 'turns', 'castable'],
+    props: ['name', 'quantity', 'investigation', 'casting'],
     data () {
       return {
+        ammount: 0,
         selected: null
       }
     },

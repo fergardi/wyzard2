@@ -208,6 +208,8 @@ export default {
     lbl_button_close: 'Cerrar',
     lbl_button_remove: 'Remove',
     lbl_button_create: 'Create',
+    lbl_button_explore: 'Explorar',
+    lbl_button_meditate: 'Meditar',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
