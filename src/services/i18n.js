@@ -181,7 +181,7 @@ export default {
     lbl_title_sorcery: 'Hechicería',
     lbl_title_tavern: 'Taberna',
     lbl_title_religion: 'Religión',
-    lbl_title_kingdom: 'Reino',
+    lbl_title_kingdom: 'Reinos',
     lbl_title_settings: 'Preferencias',
     lbl_title_messages: 'Mensajes',
     lbl_title_account: 'Cuenta',
@@ -189,6 +189,8 @@ export default {
     lbl_title_explore: 'Explorar',
     lbl_title_meditate: 'Meditar',
     lbl_title_auction: 'Subasta',
+    lbl_title_levy: 'Recaudar',
+    lbl_title_exterior: 'Exterior',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
@@ -212,6 +214,7 @@ export default {
     lbl_button_explore: 'Explorar',
     lbl_button_meditate: 'Meditar',
     lbl_button_buy: 'Comprar',
+    lbl_button_collect: 'Recaudar',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',

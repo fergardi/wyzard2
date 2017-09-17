@@ -38,11 +38,19 @@
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-wooden-sign")
+        mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
           mu-icon(slot="left", value=":ra ra-queen-crown")
         mu-list-item(:title="translate('lbl_title_explore')", to="explore", @click="toggle")
           mu-icon(slot="left", value=":ra ra-compass")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
+
+        mu-sub-header {{ 'lbl_title_exterior' | translate }}
+        mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-axe")
+        mu-list-item(:title="translate('lbl_title_quest')", to="quest", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-torch")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
         mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")

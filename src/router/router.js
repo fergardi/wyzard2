@@ -20,6 +20,7 @@ import messages from '@/views/messages'
 import explore from '@/views/explore'
 import meditate from '@/views/meditate'
 import auction from '@/views/auction'
+import levy from '@/views/levy'
 
 Vue.use(Router)
 
@@ -124,6 +125,11 @@ export default new Router({
       path: '/auction',
       name: 'auction',
       component: auction
+    },
+    {
+      path: '/levy',
+      name: 'levy',
+      component: levy
     }
   ]
 })
