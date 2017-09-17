@@ -2,7 +2,7 @@
   mu-card.spell
     mu-card-media
       img(:src="data.image")
-      #title(:class="data.faction ? data.faction.color : ''") {{ data.name | translate }}
+      #title(:class="data.color") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
       .stats
@@ -25,9 +25,10 @@
           i.ra.ra-sword
           span {{ data.category | translate }}
 
-    template(v-if="investigation && quantity >= 0")
-      mu-card-text
-        mu-linear-progress(mode="determinate", size="6", value="50")
+    template(v-if="investigation")
+      mu-card-text.center
+        mu-linear-progress(mode="determinate", :size="6", :value="data.invested * 100 / data.turns")
+        small {{ data.invested }} / {{ data.turns }} ({{ data.invested * 100 / data.turns | numeric }} %)
       mu-card-text
         form
           mu-text-field(type="number", v-model="ammount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
@@ -44,22 +45,14 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
-
   export default {
     name: 'spell',
-    props: ['name', 'quantity', 'investigation', 'casting'],
+    props: ['data', 'investigation', 'casting', 'users'],
     data () {
       return {
         ammount: 0,
         selected: null
       }
-    },
-    firebase: {
-      users: firebase.ref('users')
-    },
-    created () {
-      this.$bindAsObject('data', firebase.ref('spells').child(this.name))
     },
     methods: {
       research () {

@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33")
-      building.animated.fadeInUp(:name="building['.key']", :exploration="true")
+      building.animated.fadeInUp(:data="territory", :exploration="true")
 </template>
 
 <script>
@@ -16,7 +16,12 @@
     },
     created () {
       store.commit('title', 'lbl_title_explore')
-      this.$bindAsObject('building', firebase.ref('users').child(store.state.username).child('buildings').child('territory'))
+    },
+    firebase: {
+      territory: {
+        source: firebase.ref('users').child(store.state.username).child('buildings').child('territory'),
+        asObject: true
+      }
     }
   }
 </script>

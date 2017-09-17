@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="in-out", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-        spell(:name="spell['.key']", :quantity="spell['.value']", :investigation="true")
+        spell(:data="spell", :investigation="true")
 </template>
 
 <script>
@@ -17,7 +17,9 @@
     },
     created () {
       store.commit('title', 'lbl_title_research')
-      this.$bindAsArray('spells', firebase.ref('users').child(store.state.username).child('researches'))
+    },
+    firebase: {
+      spells: firebase.ref('users').child(store.state.username).child('researches')
     }
   }
 </script>

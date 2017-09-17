@@ -8,14 +8,9 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
-
   export default {
     name: 'faction',
-    props: ['name'],
-    created () {
-      this.$bindAsObject('data', firebase.ref('factions').child(this.name))
-    }
+    props: ['data']
   }
 </script>
 

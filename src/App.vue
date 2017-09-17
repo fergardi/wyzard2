@@ -32,7 +32,7 @@
           mu-badge(slot="after") {{ user.territory | numeric }}
 
         mu-sub-header {{ 'lbl_title_enchantments' | translate }}
-        mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+        mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled, :class="enchantment.color")
           mu-icon(slot="left", value=":ra ra-bleeding-eye")
           mu-badge(slot="after") {{ enchantment.turns | numeric }}
 

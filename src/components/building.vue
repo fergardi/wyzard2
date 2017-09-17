@@ -6,7 +6,7 @@
     mu-card-text
       p {{ data.description | lorem }}
 
-    template(v-if="construction && quantity >= 0")
+    template(v-if="construction")
       mu-card-text
         form
           mu-text-field(type="number", v-model="ammount", min="0", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
@@ -30,18 +30,16 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
-
   export default {
     name: 'building',
-    props: ['name', 'quantity', 'exploration', 'construction', 'meditation'],
+    props: ['data', 'exploration', 'construction', 'meditation'],
     data () {
       return {
         ammount: 0
       }
     },
     created () {
-      this.$bindAsObject('data', firebase.ref('buildings').child(this.name))
+      this.ammount = this.data.quantity
     },
     methods: {
       demolish () {

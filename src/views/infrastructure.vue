@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
-      building.animated.fadeInUp(:name="building['.key']", :quantity="building['.value']", :construction="true")
+      building.animated.fadeInUp(:data="building", :construction="true")
 </template>
 
 <script>
@@ -16,7 +16,9 @@
     },
     created () {
       store.commit('title', 'lbl_title_infrastructure')
-      this.$bindAsArray('buildings', firebase.ref('users').child(store.state.username).child('buildings'))
+    },
+    firebase: {
+      buildings: firebase.ref('users').child(store.state.username).child('buildings')
     }
   }
 </script>

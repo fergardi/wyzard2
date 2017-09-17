@@ -1,182 +1,102 @@
 {
   "attack_flask" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "red",
     "image" : "https://i.pinimg.com/736x/f1/21/7e/f1217e9b6074632c1688683969a8bfaa--fantasy-weapons-fantasy-rpg.jpg",
-    "name" : "lbl_item_attack_flask"
+    "name" : "lbl_artifact_attack_flask"
   },
   "bonfire" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "white",
     "image" : "https://img10.deviantart.net/646b/i/2014/350/5/9/last_bonfire_by_art1a3t-d8a2fo9.jpg",
-    "name" : "lbl_item_bonfire"
+    "name" : "lbl_artifact_bonfire"
   },
   "book_of_the_dead" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "purple",
     "image" : "https://i.pinimg.com/736x/e9/46/53/e946534a0e16344cb7b6821ea9002bae.jpg",
-    "name" : "lbl_item_book_of_the_dead"
+    "name" : "lbl_artifact_book_of_the_dead"
   },
   "broken_mirror" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "blue",
     "image" : "https://orig11.deviantart.net/3526/f/2013/294/d/a/broken_mirror_by_sia_chan-d4ga7wf.jpg",
-    "name" : "lbl_item_broken_mirror"
+    "name" : "lbl_artifact_broken_mirror"
   },
   "defense_remedy" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "green",
     "image" : "https://i.pinimg.com/736x/89/da/2f/89da2f5adc4f1c553b6330d7fc637a16.jpg",
-    "name" : "lbl_item_defense_remedy"
+    "name" : "lbl_artifact_defense_remedy"
   },
   "demon_in_a_bottle" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "red",
     "image" : "https://i.pinimg.com/736x/35/39/ab/3539ab9ba166329e54e446c4913cc99e--fantasy-items-rpg-items.jpg",
-    "name" : "lbl_item_demon_in_a_bottle"
+    "name" : "lbl_artifact_demon_in_a_bottle"
   },
   "dragon_egg" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "red",
     "image" : "https://i.pinimg.com/originals/66/c5/47/66c547d410e5c23f5dcd06dc8be19c88.jpg",
-    "name" : "lbl_item_dragon_egg"
+    "name" : "lbl_artifact_dragon_egg"
   },
   "elemental_book" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "blue",
     "image" : "https://i.pinimg.com/originals/5d/ef/ae/5defae7572e0a36fe5b9039ac1748eba.jpg",
-    "name" : "lbl_item_elemental_book"
+    "name" : "lbl_artifact_elemental_book"
   },
   "forbidden_book" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "blue",
     "image" : "https://i.pinimg.com/736x/ff/3e/38/ff3e385f25c1a8062dd1c3eb21f35c5a--fantasy-images-art-images.jpg",
-    "name" : "lbl_item_forbidden_book"
+    "name" : "lbl_artifact_forbidden_book"
   },
   "hero_manual" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "white",
     "image" : "https://i.pinimg.com/736x/ee/3b/6f/ee3b6fce2a19c0381a90045d11aa295a--the-book-spell-books.jpg",
-    "name" : "lbl_item_hero_manual"
+    "name" : "lbl_artifact_hero_manual"
   },
   "live_bait" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "green",
     "image" : "http://orig04.deviantart.net/7315/f/2012/243/3/0/wild_sheep_by_gerezon-d5d1hxt.jpg",
-    "name" : "lbl_item_live_bait"
+    "name" : "lbl_artifact_live_bait"
   },
   "love_elixir" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "white",
     "image" : "https://i.pinimg.com/736x/4f/ed/8e/4fed8e43ff21dd0fac40f50f4c1f534c.jpg",
-    "name" : "lbl_item_love_elixir"
+    "name" : "lbl_artifact_love_elixir"
   },
   "magic_compass" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "green",
     "image" : "https://i.pinimg.com/originals/57/a5/4a/57a54aee9bec3dfab26b97aabdf2b344.jpg",
-    "name" : "lbl_item_magic_compass"
+    "name" : "lbl_artifact_magic_compass"
   },
   "mana_potion" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "blue",
     "image" : "https://s-media-cache-ak0.pinimg.com/originals/ee/97/94/ee9794d39f27f465fdc31dabd6cc2a13.jpg",
-    "name" : "lbl_item_mana_potion"
+    "name" : "lbl_artifact_mana_potion"
   },
   "medusa_head" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "purple",
     "image" : "http://2.bp.blogspot.com/-e_2eo6Icu7M/U3eXP3OrYHI/AAAAAAAABik/qa-AhcHH0WU/s1600/medusa.jpg",
-    "name" : "lbl_item_medusa_head"
+    "name" : "lbl_artifact_medusa_head"
   },
   "powder_barrel" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "red",
     "image" : "https://i.pinimg.com/736x/d8/98/2b/d8982b44566a42300ee9d3ab656c5e83--world-of-warcraft-cataclysm-warcraft-art.jpg",
-    "name" : "lbl_item_powder_barrel"
+    "name" : "lbl_artifact_powder_barrel"
   },
   "sacred_bible" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "white",
     "image" : "http://orig01.deviantart.net/e04d/f/2007/135/0/f/the_holy_book_by_djvue.jpg",
-    "name" : "lbl_item_sacred_bible"
+    "name" : "lbl_artifact_sacred_bible"
   },
   "spider_web" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "purple",
     "image" : "https://pre06.deviantart.net/8a21/th/pre/i/2014/332/0/c/spider_queen_by_dreadjim-d87xsff.jpg",
-    "name" : "lbl_item_spider_web"
+    "name" : "lbl_artifact_spider_web"
   },
   "treasure_chest" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "green",
     "image" : "https://i.pinimg.com/originals/1d/f0/29/1df029f0dcf37ee0fbaa896e3a3520e2.jpg",
-    "name" : "lbl_item_treasure_chest"
+    "name" : "lbl_artifact_treasure_chest"
   },
   "voodoo_doll" : {
-    "faction" : {
-      "color" : "black",
-      "image" : "http://",
-      "name" : "void"
-    },
+    "color": "purple",
     "image" : "https://i.pinimg.com/736x/21/1a/66/211a6626a4bd8eddd795be10776301a9.jpg",
-    "name" : "lbl_item_voodoo_doll"
+    "name" : "lbl_artifact_voodoo_doll"
   }
 }
