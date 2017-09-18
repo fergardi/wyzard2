@@ -3,11 +3,11 @@
     .background
 
     mu-paper
-      mu-appbar.topbar(:title="translate(title)")
+      mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
         mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help", style="visibility: hidden")
+        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help")
 
-    mu-drawer.sidebar(:open="menu", :docked="false", :right="right" , :class="right ? 'right' : 'left'", @close="toggle")
+    mu-drawer.sidebar(:open="menu", :docked="false", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
@@ -351,10 +351,16 @@
           .toggler
           .settings
             display none
-        .router.left
-          padding-left 256px
-        .router.right
-          padding-right 256px
+        .topbar
+        .router
+          &.left
+            padding-left 256px
+          &.right
+            padding-right 256px
+        .topbar
+          .toggler
+          .help
+            display none
       .mu-overlay
         display none !important
 </style>

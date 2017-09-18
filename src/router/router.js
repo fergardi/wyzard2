@@ -32,7 +32,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: census
+      component: kingdom
     },
     {
       path: '/spells',
