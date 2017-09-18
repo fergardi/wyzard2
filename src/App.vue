@@ -36,7 +36,7 @@
           mu-icon(slot="left", value=":ra ra-bleeding-eye")
           mu-badge(slot="after") {{ enchantment.remaining | numeric }}
 
-        mu-sub-header {{ 'lbl_title_interior' | translate }}
+        mu-sub-header {{ 'lbl_title_economy' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
           mu-icon(slot="left", value=":ra ra-wooden-sign")
         mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
@@ -89,6 +89,8 @@
           mu-icon(slot="left", value=":ra ra-crossed-axes")
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
           mu-icon(slot="left", value=":ra ra-potion")
+        mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-pyramids")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
           mu-icon(slot="left", value=":ra ra-helmet")
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")

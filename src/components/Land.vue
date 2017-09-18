@@ -1,5 +1,5 @@
 <template lang="pug">
-  mapbox#map(:access-token="token", :map-options="options")
+  mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
 </template>
 
 <script>
@@ -11,12 +11,13 @@
       'mapbox': mapbox
     },
     data () {
-      return { // https://data.opendatasoft.com/
+      return {
+        map: null,
         token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
         options: {
-          zoom: 12,
+          zoom: 4,
           bearing: 0,
-          pitch: 60,
+          pitch: 0,
           center: [-5.5795430999999995, 42.5821452],
           style: 'mapbox://styles/fergardi/cirymo82r004jgym6lh1lkgo5',
           position: 'bottom-left',
@@ -41,6 +42,7 @@
     opacity 0.95
     height calc(100vh - 69px)
     width 100%
+    border-radius 5px
     .mapboxgl-ctrl
       display none
     canvas

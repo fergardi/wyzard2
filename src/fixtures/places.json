@@ -2,26 +2,26 @@
   "crypt" : {
     "color" : "purple",
     "image" : "https://i.pinimg.com/originals/25/ee/e0/25eee032d448a0eec4b745e5a7a56aa8.jpg",
-    "name" : "lbl_quest_crypt"
+    "name" : "lbl_place_crypt"
   },
   "dungeon" : {
     "color" : "red",
     "image" : "http://conceptartempire.com/images/19/14-dark-dungeon-light-torches-environment.jpg",
-    "name" : "lbl_quest_dungeon"
+    "name" : "lbl_place_dungeon"
   },
   "island" : {
     "color" : "blue",
     "image" : "https://i.pinimg.com/originals/53/ce/12/53ce1296633c230c85c25a4d99522823.png",
-    "name" : "lbl_quest_island"
+    "name" : "lbl_place_island"
   },
   "jungle" : {
     "color" : "green",
     "image" : "http://conceptartempire.com/images/06/372/14-alien-jungle-concept-environment-art.jpg",
-    "name" : "lbl_quest_jungle"
+    "name" : "lbl_place_jungle"
   },
   "oasis" : {
     "color" : "white",
     "image" : "https://orig00.deviantart.net/1df8/f/2013/086/2/c/desert_village_by_crs1009-d5zij53.jpg",
-    "name" : "lbl_quest_oasis"
+    "name" : "lbl_place_oasis"
   }
 }

@@ -1,8 +1,8 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="quest, index in quests", :key="index")
-        place(:data="quest", :adventure="true")
+      mu-col(width="100", tablet="50", desktop="33", v-for="place, index in places", :key="index")
+        place(:data="place")
 </template>
 
 <script>
@@ -11,15 +11,15 @@
   import place from '../components/place'
   
   export default {
-    name: 'quests',
+    name: 'places',
     components: {
       'place': place
     },
     created () {
-      store.commit('title', 'lbl_title_quests')
+      store.commit('title', 'lbl_title_places')
     },
     firebase: {
-      quests: firebase.ref('users').child(store.state.username).child('quests')
+      places: firebase.ref('places')
     }
   }
 </script>
