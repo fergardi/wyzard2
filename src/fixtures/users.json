@@ -57,7 +57,8 @@
         "color" : "purple",
         "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
         "name" : "lbl_spell_corruption",
-        "turns": 300
+        "turns": 300,
+        "remaining": 50
       }
     },
     "color": "purple",

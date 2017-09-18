@@ -5,7 +5,7 @@
       #title(:class="data.color") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
-      .stats
+      .stats(v-if="info")
         mu-chip
           i.ra.ra-sword
           span {{ 'lbl_stat_level' | translate }} 10
@@ -42,12 +42,19 @@
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_select')")
       mu-card-actions
         mu-raised-button(primary, @click="cast") {{ 'lbl_button_cast' | translate }}
+
+    template(v-if="breaking")
+      mu-card-text.center
+        mu-linear-progress(mode="determinate", :size="6", :value="data.remaining * 100 / data.turns")
+        small {{ data.remaining }} / {{ data.turns }} ({{ data.remaining * 100 / data.turns | numeric }} %)
+      mu-card-actions
+        mu-raised-button(primary, @click="disenchant") {{ 'lbl_button_dispel' | translate }}
 </template>
 
 <script>
   export default {
     name: 'spell',
-    props: ['data', 'investigation', 'casting', 'users'],
+    props: ['data', 'investigation', 'casting', 'users', 'breaking', 'info'],
     data () {
       return {
         ammount: 0,
@@ -59,6 +66,9 @@
         // TODO
       },
       cast () {
+        // TODO
+      },
+      disenchant () {
         // TODO
       }
     }

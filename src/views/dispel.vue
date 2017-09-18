@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-      spell.animated.fadeInUp(:data="spell", :casting="true", :users="users", :info="true")
+      spell.animated.fadeInUp(:data="spell", :breaking="true")
 </template>
 
 <script>
@@ -15,11 +15,10 @@
       'spell': spell
     },
     created () {
-      store.commit('title', 'lbl_title_sorcery')
+      store.commit('title', 'lbl_title_dispel')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('spells'),
-      users: firebase.ref('users')
+      spells: firebase.ref('users').child(store.state.username).child('enchantments')
     }
   }
 </script>

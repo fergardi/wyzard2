@@ -21,6 +21,8 @@ import explore from '@/views/explore'
 import meditate from '@/views/meditate'
 import auction from '@/views/auction'
 import levy from '@/views/levy'
+import dispel from '@/views/dispel'
+import quests from '@/views/quests'
 
 Vue.use(Router)
 
@@ -130,6 +132,16 @@ export default new Router({
       path: '/levy',
       name: 'levy',
       component: levy
+    },
+    {
+      path: '/dispel',
+      name: 'dispel',
+      component: dispel
+    },
+    {
+      path: '/quests',
+      name: 'quests',
+      component: quests
     }
   ]
 })

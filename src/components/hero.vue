@@ -24,7 +24,7 @@
       }
     },
     created () {
-      this.ammount = this.data.gold
+      this.ammount = this.data.gold || 0
     },
     methods: {
       bid () {

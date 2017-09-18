@@ -34,7 +34,7 @@
         mu-sub-header {{ 'lbl_title_enchantments' | translate }}
         mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled, :class="enchantment.color")
           mu-icon(slot="left", value=":ra ra-bleeding-eye")
-          mu-badge(slot="after") {{ enchantment.turns | numeric }}
+          mu-badge(slot="after") {{ enchantment.remaining | numeric }}
 
         mu-sub-header {{ 'lbl_title_interior' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
@@ -49,7 +49,7 @@
         mu-sub-header {{ 'lbl_title_exterior' | translate }}
         mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
           mu-icon(slot="left", value=":ra ra-axe")
-        mu-list-item(:title="translate('lbl_title_quest')", to="quest", @click="toggle")
+        mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
           mu-icon(slot="left", value=":ra ra-torch")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
@@ -61,6 +61,8 @@
           mu-icon(slot="left", value=":ra ra-quill-ink")
         mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
           mu-icon(slot="left", value=":ra ra-crystal-wand")
+        mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-crystals")
 
         mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
         mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")

@@ -191,6 +191,8 @@ export default {
     lbl_title_auction: 'Subasta',
     lbl_title_levy: 'Recaudar',
     lbl_title_exterior: 'Exterior',
+    lbl_title_dispel: 'Desencantar',
+    lbl_title_quests: 'Aventuras',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
@@ -215,6 +217,7 @@ export default {
     lbl_button_meditate: 'Meditar',
     lbl_button_buy: 'Comprar',
     lbl_button_collect: 'Recaudar',
+    lbl_button_dispel: 'Romper',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
@@ -227,6 +230,12 @@ export default {
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
     lbl_settings_language: 'Idioma',
+    // quests
+    lbl_quest_island: 'Isla del Paraíso',
+    lbl_quest_crypt: 'Cripta Maldita',
+    lbl_quest_dungeon: 'Mazmorra Sangrienta',
+    lbl_quest_oasis: 'Oasis Lejano',
+    lbl_quest_jungle: 'Jungla Espesa',
     // languages
     lbl_language_spanish: 'Español',
     lbl_language_english: 'Inglés'
