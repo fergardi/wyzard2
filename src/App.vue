@@ -297,6 +297,8 @@
           text-transform none
         .mu-raised-button + .mu-raised-button
           margin-left 5px
+    .mu-toast
+      border 1px solid
     .flex
       display flex
       flex-wrap wrap
