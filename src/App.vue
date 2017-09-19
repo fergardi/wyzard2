@@ -353,12 +353,19 @@
     @media only screen and (min-width 1080px)
       #app
         .sidebar
+          border none
           transform translateZ(0)
           visibility visible
           opacity $opacity
           .toggler
           .settings
             display none
+          &.left
+            .mu-list
+              border-right 1px solid
+          &.right
+            .mu-list
+              border-left 1px solid
         .topbar
         .router
           &.left
