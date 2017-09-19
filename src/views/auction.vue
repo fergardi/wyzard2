@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_auction')
     },
     firebase: {
-      auctions: firebase.ref('auctions')
+      auctions: firebase.ref('auctions').orderByChild('gold')
     }
   }
 </script>

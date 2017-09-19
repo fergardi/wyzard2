@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_artifacts')
     },
     firebase: {
-      artifacts: firebase.ref('artifacts')
+      artifacts: firebase.ref('artifacts').orderByChild('color')
     }
   }
 </script>

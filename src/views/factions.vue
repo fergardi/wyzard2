@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_factions')
     },
     firebase: {
-      factions: firebase.ref('factions')
+      factions: firebase.ref('factions').orderByChild('color')
     }
   }
 </script>

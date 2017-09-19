@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_dispel')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('enchantments')
+      spells: firebase.ref('users').child(store.state.username).child('enchantments').orderByChild('remaining')
     }
   }
 </script>

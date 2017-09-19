@@ -14,7 +14,12 @@
 <script>
   export default {
     name: 'place',
-    props: ['data', 'adventure', 'troops']
+    props: ['data', 'adventure', 'troops'],
+    methods: {
+      start () {
+        // TODO
+      }
+    }
   }
 </script>
 

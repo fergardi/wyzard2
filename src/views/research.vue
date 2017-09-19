@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_research')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('researches')
+      spells: firebase.ref('users').child(store.state.username).child('researches').orderByChild('invested')
     }
   }
 </script>

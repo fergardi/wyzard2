@@ -105,7 +105,7 @@
           map.setFilter('country', ['==', 'name', e.features[0].properties.name])
           if (e.features && e.features.length > 0) {
             let bbox = extent(e.features[0].geometry)
-            map.fitBounds(bbox, { padding: 25 })
+            map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
             this.show(e.features[0].properties.name)
           }
         })

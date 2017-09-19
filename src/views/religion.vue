@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_religion')
     },
     firebase: {
-      gods: firebase.ref('gods')
+      gods: firebase.ref('gods').orderByChild('color')
     }
   }
 </script>

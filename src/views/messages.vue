@@ -59,7 +59,7 @@
       store.commit('title', 'lbl_title_messages')
     },
     firebase: {
-      messages: firebase.ref('users').child(store.state.username).child('messages')
+      messages: firebase.ref('users').child(store.state.username).child('messages').orderByChild('timestamp')
     },
     methods: {
       move (page) {

@@ -33,7 +33,7 @@
       store.commit('title', 'lbl_title_census')
     },
     firebase: {
-      users: firebase.ref('users')
+      users: firebase.ref('users').orderByChild('name')
     },
     methods: {
       move (page) {

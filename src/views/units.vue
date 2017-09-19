@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_units')
     },
     firebase: {
-      units: firebase.ref('units')
+      units: firebase.ref('units').orderByChild('color')
     }
   }
 </script>

@@ -18,8 +18,8 @@
       store.commit('title', 'lbl_title_sorcery')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('spells'),
-      users: firebase.ref('users')
+      spells: firebase.ref('users').child(store.state.username).child('spells').orderByChild('name'),
+      users: firebase.ref('users').orderByChild('name')
     }
   }
 </script>

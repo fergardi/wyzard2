@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_buildings')
     },
     firebase: {
-      buildings: firebase.ref('buildings')
+      buildings: firebase.ref('buildings').orderByChild('name')
     }
   }
 </script>

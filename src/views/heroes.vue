@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_heroes')
     },
     firebase: {
-      heroes: firebase.ref('heroes')
+      heroes: firebase.ref('heroes').orderByChild('color')
     }
   }
 </script>

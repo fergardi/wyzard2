@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_places')
     },
     firebase: {
-      places: firebase.ref('places')
+      places: firebase.ref('places').orderByChild('color')
     }
   }
 </script>

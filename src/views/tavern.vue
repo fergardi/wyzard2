@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_tavern')
     },
     firebase: {
-      heroes: firebase.ref('tavern')
+      heroes: firebase.ref('tavern').orderByChild('color')
     }
   }
 </script>
