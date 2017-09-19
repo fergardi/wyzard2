@@ -19,7 +19,7 @@
     },
     firebase: {
       territory: {
-        source: firebase.ref('users').child(store.state.username).child('buildings').child('territory'),
+        source: firebase.ref('users').child(store.state.username).child('constructions').child('territory'),
         asObject: true
       }
     }

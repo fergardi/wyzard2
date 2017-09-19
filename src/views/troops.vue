@@ -1,8 +1,8 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
-        unit(:data="unit", :troop="true")
+      mu-col(v-for="troop, index in troops", :key="index", width="100", tablet="50", desktop="33")
+        unit.animated.fadeInUp(:data="troop", :troop="true")
 </template>
 
 <script>
@@ -11,7 +11,7 @@
   import unit from '../components/unit'
   
   export default {
-    name: 'units',
+    name: 'troops',
     components: {
       'unit': unit
     },
@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_troops')
     },
     firebase: {
-      units: firebase.ref('users').child(store.state.username).child('units').orderByChild('color')
+      troops: firebase.ref('users').child(store.state.username).child('troops').orderByChild('color')
     }
   }
 </script>

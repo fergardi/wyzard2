@@ -19,7 +19,7 @@
     },
     firebase: {
       village: {
-        source: firebase.ref('users').child(store.state.username).child('buildings').child('village'),
+        source: firebase.ref('users').child(store.state.username).child('constructions').child('village'),
         asObject: true
       }
     }

@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="50", desktop="33")
-      building.animated.fadeInUp(:data="territory", :meditation="true")
+      building.animated.fadeInUp(:data="node", :meditation="true")
 </template>
 
 <script>
@@ -18,8 +18,8 @@
       store.commit('title', 'lbl_title_meditate')
     },
     firebase: {
-      territory: {
-        source: firebase.ref('users').child(store.state.username).child('buildings').child('node'),
+      node: {
+        source: firebase.ref('users').child(store.state.username).child('constructions').child('node'),
         asObject: true
       }
     }

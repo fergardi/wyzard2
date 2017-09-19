@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-      spell.animated.fadeInUp(:data="spell", :casting="true", :users="users", :info="true")
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+      mu-col(width="100", tablet="50", desktop="33", v-for="research, index in researches", :key="index")
+        spell.animated.fadeInUp(:data="research", :casting="true", :users="users", :info="true")
 </template>
 
 <script>
@@ -18,7 +19,7 @@
       store.commit('title', 'lbl_title_sorcery')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('spells').orderByChild('name'),
+      researches: firebase.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true),
       users: firebase.ref('users').orderByChild('name')
     }
   }

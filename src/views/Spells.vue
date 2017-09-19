@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-      spell.animated.fadeInUp(:data="spell", :users="users")
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
+        spell.animated.fadeInUp(:data="spell", :users="users")
 </template>
 
 <script>

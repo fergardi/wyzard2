@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-      spell.animated.fadeInUp(:data="spell", :breaking="true")
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+      mu-col(width="100", tablet="50", desktop="33", v-for="enchantment, index in enchantments", :key="index")
+        spell.animated.fadeInUp(:data="enchantment", :breaking="true")
 </template>
 
 <script>
@@ -18,7 +19,7 @@
       store.commit('title', 'lbl_title_dispel')
     },
     firebase: {
-      spells: firebase.ref('users').child(store.state.username).child('enchantments').orderByChild('remaining')
+      enchantments: firebase.ref('users').child(store.state.username).child('enchantments').orderByChild('remaining')
     }
   }
 </script>

@@ -26,6 +26,8 @@ import places from '@/views/places'
 import quests from '@/views/quests'
 import troops from '@/views/troops'
 import battle from '@/views/battle'
+import defense from '@/views/defense'
+import help from '@/views/help'
 
 Vue.use(Router)
 
@@ -160,6 +162,16 @@ export default new Router({
       path: '/battle',
       name: 'battle',
       component: battle
+    },
+    {
+      path: '/defense',
+      name: 'defense',
+      component: defense
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: help
     }
   ]
 })

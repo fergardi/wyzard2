@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
-      building.animated.fadeInUp(:data="building", :construction="true")
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+      mu-col(width="100", tablet="50", desktop="33", v-for="building, index in buildings", :key="index")
+        building.animated.fadeInUp(:data="building", :construction="true")
 </template>
 
 <script>
@@ -18,7 +19,7 @@
       store.commit('title', 'lbl_title_infrastructure')
     },
     firebase: {
-      buildings: firebase.ref('users').child(store.state.username).child('buildings').orderByChild('name')
+      buildings: firebase.ref('users').child(store.state.username).child('constructions').orderByChild('name')
     }
   }
 </script>

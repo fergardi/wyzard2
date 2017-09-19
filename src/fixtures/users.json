@@ -1,72 +1,72 @@
 {
   "fergardi" : {
-    "buildings" : {
-        "barrack" : {
-          "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
-          "name" : "lbl_building_barrack",
-          "quantity": 0
-        },
-        "barrier" : {
-          "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
-          "name" : "lbl_building_barrier",
-          "quantity": 0
-        },
-        "farm" : {
-          "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
-          "name" : "lbl_building_farm",
-          "quantity": 0
-        },
-        "fortress" : {
-          "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
-          "name" : "lbl_building_fortress",
-          "quantity": 0
-        },
-        "guild" : {
-          "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
-          "name" : "lbl_building_guild",
-          "quantity": 0
-        },
-        "node" : {
-          "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
-          "name" : "lbl_building_node",
-          "quantity": 0
-        },
-        "territory" : {
-          "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-          "name" : "lbl_building_territory",
-          "quantity": 0
-        },
-        "village" : {
-          "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
-          "name" : "lbl_building_village",
-          "quantity": 0
-        },
-        "workshop" : {
-          "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
-          "name" : "lbl_building_workshop",
-          "quantity": 0
-        },
-        "temple" : {
-          "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
-          "name" : "lbl_building_temple",
-          "quantity": 0
-        }
+    "constructions" : {
+      "barrack" : {
+        "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
+        "name" : "lbl_building_barrack",
+        "quantity" : 0
       },
+      "barrier" : {
+        "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
+        "name" : "lbl_building_barrier",
+        "quantity" : 0
+      },
+      "farm" : {
+        "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
+        "name" : "lbl_building_farm",
+        "quantity" : 0
+      },
+      "fortress" : {
+        "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
+        "name" : "lbl_building_fortress",
+        "quantity" : 0
+      },
+      "guild" : {
+        "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
+        "name" : "lbl_building_guild",
+        "quantity" : 0
+      },
+      "node" : {
+        "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
+        "name" : "lbl_building_node",
+        "quantity" : 0
+      },
+      "temple" : {
+        "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
+        "name" : "lbl_building_temple",
+        "quantity" : 0
+      },
+      "territory" : {
+        "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
+        "name" : "lbl_building_territory",
+        "quantity" : 0
+      },
+      "village" : {
+        "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
+        "name" : "lbl_building_village",
+        "quantity" : 0
+      },
+      "workshop" : {
+        "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
+        "name" : "lbl_building_workshop",
+        "quantity" : 0
+      }
+    },
+    "color" : "purple",
     "enchantments" : {
       "corruption" : {
         "color" : "purple",
         "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
         "name" : "lbl_spell_corruption",
-        "turns": 300,
-        "remaining": 50
+        "remaining" : 50,
+        "turns" : 300
       }
     },
-    "color": "purple",
     "gold" : 10000000,
     "level" : 1,
     "mana" : 100000,
     "messages" : {
-      "dsagdhsadj": {
+      "dsagdhsadj" : {
         "content" : "content",
         "from" : {
           "color" : "red",
@@ -76,28 +76,46 @@
         "timestamp" : 0
       }
     },
+    "name" : "fergardi",
     "people" : 10000,
+    "quests" : {
+      "dsahdkasfds" : {
+        "color" : "blue",
+        "image" : "https://i.pinimg.com/originals/53/ce/12/53ce1296633c230c85c25a4d99522823.png",
+        "name" : "lbl_place_island"
+      }
+    },
     "researches" : {
       "break_enchantment" : {
         "color" : "white",
         "image" : "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg",
+        "invested" : 100,
         "name" : "lbl_spell_break_enchantment",
-        "turns": 300,
-        "invested": 100
-      }
-    },
-    "settings" : {
-      "lang" : "en",
-      "navbar" : false
-    },
-    "spells" : {
+        "turns" : 300,
+        "completed": false
+      },
       "berserker" : {
         "color" : "red",
         "image" : "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
-        "name" : "lbl_spell_berserker"
+        "name" : "lbl_spell_berserker",
+        "invested": 300,
+        "turns": 300,
+        "completed": true
       }
     },
+    "settings" : {
+      "lang" : "es",
+      "navbar" : false
+    },
     "territory" : 996,
-    "turns" : 300
+    "turns" : 300,
+    "troops" : {
+      "dshgakdask" : {
+        "color" : "purple",
+        "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "name" : "lbl_unit_zombie",
+        "quantity" : 999999
+      }
+    }
   }
 }

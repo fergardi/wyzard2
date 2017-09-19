@@ -48,13 +48,13 @@
 
         mu-sub-header {{ 'lbl_title_military' | translate }}
         mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-axe")
+          mu-icon(slot="left", value=":ra ra-crossed-axes")
         mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-horn-call")
+          mu-icon(slot="left", value=":ra ra-dripping-blade")
         mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
           mu-icon(slot="left", value=":ra ra-torch")
         mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-shield")
+          mu-icon(slot="left", value=":ra ra-eye-shield")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
         mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
@@ -81,6 +81,8 @@
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
           mu-icon(slot="left", value=":ra ra-gears")
+        mu-list-item(:title="translate('lbl_title_help')", to="help", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-help")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
@@ -90,9 +92,9 @@
         mu-list-item(:title="translate('lbl_title_spells')", to="spells", @click="toggle")
           mu-icon(slot="left", value=":ra ra-fire-ring")
         mu-list-item(:title="translate('lbl_title_units')", to="units", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-crossed-axes")
+          mu-icon(slot="left", value=":ra ra-batwings")
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-potion")
+          mu-icon(slot="left", value=":ra ra-round-bottom-flask")
         mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
           mu-icon(slot="left", value=":ra ra-pyramids")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
