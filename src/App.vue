@@ -22,7 +22,7 @@
           mu-icon(slot="left", value=":ra ra-gold-bar")
           mu-badge(slot="after") {{ user.gold | numeric }}
         mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-          mu-icon(slot="left", value=":ra ra-droplet")
+          mu-icon(slot="left", value=":ra ra-droplet-splash")
           mu-badge(slot="after") {{ user.mana | numeric }}
         mu-list-item(:title="translate('lbl_resource_people')", disabled)
           mu-icon(slot="left", value=":ra ra-double-team")
@@ -38,19 +38,23 @@
 
         mu-sub-header {{ 'lbl_title_economy' | translate }}
         mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-wooden-sign")
-        mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
           mu-icon(slot="left", value=":ra ra-queen-crown")
+        mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-scroll-unfurled")
         mu-list-item(:title="translate('lbl_title_explore')", to="explore", @click="toggle")
           mu-icon(slot="left", value=":ra ra-compass")
         mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
           mu-icon(slot="left", value=":ra ra-castle-flag")
 
-        mu-sub-header {{ 'lbl_title_exterior' | translate }}
-        mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
+        mu-sub-header {{ 'lbl_title_military' | translate }}
+        mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
           mu-icon(slot="left", value=":ra ra-axe")
+        mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-horn-call")
         mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
           mu-icon(slot="left", value=":ra ra-torch")
+        mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-shield")
 
         mu-sub-header {{ 'lbl_title_magic' | translate }}
         mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
@@ -76,7 +80,7 @@
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
-          mu-icon(slot="left", value="settings")
+          mu-icon(slot="left", value=":ra ra-gears")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")

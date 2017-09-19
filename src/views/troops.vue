@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_troops')
     },
     firebase: {
-      units: firebase.ref('users').child(store.state.username).child('troops')
+      units: firebase.ref('users').child(store.state.username).child('units').orderByChild('color')
     }
   }
 </script>

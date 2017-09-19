@@ -182,7 +182,7 @@ export default {
     lbl_title_sorcery: 'Hechicería',
     lbl_title_tavern: 'Taberna',
     lbl_title_religion: 'Religión',
-    lbl_title_kingdom: 'Reinos',
+    lbl_title_kingdom: 'Dominios',
     lbl_title_settings: 'Preferencias',
     lbl_title_messages: 'Mensajes',
     lbl_title_account: 'Cuenta',
@@ -195,6 +195,9 @@ export default {
     lbl_title_dispel: 'Desencantar',
     lbl_title_quests: 'Aventuras',
     lbl_title_places: 'Lugares',
+    lbl_title_troops: 'Tropas',
+    lbl_title_battle: 'Batalla',
+    lbl_title_defense: 'Defensa',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',

@@ -24,6 +24,8 @@ import levy from '@/views/levy'
 import dispel from '@/views/dispel'
 import places from '@/views/places'
 import quests from '@/views/quests'
+import troops from '@/views/troops'
+import battle from '@/views/battle'
 
 Vue.use(Router)
 
@@ -148,6 +150,16 @@ export default new Router({
       path: '/places',
       name: 'places',
       component: places
+    },
+    {
+      path: '/troops',
+      name: 'troops',
+      component: troops
+    },
+    {
+      path: '/battle',
+      name: 'battle',
+      component: battle
     }
   ]
 })
