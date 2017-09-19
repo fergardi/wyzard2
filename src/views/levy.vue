@@ -1,6 +1,6 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33")
+    mu-col(width="100", tablet="50", desktop="50")
       building.animated.fadeInUp(:data="village", :tax="true")
 </template>
 

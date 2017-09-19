@@ -38,8 +38,8 @@
     template(v-if="casting")
       mu-card-text
         form
-          mu-select-field(v-model="selected", :label="translate('lbl_label_mage')", :fullWidth="true")
-            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_select')")
+          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true")
+            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_target')")
       mu-card-actions
         mu-raised-button(primary, @click="cast") {{ 'lbl_button_cast' | translate }}
 

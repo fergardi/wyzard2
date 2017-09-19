@@ -202,6 +202,15 @@ export default {
     lbl_label_quantity: 'Cantidad',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
+    lbl_label_battle: 'Atacar',
+    lbl_label_target: 'Objetivo',
+    lbl_label_army_one: 'Primera Tropa',
+    lbl_label_army_two: 'Segunda Tropa',
+    lbl_label_army_three: 'Tercera Tropa',
+    lbl_label_army_four: 'Cuarta Tropa',
+    lbl_label_army_five: 'Quinta Tropa',
+    lbl_label_spell: 'Hechizo',
+    lbl_label_artifact: 'Artefacto',
     // resources
     lbl_resource_gold: 'Oro',
     lbl_resource_people: 'Personas',
@@ -225,6 +234,7 @@ export default {
     lbl_button_dispel: 'Romper',
     lbl_button_start: 'Comenzar',
     lbl_button_disband: 'Desbandar',
+    lbl_button_attack: 'Atacar',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
@@ -233,6 +243,7 @@ export default {
     lbl_table_datetime: 'Fecha',
     lbl_table_actions: 'Acciones',
     lbl_table_subject: 'Asunto',
+    lbl_table_army: 'Ejército',
     // settings
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
