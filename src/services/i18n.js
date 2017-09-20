@@ -218,7 +218,7 @@ export default {
     lbl_resource_people: 'Personas',
     lbl_resource_turns: 'Turnos',
     lbl_resource_mana: 'Maná',
-    lbl_resource_territory: 'Territorio',
+    lbl_resource_territory: 'Terrenos',
     // buttons
     lbl_button_construct: 'Construir',
     lbl_button_demolish: 'Demoler',

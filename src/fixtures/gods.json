@@ -2,26 +2,31 @@
   "god_of_blood" : {
     "color" : "red",
     "image" : "https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg",
-    "name" : "lbl_god_of_blood"
+    "name" : "lbl_god_of_blood",
+    "gold": 0
   },
   "god_of_death" : {
     "color" : "purple",
     "image" : "https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg",
-    "name" : "lbl_god_of_death"
+    "name" : "lbl_god_of_death",
+    "gold": 0
   },
   "god_of_life" : {
     "color" : "green",
     "image" : "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
-    "name" : "lbl_god_of_life"
+    "name" : "lbl_god_of_life",
+    "gold": 0
   },
   "god_of_light" : {
     "color" : "white",
     "image" : "https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg",
-    "name" : "lbl_god_of_light"
+    "name" : "lbl_god_of_light",
+    "gold": 0
   },
   "god_of_magic" : {
     "color" : "blue",
     "image" : "https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg",
-    "name" : "lbl_god_of_magic"
+    "name" : "lbl_god_of_magic",
+    "gold": 0
   }
 }

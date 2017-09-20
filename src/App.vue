@@ -329,6 +329,7 @@
           height 36px
         .mu-item-left
           justify-content center
+    /*
     .toast
       position absolute
       display flex
@@ -344,6 +345,7 @@
         max-width none
         position relative
         text-align center
+    */
     .mu-toast
     .mu-chip
     .mu-card #title
@@ -388,12 +390,14 @@
           .toggler
           .help
             display none
+        /*
         .toast
           justify-content flex-end
           bottom initial
           top 0
           .mu-toast
             right 20px
+        */
       .mu-overlay
         display none !important
 </style>

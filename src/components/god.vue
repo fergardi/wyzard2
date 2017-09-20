@@ -24,7 +24,7 @@
       }
     },
     created () {
-      this.ammount = this.gold
+      this.ammount = this.data.gold
     },
     methods: {
       offer () {
