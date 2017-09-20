@@ -1,5 +1,7 @@
 export default {
   es: {
+    // app
+    lbl_wyzard: 'Wyzard',
     // factions
     lbl_faction_chaos: 'Caos',
     lbl_faction_mental: 'Mental',
@@ -256,7 +258,9 @@ export default {
     lbl_place_jungle: 'Jungla Espesa',
     // languages
     lbl_language_spanish: 'Español',
-    lbl_language_english: 'Inglés'
+    lbl_language_english: 'Inglés',
+    // toasts
+    lbl_toast_infrastructure_error: 'Error al construir'
   },
   en: {
   }

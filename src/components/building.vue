@@ -37,6 +37,9 @@
 </template>
 
 <script>
+  import firebase from '../services/firebase'
+  import store from '../vuex/store'
+
   export default {
     name: 'building',
     props: ['data', 'exploration', 'construction', 'meditation', 'tax'],
@@ -48,11 +51,19 @@
     created () {
       this.ammount = this.data.quantity
     },
+    firebase: {
+      user: firebase.ref('users').child(store.state.username)
+    },
     methods: {
       demolish () {
         // TODO
       },
       construct () {
+        if (this.user.territory >= this.ammount) {
+          store.commit('success', 'lbl_toast_infrastructure_complete')
+        } else {
+          store.commit('error', 'lbl_toast_infrastructure_error')
+        }
         // TODO
       },
       explore () {

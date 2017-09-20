@@ -2,6 +2,9 @@
   #app
     .background
 
+    .toast
+      mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="toast.color", @close="untoast")
+
     mu-paper
       mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
         mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
@@ -102,7 +105,6 @@
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
           mu-icon(slot="left", value=":ra ra-lightning-storm")
 
-    // transition(name="router", enter-active-class="animated fadeIn", mode="out-in")
     router-view.router.scroll(:class="right ? 'right' : 'left'")
 </template>
 
@@ -115,9 +117,20 @@
     methods: {
       toggle () {
         store.commit('toggle')
+      },
+      untoast () {
+        store.commit('untoast')
       }
     },
     created () {
+      store.watch((state) => state.toast.show, (value) => {
+        if (value) {
+          if (this.timer) clearTimeout(this.timer)
+          this.timer = setTimeout(() => { this.untoast() }, store.state.toast.delay)
+        } else {
+          if (this.timer) clearTimeout(this.timer)
+        }
+      })
       this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
         store.commit('settings', snapshot.val())
       })
@@ -127,10 +140,7 @@
         source: firebase.ref('users').child(store.state.username),
         asObject: true
       },
-      enchantments: {
-        source: firebase.ref('users').child(store.state.username).child('enchantments'),
-        asObject: false
-      }
+      enchantments: firebase.ref('users').child(store.state.username).child('enchantments')
     },
     computed: {
       menu () {
@@ -141,6 +151,9 @@
       },
       right () {
         return store.state.settings.navbar
+      },
+      toast () {
+        return store.state.toast
       }
     }
   }
@@ -174,18 +187,6 @@
       line-height 22px
       margin 2px
       font-size 0.8em
-      &.red
-        background-color $red
-      &.green
-        background-color $green
-      &.purple
-        background-color $purple
-      &.blue
-        background-color $blue
-      &.white
-        background-color $white
-      &.dark
-        background-color $dark
     .mu-dialog
       background-color transparent
       box-shadow none
@@ -244,33 +245,15 @@
           text-align center
           border 1px solid
           background-color $dark
-          &.red
-            background-color $red
-          &.green
-            background-color $green
-          &.purple
-            background-color $purple
-          &.blue
-            background-color $blue
-          &.white
-            background-color $white
-          &.dark
-            background-color $dark
       .mu-card-text + .mu-card-text
         padding-top 0
       .mu-card-text + .mu-card-actions
         padding-top 0
       .mu-card-text
-        // border-top 1px solid
         text-align center
         p
           font-style italic
           font-size 0.9em
-        /*
-        .mu-text-field
-        .mu-select-field
-          width 50%
-        */
         .stats
           display flex
           justify-content center
@@ -290,7 +273,6 @@
             .ra
               line-height 23px
       .mu-card-actions
-        // border-top 1px solid
         display flex
         align-items center
         justify-content center
@@ -347,6 +329,36 @@
           height 36px
         .mu-item-left
           justify-content center
+    .toast
+      position absolute
+      display flex
+      justify-content center
+      align-items center
+      left 0
+      right 0
+      bottom 0
+      margin 4px
+      width 100%
+      .mu-toast
+        width auto
+        max-width none
+        position relative
+        text-align center
+    .mu-toast
+    .mu-chip
+    #title
+      &.red
+        background-color $red
+      &.green
+        background-color $green
+      &.purple
+        background-color $purple
+      &.blue
+        background-color $blue
+      &.white
+        background-color $white
+      &.dark
+        background-color $dark
     @media (min-width 480px)
       .mu-appbar
         height 56px
@@ -376,6 +388,12 @@
           .toggler
           .help
             display none
+        .toast
+          justify-content flex-end
+          bottom initial
+          top 0
+          .mu-toast
+            right 20px
       .mu-overlay
         display none !important
 </style>

@@ -1,13 +1,12 @@
 <template lang="pug">
   .map
     mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
-
-    mu-toast.toast(v-if="toast.show", :message="toast.message", @close="hide")
 </template>
 
 <script>
   import mapbox from 'mapbox-gl-vue'
   import extent from 'turf-extent'
+  import store from '../vuex/store'
 
   export default {
     name: 'land',
@@ -16,10 +15,6 @@
     },
     data () {
       return {
-        toast: {
-          show: false,
-          message: null
-        },
         map: null,
         token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
         options: {
@@ -43,17 +38,6 @@
       }
     },
     methods: {
-      show (message) {
-        this.toast.message = message
-        this.toast.show = true
-        if (this.timer) clearTimeout(this.timer)
-        this.timer = setTimeout(() => { this.toast.show = false }, 3000)
-      },
-      hide () {
-        this.toast.message = null
-        this.toast.show = false
-        if (this.timer) clearTimeout(this.timer)
-      },
       ready (map) {
         map.addLayer({
           'id': 'countries',
@@ -98,7 +82,7 @@
           }
         })
         map.on('click', 'countries', (e) => {
-          this.hide()
+          store.commit('untoast')
           if (map.getLayoutProperty('country', 'visibility') === 'none') {
             map.setLayoutProperty('country', 'visibility', 'visible')
           }
@@ -106,7 +90,7 @@
           if (e.features && e.features.length > 0) {
             let bbox = extent(e.features[0].geometry)
             map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
-            this.show(e.features[0].properties.name)
+            store.toast(e.features[0].properties.name)
           }
         })
       }

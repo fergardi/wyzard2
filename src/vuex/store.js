@@ -12,6 +12,12 @@ const vuex = new Vuex.Store({
     settings: {
       lang: 'es',
       navbar: false
+    },
+    toast: {
+      color: null,
+      show: false,
+      message: null,
+      delay: 3000 // milliseconds
     }
   },
   mutations: {
@@ -25,7 +31,26 @@ const vuex = new Vuex.Store({
       state.username = username
     },
     settings (state, settings) {
-      this.settings = settings
+      state.settings = settings
+    },
+    success (state, message) {
+      state.toast.color = 'green'
+      state.toast.message = message
+      state.toast.show = true
+    },
+    info (state, message) {
+      state.toast.color = 'blue'
+      state.toast.message = message
+      state.toast.show = true
+    },
+    error (state, message) {
+      state.toast.color = 'red'
+      state.toast.message = message
+      state.toast.show = true
+    },
+    untoast (state) {
+      state.toast.show = false
+      state.toast.message = null
     }
   }
 })
