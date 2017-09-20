@@ -260,7 +260,9 @@ export default {
     lbl_language_spanish: 'Español',
     lbl_language_english: 'Inglés',
     // toasts
-    lbl_toast_infrastructure_error: 'Error al construir'
+    lbl_toast_success_ok: 'Completado correctamente',
+    lbl_toast_error_resources: 'Recursos insuficientes',
+    lbl_toast_error_territory: 'Espacio insuficiente'
   },
   en: {
   }

@@ -346,7 +346,7 @@
         text-align center
     .mu-toast
     .mu-chip
-    #title
+    .mu-card #title
       &.red
         background-color $red
       &.green

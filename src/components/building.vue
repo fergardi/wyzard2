@@ -60,11 +60,15 @@
       },
       construct () {
         if (this.user.territory >= this.ammount) {
-          store.commit('success', 'lbl_toast_infrastructure_complete')
+          if (this) {
+            // TODO
+            store.commit('success', 'lbl_toast_success_ok')
+          } else {
+            store.commit('error', 'lbl_toast_error_resources')
+          }
         } else {
-          store.commit('error', 'lbl_toast_infrastructure_error')
+          store.commit('error', 'lbl_toast_error_territory')
         }
-        // TODO
       },
       explore () {
         // TODO
