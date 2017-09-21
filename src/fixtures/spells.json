@@ -176,7 +176,7 @@
   },
   "tsunami" : {
     "color" : "blue",
-    "image" : "https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg",
+    "image" : "http://www.wizards.com/mtg/images/daily/arcana/291_LivingTsunami.jpg",
     "name" : "lbl_spell_tsunami"
   },
   "volcano" : {
@@ -195,8 +195,58 @@
     "name" : "lbl_spell_war_drums"
   },
   "wisdom" : {
-    "color" : "blue",
+    "color" : "green",
     "image" : "http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg",
     "name" : "lbl_spell_wisdom"
+  },
+  "counter_spell": {
+    "color": "blue",
+    "image": "http://www.drawmaster.ru/uploads/posts/2012-10/DrawMaster.ru_magic-sign-13.jpg",
+    "name": "lbl_spell_counter_spell"
+  },
+  "nature_favor": {
+    "color": "green",
+    "image": "https://i.pinimg.com/originals/da/c7/90/dac79063e82ce0a9190f6236c3dd72db.jpg",
+    "name": "lbl_spell_nature_favor"
+  },
+  "hurricane": {
+    "color": "green",
+    "image": "http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg",
+    "name": "lbl_spell_hurricane"
+  },
+  "tornado": {
+    "color": "green",
+    "image": "https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg",
+    "name": "lbl_spell_tornado"
+  },
+  "rust_armor": {
+    "color": "green",
+    "image": "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
+    "name": "lbl_spell_rust_armor"
+  },
+  "climate_control": {
+    "color": "green",
+    "image": "https://i.pinimg.com/736x/6c/1a/36/6c1a36b42f4a0c4a416617213f94107a--fantasy-art-landscapes-fantasy-landscape.jpg",
+    "name": "lbl_spell_climate_control"
+  },
+  "elemental_wrath": {
+    "color": "green",
+    "image": "https://i.pinimg.com/736x/4b/3e/0e/4b3e0e45c159d9b7aa8a7bcf568ea385--mtg-art-fantasy-creatures.jpg",
+    "name": "lbl_spell_elemental_wrath"
+  },
+  "beast_council": {
+    "color": "green",
+    "image": "https://i.pinimg.com/originals/7c/08/c0/7c08c085f261daaff9c8313ac8f28ac6.jpg",
+    "name": "lbl_spell_beast_council"
+  },
+  "regenerate": {
+    "color": "green",
+    "image": "https://i.pinimg.com/originals/8f/19/24/8f1924d3218f6a25e5e43d9327eb1531.jpg",
+    "name": "lbl_spell_regenerate"
+  },
+  "fountain_of_youth": {
+    "color": "green",
+    "image": "http://aws-cf.ados.fr/prod/photos/6/4/0/7410640/2191349/img-2191349fe5.jpg?v=5",
+    "name": "lbl_spell_fountain_of_youth"
   }
 }

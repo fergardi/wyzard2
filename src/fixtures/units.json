@@ -44,10 +44,10 @@
     "image" : "https://i.pinimg.com/originals/7e/77/dc/7e77dc0cae459f56fbedf964fbf73815.jpg",
     "name" : "lbl_unit_chimera"
   },
-  "cleric" : {
+  "griffin" : {
     "color" : "white",
-    "image" : "https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg",
-    "name" : "lbl_unit_cleric"
+    "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg",
+    "name" : "lbl_unit_griffin"
   },
   "crusader" : {
     "color" : "white",
@@ -191,7 +191,7 @@
   },
   "spider" : {
     "color" : "purple",
-    "image" : "http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg",
+    "image" : "https://i.pinimg.com/originals/8a/dd/58/8add584f835ba3f9f4592c9ac0fc94dc.jpg",
     "name" : "lbl_unit_spider"
   },
   "storm_elemental" : {

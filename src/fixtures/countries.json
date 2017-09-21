@@ -1,0 +1,1982 @@
+{
+  "afghanistan": {
+    "name": "afghanistan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "angola": {
+    "name": "angola",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "albania": {
+    "name": "albania",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "united_arab_emirates": {
+    "name": "united_arab_emirates",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "argentina": {
+    "name": "argentina",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "armenia": {
+    "name": "armenia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "antarctica": {
+    "name": "antarctica",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "french_southern_and_antarctic_lands": {
+    "name": "french_southern_and_antarctic_lands",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "australia": {
+    "name": "australia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "austria": {
+    "name": "austria",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "azerbaijan": {
+    "name": "azerbaijan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "burundi": {
+    "name": "burundi",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "belgium": {
+    "name": "belgium",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "benin": {
+    "name": "benin",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "burkina_faso": {
+    "name": "burkina_faso",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bangladesh": {
+    "name": "bangladesh",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bulgaria": {
+    "name": "bulgaria",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "the_bahamas": {
+    "name": "the_bahamas",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bosnia_and_herzegovina": {
+    "name": "bosnia_and_herzegovina",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "belarus": {
+    "name": "belarus",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "belize": {
+    "name": "belize",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bermuda": {
+    "name": "bermuda",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bolivia": {
+    "name": "bolivia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "brazil": {
+    "name": "brazil",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "brunei": {
+    "name": "brunei",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "bhutan": {
+    "name": "bhutan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "botswana": {
+    "name": "botswana",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "central_african_republic": {
+    "name": "central_african_republic",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "canada": {
+    "name": "canada",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "switzerland": {
+    "name": "switzerland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "chile": {
+    "name": "chile",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "china": {
+    "name": "china",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ivory_coast": {
+    "name": "ivory_coast",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "cameroon": {
+    "name": "cameroon",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "democratic_republic_of_the_congo": {
+    "name": "democratic_republic_of_the_congo",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "republic_of_the_congo": {
+    "name": "republic_of_the_congo",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "colombia": {
+    "name": "colombia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "costa_rica": {
+    "name": "costa_rica",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "cuba": {
+    "name": "cuba",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "northern_cyprus": {
+    "name": "northern_cyprus",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "cyprus": {
+    "name": "cyprus",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "czech_republic": {
+    "name": "czech_republic",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "germany": {
+    "name": "germany",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "djibouti": {
+    "name": "djibouti",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "denmark": {
+    "name": "denmark",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "dominican_republic": {
+    "name": "dominican_republic",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "algeria": {
+    "name": "algeria",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ecuador": {
+    "name": "ecuador",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "egypt": {
+    "name": "egypt",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "eritrea": {
+    "name": "eritrea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "spain": {
+    "name": "spain",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "estonia": {
+    "name": "estonia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ethiopia": {
+    "name": "ethiopia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "finland": {
+    "name": "finland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "fiji": {
+    "name": "fiji",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "falkland_islands": {
+    "name": "falkland_islands",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "france": {
+    "name": "france",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "gabon": {
+    "name": "gabon",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "united_kingdom": {
+    "name": "united_kingdom",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "georgia": {
+    "name": "georgia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ghana": {
+    "name": "ghana",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "guinea": {
+    "name": "guinea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "gambia": {
+    "name": "gambia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "guinea_bissau": {
+    "name": "guinea_bissau",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "equatorial_guinea": {
+    "name": "equatorial_guinea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "greece": {
+    "name": "greece",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "greenland": {
+    "name": "greenland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "guatemala": {
+    "name": "guatemala",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "french_guiana": {
+    "name": "french_guiana",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "guyana": {
+    "name": "guyana",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "honduras": {
+    "name": "honduras",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "croatia": {
+    "name": "croatia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "haiti": {
+    "name": "haiti",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "hungary": {
+    "name": "hungary",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "indonesia": {
+    "name": "indonesia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "india": {
+    "name": "india",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ireland": {
+    "name": "ireland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "iran": {
+    "name": "iran",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "iraq": {
+    "name": "iraq",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "iceland": {
+    "name": "iceland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "israel": {
+    "name": "israel",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "italy": {
+    "name": "italy",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "jamaica": {
+    "name": "jamaica",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "jordan": {
+    "name": "jordan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "japan": {
+    "name": "japan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "kazakhstan": {
+    "name": "kazakhstan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "kenya": {
+    "name": "kenya",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "kyrgyzstan": {
+    "name": "kyrgyzstan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "cambodia": {
+    "name": "cambodia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "south_korea": {
+    "name": "south_korea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "kosovo": {
+    "name": "kosovo",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "kuwait": {
+    "name": "kuwait",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "laos": {
+    "name": "laos",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "lebanon": {
+    "name": "lebanon",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "liberia": {
+    "name": "liberia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "libya": {
+    "name": "libya",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "sri_lanka": {
+    "name": "sri_lanka",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "lesotho": {
+    "name": "lesotho",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "lithuania": {
+    "name": "lithuania",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "luxembourg": {
+    "name": "luxembourg",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "latvia": {
+    "name": "latvia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "morocco": {
+    "name": "morocco",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "moldova": {
+    "name": "moldova",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "madagascar": {
+    "name": "madagascar",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "mexico": {
+    "name": "mexico",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "macedonia": {
+    "name": "macedonia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "mali": {
+    "name": "mali",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "malta": {
+    "name": "malta",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "myanmar": {
+    "name": "myanmar",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "montenegro": {
+    "name": "montenegro",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "mongolia": {
+    "name": "mongolia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "mozambique": {
+    "name": "mozambique",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "mauritania": {
+    "name": "mauritania",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "malawi": {
+    "name": "malawi",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "malaysia": {
+    "name": "malaysia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "namibia": {
+    "name": "namibia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "new_caledonia": {
+    "name": "new_caledonia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "niger": {
+    "name": "niger",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "nigeria": {
+    "name": "nigeria",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "nicaragua": {
+    "name": "nicaragua",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "netherlands": {
+    "name": "netherlands",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "norway": {
+    "name": "norway",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "nepal": {
+    "name": "nepal",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "new_zealand": {
+    "name": "new_zealand",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "oman": {
+    "name": "oman",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "pakistan": {
+    "name": "pakistan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "panama": {
+    "name": "panama",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "peru": {
+    "name": "peru",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "philippines": {
+    "name": "philippines",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "papua_new_guinea": {
+    "name": "papua_new_guinea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "poland": {
+    "name": "poland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "puerto_rico": {
+    "name": "puerto_rico",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "north_korea": {
+    "name": "north_korea",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "portugal": {
+    "name": "portugal",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "paraguay": {
+    "name": "paraguay",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "qatar": {
+    "name": "qatar",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "romania": {
+    "name": "romania",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "russia": {
+    "name": "russia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "rwanda": {
+    "name": "rwanda",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "western_sahara": {
+    "name": "western_sahara",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "saudi_arabia": {
+    "name": "saudi_arabia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "sudan": {
+    "name": "sudan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "south_sudan": {
+    "name": "south_sudan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "senegal": {
+    "name": "senegal",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "solomon_islands": {
+    "name": "solomon_islands",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "sierra_leone": {
+    "name": "sierra_leone",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "el_salvador": {
+    "name": "el_salvador",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "somaliland": {
+    "name": "somaliland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "somalia": {
+    "name": "somalia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "republic_of_serbia": {
+    "name": "republic_of_serbia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "suriname": {
+    "name": "suriname",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "slovakia": {
+    "name": "slovakia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "slovenia": {
+    "name": "slovenia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "sweden": {
+    "name": "sweden",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "swaziland": {
+    "name": "swaziland",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "syria": {
+    "name": "syria",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "chad": {
+    "name": "chad",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "togo": {
+    "name": "togo",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "thailand": {
+    "name": "thailand",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "tajikistan": {
+    "name": "tajikistan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "turkmenistan": {
+    "name": "turkmenistan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "east_timor": {
+    "name": "east_timor",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "trinidad_and_tobago": {
+    "name": "trinidad_and_tobago",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "tunisia": {
+    "name": "tunisia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "turkey": {
+    "name": "turkey",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "taiwan": {
+    "name": "taiwan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "united_republic_of_tanzania": {
+    "name": "united_republic_of_tanzania",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "uganda": {
+    "name": "uganda",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "ukraine": {
+    "name": "ukraine",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "uruguay": {
+    "name": "uruguay",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "united_states_of_america": {
+    "name": "united_states_of_america",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "uzbekistan": {
+    "name": "uzbekistan",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "venezuela": {
+    "name": "venezuela",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "vietnam": {
+    "name": "vietnam",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "vanuatu": {
+    "name": "vanuatu",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "west_bank": {
+    "name": "west_bank",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "yemen": {
+    "name": "yemen",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "south_africa": {
+    "name": "south_africa",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "zambia": {
+    "name": "zambia",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  },
+  "zimbabwe": {
+    "name": "zimbabwe",
+    "troops": {
+      "one": {
+        "name": "lbl_unit_zombie",
+        "color": "purple",
+        "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+        "quantity": 99999
+      }
+    }
+  }
+}

@@ -51,7 +51,7 @@
 * Elemental Gathering https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg
 * Hypnosis http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg
 * Fake Gold https://www.videogamesartwork.com/sites/default/files/images/image/1377175936/dragonscrown_environment_treasure_room.jpg
-* Wisdom http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg
+* Counter Spell http://www.drawmaster.ru/uploads/posts/2012-10/DrawMaster.ru_magic-sign-13.jpg
 * Haste https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg
 * Create Artifact http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg
 * Concentration https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg
@@ -74,15 +74,16 @@
 * Green Dragon https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg
 * Hydra https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg
 ### Spells
-* Nature Favor
+* Nature Favor https://i.pinimg.com/originals/da/c7/90/dac79063e82ce0a9190f6236c3dd72db.jpg
 * Hurricane http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg
 * Tornado https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg
-* Rust Armor
-* Climate Control
-* Forest Wrath
-* Beast Council
+* Rust Armor https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg
+* Climate Control https://i.pinimg.com/736x/6c/1a/36/6c1a36b42f4a0c4a416617213f94107a--fantasy-art-landscapes-fantasy-landscape.jpg
+* Elemental Wrath https://i.pinimg.com/736x/4b/3e/0e/4b3e0e45c159d9b7aa8a7bcf568ea385--mtg-art-fantasy-creatures.jpg
+* Beast Council https://i.pinimg.com/originals/7c/08/c0/7c08c085f261daaff9c8313ac8f28ac6.jpg
 * Regenerate https://i.pinimg.com/originals/8f/19/24/8f1924d3218f6a25e5e43d9327eb1531.jpg
-* 
+* Fountain of Youth http://aws-cf.ados.fr/prod/photos/6/4/0/7410640/2191349/img-2191349fe5.jpg?v=5
+* Wisdom http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg
 ### Heroes
 * Druid https://i.pinimg.com/736x/b5/44/1b/b5441b341974855b1f357d05c6e9f333--character-portraits-fantasy-characters.jpg
 * Leprechaunt http://2.bp.blogspot.com/-Pli34qcIfSc/Trgld8YFDfI/AAAAAAAAKzw/--Osr2E9TkU/s640/gnomo+mushroom_hunter_by_lordeeas-d39dgzq.jpg
@@ -91,7 +92,7 @@
 # Holy
 ### Units
 * Crusader https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg
-* Cleric https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg
+* Griffin https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg
 * Unicorn http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg
 * Pegasus https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg
 * Paladin http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg
@@ -120,7 +121,7 @@
 ### Units
 * Skeleton https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg
 * Zombie https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg
-* Spider http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg
+* Spider https://i.pinimg.com/originals/8a/dd/58/8add584f835ba3f9f4592c9ac0fc94dc.jpg
 * Werewolf https://alusinefinalmajorproject.files.wordpress.com/2015/04/werewolf-backgrounds.jpg
 * Wraith https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg
 * Lich https://i.pinimg.com/originals/6d/68/4a/6d684a5c6b7324b0209a1d418f27aff4.jpg
@@ -159,7 +160,7 @@
 # Gods
 * God of Death https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg
 * God of Light https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg≤
-* God of Life https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg
+* God of Life https://i.pinimg.com/736x/d1/63/80/d16380a525ff8f2e64861ace6c1b22c4--mtg-art-magazine-articles.jpg
 * God of Blood https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg
 * God of Magic https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg
 
