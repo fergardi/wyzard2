@@ -3,8 +3,8 @@
     mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
     mu-popup(position="bottom", :open="popup", @close="close")
       mu-appbar(:title="name")
-        mu-icon(slot="left", icon="close")
-        mu-icon-button(slot="right", icon="close", @click="close")
+        mu-icon-button.hidden(slot="left", icon=":ra ra-interdiction", @click="close")
+        mu-icon-button(slot="right", icon=":ra ra-interdiction", @click="close")
       mu-content-block
         mu-list
           mu-list-item(v-for="troop, index in army", :title="translate(troop.name)", :key="index")

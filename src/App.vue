@@ -187,6 +187,8 @@
       line-height 22px
       margin 2px
       font-size 0.8em
+    .hidden
+      visibility hidden
     .mu-dialog
       background-color transparent
       box-shadow none
