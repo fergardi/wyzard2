@@ -89,7 +89,7 @@
           'paint': {
             'fill-color': '#ad835a',
             'fill-outline-color': '#ad835a',
-            'fill-opacity': 0.75
+            'fill-opacity': 0.5
           }
         })
         // show selected country
@@ -103,7 +103,7 @@
           'paint': {
             'fill-color': '#680600',
             'fill-outline-color': '#ad835a',
-            'fill-opacity': 0.75
+            'fill-opacity': 0.5
           }
         })
         // show conquered countries
