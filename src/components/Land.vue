@@ -1,6 +1,14 @@
 <template lang="pug">
   .map
     mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
+    mu-popup(position="bottom", :open="popup", @close="close")
+      mu-appbar(:title="selected.name")
+        mu-icon-button(slot="right", icon="close", @click="close")
+      mu-content-block
+        mu-list
+          mu-list-item(v-for="troop, index in selected.army", :title="translate(troop.name)", :class="troop.color", :key="index")
+            mu-avatar(:src="troop.image", slot="leftAvatar")
+            mu-badge(slot="after") {{ troop.quantity | numeric }}
 </template>
 
 <script>
@@ -16,6 +24,8 @@
     },
     data () {
       return {
+        popup: false,
+        selected: {},
         map: null,
         token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
         options: {
@@ -100,7 +110,6 @@
         map.setFilter('countries-conquered', ['in', 'name'].concat(this.countries))
         // show selected country on click
         map.on('click', 'countries', (e) => {
-          store.commit('untoast')
           if (map.getLayoutProperty('country-selected', 'visibility') === 'none') {
             map.setLayoutProperty('country-selected', 'visibility', 'visible')
           }
@@ -108,9 +117,23 @@
             map.setFilter('country-selected', ['==', 'name', e.features[0].properties.name])
             let bbox = extent(e.features[0].geometry)
             map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
-            store.commit('info', e.features[0].properties.name)
+            this.selected = {
+              name: e.features[0].properties.name,
+              army: [
+                { name: 'lbl_unit_skeleton', color: 'purple', quantity: 1233221, image: 'https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg' },
+                { name: 'lbl_unit_zombie', color: 'purple', quantity: 435565, image: 'https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg' },
+                { name: 'lbl_unit_spider', color: 'purple', quantity: 5435, image: 'http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg' },
+                { name: 'lbl_unit_wraith', color: 'purple', quantity: 2343, image: 'https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg' },
+                { name: 'lbl_unit_vampire', color: 'purple', quantity: 43, image: 'https://i.pinimg.com/originals/86/ec/49/86ec491c65f763284cf167575836f15f.jpg' }
+              ]
+            }
+            this.popup = true
           }
         })
+      },
+      close () {
+        this.popup = false
+        this.selected = {}
       }
     },
     computed: {
@@ -121,7 +144,7 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   #map
     opacity 0.95
     height calc(100vh - 69px)
@@ -132,4 +155,8 @@
     canvas
       width 100% !important
       height 100% !important
+  .mu-popup
+    min-width 50%
+    .mu-content-block
+      padding 0
 </style>
