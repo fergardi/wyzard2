@@ -1,6 +1,6 @@
 {
   "afghanistan": {
-    "name": "afghanistan",
+    "name": "Afghanistan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -11,7 +11,7 @@
     }
   },
   "angola": {
-    "name": "angola",
+    "name": "Angola",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -22,7 +22,7 @@
     }
   },
   "albania": {
-    "name": "albania",
+    "name": "Albania",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -33,7 +33,7 @@
     }
   },
   "united_arab_emirates": {
-    "name": "united_arab_emirates",
+    "name": "United Arab Emirates",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -44,7 +44,7 @@
     }
   },
   "argentina": {
-    "name": "argentina",
+    "name": "Argentina",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -55,7 +55,7 @@
     }
   },
   "armenia": {
-    "name": "armenia",
+    "name": "Armenia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -66,7 +66,7 @@
     }
   },
   "antarctica": {
-    "name": "antarctica",
+    "name": "Antarctica",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -77,7 +77,7 @@
     }
   },
   "french_southern_and_antarctic_lands": {
-    "name": "french_southern_and_antarctic_lands",
+    "name": "French Southern and Antarctic Lands",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -88,7 +88,7 @@
     }
   },
   "australia": {
-    "name": "australia",
+    "name": "Australia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -99,7 +99,7 @@
     }
   },
   "austria": {
-    "name": "austria",
+    "name": "Austria",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -110,7 +110,7 @@
     }
   },
   "azerbaijan": {
-    "name": "azerbaijan",
+    "name": "Azerbaijan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -121,7 +121,7 @@
     }
   },
   "burundi": {
-    "name": "burundi",
+    "name": "Burundi",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -132,7 +132,7 @@
     }
   },
   "belgium": {
-    "name": "belgium",
+    "name": "Belgium",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -143,7 +143,7 @@
     }
   },
   "benin": {
-    "name": "benin",
+    "name": "Benin",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -154,7 +154,7 @@
     }
   },
   "burkina_faso": {
-    "name": "burkina_faso",
+    "name": "Burkina Faso",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -165,7 +165,7 @@
     }
   },
   "bangladesh": {
-    "name": "bangladesh",
+    "name": "Bangladesh",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -176,7 +176,7 @@
     }
   },
   "bulgaria": {
-    "name": "bulgaria",
+    "name": "Bulgaria",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -187,7 +187,7 @@
     }
   },
   "the_bahamas": {
-    "name": "the_bahamas",
+    "name": "The Bahamas",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -198,7 +198,7 @@
     }
   },
   "bosnia_and_herzegovina": {
-    "name": "bosnia_and_herzegovina",
+    "name": "Bosnia and Herzegovina",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -209,7 +209,7 @@
     }
   },
   "belarus": {
-    "name": "belarus",
+    "name": "Belarus",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -220,7 +220,7 @@
     }
   },
   "belize": {
-    "name": "belize",
+    "name": "Belize",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -231,7 +231,7 @@
     }
   },
   "bermuda": {
-    "name": "bermuda",
+    "name": "Bermuda",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -242,7 +242,7 @@
     }
   },
   "bolivia": {
-    "name": "bolivia",
+    "name": "Bolivia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -253,7 +253,7 @@
     }
   },
   "brazil": {
-    "name": "brazil",
+    "name": "Brazil",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -264,7 +264,7 @@
     }
   },
   "brunei": {
-    "name": "brunei",
+    "name": "Brunei",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -275,7 +275,7 @@
     }
   },
   "bhutan": {
-    "name": "bhutan",
+    "name": "Bhutan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -286,7 +286,7 @@
     }
   },
   "botswana": {
-    "name": "botswana",
+    "name": "Botswana",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -297,7 +297,7 @@
     }
   },
   "central_african_republic": {
-    "name": "central_african_republic",
+    "name": "Central African Republic",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -308,7 +308,7 @@
     }
   },
   "canada": {
-    "name": "canada",
+    "name": "Canada",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -319,7 +319,7 @@
     }
   },
   "switzerland": {
-    "name": "switzerland",
+    "name": "Switzerland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -330,7 +330,7 @@
     }
   },
   "chile": {
-    "name": "chile",
+    "name": "Chile",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -341,7 +341,7 @@
     }
   },
   "china": {
-    "name": "china",
+    "name": "China",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -352,7 +352,7 @@
     }
   },
   "ivory_coast": {
-    "name": "ivory_coast",
+    "name": "Ivory Coast",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -363,7 +363,7 @@
     }
   },
   "cameroon": {
-    "name": "cameroon",
+    "name": "Cameroon",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -374,7 +374,7 @@
     }
   },
   "democratic_republic_of_the_congo": {
-    "name": "democratic_republic_of_the_congo",
+    "name": "Democratic Republic of the Congo",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -385,7 +385,7 @@
     }
   },
   "republic_of_the_congo": {
-    "name": "republic_of_the_congo",
+    "name": "Republic of the Congo",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -396,7 +396,7 @@
     }
   },
   "colombia": {
-    "name": "colombia",
+    "name": "Colombia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -407,7 +407,7 @@
     }
   },
   "costa_rica": {
-    "name": "costa_rica",
+    "name": "Costa Rica",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -418,7 +418,7 @@
     }
   },
   "cuba": {
-    "name": "cuba",
+    "name": "Cuba",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -429,7 +429,7 @@
     }
   },
   "northern_cyprus": {
-    "name": "northern_cyprus",
+    "name": "Northern Cyprus",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -440,7 +440,7 @@
     }
   },
   "cyprus": {
-    "name": "cyprus",
+    "name": "Cyprus",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -451,7 +451,7 @@
     }
   },
   "czech_republic": {
-    "name": "czech_republic",
+    "name": "Czech Republic",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -462,7 +462,7 @@
     }
   },
   "germany": {
-    "name": "germany",
+    "name": "Germany",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -473,7 +473,7 @@
     }
   },
   "djibouti": {
-    "name": "djibouti",
+    "name": "Djibouti",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -484,7 +484,7 @@
     }
   },
   "denmark": {
-    "name": "denmark",
+    "name": "Denmark",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -495,7 +495,7 @@
     }
   },
   "dominican_republic": {
-    "name": "dominican_republic",
+    "name": "Dominican Republic",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -506,7 +506,7 @@
     }
   },
   "algeria": {
-    "name": "algeria",
+    "name": "Algeria",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -517,7 +517,7 @@
     }
   },
   "ecuador": {
-    "name": "ecuador",
+    "name": "Ecuador",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -528,7 +528,7 @@
     }
   },
   "egypt": {
-    "name": "egypt",
+    "name": "Egypt",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -539,7 +539,7 @@
     }
   },
   "eritrea": {
-    "name": "eritrea",
+    "name": "Eritrea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -550,7 +550,7 @@
     }
   },
   "spain": {
-    "name": "spain",
+    "name": "Spain",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -561,7 +561,7 @@
     }
   },
   "estonia": {
-    "name": "estonia",
+    "name": "Estonia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -572,7 +572,7 @@
     }
   },
   "ethiopia": {
-    "name": "ethiopia",
+    "name": "Ethiopia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -583,7 +583,7 @@
     }
   },
   "finland": {
-    "name": "finland",
+    "name": "Finland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -594,7 +594,7 @@
     }
   },
   "fiji": {
-    "name": "fiji",
+    "name": "Fiji",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -605,7 +605,7 @@
     }
   },
   "falkland_islands": {
-    "name": "falkland_islands",
+    "name": "Falkland Islands",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -616,7 +616,7 @@
     }
   },
   "france": {
-    "name": "france",
+    "name": "France",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -627,7 +627,7 @@
     }
   },
   "gabon": {
-    "name": "gabon",
+    "name": "Gabon",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -638,7 +638,7 @@
     }
   },
   "united_kingdom": {
-    "name": "united_kingdom",
+    "name": "United Kingdom",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -649,7 +649,7 @@
     }
   },
   "georgia": {
-    "name": "georgia",
+    "name": "Georgia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -660,7 +660,7 @@
     }
   },
   "ghana": {
-    "name": "ghana",
+    "name": "Ghana",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -671,7 +671,7 @@
     }
   },
   "guinea": {
-    "name": "guinea",
+    "name": "Guinea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -682,7 +682,7 @@
     }
   },
   "gambia": {
-    "name": "gambia",
+    "name": "Gambia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -693,7 +693,7 @@
     }
   },
   "guinea_bissau": {
-    "name": "guinea_bissau",
+    "name": "Guinea Bissau",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -704,7 +704,7 @@
     }
   },
   "equatorial_guinea": {
-    "name": "equatorial_guinea",
+    "name": "Equatorial Guinea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -715,7 +715,7 @@
     }
   },
   "greece": {
-    "name": "greece",
+    "name": "Greece",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -726,7 +726,7 @@
     }
   },
   "greenland": {
-    "name": "greenland",
+    "name": "Greenland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -737,7 +737,7 @@
     }
   },
   "guatemala": {
-    "name": "guatemala",
+    "name": "Guatemala",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -748,7 +748,7 @@
     }
   },
   "french_guiana": {
-    "name": "french_guiana",
+    "name": "French Guiana",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -759,7 +759,7 @@
     }
   },
   "guyana": {
-    "name": "guyana",
+    "name": "Guyana",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -770,7 +770,7 @@
     }
   },
   "honduras": {
-    "name": "honduras",
+    "name": "Honduras",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -781,7 +781,7 @@
     }
   },
   "croatia": {
-    "name": "croatia",
+    "name": "Croatia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -792,7 +792,7 @@
     }
   },
   "haiti": {
-    "name": "haiti",
+    "name": "Haiti",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -803,7 +803,7 @@
     }
   },
   "hungary": {
-    "name": "hungary",
+    "name": "Hungary",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -814,7 +814,7 @@
     }
   },
   "indonesia": {
-    "name": "indonesia",
+    "name": "Indonesia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -825,7 +825,7 @@
     }
   },
   "india": {
-    "name": "india",
+    "name": "India",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -836,7 +836,7 @@
     }
   },
   "ireland": {
-    "name": "ireland",
+    "name": "Ireland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -847,7 +847,7 @@
     }
   },
   "iran": {
-    "name": "iran",
+    "name": "Iran",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -858,7 +858,7 @@
     }
   },
   "iraq": {
-    "name": "iraq",
+    "name": "Iraq",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -869,7 +869,7 @@
     }
   },
   "iceland": {
-    "name": "iceland",
+    "name": "Iceland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -880,7 +880,7 @@
     }
   },
   "israel": {
-    "name": "israel",
+    "name": "Israel",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -891,7 +891,7 @@
     }
   },
   "italy": {
-    "name": "italy",
+    "name": "Italy",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -902,7 +902,7 @@
     }
   },
   "jamaica": {
-    "name": "jamaica",
+    "name": "Jamaica",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -913,7 +913,7 @@
     }
   },
   "jordan": {
-    "name": "jordan",
+    "name": "Jordan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -924,7 +924,7 @@
     }
   },
   "japan": {
-    "name": "japan",
+    "name": "Japan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -935,7 +935,7 @@
     }
   },
   "kazakhstan": {
-    "name": "kazakhstan",
+    "name": "Kazakhstan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -946,7 +946,7 @@
     }
   },
   "kenya": {
-    "name": "kenya",
+    "name": "Kenya",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -957,7 +957,7 @@
     }
   },
   "kyrgyzstan": {
-    "name": "kyrgyzstan",
+    "name": "Kyrgyzstan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -968,7 +968,7 @@
     }
   },
   "cambodia": {
-    "name": "cambodia",
+    "name": "Cambodia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -979,7 +979,7 @@
     }
   },
   "south_korea": {
-    "name": "south_korea",
+    "name": "South Korea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -990,7 +990,7 @@
     }
   },
   "kosovo": {
-    "name": "kosovo",
+    "name": "Kosovo",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1001,7 +1001,7 @@
     }
   },
   "kuwait": {
-    "name": "kuwait",
+    "name": "Kuwait",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1012,7 +1012,7 @@
     }
   },
   "laos": {
-    "name": "laos",
+    "name": "Laos",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1023,7 +1023,7 @@
     }
   },
   "lebanon": {
-    "name": "lebanon",
+    "name": "Lebanon",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1034,7 +1034,7 @@
     }
   },
   "liberia": {
-    "name": "liberia",
+    "name": "Liberia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1045,7 +1045,7 @@
     }
   },
   "libya": {
-    "name": "libya",
+    "name": "Libya",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1056,7 +1056,7 @@
     }
   },
   "sri_lanka": {
-    "name": "sri_lanka",
+    "name": "Sri Lanka",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1067,7 +1067,7 @@
     }
   },
   "lesotho": {
-    "name": "lesotho",
+    "name": "Lesotho",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1078,7 +1078,7 @@
     }
   },
   "lithuania": {
-    "name": "lithuania",
+    "name": "Lithuania",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1089,7 +1089,7 @@
     }
   },
   "luxembourg": {
-    "name": "luxembourg",
+    "name": "Luxembourg",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1100,7 +1100,7 @@
     }
   },
   "latvia": {
-    "name": "latvia",
+    "name": "Latvia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1111,7 +1111,7 @@
     }
   },
   "morocco": {
-    "name": "morocco",
+    "name": "Morocco",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1122,7 +1122,7 @@
     }
   },
   "moldova": {
-    "name": "moldova",
+    "name": "Moldova",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1133,7 +1133,7 @@
     }
   },
   "madagascar": {
-    "name": "madagascar",
+    "name": "Madagascar",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1144,7 +1144,7 @@
     }
   },
   "mexico": {
-    "name": "mexico",
+    "name": "Mexico",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1155,7 +1155,7 @@
     }
   },
   "macedonia": {
-    "name": "macedonia",
+    "name": "Macedonia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1166,7 +1166,7 @@
     }
   },
   "mali": {
-    "name": "mali",
+    "name": "Mali",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1177,7 +1177,7 @@
     }
   },
   "malta": {
-    "name": "malta",
+    "name": "Malta",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1188,7 +1188,7 @@
     }
   },
   "myanmar": {
-    "name": "myanmar",
+    "name": "Myanmar",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1199,7 +1199,7 @@
     }
   },
   "montenegro": {
-    "name": "montenegro",
+    "name": "Montenegro",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1210,7 +1210,7 @@
     }
   },
   "mongolia": {
-    "name": "mongolia",
+    "name": "Mongolia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1221,7 +1221,7 @@
     }
   },
   "mozambique": {
-    "name": "mozambique",
+    "name": "Mozambique",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1232,7 +1232,7 @@
     }
   },
   "mauritania": {
-    "name": "mauritania",
+    "name": "Mauritania",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1243,7 +1243,7 @@
     }
   },
   "malawi": {
-    "name": "malawi",
+    "name": "Malawi",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1254,7 +1254,7 @@
     }
   },
   "malaysia": {
-    "name": "malaysia",
+    "name": "Malaysia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1265,7 +1265,7 @@
     }
   },
   "namibia": {
-    "name": "namibia",
+    "name": "Namibia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1276,7 +1276,7 @@
     }
   },
   "new_caledonia": {
-    "name": "new_caledonia",
+    "name": "New Caledonia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1287,7 +1287,7 @@
     }
   },
   "niger": {
-    "name": "niger",
+    "name": "Niger",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1298,7 +1298,7 @@
     }
   },
   "nigeria": {
-    "name": "nigeria",
+    "name": "Nigeria",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1309,7 +1309,7 @@
     }
   },
   "nicaragua": {
-    "name": "nicaragua",
+    "name": "Nicaragua",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1320,7 +1320,7 @@
     }
   },
   "netherlands": {
-    "name": "netherlands",
+    "name": "Netherlands",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1331,7 +1331,7 @@
     }
   },
   "norway": {
-    "name": "norway",
+    "name": "Norway",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1342,7 +1342,7 @@
     }
   },
   "nepal": {
-    "name": "nepal",
+    "name": "Nepal",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1353,7 +1353,7 @@
     }
   },
   "new_zealand": {
-    "name": "new_zealand",
+    "name": "New Zealand",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1364,7 +1364,7 @@
     }
   },
   "oman": {
-    "name": "oman",
+    "name": "Oman",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1375,7 +1375,7 @@
     }
   },
   "pakistan": {
-    "name": "pakistan",
+    "name": "Pakistan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1386,7 +1386,7 @@
     }
   },
   "panama": {
-    "name": "panama",
+    "name": "Panama",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1397,7 +1397,7 @@
     }
   },
   "peru": {
-    "name": "peru",
+    "name": "Peru",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1408,7 +1408,7 @@
     }
   },
   "philippines": {
-    "name": "philippines",
+    "name": "Philippines",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1419,7 +1419,7 @@
     }
   },
   "papua_new_guinea": {
-    "name": "papua_new_guinea",
+    "name": "Papua New Guinea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1430,7 +1430,7 @@
     }
   },
   "poland": {
-    "name": "poland",
+    "name": "Poland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1441,7 +1441,7 @@
     }
   },
   "puerto_rico": {
-    "name": "puerto_rico",
+    "name": "Puerto Rico",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1452,7 +1452,7 @@
     }
   },
   "north_korea": {
-    "name": "north_korea",
+    "name": "North Korea",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1463,7 +1463,7 @@
     }
   },
   "portugal": {
-    "name": "portugal",
+    "name": "Portugal",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1474,7 +1474,7 @@
     }
   },
   "paraguay": {
-    "name": "paraguay",
+    "name": "Paraguay",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1485,7 +1485,7 @@
     }
   },
   "qatar": {
-    "name": "qatar",
+    "name": "Qatar",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1496,7 +1496,7 @@
     }
   },
   "romania": {
-    "name": "romania",
+    "name": "Romania",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1507,7 +1507,7 @@
     }
   },
   "russia": {
-    "name": "russia",
+    "name": "Russia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1518,7 +1518,7 @@
     }
   },
   "rwanda": {
-    "name": "rwanda",
+    "name": "Rwanda",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1529,7 +1529,7 @@
     }
   },
   "western_sahara": {
-    "name": "western_sahara",
+    "name": "Western Sahara",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1540,7 +1540,7 @@
     }
   },
   "saudi_arabia": {
-    "name": "saudi_arabia",
+    "name": "Saudi Arabia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1551,7 +1551,7 @@
     }
   },
   "sudan": {
-    "name": "sudan",
+    "name": "Sudan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1562,7 +1562,7 @@
     }
   },
   "south_sudan": {
-    "name": "south_sudan",
+    "name": "South Sudan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1573,7 +1573,7 @@
     }
   },
   "senegal": {
-    "name": "senegal",
+    "name": "Senegal",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1584,7 +1584,7 @@
     }
   },
   "solomon_islands": {
-    "name": "solomon_islands",
+    "name": "Solomon Islands",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1595,7 +1595,7 @@
     }
   },
   "sierra_leone": {
-    "name": "sierra_leone",
+    "name": "Sierra Leone",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1606,7 +1606,7 @@
     }
   },
   "el_salvador": {
-    "name": "el_salvador",
+    "name": "El Salvador",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1617,7 +1617,7 @@
     }
   },
   "somaliland": {
-    "name": "somaliland",
+    "name": "Somaliland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1628,7 +1628,7 @@
     }
   },
   "somalia": {
-    "name": "somalia",
+    "name": "Somalia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1639,7 +1639,7 @@
     }
   },
   "republic_of_serbia": {
-    "name": "republic_of_serbia",
+    "name": "Republic of Serbia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1650,7 +1650,7 @@
     }
   },
   "suriname": {
-    "name": "suriname",
+    "name": "Suriname",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1661,7 +1661,7 @@
     }
   },
   "slovakia": {
-    "name": "slovakia",
+    "name": "Slovakia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1672,7 +1672,7 @@
     }
   },
   "slovenia": {
-    "name": "slovenia",
+    "name": "Slovenia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1683,7 +1683,7 @@
     }
   },
   "sweden": {
-    "name": "sweden",
+    "name": "Sweden",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1694,7 +1694,7 @@
     }
   },
   "swaziland": {
-    "name": "swaziland",
+    "name": "Swaziland",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1705,7 +1705,7 @@
     }
   },
   "syria": {
-    "name": "syria",
+    "name": "Syria",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1716,7 +1716,7 @@
     }
   },
   "chad": {
-    "name": "chad",
+    "name": "Chad",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1727,7 +1727,7 @@
     }
   },
   "togo": {
-    "name": "togo",
+    "name": "Togo",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1738,7 +1738,7 @@
     }
   },
   "thailand": {
-    "name": "thailand",
+    "name": "Thailand",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1749,7 +1749,7 @@
     }
   },
   "tajikistan": {
-    "name": "tajikistan",
+    "name": "Tajikistan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1760,7 +1760,7 @@
     }
   },
   "turkmenistan": {
-    "name": "turkmenistan",
+    "name": "Turkmenistan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1771,7 +1771,7 @@
     }
   },
   "east_timor": {
-    "name": "east_timor",
+    "name": "East Timor",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1782,7 +1782,7 @@
     }
   },
   "trinidad_and_tobago": {
-    "name": "trinidad_and_tobago",
+    "name": "Trinidad and Tobago",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1793,7 +1793,7 @@
     }
   },
   "tunisia": {
-    "name": "tunisia",
+    "name": "Tunisia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1804,7 +1804,7 @@
     }
   },
   "turkey": {
-    "name": "turkey",
+    "name": "Turkey",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1815,7 +1815,7 @@
     }
   },
   "taiwan": {
-    "name": "taiwan",
+    "name": "Taiwan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1826,7 +1826,7 @@
     }
   },
   "united_republic_of_tanzania": {
-    "name": "united_republic_of_tanzania",
+    "name": "United Republic of Tanzania",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1837,7 +1837,7 @@
     }
   },
   "uganda": {
-    "name": "uganda",
+    "name": "Uganda",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1848,7 +1848,7 @@
     }
   },
   "ukraine": {
-    "name": "ukraine",
+    "name": "Ukraine",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1859,7 +1859,7 @@
     }
   },
   "uruguay": {
-    "name": "uruguay",
+    "name": "Uruguay",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1870,7 +1870,7 @@
     }
   },
   "united_states_of_america": {
-    "name": "united_states_of_america",
+    "name": "United States of America",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1881,7 +1881,7 @@
     }
   },
   "uzbekistan": {
-    "name": "uzbekistan",
+    "name": "Uzbekistan",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1892,7 +1892,7 @@
     }
   },
   "venezuela": {
-    "name": "venezuela",
+    "name": "Venezuela",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1903,7 +1903,7 @@
     }
   },
   "vietnam": {
-    "name": "vietnam",
+    "name": "Vietnam",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1914,7 +1914,7 @@
     }
   },
   "vanuatu": {
-    "name": "vanuatu",
+    "name": "Vanuatu",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1925,7 +1925,7 @@
     }
   },
   "west_bank": {
-    "name": "west_bank",
+    "name": "West Bank",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1936,7 +1936,7 @@
     }
   },
   "yemen": {
-    "name": "yemen",
+    "name": "Yemen",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1947,7 +1947,7 @@
     }
   },
   "south_africa": {
-    "name": "south_africa",
+    "name": "South Africa",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1958,7 +1958,7 @@
     }
   },
   "zambia": {
-    "name": "zambia",
+    "name": "Zambia",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",
@@ -1969,7 +1969,7 @@
     }
   },
   "zimbabwe": {
-    "name": "zimbabwe",
+    "name": "Zimbabwe",
     "troops": {
       "one": {
         "name": "lbl_unit_zombie",

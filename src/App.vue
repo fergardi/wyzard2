@@ -361,6 +361,21 @@
         background-color $white
       &.dark
         background-color $dark
+    .mu-avatar.bordered
+      border 3px solid
+      border-radius 50%
+      &.red
+        border-color $red
+      &.green
+        border-color $green
+      &.purple
+        border-color $purple
+      &.blue
+        border-color $blue
+      &.white
+        border-color $white
+      &.dark
+        border-color $dark
     @media (min-width 480px)
       .mu-appbar
         height 56px
