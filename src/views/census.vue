@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
@@ -33,7 +33,7 @@
       store.commit('title', 'lbl_title_census')
     },
     firebase: {
-      users: firebase.ref('users').orderByChild('name')
+      users: database.ref('users').orderByChild('name')
     },
     methods: {
       move (page) {

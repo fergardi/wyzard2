@@ -13,6 +13,7 @@ import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 // import '../node_modules/muse-ui/dist/theme-dark.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 
+// helpers
 function numeric (number) {
   return !number
   ? parseFloat(0)
@@ -24,21 +25,22 @@ function numeric (number) {
         ? parseFloat((number / 1000).toFixed(2)) + 'K'
         : parseFloat(number.toFixed(2))
 }
-
 function datetime (timestamp) {
   return moment(timestamp).fromNow()
 }
-
 function translate (label) {
   return i18n[store.state.settings.lang || store.state.lang][label] || label
 }
 
 // UI
 Vue.use(MuseUI)
+
 // mapbox
 window.mapboxgl = require('mapbox-gl')
+
 // firebase
 Vue.use(VueFire)
+
 // filters
 Vue.filter('datetime', (timestamp) => {
   return datetime(timestamp)
@@ -55,6 +57,7 @@ Vue.filter('ipsum', () => {
 Vue.filter('lorem', () => {
   return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
 })
+
 // mixins
 Vue.mixin({
   methods: {
@@ -69,8 +72,23 @@ Vue.mixin({
     }
   }
 })
+
+// security
+let restrictions = ['census']
+function restricted (route) {
+  return restrictions.includes(route)
+}
+router.beforeEach((to, from, next) => {
+  if (restricted(to) && !store.state.logged) {
+    router.push('/login')
+  } else {
+    next()
+  }
+})
+
 // production
 Vue.config.productionTip = false
+
 // main app
 let Main = Vue.component('app', App) // eslint-disable-line
 Main = new Main({

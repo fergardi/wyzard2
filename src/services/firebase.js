@@ -1,4 +1,4 @@
-import Firebase from 'firebase'
+import firebase from 'firebase'
 
 var config = {
   apiKey: 'AIzaSyDHUJ22pxTxUjRtM9eQYZqPYNuvH2cWg3Q',
@@ -9,13 +9,20 @@ var config = {
   messagingSenderId: '787291880727'
 }
 
-const app = Firebase.initializeApp(config)
-const firebase = app.database()
+const app = firebase.initializeApp(config)
 
-export default firebase
+export const database = app.database()
 
-export const auto = function (collection, item) {
-  return firebase.ref(collection).child(item).on('child_added', snapshot => {
-    return snapshot.val()
-  })
+export const auth = app.auth()
+
+export const authenticate = (email, password) => {
+  return auth.signInWithEmailAndPassword(email, password)
+}
+
+export const register = (email, password) => {
+  return auth.createUserWithEmailAndPassword(email, password)
+}
+
+export const disconnect = () => {
+  return auth.signOut()
 }

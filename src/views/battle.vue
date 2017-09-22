@@ -3,10 +3,10 @@
     mu-col(width="100", tablet="50", desktop="50")
       mu-card.battle.animated.fadeInUp
         mu-card-media
-          img(:src="battle.image")
-          #title {{ battle.name | translate }}
+          img(src="http://coolvibe.com/wp-content/uploads/2011/08/orc-battle.jpg")
+          #title {{ 'lbl_label_battle' | translate }}
         mu-card-text
-          p {{ battle.description | lorem }}
+          p {{ 'lbl_label_battle_description' | lorem }}
         mu-card-text
           form
           
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
@@ -87,14 +87,10 @@
       store.commit('title', 'lbl_title_battle')
     },
     firebase: {
-      battle: {
-        source: firebase.ref('battle'),
-        asObject: true
-      },
-      users: firebase.ref('users').orderByChild('name'),
-      troops: firebase.ref('users').child(store.state.username).child('troops').orderByChild('name'),
-      spells: firebase.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true),
-      artifacts: firebase.ref('users').child(store.state.username).child('artifacts').orderByChild('name')
+      users: database.ref('users').orderByChild('name'),
+      troops: database.ref('users').child(store.state.username).child('troops').orderByChild('name'),
+      spells: database.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true),
+      artifacts: database.ref('users').child(store.state.username).child('artifacts').orderByChild('name')
     },
     methods: {
       attack () {

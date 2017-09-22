@@ -28,6 +28,7 @@ import troops from '@/views/troops'
 import battle from '@/views/battle'
 import defense from '@/views/defense'
 import help from '@/views/help'
+import login from '@/views/login'
 
 Vue.use(Router)
 
@@ -36,7 +37,12 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: kingdom
+      component: login
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/spells',

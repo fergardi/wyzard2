@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
@@ -30,7 +30,7 @@
     },
     firebase: {
       user: {
-        source: firebase.ref('users').child(store.state.username),
+        source: database.ref('users').child(store.state.username),
         asObject: true
       }
     },

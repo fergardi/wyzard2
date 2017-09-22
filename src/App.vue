@@ -8,7 +8,7 @@
     mu-paper
       mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
         mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.help(icon="help", :slot="!right ? 'right' : 'left'", to="help")
+        mu-icon-button.logout(icon="power_settings_new", :slot="!right ? 'right' : 'left'", @click="logout")
 
     mu-drawer.sidebar(:open="menu", :docked="false", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
@@ -35,8 +35,8 @@
           mu-badge(slot="after") {{ user.territory | numeric }}
 
         mu-sub-header {{ 'lbl_title_enchantments' | translate }}
-        mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled, :class="enchantment.color")
-          mu-icon(slot="left", value=":ra ra-bleeding-eye")
+        mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+          mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="enchantment.color")
           mu-badge(slot="after") {{ enchantment.remaining | numeric }}
 
         mu-sub-header {{ 'lbl_title_economy' | translate }}
@@ -110,7 +110,7 @@
 
 <script>
   import store from './vuex/store'
-  import firebase from './services/firebase'
+  import { database, auth } from './services/firebase'
 
   export default {
     name: 'app',
@@ -120,9 +120,22 @@
       },
       untoast () {
         store.commit('untoast')
+      },
+      logout () {
+        auth.signOut()
       }
     },
     created () {
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          console.log(user)
+          store.commit('username', user.username)
+          this.$router.push('/census')
+        } else {
+          store.commit('username', null)
+          this.$router.push('/login')
+        }
+      })
       store.watch((state) => state.toast.show, (value) => {
         if (value) {
           if (this.timer) clearTimeout(this.timer)
@@ -137,10 +150,10 @@
     },
     firebase: {
       user: {
-        source: firebase.ref('users').child(store.state.username),
+        source: database.ref('users').child(store.state.username),
         asObject: true
       },
-      enchantments: firebase.ref('users').child(store.state.username).child('enchantments')
+      enchantments: database.ref('users').child(store.state.username).child('enchantments')
     },
     computed: {
       menu () {
@@ -348,6 +361,7 @@
         position relative
         text-align center
     */
+    // background colors
     .mu-toast
     .mu-chip
     .mu-card #title
@@ -363,7 +377,22 @@
         background-color $white
       &.dark
         background-color $dark
-    .mu-avatar.bordered
+    // font colors
+    .mu-icon
+      &.red
+        color $red
+      &.green
+        color $green
+      &.purple
+        color $purple
+      &.blue
+        color $blue
+      &.white
+        color $white
+      &.dark
+        color $dark
+    // border colors
+    .bordered
       border 3px solid
       border-radius 50%
       &.red
@@ -405,7 +434,7 @@
             padding-right 256px
         .topbar
           .toggler
-          .help
+          .logout
             display none
         /*
         .toast

@@ -9,6 +9,7 @@ const vuex = new Vuex.Store({
     title: 'lbl_wyzard',
     menu: false,
     username: 'fergardi',
+    logged: true,
     settings: {
       lang: 'es',
       navbar: false
@@ -29,6 +30,7 @@ const vuex = new Vuex.Store({
     },
     username (state, username) {
       state.username = username
+      state.logged = username !== null
     },
     settings (state, settings) {
       state.settings = settings

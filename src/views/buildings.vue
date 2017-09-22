@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   import building from '../components/building'
   
@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_buildings')
     },
     firebase: {
-      buildings: firebase.ref('buildings').orderByChild('name')
+      buildings: database.ref('buildings').orderByChild('name')
     }
   }
 </script>

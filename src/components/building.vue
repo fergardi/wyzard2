@@ -37,7 +37,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
 
   export default {
@@ -52,7 +52,7 @@
       this.ammount = this.data.quantity
     },
     firebase: {
-      user: firebase.ref('users').child(store.state.username)
+      user: database.ref('users').child(store.state.username)
     },
     methods: {
       demolish () {

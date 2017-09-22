@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
@@ -59,7 +59,7 @@
       store.commit('title', 'lbl_title_messages')
     },
     firebase: {
-      messages: firebase.ref('users').child(store.state.username).child('messages').orderByChild('timestamp')
+      messages: database.ref('users').child(store.state.username).child('messages').orderByChild('timestamp')
     },
     methods: {
       move (page) {

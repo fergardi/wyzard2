@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import firebase from '../services/firebase'
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
   import spell from '../components/spell'
   
@@ -19,7 +19,7 @@
       store.commit('title', 'lbl_title_dispel')
     },
     firebase: {
-      enchantments: firebase.ref('users').child(store.state.username).child('enchantments').orderByChild('remaining')
+      enchantments: database.ref('users').child(store.state.username).child('enchantments').orderByChild('remaining')
     }
   }
 </script>
