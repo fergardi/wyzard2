@@ -73,16 +73,17 @@ Vue.mixin({
   }
 })
 
-// security
-let restrictions = ['census']
-function restricted (route) {
-  return restrictions.includes(route)
+// security zone
+let open = ['login', 'gods']
+function opened (route) {
+  return open.includes(route)
 }
+// redirect to home if not logged in
 router.beforeEach((to, from, next) => {
-  if (restricted(to) && !store.state.logged) {
-    router.push('/login')
+  if (!opened(to.name) && !store.state.logged) {
+    router.push({ path: '/login' })
   } else {
-    next()
+    return next()
   }
 })
 

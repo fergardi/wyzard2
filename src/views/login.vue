@@ -7,11 +7,9 @@
             img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png")
             #title {{ 'lbl_label_enter' | translate }}
           mu-card-text
-            p {{ '' | lorem }}
-          mu-card-text
             mu-tabs(:value="tab", @change="change")
-              mu-tab(value="login", :title="translate('lbl_title_login')")
-              mu-tab(value="signin", :title="translate('lbl_title_signin')")
+              mu-tab(value="login", :title="translate('lbl_title_authentication')")
+              mu-tab(value="signin", :title="translate('lbl_title_registration')")
           mu-card-text
               mu-text-field(v-model="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'")
               mu-text-field(v-model="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email")
