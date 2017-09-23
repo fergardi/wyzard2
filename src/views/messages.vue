@@ -2,6 +2,9 @@
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
+        mu-card-media
+          img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
+          #title {{ 'lbl_label_messages' | translate }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false")
           mu-thead
             mu-tr

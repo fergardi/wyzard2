@@ -1,6 +1,6 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="50")
+    mu-col(width="100", tablet="100", desktop="100")
       mu-card.battle.animated.fadeInUp
         mu-card-media
           img(src="http://coolvibe.com/wp-content/uploads/2011/08/orc-battle.jpg")

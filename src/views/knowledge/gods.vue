@@ -6,9 +6,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import god from '../components/god'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import god from '../../components/god'
   
   export default {
     name: 'gods',

@@ -6,9 +6,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import spell from '../components/spell'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import spell from '../../components/spell'
   
   export default {
     name: 'spells',

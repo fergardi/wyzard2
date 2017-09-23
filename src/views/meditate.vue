@@ -1,6 +1,6 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="33")
+    mu-col(width="100", tablet="100", desktop="100")
       building.animated.fadeInUp(:data="node", :meditation="true")
 </template>
 

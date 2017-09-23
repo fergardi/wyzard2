@@ -6,9 +6,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import artifact from '../components/artifact'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import artifact from '../../components/artifact'
   
   export default {
     name: 'artifacts',

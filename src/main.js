@@ -74,7 +74,17 @@ Vue.mixin({
 })
 
 // security zone
-let open = ['login', 'gods']
+let open = [
+  'login',
+  'gods',
+  'artifacts',
+  'buildings',
+  'factions',
+  'heroes',
+  'places',
+  'spells',
+  'units'
+]
 function opened (route) {
   return open.includes(route)
 }
