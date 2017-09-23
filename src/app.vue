@@ -150,6 +150,7 @@
         store.commit('settings', snapshot.val())
       })
       // sw
+      /*
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('../workers/sw.js', { scope: '/' }).then((registration) => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope)
@@ -157,6 +158,7 @@
           console.log('ServiceWorker registration failed: ', err)
         })
       })
+      */
     },
     firebase: {
       user: {

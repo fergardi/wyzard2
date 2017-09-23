@@ -13,11 +13,12 @@
           mu-card-text
               mu-text-field(v-model="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'")
               mu-text-field(v-model="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email")
-              mu-text-field(v-model="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password")
+              mu-text-field(v-model="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('lbl_label_password_insecure') : ''")
+              mu-text-field(v-model="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('lbl_label_password_mismatch') : ''")
           mu-card-actions
             mu-raised-button(primary, type="reset") {{ 'lbl_button_clear' | translate }}
             mu-raised-button(primary, @click="login", v-if="tab === 'login'") {{ 'lbl_button_login' | translate }}
-            mu-raised-button(primary, @click="signin", v-if="tab === 'signin'") {{ 'lbl_button_signin' | translate }}
+            mu-raised-button(primary, @click="signin", v-if="tab === 'signin'", :disabled="insecure || mismatch") {{ 'lbl_button_signin' | translate }}
 </template>
 
 <script>
@@ -31,7 +32,8 @@
         tab: 'login',
         username: 'prueba',
         email: 'prueba@prueba.com',
-        password: 'prueba'
+        password: 'prueba',
+        confirm_password: 'prueba'
       }
     },
     created () {
@@ -45,13 +47,23 @@
         })
       },
       signin () {
-        register(this.email, this.password)
-        .catch(error => {
-          console.error(error)
-        })
+        if (!this.insecure && !this.mismatch) {
+          register(this.email, this.password)
+          .catch(error => {
+            console.error(error)
+          })
+        }
       },
       change (value) {
         this.tab = value
+      }
+    },
+    computed: {
+      mismatch () {
+        return this.password !== this.confirm_password
+      },
+      insecure () {
+        return this.tab === 'signin' && this.password.length <= 5
       }
     }
   }

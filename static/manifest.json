@@ -7,7 +7,7 @@
   "display": "fullscreen",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "/index.html",
   "icons": [
     {
       "src": "./icons/icon-72x72.png",
