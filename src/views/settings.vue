@@ -1,8 +1,11 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="50", desktop="50")
+    mu-col(width="100", tablet="100", desktop="100")
       mu-card.settings.animated.fadeInUp
         form
+          mu-card-media
+            img(src="http://dovga.net/images/photo/872-drevnie-chasi-1000.jpg")
+            #title {{ 'lbl_label_settings' | translate }}
           mu-card-text
             .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="update")

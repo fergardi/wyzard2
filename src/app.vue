@@ -14,7 +14,7 @@
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-          mu-icon-button.settings(icon="settings", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle")
+          mu-icon-button.settings(icon="settings", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle", :class="!logged ? 'hidden': ''")
 
       mu-list.scroll
         template(v-if="logged")
@@ -421,8 +421,7 @@
           visibility visible
           opacity $opacity
           .toggler
-          .settings
-            display none
+            visibility hidden
           &.left
             .mu-list
               border-right 1px solid
@@ -437,8 +436,7 @@
             padding-right 256px
         .topbar
           .toggler
-          .logout
-            display none
+            visibility hidden
         /*
         .toast
           justify-content flex-end
