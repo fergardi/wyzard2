@@ -124,10 +124,12 @@
       },
       logout () {
         auth.signOut()
+        this.$router.push('/login')
       }
     },
     created () {
       // firebase auth
+      /*
       auth.onAuthStateChanged(user => {
         if (user) {
           store.commit('username', user.username)
@@ -137,6 +139,7 @@
           this.$router.push('/login')
         }
       })
+      */
       // toast
       store.watch((state) => state.toast.show, (value) => {
         if (value) {
@@ -281,6 +284,8 @@
         padding-top 0
       .mu-card-text
         text-align center
+        .mu-select-field
+          text-align left
         p
           font-style italic
           font-size 0.9em

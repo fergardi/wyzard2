@@ -214,6 +214,7 @@ export default {
     lbl_title_registration: 'Registro',
     // label
     lbl_label_quantity: 'Cantidad',
+    lbl_label_faction: 'Facción',
     lbl_label_username: 'Nombre',
     lbl_label_email: 'Email',
     lbl_label_password: 'Contraseña',

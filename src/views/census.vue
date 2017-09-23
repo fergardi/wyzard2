@@ -15,7 +15,7 @@
             mu-tr(v-for="user, index in users", :key="index")
               mu-td {{ index + 1 }}
               mu-td
-                mu-chip(:class="user.color") {{ user['.key'] }}
+                mu-chip(:class="user.color") {{ user.name }}
               mu-td 0
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
