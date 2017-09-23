@@ -127,6 +127,7 @@
       }
     },
     created () {
+      // firebase auth
       auth.onAuthStateChanged(user => {
         if (user) {
           store.commit('username', user.username)
@@ -136,6 +137,7 @@
           this.$router.push('/login')
         }
       })
+      // toast
       store.watch((state) => state.toast.show, (value) => {
         if (value) {
           if (this.timer) clearTimeout(this.timer)
@@ -146,6 +148,14 @@
       })
       this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
         store.commit('settings', snapshot.val())
+      })
+      // sw
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../workers/sw.js', { scope: '/' }).then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope)
+        }).catch((err) => {
+          console.log('ServiceWorker registration failed: ', err)
+        })
       })
     },
     firebase: {
