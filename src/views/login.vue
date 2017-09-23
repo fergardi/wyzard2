@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { authenticate, register, database } from '../services/firebase'
+  import { authenticate, register, database, auth } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
@@ -53,6 +53,10 @@
     methods: {
       login () {
         authenticate(this.email, this.password)
+        .then(response => {
+          store.commit('username', auth.currentUser.uid)
+          this.$router.push('/census')
+        })
         .catch(error => {
           console.error(error)
         })
@@ -66,8 +70,8 @@
             mage.email = this.email
             mage.color = this.color
             delete mage['.key']
-            let snapshot = this.$firebaseRefs.users.push(mage)
-            store.commit('username', snapshot.key)
+            this.$firebaseRefs.users.child(auth.currentUser.uid).set(mage)
+            store.commit('username', auth.currentUser.uid)
             this.$router.push('/census')
           })
           .catch(error => {

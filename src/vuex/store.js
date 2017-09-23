@@ -8,8 +8,8 @@ const vuex = new Vuex.Store({
     lang: 'es',
     title: 'lbl_wyzard',
     menu: false,
-    username: 'fergardi',
-    logged: true,
+    username: null,
+    logged: false,
     settings: {
       lang: 'es',
       navbar: false

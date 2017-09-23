@@ -16,12 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_levy')
-    },
-    firebase: {
-      village: {
-        source: database.ref('users').child(store.state.username).child('constructions').child('village'),
-        asObject: true
-      }
+      this.$bindAsObject('village', database.ref('users').child(store.state.username).child('constructions').child('village'))
     }
   }
 </script>

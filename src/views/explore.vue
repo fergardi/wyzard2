@@ -16,12 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_explore')
-    },
-    firebase: {
-      territory: {
-        source: database.ref('users').child(store.state.username).child('constructions').child('territory'),
-        asObject: true
-      }
+      this.$bindAsObject('territory', database.ref('users').child(store.state.username).child('constructions').child('territory'))
     }
   }
 </script>

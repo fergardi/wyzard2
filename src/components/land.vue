@@ -50,8 +50,8 @@
         }
       }
     },
-    firebase: {
-      kingdoms: database.ref('users').child(store.state.username).child('kingdoms')
+    created () {
+      this.$bindAsArray('kingdoms', database.ref('users').child(store.state.username).child('kingdoms'))
     },
     methods: {
       ready (map) {

@@ -8,13 +8,14 @@
     mu-paper
       mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
         mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.logout(icon="power_settings_new", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'hidden': ''")
+        mu-icon-button.login(icon="power_settings_new", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
+        mu-icon-button.logout(icon=":ra ra-key", :slot="!right ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
 
     mu-drawer.sidebar(:open="menu", :docked="false", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-          mu-icon-button.settings(icon="settings", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle", :class="!logged ? 'hidden': ''")
+          mu-icon-button.settings(icon=":ra ra-gears", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle")
 
       mu-list.scroll
         template(v-if="logged")
@@ -35,7 +36,7 @@
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after") {{ user.territory | numeric }}
 
-          mu-sub-header {{ 'lbl_title_enchantments' | translate }}
+          mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
           mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
             mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | numeric }}
@@ -82,13 +83,17 @@
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
             mu-icon(slot="left", value=":ra ra-trophy")
 
-          mu-sub-header {{ 'lbl_title_account' | translate }}
-          mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-gears")
-          mu-list-item(:title="translate('lbl_title_help')", to="help", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-help")
+        mu-sub-header {{ 'lbl_title_account' | translate }}
+        mu-list-item(:title="translate('lbl_title_login')", to="login", @click="toggle", v-if="!logged")
+          mu-icon(slot="left", value=":ra ra-key")
+        mu-list-item(:title="translate('lbl_title_logout')", @click="logout && toggle", v-if="logged")
+          mu-icon(slot="left", value="power_settings_new")
+        mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-gears")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
+        mu-list-item(:title="translate('lbl_title_help')", to="help", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-help")
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
           mu-icon(slot="left", value=":ra ra-doubled")
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")
@@ -124,22 +129,11 @@
       },
       logout () {
         auth.signOut()
+        store.commit('username', null)
         this.$router.push('/login')
       }
     },
     created () {
-      // firebase auth
-      /*
-      auth.onAuthStateChanged(user => {
-        if (user) {
-          store.commit('username', user.username)
-          this.$router.push('/census')
-        } else {
-          store.commit('username', null)
-          this.$router.push('/login')
-        }
-      })
-      */
       // toast
       store.watch((state) => state.toast.show, (value) => {
         if (value) {
@@ -149,8 +143,12 @@
           if (this.timer) clearTimeout(this.timer)
         }
       })
-      this.$firebaseRefs.user.child('settings').once('value').then(snapshot => {
-        store.commit('settings', snapshot.val())
+      // firebase
+      store.watch((state) => state.logged, (value) => {
+        if (value) {
+          this.$bindAsObject('user', database.ref('users').child(store.state.username))
+          this.$bindAsArray('enchantments', database.ref('users').child(store.state.username).child('enchantments'))
+        }
       })
       // sw
       /*
@@ -162,13 +160,6 @@
         })
       })
       */
-    },
-    firebase: {
-      user: {
-        source: database.ref('users').child(store.state.username),
-        asObject: true
-      },
-      enchantments: database.ref('users').child(store.state.username).child('enchantments')
     },
     computed: {
       menu () {
@@ -220,6 +211,8 @@
       font-size 0.8em
     .hidden
       visibility hidden
+    .none
+      display none
     .mu-dialog
       background-color transparent
       box-shadow none

@@ -85,12 +85,12 @@
     },
     created () {
       store.commit('title', 'lbl_title_battle')
+      this.$bindAsArray('troops', database.ref('users').child(store.state.username).child('troops').orderByChild('name'))
+      this.$bindAsArray('spells', database.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true))
+      this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('artifacts').orderByChild('name'))
     },
     firebase: {
-      users: database.ref('users').orderByChild('name'),
-      troops: database.ref('users').child(store.state.username).child('troops').orderByChild('name'),
-      spells: database.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true),
-      artifacts: database.ref('users').child(store.state.username).child('artifacts').orderByChild('name')
+      users: database.ref('users').orderByChild('name')
     },
     methods: {
       attack () {

@@ -212,6 +212,8 @@ export default {
     lbl_title_defense: 'Defensa',
     lbl_title_authentication: 'Autenticación',
     lbl_title_registration: 'Registro',
+    lbl_title_logout: 'Salir',
+    lbl_title_login: 'Entrar',
     // label
     lbl_label_quantity: 'Cantidad',
     lbl_label_faction: 'Facción',
@@ -257,7 +259,7 @@ export default {
     lbl_button_start: 'Comenzar',
     lbl_button_disband: 'Desbandar',
     lbl_button_attack: 'Atacar',
-    lbl_button_login: 'Autenticarse',
+    lbl_button_login: 'Entrar',
     lbl_button_signin: 'Registrarse',
     lbl_button_clear: 'Limpiar',
     // table

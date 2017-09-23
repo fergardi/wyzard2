@@ -16,12 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_meditate')
-    },
-    firebase: {
-      node: {
-        source: database.ref('users').child(store.state.username).child('constructions').child('node'),
-        asObject: true
-      }
+      this.$bindAsObject('node', database.ref('users').child(store.state.username).child('constructions').child('node'))
     }
   }
 </script>

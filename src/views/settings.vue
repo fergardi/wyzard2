@@ -22,6 +22,7 @@
     name: 'settings',
     created () {
       store.commit('title', 'lbl_title_settings')
+      this.$bindAsObject('user', database.ref('users').child(store.state.username))
     },
     data () {
       return {
@@ -29,12 +30,6 @@
           { key: 'es', value: 'lbl_language_spanish' },
           { key: 'en', value: 'lbl_language_english' }
         ]
-      }
-    },
-    firebase: {
-      user: {
-        source: database.ref('users').child(store.state.username),
-        asObject: true
       }
     },
     methods: {

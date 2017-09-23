@@ -50,9 +50,7 @@
     },
     created () {
       this.ammount = this.data.quantity
-    },
-    firebase: {
-      user: database.ref('users').child(store.state.username)
+      this.$bindAsArray('users', database.ref('users').child(store.state.username))
     },
     methods: {
       demolish () {
