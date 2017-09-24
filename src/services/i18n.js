@@ -48,7 +48,7 @@ export default {
     lbl_spell_prosperity: 'Prosperidad',
     lbl_spell_peace: 'Paz',
     lbl_spell_counter_spell: 'Contra Hechizo',
-    lbl_spell_celestial_chorus: 'Coro Celestial',
+    lbl_spell_heaven_doors: 'Puerta Celestial',
     lbl_spell_healing_hands: 'Manos Sanadoras',
     lbl_spell_nature_favor: 'Favor de la Naturaleza',
     lbl_spell_hurricane: 'Huracán',

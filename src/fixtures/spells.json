@@ -29,11 +29,11 @@
     "image": "https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg",
     "name": "lbl_spell_calm"
   },
-  "celestial_chorus" : {
+  "heaven_doors" : {
     "color": "white",
     "level": 9,
-    "image": "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
-    "name": "lbl_spell_celestial_chorus"
+    "image": "http://www.artofmtg.com/wp-content/uploads/2017/01/Extraplanar-Lens-Masterpieces-Aether-Revolt-MtG-Art.jpg",
+    "name": "lbl_spell_heaven_doors"
   },
   "concentration" : {
     "color": "blue",
