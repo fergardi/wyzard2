@@ -2,7 +2,9 @@
   mu-card.building
     mu-card-media
       img(:src="data.image")
-      #title(:class="data.color") {{ data.quantity != null ? '(' + data.quantity + ')' : '' }} {{ data.name | translate }}
+      #info
+        #title(:class="data.color") {{ data.name | translate }}
+        #number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
 

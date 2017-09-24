@@ -260,17 +260,29 @@
           background-size cover
           object-fit cover
           object-position 50% 20%
-        #title
-          font-weight bold
+        #info
           position absolute
           bottom -15px
-          padding 5px
-          border-radius 5px
-          min-width 50%
-          max-width 90%
+          width 100%
           text-align center
-          border 1px solid
-          background-color $dark
+          #title
+          #number
+            padding 5px 10px
+            font-weight bold
+            border-radius 5px
+            text-align center
+            border 1px solid
+            background-color $dark
+            width auto
+            display inline-block
+          #title
+            min-width 50%
+            max-width 60%
+          #number
+            min-width 15%
+            max-width 35%
+          #title + #number
+            margin-left 5%
       .mu-card-text + .mu-card-text
         padding-top 0
       .mu-card-text + .mu-card-actions
@@ -377,7 +389,7 @@
     // background colors
     .mu-toast
     .mu-chip
-    .mu-card #title
+    .mu-card #info #title, .mu-card #info #number
       &.red
         background-color $red
       &.green
@@ -420,6 +432,8 @@
         border-color $white
       &.dark
         border-color $dark
+    .mu-raised-button
+      border-radius $radius
     @media (min-width 480px)
       .mu-appbar
         height 56px
@@ -431,6 +445,7 @@
           visibility visible
           opacity $opacity
           .toggler
+          .settings
             visibility hidden
           &.left
             .mu-list

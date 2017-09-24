@@ -78,6 +78,7 @@ let open = [
   'login',
   'gods',
   'artifacts',
+  'settings',
   'buildings',
   'factions',
   'heroes',

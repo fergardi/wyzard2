@@ -5,7 +5,8 @@
         form
           mu-card-media
             img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png")
-            #title {{ 'lbl_label_enter' | translate }}
+            #info
+              #title {{ 'lbl_label_enter' | translate }}
           mu-card-text
             mu-tabs(:value="tab", @change="change")
               mu-tab(value="login", :title="translate('lbl_title_authentication')")

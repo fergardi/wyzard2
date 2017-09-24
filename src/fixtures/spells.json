@@ -1,251 +1,301 @@
 {
   "berserker" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
-    "name" : "lbl_spell_berserker"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
+    "name": "lbl_spell_berserker"
   },
   "blood_pact" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
-    "name" : "lbl_spell_blood_pact"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
+    "name": "lbl_spell_blood_pact"
   },
   "bone_wall" : {
-    "color" : "purple",
-    "image" : "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
-    "name" : "lbl_spell_bone_wall"
+    "color": "purple",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
+    "name": "lbl_spell_bone_wall"
   },
   "break_enchantment" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg",
-    "name" : "lbl_spell_break_enchantment"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg",
+    "name": "lbl_spell_break_enchantment"
   },
   "calm" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg",
-    "name" : "lbl_spell_calm"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg",
+    "name": "lbl_spell_calm"
   },
   "celestial_chorus" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
-    "name" : "lbl_spell_celestial_chorus"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
+    "name": "lbl_spell_celestial_chorus"
   },
   "concentration" : {
-    "color" : "blue",
-    "image" : "https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg",
-    "name" : "lbl_spell_concentration"
+    "color": "blue",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg",
+    "name": "lbl_spell_concentration"
   },
   "corruption" : {
-    "color" : "purple",
-    "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
-    "name" : "lbl_spell_corruption"
+    "color": "purple",
+    "level": 1,
+    "image": "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
+    "name": "lbl_spell_corruption"
   },
   "coven" : {
-    "color" : "purple",
-    "image" : "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
-    "name" : "lbl_spell_coven"
+    "color": "purple",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
+    "name": "lbl_spell_coven"
   },
   "create_artifact" : {
-    "color" : "blue",
-    "image" : "http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg",
-    "name" : "lbl_spell_create_artifact"
+    "color": "blue",
+    "level": 1,
+    "image": "http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg",
+    "name": "lbl_spell_create_artifact"
   },
   "curse" : {
-    "color" : "purple",
-    "image" : "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
-    "name" : "lbl_spell_curse"
+    "color": "purple",
+    "level": 1,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
+    "name": "lbl_spell_curse"
   },
   "destroy_artifact" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/736x/49/e4/15/49e4154df14446703f73d25ab79853f4--wayne-reynolds-renaissance-artists.jpg",
-    "name" : "lbl_spell_destroy_artifact"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/49/e4/15/49e4154df14446703f73d25ab79853f4--wayne-reynolds-renaissance-artists.jpg",
+    "name": "lbl_spell_destroy_artifact"
   },
   "divine_protection" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg",
-    "name" : "lbl_spell_divine_protection"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg",
+    "name": "lbl_spell_divine_protection"
   },
   "eclipse" : {
-    "color" : "purple",
-    "image" : "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
-    "name" : "lbl_spell_eclipse"
+    "color": "purple",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
+    "name": "lbl_spell_eclipse"
   },
   "elemental_gathering" : {
-    "color" : "blue",
-    "image" : "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg",
-    "name" : "lbl_spell_elemental_gathering"
+    "color": "blue",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg",
+    "name": "lbl_spell_elemental_gathering"
   },
   "epiphany" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/736x/b0/fb/d7/b0fbd7034a5006aae99be4e50a455ac8--mtg-art-game-art.jpg",
-    "name" : "lbl_spell_epiphany"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/b0/fb/d7/b0fbd7034a5006aae99be4e50a455ac8--mtg-art-game-art.jpg",
+    "name": "lbl_spell_epiphany"
   },
   "fake_gold" : {
-    "color" : "blue",
-    "image" : "http://www.godsfamily.co.in/img/Heavenly%20Treasures%209.jpg",
-    "name" : "lbl_spell_fake_gold"
+    "color": "blue",
+    "level": 1,
+    "image": "http://www.godsfamily.co.in/img/Heavenly%20Treasures%209.jpg",
+    "name": "lbl_spell_fake_gold"
   },
   "fear" : {
-    "color" : "purple",
-    "image" : "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
-    "name" : "lbl_spell_fear"
+    "color": "purple",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
+    "name": "lbl_spell_fear"
   },
   "fire_circle" : {
-    "color" : "red",
-    "image" : "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
-    "name" : "lbl_spell_fire_circle"
+    "color": "red",
+    "level": 1,
+    "image": "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
+    "name": "lbl_spell_fire_circle"
   },
   "fireball" : {
-    "color" : "red",
-    "image" : "http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg",
-    "name" : "lbl_spell_fireball"
+    "color": "red",
+    "level": 1,
+    "image": "http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg",
+    "name": "lbl_spell_fireball"
   },
   "flame_shield" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
-    "name" : "lbl_spell_flame_shield"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
+    "name": "lbl_spell_flame_shield"
   },
   "haste" : {
-    "color" : "blue",
-    "image" : "https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg",
-    "name" : "lbl_spell_haste"
+    "color": "blue",
+    "level": 1,
+    "image": "https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg",
+    "name": "lbl_spell_haste"
   },
   "healing_hands" : {
-    "color" : "white",
-    "image" : "https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/8/8b/Coliseum_Manager_full.jpg/400px-Coliseum_Manager_full.jpg?version=48bb1690ae524e0b3c3adff1bf77b336",
-    "name" : "lbl_spell_healing_hands"
+    "color": "white",
+    "level": 1,
+    "image": "https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/8/8b/Coliseum_Manager_full.jpg/400px-Coliseum_Manager_full.jpg?version=48bb1690ae524e0b3c3adff1bf77b336",
+    "name": "lbl_spell_healing_hands"
   },
   "hypnosis" : {
-    "color" : "blue",
-    "image" : "http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg",
-    "name" : "lbl_spell_hypnosis"
+    "color": "blue",
+    "level": 1,
+    "image": "http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg",
+    "name": "lbl_spell_hypnosis"
   },
   "inferno" : {
-    "color" : "red",
-    "image" : "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
-    "name" : "lbl_spell_inferno"
+    "color": "red",
+    "level": 1,
+    "image": "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
+    "name": "lbl_spell_inferno"
   },
   "mana_drain" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
-    "name" : "lbl_spell_mana_drain"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
+    "name": "lbl_spell_mana_drain"
   },
   "mana_shield" : {
-    "color" : "blue",
-    "image" : "http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg",
-    "name" : "lbl_spell_mana_shield"
+    "color": "blue",
+    "level": 1,
+    "image": "http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg",
+    "name": "lbl_spell_mana_shield"
   },
   "meteor_shower" : {
-    "color" : "red",
-    "image" : "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
-    "name" : "lbl_spell_meteor_shower"
+    "color": "red",
+    "level": 1,
+    "image": "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
+    "name": "lbl_spell_meteor_shower"
   },
   "necromancy" : {
-    "color" : "purple",
-    "image" : "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
-    "name" : "lbl_spell_necromancy"
+    "color": "purple",
+    "level": 1,
+    "image": "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
+    "name": "lbl_spell_necromancy"
   },
   "oracle" : {
-    "color" : "blue",
-    "image" : "https://i.pinimg.com/736x/8c/2a/5d/8c2a5dea3ab7613ae09bf15f09d791f8--mtg-art-dark-fantasy.jpg",
-    "name" : "lbl_spell_oracle"
+    "color": "blue",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/8c/2a/5d/8c2a5dea3ab7613ae09bf15f09d791f8--mtg-art-dark-fantasy.jpg",
+    "name": "lbl_spell_oracle"
   },
   "peace" : {
-    "color" : "white",
-    "image" : "https://i.pinimg.com/736x/78/49/39/78493983540b5c1c03f0ca5a73f1bf6b--noah-bradley-illustration-art.jpg",
-    "name" : "lbl_spell_peace"
+    "color": "white",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/78/49/39/78493983540b5c1c03f0ca5a73f1bf6b--noah-bradley-illustration-art.jpg",
+    "name": "lbl_spell_peace"
   },
   "plague" : {
-    "color" : "purple",
-    "image" : "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
-    "name" : "lbl_spell_plague"
+    "color": "purple",
+    "level": 1,
+    "image": "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
+    "name": "lbl_spell_plague"
   },
   "prosperity" : {
-    "color" : "white",
-    "image" : "http://pre05.deviantart.net/32e2/th/pre/i/2016/069/4/d/stonehold_by_jonasdero-d5ev850.jpg",
-    "name" : "lbl_spell_prosperity"
+    "color": "white",
+    "level": 1,
+    "image": "http://pre05.deviantart.net/32e2/th/pre/i/2016/069/4/d/stonehold_by_jonasdero-d5ev850.jpg",
+    "name": "lbl_spell_prosperity"
   },
   "resurrection" : {
-    "color" : "purple",
-    "image" : "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
-    "name" : "lbl_spell_resurrection"
+    "color": "purple",
+    "level": 1,
+    "image": "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
+    "name": "lbl_spell_resurrection"
   },
   "sunrise" : {
-    "color" : "white",
-    "image" : "http://media.wizards.com/images/magic/daily/ur/ur255_plains.jpg",
-    "name" : "lbl_spell_sunrise"
+    "color": "white",
+    "level": 1,
+    "image": "http://media.wizards.com/images/magic/daily/ur/ur255_plains.jpg",
+    "name": "lbl_spell_sunrise"
   },
   "tsunami" : {
-    "color" : "blue",
-    "image" : "http://www.wizards.com/mtg/images/daily/arcana/291_LivingTsunami.jpg",
-    "name" : "lbl_spell_tsunami"
+    "color": "blue",
+    "level": 1,
+    "image": "http://www.wizards.com/mtg/images/daily/arcana/291_LivingTsunami.jpg",
+    "name": "lbl_spell_tsunami"
   },
   "volcano" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
-    "name" : "lbl_spell_volcano"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
+    "name": "lbl_spell_volcano"
   },
   "voodoo" : {
-    "color" : "purple",
-    "image" : "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
-    "name" : "lbl_spell_voodoo"
+    "color": "purple",
+    "level": 1,
+    "image": "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
+    "name": "lbl_spell_voodoo"
   },
   "war_drums" : {
-    "color" : "red",
-    "image" : "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
-    "name" : "lbl_spell_war_drums"
+    "color": "red",
+    "level": 1,
+    "image": "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
+    "name": "lbl_spell_war_drums"
   },
   "wisdom" : {
-    "color" : "green",
-    "image" : "http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg",
-    "name" : "lbl_spell_wisdom"
+    "color": "green",
+    "level": 1,
+    "image": "http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg",
+    "name": "lbl_spell_wisdom"
   },
   "counter_spell": {
     "color": "blue",
+    "level": 1,
     "image": "http://www.drawmaster.ru/uploads/posts/2012-10/DrawMaster.ru_magic-sign-13.jpg",
     "name": "lbl_spell_counter_spell"
   },
   "nature_favor": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/originals/da/c7/90/dac79063e82ce0a9190f6236c3dd72db.jpg",
     "name": "lbl_spell_nature_favor"
   },
   "hurricane": {
     "color": "green",
+    "level": 1,
     "image": "http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg",
     "name": "lbl_spell_hurricane"
   },
   "tornado": {
     "color": "green",
+    "level": 1,
     "image": "https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg",
     "name": "lbl_spell_tornado"
   },
   "rust_armor": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
     "name": "lbl_spell_rust_armor"
   },
   "climate_control": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/736x/6c/1a/36/6c1a36b42f4a0c4a416617213f94107a--fantasy-art-landscapes-fantasy-landscape.jpg",
     "name": "lbl_spell_climate_control"
   },
   "elemental_wrath": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/736x/4b/3e/0e/4b3e0e45c159d9b7aa8a7bcf568ea385--mtg-art-fantasy-creatures.jpg",
     "name": "lbl_spell_elemental_wrath"
   },
   "beast_council": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/originals/7c/08/c0/7c08c085f261daaff9c8313ac8f28ac6.jpg",
     "name": "lbl_spell_beast_council"
   },
   "regenerate": {
     "color": "green",
+    "level": 1,
     "image": "https://i.pinimg.com/originals/8f/19/24/8f1924d3218f6a25e5e43d9327eb1531.jpg",
     "name": "lbl_spell_regenerate"
   },
   "fountain_of_youth": {
     "color": "green",
+    "level": 1,
     "image": "http://aws-cf.ados.fr/prod/photos/6/4/0/7410640/2191349/img-2191349fe5.jpg?v=5",
     "name": "lbl_spell_fountain_of_youth"
   }

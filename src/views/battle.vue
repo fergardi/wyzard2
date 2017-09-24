@@ -4,7 +4,8 @@
       mu-card.battle.animated.fadeInUp
         mu-card-media
           img(src="http://coolvibe.com/wp-content/uploads/2011/08/orc-battle.jpg")
-          #title {{ 'lbl_label_battle' | translate }}
+          #info
+            #title {{ 'lbl_label_battle' | translate }}
         mu-card-text
           p {{ 'lbl_label_battle_description' | lorem }}
         mu-card-text

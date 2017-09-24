@@ -4,7 +4,9 @@
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
-          #title {{ 'lbl_label_messages' | translate }}
+          #info
+            #title {{ 'lbl_label_messages' | translate }}
+            #number {{ messages.length | numeric }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false")
           mu-thead
             mu-tr
@@ -16,7 +18,7 @@
             mu-tr(v-for="message, index in messages", :key="index", @click="select(message)")
               mu-td {{ message.timestamp | datetime }}
               mu-td
-                mu-chip(:class="message.from.color") {{ message.from.name }}
+                mu-chip(:class="message.color") {{ message.name }}
               mu-td {{ message.subject }}
               // mu-td
                 mu-icon-button(icon=":ra ra-scroll-unfurled", @click="select(message)")
@@ -33,7 +35,7 @@
           mu-card-text
             p {{ selected.content }}
           mu-card-text.right
-            mu-chip(:class="selected.from.color") {{ selected.from.name }}
+            mu-chip(:class="selected.color") {{ selected.name }}
           mu-card-actions
             mu-raised-button(primary, @click="dismiss") {{ 'lbl_button_close' | translate }}
 </template>
@@ -51,10 +53,8 @@
         selected: {
           subject: '',
           content: '',
-          from: {
-            name: '',
-            color: ''
-          }
+          name: '',
+          color: ''
         }
       }
     },

@@ -4,7 +4,9 @@
       mu-card.census.animated.fadeInUp
         mu-card-media
           img(src="https://i.pinimg.com/originals/4a/9f/99/4a9f99a8bf410e4ff033440c64d23ab5.jpg")
-          #title {{ 'lbl_label_players' | translate }}
+          #info
+            #title {{ 'lbl_label_players' | translate }}
+            #number {{ users.length | numeric }}
         mu-table(:showCheckbox="false")
           mu-thead
             mu-tr

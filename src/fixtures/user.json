@@ -68,15 +68,13 @@
   "messages" : {
     "dsagdhsadj" : {
       "content" : "content",
-      "from" : {
-        "color" : "red",
-        "name" : "admin"
-      },
+      "color" : "red",
+      "name" : "admin",
       "subject" : "subject",
       "timestamp" : 0
     }
   },
-  "name" : "fergardi",
+  "name" : null,
   "people" : 10000,
   "settings" : {
     "lang" : "es",

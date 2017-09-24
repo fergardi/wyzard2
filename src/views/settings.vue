@@ -5,7 +5,8 @@
         form
           mu-card-media
             img(src="http://dovga.net/images/photo/872-drevnie-chasi-1000.jpg")
-            #title {{ 'lbl_label_settings' | translate }}
+            #info
+              #title {{ 'lbl_label_settings' | translate }}
           mu-card-text
             .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="update")
@@ -15,14 +16,14 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
+  // import { database } from '../services/firebase'
   import store from '../vuex/store'
   
   export default {
     name: 'settings',
     created () {
       store.commit('title', 'lbl_title_settings')
-      this.$bindAsObject('user', database.ref('users').child(store.state.username))
+      // this.$bindAsObject('user', database.ref('users').child(store.state.username))
     },
     data () {
       return {
@@ -34,8 +35,8 @@
     },
     methods: {
       update () {
-        this.$firebaseRefs.user.child('settings').remove()
-        this.$firebaseRefs.user.child('settings').set(this.settings)
+        // this.$firebaseRefs.user.child('settings').remove()
+        // this.$firebaseRefs.user.child('settings').set(this.settings)
       }
     },
     computed: {
