@@ -9,28 +9,7 @@ import moment from 'moment'
 
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
-// import '../node_modules/muse-ui/dist/theme-light.css'
-// import '../node_modules/muse-ui/dist/theme-dark.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
-
-// helpers
-function numeric (number) {
-  return !number
-  ? parseFloat(0)
-  : number / 1000000000 > 1
-    ? parseFloat((number / 1000000000).toFixed(2)) + 'B'
-    : number / 1000000 > 1
-      ? parseFloat((number / 1000000).toFixed(2)) + 'M'
-      : number / 1000 > 1
-        ? parseFloat((number / 1000).toFixed(2)) + 'K'
-        : parseFloat(number.toFixed(2))
-}
-function datetime (timestamp) {
-  return moment(timestamp).fromNow()
-}
-function translate (label) {
-  return i18n[store.state.settings.lang || store.state.lang][label] || label
-}
 
 // UI
 Vue.use(MuseUI)
@@ -40,6 +19,40 @@ window.mapboxgl = require('mapbox-gl')
 
 // firebase
 Vue.use(VueFire)
+
+// helpers
+function numeric (number) {
+  return !number
+  ? parseFloat(0)
+  : number / 1000000000 > 1
+    ? parseFloat((number / 1000000000).toFixed(2)).toLocaleString() + ' B'
+    : number / 1000000 > 1
+      ? parseFloat((number / 1000000).toFixed(2)).toLocaleString() + ' M'
+      : number / 1000 > 1
+        ? parseFloat((number / 1000).toFixed(2)).toLocaleString() + ' K'
+        : parseFloat(number.toFixed(2)).toLocaleString()
+}
+function datetime (timestamp) {
+  return moment(timestamp).fromNow()
+}
+function translate (label) {
+  return i18n[store.state.settings.lang || store.state.lang][label] || label
+}
+
+// mixins
+Vue.mixin({
+  methods: {
+    translate (label) {
+      return translate(label)
+    },
+    datetime (timestamp) {
+      return datetime(timestamp)
+    },
+    numeric (number) {
+      return numeric(number)
+    }
+  }
+})
 
 // filters
 Vue.filter('datetime', (timestamp) => {
@@ -56,21 +69,6 @@ Vue.filter('ipsum', () => {
 })
 Vue.filter('lorem', () => {
   return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
-})
-
-// mixins
-Vue.mixin({
-  methods: {
-    translate (label) {
-      return translate(label)
-    },
-    datetime (timestamp) {
-      return datetime(timestamp)
-    },
-    numeric (number) {
-      return numeric(number)
-    }
-  }
 })
 
 // security zone

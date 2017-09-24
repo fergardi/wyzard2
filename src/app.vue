@@ -279,8 +279,8 @@
             min-width 50%
             max-width 60%
           #number
-            min-width 15%
-            max-width 35%
+            min-width 10%
+            max-width 30%
           #title + #number
             margin-left 5%
       .mu-card-text + .mu-card-text

@@ -7,27 +7,27 @@
 
 # Chaos
 ### Units
-* Goblin
-* Orc
-* Minotaur
-* Efreet
-* Diablo
-* Chimera
-* Cerberus
-* Flame Elemental
-* Red Dragon
-* Phoenix
+1. Goblin
+2. Orc
+3. Cerberus
+4. Minotaur
+5. Flame Elemental
+6. Chimera
+7. Efreet
+8. Diablo
+9. Red Dragon
+10. Phoenix
 ### Spells
-* Fire Circle
-* Berserker
-* Volcano
-* Fireball
-* Meteor Shower
-* Blood Pact
-* Mana Drain
-* Inferno
-* Flame Shield
-* War Drums
+1. Fireball
+2. Berserker
+3. War Drums
+4. Mana Drain
+5. Fire Circle
+6. Flame Shield
+7. Inferno
+8. Blood Pact
+9. Meteor Shower
+10. Volcano
 ### Heroes
 * Dragon Rider
 * Succubus
@@ -35,27 +35,27 @@
 
 # Mental
 ### Units
-* Mage
-* Djinn
-* Medusa
-* Naga
-* Air Elemental
-* Ice Elemental
-* Storm Elemental
-* Water Elemental
-* Blue Dragon
-* Leviathan
+1. Mage
+2. Medusa
+3. Djinn
+4. Naga
+5. Air Elemental
+6. Ice Elemental
+7. Storm Elemental
+8. Water Elemental
+9. Blue Dragon
+10. Leviathan
 ### Spells
-* Mana Shield
-* Tsunami
-* Elemental Gathering
-* Hypnosis
-* Fake Gold
-* Counter Spell
-* Haste
-* Create Artifact
-* Concentration
-* Oracle
+1. Haste
+2. Fake Gold
+3. Oracle
+4. Concentration
+5. Mana Shield
+6. Counter Spell
+7. Elemental Gathering
+8. Hypnosis
+9. Create Artifact
+10. Tsunami
 ### Heroes
 * Elementalist
 * Alchemist
@@ -63,27 +63,27 @@
 
 # Nature
 ### Units
-* Elf
-* Treant
-* Troll
-* Cyclops
-* Wyvern
-* Basilisk
-* Behemoth
-* Earth Elemental
-* Green Dragon
-* Hydra
+1. Elf
+2. Troll
+3. Cyclops
+4. Treant
+5. Earth Elemental
+6. Basilisk
+7. Behemoth
+8. Wyvern
+9. Green Dragon
+10. Hydra
 ### Spells
-* Nature Favor
-* Hurricane
-* Tornado
-* Rust Armor
-* Climate Control
-* Elemental Wrath
-* Beast Council
-* Regenerate
-* Fountain of Youth
-* Wisdom
+1. Rust Armor
+2. Regenerate
+3. Fountain of Youth
+4. Elemental Wrath
+5. Nature Favor
+6. Tornado
+7. Wisdom
+8. Beast Council
+9. Climate Control
+10. Hurricane
 ### Heroes
 * Druid
 * Leprechaunt
@@ -91,27 +91,27 @@
 
 # Holy
 ### Units
-* Crusader
-* Griffin
-* Unicorn
-* Pegasus
-* Paladin
-* Light Elemental
-* Angel
-* Archangel
-* White Dragon
-* Dominion
+1. Crusader
+2. Unicorn
+3. Griffin
+4. Pegasus
+5. Light Elemental
+6. Paladin
+7. Angel
+8. Archangel
+9. White Dragon
+10. Dominion
 ### Spells
-* Divine Protection
-* Break Enchantment
-* Destroy Artifact
-* Calm
-* Sunrise
-* Epiphany
-* Prosperity
-* Peace
-* Celestial Chorus
-* Healing Hands
+1. Healing Hands
+2. Calm
+3. Sunrise
+4. Peace
+5. Divine Protection
+6. Prosperity
+7. Epiphany
+8. Break Enchantment
+9. Celestial Chorus
+10. Destroy Artifact
 ### Heroes
 * Merchant
 * Commander
@@ -119,27 +119,27 @@
 
 # Darkness
 ### Units
-* Skeleton
-* Zombie
-* Spider
-* Werewolf
-* Wraith
-* Lich
-* Vampire
-* Death Knight
-* Smoke Elemental
-* Black Dragon
+1. Skeleton
+2. Zombie
+3. Spider
+4. Wraith
+5. Smoke Elemental
+6. Werewolf
+7. Vampire
+8. Death Knight
+9. Black Dragon
+10. Lich
 ### Spells
-* Eclipse
-* Voodoo
-* Plague
-* Curse
-* Fear
-* Corruption
-* Coven
-* Necromancy
-* Bone Wall
-* Resurrection
+1. Fear
+2. Curse
+3. Eclipse
+4. Voodoo
+5. Bone Wall
+6. Plague
+7. Corruption
+8. Coven
+9. Necromancy
+10. Resurrection
 ### Heroes
 * Headless Horseman
 * Necromancer
