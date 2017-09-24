@@ -193,7 +193,7 @@ export default {
     lbl_title_census: 'Censo',
     lbl_title_sorcery: 'Hechicería',
     lbl_title_tavern: 'Taberna',
-    lbl_title_religion: 'Religión',
+    lbl_title_devotion: 'Devoción',
     lbl_title_kingdom: 'Dominios',
     lbl_title_settings: 'Preferencias',
     lbl_title_messages: 'Mensajes',
@@ -267,6 +267,7 @@ export default {
     lbl_button_login: 'Entrar',
     lbl_button_signin: 'Registrarse',
     lbl_button_clear: 'Limpiar',
+    lbl_button_save: 'Guardar',
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',

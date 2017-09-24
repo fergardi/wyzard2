@@ -9,8 +9,7 @@
 
     template(v-if="pray")
       mu-card-text
-        form
-          mu-text-field(type="number", v-model="ammount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+        mu-text-field(type="number", v-model="ammount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
       mu-card-actions
         mu-raised-button(primary, @click="offer") {{ 'lbl_button_offer' | translate }}
 </template>

@@ -9,8 +9,12 @@
         mu-card-text
           p {{ '' | lorem }}
         mu-card-text
-          form
-
+          mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true")
+            mu-menu-item(v-for="spell, index in spells", :key="index", :value="spell.name", :title="translate(spell.name)")
+          mu-select-field(v-model="artifact", :label="translate('lbl_label_artifact')", :fullWidth="true")
+            mu-menu-item(v-for="artifact, index in artifacts", :key="index", :value="artifact.name", :title="translate(artifact.name)")
+        mu-card-actions
+          mu-raised-button(primary, @click="save") {{ 'lbl_button_save' | translate }}
 </template>
 
 <script>
@@ -19,10 +23,21 @@
   
   export default {
     name: 'defense',
+    data () {
+      return {
+        spell: null,
+        artifact: null
+      }
+    },
     created () {
       store.commit('title', 'lbl_title_defense')
       this.$bindAsArray('spells', database.ref('users').child(store.state.username).child('spells').orderByChild('defensive').equalTo(true))
       this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('artifacts').orderByChild('defensive').equalTo(true))
+    },
+    methods: {
+      save () {
+        // TODO
+      }
     }
   }
 </script>

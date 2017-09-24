@@ -11,12 +11,12 @@
   import god from '../components/god'
   
   export default {
-    name: 'religion',
+    name: 'devotion',
     components: {
       'god': god
     },
     created () {
-      store.commit('title', 'lbl_title_religion')
+      store.commit('title', 'lbl_title_devotion')
     },
     firebase: {
       gods: database.ref('gods').orderByChild('color')

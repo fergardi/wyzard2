@@ -76,7 +76,7 @@
           mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
           mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
             mu-icon(slot="left", value=":ra ra-beer")
-          mu-list-item(:title="translate('lbl_title_religion')", to="religion", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")
             mu-icon(slot="left", value=":ra ra-ankh")
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-raven")

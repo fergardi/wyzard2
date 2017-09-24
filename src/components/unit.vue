@@ -10,6 +10,9 @@
       p {{ data.description | lorem }}
 
     template(v-if="troop")
+      mu-card-text
+        form
+          mu-text-field(v-model="ammount", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
       mu-card-actions
         mu-raised-button(primary, @click="disband") {{ 'lbl_button_disband' | translate }}
 </template>
@@ -18,6 +21,11 @@
   export default {
     name: 'unit',
     props: ['data', 'troop'],
+    data () {
+      return {
+        ammount: 0
+      }
+    },
     methods: {
       disband () {
         // TODO

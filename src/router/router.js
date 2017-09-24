@@ -14,7 +14,7 @@ import research from '@/views/research'
 import census from '@/views/census'
 import sorcery from '@/views/sorcery'
 import tavern from '@/views/tavern'
-import religion from '@/views/religion'
+import devotion from '@/views/devotion'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
 import messages from '@/views/messages'
@@ -105,9 +105,9 @@ export default new Router({
       component: tavern
     },
     {
-      path: '/religion',
-      name: 'religion',
-      component: religion
+      path: '/devotion',
+      name: 'devotion',
+      component: devotion
     },
     {
       path: '/kingdom',
