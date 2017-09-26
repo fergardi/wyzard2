@@ -11,7 +11,7 @@
         mu-icon-button.login(icon="power_settings_new", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
         mu-icon-button.logout(icon=":ra ra-key", :slot="!right ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
 
-    mu-drawer.sidebar(:open="menu", :docked="false", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
+    mu-drawer.sidebar(:open="menu", :docked="overlay", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
@@ -21,19 +21,19 @@
         template(v-if="logged")
           mu-sub-header {{ 'lbl_title_resources' | translate }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
-            mu-icon(slot="left", value=":ra ra-hourglass")
+            mu-icon(slot="left", value=":ra ra-hourglass", class="red")
             mu-badge(slot="after") {{ user.turns | numeric }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
-            mu-icon(slot="left", value=":ra ra-gold-bar")
+            mu-icon(slot="left", value=":ra ra-gold-bar", class="green")
             mu-badge(slot="after") {{ user.gold | numeric }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-            mu-icon(slot="left", value=":ra ra-droplet-splash")
+            mu-icon(slot="left", value=":ra ra-droplet-splash", class="green")
             mu-badge(slot="after") {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_people')", disabled)
-            mu-icon(slot="left", value=":ra ra-double-team")
+            mu-icon(slot="left", value=":ra ra-double-team", class="red")
             mu-badge(slot="after") {{ user.people | numeric }}
           mu-list-item(:title="translate('lbl_resource_territory')", disabled)
-            mu-icon(slot="left", value=":ra ra-tower")
+            mu-icon(slot="left", value=":ra ra-tower", class="green")
             mu-badge(slot="after") {{ user.territory | numeric }}
 
           mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
@@ -176,6 +176,9 @@
       },
       logged () {
         return store.state.logged
+      },
+      overlay () {
+        return window.innerWidth > 1024
       }
     }
   }

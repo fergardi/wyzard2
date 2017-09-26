@@ -52,7 +52,7 @@
     },
     created () {
       this.ammount = this.data.quantity
-      this.$bindAsArray('users', database.ref('users').child(store.state.username))
+      if (store.state.username) this.$bindAsObject('user', database.ref('users').child(store.state.username))
     },
     methods: {
       demolish () {
