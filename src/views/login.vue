@@ -46,6 +46,7 @@
     firebase: {
       factions: database.ref('factions'),
       spells: database.ref('spells'),
+      units: database.ref('units'),
       users: database.ref('users'),
       user: {
         source: database.ref('user'),
@@ -80,6 +81,14 @@
                 research.completed = false
                 delete research['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)
+              })
+            })
+            this.$firebaseRefs.units.orderByChild('initial').equalTo(player.color).once('value', snapshot => {
+              snapshot.forEach(unit => {
+                let troop = {...unit.val()}
+                troop.quantity = 1000
+                delete troop['.key']
+                this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
               })
             })
             store.commit('username', auth.currentUser.uid)
