@@ -4,8 +4,8 @@
       mu-card.animated.fadeInUp
         mu-card-media
           img(src="https://i.pinimg.com/736x/4f/24/ce/4f24ce0a235a763bb1a4a110bcbe028a--magic-book-dark-fantasy.jpg")
-          #info
-            #title {{ 'lbl_label_help' | translate }}
+          .card-info
+            .card-title {{ 'lbl_label_help' | translate }}
         mu-card-text
           p help
 </template>

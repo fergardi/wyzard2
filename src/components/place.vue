@@ -2,8 +2,8 @@
   mu-card.place
     mu-card-media
       img(:src="data.image")
-      #info
-        #title(:class="data.color") {{ data.name | translate }}
+      .card-info
+        .card-title(:class="data.color") {{ data.name | translate }}
     mu-card-text
       p {{ data.description | lorem }}
 

@@ -5,8 +5,8 @@
         form
           mu-card-media
             img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png")
-            #info
-              #title {{ 'lbl_label_enter' | translate }}
+            .card-info
+              .card-title {{ 'lbl_label_enter' | translate }}
           mu-card-text
             mu-tabs(:value="tab", @change="change")
               mu-tab(value="login", :title="translate('lbl_title_authentication')")
@@ -45,6 +45,7 @@
     },
     firebase: {
       factions: database.ref('factions'),
+      spells: database.ref('spells'),
       users: database.ref('users'),
       user: {
         source: database.ref('user'),
@@ -66,12 +67,21 @@
         if (!this.insecure && !this.mismatch) {
           register(this.email, this.password)
           .then(response => {
-            let mage = {...this.user}
-            mage.name = this.username
-            mage.email = this.email
-            mage.color = this.color
-            delete mage['.key']
-            this.$firebaseRefs.users.child(auth.currentUser.uid).set(mage)
+            let player = {...this.user}
+            player.name = this.username
+            player.email = this.email
+            player.color = this.color
+            delete player['.key']
+            this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
+            this.$firebaseRefs.spells.orderByChild('colorLevel').equalTo(player.color + '1').once('value', snapshot => {
+              snapshot.forEach(spell => {
+                let research = {...spell.val()}
+                research.remaining = research.turns
+                research.completed = false
+                delete research['.key']
+                this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)
+              })
+            })
             store.commit('username', auth.currentUser.uid)
             this.$router.push('/census')
           })

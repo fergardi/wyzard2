@@ -5,8 +5,8 @@
         form
           mu-card-media
             img(src="http://dovga.net/images/photo/872-drevnie-chasi-1000.jpg")
-            #info
-              #title {{ 'lbl_label_settings' | translate }}
+            .card-info
+              .card-title {{ 'lbl_label_settings' | translate }}
           mu-card-text
             .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="update")

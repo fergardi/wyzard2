@@ -4,9 +4,9 @@
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
-          #info
-            #title {{ 'lbl_label_messages' | translate }}
-            #number {{ messages.length | numeric }}
+          .card-info
+            .card-title {{ 'lbl_label_messages' | translate }}
+            .card-number {{ messages.length | numeric }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false")
           mu-thead
             mu-tr

@@ -263,13 +263,13 @@
           background-size cover
           object-fit cover
           object-position 50% 20%
-        #info
+        .card-info
           position absolute
           bottom -15px
           width 100%
           text-align center
-          #title
-          #number
+          .card-title
+          .card-number
             padding 5px 10px
             font-weight bold
             border-radius 5px
@@ -278,13 +278,14 @@
             background-color $dark
             width auto
             display inline-block
-          #title
+          .card-title
             min-width 50%
             max-width 60%
-          #number
+          .card-number
             min-width 10%
             max-width 30%
-          #title + #number
+          .card-title + .card-number
+          .card-number + .card-number
             margin-left 5%
       .mu-card-text + .mu-card-text
         padding-top 0
@@ -392,7 +393,7 @@
     // background colors
     .mu-toast
     .mu-chip
-    .mu-card #info #title, .mu-card #info #number
+    .mu-card .card-info .card-title, .mu-card .card-info .card-number
       &.red
         background-color $red
       &.green
