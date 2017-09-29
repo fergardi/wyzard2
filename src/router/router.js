@@ -10,6 +10,7 @@ import gods from '@/views/knowledge/gods'
 import factions from '@/views/knowledge/factions'
 import places from '@/views/knowledge/places'
 import infrastructure from '@/views/infrastructure'
+import antiquities from '@/views/antiquities'
 import research from '@/views/research'
 import census from '@/views/census'
 import sorcery from '@/views/sorcery'
@@ -178,6 +179,11 @@ export default new Router({
       path: '/help',
       name: 'help',
       component: help
+    },
+    {
+      path: '/antiquities',
+      name: 'antiquities',
+      component: antiquities
     }
   ]
 })

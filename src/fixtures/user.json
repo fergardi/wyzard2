@@ -1,85 +1,12 @@
 {
-  "color" : null,
-  "constructions" : {
-    "barrack" : {
-      "buildable" : true,
-      "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
-      "name" : "lbl_building_barrack",
-      "quantity" : 0
-    },
-    "barrier" : {
-      "buildable" : true,
-      "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
-      "name" : "lbl_building_barrier",
-      "quantity" : 0
-    },
-    "farm" : {
-      "buildable" : true,
-      "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
-      "name" : "lbl_building_farm",
-      "quantity" : 0
-    },
-    "fortress" : {
-      "buildable" : true,
-      "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
-      "name" : "lbl_building_fortress",
-      "quantity" : 0
-    },
-    "guild" : {
-      "buildable" : true,
-      "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
-      "name" : "lbl_building_guild",
-      "quantity" : 0
-    },
-    "node" : {
-      "buildable" : true,
-      "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
-      "name" : "lbl_building_node",
-      "quantity" : 0
-    },
-    "temple" : {
-      "buildable" : true,
-      "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
-      "name" : "lbl_building_temple",
-      "quantity" : 0
-    },
-    "territory" : {
-      "buildable" : false,
-      "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-      "name" : "lbl_building_territory",
-      "quantity" : 996
-    },
-    "village" : {
-      "buildable" : true,
-      "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
-      "name" : "lbl_building_village",
-      "quantity" : 0
-    },
-    "workshop" : {
-      "buildable" : true,
-      "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
-      "name" : "lbl_building_workshop",
-      "quantity" : 0
-    }
-  },
   "gold" : 10000000,
   "level" : 1,
   "mana" : 100000,
-  "messages" : {
-    "dsagdhsadj" : {
-      "content" : "content",
-      "color" : "red",
-      "name" : "admin",
-      "subject" : "subject",
-      "timestamp" : 0
-    }
-  },
-  "name" : null,
   "people" : 10000,
   "settings" : {
     "lang" : "es",
     "navbar" : false
   },
-  "territory" : 996,
+  "territory" : 500,
   "turns" : 300
 }

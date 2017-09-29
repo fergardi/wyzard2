@@ -54,6 +54,8 @@
           mu-sub-header {{ 'lbl_title_military' | translate }}
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crossed-axes")
+          mu-list-item(:title="translate('lbl_title_antiquities')", to="antiquities", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-vase")
           mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
             mu-icon(slot="left", value=":ra ra-dripping-blade")
           mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")

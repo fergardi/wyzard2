@@ -48,6 +48,9 @@
       spells: database.ref('spells'),
       units: database.ref('units'),
       users: database.ref('users'),
+      artifacts: database.ref('artifacts'),
+      places: database.ref('places'),
+      buildings: database.ref('buildings'),
       user: {
         source: database.ref('user'),
         asObject: true
@@ -68,12 +71,25 @@
         if (!this.insecure && !this.mismatch) {
           register(this.email, this.password)
           .then(response => {
+            // player
             let player = {...this.user}
             player.name = this.username
             player.email = this.email
             player.color = this.color
             delete player['.key']
             this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
+            // buildings
+            this.$firebaseRefs.buildings.once('value', snapshot => {
+              snapshot.forEach(building => {
+                let construction = {...building.val()}
+                construction.quantity = construction.name === 'lbl_building_territory'
+                  ? 500
+                  : 10
+                delete construction['.key']
+                this.$firebaseRefs.users.child(auth.currentUser.uid).child('constructions').push(construction)
+              })
+            })
+            // spells
             this.$firebaseRefs.spells.orderByChild('colorLevel').equalTo(player.color + '1').once('value', snapshot => {
               snapshot.forEach(spell => {
                 let research = {...spell.val()}
@@ -83,6 +99,7 @@
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)
               })
             })
+            // units
             this.$firebaseRefs.units.orderByChild('initial').equalTo(player.color).once('value', snapshot => {
               snapshot.forEach(unit => {
                 let troop = {...unit.val()}
@@ -91,6 +108,29 @@
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
               })
             })
+            // antiquities
+            this.$firebaseRefs.artifacts.orderByChild('color').equalTo(player.color).once('value', snapshot => {
+              let antiquities = []
+              snapshot.forEach(artifact => {
+                let antiquity = {...artifact.val()}
+                antiquity.quantity = 1
+                delete antiquity['.key']
+                antiquities.push(antiquity)
+              })
+              // random
+              const index = Math.floor(Math.random() * antiquities.length)
+              this.$firebaseRefs.users.child(auth.currentUser.uid).child('antiquities').push(antiquities[index])
+            })
+            // places
+            this.$firebaseRefs.places.orderByChild('color').equalTo(player.color).once('value', snapshot => {
+              snapshot.forEach(place => {
+                let quest = {...place.val()}
+                delete quest['.key']
+                this.$firebaseRefs.users.child(auth.currentUser.uid).child('quests').push(quest)
+              })
+            })
+            // messages
+            // TODO
             store.commit('username', auth.currentUser.uid)
             this.$router.push('/census')
           })

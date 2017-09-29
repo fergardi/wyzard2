@@ -51,7 +51,6 @@
       }
     },
     created () {
-      this.ammount = this.data.quantity
       if (store.state.username) this.$bindAsObject('user', database.ref('users').child(store.state.username))
     },
     methods: {
