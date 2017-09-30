@@ -152,16 +152,18 @@
           this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments'))
         }
       })
-      // sw
-      /*
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../workers/sw.js', { scope: '/' }).then((registration) => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope)
-        }).catch((err) => {
-          console.log('ServiceWorker registration failed: ', err)
-        })
+    },
+    mounted () {
+      // service worker
+      this.$worker.run(_ => {
+        return 'The SW is working!'
       })
-      */
+      .then(result => {
+        console.log(result)
+      })
+      .catch(error => {
+        console.error(error)
+      })
     },
     computed: {
       menu () {

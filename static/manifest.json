@@ -4,10 +4,10 @@
   "short_name": "Wyzard",
   "theme_color": "#1e2329",
   "background_color": "#2b3946",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
-  "Scope": "/",
-  "start_url": "/index.html",
+  "scope": "./",
+  "start_url": "index.html",
   "icons": [
     {
       "src": "./icons/icon-72x72.png",

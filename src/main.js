@@ -6,20 +6,20 @@ import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
 import moment from 'moment'
+import VueWorker from 'vue-worker'
 
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 
+// worker
+Vue.use(VueWorker)
 // UI
 Vue.use(MuseUI)
-
-// mapbox
-window.mapboxgl = require('mapbox-gl')
-
 // firebase
 Vue.use(VueFire)
-
+// mapbox
+window.mapboxgl = require('mapbox-gl')
 // helpers
 function numeric (number) {
   return !number
@@ -38,7 +38,6 @@ function datetime (timestamp) {
 function translate (label) {
   return i18n[store.state.settings.lang || store.state.lang][label] || label
 }
-
 // mixins
 Vue.mixin({
   methods: {
@@ -53,7 +52,6 @@ Vue.mixin({
     }
   }
 })
-
 // filters
 Vue.filter('datetime', (timestamp) => {
   return datetime(timestamp)
@@ -70,7 +68,6 @@ Vue.filter('ipsum', () => {
 Vue.filter('lorem', () => {
   return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
 })
-
 // security zone
 let open = [
   'login',
@@ -95,10 +92,8 @@ router.beforeEach((to, from, next) => {
     return next()
   }
 })
-
 // production
 Vue.config.productionTip = false
-
 // main app
 let Main = Vue.component('app', App) // eslint-disable-line
 Main = new Main({
