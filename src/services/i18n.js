@@ -289,6 +289,8 @@ export default {
     lbl_label_settings: 'Ajustar Preferencias',
     lbl_label_defense: 'Organizar Defensas',
     lbl_label_help: 'Cómo se Juega',
+    lbl_label_confirm: 'Confirmar acción',
+    lbl_label_cannot_undo: 'Esta acción no se puede deshacer',
     // resources
     lbl_resource_gold: 'Oro',
     lbl_resource_people: 'Personas',
@@ -303,6 +305,8 @@ export default {
     lbl_button_bid: 'Pujar',
     lbl_button_offer: 'Ofrecer',
     lbl_button_close: 'Cerrar',
+    lbl_button_cancel: 'Cancelar',
+    lbl_button_confirm: 'Confirmar',
     lbl_button_remove: 'Remove',
     lbl_button_create: 'Create',
     lbl_button_explore: 'Explorar',

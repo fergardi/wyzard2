@@ -10,7 +10,7 @@
         .card-number(:class="data.color", v-if="data.invested != null") {{ data.invested | numeric }} / {{ data.turns | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
-      .stats(v-if="info")
+      .card-stats(v-if="info")
         mu-chip
           i.ra.ra-sword
           span {{ 'lbl_stat_level' | translate }} 10
@@ -33,7 +33,7 @@
     template(v-if="investigation")
       mu-card-text
         form
-          mu-text-field(type="number", v-model="ammount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model="ammount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
       mu-card-actions
         mu-raised-button(primary, @click="research") {{ 'lbl_button_research' | translate }}
 
@@ -48,6 +48,13 @@
     template(v-if="breaking")
       mu-card-actions
         mu-raised-button(primary, @click="disenchant") {{ 'lbl_button_dispel' | translate }}
+
+    mu-dialog(:open="dialog", @close="close")
+      mu-card.dialog
+        mu-card-header(:title="translate('lbl_label_confirm')", :subTitle="translate('lbl_label_cannot_undo')")
+        mu-card-actions
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="close")
 </template>
 
 <script>
@@ -57,18 +64,23 @@
     data () {
       return {
         ammount: 0,
+        dialog: false,
         selected: null
       }
     },
     methods: {
       research () {
         // TODO
+        this.dialog = true
       },
       cast () {
         // TODO
       },
       disenchant () {
         // TODO
+      },
+      close () {
+        this.dialog = false
       }
     }
   }

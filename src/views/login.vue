@@ -102,7 +102,7 @@
             this.$firebaseRefs.spells.orderByChild('colorLevel').equalTo(player.color + '1').once('value', snapshot => {
               snapshot.forEach(spell => {
                 let research = {...spell.val()}
-                research.remaining = research.turns
+                research.invested = 0
                 research.completed = false
                 delete research['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)

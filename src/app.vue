@@ -248,6 +248,10 @@
       margin 5px
       border-radius $radius
       border 1px solid
+      .mu-card-header
+        text-align center
+        .mu-card-header-title
+          padding-right 0
       .mu-card-media
         display flex
         justify-content center
@@ -300,7 +304,7 @@
         p
           font-style italic
           font-size 0.9em
-        .stats
+        .card-stats
           display flex
           justify-content center
           align-items center

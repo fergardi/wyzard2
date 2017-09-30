@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="100", desktop="100")
-      building.animated.fadeInUp(:data="node", :meditation="true")
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+      mu-col(width="100", tablet="100", desktop="100", v-for="building, index in buildings", :key="index")
+        building.animated.fadeInUp(:data="building", :meditation="true")
 </template>
 
 <script>
@@ -16,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_meditate')
-      this.$bindAsObject('node', database.ref('users').child(store.state.username).child('constructions').child('node'))
+      this.$bindAsArray('buildings', database.ref('users').child(store.state.username).child('constructions').orderByChild('name').equalTo('lbl_building_node'))
     }
   }
 </script>
