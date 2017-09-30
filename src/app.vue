@@ -329,6 +329,11 @@
           font-weight bold
           width 100%
           text-transform none
+          &.hover .mu-raised-button-wrapper
+            background-color darken($dark, 20%) !important
+          &.disabled
+            color $dark !important
+            background-color $gold !important
         .mu-raised-button + .mu-raised-button
           margin-left 5px
     .mu-toast

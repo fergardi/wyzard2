@@ -12,16 +12,16 @@
               mu-tab(value="login", :title="translate('lbl_title_authentication')")
               mu-tab(value="signin", :title="translate('lbl_title_registration')")
           mu-card-text
-            mu-text-field(v-model="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", required)
+            mu-text-field(v-model="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", required)
             mu-select-field(v-model="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
               mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
-            mu-text-field(v-model="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", required)
-            mu-text-field(v-model="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('lbl_label_password_insecure') : ''", required)
-            mu-text-field(v-model="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('lbl_label_password_mismatch') : ''", required)
+            mu-text-field(v-model="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
+            mu-text-field(v-model="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
+            mu-text-field(v-model="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
           mu-card-actions
             mu-raised-button(primary, type="reset") {{ 'lbl_button_clear' | translate }}
             mu-raised-button(primary, @click="login", v-if="tab === 'login'") {{ 'lbl_button_login' | translate }}
-            mu-raised-button(primary, @click="signin", v-if="tab === 'signin'", :disabled="insecure || mismatch") {{ 'lbl_button_signin' | translate }}
+            mu-raised-button(primary, @click="signin", v-if="tab === 'signin'", :disabled="disabled") {{ 'lbl_button_signin' | translate }}
 </template>
 
 <script>
@@ -32,6 +32,8 @@
     name: 'login',
     data () {
       return {
+        error: false,
+        code: null,
         tab: 'login',
         username: 'prueba',
         color: 'red',
@@ -64,11 +66,19 @@
           this.$router.push('/census')
         })
         .catch(error => {
+          this.error = true
+          this.code = 'invalid'
+          store.commit('error', error.code)
           console.error(error)
         })
       },
       signin () {
-        if (!this.insecure && !this.mismatch) {
+        if (this.users.find(u => u.name.toLowerCase() === this.username.toLowerCase()) !== undefined) {
+          this.error = true
+          this.code = 'taken'
+          store.commit('error', 'auth/username-already-exists')
+        }
+        if (!this.disabled) {
           register(this.email, this.password)
           .then(response => {
             // player
@@ -132,15 +142,22 @@
             // messages
             // TODO
             store.commit('username', auth.currentUser.uid)
+            store.commit('success', 'auth/registration-ok')
             this.$router.push('/census')
           })
           .catch(error => {
+            if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {
+              this.error = true
+              this.code = 'exists'
+            }
+            store.commit('error', error.code)
             console.error(error)
           })
         }
       },
       change (value) {
         this.tab = value
+        this.error = false
       }
     },
     computed: {
@@ -149,6 +166,9 @@
       },
       insecure () {
         return this.tab === 'signin' && this.password.length <= 5
+      },
+      disabled () {
+        return this.mismatch || this.insecure || this.error
       }
     }
   }

@@ -271,9 +271,7 @@ export default {
     lbl_label_username: 'Nombre',
     lbl_label_email: 'Email',
     lbl_label_password: 'Contraseña',
-    lbl_label_password_insecure: 'Contraseña Insegura',
     lbl_label_password_confirm: 'Confirmar Contraseña',
-    lbl_label_password_mismatch: 'Ambas Contraseñas no Coinciden',
     lbl_label_enter: 'Expande tu Mundo',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
@@ -344,7 +342,17 @@ export default {
     // toasts
     lbl_toast_success_ok: 'Completado correctamente',
     lbl_toast_error_resources: 'Recursos insuficientes',
-    lbl_toast_error_territory: 'Espacio insuficiente'
+    lbl_toast_error_territory: 'Espacio insuficiente',
+    // firebase
+    'auth/registration-ok': 'Registrado correctamente',
+    'auth/username-already-exists': 'Ese usuario ya existe',
+    'auth/user-not-found': 'Credenciales incorrectas',
+    'auth/wrong-password': 'Credenciales incorrectas',
+    'auth/invalid-credentials': 'Credenciales incorrectas',
+    'auth/email-already-exists': 'Ese email ya existe',
+    'auth/email-already-in-use': 'Ese email ya existe',
+    'auth/password-insecure': 'Contraseña insegura',
+    'auth/password-mismatch': 'Contraseñas incoherentes'
   },
   en: {
   }
