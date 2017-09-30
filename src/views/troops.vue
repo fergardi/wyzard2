@@ -17,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_troops')
-      this.$bindAsArray('troops', database.ref('users').child(store.state.username).child('troops').orderByChild('color'))
+      this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('color'))
     }
   }
 </script>

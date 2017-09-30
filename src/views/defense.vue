@@ -31,8 +31,8 @@
     },
     created () {
       store.commit('title', 'lbl_title_defense')
-      this.$bindAsArray('spells', database.ref('users').child(store.state.username).child('spells').orderByChild('defensive').equalTo(true))
-      this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('artifacts').orderByChild('defensive').equalTo(true))
+      this.$bindAsArray('spells', database.ref('users').child(store.state.uid).child('spells').orderByChild('defensive').equalTo(true))
+      this.$bindAsArray('artifacts', database.ref('users').child(store.state.uid).child('artifacts').orderByChild('defensive').equalTo(true))
     },
     methods: {
       save () {

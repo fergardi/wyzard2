@@ -51,7 +51,7 @@
       }
     },
     created () {
-      if (store.state.username) this.$bindAsObject('user', database.ref('users').child(store.state.username))
+      if (store.state.uid) this.$bindAsObject('user', database.ref('users').child(store.state.uid))
     },
     methods: {
       demolish () {

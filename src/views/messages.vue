@@ -60,7 +60,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_messages')
-      this.$bindAsArray('messages', database.ref('users').child(store.state.username).child('messages').orderByChild('timestamp'))
+      this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
     },
     methods: {
       move (page) {

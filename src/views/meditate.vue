@@ -17,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_meditate')
-      this.$bindAsArray('buildings', database.ref('users').child(store.state.username).child('constructions').orderByChild('name').equalTo('lbl_building_node'))
+      this.$bindAsArray('buildings', database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_node'))
     }
   }
 </script>

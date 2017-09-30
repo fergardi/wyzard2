@@ -51,7 +51,7 @@
       }
     },
     created () {
-      this.$bindAsArray('kingdoms', database.ref('users').child(store.state.username).child('kingdoms'))
+      this.$bindAsArray('kingdoms', database.ref('users').child(store.state.uid).child('kingdoms'))
     },
     methods: {
       ready (map) {

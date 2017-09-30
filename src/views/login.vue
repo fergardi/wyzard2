@@ -62,7 +62,7 @@
       login () {
         authenticate(this.email, this.password)
         .then(response => {
-          store.commit('username', auth.currentUser.uid)
+          store.commit('uid', auth.currentUser.uid)
           this.$router.push('/census')
         })
         .catch(error => {
@@ -140,7 +140,7 @@
             })
             // messages
             // TODO
-            store.commit('username', auth.currentUser.uid)
+            store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')
             this.$router.push('/census')
           })

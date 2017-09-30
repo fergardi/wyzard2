@@ -8,7 +8,7 @@ const vuex = new Vuex.Store({
     lang: 'es',
     title: 'lbl_wyzard',
     menu: false,
-    username: null,
+    uid: null,
     logged: false,
     settings: {
       lang: 'es',
@@ -28,9 +28,9 @@ const vuex = new Vuex.Store({
     title (state, title) {
       state.title = title
     },
-    username (state, username) {
-      state.username = username
-      state.logged = username !== null
+    uid (state, uid) {
+      state.uid = uid
+      state.logged = uid !== null
     },
     settings (state, settings) {
       state.settings = settings

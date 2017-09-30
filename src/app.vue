@@ -131,7 +131,7 @@
       },
       logout () {
         auth.signOut()
-        store.commit('username', null)
+        store.commit('uid', null)
         this.$router.push('/login')
       }
     },
@@ -148,8 +148,8 @@
       // firebase
       store.watch((state) => state.logged, (value) => {
         if (value) {
-          this.$bindAsObject('user', database.ref('users').child(store.state.username))
-          this.$bindAsArray('enchantments', database.ref('users').child(store.state.username).child('enchantments'))
+          this.$bindAsObject('user', database.ref('users').child(store.state.uid))
+          this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments'))
         }
       })
       // sw

@@ -17,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_sorcery')
-      this.$bindAsArray('researches', database.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(true))
+      this.$bindAsArray('researches', database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true))
     },
     firebase: {
       users: database.ref('users').orderByChild('name')

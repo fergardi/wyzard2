@@ -17,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_relics')
-      this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('relics'))
+      this.$bindAsArray('artifacts', database.ref('users').child(store.state.uid).child('relics'))
     }
   }
 </script>

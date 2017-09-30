@@ -17,7 +17,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_research')
-      this.$bindAsArray('spells', database.ref('users').child(store.state.username).child('researches').orderByChild('completed').equalTo(false))
+      this.$bindAsArray('spells', database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(false))
     }
   }
 </script>
