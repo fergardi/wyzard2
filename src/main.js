@@ -6,14 +6,11 @@ import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
 import moment from 'moment'
-import VueWorker from 'vue-worker'
 
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 
-// worker
-Vue.use(VueWorker)
 // UI
 Vue.use(MuseUI)
 // firebase

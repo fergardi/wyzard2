@@ -153,18 +153,6 @@
         }
       })
     },
-    mounted () {
-      // service worker
-      this.$worker.run(_ => {
-        return 'The SW is working!'
-      })
-      .then(result => {
-        console.log(result)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-    },
     computed: {
       menu () {
         return store.state.menu
