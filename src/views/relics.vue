@@ -16,8 +16,8 @@
       'artifact': artifact
     },
     created () {
-      store.commit('title', 'lbl_title_antiquities')
-      this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('antiquities'))
+      store.commit('title', 'lbl_title_relics')
+      this.$bindAsArray('artifacts', database.ref('users').child(store.state.username).child('relics'))
     }
   }
 </script>

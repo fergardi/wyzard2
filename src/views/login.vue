@@ -69,7 +69,6 @@
           this.error = true
           this.code = 'invalid'
           store.commit('error', error.code)
-          console.error(error)
         })
       },
       signin () {
@@ -118,18 +117,18 @@
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
               })
             })
-            // antiquities
+            // relics
             this.$firebaseRefs.artifacts.orderByChild('color').equalTo(player.color).once('value', snapshot => {
-              let antiquities = []
+              let relics = []
               snapshot.forEach(artifact => {
-                let antiquity = {...artifact.val()}
-                antiquity.quantity = 1
-                delete antiquity['.key']
-                antiquities.push(antiquity)
+                let relic = {...artifact.val()}
+                relic.quantity = 1
+                delete relic['.key']
+                relics.push(relic)
               })
               // random
-              const index = Math.floor(Math.random() * antiquities.length)
-              this.$firebaseRefs.users.child(auth.currentUser.uid).child('antiquities').push(antiquities[index])
+              const index = Math.floor(Math.random() * relics.length)
+              this.$firebaseRefs.users.child(auth.currentUser.uid).child('relics').push(relics[index])
             })
             // places
             this.$firebaseRefs.places.orderByChild('color').equalTo(player.color).once('value', snapshot => {
@@ -151,7 +150,6 @@
               this.code = 'exists'
             }
             store.commit('error', error.code)
-            console.error(error)
           })
         }
       },

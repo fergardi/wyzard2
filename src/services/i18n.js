@@ -222,7 +222,7 @@ export default {
     lbl_building_barrier: 'Barreras',
     lbl_building_temple: 'Templos',
     // titles
-    lbl_title_antiquities: 'Antigüedades',
+    lbl_title_relics: 'Reliquias',
     lbl_title_knowledge: 'Conocimiento',
     lbl_title_magic: 'Magia',
     lbl_title_economy: 'Economía',
