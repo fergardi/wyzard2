@@ -9,33 +9,39 @@
       p {{ data.description | lorem }}
 
     template(v-if="construction")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="amount", min="0", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="demolish") {{ 'lbl_button_demolish' | translate }}
-        mu-raised-button(primary, @click="construct") {{ 'lbl_button_construct' | translate }}
+      form(@submit.stop.prevent="confirm('construct')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_construct_demolish' | translate }}
 
     template(v-if="exploration")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="amount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="explore") {{ 'lbl_button_explore' | translate }}
+      form(@submit.stop.prevent="confirm('explore')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_explore' | translate }}
 
     template(v-if="meditation")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="amount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="meditate") {{ 'lbl_button_meditate' | translate }}
+      form(@submit.stop.prevent="confirm('meditate')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_meditate' | translate }}
 
     template(v-if="tax")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="amount", min="0", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="collect") {{ 'lbl_button_collect' | translate }}
+      form(@submit.stop.prevent="confirm('collect')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_collect' | translate }}
+
+    mu-dialog(:open="dialog", @close="close")
+      mu-card.dialog
+        mu-card-header(:title="translate('lbl_label_confirm')", :subTitle="translate('lbl_label_cannot_undo')")
+        mu-card-actions
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
 </template>
 
 <script>
@@ -47,6 +53,8 @@
     props: ['data', 'exploration', 'construction', 'meditation', 'tax'],
     data () {
       return {
+        dialog: false,
+        type: null,
         amount: 0
       }
     },
@@ -54,29 +62,50 @@
       if (store.state.uid) this.$bindAsObject('user', database.ref('users').child(store.state.uid))
     },
     methods: {
-      demolish () {
-        // TODO
+      confirm (type) {
+        this.type = type
+        this.dialog = true
+      },
+      accept () {
+        switch (this.type) {
+          case 'explore':
+            this.explore()
+            break
+          case 'construct':
+            this.construct()
+            break
+          case 'meditate':
+            this.meditate()
+            break
+          case 'collect':
+            this.collect()
+            break
+        }
       },
       construct () {
-        if (this.user.territory >= this.amount) {
-          if (this) {
-            // TODO
-            store.commit('success', 'lbl_toast_success_ok')
-          } else {
-            store.commit('error', 'lbl_toast_error_resources')
-          }
-        } else {
-          store.commit('error', 'lbl_toast_error_territory')
-        }
+        // TODO
+        store.commit('success', 'lbl_toast_construction_ok')
+        this.close()
       },
       explore () {
         // TODO
+        store.commit('success', 'lbl_toast_exploration_ok')
+        this.close()
       },
       meditate () {
         // TODO
+        store.commit('success', 'lbl_toast_meditation_ok')
+        this.close()
       },
       collect () {
         // TODO
+        store.commit('success', 'lbl_toast_tax_ok')
+        this.close()
+      },
+      close () {
+        this.type = null
+        this.dialog = false
+        this.amount = 0
       }
     }
   }

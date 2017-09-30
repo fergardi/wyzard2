@@ -9,28 +9,57 @@
       p {{ data.description | lorem }}
 
     template(v-if="contract")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="bid") {{ 'lbl_button_bid' | translate }}
+      form(@submit.stop.prevent="confirm('bid')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_bid' | translate }}
+
+    mu-dialog(:open="dialog", @close="close")
+      mu-card.dialog
+        mu-card-header(:title="translate('lbl_label_confirm')", :subTitle="translate('lbl_label_cannot_undo')")
+        mu-card-actions
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
 </template>
 
 <script>
+  import store from '../vuex/store'
+  
   export default {
     name: 'hero',
     props: ['data', 'contract'],
     data () {
       return {
+        dialog: false,
+        type: null,
         amount: 0
       }
     },
     created () {
-      this.amount = this.data.gold || 0
+      if (this.contract) this.amount = this.data.gold
     },
     methods: {
+      confirm (type) {
+        this.type = type
+        this.dialog = true
+      },
+      accept () {
+        switch (this.type) {
+          case 'bid':
+            this.bid()
+            break
+        }
+      },
       bid () {
         // TODO
+        store.commit('success', 'lbl_toast_bid_ok')
+        this.close()
+      },
+      close () {
+        this.type = null
+        this.dialog = false
+        this.amount = 0
       }
     }
   }

@@ -37,17 +37,18 @@
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_research' | translate }}
 
-    template(v-if="casting")
-      mu-card-text
-        form
+    template(v-if="conjuration")
+      form(@submit.stop.prevent="confirm('conjure')")
+        mu-card-text
           mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true")
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user['.key']", :hintText="translate('lbl_label_target')")
-      mu-card-actions
-        mu-raised-button(primary, @click="cast") {{ 'lbl_button_cast' | translate }}
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_cast' | translate }}
 
     template(v-if="breaking")
-      mu-card-actions
-        mu-raised-button(primary, @click="disenchant") {{ 'lbl_button_dispel' | translate }}
+      form(@submit.stop.prevent="confirm('disenchant')")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_dispel' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -63,7 +64,7 @@
 
   export default {
     name: 'spell',
-    props: ['data', 'investigation', 'casting', 'users', 'breaking', 'info'],
+    props: ['data', 'investigation', 'conjuration', 'users', 'breaking', 'info'],
     data () {
       return {
         type: null,
@@ -82,8 +83,8 @@
           case 'research':
             this.research()
             break
-          case 'cast':
-            this.cast()
+          case 'conjure':
+            this.conjure()
             break
           case 'disenchant':
             this.disenchant()
@@ -104,15 +105,17 @@
           }
           return turns
         })
-        store.commit('success', 'lbl_toast_ok')
+        store.commit('success', 'lbl_toast_investigation_ok')
         this.close()
       },
-      cast () {
+      conjure () {
         // TODO
+        store.commit('success', 'lbl_toast_casting_ok')
         this.close()
       },
       disenchant () {
         // TODO
+        store.commit('success', 'lbl_toast_dispel_ok')
         this.close()
       },
       close () {

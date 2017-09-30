@@ -110,10 +110,6 @@
       "quantity" : 1
     }
   },
-  "battle" : {
-    "image" : "http://coolvibe.com/wp-content/uploads/2011/08/orc-battle.jpg",
-    "name" : "lbl_label_battle"
-  },
   "buildings" : {
     "barrack" : {
       "buildable" : true,
@@ -166,6 +162,1988 @@
       "name" : "lbl_building_workshop"
     }
   },
+  "countries" : {
+    "afghanistan" : {
+      "name" : "Afghanistan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "albania" : {
+      "name" : "Albania",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "algeria" : {
+      "name" : "Algeria",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "angola" : {
+      "name" : "Angola",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "antarctica" : {
+      "name" : "Antarctica",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "argentina" : {
+      "name" : "Argentina",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "armenia" : {
+      "name" : "Armenia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "australia" : {
+      "name" : "Australia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "austria" : {
+      "name" : "Austria",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "azerbaijan" : {
+      "name" : "Azerbaijan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bangladesh" : {
+      "name" : "Bangladesh",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "belarus" : {
+      "name" : "Belarus",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "belgium" : {
+      "name" : "Belgium",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "belize" : {
+      "name" : "Belize",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "benin" : {
+      "name" : "Benin",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bermuda" : {
+      "name" : "Bermuda",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bhutan" : {
+      "name" : "Bhutan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bolivia" : {
+      "name" : "Bolivia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bosnia_and_herzegovina" : {
+      "name" : "Bosnia and Herzegovina",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "botswana" : {
+      "name" : "Botswana",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "brazil" : {
+      "name" : "Brazil",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "brunei" : {
+      "name" : "Brunei",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "bulgaria" : {
+      "name" : "Bulgaria",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "burkina_faso" : {
+      "name" : "Burkina Faso",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "burundi" : {
+      "name" : "Burundi",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "cambodia" : {
+      "name" : "Cambodia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "cameroon" : {
+      "name" : "Cameroon",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "canada" : {
+      "name" : "Canada",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "central_african_republic" : {
+      "name" : "Central African Republic",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "chad" : {
+      "name" : "Chad",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "chile" : {
+      "name" : "Chile",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "china" : {
+      "name" : "China",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "colombia" : {
+      "name" : "Colombia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "costa_rica" : {
+      "name" : "Costa Rica",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "croatia" : {
+      "name" : "Croatia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "cuba" : {
+      "name" : "Cuba",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "cyprus" : {
+      "name" : "Cyprus",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "czech_republic" : {
+      "name" : "Czech Republic",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "democratic_republic_of_the_congo" : {
+      "name" : "Democratic Republic of the Congo",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "denmark" : {
+      "name" : "Denmark",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "djibouti" : {
+      "name" : "Djibouti",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "dominican_republic" : {
+      "name" : "Dominican Republic",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "east_timor" : {
+      "name" : "East Timor",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ecuador" : {
+      "name" : "Ecuador",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "egypt" : {
+      "name" : "Egypt",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "el_salvador" : {
+      "name" : "El Salvador",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "equatorial_guinea" : {
+      "name" : "Equatorial Guinea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "eritrea" : {
+      "name" : "Eritrea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "estonia" : {
+      "name" : "Estonia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ethiopia" : {
+      "name" : "Ethiopia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "falkland_islands" : {
+      "name" : "Falkland Islands",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "fiji" : {
+      "name" : "Fiji",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "finland" : {
+      "name" : "Finland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "france" : {
+      "name" : "France",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "french_guiana" : {
+      "name" : "French Guiana",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "french_southern_and_antarctic_lands" : {
+      "name" : "French Southern and Antarctic Lands",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "gabon" : {
+      "name" : "Gabon",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "gambia" : {
+      "name" : "Gambia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "georgia" : {
+      "name" : "Georgia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "germany" : {
+      "name" : "Germany",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ghana" : {
+      "name" : "Ghana",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "greece" : {
+      "name" : "Greece",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "greenland" : {
+      "name" : "Greenland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "guatemala" : {
+      "name" : "Guatemala",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "guinea" : {
+      "name" : "Guinea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "guinea_bissau" : {
+      "name" : "Guinea Bissau",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "guyana" : {
+      "name" : "Guyana",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "haiti" : {
+      "name" : "Haiti",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "honduras" : {
+      "name" : "Honduras",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "hungary" : {
+      "name" : "Hungary",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "iceland" : {
+      "name" : "Iceland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "india" : {
+      "name" : "India",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "indonesia" : {
+      "name" : "Indonesia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "iran" : {
+      "name" : "Iran",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "iraq" : {
+      "name" : "Iraq",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ireland" : {
+      "name" : "Ireland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "israel" : {
+      "name" : "Israel",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "italy" : {
+      "name" : "Italy",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ivory_coast" : {
+      "name" : "Ivory Coast",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "jamaica" : {
+      "name" : "Jamaica",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "japan" : {
+      "name" : "Japan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "jordan" : {
+      "name" : "Jordan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "kazakhstan" : {
+      "name" : "Kazakhstan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "kenya" : {
+      "name" : "Kenya",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "kosovo" : {
+      "name" : "Kosovo",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "kuwait" : {
+      "name" : "Kuwait",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "kyrgyzstan" : {
+      "name" : "Kyrgyzstan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "laos" : {
+      "name" : "Laos",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "latvia" : {
+      "name" : "Latvia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "lebanon" : {
+      "name" : "Lebanon",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "lesotho" : {
+      "name" : "Lesotho",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "liberia" : {
+      "name" : "Liberia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "libya" : {
+      "name" : "Libya",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "lithuania" : {
+      "name" : "Lithuania",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "luxembourg" : {
+      "name" : "Luxembourg",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "macedonia" : {
+      "name" : "Macedonia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "madagascar" : {
+      "name" : "Madagascar",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "malawi" : {
+      "name" : "Malawi",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "malaysia" : {
+      "name" : "Malaysia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "mali" : {
+      "name" : "Mali",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "malta" : {
+      "name" : "Malta",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "mauritania" : {
+      "name" : "Mauritania",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "mexico" : {
+      "name" : "Mexico",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "moldova" : {
+      "name" : "Moldova",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "mongolia" : {
+      "name" : "Mongolia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "montenegro" : {
+      "name" : "Montenegro",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "morocco" : {
+      "name" : "Morocco",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "mozambique" : {
+      "name" : "Mozambique",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "myanmar" : {
+      "name" : "Myanmar",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "namibia" : {
+      "name" : "Namibia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "nepal" : {
+      "name" : "Nepal",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "netherlands" : {
+      "name" : "Netherlands",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "new_caledonia" : {
+      "name" : "New Caledonia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "new_zealand" : {
+      "name" : "New Zealand",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "nicaragua" : {
+      "name" : "Nicaragua",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "niger" : {
+      "name" : "Niger",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "nigeria" : {
+      "name" : "Nigeria",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "north_korea" : {
+      "name" : "North Korea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "northern_cyprus" : {
+      "name" : "Northern Cyprus",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "norway" : {
+      "name" : "Norway",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "oman" : {
+      "name" : "Oman",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "pakistan" : {
+      "name" : "Pakistan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "panama" : {
+      "name" : "Panama",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "papua_new_guinea" : {
+      "name" : "Papua New Guinea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "paraguay" : {
+      "name" : "Paraguay",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "peru" : {
+      "name" : "Peru",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "philippines" : {
+      "name" : "Philippines",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "poland" : {
+      "name" : "Poland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "portugal" : {
+      "name" : "Portugal",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "puerto_rico" : {
+      "name" : "Puerto Rico",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "qatar" : {
+      "name" : "Qatar",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "republic_of_serbia" : {
+      "name" : "Republic of Serbia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "republic_of_the_congo" : {
+      "name" : "Republic of the Congo",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "romania" : {
+      "name" : "Romania",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "russia" : {
+      "name" : "Russia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "rwanda" : {
+      "name" : "Rwanda",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "saudi_arabia" : {
+      "name" : "Saudi Arabia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "senegal" : {
+      "name" : "Senegal",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "sierra_leone" : {
+      "name" : "Sierra Leone",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "slovakia" : {
+      "name" : "Slovakia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "slovenia" : {
+      "name" : "Slovenia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "solomon_islands" : {
+      "name" : "Solomon Islands",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "somalia" : {
+      "name" : "Somalia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "somaliland" : {
+      "name" : "Somaliland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "south_africa" : {
+      "name" : "South Africa",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "south_korea" : {
+      "name" : "South Korea",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "south_sudan" : {
+      "name" : "South Sudan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "spain" : {
+      "name" : "Spain",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "sri_lanka" : {
+      "name" : "Sri Lanka",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "sudan" : {
+      "name" : "Sudan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "suriname" : {
+      "name" : "Suriname",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "swaziland" : {
+      "name" : "Swaziland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "sweden" : {
+      "name" : "Sweden",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "switzerland" : {
+      "name" : "Switzerland",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "syria" : {
+      "name" : "Syria",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "taiwan" : {
+      "name" : "Taiwan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "tajikistan" : {
+      "name" : "Tajikistan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "thailand" : {
+      "name" : "Thailand",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "the_bahamas" : {
+      "name" : "The Bahamas",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "togo" : {
+      "name" : "Togo",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "trinidad_and_tobago" : {
+      "name" : "Trinidad and Tobago",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "tunisia" : {
+      "name" : "Tunisia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "turkey" : {
+      "name" : "Turkey",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "turkmenistan" : {
+      "name" : "Turkmenistan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "uganda" : {
+      "name" : "Uganda",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "ukraine" : {
+      "name" : "Ukraine",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "united_arab_emirates" : {
+      "name" : "United Arab Emirates",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "united_kingdom" : {
+      "name" : "United Kingdom",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "united_republic_of_tanzania" : {
+      "name" : "United Republic of Tanzania",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "united_states_of_america" : {
+      "name" : "United States of America",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "uruguay" : {
+      "name" : "Uruguay",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "uzbekistan" : {
+      "name" : "Uzbekistan",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "vanuatu" : {
+      "name" : "Vanuatu",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "venezuela" : {
+      "name" : "Venezuela",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "vietnam" : {
+      "name" : "Vietnam",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "west_bank" : {
+      "name" : "West Bank",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "western_sahara" : {
+      "name" : "Western Sahara",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "yemen" : {
+      "name" : "Yemen",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "zambia" : {
+      "name" : "Zambia",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    },
+    "zimbabwe" : {
+      "name" : "Zimbabwe",
+      "troops" : {
+        "one" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+          "name" : "lbl_unit_zombie",
+          "quantity" : 99999
+        }
+      }
+    }
+  },
   "factions" : {
     "chaos" : {
       "color" : "red",
@@ -196,26 +2174,31 @@
   "gods" : {
     "god_of_blood" : {
       "color" : "red",
+      "gold" : 0,
       "image" : "https://cdna.artstation.com/p/assets/images/images/001/374/250/large/ekaterina-pushkarova-ares-l.jpg",
       "name" : "lbl_god_of_blood"
     },
     "god_of_death" : {
       "color" : "purple",
+      "gold" : 0,
       "image" : "https://i.pinimg.com/736x/92/75/c5/9275c500ad706cf456efb1294a24941e--dark-fantasy-fantasy-art.jpg",
       "name" : "lbl_god_of_death"
     },
     "god_of_life" : {
       "color" : "green",
-      "image" : "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
+      "gold" : 0,
+      "image" : "https://i.pinimg.com/736x/d1/63/80/d16380a525ff8f2e64861ace6c1b22c4--mtg-art-magazine-articles.jpg",
       "name" : "lbl_god_of_life"
     },
     "god_of_light" : {
       "color" : "white",
+      "gold" : 0,
       "image" : "https://i.pinimg.com/originals/b9/f7/3a/b9f73af2c235009023c41db9d7bde22d.jpg",
       "name" : "lbl_god_of_light"
     },
     "god_of_magic" : {
       "color" : "blue",
+      "gold" : 0,
       "image" : "https://i.pinimg.com/originals/d5/22/1b/d5221ba012141221d28821b03985c167.jpg",
       "name" : "lbl_god_of_magic"
     }
@@ -325,205 +2308,905 @@
     }
   },
   "spells" : {
+    "beast_council" : {
+      "color" : "green",
+      "colorLevel" : "green8",
+      "image" : "https://i.pinimg.com/originals/7c/08/c0/7c08c085f261daaff9c8313ac8f28ac6.jpg",
+      "level" : 8,
+      "name" : "lbl_spell_beast_council",
+      "turns" : 800
+    },
     "berserker" : {
       "color" : "red",
+      "colorLevel" : "red2",
       "image" : "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
-      "name" : "lbl_spell_berserker"
+      "level" : 2,
+      "name" : "lbl_spell_berserker",
+      "turns" : 200
     },
     "blood_pact" : {
       "color" : "red",
+      "colorLevel" : "red8",
       "image" : "https://i.pinimg.com/736x/87/cb/9b/87cb9b7eda5561c5b09df65e3c9d4016--el-dragon-dragon-art.jpg",
-      "name" : "lbl_spell_blood_pact"
+      "level" : 8,
+      "name" : "lbl_spell_blood_pact",
+      "turns" : 800
     },
     "bone_wall" : {
       "color" : "purple",
+      "colorLevel" : "purple5",
       "image" : "https://i.pinimg.com/originals/cb/a8/8c/cba88cb298c3ee7ddb1414a31d06cafa.jpg",
-      "name" : "lbl_spell_bone_wall"
+      "level" : 5,
+      "name" : "lbl_spell_bone_wall",
+      "turns" : 500
     },
     "break_enchantment" : {
       "color" : "white",
+      "colorLevel" : "white8",
       "image" : "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg",
-      "name" : "lbl_spell_break_enchantment"
+      "level" : 8,
+      "name" : "lbl_spell_break_enchantment",
+      "turns" : 800
     },
     "calm" : {
       "color" : "white",
+      "colorLevel" : "white2",
       "image" : "https://i.pinimg.com/736x/1a/fb/aa/1afbaa9eb13002758b06a0210e94e476--noah-bradley-mtg-art.jpg",
-      "name" : "lbl_spell_calm"
+      "level" : 2,
+      "name" : "lbl_spell_calm",
+      "turns" : 200
     },
-    "celestial_chorus" : {
-      "color" : "white",
-      "image" : "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
-      "name" : "lbl_spell_celestial_chorus"
+    "climate_control" : {
+      "color" : "green",
+      "colorLevel" : "green9",
+      "image" : "https://i.pinimg.com/736x/6c/1a/36/6c1a36b42f4a0c4a416617213f94107a--fantasy-art-landscapes-fantasy-landscape.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_climate_control",
+      "turns" : 900
     },
     "concentration" : {
       "color" : "blue",
+      "colorLevel" : "blue4",
       "image" : "https://i.pinimg.com/originals/58/ce/b6/58ceb62f5f068c2f0210abcc2b13cdac.jpg",
-      "name" : "lbl_spell_concentration"
+      "level" : 4,
+      "name" : "lbl_spell_concentration",
+      "turns" : 400
     },
     "corruption" : {
       "color" : "purple",
+      "colorLevel" : "purple7",
       "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
-      "name" : "lbl_spell_corruption"
+      "level" : 7,
+      "name" : "lbl_spell_corruption",
+      "turns" : 700
+    },
+    "counter_spell" : {
+      "color" : "blue",
+      "colorLevel" : "blue6",
+      "image" : "http://www.drawmaster.ru/uploads/posts/2012-10/DrawMaster.ru_magic-sign-13.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_counter_spell",
+      "turns" : 600
     },
     "coven" : {
       "color" : "purple",
+      "colorLevel" : "purple8",
       "image" : "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
-      "name" : "lbl_spell_coven"
+      "level" : 8,
+      "name" : "lbl_spell_coven",
+      "turns" : 800
     },
     "create_artifact" : {
       "color" : "blue",
+      "colorLevel" : "blue9",
       "image" : "http://www.artofmtg.com/wp-content/uploads/2016/02/Ice-MtG-Art.jpg",
-      "name" : "lbl_spell_create_artifact"
+      "level" : 9,
+      "name" : "lbl_spell_create_artifact",
+      "turns" : 900
     },
     "curse" : {
       "color" : "purple",
+      "colorLevel" : "purple2",
       "image" : "https://upload.wikimedia.org/wikipedia/commons/b/b9/King_Arthur_II_concept_art_4.jpg",
-      "name" : "lbl_spell_curse"
+      "level" : 2,
+      "name" : "lbl_spell_curse",
+      "turns" : 200
     },
     "destroy_artifact" : {
       "color" : "white",
+      "colorLevel" : "white10",
       "image" : "https://i.pinimg.com/736x/49/e4/15/49e4154df14446703f73d25ab79853f4--wayne-reynolds-renaissance-artists.jpg",
-      "name" : "lbl_spell_destroy_artifact"
+      "level" : 10,
+      "name" : "lbl_spell_destroy_artifact",
+      "turns" : 1000
     },
     "divine_protection" : {
       "color" : "white",
+      "colorLevel" : "white5",
       "image" : "https://i.pinimg.com/originals/d2/f2/db/d2f2dbacecea377c186afc23d2bf4860.jpg",
-      "name" : "lbl_spell_divine_protection"
+      "level" : 5,
+      "name" : "lbl_spell_divine_protection",
+      "turns" : 500
     },
     "eclipse" : {
       "color" : "purple",
+      "colorLevel" : "purple3",
       "image" : "https://i.pinimg.com/originals/52/7a/26/527a26e0d9ee89a21639c6910591ce32.jpg",
-      "name" : "lbl_spell_eclipse"
+      "level" : 3,
+      "name" : "lbl_spell_eclipse",
+      "turns" : 300
     },
     "elemental_gathering" : {
       "color" : "blue",
+      "colorLevel" : "blue7",
       "image" : "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg",
-      "name" : "lbl_spell_elemental_gathering"
+      "level" : 7,
+      "name" : "lbl_spell_elemental_gathering",
+      "turns" : 700
+    },
+    "elemental_wrath" : {
+      "color" : "green",
+      "colorLevel" : "green4",
+      "image" : "https://i.pinimg.com/736x/4b/3e/0e/4b3e0e45c159d9b7aa8a7bcf568ea385--mtg-art-fantasy-creatures.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_elemental_wrath",
+      "turns" : 400
     },
     "epiphany" : {
       "color" : "white",
+      "colorLevel" : "white7",
       "image" : "https://i.pinimg.com/736x/b0/fb/d7/b0fbd7034a5006aae99be4e50a455ac8--mtg-art-game-art.jpg",
-      "name" : "lbl_spell_epiphany"
+      "level" : 7,
+      "name" : "lbl_spell_epiphany",
+      "turns" : 700
     },
     "fake_gold" : {
       "color" : "blue",
+      "colorLevel" : "blue2",
       "image" : "http://www.godsfamily.co.in/img/Heavenly%20Treasures%209.jpg",
-      "name" : "lbl_spell_fake_gold"
+      "level" : 2,
+      "name" : "lbl_spell_fake_gold",
+      "turns" : 200
     },
     "fear" : {
       "color" : "purple",
+      "colorLevel" : "purple1",
       "image" : "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
-      "name" : "lbl_spell_fear"
+      "level" : 1,
+      "name" : "lbl_spell_fear",
+      "turns" : 100
     },
     "fire_circle" : {
       "color" : "red",
+      "colorLevel" : "red5",
       "image" : "http://www.myriadsupply.com/blog/wp-content/uploads/2013/07/11.jpg",
-      "name" : "lbl_spell_fire_circle"
+      "level" : 5,
+      "name" : "lbl_spell_fire_circle",
+      "turns" : 500
     },
     "fireball" : {
       "color" : "red",
+      "colorLevel" : "red1",
       "image" : "http://img01.deviantart.net/ccd0/i/2016/049/2/e/fireball_by_eedenartwork-d9s71lg.jpg",
-      "name" : "lbl_spell_fireball"
+      "level" : 1,
+      "name" : "lbl_spell_fireball",
+      "turns" : 100
     },
     "flame_shield" : {
       "color" : "red",
+      "colorLevel" : "red6",
       "image" : "https://i.pinimg.com/originals/d5/08/ac/d508ac6a8787170411fdd10f85340700.jpg",
-      "name" : "lbl_spell_flame_shield"
+      "level" : 6,
+      "name" : "lbl_spell_flame_shield",
+      "turns" : 600
+    },
+    "fountain_of_youth" : {
+      "color" : "green",
+      "colorLevel" : "green3",
+      "image" : "http://aws-cf.ados.fr/prod/photos/6/4/0/7410640/2191349/img-2191349fe5.jpg?v=5",
+      "level" : 3,
+      "name" : "lbl_spell_fountain_of_youth",
+      "turns" : 300
     },
     "haste" : {
       "color" : "blue",
+      "colorLevel" : "blue1",
       "image" : "https://i.ytimg.com/vi/aW4IWTG_iRQ/maxresdefault.jpg",
-      "name" : "lbl_spell_haste"
+      "level" : 1,
+      "name" : "lbl_spell_haste",
+      "turns" : 100
     },
     "healing_hands" : {
       "color" : "white",
+      "colorLevel" : "white1",
       "image" : "https://hydra-media.cursecdn.com/hearthstone.gamepedia.com/thumb/8/8b/Coliseum_Manager_full.jpg/400px-Coliseum_Manager_full.jpg?version=48bb1690ae524e0b3c3adff1bf77b336",
-      "name" : "lbl_spell_healing_hands"
+      "level" : 1,
+      "name" : "lbl_spell_healing_hands",
+      "turns" : 100
+    },
+    "heaven_doors" : {
+      "color" : "white",
+      "colorLevel" : "white9",
+      "image" : "http://www.artofmtg.com/wp-content/uploads/2017/01/Extraplanar-Lens-Masterpieces-Aether-Revolt-MtG-Art.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_heaven_doors",
+      "turns" : 900
+    },
+    "hurricane" : {
+      "color" : "green",
+      "colorLevel" : "green10",
+      "image" : "http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_hurricane",
+      "turns" : 1000
     },
     "hypnosis" : {
       "color" : "blue",
+      "colorLevel" : "blue8",
       "image" : "http://media.wizards.com/images/magic/daily/stf/stf186_mind.jpg",
-      "name" : "lbl_spell_hypnosis"
+      "level" : 8,
+      "name" : "lbl_spell_hypnosis",
+      "turns" : 800
     },
     "inferno" : {
       "color" : "red",
+      "colorLevel" : "red7",
       "image" : "https://orig10.deviantart.net/5736/f/2014/017/3/4/fated_conflagration___mtg_by_clintcearley-d72jzes.jpg",
-      "name" : "lbl_spell_inferno"
+      "level" : 7,
+      "name" : "lbl_spell_inferno",
+      "turns" : 700
     },
     "mana_drain" : {
       "color" : "red",
+      "colorLevel" : "red4",
       "image" : "https://i.pinimg.com/originals/d5/3a/7f/d53a7f30d5d0f8ac79b09e576558fdaa.jpg",
-      "name" : "lbl_spell_mana_drain"
+      "level" : 4,
+      "name" : "lbl_spell_mana_drain",
+      "turns" : 400
     },
     "mana_shield" : {
       "color" : "blue",
+      "colorLevel" : "blue5",
       "image" : "http://img03.deviantart.net/3ebc/i/2017/019/9/6/water_barrier_by_nele_diel-davygnd.jpg",
-      "name" : "lbl_spell_mana_shield"
+      "level" : 5,
+      "name" : "lbl_spell_mana_shield",
+      "turns" : 500
     },
     "meteor_shower" : {
       "color" : "red",
+      "colorLevel" : "red9",
       "image" : "https://t02.deviantart.net/CYX5X5q2_w_VK412KOUyahxpiA8=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre13/0fca/th/pre/f/2010/141/d/6/rain_of_fire_by_real_sonkes.jpg",
-      "name" : "lbl_spell_meteor_shower"
+      "level" : 9,
+      "name" : "lbl_spell_meteor_shower",
+      "turns" : 900
+    },
+    "nature_favor" : {
+      "color" : "green",
+      "colorLevel" : "green5",
+      "image" : "https://i.pinimg.com/originals/da/c7/90/dac79063e82ce0a9190f6236c3dd72db.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_nature_favor",
+      "turns" : 500
     },
     "necromancy" : {
       "color" : "purple",
+      "colorLevel" : "purple9",
       "image" : "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
-      "name" : "lbl_spell_necromancy"
+      "level" : 9,
+      "name" : "lbl_spell_necromancy",
+      "turns" : 900
     },
     "oracle" : {
       "color" : "blue",
+      "colorLevel" : "blue3",
       "image" : "https://i.pinimg.com/736x/8c/2a/5d/8c2a5dea3ab7613ae09bf15f09d791f8--mtg-art-dark-fantasy.jpg",
-      "name" : "lbl_spell_oracle"
+      "level" : 3,
+      "name" : "lbl_spell_oracle",
+      "turns" : 300
     },
     "peace" : {
       "color" : "white",
+      "colorLevel" : "white4",
       "image" : "https://i.pinimg.com/736x/78/49/39/78493983540b5c1c03f0ca5a73f1bf6b--noah-bradley-illustration-art.jpg",
-      "name" : "lbl_spell_peace"
+      "level" : 4,
+      "name" : "lbl_spell_peace",
+      "turns" : 400
     },
     "plague" : {
       "color" : "purple",
+      "colorLevel" : "purple6",
       "image" : "https://dfep0xlbws1ys.cloudfront.net/thumbs5d/44/5d44e336ee864a3a9b9f5a4853ef7fbd.jpg",
-      "name" : "lbl_spell_plague"
+      "level" : 6,
+      "name" : "lbl_spell_plague",
+      "turns" : 600
     },
     "prosperity" : {
       "color" : "white",
-      "image" : "http://68.media.tumblr.com/da023a7a830bca46226e5681554bc107/tumblr_no5avazBQF1tdmwb4o6_1280.jpg",
-      "name" : "lbl_spell_prosperity"
+      "colorLevel" : "white6",
+      "image" : "http://pre05.deviantart.net/32e2/th/pre/i/2016/069/4/d/stonehold_by_jonasdero-d5ev850.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_prosperity",
+      "turns" : 600
+    },
+    "regenerate" : {
+      "color" : "green",
+      "colorLevel" : "green2",
+      "image" : "https://i.pinimg.com/originals/8f/19/24/8f1924d3218f6a25e5e43d9327eb1531.jpg",
+      "level" : 2,
+      "name" : "lbl_spell_regenerate",
+      "turns" : 200
     },
     "resurrection" : {
       "color" : "purple",
+      "colorLevel" : "purple10",
       "image" : "https://i.pinimg.com/736x/36/c1/94/36c19446d136cae841ca529bd48f6648--scary-art-weird-art.jpg",
-      "name" : "lbl_spell_resurrection"
+      "level" : 10,
+      "name" : "lbl_spell_resurrection",
+      "turns" : 1000
+    },
+    "rust_armor" : {
+      "color" : "green",
+      "colorLevel" : "green1",
+      "image" : "https://i.pinimg.com/736x/3a/78/68/3a78683521c906d19262b71c0569cb90--creature-feature-creature-design.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_rust_armor",
+      "turns" : 100
+    },
+    "summon_air_elemental" : {
+      "color" : "blue",
+      "colorLevel" : "blue5",
+      "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_summon_air_elemental",
+      "number" : 0,
+      "turns" : 500,
+      "unit" : "air_elemental"
+    },
+    "summon_angel" : {
+      "color" : "white",
+      "colorLevel" : "white7",
+      "image" : "https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg",
+      "level" : 7,
+      "name" : "lbl_spell_summon_angel",
+      "number" : 0,
+      "turns" : 700,
+      "unit" : "angel"
+    },
+    "summon_archangel" : {
+      "color" : "white",
+      "colorLevel" : "white8",
+      "image" : "https://i.pinimg.com/736x/95/5b/bf/955bbf72b20f0f43619f289f99ac4352--mtg-art-angels-among-us.jpg",
+      "level" : 8,
+      "name" : "lbl_spell_summon_archangel",
+      "number" : 0,
+      "turns" : 800,
+      "unit" : "archangel"
+    },
+    "summon_basilisk" : {
+      "color" : "green",
+      "colorLevel" : "green6",
+      "image" : "https://i.pinimg.com/originals/ba/9b/95/ba9b959610b3618cd336d84a2b0db30b.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_summon_basilisk",
+      "number" : 0,
+      "turns" : 600,
+      "unit" : "basilisk"
+    },
+    "summon_behemoth" : {
+      "color" : "green",
+      "colorLevel" : "green7",
+      "image" : "http://aidanmoher.com/blog/wp-content/uploads/2011/04/kekai-kotaki-4.jpg",
+      "level" : 7,
+      "name" : "lbl_spell_summon_behemoth",
+      "number" : 0,
+      "turns" : 700,
+      "unit" : "behemoth"
+    },
+    "summon_black_dragon" : {
+      "color" : "purple",
+      "colorLevel" : "purple9",
+      "image" : "https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_summon_black_dragon",
+      "number" : 0,
+      "turns" : 900,
+      "unit" : "black_dragon"
+    },
+    "summon_blue_dragon" : {
+      "color" : "blue",
+      "colorLevel" : "blue9",
+      "image" : "https://i.pinimg.com/736x/1a/3b/0d/1a3b0d754e88d1a400c6695c2c44a3f4.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_summon_blue_dragon",
+      "number" : 0,
+      "turns" : 900,
+      "unit" : "blue_dragon"
+    },
+    "summon_cerberus" : {
+      "color" : "red",
+      "colorLevel" : "red3",
+      "image" : "https://cdna.artstation.com/p/assets/images/images/004/821/698/large/xiaochen-li-.jpg",
+      "level" : 3,
+      "name" : "lbl_spell_summon_cerberus",
+      "number" : 0,
+      "turns" : 300,
+      "unit" : "cerberus"
+    },
+    "summon_chimera" : {
+      "color" : "red",
+      "colorLevel" : "red6",
+      "image" : "https://i.pinimg.com/originals/7e/77/dc/7e77dc0cae459f56fbedf964fbf73815.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_summon_chimera",
+      "number" : 0,
+      "turns" : 600,
+      "unit" : "chimera"
+    },
+    "summon_crusader" : {
+      "color" : "white",
+      "colorLevel" : "white1",
+      "image" : "https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_summon_crusader",
+      "number" : 0,
+      "turns" : 100,
+      "unit" : "crusader"
+    },
+    "summon_cyclops" : {
+      "color" : "green",
+      "colorLevel" : "green3",
+      "image" : "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
+      "level" : 3,
+      "name" : "lbl_spell_summon_cyclops",
+      "number" : 0,
+      "turns" : 300,
+      "unit" : "cyclops"
+    },
+    "summon_death_knight" : {
+      "color" : "purple",
+      "colorLevel" : "purple8",
+      "image" : "https://i.pinimg.com/736x/76/c1/00/76c100c5882bbc61b7e865514231ebb4--warcraft-art-world-of-warcraft.jpg",
+      "level" : 8,
+      "name" : "lbl_spell_summon_death_knight",
+      "number" : 0,
+      "turns" : 800,
+      "unit" : "death_knight"
+    },
+    "summon_diablo" : {
+      "color" : "red",
+      "colorLevel" : "red8",
+      "image" : "https://www.diabloii.net/gallery/data/543/medium/naga-phroilan1.jpg",
+      "level" : 8,
+      "name" : "lbl_spell_summon_diablo",
+      "number" : 0,
+      "turns" : 800,
+      "unit" : "diablo"
+    },
+    "summon_djinn" : {
+      "color" : "blue",
+      "colorLevel" : "blue3",
+      "image" : "https://cdnb.artstation.com/p/assets/images/images/006/057/581/large/roman-guro-2016-romanguro-djinn-man.jpg",
+      "level" : 3,
+      "name" : "lbl_spell_summon_djinn",
+      "number" : 0,
+      "turns" : 300,
+      "unit" : "djinn"
+    },
+    "summon_dominion" : {
+      "color" : "white",
+      "colorLevel" : "white10",
+      "image" : "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_summon_dominion",
+      "number" : 0,
+      "turns" : 1000,
+      "unit" : "dominion"
+    },
+    "summon_earth_elemental" : {
+      "color" : "green",
+      "colorLevel" : "green5",
+      "image" : "https://i.pinimg.com/originals/7c/46/aa/7c46aac0314c423d4f0fe86ce028b1e7.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_summon_earth_elemental",
+      "number" : 0,
+      "turns" : 500,
+      "unit" : "earth_elemental"
+    },
+    "summon_efreet" : {
+      "color" : "red",
+      "colorLevel" : "red7",
+      "image" : "https://vannahscreations.files.wordpress.com/2013/07/20130729-154445.jpg",
+      "level" : 7,
+      "name" : "lbl_spell_summon_efreet",
+      "number" : 0,
+      "turns" : 700,
+      "unit" : "efreet"
+    },
+    "summon_elf" : {
+      "color" : "green",
+      "colorLevel" : "green1",
+      "image" : "https://i.pinimg.com/736x/28/21/53/282153c2b3cdb686c3d1c398cc658817--character-concept-character-art.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_summon_elf",
+      "number" : 0,
+      "turns" : 100,
+      "unit" : "elf"
+    },
+    "summon_flame_elemental" : {
+      "color" : "red",
+      "colorLevel" : "red5",
+      "image" : "http://orig09.deviantart.net/cd29/f/2012/101/f/b/anger_by_velinov-d4vrr0v.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_summon_flame_elemental",
+      "number" : 0,
+      "turns" : 500,
+      "unit" : "flame_elemental"
+    },
+    "summon_goblin" : {
+      "color" : "red",
+      "colorLevel" : "red1",
+      "image" : "https://i.pinimg.com/736x/fa/08/71/fa08715e3194b6ee971ebd69913c8838--dark-creatures-fantasy-creatures.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_summon_goblin",
+      "number" : 0,
+      "turns" : 100,
+      "unit" : "goblin"
+    },
+    "summon_green_dragon" : {
+      "color" : "green",
+      "colorLevel" : "green9",
+      "image" : "https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_summon_green_dragon",
+      "number" : 0,
+      "turns" : 900,
+      "unit" : "green_dragon"
+    },
+    "summon_griffin" : {
+      "color" : "white",
+      "colorLevel" : "white3",
+      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg",
+      "level" : 3,
+      "name" : "lbl_spell_summon_griffin",
+      "number" : 0,
+      "turns" : 300,
+      "unit" : "griffin"
+    },
+    "summon_hydra" : {
+      "color" : "green",
+      "colorLevel" : "green10",
+      "image" : "https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_summon_hydra",
+      "number" : 0,
+      "turns" : 1000,
+      "unit" : "hydra"
+    },
+    "summon_ice_elemental" : {
+      "color" : "blue",
+      "colorLevel" : "blue6",
+      "image" : "http://orig10.deviantart.net/d8e2/f/2017/010/0/0/cryofiend_by_ivantao-dav02s9.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_summon_ice_elemental",
+      "number" : 0,
+      "turns" : 600,
+      "unit" : "ice_elemental"
+    },
+    "summon_leviathan" : {
+      "color" : "blue",
+      "colorLevel" : "blue10",
+      "image" : "https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_summon_leviathan",
+      "number" : 0,
+      "turns" : 1000,
+      "unit" : "leviathan"
+    },
+    "summon_lich" : {
+      "color" : "purple",
+      "colorLevel" : "purple10",
+      "image" : "https://i.pinimg.com/originals/6d/68/4a/6d684a5c6b7324b0209a1d418f27aff4.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_summon_lich",
+      "number" : 0,
+      "turns" : 1000,
+      "unit" : "lich"
+    },
+    "summon_light_elemental" : {
+      "color" : "white",
+      "colorLevel" : "white5",
+      "image" : "https://images.alphacoders.com/173/thumb-1920-173873.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_summon_light_elemental",
+      "number" : 0,
+      "turns" : 500,
+      "unit" : "light_elemental"
+    },
+    "summon_mage" : {
+      "color" : "blue",
+      "colorLevel" : "blue1",
+      "image" : "https://i.pinimg.com/736x/f7/fc/a9/f7fca9b85702cf6270ebc77d8c0a1af6--dragon-age-origins-videogames.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_summon_mage",
+      "number" : 0,
+      "turns" : 100,
+      "unit" : "mage"
+    },
+    "summon_medusa" : {
+      "color" : "blue",
+      "colorLevel" : "blue2",
+      "image" : "https://i.pinimg.com/736x/d1/b0/8f/d1b08f4a471d99a29a16255158a436e7--character-concept-character-art.jpg",
+      "level" : 2,
+      "name" : "lbl_spell_summon_medusa",
+      "number" : 0,
+      "turns" : 200,
+      "unit" : "medusa"
+    },
+    "summon_minotaur" : {
+      "color" : "red",
+      "colorLevel" : "red4",
+      "image" : "http://1.bp.blogspot.com/-mejpb8I-_7Q/Uy5IfH5co2I/AAAAAAAABxI/vis2AxjV6Ko/s1600/Minotaur-Art.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_summon_minotaur",
+      "number" : 0,
+      "turns" : 400,
+      "unit" : "minotaur"
+    },
+    "summon_naga" : {
+      "color" : "blue",
+      "colorLevel" : "blue4",
+      "image" : "https://i.pinimg.com/736x/9b/49/dc/9b49dc3591095d3cf7235007e0903999--fantasy-concept-art-fantasy-art.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_summon_naga",
+      "number" : 0,
+      "turns" : 400,
+      "unit" : "naga"
+    },
+    "summon_orc" : {
+      "color" : "red",
+      "colorLevel" : "red2",
+      "image" : "http://4.bp.blogspot.com/-buoD6cswENo/VPCOVEbYWUI/AAAAAAAAAbw/Pt61XbyfMU0/s1600/ok%C3%A7u%2Borklar.jpg",
+      "level" : 2,
+      "name" : "lbl_spell_summon_orc",
+      "number" : 0,
+      "turns" : 200,
+      "unit" : "orc"
+    },
+    "summon_paladin" : {
+      "color" : "white",
+      "colorLevel" : "white6",
+      "image" : "http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_summon_paladin",
+      "number" : 0,
+      "turns" : 600,
+      "unit" : "paladin"
+    },
+    "summon_pegasus" : {
+      "color" : "white",
+      "colorLevel" : "white4",
+      "image" : "https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_summon_pegasus",
+      "number" : 0,
+      "turns" : 400,
+      "unit" : "pegasus"
+    },
+    "summon_phoenix" : {
+      "color" : "red",
+      "colorLevel" : "red10",
+      "image" : "http://coolvibe.com/wp-content/uploads/2011/08/phoenix.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_summon_phoenix",
+      "number" : 0,
+      "turns" : 1000,
+      "unit" : "phoenix"
+    },
+    "summon_red_dragon" : {
+      "color" : "red",
+      "colorLevel" : "red9",
+      "image" : "https://orig14.deviantart.net/a038/f/2015/355/a/0/red_dragon_v2_by_sandara-d9kytw1.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_summon_red_dragon",
+      "number" : 0,
+      "turns" : 900,
+      "unit" : "red_dragon"
+    },
+    "summon_skeleton" : {
+      "color" : "purple",
+      "colorLevel" : "purple1",
+      "image" : "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
+      "level" : 1,
+      "name" : "lbl_spell_summon_skeleton",
+      "number" : 0,
+      "turns" : 100,
+      "unit" : "skeleton"
+    },
+    "summon_smoke_elemental" : {
+      "color" : "purple",
+      "colorLevel" : "purple5",
+      "image" : "http://community.fansshare.com/pic32/w/nocturnality/1200/15519_tumblr_lkwdzvf_qiqa.jpg",
+      "level" : 5,
+      "name" : "lbl_spell_summon_smoke_elemental",
+      "number" : 0,
+      "turns" : 500,
+      "unit" : "smoke_elemental"
+    },
+    "summon_spider" : {
+      "color" : "purple",
+      "colorLevel" : "purple3",
+      "image" : "https://i.pinimg.com/originals/8a/dd/58/8add584f835ba3f9f4592c9ac0fc94dc.jpg",
+      "level" : 3,
+      "name" : "lbl_spell_summon_spider",
+      "number" : 0,
+      "turns" : 300,
+      "unit" : "spider"
+    },
+    "summon_storm_elemental" : {
+      "color" : "blue",
+      "colorLevel" : "blue7",
+      "image" : "https://i.pinimg.com/originals/87/c7/8e/87c78eb9801fb248f91844881259e0ac.jpg",
+      "level" : 7,
+      "name" : "lbl_spell_summon_storm_elemental",
+      "number" : 0,
+      "turns" : 700,
+      "unit" : "storm_elemental"
+    },
+    "summon_treant" : {
+      "color" : "green",
+      "colorLevel" : "green4",
+      "image" : "https://cdna.artstation.com/p/assets/images/images/005/293/192/large/dong-geon-son-aaaaaaaa.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_summon_treant",
+      "number" : 0,
+      "turns" : 400,
+      "unit" : "treant"
+    },
+    "summon_troll" : {
+      "color" : "green",
+      "colorLevel" : "green2",
+      "image" : "http://media.indiedb.com/cache/images/games/1/15/14944/thumb_620x2000/Ogre.PNG",
+      "level" : 2,
+      "name" : "lbl_spell_summon_troll",
+      "number" : 0,
+      "turns" : 200,
+      "unit" : "troll"
+    },
+    "summon_unicorn" : {
+      "color" : "white",
+      "colorLevel" : "white2",
+      "image" : "http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg",
+      "level" : 2,
+      "name" : "lbl_spell_summon_unicorn",
+      "number" : 0,
+      "turns" : 200,
+      "unit" : "unicorn"
+    },
+    "summon_vampire" : {
+      "color" : "purple",
+      "colorLevel" : "purple7",
+      "image" : "https://i.pinimg.com/originals/86/ec/49/86ec491c65f763284cf167575836f15f.jpg",
+      "level" : 7,
+      "name" : "lbl_spell_summon_vampire",
+      "number" : 0,
+      "turns" : 700,
+      "unit" : "vampire"
+    },
+    "summon_water_elemental" : {
+      "color" : "blue",
+      "colorLevel" : "blue8",
+      "image" : "https://img07.deviantart.net/8547/i/2011/346/7/d/water_elemental_by_phlip627-d4iy03f.jpg",
+      "level" : 8,
+      "name" : "lbl_spell_summon_water_elemental",
+      "number" : 0,
+      "turns" : 800,
+      "unit" : "water_elemental"
+    },
+    "summon_werewolf" : {
+      "color" : "purple",
+      "colorLevel" : "purple6",
+      "image" : "https://alusinefinalmajorproject.files.wordpress.com/2015/04/werewolf-backgrounds.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_summon_werewolf",
+      "number" : 0,
+      "turns" : 600,
+      "unit" : "werewolf"
+    },
+    "summon_white_dragon" : {
+      "color" : "white",
+      "colorLevel" : "white9",
+      "image" : "https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg",
+      "level" : 9,
+      "name" : "lbl_spell_summon_white_dragon",
+      "number" : 0,
+      "turns" : 900,
+      "unit" : "white_dragon"
+    },
+    "summon_wraith" : {
+      "color" : "purple",
+      "colorLevel" : "purple4",
+      "image" : "https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg",
+      "level" : 4,
+      "name" : "lbl_spell_summon_wraith",
+      "number" : 0,
+      "turns" : 400,
+      "unit" : "wraith"
+    },
+    "summon_wyvern" : {
+      "color" : "green",
+      "colorLevel" : "green8",
+      "image" : "http://image.zixundingzhi.com/VJQct71GxgL7cpodq7XHkd8gq50=/660x0/full/cd133af48b1c45013a718bfa10e2483af51f1c25",
+      "level" : 8,
+      "name" : "lbl_spell_summon_wyvern",
+      "number" : 0,
+      "turns" : 800,
+      "unit" : "wyvern"
+    },
+    "summon_zombie" : {
+      "color" : "purple",
+      "colorLevel" : "purple2",
+      "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+      "level" : 2,
+      "name" : "lbl_spell_summon_zombie",
+      "number" : 0,
+      "turns" : 200,
+      "unit" : "zombie"
     },
     "sunrise" : {
       "color" : "white",
+      "colorLevel" : "white3",
       "image" : "http://media.wizards.com/images/magic/daily/ur/ur255_plains.jpg",
-      "name" : "lbl_spell_sunrise"
+      "level" : 3,
+      "name" : "lbl_spell_sunrise",
+      "turns" : 300
+    },
+    "tornado" : {
+      "color" : "green",
+      "colorLevel" : "green6",
+      "image" : "https://www.brainchildmag.com/wp-content/uploads/2016/04/Art-Tornado.jpg",
+      "level" : 6,
+      "name" : "lbl_spell_tornado",
+      "turns" : 600
     },
     "tsunami" : {
       "color" : "blue",
-      "image" : "https://i.pinimg.com/originals/10/9f/93/109f9349da584146bcddedef24046dac.jpg",
-      "name" : "lbl_spell_tsunami"
+      "colorLevel" : "blue10",
+      "image" : "http://www.wizards.com/mtg/images/daily/arcana/291_LivingTsunami.jpg",
+      "level" : 10,
+      "name" : "lbl_spell_tsunami",
+      "turns" : 1000
     },
     "volcano" : {
       "color" : "red",
+      "colorLevel" : "red10",
       "image" : "https://i.pinimg.com/originals/65/57/64/655764f23ecebd5388369d873293cd55.jpg",
-      "name" : "lbl_spell_volcano"
+      "level" : 10,
+      "name" : "lbl_spell_volcano",
+      "turns" : 1000
     },
     "voodoo" : {
       "color" : "purple",
+      "colorLevel" : "purple4",
       "image" : "http://www.elian-black-mor.com/roadbook/wp-content/uploads/2013/02/Vignette-Gallery-Concept2.jpg",
-      "name" : "lbl_spell_voodoo"
+      "level" : 4,
+      "name" : "lbl_spell_voodoo",
+      "turns" : 400
     },
     "war_drums" : {
       "color" : "red",
+      "colorLevel" : "red3",
       "image" : "https://i.pinimg.com/originals/15/31/d3/1531d321b20e7c41dc7474a802afe256.jpg",
-      "name" : "lbl_spell_war_drums"
+      "level" : 3,
+      "name" : "lbl_spell_war_drums",
+      "turns" : 300
     },
     "wisdom" : {
-      "color" : "blue",
+      "color" : "green",
+      "colorLevel" : "green7",
       "image" : "http://coolvibe.com/wp-content/uploads/2012/05/Fantasy-Anastasia-Bulgakova-Old-Mage-992x766.jpg",
-      "name" : "lbl_spell_wisdom"
+      "level" : 7,
+      "name" : "lbl_spell_wisdom",
+      "turns" : 700
     }
   },
   "tavern" : {
@@ -546,392 +3229,492 @@
     "air_elemental" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
+      "initial" : false,
+      "level" : 5,
       "name" : "lbl_unit_air_elemental"
     },
     "angel" : {
       "color" : "white",
       "image" : "https://i.pinimg.com/736x/22/fd/61/22fd6151fc06d24f0b9295e371c8bd35--mtg-art-fantasy-illustration.jpg",
+      "initial" : false,
+      "level" : 7,
       "name" : "lbl_unit_angel"
     },
     "archangel" : {
       "color" : "white",
       "image" : "https://i.pinimg.com/736x/95/5b/bf/955bbf72b20f0f43619f289f99ac4352--mtg-art-angels-among-us.jpg",
+      "initial" : false,
+      "level" : 8,
       "name" : "lbl_unit_archangel"
     },
     "basilisk" : {
       "color" : "green",
       "image" : "https://i.pinimg.com/originals/ba/9b/95/ba9b959610b3618cd336d84a2b0db30b.jpg",
+      "initial" : false,
+      "level" : 6,
       "name" : "lbl_unit_basilisk"
     },
     "behemoth" : {
       "color" : "green",
       "image" : "http://aidanmoher.com/blog/wp-content/uploads/2011/04/kekai-kotaki-4.jpg",
+      "initial" : false,
+      "level" : 7,
       "name" : "lbl_unit_behemoth"
     },
     "black_dragon" : {
       "color" : "purple",
       "image" : "https://img09.deviantart.net/5bbb/i/2015/287/a/4/black_dragon_by_sandara-d6h59lm.jpg",
+      "initial" : false,
+      "level" : 9,
       "name" : "lbl_unit_black_dragon"
     },
     "blue_dragon" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/736x/1a/3b/0d/1a3b0d754e88d1a400c6695c2c44a3f4.jpg",
+      "initial" : false,
+      "level" : 9,
       "name" : "lbl_unit_blue_dragon"
     },
     "cerberus" : {
       "color" : "red",
       "image" : "https://cdna.artstation.com/p/assets/images/images/004/821/698/large/xiaochen-li-.jpg",
+      "initial" : false,
+      "level" : 3,
       "name" : "lbl_unit_cerberus"
     },
     "chimera" : {
       "color" : "red",
       "image" : "https://i.pinimg.com/originals/7e/77/dc/7e77dc0cae459f56fbedf964fbf73815.jpg",
+      "initial" : false,
+      "level" : 6,
       "name" : "lbl_unit_chimera"
-    },
-    "cleric" : {
-      "color" : "white",
-      "image" : "https://i.pinimg.com/736x/d5/c3/6e/d5c36e6a196d7e33b7003c7e3cd01111--character-concept-character-ideas.jpg",
-      "name" : "lbl_unit_cleric"
     },
     "crusader" : {
       "color" : "white",
       "image" : "https://i.pinimg.com/736x/ea/61/a5/ea61a51b5c2f8aeb9ef43d95af757f91--great-artists-game-concept-art.jpg",
+      "initial" : "white",
+      "level" : 1,
       "name" : "lbl_unit_crusader"
     },
     "cyclops" : {
       "color" : "green",
       "image" : "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
+      "initial" : false,
+      "level" : 3,
       "name" : "lbl_unit_cyclops"
     },
     "death_knight" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/736x/76/c1/00/76c100c5882bbc61b7e865514231ebb4--warcraft-art-world-of-warcraft.jpg",
+      "initial" : false,
+      "level" : 8,
       "name" : "lbl_unit_death_knight"
     },
     "diablo" : {
       "color" : "red",
       "image" : "https://www.diabloii.net/gallery/data/543/medium/naga-phroilan1.jpg",
+      "initial" : false,
+      "level" : 8,
       "name" : "lbl_unit_diablo"
     },
     "djinn" : {
       "color" : "blue",
       "image" : "https://cdnb.artstation.com/p/assets/images/images/006/057/581/large/roman-guro-2016-romanguro-djinn-man.jpg",
+      "initial" : false,
+      "level" : 3,
       "name" : "lbl_unit_djinn"
     },
     "dominion" : {
       "color" : "white",
       "image" : "https://i.pinimg.com/originals/d7/76/5f/d7765fafd1066424780c6ae019b6ee70.jpg",
+      "initial" : false,
+      "level" : 10,
       "name" : "lbl_unit_dominion"
     },
     "earth_elemental" : {
       "color" : "green",
       "image" : "https://i.pinimg.com/originals/7c/46/aa/7c46aac0314c423d4f0fe86ce028b1e7.jpg",
+      "initial" : false,
+      "level" : 5,
       "name" : "lbl_unit_earth_elemental"
     },
     "efreet" : {
       "color" : "red",
       "image" : "https://vannahscreations.files.wordpress.com/2013/07/20130729-154445.jpg",
+      "initial" : false,
+      "level" : 7,
       "name" : "lbl_unit_efreet"
     },
     "elf" : {
       "color" : "green",
       "image" : "https://i.pinimg.com/736x/28/21/53/282153c2b3cdb686c3d1c398cc658817--character-concept-character-art.jpg",
+      "initial" : "green",
+      "level" : 1,
       "name" : "lbl_unit_elf"
     },
     "flame_elemental" : {
       "color" : "red",
       "image" : "http://orig09.deviantart.net/cd29/f/2012/101/f/b/anger_by_velinov-d4vrr0v.jpg",
+      "initial" : false,
+      "level" : 5,
       "name" : "lbl_unit_flame_elemental"
     },
     "goblin" : {
       "color" : "red",
       "image" : "https://i.pinimg.com/736x/fa/08/71/fa08715e3194b6ee971ebd69913c8838--dark-creatures-fantasy-creatures.jpg",
+      "initial" : "red",
+      "level" : 1,
       "name" : "lbl_unit_goblin"
     },
     "green_dragon" : {
       "color" : "green",
       "image" : "https://i.pinimg.com/736x/9d/37/8d/9d378d908527e5ed76103e776aca8e97--fantasy-creatures-mythical-creatures.jpg",
+      "initial" : false,
+      "level" : 9,
       "name" : "lbl_unit_green_dragon"
+    },
+    "griffin" : {
+      "color" : "white",
+      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg",
+      "initial" : false,
+      "level" : 3,
+      "name" : "lbl_unit_griffin"
     },
     "hydra" : {
       "color" : "green",
       "image" : "https://orig15.deviantart.net/bb0c/f/2011/164/c/1/hydra_omnivore_by_velinov-d3isnau.jpg",
+      "initial" : false,
+      "level" : 10,
       "name" : "lbl_unit_hydra"
     },
     "ice_elemental" : {
       "color" : "blue",
       "image" : "http://orig10.deviantart.net/d8e2/f/2017/010/0/0/cryofiend_by_ivantao-dav02s9.jpg",
+      "initial" : false,
+      "level" : 6,
       "name" : "lbl_unit_ice_elemental"
     },
     "leviathan" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/originals/18/2a/c1/182ac1dccfeb3115da7da802dc816844.jpg",
+      "initial" : false,
+      "level" : 10,
       "name" : "lbl_unit_leviathan"
     },
     "lich" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/originals/6d/68/4a/6d684a5c6b7324b0209a1d418f27aff4.jpg",
+      "initial" : false,
+      "level" : 10,
       "name" : "lbl_unit_lich"
     },
     "light_elemental" : {
       "color" : "white",
-      "image" : "https://i.pinimg.com/736x/47/a3/66/47a36631f3a5a5099e56dfe432d3a5d8--fantasy-creatures-strange-creatures.jpg",
+      "image" : "https://images.alphacoders.com/173/thumb-1920-173873.jpg",
+      "initial" : false,
+      "level" : 5,
       "name" : "lbl_unit_light_elemental"
     },
     "mage" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/736x/f7/fc/a9/f7fca9b85702cf6270ebc77d8c0a1af6--dragon-age-origins-videogames.jpg",
+      "initial" : "blue",
+      "level" : 1,
       "name" : "lbl_unit_mage"
     },
     "medusa" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/736x/d1/b0/8f/d1b08f4a471d99a29a16255158a436e7--character-concept-character-art.jpg",
+      "initial" : false,
+      "level" : 2,
       "name" : "lbl_unit_medusa"
     },
     "minotaur" : {
       "color" : "red",
       "image" : "http://1.bp.blogspot.com/-mejpb8I-_7Q/Uy5IfH5co2I/AAAAAAAABxI/vis2AxjV6Ko/s1600/Minotaur-Art.jpg",
+      "initial" : false,
+      "level" : 4,
       "name" : "lbl_unit_minotaur"
     },
     "naga" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/736x/9b/49/dc/9b49dc3591095d3cf7235007e0903999--fantasy-concept-art-fantasy-art.jpg",
+      "initial" : false,
+      "level" : 4,
       "name" : "lbl_unit_naga"
     },
     "orc" : {
       "color" : "red",
       "image" : "http://4.bp.blogspot.com/-buoD6cswENo/VPCOVEbYWUI/AAAAAAAAAbw/Pt61XbyfMU0/s1600/ok%C3%A7u%2Borklar.jpg",
+      "initial" : false,
+      "level" : 2,
       "name" : "lbl_unit_orc"
     },
     "paladin" : {
       "color" : "white",
       "image" : "http://2.bp.blogspot.com/-tk2n-w-XMUU/UzEEQWiAuxI/AAAAAAAAAkg/6JqFDsS9vUE/s1600/JP_D3Exp_Flap_Art_FINAL_web_crop.jpg",
+      "initial" : false,
+      "level" : 6,
       "name" : "lbl_unit_paladin"
     },
     "pegasus" : {
       "color" : "white",
       "image" : "https://i.pinimg.com/736x/24/36/93/243693be20770a79a02a5d4b186f77ba--magical-forest-magical-creatures.jpg",
+      "initial" : false,
+      "level" : 4,
       "name" : "lbl_unit_pegasus"
     },
     "phoenix" : {
       "color" : "red",
       "image" : "http://coolvibe.com/wp-content/uploads/2011/08/phoenix.jpg",
+      "initial" : false,
+      "level" : 10,
       "name" : "lbl_unit_phoenix"
     },
     "red_dragon" : {
       "color" : "red",
       "image" : "https://orig14.deviantart.net/a038/f/2015/355/a/0/red_dragon_v2_by_sandara-d9kytw1.jpg",
+      "initial" : false,
+      "level" : 9,
       "name" : "lbl_unit_red_dragon"
     },
     "skeleton" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
+      "initial" : "purple",
+      "level" : 1,
       "name" : "lbl_unit_skeleton"
     },
     "smoke_elemental" : {
       "color" : "purple",
       "image" : "http://community.fansshare.com/pic32/w/nocturnality/1200/15519_tumblr_lkwdzvf_qiqa.jpg",
+      "initial" : false,
+      "level" : 5,
       "name" : "lbl_unit_smoke_elemental"
     },
     "spider" : {
       "color" : "purple",
-      "image" : "http://conceptartworld.com/wp-content/uploads/2008/11/leonid_snow_07.jpg",
+      "image" : "https://i.pinimg.com/originals/8a/dd/58/8add584f835ba3f9f4592c9ac0fc94dc.jpg",
+      "initial" : false,
+      "level" : 3,
       "name" : "lbl_unit_spider"
     },
     "storm_elemental" : {
       "color" : "blue",
       "image" : "https://i.pinimg.com/originals/87/c7/8e/87c78eb9801fb248f91844881259e0ac.jpg",
+      "initial" : false,
+      "level" : 7,
       "name" : "lbl_unit_storm_elemental"
     },
     "treant" : {
       "color" : "green",
       "image" : "https://cdna.artstation.com/p/assets/images/images/005/293/192/large/dong-geon-son-aaaaaaaa.jpg",
+      "initial" : false,
+      "level" : 4,
       "name" : "lbl_unit_treant"
     },
     "troll" : {
       "color" : "green",
       "image" : "http://media.indiedb.com/cache/images/games/1/15/14944/thumb_620x2000/Ogre.PNG",
+      "initial" : false,
+      "level" : 2,
       "name" : "lbl_unit_troll"
     },
     "unicorn" : {
       "color" : "white",
       "image" : "http://coolvibe.com/wp-content/uploads/2012/03/Fantasy-Ken-Barthelmey-Beauty-meets-the-Unicorn.jpg",
+      "initial" : false,
+      "level" : 2,
       "name" : "lbl_unit_unicorn"
     },
     "vampire" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/originals/86/ec/49/86ec491c65f763284cf167575836f15f.jpg",
+      "initial" : false,
+      "level" : 7,
       "name" : "lbl_unit_vampire"
     },
     "water_elemental" : {
       "color" : "blue",
       "image" : "https://img07.deviantart.net/8547/i/2011/346/7/d/water_elemental_by_phlip627-d4iy03f.jpg",
+      "initial" : false,
+      "level" : 8,
       "name" : "lbl_unit_water_elemental"
     },
     "werewolf" : {
       "color" : "purple",
       "image" : "https://alusinefinalmajorproject.files.wordpress.com/2015/04/werewolf-backgrounds.jpg",
+      "initial" : false,
+      "level" : 6,
       "name" : "lbl_unit_werewolf"
     },
     "white_dragon" : {
       "color" : "white",
       "image" : "https://img14.deviantart.net/2f0b/i/2015/287/8/5/white_dragon_by_sandara-d6ha2cv.jpg",
+      "initial" : false,
+      "level" : 9,
       "name" : "lbl_unit_white_dragon"
     },
     "wraith" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/originals/93/6b/4c/936b4cdd91c6f96f84bafa3b93da03fa.jpg",
+      "initial" : false,
+      "level" : 4,
       "name" : "lbl_unit_wraith"
     },
     "wyvern" : {
       "color" : "green",
       "image" : "http://image.zixundingzhi.com/VJQct71GxgL7cpodq7XHkd8gq50=/660x0/full/cd133af48b1c45013a718bfa10e2483af51f1c25",
+      "initial" : false,
+      "level" : 8,
       "name" : "lbl_unit_wyvern"
     },
     "zombie" : {
       "color" : "purple",
       "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
+      "initial" : false,
+      "level" : 2,
       "name" : "lbl_unit_zombie"
     }
   },
+  "user" : {
+    "gold" : 10000000,
+    "level" : 1,
+    "mana" : 100000,
+    "people" : 10000,
+    "settings" : {
+      "lang" : "es",
+      "navbar" : false
+    },
+    "territory" : 500,
+    "turns" : 300
+  },
   "users" : {
-    "fergardi" : {
-      "artifacts" : {
-        "dsahjda" : {
-          "battle" : true,
-          "color" : "blue",
-          "image" : "https://s-media-cache-ak0.pinimg.com/originals/ee/97/94/ee9794d39f27f465fdc31dabd6cc2a13.jpg",
-          "name" : "lbl_artifact_mana_potion",
-          "quantity" : 3
-        }
-      },
+    "rJj85vTKzgT8aoeAx7BeOTdhHZe2" : {
       "color" : "purple",
       "constructions" : {
-        "barrack" : {
+        "-KvGoojfZ5ujAFG5gwOw" : {
           "buildable" : true,
           "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
           "name" : "lbl_building_barrack",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "barrier" : {
+        "-KvGoojhJf7FRLpQlFGl" : {
           "buildable" : true,
           "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
           "name" : "lbl_building_barrier",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "farm" : {
+        "-KvGoojkkAW38DKG8aeN" : {
           "buildable" : true,
           "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
           "name" : "lbl_building_farm",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "fortress" : {
+        "-KvGoojlfA9_WZ_7_I58" : {
           "buildable" : true,
           "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
           "name" : "lbl_building_fortress",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "guild" : {
+        "-KvGoojnSwAqUtYNbYzt" : {
           "buildable" : true,
           "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
           "name" : "lbl_building_guild",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "node" : {
+        "-KvGoojrWYRMSKL2lRaF" : {
           "buildable" : true,
           "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
           "name" : "lbl_building_node",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "temple" : {
+        "-KvGoojtbktWCQOja4kx" : {
           "buildable" : true,
           "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
           "name" : "lbl_building_temple",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "territory" : {
+        "-KvGoojushZMleIRxSXy" : {
           "buildable" : false,
           "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
           "name" : "lbl_building_territory",
-          "quantity" : 0
+          "quantity" : 500
         },
-        "village" : {
+        "-KvGoojwg_3LQ_YXkJcG" : {
           "buildable" : true,
           "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
           "name" : "lbl_building_village",
-          "quantity" : 0
+          "quantity" : 10
         },
-        "workshop" : {
+        "-KvGoojyotjErtZNC7v8" : {
           "buildable" : true,
           "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
           "name" : "lbl_building_workshop",
-          "quantity" : 0
+          "quantity" : 10
         }
       },
-      "enchantments" : {
-        "corruption" : {
-          "color" : "purple",
-          "image" : "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
-          "name" : "lbl_spell_corruption",
-          "remaining" : 50,
-          "turns" : 300
-        }
-      },
+      "email" : "prueba@prueba.com",
       "gold" : 10000000,
       "level" : 1,
       "mana" : 100000,
-      "messages" : {
-        "dsagdhsadj" : {
-          "content" : "content",
-          "from" : {
-            "color" : "red",
-            "name" : "admin"
-          },
-          "subject" : "subject",
-          "timestamp" : 0
-        }
-      },
-      "name" : "fergardi",
+      "name" : "prueba",
       "people" : 10000,
       "quests" : {
-        "dsahdkasfds" : {
-          "color" : "blue",
-          "image" : "https://i.pinimg.com/originals/53/ce/12/53ce1296633c230c85c25a4d99522823.png",
-          "name" : "lbl_place_island"
+        "-KvGookyRkVoa-nYZZiC" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/originals/25/ee/e0/25eee032d448a0eec4b745e5a7a56aa8.jpg",
+          "name" : "lbl_place_crypt"
+        }
+      },
+      "relics" : {
+        "-KvGookqgtFIFhH2pMT9" : {
+          "color" : "purple",
+          "image" : "https://i.pinimg.com/736x/e9/46/53/e946534a0e16344cb7b6821ea9002bae.jpg",
+          "name" : "lbl_artifact_book_of_the_dead",
+          "quantity" : 1
         }
       },
       "researches" : {
-        "berserker" : {
-          "color" : "red",
+        "-KvGookVp5St8U14iQNX" : {
+          "color" : "purple",
+          "colorLevel" : "purple1",
           "completed" : true,
-          "image" : "https://i.pinimg.com/736x/c0/3d/16/c03d16cbc62ad16e4331579e705ebc26--fantasy-illustration-rage.jpg",
-          "invested" : 300,
-          "name" : "lbl_spell_berserker",
-          "turns" : 300
-        },
-        "break_enchantment" : {
-          "color" : "white",
-          "completed" : false,
-          "image" : "https://i.pinimg.com/736x/a8/a7/72/a8a772dc4056f30431f58e02bc1bac5c--magic-the-gathering-cards-mtg-art.jpg",
+          "image" : "https://i.pinimg.com/736x/99/31/6a/99316a6611483d7761dcbef6ffce79a4--fantasy-druid-witch-fantasy-art.jpg",
           "invested" : 100,
-          "name" : "lbl_spell_break_enchantment",
-          "turns" : 300
+          "level" : 1,
+          "name" : "lbl_spell_fear",
+          "turns" : 100
+        },
+        "-KvGookXLVavJyBUxxGW" : {
+          "color" : "purple",
+          "colorLevel" : "purple1",
+          "completed" : false,
+          "image" : "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
+          "invested" : 11,
+          "level" : 1,
+          "name" : "lbl_spell_summon_skeleton",
+          "number" : 0,
+          "turns" : 100,
+          "unit" : "skeleton"
         }
       },
       "settings" : {
         "lang" : "es",
         "navbar" : false
       },
-      "territory" : 996,
+      "territory" : 500,
       "troops" : {
-        "dshgakdask" : {
+        "-KvGookmNTygym-v2p6u" : {
           "color" : "purple",
-          "image" : "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
-          "name" : "lbl_unit_zombie",
-          "quantity" : 999999
+          "image" : "https://i.pinimg.com/736x/23/a5/e5/23a5e5affb327bd0ffb197f3dd4906ec--fantasy-monster-dark-fantasy.jpg",
+          "initial" : "purple",
+          "level" : 1,
+          "name" : "lbl_unit_skeleton",
+          "quantity" : 1000
         }
       },
-      "turns" : 300
+      "turns" : 165
     }
   }
 }

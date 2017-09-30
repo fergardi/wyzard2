@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="research, index in researches", :key="index")
-        spell.animated.fadeInUp(:data="research", :casting="true", :users="users", :info="true")
+        spell.animated.fadeInUp(:data="research", :conjuration="true", :users="users", :info="true")
 </template>
 
 <script>
