@@ -6,8 +6,8 @@
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
-        .card-number(:class="data.color", v-if="data.remaining != null") {{ data.remaining | numeric }} / {{ data.turns | numeric }}
-        .card-number(:class="data.color", v-if="data.invested != null") {{ data.invested | numeric }} / {{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="breaking") {{ data.remaining | numeric }} / {{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="investigation") {{ data.invested | numeric }} / {{ data.turns | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
       .card-stats(v-if="info")
@@ -31,11 +31,11 @@
           span {{ data.category | translate }}
 
     template(v-if="investigation")
-      mu-card-text
-        form
-          mu-text-field(type="number", v-model="ammount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
-      mu-card-actions
-        mu-raised-button(primary, @click="research") {{ 'lbl_button_research' | translate }}
+      form(@submit.stop.prevent="confirm('research')")
+        mu-card-text
+            mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_research' | translate }}
 
     template(v-if="casting")
       mu-card-text
@@ -54,33 +54,71 @@
         mu-card-header(:title="translate('lbl_label_confirm')", :subTitle="translate('lbl_label_cannot_undo')")
         mu-card-actions
           mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="close")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
 </template>
 
 <script>
+  import { database } from '../services/firebase'
+  import store from '../vuex/store'
+
   export default {
     name: 'spell',
     props: ['data', 'investigation', 'casting', 'users', 'breaking', 'info'],
     data () {
       return {
-        ammount: 0,
+        type: null,
+        amount: 0,
         dialog: false,
         selected: null
       }
     },
     methods: {
-      research () {
-        // TODO
+      confirm (type) {
+        this.type = type
         this.dialog = true
+      },
+      accept () {
+        switch (this.type) {
+          case 'research':
+            this.research()
+            break
+          case 'cast':
+            this.cast()
+            break
+          case 'disenchant':
+            this.disenchant()
+            break
+        }
+      },
+      research () {
+        database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
+          if (research) {
+            research.invested = research.invested + this.amount
+            if (research.invested >= research.turns) research.completed = true
+          }
+          return research
+        })
+        database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
+          if (turns) {
+            turns = Math.max(0, turns - this.amount)
+          }
+          return turns
+        })
+        store.commit('success', 'lbl_toast_ok')
+        this.close()
       },
       cast () {
         // TODO
+        this.close()
       },
       disenchant () {
         // TODO
+        this.close()
       },
       close () {
+        this.type = null
         this.dialog = false
+        this.amount = 0
       }
     }
   }

@@ -11,7 +11,7 @@
     template(v-if="contract")
       mu-card-text
         form
-          mu-text-field(type="number", v-model="ammount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
       mu-card-actions
         mu-raised-button(primary, @click="bid") {{ 'lbl_button_bid' | translate }}
 </template>
@@ -22,11 +22,11 @@
     props: ['data', 'contract'],
     data () {
       return {
-        ammount: 0
+        amount: 0
       }
     },
     created () {
-      this.ammount = this.data.gold || 0
+      this.amount = this.data.gold || 0
     },
     methods: {
       bid () {
