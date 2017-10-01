@@ -134,7 +134,7 @@
       collect () {
         database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
           database.ref('users').child(store.state.uid).transaction(user => {
-            user.gold += building.quantity * building.taxes * this.amount
+            user.gold += building.quantity * building.coins * this.amount
             user.turns = Math.max(0, user.turns - this.amount)
             return user
           })
