@@ -439,6 +439,31 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
+    .mu-toast
+      text-align center
+      height 48px
+      line-height 48px
+      padding 0 24px
+      width 96%
+      position fixed
+      left 2%
+      bottom 1%
+    @media only screen and (min-width 480px) and (max-width 1079px)
+      .mu-toast
+        width auto
+        min-width 250px
+        right 2% !important
+        top 10% !important
+        left auto !important
+        bottom auto !important
+    @media only screen and (min-width 1080px)
+      .mu-toast
+        width auto
+        min-width 250px
+        top 10% !important
+        right 2% !important
+        left auto !important
+        bottom auto !important
     @media (min-width 480px)
       .mu-appbar
         height 56px
