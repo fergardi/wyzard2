@@ -72,7 +72,7 @@
         authenticate(this.email, this.password)
         .then(response => {
           store.commit('uid', auth.currentUser.uid)
-          this.$router.push('/census')
+          this.$router.push('/messages')
         })
         .catch(error => {
           this.error = true

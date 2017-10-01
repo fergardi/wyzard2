@@ -1,0 +1,74 @@
+{
+  "dsadsadafmsd" : {
+    "color" : "green",
+    "description" : "dsgadsaa",
+    "icon" : "sword",
+    "location" : "attacker",
+    "name" : "lbl_unit_elf",
+    "timestamp": 0
+  },
+  "dsahgdhasdsajg" : {
+    "color" : "green",
+    "description" : "text2",
+    "icon" : "sword",
+    "location" : "attacker",
+    "name" : "lbl_unit_elf",
+    "timestamp": 0
+  },
+  "dsgadaksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "dsgadsadsadaksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "ds2e32gadaksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "dsg43rwefsdadaksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "dsg3e2dfadaksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "dsgadds2aksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "defender",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  },
+  "dsgafghf3daksa" : {
+    "color" : "purple",
+    "description" : "Texto",
+    "icon" : "shield",
+    "location" : "attacker",
+    "name" : "lbl_unit_skeleton",
+    "timestamp": 0
+  }
+}

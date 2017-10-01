@@ -10,30 +10,29 @@
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
             mu-tr
-              mu-th {{ 'lbl_table_datetime' | translate }}
+              mu-th {{ 'lbl_table_since' | translate }}
               mu-th {{ 'lbl_table_from' | translate }}
               mu-th {{ 'lbl_table_subject' | translate }}
-              // mu-th {{ 'lbl_table_actions' | translate }}
           mu-tbody
             mu-tr(v-for="message, index in messages", :key="index")
               mu-td {{ message.timestamp | datetime }}
               mu-td
                 mu-chip(:class="message.color") {{ message.name }}
-              mu-td {{ message.subject }}
-              // mu-td
-                mu-icon-button(icon=":ra ra-scroll-unfurled", @click="select(message)")
-          // mu-tfoot(slot="footer")
-            mu-raised-button(primary, @click="create") {{ 'lbl_button_create' | translate }}
-            mu-raised-button(primary, @click="remove") {{ 'lbl_button_remove' | translate }}
+              mu-td {{ message.subject | translate }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
 
       mu-dialog(:open="dialog", @close="close")
-        mu-card
-          mu-card-title(:title="selected.subject", :subTitle="datetime(selected.datetime)")
-            p {{ selected.subject }}
+        mu-card.dialog
+          mu-card-header(:title="translate(selected.subject)", :subTitle="datetime(selected.timestamp)")
+          mu-card-text.timeline.scroll(v-if="selected.battle")
+            mu-timeline
+              mu-timeline-item(v-for="timeline, index in selected.battle", :key="index", :class="timeline.location")
+                mu-icon(:value="':ra ra-' + timeline.icon", :color="timeline.color", slot="icon")
+                span(slot="time") {{ timeline.name | translate }}
+                span(slot="des") {{ timeline.description }}
           mu-card-text
-            p {{ selected.content }}
+            p {{ selected.text }}
           mu-card-text.right
             mu-chip(:class="selected.color") {{ selected.name }}
           mu-card-actions
@@ -49,12 +48,7 @@
       return {
         current: 1,
         dialog: false,
-        selected: {
-          subject: '',
-          content: '',
-          name: '',
-          color: ''
-        }
+        selected: {}
       }
     },
     created () {
@@ -66,10 +60,12 @@
         this.current = page
       },
       select (index) {
-        console.log(this.messages[index])
+        this.selected = this.messages[index]
+        this.dialog = true
       },
       close () {
         this.dialog = false
+        this.selected = {}
       },
       create () {
         // TODO

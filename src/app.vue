@@ -89,7 +89,7 @@
         mu-list-item(:title="translate('lbl_title_login')", to="login", @click="toggle", v-if="!logged")
           mu-icon(slot="left", value=":ra ra-key")
         mu-list-item(:title="translate('lbl_title_logout')", @click="logout && toggle", v-if="logged")
-          mu-icon(slot="left", value="power_settings_new")
+          mu-icon(slot="left", value=":ra ra-locked-fortress")
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
           mu-icon(slot="left", value=":ra ra-gears")
 
@@ -211,6 +211,10 @@
     .none
       display none
     .mu-dialog
+      width auto
+      min-width 75%
+      max-width 90%
+      max-height 90%
       background-color transparent
       box-shadow none
       .mu-dialog-body
@@ -278,16 +282,17 @@
             display inline-block
           .card-title
             min-width 50%
-            max-width 60%
+            max-width 80%
           .card-number
             min-width 10%
-            max-width 30%
+            max-width 15%
           .card-title + .card-number
           .card-number + .card-number
-            margin-left 5%
+            margin-left 1%
       .mu-card-text + .mu-card-text
-        padding-top 0
       .mu-card-text + .mu-card-actions
+      .mu-card-text + form .mu-card-text
+      .mu-card-text + form .mu-card-actions
         padding-top 0
       .mu-card-text
         text-align center
@@ -376,23 +381,6 @@
           height 36px
         .mu-item-left
           justify-content center
-    /*
-    .toast
-      position absolute
-      display flex
-      justify-content center
-      align-items center
-      left 0
-      right 0
-      bottom 0
-      margin 4px
-      width 100%
-      .mu-toast
-        width auto
-        max-width none
-        position relative
-        text-align center
-    */
     // background colors
     .mu-toast
     .mu-chip
@@ -441,6 +429,41 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
+    .mu-dialog
+      .timeline
+        max-height 50vh
+        overflow auto
+        .mu-timeline-item
+          display flex
+          align-items flex-start
+          .mu-timeline-item-line
+            display none
+          .mu-timeline-item-des span
+            font-style italic
+            font-size 0.8em
+          .mu-timeline-item-icon
+            position relative
+            width 10%
+            background-color transparent
+          .mu-timeline-item-content
+            left unset !important
+            padding-bottom 0
+            width 45%
+          &.attacker
+            .mu-timeline-item-icon
+              text-align right
+              margin-left 45%
+              margin-right 5%
+            .mu-timeline-item-content
+              text-align left
+          &.defender
+            flex-direction row-reverse
+            .mu-timeline-item-icon
+              margin-right 45%
+              margin-left 5%
+              text-align left
+            .mu-timeline-item-content
+              text-align right
     .mu-toast
       text-align center
       height 48px
@@ -466,7 +489,10 @@
         right 2% !important
         left auto !important
         bottom auto !important
-    @media (min-width 480px)
+    @media only screen and (max-width 1079px)
+      .mu-dialog
+        width 90%
+    @media only screen and (min-width 480px)
       .mu-appbar
         height 56px
     @media only screen and (min-width 1080px)
@@ -494,14 +520,6 @@
         .topbar
           .toggler
             visibility hidden
-        /*
-        .toast
-          justify-content flex-end
-          bottom initial
-          top 0
-          .mu-toast
-            right 20px
-        */
-      .mu-overlay
-        // display none !important
+        .mu-dialog
+          width 50%
 </style>
