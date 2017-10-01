@@ -89,7 +89,20 @@
         }
       },
       construct () {
-        // TODO
+        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+          database.ref('users').child(store.state.uid).transaction(user => {
+            if (this.amount > 0) {
+              building.quantity += Math.min(user.territory, this.amount)
+              user.territory -= Math.min(user.territory, this.amount)
+            } else {
+              building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
+              user.territory += Math.min(building.quantity, Math.abs(this.amount))
+            }
+            user.turns = Math.max(0, user.turns - Math.abs(this.amount))
+            return user
+          })
+          return building
+        })
         store.commit('success', 'lbl_toast_construction_ok')
         this.close()
       },
