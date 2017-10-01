@@ -100,17 +100,13 @@
       },
       research () {
         database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
-          if (research) {
-            research.invested = research.invested + this.amount
-            if (research.invested >= research.turns) research.completed = true
-          }
+          let min = research.turns - research.invested
+          research.invested = research.invested + Math.min(min, this.amount)
+          if (research.invested >= research.turns) research.completed = true
+          database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
+            return Math.max(0, turns - Math.min(min, this.amount))
+          })
           return research
-        })
-        database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
-          if (turns) {
-            turns = Math.max(0, turns - this.amount)
-          }
-          return turns
         })
         store.commit('success', 'lbl_toast_investigation_ok')
         this.close()

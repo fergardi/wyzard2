@@ -51,18 +51,6 @@
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
 
-          mu-sub-header {{ 'lbl_title_military' | translate }}
-          mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-crossed-axes")
-          mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-vase")
-          mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-dripping-blade")
-          mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-torch")
-          mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-eye-shield")
-
           mu-sub-header {{ 'lbl_title_magic' | translate }}
           mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
             mu-icon(slot="left", value=":ra ra-burst-blob")
@@ -84,6 +72,18 @@
             mu-icon(slot="left", value=":ra ra-raven")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
             mu-icon(slot="left", value=":ra ra-trophy")
+
+          mu-sub-header {{ 'lbl_title_military' | translate }}
+          mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-crossed-axes")
+          mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-vase")
+          mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-dripping-blade")
+          mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-torch")
+          mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-eye-shield")
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_login')", to="login", @click="toggle", v-if="!logged")
@@ -282,10 +282,10 @@
             display inline-block
           .card-title
             min-width 50%
-            max-width 80%
+            max-width 60%
           .card-number
-            min-width 10%
-            max-width 15%
+            min-width 5%
+            max-width 30%
           .card-title + .card-number
           .card-number + .card-number
             margin-left 1%
