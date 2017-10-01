@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.census.animated.fadeInUp
         mu-card-media
-          img(src="https://i.pinimg.com/originals/4a/9f/99/4a9f99a8bf410e4ff033440c64d23ab5.jpg")
+          img(src="https://i.pinimg.com/originals/4a/9f/99/4a9f99a8bf410e4ff033440c64d23ab5.jpg", :alt="translate('lbl_label_players')")
           .card-info
             .card-title {{ 'lbl_label_players' | translate }}
             .card-number {{ users.length | numeric }}

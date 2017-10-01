@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.defense.animated.fadeInUp
         mu-card-media
-          img(src="http://3.bp.blogspot.com/-lBuo6st_Glg/Vm1W4PAqxBI/AAAAAAAA0Kc/djgMInNes8Q/s1600/Fortezza_di_Masyaf_concept_art_2%255B1%255D.jpg")
+          img(src="http://3.bp.blogspot.com/-lBuo6st_Glg/Vm1W4PAqxBI/AAAAAAAA0Kc/djgMInNes8Q/s1600/Fortezza_di_Masyaf_concept_art_2%255B1%255D.jpg", :alt="translate('lbl_label_defense')")
           .card-info
             .card-title {{ 'lbl_label_defense' | translate }}
         mu-card-text

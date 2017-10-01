@@ -2,9 +2,9 @@
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.animated.fadeInUp
-        form
+        form(@submit.stop.prevent="accept")
           mu-card-media
-            img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png")
+            img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png", :alt="translate('lbl_label_enter')")
             .card-info
               .card-title {{ 'lbl_label_enter' | translate }}
           mu-card-text
@@ -12,16 +12,16 @@
               mu-tab(value="login", :title="translate('lbl_title_authentication')")
               mu-tab(value="signin", :title="translate('lbl_title_registration')")
           mu-card-text
-            mu-text-field(v-model="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", required)
-            mu-select-field(v-model="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
+            mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", required)
+            mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
               mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
-            mu-text-field(v-model="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
-            mu-text-field(v-model="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
-            mu-text-field(v-model="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
+            mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
+            mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
+            mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
           mu-card-actions
-            mu-raised-button(primary, type="reset") {{ 'lbl_button_clear' | translate }}
-            mu-raised-button(primary, @click="login", v-if="tab === 'login'") {{ 'lbl_button_login' | translate }}
-            mu-raised-button(primary, @click="signin", v-if="tab === 'signin'", :disabled="disabled") {{ 'lbl_button_signin' | translate }}
+            mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="disabled")
 </template>
 
 <script>
@@ -58,6 +58,16 @@
       }
     },
     methods: {
+      accept () {
+        switch (this.tab) {
+          case 'login':
+            this.login()
+            break
+          case 'signin':
+            this.signin()
+            break
+        }
+      },
       login () {
         authenticate(this.email, this.password)
         .then(response => {

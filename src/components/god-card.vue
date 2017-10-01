@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.god
     mu-card-media
-      img(:src="data.image")
+      img(:src="data.image", :alt="translate(data.name)")
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
     mu-card-text
