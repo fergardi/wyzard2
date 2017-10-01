@@ -346,8 +346,10 @@ export default {
     lbl_language_english: 'Inglés',
     // messages
     lbl_message_welcome_subject: 'Bienvenido',
-    lbl_message_welcome_text: 'Bienvenido al Juego',
+    lbl_message_welcome_text: 'Bienvenido al juego',
     lbl_message_battle_subject: 'Batalla',
+    lbl_message_battle_text_win: 'Has ganado la batalla',
+    lbl_message_battle_text_lose: 'Has perdido la batalla',
     // toasts
     lbl_toast_investigation_ok: 'Investigación realizada',
     lbl_toast_investigation_error: 'Error al investigar',

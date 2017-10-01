@@ -429,41 +429,6 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
-    .mu-dialog
-      .timeline
-        max-height 50vh
-        overflow auto
-        .mu-timeline-item
-          display flex
-          align-items flex-start
-          .mu-timeline-item-line
-            display none
-          .mu-timeline-item-des span
-            font-style italic
-            font-size 0.8em
-          .mu-timeline-item-icon
-            position relative
-            width 10%
-            background-color transparent
-          .mu-timeline-item-content
-            left unset !important
-            padding-bottom 0
-            width 45%
-          &.attacker
-            .mu-timeline-item-icon
-              text-align right
-              margin-left 45%
-              margin-right 5%
-            .mu-timeline-item-content
-              text-align left
-          &.defender
-            flex-direction row-reverse
-            .mu-timeline-item-icon
-              margin-right 45%
-              margin-left 5%
-              text-align left
-            .mu-timeline-item-content
-              text-align right
     .mu-toast
       text-align center
       height 48px

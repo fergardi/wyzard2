@@ -30,7 +30,7 @@ function numeric (number) {
         : parseFloat(number.toFixed(2)).toLocaleString()
 }
 function datetime (timestamp) {
-  return moment(timestamp).fromNow()
+  return moment(timestamp).locale(store.state.settings.lang).fromNow(true)
 }
 function translate (label) {
   return i18n[store.state.settings.lang || store.state.lang][label] || label

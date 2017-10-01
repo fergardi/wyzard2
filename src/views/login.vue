@@ -148,9 +148,18 @@
               })
             })
             // messages
-            // TODO
+            let message = {
+              username: 'Admin',
+              color: 'dark',
+              timestamp: Date.now(),
+              subject: 'lbl_message_welcome_subject',
+              text: 'lbl_message_welcome_text'
+            }
+            this.$firebaseRefs.users.child(auth.currentUser.uid).child('messages').push(message)
+            // uid
             store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')
+            // router
             this.$router.push('/census')
           })
           .catch(error => {

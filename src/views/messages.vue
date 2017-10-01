@@ -17,7 +17,7 @@
             mu-tr(v-for="message, index in messages", :key="index")
               mu-td {{ message.timestamp | datetime }}
               mu-td
-                mu-chip(:class="message.color") {{ message.name }}
+                mu-chip(:class="message.color") {{ message.username }}
               mu-td {{ message.subject | translate }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
@@ -32,9 +32,9 @@
                 span(slot="time") {{ timeline.name | translate }}
                 span(slot="des") {{ timeline.description }}
           mu-card-text
-            p {{ selected.text }}
+            p {{ selected.text | translate }}
           mu-card-text.right
-            mu-chip(:class="selected.color") {{ selected.name }}
+            mu-chip(:class="selected.color") {{ selected.username }}
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
 </template>
@@ -85,4 +85,42 @@
 <style lang="stylus" scoped>
   .right
     text-align right !important
+</style>
+
+<style lang="stylus">
+  .mu-dialog
+    .timeline
+      max-height 50vh
+      overflow auto
+      .mu-timeline-item
+        display flex
+        align-items flex-start
+        .mu-timeline-item-line
+          display none
+        .mu-timeline-item-des span
+          font-style italic
+          font-size 0.8em
+        .mu-timeline-item-icon
+          position relative
+          width 10%
+          background-color transparent
+        .mu-timeline-item-content
+          left unset !important
+          padding-bottom 0
+          width 45%
+        &.attacker
+          .mu-timeline-item-icon
+            text-align right
+            margin-left 45%
+            margin-right 5%
+          .mu-timeline-item-content
+            text-align left
+        &.defender
+          flex-direction row-reverse
+          .mu-timeline-item-icon
+            margin-right 45%
+            margin-left 5%
+            text-align left
+          .mu-timeline-item-content
+            text-align right
 </style>
