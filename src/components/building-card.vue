@@ -94,7 +94,15 @@
         this.close()
       },
       explore () {
-        // TODO
+        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+          building.quantity += this.amount
+          database.ref('users').child(store.state.uid).transaction(user => {
+            user.territory += this.amount
+            user.turns = Math.max(0, user.turns - this.amount)
+            return user
+          })
+          return building
+        })
         store.commit('success', 'lbl_toast_exploration_ok')
         this.close()
       },
