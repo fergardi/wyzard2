@@ -68,7 +68,7 @@
       data: Object,
       investigation: Boolean,
       conjuration: Boolean,
-      users: Object,
+      users: Array,
       breaking: Boolean,
       info: Boolean
     },

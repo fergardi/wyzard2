@@ -140,6 +140,8 @@
   }
 </script>
 
+<style src="../../node_modules/mapbox-gl/dist/mapbox-gl.css"></style>
+
 <style lang="stylus">
   #map
     opacity 0.95

@@ -7,14 +7,14 @@
 
     mu-paper
       mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
-        mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.login(icon="power_settings_new", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
+        mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="right ? 'right' : 'left'", @click="toggle")
+        mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
         mu-icon-button.logout(icon=":ra ra-key", :slot="!right ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.toggler(icon="menu", :slot="right ? 'right' : 'left'", @click="toggle")
+          mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="right ? 'right' : 'left'", @click="toggle")
           mu-icon-button.settings(icon=":ra ra-gears", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle")
 
       mu-list.scroll
@@ -175,6 +175,8 @@
     }
   }
 </script>
+
+<style src="../node_modules/animate.css/animate.min.css"></style>
 
 <style lang="stylus">
   $opacity = 0.95
