@@ -13,7 +13,7 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_construct_demolish' | translate }}
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_demolish_construct' | translate }}
 
     template(v-if="exploration")
       form(@submit.stop.prevent="confirm('explore')")

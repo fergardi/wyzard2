@@ -299,7 +299,7 @@ export default {
     lbl_resource_territory: 'Terrenos',
     // buttons
     lbl_button_activate: 'Activar',
-    lbl_button_construct_demolish: 'Construir / Demoler',
+    lbl_button_demolish_construct: 'Demoler / Construir',
     lbl_button_research: 'Investigar',
     lbl_button_cast: 'Conjurar',
     lbl_button_bid: 'Pujar',
