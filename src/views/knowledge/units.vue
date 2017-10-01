@@ -2,18 +2,17 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
-        unit.animated.fadeInUp(:data="unit")
+        unit-card.animated.fadeInUp(:data="unit")
 </template>
 
 <script>
   import { database } from '../../services/firebase'
   import store from '../../vuex/store'
-  import unit from '../../components/unit'
+  import unit from '../../components/unit-card'
   
   export default {
-    name: 'units',
     components: {
-      'unit': unit
+      'unit-card': unit
     },
     created () {
       store.commit('title', 'lbl_title_units')

@@ -63,8 +63,15 @@
   import store from '../vuex/store'
 
   export default {
-    name: 'spell',
-    props: ['data', 'investigation', 'conjuration', 'users', 'breaking', 'info'],
+    name: 'spell-card',
+    props: {
+      data: Object,
+      investigation: Boolean,
+      conjuration: Boolean,
+      users: Object,
+      breaking: Boolean,
+      info: Boolean
+    },
     data () {
       return {
         type: null,

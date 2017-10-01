@@ -1,19 +1,16 @@
 <template lang="pug">
-  mu-card.hero
+  mu-card.place
     mu-card-media
       img(:src="data.image")
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
 
-    template(v-if="contract")
-      form(@submit.stop.prevent="confirm('bid')")
-        mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+    template(v-if="adventure")
+      form(@submit.stop.prevent="confirm('start')")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_bid' | translate }}
+          mu-raised-button(primary, type="number") {{ 'lbl_button_start' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -25,19 +22,18 @@
 
 <script>
   import store from '../vuex/store'
-  
+
   export default {
-    name: 'hero',
-    props: ['data', 'contract'],
+    name: 'place-card',
+    props: {
+      data: Object,
+      adventure: Boolean
+    },
     data () {
       return {
         dialog: false,
-        type: null,
-        amount: 0
+        type: null
       }
-    },
-    created () {
-      if (this.contract) this.amount = this.data.gold
     },
     methods: {
       confirm (type) {
@@ -46,20 +42,19 @@
       },
       accept () {
         switch (this.type) {
-          case 'bid':
-            this.bid()
+          case 'start':
+            this.start()
             break
         }
       },
-      bid () {
+      start () {
         // TODO
-        store.commit('success', 'lbl_toast_bid_ok')
+        store.commit('success', 'lbl_toast_start_ok')
         this.close()
       },
       close () {
         this.type = null
         this.dialog = false
-        this.amount = 0
       }
     }
   }

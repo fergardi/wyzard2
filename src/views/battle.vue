@@ -54,7 +54,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'battle',
     data () {
       return {
         army: {

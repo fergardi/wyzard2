@@ -19,7 +19,7 @@
   import { database } from '../services/firebase'
 
   export default {
-    name: 'land',
+    name: 'land-card',
     components: {
       'mapbox': mapbox
     },

@@ -1,24 +1,25 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="auction, index in auctions", :key="index")
-        artifact-card.animated.fadeInUp(v-if="auction.name.indexOf('artifact') !== -1", :data="auction", :auction="true")
+      mu-col(width="100", tablet="50", desktop="33", v-for="place, index in places", :key="index")
+        place(:data="place")
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import artifact from '../components/artifact-card'
+  import place from '../components/place-card'
   
   export default {
+    name: 'places',
     components: {
-      'artifact-card': artifact
+      'place': place
     },
     created () {
-      store.commit('title', 'lbl_title_auction')
+      store.commit('title', 'lbl_title_places')
     },
     firebase: {
-      auctions: database.ref('auctions').orderByChild('gold')
+      places: database.ref('places').orderByChild('color')
     }
   }
 </script>

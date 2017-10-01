@@ -29,7 +29,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'login',
     data () {
       return {
         error: false,

@@ -45,7 +45,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'census',
     data () {
       return {
         current: 1,

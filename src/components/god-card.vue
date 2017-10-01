@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.place
+  mu-card.god
     mu-card-media
       img(:src="data.image")
       .card-info
@@ -7,10 +7,12 @@
     mu-card-text
       p {{ data.description | lorem }}
 
-    template(v-if="adventure")
-      form(@submit.stop.prevent="confirm('start')")
+    template(v-if="pray")
+      form(@submit.stop.prevent="confirm('offer')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="number") {{ 'lbl_button_start' | translate }}
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_offer' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -24,13 +26,20 @@
   import store from '../vuex/store'
 
   export default {
-    name: 'place',
-    props: ['data', 'adventure', 'troops'],
+    name: 'god-card',
+    props: {
+      data: Object,
+      pray: Boolean
+    },
     data () {
       return {
         dialog: false,
-        type: null
+        type: null,
+        amount: 0
       }
+    },
+    created () {
+      if (this.pray) this.amount = this.data.gold
     },
     methods: {
       confirm (type) {
@@ -39,19 +48,20 @@
       },
       accept () {
         switch (this.type) {
-          case 'start':
-            this.start()
+          case 'offer':
+            this.offer()
             break
         }
       },
-      start () {
+      offer () {
         // TODO
-        store.commit('success', 'lbl_toast_start_ok')
+        store.commit('success', 'lbl_toast_offer_ok')
         this.close()
       },
       close () {
         this.type = null
         this.dialog = false
+        this.amount = 0
       }
     }
   }

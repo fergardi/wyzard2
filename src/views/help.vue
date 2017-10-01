@@ -14,7 +14,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'help',
     created () {
       store.commit('title', 'lbl_title_help')
     }

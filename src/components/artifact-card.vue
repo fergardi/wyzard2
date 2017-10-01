@@ -1,18 +1,24 @@
 <template lang="pug">
-  mu-card.god
+  mu-card.artifact
     mu-card-media
       img(:src="data.image")
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
 
-    template(v-if="pray")
-      form(@submit.stop.prevent="confirm('offer')")
-        mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+    template(v-if="enable")
+      form(@submit.stop.prevent="confirm('activate')")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_offer' | translate }}
+          mu-raised-button(primary, type="primary") {{ 'lbl_button_activate' | translate }}
+
+    template(v-if="auction")
+      form(@submit.stop.prevent="confirm('bid')")
+        mu-card-text
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+        mu-card-actions
+          mu-raised-button(primary, type="primary") {{ 'lbl_button_bid' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -26,8 +32,13 @@
   import store from '../vuex/store'
 
   export default {
-    name: 'god',
-    props: ['data', 'pray'],
+    name: 'artifact-card',
+    props: {
+      data: Object,
+      quantity: Number,
+      auction: Boolean,
+      enable: Boolean
+    },
     data () {
       return {
         dialog: false,
@@ -36,7 +47,7 @@
       }
     },
     created () {
-      if (this.pray) this.amount = this.data.gold
+      if (this.auction) this.amount = this.data.gold
     },
     methods: {
       confirm (type) {
@@ -45,14 +56,22 @@
       },
       accept () {
         switch (this.type) {
-          case 'offer':
-            this.offer()
+          case 'activate':
+            this.activate()
+            break
+          case 'bid':
+            this.bid()
             break
         }
       },
-      offer () {
+      activate () {
         // TODO
-        store.commit('success', 'lbl_toast_offer_ok')
+        store.commit('success', 'lbl_toast_activate_ok')
+        this.close()
+      },
+      bid () {
+        // TODO
+        store.commit('success', 'lbl_toast_bid_ok')
         this.close()
       },
       close () {

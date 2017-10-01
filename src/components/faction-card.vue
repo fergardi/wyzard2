@@ -10,8 +10,10 @@
 
 <script>
   export default {
-    name: 'faction',
-    props: ['data']
+    name: 'faction-card',
+    props: {
+      data: Object
+    }
   }
 </script>
 

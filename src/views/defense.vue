@@ -22,7 +22,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'defense',
     data () {
       return {
         spell: null,

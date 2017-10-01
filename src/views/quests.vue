@@ -2,18 +2,17 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="quest, index in quests", :key="index")
-        place.animated.fadeInUp(:data="quest", :adventure="true")
+        place-card.animated.fadeInUp(:data="quest", :adventure="true")
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import place from '../components/place'
+  import place from '../components/place-card'
   
   export default {
-    name: 'quests',
     components: {
-      'place': place
+      'place-card': place
     },
     created () {
       store.commit('title', 'lbl_title_quests')

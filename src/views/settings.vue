@@ -20,7 +20,6 @@
   import store from '../vuex/store'
   
   export default {
-    name: 'settings',
     created () {
       store.commit('title', 'lbl_title_settings')
       // this.$bindAsObject('user', database.ref('users').child(store.state.uid))

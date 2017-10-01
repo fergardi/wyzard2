@@ -2,17 +2,16 @@
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.kingdom.animated.fadeInUp
-        land
+        land-card
 </template>
 
 <script>
   import store from '../vuex/store'
-  import land from '../components/land'
+  import land from '../components/land-card'
   
   export default {
-    name: 'world',
     components: {
-      'land': land
+      'land-card': land
     },
     created () {
       store.commit('title', 'lbl_title_kingdom')

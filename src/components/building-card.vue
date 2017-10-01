@@ -49,8 +49,14 @@
   import store from '../vuex/store'
 
   export default {
-    name: 'building',
-    props: ['data', 'exploration', 'construction', 'meditation', 'tax'],
+    name: 'building-card',
+    props: {
+      data: Object,
+      exploration: Boolean,
+      construction: Boolean,
+      meditation: Boolean,
+      tax: Boolean
+    },
     data () {
       return {
         dialog: false,

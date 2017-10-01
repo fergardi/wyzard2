@@ -2,18 +2,17 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="construction, index in constructions", :key="index")
-        building.animated.fadeInUp(:data="construction", :construction="true")
+        building-card.animated.fadeInUp(:data="construction", :construction="true")
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import building from '../components/building'
+  import building from '../components/building-card'
   
   export default {
-    name: 'infrastructure',
     components: {
-      'building': building
+      'building-card': building
     },
     created () {
       store.commit('title', 'lbl_title_infrastructure')
