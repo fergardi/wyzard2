@@ -7,7 +7,7 @@
           .card-info
             .card-title {{ 'lbl_label_messages' | translate }}
             .card-number {{ messages.length | numeric }}
-        mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false")
+        mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
             mu-tr
               mu-th {{ 'lbl_table_datetime' | translate }}
@@ -15,7 +15,7 @@
               mu-th {{ 'lbl_table_subject' | translate }}
               // mu-th {{ 'lbl_table_actions' | translate }}
           mu-tbody
-            mu-tr(v-for="message, index in messages", :key="index", @click="select(message)")
+            mu-tr(v-for="message, index in messages", :key="index")
               mu-td {{ message.timestamp | datetime }}
               mu-td
                 mu-chip(:class="message.color") {{ message.name }}
@@ -28,7 +28,7 @@
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
 
-      mu-dialog(:open="detail", @close="dismiss")
+      mu-dialog(:open="dialog", @close="close")
         mu-card
           mu-card-title(:title="selected.subject", :subTitle="datetime(selected.datetime)")
             p {{ selected.subject }}
@@ -37,7 +37,7 @@
           mu-card-text.right
             mu-chip(:class="selected.color") {{ selected.name }}
           mu-card-actions
-            mu-raised-button(primary, @click="dismiss") {{ 'lbl_button_close' | translate }}
+            mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
 </template>
 
 <script>
@@ -49,7 +49,7 @@
     data () {
       return {
         current: 1,
-        detail: false,
+        dialog: false,
         selected: {
           subject: '',
           content: '',
@@ -66,12 +66,11 @@
       move (page) {
         this.current = page
       },
-      select (message) {
-        this.selected = message
-        this.detail = true
+      select (index) {
+        console.log(this.messages[index])
       },
-      dismiss () {
-        this.detail = false
+      close () {
+        this.dialog = false
       },
       create () {
         // TODO

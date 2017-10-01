@@ -7,7 +7,7 @@
           .card-info
             .card-title {{ 'lbl_label_players' | translate }}
             .card-number {{ users.length | numeric }}
-        mu-table(:showCheckbox="false")
+        mu-table(:showCheckbox="false", @rowClick="select")
           mu-thead
             mu-tr
               mu-th {{ 'lbl_table_position' | translate }}
@@ -43,6 +43,9 @@
     methods: {
       move (page) {
         this.current = page
+      },
+      select (index) {
+        console.log(this.users[index])
       }
     },
     computed: {
