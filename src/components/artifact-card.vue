@@ -28,9 +28,9 @@
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="mine")
         mu-card-actions
-          mu-raised-button(primary, type="primary") {{ 'lbl_button_bid' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="mine") {{ 'lbl_button_bid' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -89,15 +89,17 @@
       activate () {
         database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
           artifact.quantity -= 1
-          if (artifact.quantity <= 0) {
-            artifact.remove()
-          }
           // TODO
           database.ref('users').child(store.state.uid).transaction(user => {
             user.turns = Math.max(0, user.turns - 1)
             return user
           })
           return artifact
+        })
+        .then(transaction => {
+          if (transaction.snapshot.val().quantity <= 0) {
+            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove()
+          }
         })
         store.commit('success', 'lbl_toast_activate_ok')
         this.close()
@@ -124,7 +126,16 @@
         this.close()
       },
       bid () {
-        // TODO
+        database.ref('users').child(store.state.uid).child('auctions').child(this.data['.key']).transaction(auction => {
+          auction.gold = this.amount
+          auction.uid = store.state.uid
+          database.ref('users').child(store.state.uid).transaction(user => {
+            user.gold = Math.max(0, user.gold - this.amount)
+            user.turns = Math.max(0, user.turns - 1)
+            return user
+          })
+          return auction
+        })
         store.commit('success', 'lbl_toast_bid_ok')
         this.close()
       },
@@ -132,6 +143,11 @@
         this.type = null
         this.dialog = false
         this.amount = 0
+      }
+    },
+    computed: {
+      mine () {
+        return this.data.uid === store.state.uid
       }
     }
   }
