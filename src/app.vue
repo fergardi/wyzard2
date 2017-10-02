@@ -19,27 +19,31 @@
 
       mu-list.scroll
         template(v-if="logged")
-          mu-sub-header {{ 'lbl_title_resources' | translate }}
-          mu-list-item(:title="translate('lbl_resource_turns')", disabled)
-            mu-icon(slot="left", value=":ra ra-hourglass", class="red")
-            mu-badge(slot="after") {{ user.turns | numeric }}
-          mu-list-item(:title="translate('lbl_resource_gold')", disabled)
-            mu-icon(slot="left", value=":ra ra-gold-bar", class="green")
-            mu-badge(slot="after") {{ user.gold | numeric }}
-          mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-            mu-icon(slot="left", value=":ra ra-droplet-splash", class="green")
-            mu-badge(slot="after") {{ user.mana | numeric }}
-          mu-list-item(:title="translate('lbl_resource_people')", disabled)
-            mu-icon(slot="left", value=":ra ra-double-team", class="red")
-            mu-badge(slot="after") {{ user.people | numeric }}
-          mu-list-item(:title="translate('lbl_resource_territory')", disabled)
-            mu-icon(slot="left", value=":ra ra-tower", class="green")
-            mu-badge(slot="after") {{ user.territory | numeric }}
-
           mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
           mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
-            mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="enchantment.color")
+            mu-icon(slot="left", value=":ra ra-chain", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | numeric }}
+
+          mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
+          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
+            mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
+
+          mu-sub-header {{ 'lbl_title_resources' | translate }}
+          mu-list-item(:title="translate('lbl_resource_turns')", disabled)
+            mu-icon(slot="left", value=":ra ra-hourglass")
+            mu-badge(slot="after") {{ user.turns | numeric }}
+          mu-list-item(:title="translate('lbl_resource_gold')", disabled)
+            mu-icon(slot="left", value=":ra ra-gold-bar")
+            mu-badge(slot="after") {{ user.gold | numeric }}
+          mu-list-item(:title="translate('lbl_resource_mana')", disabled)
+            mu-icon(slot="left", value=":ra ra-droplet-splash")
+            mu-badge(slot="after") {{ user.mana | numeric }}
+          mu-list-item(:title="translate('lbl_resource_people')", disabled)
+            mu-icon(slot="left", value=":ra ra-double-team")
+            mu-badge(slot="after") {{ user.people | numeric }}
+          mu-list-item(:title="translate('lbl_resource_territory')", disabled)
+            mu-icon(slot="left", value=":ra ra-tower")
+            mu-badge(slot="after") {{ user.territory | numeric }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
@@ -86,10 +90,6 @@
             mu-icon(slot="left", value=":ra ra-eye-shield")
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
-        mu-list-item(:title="translate('lbl_title_login')", to="login", @click="toggle", v-if="!logged")
-          mu-icon(slot="left", value=":ra ra-key")
-        mu-list-item(:title="translate('lbl_title_logout')", @click="logout && toggle", v-if="logged")
-          mu-icon(slot="left", value=":ra ra-locked-fortress")
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
           mu-icon(slot="left", value=":ra ra-gears")
 
@@ -148,8 +148,9 @@
       // firebase
       store.watch((state) => state.logged, (value) => {
         if (value) {
-          this.$bindAsObject('user', database.ref('users').child(store.state.uid))
+          store.dispatch('user', database.ref('users').child(store.state.uid))
           this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments'))
+          this.$bindAsArray('blessings', database.ref('gods').orderByChild('uid').equalTo(store.state.uid))
         }
       })
     },
@@ -171,6 +172,9 @@
       },
       overlay () {
         return window.innerWidth > 1024
+      },
+      user () {
+        return store.state.user
       }
     }
   }
@@ -289,6 +293,8 @@
           .card-title + .card-number
           .card-number + .card-number
             margin-left 1%
+      .mu-card-text
+        padding-bottom 0
       .mu-card-text + .mu-card-text
       .mu-card-text + .mu-card-actions
       .mu-card-text + form .mu-card-text

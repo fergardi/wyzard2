@@ -5,12 +5,12 @@
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
     mu-card-text
-      p {{ data.description | lorem }}
+      p {{ data.description | translate }}
 
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_offer' | translate }}
 
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
 
   export default {
@@ -35,11 +36,9 @@
       return {
         dialog: false,
         type: null,
-        amount: 0
+        amount: 0,
+        turns: 1
       }
-    },
-    created () {
-      if (this.pray) this.amount = this.data.gold
     },
     methods: {
       confirm (type) {
@@ -54,14 +53,41 @@
         }
       },
       offer () {
-        // TODO
-        store.commit('success', 'lbl_toast_offer_ok')
+        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
+          if (this.amount > this.data.gold) {
+            database.ref('gods').child(this.data['.key']).transaction(offer => {
+              offer.gold = this.amount
+              offer.uid = store.state.uid
+              database.ref('users').child(store.state.uid).transaction(user => {
+                user.gold = Math.max(0, user.gold - this.amount)
+                user.turns = Math.max(0, user.turns - 1)
+                return user
+              })
+              return offer
+            })
+            store.commit('success', 'lbl_toast_offer_ok')
+          } else {
+            store.commit('error', 'lbl_toast_offer_error')
+          }
+        } else {
+          if (this.amount > this.user.gold) {
+            store.commit('error', 'lbl_toast_resource_gold')
+          }
+          if (this.turns > this.user.turns) {
+            store.commit('error', 'lbl_toast_resource_turns')
+          }
+        }
         this.close()
       },
       close () {
         this.type = null
         this.dialog = false
         this.amount = 0
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
       }
     }
   }
