@@ -179,7 +179,7 @@
 <style src="../node_modules/animate.css/animate.min.css"></style>
 
 <style lang="stylus">
-  $opacity = 0.95
+  $opacity = 0.975
   $radius = 5px
   @import './css/colors.styl'
   html
@@ -298,6 +298,8 @@
         text-align center
         .mu-select-field
           text-align left
+        .mu-text-field.disabled
+          color $gold
         p
           font-style italic
           font-size 0.9em
