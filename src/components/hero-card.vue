@@ -6,7 +6,7 @@
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
     mu-card-text
-      p {{ data.description | translate }}
+      p {{ data.description | lorem }}
 
     template(v-if="contract")
       form(@submit.stop.prevent="confirm('bid')")
@@ -37,7 +37,8 @@
       return {
         dialog: false,
         type: null,
-        amount: 0
+        amount: 0,
+        turns: 1
       }
     },
     methods: {
@@ -53,23 +54,41 @@
         }
       },
       bid () {
-        database.ref('tavern').child(this.data['.key']).transaction(auction => {
-          auction.gold = this.amount
-          auction.uid = store.state.uid
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.gold = Math.max(0, user.gold - this.amount)
-            user.turns = Math.max(0, user.turns - 1)
-            return user
-          })
-          return auction
-        })
-        store.commit('success', 'lbl_toast_bid_ok')
+        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
+          if (this.amount > this.data.gold) {
+            database.ref('tavern').child(this.data['.key']).transaction(auction => {
+              auction.gold = this.amount
+              auction.bidder = store.state.uid
+              database.ref('users').child(store.state.uid).transaction(user => {
+                user.gold = Math.max(0, user.gold - this.amount)
+                user.turns = Math.max(0, user.turns - 1)
+                return user
+              })
+              return auction
+            })
+            store.commit('success', 'lbl_toast_bid_ok')
+          } else {
+            store.commit('error', 'lbl_toast_bid_error')
+          }
+        } else {
+          if (this.amount > this.user.gold) {
+            store.commit('error', 'lbl_toast_resource_gold')
+          }
+          if (this.turns > this.user.turns) {
+            store.commit('error', 'lbl_toast_resource_turns')
+          }
+        }
         this.close()
       },
       close () {
         this.type = null
         this.dialog = false
         this.amount = 0
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
       }
     }
   }

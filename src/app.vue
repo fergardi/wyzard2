@@ -54,8 +54,6 @@
             mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
-          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-quill-ink")
 
           mu-sub-header {{ 'lbl_title_magic' | translate }}
           mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
@@ -70,6 +68,8 @@
             mu-icon(slot="left", value=":ra ra-vase")
 
           mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
             mu-icon(slot="left", value=":ra ra-beer")
           mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")

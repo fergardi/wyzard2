@@ -10,9 +10,9 @@
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="mine")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_offer' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="mine") {{ 'lbl_button_offer' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -88,6 +88,9 @@
     computed: {
       user () {
         return store.state.user
+      },
+      mine () {
+        return store.state.uid === this.data.uid
       }
     }
   }

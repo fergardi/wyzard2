@@ -58,11 +58,9 @@
         tab: 'activate',
         dialog: false,
         type: null,
-        amount: 0
+        amount: 0,
+        turns: 1
       }
-    },
-    created () {
-      if (this.auction) this.amount = this.data.gold
     },
     methods: {
       change (tab) {
@@ -110,7 +108,7 @@
           let auction = {...artifact}
           auction.gold = this.amount
           auction.quantity = 1
-          auction.uid = store.state.uid
+          auction.owner = store.state.uid
           database.ref('auctions').push(auction)
           database.ref('users').child(store.state.uid).transaction(user => {
             user.turns = Math.max(0, user.turns - 1)
@@ -126,17 +124,30 @@
         this.close()
       },
       bid () {
-        database.ref('users').child(store.state.uid).child('auctions').child(this.data['.key']).transaction(auction => {
-          auction.gold = this.amount
-          auction.uid = store.state.uid
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.gold = Math.max(0, user.gold - this.amount)
-            user.turns = Math.max(0, user.turns - 1)
-            return user
-          })
-          return auction
-        })
-        store.commit('success', 'lbl_toast_bid_ok')
+        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
+          if (this.amount > this.data.gold) {
+            database.ref('users').child(store.state.uid).child('auctions').child(this.data['.key']).transaction(auction => {
+              auction.gold = this.amount
+              auction.bidder = store.state.uid
+              database.ref('users').child(store.state.uid).transaction(user => {
+                user.gold = Math.max(0, user.gold - this.amount)
+                user.turns = Math.max(0, user.turns - 1)
+                return user
+              })
+              return auction
+            })
+            store.commit('success', 'lbl_toast_bid_ok')
+          } else {
+            store.commit('error', 'lbl_toast_bid_error')
+          }
+        } else {
+          if (this.amount > this.user.gold) {
+            store.commit('error', 'lbl_toast_resource_gold')
+          }
+          if (this.turns > this.user.turns) {
+            store.commit('error', 'lbl_toast_resource_turns')
+          }
+        }
         this.close()
       },
       close () {
@@ -147,7 +158,10 @@
     },
     computed: {
       mine () {
-        return this.data.uid === store.state.uid
+        return this.data.owner === store.state.uid
+      },
+      user () {
+        return store.state.user
       }
     }
   }

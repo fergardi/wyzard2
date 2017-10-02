@@ -242,6 +242,7 @@ export default {
     lbl_building_barrier: 'Barreras',
     lbl_building_temple: 'Templos',
     // titles
+    lbl_title_blessings: 'Bendiciones',
     lbl_title_relics: 'Reliquias',
     lbl_title_knowledge: 'Conocimiento',
     lbl_title_magic: 'Magia',
@@ -397,8 +398,8 @@ export default {
     lbl_toast_activate_error: 'Error al activar',
     lbl_toast_sell_ok: 'Venta realizada',
     lbl_toast_sell_error: 'Error al vender',
-    lbl_toast_bid_ok: 'Puja realizada',
-    lbl_toast_bid_error: 'Error al pujar',
+    lbl_toast_bid_ok: 'Puja aceptada',
+    lbl_toast_bid_error: 'Tu puja no supera la actual',
     lbl_toast_offer_ok: 'El Dios te otorga su bendición',
     lbl_toast_offer_error: 'Tu ofrenda no satisface al Dios',
     lbl_toast_start_ok: 'Comienzo realizado',
