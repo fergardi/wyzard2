@@ -182,7 +182,7 @@ export default {
     lbl_god_of_life: 'Dios de la Vida',
     lbl_god_of_blood: 'Dios de la Sangre',
     lbl_god_of_magic: 'Dios de la Magia',
-    // items
+    // artifacts
     lbl_artifact_book_of_the_dead: 'Libro de los Muertos',
     lbl_artifact_mana_potion: 'Poción de Maná',
     lbl_artifact_love_elixir: 'Elixir de Amor',
@@ -265,7 +265,7 @@ export default {
     lbl_title_registration: 'Registro',
     lbl_title_logout: 'Salir',
     lbl_title_login: 'Entrar',
-    // label
+    // labels
     lbl_label_quantity: 'Cantidad',
     lbl_label_faction: 'Facción',
     lbl_label_username: 'Nombre',
@@ -291,6 +291,11 @@ export default {
     lbl_label_help: 'Cómo se Juega',
     lbl_label_confirm: 'Confirmar acción',
     lbl_label_cannot_undo: 'Esta acción no se puede deshacer',
+    // tabs
+    lbl_tab_sell: 'Vender',
+    lbl_tab_activate: 'Activar',
+    lbl_tab_authentication: 'Autenticarse',
+    lbl_tab_registration: 'Registrarse',
     // resources
     lbl_resource_gold: 'Oro',
     lbl_resource_people: 'Personas',
@@ -312,6 +317,7 @@ export default {
     lbl_button_explore: 'Explorar',
     lbl_button_meditate: 'Meditar',
     lbl_button_buy: 'Comprar',
+    lbl_button_sell: 'Vender',
     lbl_button_collect: 'Recaudar',
     lbl_button_dispel: 'Romper',
     lbl_button_start: 'Comenzar',
@@ -335,7 +341,7 @@ export default {
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
     lbl_settings_language: 'Idioma',
-    // quests
+    // places
     lbl_place_island: 'Isla del Paraíso',
     lbl_place_crypt: 'Cripta Maldita',
     lbl_place_dungeon: 'Mazmorra Sangrienta',
@@ -369,6 +375,8 @@ export default {
     lbl_toast_disband_error: 'Error al desbandar',
     lbl_toast_activate_ok: 'Activación realizada',
     lbl_toast_activate_error: 'Error al activar',
+    lbl_toast_sell_ok: 'Venta realizada',
+    lbl_toast_sell_error: 'Error al vender',
     lbl_toast_bid_ok: 'Puja realizada',
     lbl_toast_bid_error: 'Error al pujar',
     lbl_toast_offer_ok: 'Ofrenda realizada',

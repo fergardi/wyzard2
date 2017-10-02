@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="artifact, index in artifacts", :key="index")
-        artifact-card.animated.fadeInUp(:data="artifact", :enable="true")
+        artifact-card.animated.fadeInUp(:data="artifact", :enable="!artifact.battle", :store="true")
 </template>
 
 <script>

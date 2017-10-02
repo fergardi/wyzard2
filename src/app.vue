@@ -50,18 +50,20 @@
             mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
+          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-quill-ink")
 
           mu-sub-header {{ 'lbl_title_magic' | translate }}
           mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
             mu-icon(slot="left", value=":ra ra-burst-blob")
           mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crystal-ball")
-          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crystal-wand")
           mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crystals")
+          mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-vase")
 
           mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
           mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
@@ -76,8 +78,6 @@
           mu-sub-header {{ 'lbl_title_military' | translate }}
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crossed-axes")
-          mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-vase")
           mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
             mu-icon(slot="left", value=":ra ra-dripping-blade")
           mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")

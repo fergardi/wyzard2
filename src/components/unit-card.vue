@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import { database } from '../services/firebase'
   import store from '../vuex/store'
 
   export default {
@@ -53,7 +54,10 @@
         }
       },
       disband () {
-        // TODO
+        database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
+          unit.quantity = Math.max(0, unit.quantity - this.amount)
+          return unit
+        })
         store.commit('success', 'lbl_toast_disband_ok')
         this.close()
       },
