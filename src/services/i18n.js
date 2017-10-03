@@ -372,11 +372,11 @@ export default {
     lbl_language_spanish: 'Español',
     lbl_language_english: 'Inglés',
     // messages
-    lbl_message_welcome_subject: 'Bienvenido',
+    lbl_message_welcome_subject: 'Bienvenid@',
     lbl_message_welcome_text: 'Bienvenido al juego',
     lbl_message_battle_subject: 'Batalla',
-    lbl_message_battle_text_win: 'Has ganado la batalla',
-    lbl_message_battle_text_lose: 'Has perdido la batalla',
+    lbl_message_battle_text_win: 'Victoria',
+    lbl_message_battle_text_lose: 'Derrota',
     lbl_message_auction_outbid: 'Sobrepuja',
     lbl_message_auction_outbid_text: 'Otra persona se ha mostrado interesada en la misma subasta que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original, excepto el 10% del importe total en concepto de impuestos.',
     // toasts

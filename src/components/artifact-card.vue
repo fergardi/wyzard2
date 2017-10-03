@@ -142,19 +142,17 @@
                   database.ref('users').child(store.state.uid).transaction(previous => {
                     if (previous) {
                       previous.gold += auction.gold * 0.9 // return him/her the bid minus a 10% fee
-                      // previous.child('messages').push(message) // add message to previous bidder
-                      // testing
+                      let message = { // create new message
+                        color: 'dark',
+                        subject: 'lbl_message_auction_outbid',
+                        text: 'lbl_message_auction_outbid_text',
+                        timestamp: Date.now(),
+                        username: 'lbl_title_auction'
+                      }
+                      previous.child('messages').push(message) // add message to previous bidder
                     }
                   })
                 }
-                let message = { // create new message
-                  color: 'dark',
-                  subject: 'lbl_message_auction_outbid',
-                  text: 'lbl_message_auction_outbid_text',
-                  timestamp: Date.now(),
-                  username: 'lbl_title_auction'
-                }
-                database.ref('users').child(store.state.uid).child('messages').push(message)
                 auction.gold = this.amount // update the price
                 auction.bidder = store.state.uid // update the bidder
                 database.ref('users').child(store.state.uid).transaction(user => {
