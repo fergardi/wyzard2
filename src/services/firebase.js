@@ -15,6 +15,8 @@ export const database = app.database()
 
 export const auth = app.auth()
 
+export const messaging = firebase.messaging()
+
 export const authenticate = (email, password) => {
   return auth.signInWithEmailAndPassword(email, password)
 }

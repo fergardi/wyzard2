@@ -86,17 +86,22 @@
       },
       activate () {
         database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
-          artifact.quantity -= 1
-          // TODO
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.turns = Math.max(0, user.turns - 1)
-            return user
-          })
+          if (artifact) {
+            artifact.quantity -= 1 // decrease quantity
+            // TODO
+            database.ref('users').child(store.state.uid).transaction(user => {
+              if (user) {
+                user.turns = Math.max(0, user.turns - 1) // decrease turns
+                // TODO
+              }
+              return user
+            })
+          }
           return artifact
         })
         .then(transaction => {
-          if (transaction.snapshot.val().quantity <= 0) {
-            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove()
+          if (transaction.snapshot.val().quantity <= 0) { // if no quantity left
+            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove() // remove the artifact
           }
         })
         store.commit('success', 'lbl_toast_activate_ok')
@@ -104,36 +109,63 @@
       },
       sell () {
         database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
-          artifact.quantity -= 1
-          let auction = {...artifact}
-          auction.gold = this.amount
-          auction.quantity = 1
-          auction.owner = store.state.uid
-          database.ref('auctions').push(auction)
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.turns = Math.max(0, user.turns - 1)
-            return user
-          })
+          if (artifact) {
+            artifact.quantity -= 1 // decrease quantity
+            let auction = {...artifact} // create an auction
+            auction.gold = this.amount // set minimum price
+            auction.quantity = 1 // set quantity
+            auction.owner = store.state.uid // set owner
+            database.ref('auctions').push(auction) // insert the auction
+            database.ref('users').child(store.state.uid).transaction(user => {
+              if (user) {
+                user.turns = Math.max(0, user.turns - 1) // update the user
+                // TODO
+              }
+              return user
+            })
+          }
           return artifact
         }).then(transaction => {
-          if (transaction.snapshot.val().quantity <= 0) {
-            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove()
+          if (transaction.snapshot.val().quantity <= 0) { // if no quantity left
+            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove() // remove the artifact
           }
         })
         store.commit('success', 'lbl_toast_sell_ok')
         this.close()
       },
       bid () {
-        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
-          if (this.amount > this.data.gold) {
-            database.ref('users').child(store.state.uid).child('auctions').child(this.data['.key']).transaction(auction => {
-              auction.gold = this.amount
-              auction.bidder = store.state.uid
-              database.ref('users').child(store.state.uid).transaction(user => {
-                user.gold = Math.max(0, user.gold - this.amount)
-                user.turns = Math.max(0, user.turns - 1)
-                return user
-              })
+        if (this.amount <= this.user.gold && this.turns <= this.user.turns) { // user has resources
+          if (this.amount > this.data.gold && !this.mine) { // bid accepted
+            database.ref('auctions').child(this.data['.key']).transaction(auction => {
+              if (auction) {
+                if (auction.bidder) { // if there was a previous bidder
+                  database.ref('users').child(store.state.uid).transaction(previous => {
+                    if (previous) {
+                      previous.gold += auction.gold * 0.9 // return him/her the bid minus a 10% fee
+                      // previous.child('messages').push(message) // add message to previous bidder
+                      // testing
+                    }
+                  })
+                }
+                let message = { // create new message
+                  color: 'dark',
+                  subject: 'lbl_message_auction_outbid',
+                  text: 'lbl_message_auction_outbid_text',
+                  timestamp: Date.now(),
+                  username: 'lbl_title_auction'
+                }
+                database.ref('users').child(store.state.uid).child('messages').push(message)
+                auction.gold = this.amount // update the price
+                auction.bidder = store.state.uid // update the bidder
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.gold = Math.max(0, user.gold - this.amount) // decrease gold
+                    user.turns = Math.max(0, user.turns - 1) // decrease turns
+                    // TODO
+                  }
+                  return user
+                })
+              }
               return auction
             })
             store.commit('success', 'lbl_toast_bid_ok')
@@ -158,7 +190,7 @@
     },
     computed: {
       mine () {
-        return this.data.owner === store.state.uid
+        return this.data.owner === store.state.uid || this.data.bidder === store.state.uid
       },
       user () {
         return store.state.user

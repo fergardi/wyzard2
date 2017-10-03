@@ -75,7 +75,8 @@
         authenticate(this.email, this.password)
         .then(response => {
           store.commit('uid', auth.currentUser.uid)
-          this.$router.push('/census')
+          store.commit('success', 'auth/authentication-ok')
+          this.$router.push('/auction')
         })
         .catch(error => {
           this.error = true

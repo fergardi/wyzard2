@@ -15,9 +15,9 @@
               mu-th {{ 'lbl_table_subject' | translate }}
           mu-tbody
             mu-tr(v-for="message, index in messages", :key="index")
-              mu-td {{ message.timestamp | datetime }}
+              mu-td {{ message.timestamp | timesince }}
               mu-td
-                mu-chip(:class="message.color") {{ message.username }}
+                mu-chip(:class="message.color") {{ message.username | translate }}
               mu-td {{ message.subject | translate }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
@@ -34,7 +34,7 @@
           mu-card-text
             p {{ selected.text | translate }}
           mu-card-text.right
-            mu-chip(:class="selected.color") {{ selected.username }}
+            mu-chip(:class="selected.color") {{ selected.username | translate }}
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
 </template>

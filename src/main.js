@@ -29,8 +29,11 @@ function numeric (number) {
         ? parseFloat((number / 1000).toFixed(2)).toLocaleString() + ' K'
         : parseFloat(number.toFixed(2)).toLocaleString()
 }
-function datetime (timestamp) {
+function timesince (timestamp) {
   return moment(timestamp).locale(store.state.settings.lang).fromNow(true)
+}
+function datetime (timestamp) {
+  return moment(timestamp).locale(store.state.settings.lang).format('LLLL')
 }
 function translate (label) {
   return i18n[store.state.settings.lang || store.state.lang][label] || label
@@ -40,6 +43,9 @@ Vue.mixin({
   methods: {
     translate (label) {
       return translate(label)
+    },
+    timesince (timestamp) {
+      return timesince(timestamp)
     },
     datetime (timestamp) {
       return datetime(timestamp)
@@ -52,6 +58,9 @@ Vue.mixin({
 // filters
 Vue.filter('datetime', (timestamp) => {
   return datetime(timestamp)
+})
+Vue.filter('timesince', (timestamp) => {
+  return timesince(timestamp)
 })
 Vue.filter('numeric', (number) => {
   return numeric(number)

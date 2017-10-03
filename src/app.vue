@@ -107,7 +107,7 @@
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
           mu-icon(slot="left", value=":ra ra-round-bottom-flask")
         mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-pyramids")
+          mu-icon(slot="le7ft", value=":ra ra-pyramids")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
           mu-icon(slot="left", value=":ra ra-helmet")
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
@@ -151,8 +151,21 @@
           store.dispatch('user', database.ref('users').child(store.state.uid))
           this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments'))
           this.$bindAsArray('blessings', database.ref('gods').orderByChild('uid').equalTo(store.state.uid))
+          database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
+            store.commit('info', this.translate(message.val().subject))
+          })
         }
       })
+      // messaging
+      /*
+      messaging.requestPermission()
+      .then(() => {
+        store.commit('info', 'lbl_toast_notifications_ok')
+      })
+      .catch(() => {
+        store.commit('info', 'lbl_toast_notifications_error')
+      })
+      */
     },
     computed: {
       menu () {
@@ -250,6 +263,7 @@
       border 1px solid
       .mu-card-header
         text-align center
+        font-weight bold
         .mu-card-header-title
           padding-right 0
       .mu-card-media
@@ -293,8 +307,6 @@
           .card-title + .card-number
           .card-number + .card-number
             margin-left 1%
-      .mu-card-text
-        padding-bottom 0
       .mu-card-text + .mu-card-text
       .mu-card-text + .mu-card-actions
       .mu-card-text + form .mu-card-text
@@ -345,8 +357,6 @@
             background-color $gold !important
         .mu-raised-button + .mu-raised-button
           margin-left 5px
-    .mu-toast
-      border 1px solid
     .flex
       display flex
       flex-wrap wrap
@@ -442,13 +452,17 @@
       height 48px
       line-height 48px
       padding 0 24px
-      width 96%
+      width 98%
+      max-width 98%
       position fixed
-      left 2%
+      left 1%
       bottom 1%
+      font-weight bold
+      border 1px solid
+      border-radius $radius
     @media only screen and (min-width 480px) and (max-width 1079px)
       .mu-toast
-        width auto
+        width 250px
         min-width 250px
         right 2% !important
         top 10% !important
@@ -456,7 +470,7 @@
         bottom auto !important
     @media only screen and (min-width 1080px)
       .mu-toast
-        width auto
+        width 250px
         min-width 250px
         top 10% !important
         right 2% !important
