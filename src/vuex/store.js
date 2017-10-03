@@ -9,7 +9,7 @@ const setUserRef = firebaseAction(({ bindFirebaseRef, unbindFirebaseRef }, { ref
 })
 
 const vuex = new Vuex.Store({
-  strict: true,
+  // strict: true,
   state: {
     lang: 'es',
     title: 'lbl_wyzard',
@@ -21,6 +21,7 @@ const vuex = new Vuex.Store({
       navbar: false
     },
     user: null, // firebase user
+    toasts: [],
     toast: {
       color: null,
       show: false,
@@ -43,23 +44,34 @@ const vuex = new Vuex.Store({
       state.settings = settings
     },
     success (state, message) {
-      state.toast.color = 'green'
-      state.toast.message = message
-      state.toast.show = true
+      let toast = {
+        color: 'green',
+        message: message,
+        show: true
+      }
+      state.toasts.push(toast)
     },
     info (state, message) {
-      state.toast.color = 'blue'
-      state.toast.message = message
-      state.toast.show = true
+      let toast = {
+        color: 'blue',
+        message: message,
+        show: true
+      }
+      state.toasts.push(toast)
     },
     error (state, message) {
-      state.toast.color = 'red'
-      state.toast.message = message
-      state.toast.show = true
+      let toast = {
+        color: 'red',
+        message: message,
+        show: true
+      }
+      state.toasts.push(toast)
     },
     untoast (state) {
       state.toast.show = false
       state.toast.message = null
+      if (this.timer) clearTimeout(this.timer)
+      this.timer = setTimeout(() => { state.toasts.splice(0, 1) }, 0)
     },
     ...firebaseMutations
   },

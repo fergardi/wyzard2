@@ -137,8 +137,10 @@
     },
     created () {
       // toast
-      store.watch((state) => state.toast.show, (value) => {
-        if (value) {
+      store.watch((state) => state.toasts, (toasts) => {
+        console.log(toasts)
+        if (toasts.length > 0) {
+          Object.assign(store.state.toast, toasts[0])
           if (this.timer) clearTimeout(this.timer)
           this.timer = setTimeout(() => { this.untoast() }, store.state.toast.delay)
         } else {
