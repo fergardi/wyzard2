@@ -21,11 +21,13 @@
         template(v-if="logged")
           mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
           mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+            // mu-avatar(icon=":ra ra-chain", :backgroundColor="enchantment.color", slot="leftAvatar")
             mu-icon(slot="left", value=":ra ra-chain", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | numeric }}
 
           mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
           mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
+            // mu-avatar(icon=":ra ra-bleeding-eye", :backgroundColor="blessing.color", slot="leftAvatar")
             mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
@@ -229,14 +231,20 @@
     .none
       display none
     .mu-dialog
-      width auto
-      min-width 75%
-      max-width 90%
-      max-height 90%
+      width 95%
+      min-width 95%
+      max-height 95%
       background-color transparent
       box-shadow none
       .mu-dialog-body
         padding 0
+        color inherit
+        .conquest
+          padding-left 0
+          padding-right 0
+          text-align left
+          .army
+            padding 0
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -286,7 +294,7 @@
           object-position 50% 20%
         .card-info
           position absolute
-          bottom -15px
+          bottom -18px
           width 100%
           text-align center
           .card-title
@@ -448,10 +456,6 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
-    .mu-dialog
-      width 90%
-      min-width 90%
-      max-width 90%
     .mu-toast
       text-align center
       height 48px

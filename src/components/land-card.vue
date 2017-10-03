@@ -1,15 +1,23 @@
 <template lang="pug">
   .map
     mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
-    mu-popup(position="bottom", :open="popup", @close="close")
-      mu-appbar(:title="name")
-        mu-icon-button.hidden(slot="left", icon=":ra ra-interdiction", @click="close")
-        mu-icon-button(slot="right", icon=":ra ra-interdiction", @click="close")
-      mu-content-block
-        mu-list
-          mu-list-item(v-for="troop, index in army", :title="translate(troop.name)", :key="index")
-            mu-avatar.bordered(:src="troop.image", slot="leftAvatar", :class="troop.color")
-            mu-badge(slot="after") {{ troop.quantity | numeric }}
+    
+    mu-dialog(:open="dialog", @close="close")
+      mu-card.dialog
+        mu-card-media
+          img(src="https://i.pinimg.com/originals/8b/b0/96/8bb09649164365bf93dbcc0b12031f34.jpg", :alt="translate('lbl_label_conquest')")
+          .card-info
+            .card-title {{ name | translate }}
+        mu-card-text.conquest
+          mu-list.army
+            mu-list-item(v-for="troop, index in army", :key="index", :title="translate(troop.name)")
+              // mu-avatar(icon=":ra ra-sword", :backgroundColor="troop.color", slot="leftAvatar")
+              mu-icon(slot="left", value=":ra ra-sword", :class="troop.color")
+              mu-badge(slot="after") {{ troop.quantity | numeric }}
+
+        mu-card-actions
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
+          mu-raised-button(primary, :label="translate('lbl_button_attack')", @click="conquest")
 </template>
 
 <script>
@@ -27,7 +35,7 @@
       return {
         army: [],
         name: null,
-        popup: false,
+        dialog: false,
         map: null,
         token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
         options: {
@@ -122,14 +130,18 @@
             map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
             this.$bindAsArray('army', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
             this.name = name
-            this.popup = true
+            this.dialog = true
           }
         })
       },
       close () {
-        this.popup = false
+        this.dialog = false
         this.name = null
         this.army = []
+      },
+      conquest () {
+        // TODO
+        this.close()
       }
     },
     computed: {
@@ -153,9 +165,4 @@
     canvas
       width 100% !important
       height 100% !important
-  .mu-popup
-    min-width 50%
-    width auto
-    .mu-content-block
-      padding 0
 </style>

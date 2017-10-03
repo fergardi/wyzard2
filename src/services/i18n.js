@@ -287,6 +287,7 @@ export default {
     lbl_title_logout: 'Salir',
     lbl_title_login: 'Entrar',
     // labels
+    lbl_label_conquest: 'Conquistar',
     lbl_label_quantity: 'Cantidad',
     lbl_label_faction: 'Facción',
     lbl_label_username: 'Nombre',
