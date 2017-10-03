@@ -129,7 +129,7 @@
             let bbox = extent(e.features[0].geometry)
             map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
             this.$bindAsArray('army', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
-            this.name = name
+            this.name = 'lbl_country_' + name.replace(' ', '_').toLowerCase()
             this.dialog = true
           }
         })
