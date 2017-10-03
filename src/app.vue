@@ -138,7 +138,6 @@
     created () {
       // toast
       store.watch((state) => state.toasts, (toasts) => {
-        console.log(toasts)
         if (toasts.length > 0) {
           Object.assign(store.state.toast, toasts[0])
           if (this.timer) clearTimeout(this.timer)
@@ -278,8 +277,8 @@
           border-bottom 1px solid
           position relative
           float left
-          width 250px
-          height 250px
+          width 200px
+          height 200px
           background-position 50% 50%
           background-repeat no-repeat
           background-size cover
@@ -449,6 +448,10 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
+    .mu-dialog
+      width 90%
+      min-width 90%
+      max-width 90%
     .mu-toast
       text-align center
       height 48px
@@ -470,6 +473,13 @@
         top 10% !important
         left auto !important
         bottom auto !important
+      .mu-dialog
+        width 75%
+        min-width 75%
+        max-width 75%
+    @media only screen and (min-width 480px)
+      .mu-appbar
+        height 56px
     @media only screen and (min-width 1080px)
       .mu-toast
         width 250px
@@ -478,37 +488,31 @@
         right 2% !important
         left auto !important
         bottom auto !important
-    @media only screen and (max-width 1079px)
+      .sidebar
+        border none
+        transform translateZ(0)
+        visibility visible
+        opacity $opacity
+        .toggler
+        .settings
+          visibility hidden
+        &.left
+          .mu-list
+            border-right 1px solid
+        &.right
+          .mu-list
+            border-left 1px solid
+      .topbar
+      .router
+        &.left
+          padding-left 256px
+        &.right
+          padding-right 256px
+      .topbar
+        .toggler
+          visibility hidden
       .mu-dialog
-        width 90%
-    @media only screen and (min-width 480px)
-      .mu-appbar
-        height 56px
-    @media only screen and (min-width 1080px)
-      #app
-        .sidebar
-          border none
-          transform translateZ(0)
-          visibility visible
-          opacity $opacity
-          .toggler
-          .settings
-            visibility hidden
-          &.left
-            .mu-list
-              border-right 1px solid
-          &.right
-            .mu-list
-              border-left 1px solid
-        .topbar
-        .router
-          &.left
-            padding-left 256px
-          &.right
-            padding-right 256px
-        .topbar
-          .toggler
-            visibility hidden
-        .mu-dialog
-          width 50%
+        width 50%
+        min-width 50%
+        max-width 50%
 </style>

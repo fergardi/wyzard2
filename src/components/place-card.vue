@@ -14,7 +14,12 @@
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
-        mu-card-header(:title="translate('lbl_label_confirm')", :subTitle="translate('lbl_label_cannot_undo')")
+        mu-card-media
+          img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
+          .card-info
+            .card-title {{ 'lbl_label_confirm' | translate }}
+        mu-card-text
+          p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
           mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
           mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
