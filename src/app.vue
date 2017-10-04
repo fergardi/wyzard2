@@ -33,19 +33,29 @@
           mu-sub-header {{ 'lbl_title_resources' | translate }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
             mu-icon(slot="left", value=":ra ra-hourglass")
-            mu-badge(slot="after") {{ user.turns | numeric }}
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.turns | numeric }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
             mu-icon(slot="left", value=":ra ra-gold-bar")
-            mu-badge(slot="after") {{ user.gold | numeric }}
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.gold | numeric }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
             mu-icon(slot="left", value=":ra ra-droplet-splash")
-            mu-badge(slot="after") {{ user.mana | numeric }}
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_people')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
-            mu-badge(slot="after") {{ user.people | numeric }}
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.people | numeric }}
           mu-list-item(:title="translate('lbl_resource_territory')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
-            mu-badge(slot="after") {{ user.territory | numeric }}
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.territory | numeric }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
@@ -191,6 +201,9 @@
       },
       user () {
         return store.state.user
+      },
+      income () {
+        return Math.random() >= 0.5
       }
     }
   }
@@ -417,6 +430,8 @@
         .mu-item
           min-height 36px
           height 36px
+          .income
+            margin-right 5px
         .mu-item-left
           justify-content center
     // background colors
@@ -438,6 +453,7 @@
         background-color $dark
     // font colors
     .mu-icon
+    .income
       &.red
         color $red
       &.green
