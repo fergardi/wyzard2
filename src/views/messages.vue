@@ -14,13 +14,13 @@
               mu-th {{ 'lbl_table_from' | translate }}
               mu-th {{ 'lbl_table_subject' | translate }}
           mu-tbody
-            mu-tr(v-for="message, index in messages", :key="index")
+            mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}
               mu-td
                 mu-chip(:class="message.color") {{ message.username | translate }}
               mu-td {{ message.subject | translate }}
           mu-tfoot(slot="footer")
-            mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="10")
+            mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="size")
 
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
@@ -46,6 +46,7 @@
   export default {
     data () {
       return {
+        size: 10,
         current: 1,
         dialog: false,
         selected: {}
@@ -66,17 +67,17 @@
       close () {
         this.dialog = false
         this.selected = {}
-      },
-      create () {
-        // TODO
-      },
-      remove () {
-        // TODO
       }
     },
     computed: {
       total () {
         return this.messages.length
+      },
+      sorted () {
+        return this.messages.sort((a, b) => b.timestamp - a.timestamp)
+      },
+      paginated () {
+        return this.sorted.slice((this.current - 1) * this.size, this.current * this.size)
       }
     }
   }

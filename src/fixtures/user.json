@@ -8,5 +8,6 @@
     "navbar" : false
   },
   "territory" : 500,
-  "turns" : 300
+  "turns" : 300,
+  "power": 0
 }

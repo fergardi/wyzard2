@@ -230,6 +230,8 @@
       visibility hidden
     .none
       display none
+    .mu-table
+      margin-bottom 5px
     .mu-dialog
       width 95%
       min-width 95%
@@ -240,11 +242,20 @@
         padding 0
         color inherit
         .conquest
-          padding-left 0
-          padding-right 0
-          text-align left
           .army
-            padding 0
+            .troop
+              margin-top 10px
+              display flex
+              justify-content space-between
+              align-items center
+              .name
+              .quantity
+                padding 5px 10px
+                font-weight bold
+                border-radius 5px
+                font-size 0.8em
+                border 1px solid
+                display inline-block
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -294,7 +305,7 @@
           object-position 50% 20%
         .card-info
           position absolute
-          bottom -18px
+          bottom -16px
           width 100%
           text-align center
           .card-title
@@ -412,6 +423,7 @@
     .mu-toast
     .mu-chip
     .mu-card .card-info .card-title, .mu-card .card-info .card-number
+    .mu-dialog .conquest .army .troop .name, .mu-dialog .conquest .army .troop .quantity
       &.red
         background-color $red
       &.green

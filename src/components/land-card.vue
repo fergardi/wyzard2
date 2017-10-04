@@ -9,6 +9,11 @@
           .card-info
             .card-title {{ name | translate }}
         mu-card-text.conquest
+          .army
+            .troop(v-for="troop, index in army", :key="index")
+              .name(:class="troop.color") {{ troop.name | translate }}
+              .quantity(:class="troop.color") {{ troop.quantity | numeric }}
+        //
           mu-list.army
             mu-list-item(v-for="troop, index in army", :key="index", :title="translate(troop.name)")
               // mu-avatar(icon=":ra ra-sword", :backgroundColor="troop.color", slot="leftAvatar")

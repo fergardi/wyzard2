@@ -77,6 +77,7 @@ Vue.filter('lorem', () => {
 // security zone
 let open = [
   'login',
+  'help',
   'gods',
   'artifacts',
   'settings',

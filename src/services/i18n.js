@@ -352,7 +352,7 @@ export default {
     // table
     lbl_table_position: 'Posición',
     lbl_table_name: 'Nombre',
-    lbl_table_karma: 'Karma',
+    lbl_table_power: 'Poder',
     lbl_table_from: 'De',
     lbl_table_datetime: 'Fecha',
     lbl_table_since: 'Hace',

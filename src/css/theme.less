@@ -41,8 +41,8 @@
 @import "~muse-ui/less/theme-vars.less"; // default component variable
 
 // list icons
-@listLeftIconColor: @gold;
-@listRightIconColor: @gold;
+@listLeftIconColor: @textColor;
+@listRightIconColor: @textColor;
 
 // checkboxes
 @checkboxColor: @textColor;
@@ -51,10 +51,10 @@
 @checkboxCheckedColor: @textColor;
 
 // tables
-@tableBackgroundColor: @dark;
+@tableBackgroundColor: @primaryColor;
 @tableBorderColor: @borderColor;
 @tableTextColor: @textColor;
-@tableRowSelectedBackgroundColor: @dark;
+@tableRowSelectedBackgroundColor: @primaryColor;
 @tableRowHoverBackgroundColor: @darken;
 @tableRowStripeBackgroundColor: fade(lighten(@primaryColor, 50%), 40%);
 @tableTheadTextColor: @textColor;
@@ -68,7 +68,7 @@
 @textFieldErrorTextColor: @red;
 @textFieldLineColor: @borderColor;
 @textFieldFocusLineColor: @borderColor;
-@textFieldErrorLineColor: @accentColor;
+@textFieldErrorLineColor: @red;
 @textFieldDisabledLineColor: @disabledColor;
 
 // buttons
@@ -82,6 +82,10 @@
 // progress
 @linearProgressColor: @primaryColor;
 @linearProgressFillColor: @textColor;
+
+// pagination
+@paginationActiveBackgroundColor: @textColor;
+@paginationActiveColor: @primaryColor;
 
 // toasts
 @toastTextColor: @textColor;
