@@ -6,8 +6,8 @@
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
-        .card-number(:class="data.color", v-if="breaking") {{ data.remaining | numeric }} / {{ data.turns | numeric }}
-        .card-number(:class="data.color", v-if="investigation") {{ data.invested | numeric }} / {{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="breaking") {{ data.remaining | numeric }}/{{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="investigation") {{ data.invested | numeric }}/{{ data.turns | numeric }}
     mu-card-text
       p {{ data.description | lorem }}
       .card-stats(v-if="info")
@@ -82,7 +82,8 @@
         type: null,
         amount: 0,
         dialog: false,
-        selected: null
+        selected: null,
+        turns: 10
       }
     },
     methods: {
@@ -122,14 +123,31 @@
         this.close()
       },
       disenchant () {
-        // TODO
-        store.commit('success', 'lbl_toast_dispel_ok')
+        if (this.turns <= this.user.turns) { // user has resources
+          database.ref('users').child(store.state.uid).child('enchantments').child(this.data['.key']).transaction(enchantment => {
+            if (enchantment) {
+              if (Math.random() > 0.5) {
+                store.commit('success', 'lbl_toast_dispel_ok')
+              } else {
+                store.commit('error', 'lbl_toast_dispel_error')
+              }
+            }
+            return enchantment
+          })
+        } else {
+          store.commit('error', 'lbl_toast_resource_turns')
+        }
         this.close()
       },
       close () {
         this.type = null
         this.dialog = false
         this.amount = 0
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
       }
     }
   }
