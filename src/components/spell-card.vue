@@ -126,7 +126,7 @@
         if (this.turns <= this.user.turns) { // user has resources
           database.ref('users').child(store.state.uid).child('enchantments').child(this.data['.key']).transaction(enchantment => {
             if (enchantment) {
-              if (Math.random() > 0.5) {
+              if (Math.random() >= 0.5) {
                 store.commit('success', 'lbl_toast_dispel_ok')
               } else {
                 store.commit('error', 'lbl_toast_dispel_error')

@@ -6,16 +6,16 @@
       mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="toast.color", @close="untoast")
 
     mu-paper
-      mu-appbar.topbar(:title="translate(title)", :class="right ? 'right' : 'left'")
-        mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="right ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!right ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
-        mu-icon-button.logout(icon=":ra ra-key", :slot="!right ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
+      mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
+        mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
+        mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!settings.navbar ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
+        mu-icon-button.logout(icon=":ra ra-key", :slot="!settings.navbar ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
 
-    mu-drawer.sidebar(:open="menu", :docked="overlay", :right="right", :class="right ? 'right' : 'left'", @close="toggle")
+    mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="right ? 'right' : 'left'", @click="toggle")
-          mu-icon-button.settings(icon=":ra ra-gears", :slot="!right ? 'right' : 'left'", to="settings", @click="toggle")
+          mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
+          mu-icon-button.settings(icon=":ra ra-gears", :slot="!settings.navbar ? 'right' : 'left'", to="settings", @click="toggle")
 
       mu-list.scroll
         template(v-if="logged")
@@ -125,7 +125,7 @@
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
           mu-icon(slot="left", value=":ra ra-lightning-storm")
 
-    router-view.router.scroll(:class="right ? 'right' : 'left'")
+    router-view.router.scroll(:class="settings.navbar ? 'right' : 'left'")
 </template>
 
 <script>
@@ -187,9 +187,6 @@
       title () {
         return store.state.title
       },
-      right () {
-        return store.state.settings.navbar
-      },
       toast () {
         return store.state.toast
       },
@@ -204,6 +201,9 @@
       },
       income () {
         return Math.random() >= 0.5
+      },
+      settings () {
+        return store.state.user ? store.state.user.settings : store.state.settings
       }
     }
   }
@@ -266,7 +266,7 @@
                 padding 5px 10px
                 font-weight bold
                 border-radius 5px
-                font-size 0.8em
+                font-size 0.9em
                 border 1px solid
                 display inline-block
     .topbar
@@ -340,6 +340,10 @@
           .card-title + .card-number
           .card-number + .card-number
             margin-left 1%
+      .mu-card-media + .mu-card-text
+        margin-top 10px
+      .mu-card-text
+        padding-bottom 0
       .mu-card-text + .mu-card-text
       .mu-card-text + .mu-card-actions
       .mu-card-text + form .mu-card-text
@@ -385,11 +389,12 @@
           text-transform none
           &.hover .mu-raised-button-wrapper
             background-color darken($dark, 20%) !important
-          &.disabled
-            color $dark !important
-            background-color $gold !important
         .mu-raised-button + .mu-raised-button
           margin-left 5px
+    .mu-raised-button.disabled
+    .mu-text-field-input.disabled
+      opacity 0.5
+      background-color inherit
     .flex
       display flex
       flex-wrap wrap

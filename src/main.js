@@ -30,13 +30,13 @@ function numeric (number) {
         : parseFloat(number.toFixed(2)).toLocaleString()
 }
 function timesince (timestamp) {
-  return moment(timestamp).locale(store.state.settings.lang).fromNow(true)
+  return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).fromNow(true)
 }
 function datetime (timestamp) {
-  return moment(timestamp).locale(store.state.settings.lang).format('LLLL')
+  return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).format('LLLL')
 }
 function translate (label) {
-  return i18n[store.state.settings.lang || store.state.lang][label] || label
+  return i18n[store.state.user ? store.state.user.settings.lang : store.state.settings.lang][label] || label
 }
 // mixins
 Vue.mixin({
