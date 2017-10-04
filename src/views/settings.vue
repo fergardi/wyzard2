@@ -11,7 +11,7 @@
             .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
           mu-card-text
-            mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')", :fullWidth="true", @change="save")
+            mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')", :fullWidth="true", @input="save")
               mu-menu-item(v-for="language, index in languages", :key="index", :value="language.key", :title="translate(language.value)")
           mu-card-actions
             mu-raised-button(primary, type="submit") {{ 'lbl_button_restore' | translate }}
