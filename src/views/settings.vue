@@ -8,6 +8,7 @@
             .card-info
               .card-title {{ 'lbl_label_settings' | translate }}
           mu-card-text
+            p {{ 'lbl_description_settings' | translate }}
             .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
           mu-card-text

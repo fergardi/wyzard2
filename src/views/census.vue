@@ -16,7 +16,7 @@
               mu-th {{ 'lbl_table_power' | translate }}
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
-              mu-td {{ current * size + index | numeric }}
+              mu-td {{ (current - 1) * size + index + 1 | numeric }}
               mu-td
                 mu-chip(:class="user.color") {{ user.name }}
               mu-td {{ user.power | numeric }}

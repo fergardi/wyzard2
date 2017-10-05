@@ -5,7 +5,7 @@
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
     mu-card-text
-      p {{ data.description | lorem }}
+      p {{ data.description | translate }}
 </template>
 
 <script>

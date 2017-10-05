@@ -332,10 +332,9 @@
             margin-left 1%
       .mu-card-media + .mu-card-text
         margin-top 10px
-      .mu-card-text
-        padding-bottom 0
       .mu-card-text + .mu-card-text
       .mu-card-text + form .mu-card-text
+      .mu-card-text + .mu-card-actions
         padding-top 0
       .mu-card-text
         text-align center

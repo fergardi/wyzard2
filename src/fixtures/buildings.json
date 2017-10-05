@@ -2,6 +2,7 @@
   "barrack" : {
     "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
     "name" : "lbl_building_barrack",
+    "description" : "lbl_building_barrack_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -9,6 +10,7 @@
   "barrier" : {
     "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
     "name" : "lbl_building_barrier",
+    "description" : "lbl_building_barrier_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -16,6 +18,7 @@
   "farm" : {
     "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
     "name" : "lbl_building_farm",
+    "description" : "lbl_building_farm_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -23,6 +26,7 @@
   "fortress" : {
     "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
     "name" : "lbl_building_fortress",
+    "description" : "lbl_building_fortress_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -30,6 +34,7 @@
   "guild" : {
     "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
     "name" : "lbl_building_guild",
+    "description" : "lbl_building_guild_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -37,6 +42,7 @@
   "node" : {
     "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
     "name" : "lbl_building_node",
+    "description" : "lbl_building_node_description",
     "buildable": true,
     "coins": 0,
     "essence": 100
@@ -44,6 +50,7 @@
   "territory" : {
     "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
     "name" : "lbl_building_territory",
+    "description" : "lbl_building_territory_description",
     "buildable": false,
     "coins": 0,
     "essence": 0
@@ -51,6 +58,7 @@
   "village" : {
     "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
     "name" : "lbl_building_village",
+    "description" : "lbl_building_village_description",
     "buildable": true,
     "coins": 100,
     "essence": 0
@@ -58,6 +66,7 @@
   "workshop" : {
     "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
     "name" : "lbl_building_workshop",
+    "description" : "lbl_building_workshop_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
@@ -65,6 +74,7 @@
   "temple" : {
     "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
     "name" : "lbl_building_temple",
+    "description" : "lbl_building_temple_description",
     "buildable": true,
     "coins": 0,
     "essence": 0
