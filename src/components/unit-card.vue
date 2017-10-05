@@ -7,7 +7,7 @@
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
-      p {{ data.description | lorem }}
+      p.card-description {{ data.description | lorem }}
 
     template(v-if="troop")
       form(@submit.stop.prevent="confirm('disband')")

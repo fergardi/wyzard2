@@ -6,7 +6,7 @@
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
-      p {{ data.description | translate }}
+      p.card-description {{ data.description | translate }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")

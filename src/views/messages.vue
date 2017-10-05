@@ -94,6 +94,8 @@
     .scroll
       max-height 30vh
       overflow-y auto
+      .mu-card-text:first-of-type
+        margin-top 10px
       .battle
         .army
           .troop

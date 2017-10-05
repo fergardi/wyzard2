@@ -9,7 +9,8 @@
         .card-number(:class="data.color", v-if="breaking") {{ data.remaining | numeric }}/{{ data.turns | numeric }}
         .card-number(:class="data.color", v-if="investigation") {{ data.invested | numeric }}/{{ data.turns | numeric }}
     mu-card-text
-      p {{ data.description | lorem }}
+      p.card-description {{ data.description | lorem }}
+      
       .card-stats(v-if="info")
         mu-chip
           i.ra.ra-sword

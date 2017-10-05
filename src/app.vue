@@ -289,6 +289,8 @@
         font-weight bold
         .mu-card-header-title
           padding-right 0
+      .card-description
+        min-height 5vh
       .mu-card-media
         display flex
         justify-content center
