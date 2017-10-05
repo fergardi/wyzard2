@@ -11,17 +11,17 @@
   },
   "island" : {
     "color" : "blue",
-    "image" : "https://i.pinimg.com/originals/53/ce/12/53ce1296633c230c85c25a4d99522823.png",
+    "image" : "https://i.pinimg.com/originals/c6/49/a0/c649a05d5e5632b9981ec514fb382789.jpg",
     "name" : "lbl_place_island"
   },
-  "jungle" : {
+  "ruins" : {
     "color" : "green",
-    "image" : "http://conceptartempire.com/images/06/372/14-alien-jungle-concept-environment-art.jpg",
-    "name" : "lbl_place_jungle"
+    "image" : "https://i.pinimg.com/originals/26/24/3d/26243d890e0c272aa85bd6e12f81ae78.jpg",
+    "name" : "lbl_place_ruins"
   },
-  "oasis" : {
+  "maze" : {
     "color" : "white",
-    "image" : "https://orig00.deviantart.net/1df8/f/2013/086/2/c/desert_village_by_crs1009-d5zij53.jpg",
-    "name" : "lbl_place_oasis"
+    "image" : "https://i.kinja-img.com/gawker-media/image/upload/s--Yz88STyW--/c_scale,fl_progressive,q_80,w_800/18lrobuq5oojsjpg.jpg",
+    "name" : "lbl_place_maze"
   }
 }

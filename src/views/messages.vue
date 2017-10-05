@@ -17,24 +17,31 @@
             mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}
               mu-td
-                mu-chip(:class="message.color") {{ message.username | translate }}
+                mu-chip(:class="message.color") {{ message.name | translate }}
               mu-td {{ message.subject | translate }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="size")
 
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
-          mu-card-header(:title="translate(selected.subject)", :subTitle="datetime(selected.timestamp)")
+          mu-card-media
+            img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
+            .card-info
+              .card-title(:class="selected.color") {{ selected.subject | translate }}
+              .card-number(:class="selected.color") {{ selected.name | translate }}
+
           mu-card-text.timeline.scroll(v-if="selected.battle")
             mu-timeline
               mu-timeline-item(v-for="timeline, index in selected.battle", :key="index", :class="timeline.location")
                 mu-icon(:value="':ra ra-' + timeline.icon", :color="timeline.color", slot="icon")
                 span(slot="time") {{ timeline.name | translate }}
                 span(slot="des") {{ timeline.description }}
+
           mu-card-text
             p {{ selected.text | translate }}
-          mu-card-text.right
-            mu-chip(:class="selected.color") {{ selected.username | translate }}
+            p(v-if="selected.attachment")
+              mu-chip {{ selected.attachment.quantity | numeric }}
+
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
 </template>
@@ -82,11 +89,6 @@
     }
   }
 </script>
-
-<style lang="stylus" scoped>
-  .right
-    text-align right !important
-</style>
 
 <style lang="stylus">
   .mu-dialog

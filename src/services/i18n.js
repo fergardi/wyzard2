@@ -193,7 +193,7 @@ export default {
     lbl_hero_witch_description: '',
     // gods
     lbl_god_of_death: 'Dios de la Muerte',
-    lbl_god_of_death_description: 'Otorga un +20% de Personas al turno',
+    lbl_god_of_death_description: 'Otorga un +20% de Población al turno',
     lbl_god_of_light: 'Dios de la Luz',
     lbl_god_of_light_description: 'Otorga un +20% de Oro al turno',
     lbl_god_of_life: 'Dios de la Vida',
@@ -313,6 +313,9 @@ export default {
     lbl_label_help: 'Cómo se Juega',
     lbl_label_confirm: 'Confirmar acción',
     lbl_label_cannot_undo: 'Esta acción no se puede deshacer',
+    // names
+    lbl_name_admin: 'Archimago',
+    lbl_name_auction: 'Subasta',
     // tabs
     lbl_tab_sell: 'Vender',
     lbl_tab_activate: 'Activar',
@@ -320,7 +323,7 @@ export default {
     lbl_tab_registration: 'Registrarse',
     // resources
     lbl_resource_gold: 'Oro',
-    lbl_resource_people: 'Personas',
+    lbl_resource_population: 'Población',
     lbl_resource_turns: 'Turnos',
     lbl_resource_mana: 'Maná',
     lbl_resource_territory: 'Terrenos',
@@ -410,7 +413,7 @@ export default {
     lbl_toast_start_error: 'Error al comenzar',
     lbl_toast_resource_gold: 'Oro insuficiente',
     lbl_toast_resource_mana: 'Mana insuficiente',
-    lbl_toast_resource_people: 'Personas insuficientes',
+    lbl_toast_resource_people: 'Población insuficientes',
     lbl_toast_resource_turns: 'Turnos insuficientes',
     lbl_toast_notifications_ok: 'Notificaciones habilitadas',
     lbl_toast_notifications_error: 'Notificaciones deshabilitadas',

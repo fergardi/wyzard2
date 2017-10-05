@@ -146,13 +146,18 @@
                 if (auction.bidder) { // if there was a previous bidder
                   database.ref('users').child(store.state.uid).transaction(previous => {
                     if (previous) {
-                      previous.gold += auction.gold * 0.9 // return him/her the bid minus a 10% fee
+                      let taxed = auction.gold * 0.9
+                      previous.gold += taxed // return him/her the bid minus a 10% fee
                       let message = { // create new message
                         color: 'dark',
                         subject: 'lbl_message_auction_outbid',
                         text: 'lbl_message_auction_outbid_text',
                         timestamp: Date.now(),
-                        username: 'lbl_title_auction'
+                        name: 'lbl_name_auction',
+                        attachment: {
+                          item: 'lbl_resource_gold',
+                          quantity: taxed
+                        }
                       }
                       previous.child('messages').push(message) // add message to previous bidder
                     }

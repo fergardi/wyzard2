@@ -27,7 +27,7 @@
           mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
           mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
             // mu-avatar(icon=":ra ra-chain", :backgroundColor="enchantment.color", slot="leftAvatar")
-            mu-icon(slot="left", value=":ra ra-chain", :class="enchantment.color")
+            mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | numeric }}
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
@@ -46,7 +46,7 @@
             mu-badge(slot="after")
               span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
               span {{ user.mana | numeric }}
-          mu-list-item(:title="translate('lbl_resource_people')", disabled)
+          mu-list-item(:title="translate('lbl_resource_population')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
               span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
@@ -119,7 +119,7 @@
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
           mu-icon(slot="left", value=":ra ra-round-bottom-flask")
         mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
-          mu-icon(slot="le7ft", value=":ra ra-pyramids")
+          mu-icon(slot="left", value=":ra ra-pyramids")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
           mu-icon(slot="left", value=":ra ra-helmet")
         mu-list-item(:title="translate('lbl_title_gods')", to="gods", @click="toggle")
@@ -234,17 +234,10 @@
     #app
       height 100%
       overflow hidden
-    .mu-chip
-      border 1px solid
-      line-height 22px
-      margin 2px
-      font-size 0.8em
     .hidden
       visibility hidden
     .none
       display none
-    .mu-table
-      margin-bottom 5px
     .mu-dialog
       width 95%
       min-width 95%
@@ -289,6 +282,18 @@
       align-items center
     .row
       justify-content flex-start
+    .mu-chip
+      font-weight bold
+      width auto
+      border 1px solid
+      background-color $dark
+      line-height 22px
+      margin 2px
+      &:hover
+        cursor initial
+        background-color initial
+      .ra
+        line-height 23px
     .mu-card
       opacity $opacity
       margin 5px
@@ -309,8 +314,8 @@
           border-bottom 1px solid
           position relative
           float left
-          width 200px
-          height 200px
+          width 250px
+          height 250px
           background-position 50% 50%
           background-repeat no-repeat
           background-size cover
@@ -345,16 +350,16 @@
       .mu-card-text
         padding-bottom 0
       .mu-card-text + .mu-card-text
-      .mu-card-text + .mu-card-actions
       .mu-card-text + form .mu-card-text
-      .mu-card-text + form .mu-card-actions
         padding-top 0
       .mu-card-text
         text-align center
         .mu-select-field
           text-align left
         .mu-text-field.disabled
-          color $gold
+          color inherit
+          .mu-text-field-content
+            color inherit
         p
           font-style italic
           font-size 0.9em
@@ -489,6 +494,11 @@
         border-color $dark
     .mu-raised-button
       border-radius $radius
+    .mu-pagination-item
+      margin 0 3px
+      &.active
+        border 1px solid
+        border-radius 5px
     .mu-toast
       text-align center
       height 48px

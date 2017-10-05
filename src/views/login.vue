@@ -153,7 +153,7 @@
             })
             // messages
             let message = {
-              username: 'Admin',
+              name: 'lbl_name_admin',
               color: 'dark',
               timestamp: Date.now(),
               subject: 'lbl_message_welcome_subject',
