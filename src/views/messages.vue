@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg", :alt="translate('lbl_label_messages')")
+          img(src="https://pbs.twimg.com/media/CqFp0UsVYAED9A8.jpg", :alt="translate('lbl_label_messages')")
           .card-info
             .card-title {{ 'lbl_label_messages' | translate }}
             .card-number {{ messages.length | numeric }}
@@ -27,20 +27,19 @@
           mu-card-media
             img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
             .card-info
-              .card-title(:class="selected.color") {{ selected.subject | translate }}
+              .card-title {{ selected.subject | translate }}
               .card-number(:class="selected.color") {{ selected.name | translate }}
 
-          mu-card-text.timeline.scroll(v-if="selected.battle")
-            mu-timeline
-              mu-timeline-item(v-for="timeline, index in selected.battle", :key="index", :class="timeline.location")
-                mu-icon(:value="':ra ra-' + timeline.icon", :color="timeline.color", slot="icon")
-                span(slot="time") {{ timeline.name | translate }}
-                span(slot="des") {{ timeline.description }}
+          .scroll
+            mu-card-text.battle(v-if="selected.battle")
+              .army
+                .troop(v-for="wave, index in selected.battle", :key="index", :class="wave.location")
+                  .name(:class="wave.color") {{ wave.name | translate }}
 
-          mu-card-text
-            p {{ selected.text | translate }}
-            p(v-if="selected.attachment")
-              mu-chip {{ selected.attachment.quantity | numeric }}
+            mu-card-text
+              p {{ selected.text | translate }}
+              p(v-if="selected.attachment")
+                mu-chip {{ selected.attachment.quantity | numeric }}
 
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
@@ -92,38 +91,27 @@
 
 <style lang="stylus">
   .mu-dialog
-    .timeline
-      max-height 50vh
-      overflow auto
-      .mu-timeline-item
-        display flex
-        align-items flex-start
-        .mu-timeline-item-line
-          display none
-        .mu-timeline-item-des span
-          font-style italic
-          font-size 0.8em
-        .mu-timeline-item-icon
-          position relative
-          width 10%
-          background-color transparent
-        .mu-timeline-item-content
-          left unset !important
-          padding-bottom 0
-          width 45%
-        &.attacker
-          .mu-timeline-item-icon
-            text-align right
-            margin-left 45%
-            margin-right 5%
-          .mu-timeline-item-content
-            text-align left
-        &.defender
-          flex-direction row-reverse
-          .mu-timeline-item-icon
-            margin-right 45%
-            margin-left 5%
-            text-align left
-          .mu-timeline-item-content
-            text-align right
+    .scroll
+      max-height 30vh
+      overflow-y auto
+      .battle
+        .army
+          .troop
+            margin-top 5px
+            display flex
+            align-items center
+            max-width 90%
+            &.attacker
+              justify-content flex-end
+              margin-left 10%
+            &.defender
+              justify-content flex-start
+            .name
+            .quantity
+              padding 5px 10px
+              font-weight bold
+              border-radius 5px
+              font-size 0.9em
+              border 1px solid
+              display inline-block
 </style>

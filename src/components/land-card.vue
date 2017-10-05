@@ -13,12 +13,6 @@
             .troop(v-for="troop, index in army", :key="index")
               .name(:class="troop.color") {{ troop.name | translate }}
               .quantity(:class="troop.color") {{ troop.quantity | numeric }}
-        //
-          mu-list.army
-            mu-list-item(v-for="troop, index in army", :key="index", :title="translate(troop.name)")
-              // mu-avatar(icon=":ra ra-sword", :backgroundColor="troop.color", slot="leftAvatar")
-              mu-icon(slot="left", value=":ra ra-sword", :class="troop.color")
-              mu-badge(slot="after") {{ troop.quantity | numeric }}
 
         mu-card-actions
           mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
@@ -158,6 +152,27 @@
 </script>
 
 <style src="../../node_modules/mapbox-gl/dist/mapbox-gl.css"></style>
+
+<style lang="stylus">
+  .mu-dialog
+    .mu-dialog-body
+      .conquest
+        margin-top 0 !important
+        .army
+          .troop
+            margin-top 5px
+            display flex
+            justify-content space-between
+            align-items center
+            .name
+            .quantity
+              padding 5px 10px
+              font-weight bold
+              border-radius 5px
+              font-size 0.9em
+              border 1px solid
+              display inline-block
+</style>
 
 <style lang="stylus">
   #map

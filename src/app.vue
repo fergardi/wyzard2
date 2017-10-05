@@ -20,12 +20,12 @@
       mu-list.scroll
         template(v-if="logged")
           mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
-          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
+          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", to="devotion", @click="toggle")
             // mu-avatar(icon=":ra ra-bleeding-eye", :backgroundColor="blessing.color", slot="leftAvatar")
             mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
 
           mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
-          mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+          mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", to="disenchant", @click="toggle")
             // mu-avatar(icon=":ra ra-chain", :backgroundColor="enchantment.color", slot="leftAvatar")
             mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | numeric }}
@@ -247,21 +247,6 @@
       .mu-dialog-body
         padding 0
         color inherit
-        .conquest
-          .army
-            .troop
-              margin-top 10px
-              display flex
-              justify-content space-between
-              align-items center
-              .name
-              .quantity
-                padding 5px 10px
-                font-weight bold
-                border-radius 5px
-                font-size 0.9em
-                border 1px solid
-                display inline-block
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -448,7 +433,7 @@
     .mu-toast
     .mu-chip
     .mu-card .card-info .card-title, .mu-card .card-info .card-number
-    .mu-dialog .conquest .army .troop .name, .mu-dialog .conquest .army .troop .quantity
+    .mu-dialog .troop .name, .mu-dialog .troop .quantity
       &.red
         background-color $red
       &.green
