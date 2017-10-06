@@ -4,16 +4,22 @@
       img(:src="data.image", :alt="translate(data.name)")
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
+        .card-number(:class="data.color", v-if="contract") {{ data.level | numeric }}
+        .card-number(:class="data.color", v-if="tavern") {{ data.experience | numeric }}/{{ data.next | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
-    template(v-if="contract")
+    template(v-if="tavern")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_bid' | translate }}
+
+    template(v-if="contract")
+      form(@submit.stop.prevent="confirm('disband')")
+        mu-card-actions
+          mu-raised-button(primary, type="submit") {{ 'lbl_button_fire' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -36,6 +42,7 @@
     name: 'hero-card',
     props: {
       data: Object,
+      tavern: Boolean,
       contract: Boolean
     },
     data () {

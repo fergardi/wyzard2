@@ -16,6 +16,7 @@ import census from '@/views/census'
 import sorcery from '@/views/sorcery'
 import tavern from '@/views/tavern'
 import devotion from '@/views/devotion'
+import domains from '@/views/domains'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
 import messages from '@/views/messages'
@@ -26,6 +27,7 @@ import levy from '@/views/levy'
 import dispel from '@/views/dispel'
 import quests from '@/views/quests'
 import troops from '@/views/troops'
+import contracts from '@/views/contracts'
 import battle from '@/views/battle'
 import defense from '@/views/defense'
 import help from '@/views/help'
@@ -116,6 +118,11 @@ export default new Router({
       component: kingdom
     },
     {
+      path: '/domains',
+      name: 'domains',
+      component: domains
+    },
+    {
       path: '/settings',
       name: 'settings',
       component: settings
@@ -139,6 +146,11 @@ export default new Router({
       path: '/auction',
       name: 'auction',
       component: auction
+    },
+    {
+      path: '/contracts',
+      name: 'contracts',
+      component: contracts
     },
     {
       path: '/levy',

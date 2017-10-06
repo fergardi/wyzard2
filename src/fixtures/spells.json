@@ -66,18 +66,18 @@
     "color": "purple",
     "level": 7,
     "colorLevel": "purple7",
-    "image": "https://pre08.deviantart.net/cdcd/th/pre/f/2015/209/d/3/1_365___corrupt_kingdom_by_snatti89-d936ckx.jpg",
+    "image": "https://mtgcero.files.wordpress.com/2012/05/underground-sea.jpg",
     "name": "lbl_spell_corruption",
     "description": "lbl_spell_corruption_description",
     "turns": 700
   },
-  "coven" : {
+  "witchcraft" : {
     "color": "purple",
     "level": 8,
     "colorLevel": "purple8",
-    "image": "https://i.pinimg.com/736x/99/6a/2f/996a2f1ecd14778f03b1428839a1980f--story-ideas-character-inspiration.jpg",
-    "name": "lbl_spell_coven",
-    "description": "lbl_spell_coven_description",
+    "image": "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
+    "name": "lbl_spell_witchcraft",
+    "description": "lbl_spell_witchcraft_description",
     "turns": 800
   },
   "create_artifact" : {
@@ -255,7 +255,7 @@
     "color": "purple",
     "level": 9,
     "colorLevel": "purple9",
-    "image": "http://charmslab.com/images/articles/kindofwitch/oldwitch.jpg",
+    "image": "http://i.imgur.com/UCMYGRO.jpg",
     "name": "lbl_spell_necromancy",
     "description": "lbl_spell_necromancy_description",
     "turns": 900
@@ -381,7 +381,7 @@
     "color": "green",
     "level": 10,
     "colorLevel": "green10",
-    "image": "http://tutorialfreakz.com/wp-content/uploads/2010/12/Fantasy-Art-Inspiration-4.jpg",
+    "image": "https://i.pinimg.com/736x/b7/5a/34/b75a3468ef30baf77883f5eedd630179--high-fantasy-fantasy-rpg.jpg",
     "name": "lbl_spell_hurricane",
     "description": "lbl_spell_hurricane_description",
     "turns": 1000

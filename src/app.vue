@@ -60,6 +60,8 @@
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
             mu-icon(slot="left", value=":ra ra-queen-crown")
+          mu-list-item(:title="translate('lbl_title_domains')", to="domains", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-wooden-sign")
           mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
             mu-icon(slot="left", value=":ra ra-scroll-unfurled")
           mu-list-item(:title="translate('lbl_title_explore')", to="explore", @click="toggle")
@@ -79,27 +81,29 @@
           mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
             mu-icon(slot="left", value=":ra ra-vase")
 
-          mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
-          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-quill-ink")
-          mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-beer")
-          mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-ankh")
-          mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-raven")
-          mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-trophy")
-
           mu-sub-header {{ 'lbl_title_military' | translate }}
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crossed-axes")
           mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
             mu-icon(slot="left", value=":ra ra-dripping-blade")
+          mu-list-item(:title="translate('lbl_title_contracts')", to="contracts", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-hood")
           mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
             mu-icon(slot="left", value=":ra ra-torch")
           mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
             mu-icon(slot="left", value=":ra ra-eye-shield")
+
+          mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+          mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-large-hammer")
+          mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-beer")
+          mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-ankh")
+          mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-quill-ink")
+          mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-trophy")
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
@@ -389,6 +393,7 @@
     .flex
       display flex
       flex-wrap wrap
+      width 100%
     .mu-table
       border-radius $radius
       .mu-tr

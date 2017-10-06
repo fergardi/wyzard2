@@ -1,18 +1,19 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
-      mu-card.kingdom.animated.fadeInUp
-        land-card
+      mu-card.animated.fadeInUp
+        mu-card-media
+          img(src="https://i.pinimg.com/736x/4f/24/ce/4f24ce0a235a763bb1a4a110bcbe028a--magic-book-dark-fantasy.jpg", :alt="translate('lbl_label_summary')")
+          .card-info
+            .card-title {{ 'lbl_label_summary' | translate }}
+        mu-card-text
+          p summary
 </template>
 
 <script>
   import store from '../vuex/store'
-  import land from '../components/land-card'
   
   export default {
-    components: {
-      'land-card': land
-    },
     created () {
       store.commit('title', 'lbl_title_kingdom')
     }

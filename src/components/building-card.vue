@@ -6,12 +6,15 @@
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
-      p.card-description {{ data.description | translate }}
+      p.card-description(v-if="construction") {{ data.description | translate }}
+      p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}
+      p.card-description(v-if="meditation") {{ 'lbl_description_meditation' | translate }}
+      p.card-description(v-if="taxation") {{ 'lbl_description_taxation' | translate }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_demolish_construct' | translate }}
 
@@ -29,7 +32,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_meditate' | translate }}
 
-    template(v-if="tax")
+    template(v-if="taxation")
       form(@submit.stop.prevent="confirm('collect')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
@@ -60,7 +63,7 @@
       exploration: Boolean,
       construction: Boolean,
       meditation: Boolean,
-      tax: Boolean
+      taxation: Boolean
     },
     data () {
       return {
@@ -99,11 +102,11 @@
             if (this.amount > 0) {
               building.quantity += Math.min(user.territory, this.amount)
               user.territory -= Math.min(user.territory, this.amount)
+              user.turns = Math.max(0, user.turns - Math.abs(this.amount))
             } else {
-              building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
               user.territory += Math.min(building.quantity, Math.abs(this.amount))
+              building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
             }
-            user.turns = Math.max(0, user.turns - Math.abs(this.amount))
             return user
           })
           return building

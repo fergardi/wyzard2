@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="100", desktop="100", v-for="building, index in buildings", :key="index")
-        building-card.animated.fadeInUp(:data="building", :tax="true")
+        building-card.animated.fadeInUp(:data="building", :taxation="true")
 </template>
 
 <script>
@@ -16,7 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_levy')
-      this.$bindAsArray('buildings', database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_village'))
+      this.$bindAsArray('buildings', database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_farm'))
     }
   }
 </script>

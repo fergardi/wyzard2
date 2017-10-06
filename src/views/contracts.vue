@@ -1,8 +1,8 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="hero, index in heroes", :key="index")
-        hero-card.animated.fadeInUp(:data="hero", :tavern="true")
+      mu-col(v-for="contract, index in contracts", :key="index", width="100", tablet="50", desktop="33")
+        hero-card.animated.fadeInUp(:data="contract")
 </template>
 
 <script>
@@ -15,10 +15,8 @@
       'hero-card': hero
     },
     created () {
-      store.commit('title', 'lbl_title_tavern')
-    },
-    firebase: {
-      heroes: database.ref('tavern').orderByChild('color')
+      store.commit('title', 'lbl_title_contracts')
+      this.$bindAsArray('contracts', database.ref('users').child(store.state.uid).child('contracts').orderByChild('level'))
     }
   }
 </script>
