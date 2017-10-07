@@ -21,13 +21,18 @@ window.mapboxgl = require('mapbox-gl')
 function numeric (number) {
   return !number
   ? parseFloat(0)
-  : number / 1000000000 > 1
+  : number / 1000000000 >= 1
     ? parseFloat((number / 1000000000).toFixed(2)).toLocaleString() + ' B'
-    : number / 1000000 > 1
+    : number / 1000000 >= 1
       ? parseFloat((number / 1000000).toFixed(2)).toLocaleString() + ' M'
-      : number / 1000 > 1
+      : number / 1000 >= 1
         ? parseFloat((number / 1000).toFixed(2)).toLocaleString() + ' K'
         : parseFloat(number.toFixed(2)).toLocaleString()
+}
+function percentage (number) {
+  return !number
+  ? parseFloat(0)
+  : parseFloat(number.toFixed(2)) + ' %'
 }
 function timesince (timestamp) {
   return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).fromNow(true)
@@ -52,6 +57,9 @@ Vue.mixin({
     },
     numeric (number) {
       return numeric(number)
+    },
+    percentage (number) {
+      return percentage(number)
     }
   }
 })
@@ -64,6 +72,9 @@ Vue.filter('timesince', (timestamp) => {
 })
 Vue.filter('numeric', (number) => {
   return numeric(number)
+})
+Vue.filter('percentage', (number) => {
+  return percentage(number)
 })
 Vue.filter('translate', (label) => {
   return translate(label)

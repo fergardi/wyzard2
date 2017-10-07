@@ -2,10 +2,11 @@
   mu-card.hero
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
+      .card-data
+        .card-progress(:class="data.color", v-if="contract") {{ data.experience | numeric }} / {{ data.next | numeric }}
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="contract") {{ data.level | numeric }}
-        .card-number(:class="data.color", v-if="tavern") {{ data.experience | numeric }}/{{ data.next | numeric }}
+        .card-number(:class="data.color", v-if="tavern") {{ data.level | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 

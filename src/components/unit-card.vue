@@ -2,10 +2,11 @@
   mu-card.unit
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
+      .card-data
+        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
       p.card-description {{ data.description | lorem }}
 

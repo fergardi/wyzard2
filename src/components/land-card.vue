@@ -160,7 +160,7 @@
         margin-top 0 !important
         .army
           .troop
-            margin-top 5px
+            margin-top 3px
             display flex
             justify-content space-between
             align-items center

@@ -2,12 +2,13 @@
   mu-card.spell
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
+      .card-data
+        .card-progress(:class="data.color", v-if="breaking") {{ data.remaining | numeric }} / {{ data.turns | numeric }}
+        .card-progress(:class="data.color", v-if="investigation") {{ data.invested | numeric }} / {{ data.turns | numeric }}
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
         .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
-        .card-number(:class="data.color", v-if="breaking") {{ data.remaining | numeric }}/{{ data.turns | numeric }}
-        .card-number(:class="data.color", v-if="investigation") {{ data.invested | numeric }}/{{ data.turns | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
       
@@ -34,7 +35,7 @@
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")
         mu-card-text
-            mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_research' | translate }}
 

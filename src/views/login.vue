@@ -128,6 +128,12 @@
                 troop.quantity = 1000
                 delete troop['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
+                this.$firebaseRefs.users.child(auth.currentUser.uid).transaction(user => {
+                  if (user) {
+                    user.army += troop.quantity
+                  }
+                  return user
+                })
               })
             })
             // relics

@@ -2,9 +2,22 @@
   mu-card.building
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
+      .card-data
+        template(v-if="construction")
+          .card-progress(v-if="data.name === 'lbl_building_node'") {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_barrack'") {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_barrier'") +{{ data.quantity / data.magicDefense | percentage }}
+          .card-progress(v-if="data.name === 'lbl_building_fortress'") +{{ data.quantity / data.physicalDefense | percentage }}
+          .card-progress(v-if="data.name === 'lbl_building_guild'") -{{ data.quantity / data.researchBonus | percentage }}
+          .card-progress(v-if="data.name === 'lbl_building_temple'") +{{ data.quantity / data.enchantmentCap | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_village'") {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_workshop'") -{{ data.quantity / data.constructionBonus | percentage }}
+        .card-progress(v-if="exploration") +{{ data.quantity * data.territoryPerTurn | numeric }}
+        .card-progress(v-if="meditation") +{{ data.quantity * data.manaPerTurn | numeric }}
+        .card-progress(v-if="taxation") +{{ data.quantity * data.goldPerTurn | numeric }}
       .card-info
-        .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
+        .card-title {{ data.name | translate }}
+        .card-number(v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
       p.card-description(v-if="construction") {{ data.description | translate }}
       p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}

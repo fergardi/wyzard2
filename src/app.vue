@@ -312,30 +312,40 @@
           background-size cover
           object-fit cover
           object-position 50% 20%
+        .card-data
         .card-info
           position absolute
-          bottom -16px
           width 100%
           text-align center
           .card-title
           .card-number
-            padding 5px 10px
-            font-weight bold
-            border-radius 5px
+          .card-progress
+            border-radius $radius
             text-align center
             border 1px solid
             background-color $dark
             width auto
             display inline-block
+            padding 5px 10px
+            font-weight bold
           .card-title
             min-width 50%
-            max-width 60%
+            max-width 70%
+            width auto
           .card-number
-            min-width 5%
-            max-width 35%
-          .card-title + .card-number
-          .card-number + .card-number
-            margin-left 1%
+            min-width 10%
+            max-width 20%
+            with auto
+          .card-progress
+            min-width 10%
+            max-width 50%
+            width auto
+          .card-number
+            margin-left 3px
+        .card-data
+          bottom 20px
+        .card-info
+          bottom -16px
       .mu-card-media + .mu-card-text
         margin-top 10px
       .mu-card-text + .mu-card-text
@@ -438,8 +448,12 @@
     // background colors
     .mu-toast
     .mu-chip
-    .mu-card .card-info .card-title, .mu-card .card-info .card-number
-    .mu-dialog .troop .name, .mu-dialog .troop .quantity
+    .mu-card .card-info .card-title
+    .mu-card .card-info .card-number
+    .mu-card .card-data .card-number
+    .mu-card .card-data .card-progress
+    .mu-dialog .troop .name
+    .mu-dialog .troop .quantity
       &.red
         background-color $red
       &.green
