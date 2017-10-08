@@ -20,10 +20,18 @@
         .card-title {{ data.name | translate }}
         .card-number(v-if="data.quantity != null") {{ data.quantity | numeric }}
     mu-card-text
-      p.card-description(v-if="construction") {{ data.description | translate }}
+      p.card-description(v-if="!exploration && !meditation && !taxation") {{ data.description | translate }}
       p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}
       p.card-description(v-if="meditation") {{ 'lbl_description_meditation' | translate }}
       p.card-description(v-if="taxation") {{ 'lbl_description_taxation' | translate }}
+      
+      .card-stats(v-if="!info")
+        mu-chip
+          i.ra.ra-sword
+          span dsada
+        mu-chip
+          i.ra.ra-sword
+          span dsads
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")
@@ -73,6 +81,7 @@
   export default {
     name: 'building-card',
     props: {
+      info: Boolean,
       data: Object,
       exploration: Boolean,
       construction: Boolean,
