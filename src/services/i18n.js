@@ -454,7 +454,7 @@ export default {
     // descriptions
     lbl_description_meditation: 'Generarás más Maná cuantos más Nodos tengas y más Turnos inviertas al meditar',
     lbl_description_taxation: 'Generarás más Oro cuantas más Granjas tengas y más Turnos inviertas al recaudar',
-    lbl_description_exploration: 'Generarás más Terrenos cuantos menos Terrenos tengas y más Turnos inviertas al explorar',
+    lbl_description_exploration: 'Generarás más Terrenos cuantos menos tengas y más Turnos inviertas al explorar',
     lbl_description_settings: 'Puedes cambiar las preferencias del juego y guardarlas en tu cuenta',
     // names
     lbl_name_admin: 'Archimago',
@@ -545,7 +545,7 @@ export default {
     lbl_toast_exploration_ok: 'Exploración finalizada',
     lbl_toast_exploration_error: 'Error al explorar',
     lbl_toast_meditation_ok: 'Meditación completada',
-    lbl_toast_meditation_error: 'Error al meditar',
+    lbl_toast_meditation_error: 'Nodos llenos',
     lbl_toast_tax_ok: 'Recaudación completada',
     lbl_toast_tax_error: 'Error al recaudar',
     lbl_toast_disband_ok: 'Desbande completado',
@@ -560,10 +560,12 @@ export default {
     lbl_toast_offer_error: 'Tu ofrenda no satisface al Dios',
     lbl_toast_start_ok: 'Comienzo realizado',
     lbl_toast_start_error: 'Error al comenzar',
+    lbl_toast_resource_all: 'Recursos insuficientes',
     lbl_toast_resource_gold: 'Oro insuficiente',
     lbl_toast_resource_mana: 'Mana insuficiente',
     lbl_toast_resource_people: 'Población insuficientes',
     lbl_toast_resource_turns: 'Turnos insuficientes',
+    lbl_toast_resource_terrain: 'Terrenos insuficiente',
     lbl_toast_notifications_ok: 'Notificaciones habilitadas',
     lbl_toast_notifications_error: 'Notificaciones deshabilitadas',
     // firebase error

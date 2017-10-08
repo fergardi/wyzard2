@@ -31,8 +31,8 @@ function numeric (number) {
 }
 function percentage (number) {
   return !number
-  ? parseFloat(0)
-  : parseFloat(number.toFixed(2)) + ' %'
+  ? parseFloat(0) + ' %'
+  : parseFloat(Math.floor(number)) + ' %'
 }
 function timesince (timestamp) {
   return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).fromNow(true)

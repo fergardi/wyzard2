@@ -6,15 +6,16 @@
         template(v-if="construction")
           .card-progress(v-if="data.name === 'lbl_building_node'") {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
           .card-progress(v-if="data.name === 'lbl_building_barrack'") {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
-          .card-progress(v-if="data.name === 'lbl_building_barrier'") +{{ data.quantity / data.magicDefense | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_fortress'") +{{ data.quantity / data.physicalDefense | percentage }}
+          .card-progress(v-if="data.name === 'lbl_building_barrier'") +{{ data.quantity / data.magicalDefenseBonus | percentage }}
+          .card-progress(v-if="data.name === 'lbl_building_fortress'") +{{ data.quantity / data.physicalDefenseBonus | percentage }}
           .card-progress(v-if="data.name === 'lbl_building_guild'") -{{ data.quantity / data.researchBonus | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_temple'") +{{ data.quantity / data.enchantmentCap | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_temple'") +{{ parseInt(data.quantity / data.enchantmentCap) | numeric }}
           .card-progress(v-if="data.name === 'lbl_building_village'") {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
           .card-progress(v-if="data.name === 'lbl_building_workshop'") -{{ data.quantity / data.constructionBonus | percentage }}
-        .card-progress(v-if="exploration") +{{ data.quantity * data.territoryPerTurn | numeric }}
-        .card-progress(v-if="meditation") +{{ data.quantity * data.manaPerTurn | numeric }}
-        .card-progress(v-if="taxation") +{{ data.quantity * data.goldPerTurn | numeric }}
+          .card-progress(v-if="data.name === 'lbl_building_farm'") {{ user.gold | numeric }}
+        .card-progress(v-if="exploration") +{{ parseInt((data.territoryCap - data.quantity) / 100) | numeric }}
+        .card-progress(v-if="meditation") +{{ data.quantity * data.manaProduction * 2 | numeric }}
+        .card-progress(v-if="taxation") +{{ data.quantity * data.goldProduction * 2 | numeric }}
       .card-info
         .card-title {{ data.name | translate }}
         .card-number(v-if="data.quantity != null") {{ data.quantity | numeric }}
@@ -110,58 +111,111 @@
         }
       },
       construct () {
-        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
-          database.ref('users').child(store.state.uid).transaction(user => {
-            if (this.amount > 0) {
-              building.quantity += Math.min(user.territory, this.amount)
-              user.territory -= Math.min(user.territory, this.amount)
-              user.turns = Math.max(0, user.turns - Math.abs(this.amount))
-            } else {
-              user.territory += Math.min(building.quantity, Math.abs(this.amount))
-              building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
+        if (this.amount <= this.user.terrain) { // user has resources
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+            if (building) {
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  if (this.amount > 0) {
+                    if (building.goldCost * this.amount <= user.gold && building.manaCost * this.amount <= user.mana && building.peopleCost * this.amount <= user.people && building.turnsCost * this.amount <= user.turns) {
+                      building.quantity += Math.min(user.terrain, this.amount)
+                      user.terrain -= Math.min(user.terrain, this.amount)
+                      user.turns = Math.max(0, user.turns - Math.abs(this.amount))
+                    } else {
+                      if (building.turnsCost * this.amount <= user.turns) {
+                        store.commit('error', 'lbl_toast_resource_turns')
+                      }
+                      if (building.goldCost * this.amount <= user.gold) {
+                        store.commit('error', 'lbl_toast_resource_gold')
+                      }
+                      if (building.manaCost * this.amount <= user.mana) {
+                        store.commit('error', 'lbl_toast_resource_mana')
+                      }
+                      if (building.peopleCost * this.amount <= user.people) {
+                        store.commit('error', 'lbl_toast_resource_people')
+                      }
+                    }
+                  } else {
+                    user.terrain += Math.min(building.quantity, Math.abs(this.amount))
+                    building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
+                  }
+                  return user
+                }
+              })
+              return building
             }
-            return user
           })
-          return building
-        })
-        store.commit('success', 'lbl_toast_construction_ok')
+          store.commit('success', 'lbl_toast_construction_ok')
+        } else {
+          store.commit('error', 'lbl_toast_resource_terrain')
+        }
         this.close()
       },
       explore () {
-        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
-          building.quantity += this.amount
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.territory += this.amount
-            user.turns = Math.max(0, user.turns - this.amount)
-            return user
+        if (this.amount <= this.user.turns) { // user has resources
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+            if (building) {
+              for (let i = 0; i < this.amount; i++) {
+                building.quantity += Math.max(0, Math.floor((building.territoryCap - building.quantity) / 100))
+              }
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  user.terrain = building.quantity
+                  user.turns = Math.max(0, user.turns - this.amount)
+                  return user
+                }
+              })
+              return building
+            }
           })
-          return building
-        })
-        store.commit('success', 'lbl_toast_exploration_ok')
+          store.commit('success', 'lbl_toast_exploration_ok')
+        } else {
+          store.commit('error', 'lbl_toast_resource_turns')
+        }
         this.close()
       },
       meditate () {
-        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.mana += building.quantity * building.essence * this.amount
-            user.turns = Math.max(0, user.turns - this.amount)
-            return user
+        if (this.amount <= this.user.turns) { // user has resources
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+            if (building) {
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  let meditation = building.quantity * building.manaProduction * this.amount * 2
+                  if (user.mana + meditation >= building.quantity * building.manaCap) {
+                    store.commit('error', 'lbl_toast_meditation_error')
+                  }
+                  user.mana = Math.min(building.quantity * building.manaCap, user.mana + meditation)
+                  user.turns = Math.max(0, user.turns - this.amount)
+                  return user
+                }
+              })
+              return building
+            }
           })
-          return building
-        })
-        store.commit('success', 'lbl_toast_meditation_ok')
+          store.commit('success', 'lbl_toast_meditation_ok')
+        } else {
+          store.commit('error', 'lbl_toast_resource_turns')
+        }
         this.close()
       },
       collect () {
-        database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
-          database.ref('users').child(store.state.uid).transaction(user => {
-            user.gold += building.quantity * building.coins * this.amount
-            user.turns = Math.max(0, user.turns - this.amount)
-            return user
+        if (this.amount <= this.user.turns) { // user has resources
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+            if (building) {
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  user.gold += building.quantity * building.goldProduction * this.amount * 2
+                  user.turns = Math.max(0, user.turns - this.amount)
+                  return user
+                }
+              })
+              return building
+            }
           })
-          return building
-        })
-        store.commit('success', 'lbl_toast_tax_ok')
+          store.commit('success', 'lbl_toast_tax_ok')
+        } else {
+          store.commit('error', 'lbl_toast_resource_turns')
+        }
         this.close()
       },
       close () {

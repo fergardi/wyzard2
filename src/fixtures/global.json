@@ -146,7 +146,7 @@
       "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
       "name" : "lbl_building_temple"
     },
-    "territory" : {
+    "terrain" : {
       "buildable" : false,
       "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
       "name" : "lbl_building_territory"
@@ -3586,7 +3586,7 @@
       "lang" : "es",
       "navbar" : false
     },
-    "territory" : 500,
+    "terrain" : 500,
     "turns" : 300
   },
   "users" : {
@@ -3703,7 +3703,7 @@
         "lang" : "es",
         "navbar" : false
       },
-      "territory" : 500,
+      "terrain" : 500,
       "troops" : {
         "-KvGookmNTygym-v2p6u" : {
           "color" : "purple",

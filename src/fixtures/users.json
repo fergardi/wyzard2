@@ -43,7 +43,7 @@
         "quantity" : 0,
         "buildable": true
       },
-      "territory" : {
+      "terrain" : {
         "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
         "name" : "lbl_building_territory",
         "quantity" : 0,
@@ -117,7 +117,7 @@
       "lang" : "es",
       "navbar" : false
     },
-    "territory" : 996,
+    "terrain" : 996,
     "turns" : 300,
     "troops" : {
       "dshgakdask" : {

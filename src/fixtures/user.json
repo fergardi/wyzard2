@@ -7,7 +7,7 @@
     "lang" : "es",
     "navbar" : false
   },
-  "territory" : 500,
+  "terrain" : 500,
   "turns" : 300,
   "power": 0,
   "army": 0

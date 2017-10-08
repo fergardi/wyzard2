@@ -55,7 +55,7 @@
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
               span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
-              span {{ user.territory | numeric }}
+              span {{ user.terrain | numeric }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
@@ -330,11 +330,11 @@
             font-weight bold
           .card-title
             min-width 50%
-            max-width 70%
+            max-width 65%
             width auto
           .card-number
             min-width 10%
-            max-width 20%
+            max-width 30%
             with auto
           .card-progress
             min-width 10%
