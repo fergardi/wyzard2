@@ -25,13 +25,34 @@
       p.card-description(v-if="meditation") {{ 'lbl_description_meditation' | translate }}
       p.card-description(v-if="taxation") {{ 'lbl_description_taxation' | translate }}
       
-      .card-stats(v-if="!info")
-        mu-chip
-          i.ra.ra-sword
-          span dsada
-        mu-chip
-          i.ra.ra-sword
-          span dsads
+      .card-stats(v-if="info")
+        mu-chip.triple
+          i.ra.ra-gold-bar
+          span {{ data.goldCost | numeric }}
+        mu-chip.triple
+          i.ra.ra-double-team
+          span {{ data.peopleCost | numeric }}
+        mu-chip.triple
+          i.ra.ra-droplet
+          span {{ data.manaCost | numeric }}
+        mu-chip.triple
+          i.ra.ra-gold-bar
+          span {{ data.goldMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-double-team
+          span {{ data.peopleMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-droplet
+          span {{ data.manaMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-gold-bar
+          span {{ data.goldProduction | numeric }}
+        mu-chip.triple
+          i.ra.ra-double-team
+          span {{ data.peopleProduction | numeric }}
+        mu-chip.triple
+          i.ra.ra-droplet
+          span {{ data.manaProduction | numeric }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")
@@ -90,6 +111,8 @@
     },
     data () {
       return {
+        tooltip: false,
+        trigger: null,
         dialog: false,
         type: null,
         amount: 0
@@ -231,6 +254,15 @@
         this.type = null
         this.dialog = false
         this.amount = 0
+      },
+      hover (reference) {
+        console.log(this.$refs, reference)
+        this.trigger = this.$refs[reference]
+        this.tooltip = true
+      },
+      exit () {
+        this.tooltip = false
+        this.trigger = null
       }
     }
   }

@@ -47,7 +47,8 @@ const vuex = new Vuex.Store({
       let toast = {
         color: 'green',
         message: message,
-        show: true
+        show: true,
+        delay: state.toast.delay
       }
       state.toasts.push(toast)
     },
@@ -55,7 +56,8 @@ const vuex = new Vuex.Store({
       let toast = {
         color: 'blue',
         message: message,
-        show: true
+        show: true,
+        delay: state.toast.delay
       }
       state.toasts.push(toast)
     },
@@ -63,9 +65,13 @@ const vuex = new Vuex.Store({
       let toast = {
         color: 'red',
         message: message,
-        show: true
+        show: true,
+        delay: state.toast.delay
       }
       state.toasts.push(toast)
+    },
+    queue (state) {
+      if (state.toasts.length > 0) state.toast = state.toasts[0]
     },
     untoast (state) {
       state.toast.show = false

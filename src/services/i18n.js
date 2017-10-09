@@ -13,6 +13,18 @@ export default {
     lbl_faction_darkness_description: 'Nada ni nadie puede escapar del dulce abrazo de la muerte, salvo la muerte misma',
     lbl_faction_holy: 'Sacro',
     lbl_faction_holy_description: 'El poder de los cielos nunca pasa inadvertido, sobre todo para los pecadores',
+    // families
+    lbl_family_elemental: 'Elemental',
+    lbl_family_celestial: 'Celestial',
+    lbl_family_beast: 'Bestia',
+    lbl_family_dragon: 'Dracónido',
+    lbl_family_human: 'Humanoide',
+    lbl_family_undead: 'NoMuerto',
+    lbl_family_demon: 'Demonio',
+    // types
+    lbl_type_melee: 'Melee',
+    lbl_type_range: 'Distancia',
+    lbl_type_fly: 'Volador',
     // spells
     lbl_spell_eclipse: 'Eclipse',
     lbl_spell_eclipse_description: 'Encanta al reino objetivo para reducir su poder un 1% por Nivel',
@@ -568,6 +580,16 @@ export default {
     lbl_toast_resource_terrain: 'Terrenos insuficiente',
     lbl_toast_notifications_ok: 'Notificaciones habilitadas',
     lbl_toast_notifications_error: 'Notificaciones deshabilitadas',
+    // tooltips
+    ttp_gold_cost: 'Coste de Oro',
+    ttp_people_cost: 'Coste de Población',
+    ttp_mana_cost: 'Coste de Maná',
+    ttp_gold_maintenance: 'Mantenimiento de Oro al Turno',
+    ttp_people_maintenance: 'Mantenimiento de Población al Turno',
+    ttp_mana_maintenance: 'Mantenimiento de Maná al Turno',
+    ttp_gold_production: 'Producción de Oro al Turno',
+    ttp_people_production: 'Producción de Población al Turno',
+    ttp_mana_production: 'Producción de Maná al Turno',
     // firebase error
     'auth/authentication-ok': 'Autenticado correctamente',
     'auth/registration-ok': 'Registrado correctamente',

@@ -41,16 +41,16 @@
             mu-badge(slot="after")
               span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
               span {{ user.gold | numeric }}
-          mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-            mu-icon(slot="left", value=":ra ra-droplet-splash")
-            mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
-              span {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_population')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
               span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
               span {{ user.people | numeric }}
+          mu-list-item(:title="translate('lbl_resource_mana')", disabled)
+            mu-icon(slot="left", value=":ra ra-droplet")
+            mu-badge(slot="after")
+              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_territory')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
@@ -155,7 +155,7 @@
       // toast
       store.watch((state) => state.toasts, (toasts) => {
         if (toasts.length > 0) {
-          Object.assign(store.state.toast, toasts[0])
+          store.commit('queue')
           if (this.timer) clearTimeout(this.timer)
           this.timer = setTimeout(() => { this.untoast() }, store.state.toast.delay)
         } else {
@@ -369,18 +369,20 @@
           align-items center
           flex-wrap wrap
           .mu-chip
+            flex-grow 1
+            width 100%
             cursor initial
-            width 40%
             border 1px solid
             background-color $dark
-            line-height 22px
-            margin 2px
-            font-size 0.8em
+            margin-left 1%
+            margin-right 1%
             display flex
             justify-content space-between
             align-items center
-            .ra
-              line-height 23px
+            &.double
+              width 45%
+            &.triple
+              width 30%
       .mu-card-actions
         display flex
         align-items center
@@ -517,6 +519,40 @@
       font-weight bold
       border 1px solid
       border-radius $radius
+    .tooltip
+      display block !important
+      z-index 10000
+      margin-bottom 5px
+      border 1px solid
+      border-radius 16px
+      .tooltip-inner
+        background darken($dark, 20%)
+        color $gold
+        border-radius 16px
+        padding 5px 10px 4px
+      .tooltip-arrow
+        width 0
+        height 0
+        border-style solid
+        position absolute
+        margin 5px
+        border-color $gold
+        border-width 5px 5px 0 5px
+        border-left-color transparent !important
+        border-right-color transparent !important
+        border-bottom-color transparent !important
+        bottom -5px
+        left calc(50% - 5px)
+        margin-top 0
+        margin-bottom 0
+    .tooltip[aria-hidden='true']
+      visibility hidden
+      opacity 0
+      transition opacity .15s, visibility .15s
+    .tooltip[aria-hidden='false']
+      visibility visible
+      opacity 1
+      transition opacity .15s
     @media only screen and (min-width 480px) and (max-width 1079px)
       .mu-toast
         width 250px

@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
-        spell-card.animated.fadeInUp(:data="spell", :users="users")
+        spell-card.animated.fadeInUp(:data="spell", :info="true")
 </template>
 
 <script>
@@ -18,8 +18,7 @@
       store.commit('title', 'lbl_title_spells')
     },
     firebase: {
-      spells: database.ref('spells').orderByChild('color'),
-      users: database.ref('users').orderByChild('name')
+      spells: database.ref('spells').orderByChild('color')
     }
   }
 </script>

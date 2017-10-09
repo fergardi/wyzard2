@@ -10,6 +10,29 @@
     mu-card-text
       p.card-description {{ data.description | lorem }}
 
+      .card-stats(v-if="info")
+        mu-chip.double
+          i.ra.ra-sword
+          span {{ data.damage | numeric }}
+        mu-chip.double
+          i.ra.ra-hearts
+          span {{ data.health | numeric }}
+        mu-chip.triple
+          i.ra.ra-gold-bar
+          span {{ data.goldMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-double-team
+          span {{ data.peopleMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-droplet
+          span {{ data.manaMaintenance | numeric }}
+        mu-chip.double
+          i.ra.ra-gem
+          span {{ data.family | translate }}
+        mu-chip.double
+          i.ra.ra-emerald
+          span {{ data.type | translate }}
+
     template(v-if="troop")
       form(@submit.stop.prevent="confirm('disband')")
         mu-card-text
@@ -38,6 +61,7 @@
     name: 'unit',
     props: {
       data: Object,
+      info: Boolean,
       troop: Boolean
     },
     data () {

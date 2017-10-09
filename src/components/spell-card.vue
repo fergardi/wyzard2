@@ -14,23 +14,32 @@
       
       .card-stats(v-if="info")
         mu-chip
-          i.ra.ra-sword
-          span {{ 'lbl_stat_level' | translate }} 10
+          i.ra.ra-gold-bar
+          span {{ data.goldCost | numeric }}
         mu-chip
-          i.ra.ra-sword
-          span {{ 3214325 | numeric }} {{ 'lbl_stat_mana' | translate }}
+          i.ra.ra-double-team
+          span {{ data.peopleCost | numeric }}
         mu-chip
-          i.ra.ra-sword
-          span {{ data.category | translate }}
+          i.ra.ra-droplet
+          span {{ data.manaCost | numeric }}
         mu-chip
-          i.ra.ra-sword
-          span 100 Turnos
+          i.ra.ra-gold-bar
+          span {{ data.goldMaintenance | numeric }}
         mu-chip
-          i.ra.ra-sword
-          span 10 Turnos
+          i.ra.ra-double-team
+          span {{ data.peopleMaintenance | numeric }}
         mu-chip
-          i.ra.ra-sword
-          span {{ data.category | translate }}
+          i.ra.ra-droplet
+          span {{ data.manaMaintenance | numeric }}
+        mu-chip
+          i.ra.ra-gold-bar
+          span {{ data.goldProduction | numeric }}
+        mu-chip
+          i.ra.ra-double-team
+          span {{ data.peopleProduction | numeric }}
+        mu-chip
+          i.ra.ra-droplet
+          span {{ data.manaProduction | numeric }}
 
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")
