@@ -13,33 +13,30 @@
       p.card-description {{ data.description | translate }}
       
       .card-stats(v-if="info")
-        mu-chip
+        mu-chip.triple
           i.ra.ra-gold-bar
           span {{ data.goldCost | numeric }}
-        mu-chip
+        mu-chip.triple
           i.ra.ra-double-team
           span {{ data.peopleCost | numeric }}
-        mu-chip
+        mu-chip.triple
           i.ra.ra-droplet
           span {{ data.manaCost | numeric }}
-        mu-chip
+        mu-chip.triple
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | numeric }}
-        mu-chip
+        mu-chip.triple
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | numeric }}
-        mu-chip
+        mu-chip.triple
           i.ra.ra-droplet
           span {{ data.manaMaintenance | numeric }}
-        mu-chip
-          i.ra.ra-gold-bar
-          span {{ data.goldProduction | numeric }}
-        mu-chip
-          i.ra.ra-double-team
-          span {{ data.peopleProduction | numeric }}
-        mu-chip
-          i.ra.ra-droplet
-          span {{ data.manaProduction | numeric }}
+        mu-chip.double
+          i.ra.ra-hourglass
+          span {{ data.turnsCost | numeric }}
+        mu-chip.double
+          i.ra.ra-hourglass
+          span {{ data.turns | numeric }}
 
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")

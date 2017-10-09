@@ -10,6 +10,17 @@
     mu-card-text
       p.card-description {{ data.description | translate }}
 
+      .card-stats(v-if="info")
+        mu-chip.triple
+          i.ra.ra-gold-bar
+          span {{ data.goldMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-double-team
+          span {{ data.peopleMaintenance | numeric }}
+        mu-chip.triple
+          i.ra.ra-droplet
+          span {{ data.manaMaintenance | numeric }}
+
     template(v-if="tavern")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
@@ -43,6 +54,7 @@
     name: 'hero-card',
     props: {
       data: Object,
+      info: Boolean,
       tavern: Boolean,
       contract: Boolean
     },
