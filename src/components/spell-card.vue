@@ -1,14 +1,20 @@
 <template lang="pug">
   mu-card.spell
     mu-card-media
-      img(:src="data.image", :alt="translate(data.name)")
-      .card-data
-        .card-progress(:class="data.color", v-if="breaking") {{ data.remaining | numeric }} / {{ data.turns | numeric }}
-        .card-progress(:class="data.color", v-if="investigation") {{ data.invested | numeric }} / {{ data.turns | numeric }}
+      img(:src="settings.cartoon ? data.cartoon : data.image", :alt="translate(data.name)")
+      .card-extra
+        .card-number(:class="data.color", v-if="breaking")
+          i.ra.ra-hourglass
+          span {{ data.remaining | numeric }} / {{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="investigation")
+          i.ra.ra-hourglass
+          span {{ data.invested | numeric }} / {{ data.turns | numeric }}
+        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
-        .card-number(:class="data.color", v-if="data.level != null") {{ data.level | numeric }}
+        .card-number(:class="data.color", v-if="data.level != null")
+          i.ra.ra-trophy
+          span {{ data.level | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
       
@@ -156,6 +162,9 @@
     computed: {
       user () {
         return store.state.user
+      },
+      settings () {
+        return store.state.user ? store.state.user.settings : store.state.settings
       }
     }
   }

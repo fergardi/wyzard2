@@ -5,7 +5,8 @@
   "people" : 10000,
   "settings" : {
     "lang" : "es",
-    "navbar" : false
+    "navbar" : false,
+    "cartoon": false
   },
   "terrain" : 500,
   "turns" : 300,

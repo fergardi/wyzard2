@@ -2,23 +2,49 @@
   mu-card.building
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
-      .card-data
-        template(v-if="construction")
-          .card-progress(v-if="data.name === 'lbl_building_node'") {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
-          .card-progress(v-if="data.name === 'lbl_building_barrack'") {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
-          .card-progress(v-if="data.name === 'lbl_building_barrier'") +{{ data.quantity / data.magicalDefenseBonus | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_fortress'") +{{ data.quantity / data.physicalDefenseBonus | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_guild'") -{{ data.quantity / data.researchBonus | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_temple'") +{{ parseInt(data.quantity / data.enchantmentCap) | numeric }}
-          .card-progress(v-if="data.name === 'lbl_building_village'") {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
-          .card-progress(v-if="data.name === 'lbl_building_workshop'") -{{ data.quantity / data.constructionBonus | percentage }}
-          .card-progress(v-if="data.name === 'lbl_building_farm'") {{ user.gold | numeric }}
-        .card-progress(v-if="exploration") +{{ parseInt((data.territoryCap - data.quantity) / 100) | numeric }}
-        .card-progress(v-if="meditation") +{{ data.quantity * data.manaProduction * 2 | numeric }}
-        .card-progress(v-if="taxation") +{{ data.quantity * data.goldProduction * 2 | numeric }}
+      .card-extra
+        template(v-if="construction || meditation")
+          .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= data.quantity * data.manaCap ? 'red' : ''")
+            i.ra.ra-droplet
+            span {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
+          .card-number(v-if="data.name === 'lbl_building_barrack'")
+            i.ra.ra-crossed-axes
+            span {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
+          .card-number(v-if="data.name === 'lbl_building_barrier'")
+            i.ra.ra-eye-shield
+            span +{{ data.quantity / data.magicalDefenseBonus | percentage }}
+          .card-number(v-if="data.name === 'lbl_building_fortress'")
+            i.ra.ra-eye-shield
+            span +{{ data.quantity / data.physicalDefenseBonus | percentage }}
+          .card-number(v-if="data.name === 'lbl_building_guild'")
+            i.ra.ra-crystal-ball
+            span -{{ data.quantity / data.researchBonus | percentage }}
+          .card-number(v-if="data.name === 'lbl_building_temple'")
+            i.ra.ra-crystals
+            span +{{ parseInt(data.quantity / data.enchantmentCap) | numeric }}
+          .card-number(v-if="data.name === 'lbl_building_village'")
+            i.ra.ra-double-team
+            span {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
+          .card-number(v-if="data.name === 'lbl_building_workshop'")
+            i.ra.ra-hourglass
+            span -{{ data.quantity / data.constructionBonus | percentage }}
+          .card-number(v-if="data.name === 'lbl_building_farm'")
+            i.ra.ra-gold-bar
+            span {{ user.gold | numeric }}
+        .card-number(v-if="exploration")
+          i.ra.ra-tower
+          span +{{ parseInt((data.territoryCap - data.quantity) / 100) | numeric }}
+        .card-number(v-if="meditation")
+          i.ra.ra-droplet
+          span +{{ data.quantity * data.manaProduction * 2 | numeric }}
+        .card-number(v-if="taxation")
+          i.ra.ra-gold-bar
+          span +{{ data.quantity * data.goldProduction * 2 | numeric }}
       .card-info
         .card-title {{ data.name | translate }}
-        .card-number(v-if="data.quantity != null") {{ data.quantity | numeric }}
+        .card-number(v-if="data.quantity != null")
+          i.ra.ra-tower
+          span {{ data.quantity | numeric }}
     mu-card-text
       p.card-description(v-if="!exploration && !meditation && !taxation") {{ data.description | translate }}
       p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}

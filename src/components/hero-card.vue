@@ -2,11 +2,16 @@
   mu-card.hero
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
-      .card-data
-        .card-progress(:class="data.color", v-if="contract") {{ data.experience | numeric }} / {{ data.next | numeric }}
+      .card-extra
+        .card-number(:class="data.color", v-if="contract") {{ data.experience | numeric }} / {{ data.next | numeric }}
+        .card-number(:class="data.color", v-if="tavern")
+          i.ra.ra-gold-bar
+          span {{ data.gold | numeric }}
       .card-info
         .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="tavern") {{ data.level | numeric }}
+        .card-number(:class="data.color", v-if="tavern")
+          i.ra.ra-trophy
+          span {{ data.level | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
@@ -24,7 +29,7 @@
     template(v-if="tavern")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_bid' | translate }}
 

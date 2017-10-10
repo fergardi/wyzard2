@@ -523,6 +523,8 @@ export default {
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
     lbl_settings_language: 'Idioma',
+    lbl_settings_copyright: 'Copyright',
+    lbl_settings_cartoon: 'Modo artístico extendido',
     // places
     lbl_place_island: 'Isla del Paraíso',
     lbl_place_island_description: 'Conquista un País al azar y obtiene un Artefacto de la facción Mental',

@@ -312,14 +312,13 @@
           background-size cover
           object-fit cover
           object-position 50% 20%
-        .card-data
+        .card-extra
         .card-info
           position absolute
           width 100%
           text-align center
           .card-title
           .card-number
-          .card-progress
             border-radius $radius
             text-align center
             border 1px solid
@@ -328,6 +327,10 @@
             display inline-block
             padding 5px 10px
             font-weight bold
+            i + span
+              margin-left 3px
+            span + i
+              margin-right 3px
           .card-title
             min-width 50%
             max-width 65%
@@ -336,13 +339,14 @@
             min-width 10%
             max-width 30%
             with auto
-          .card-progress
+          .card-number
             min-width 10%
             max-width 50%
             width auto
-          .card-number
+          .card-title + .card-number
+          .card-number + .card-number
             margin-left 3px
-        .card-data
+        .card-extra
           bottom 20px
         .card-info
           bottom -16px
@@ -452,8 +456,8 @@
     .mu-chip
     .mu-card .card-info .card-title
     .mu-card .card-info .card-number
-    .mu-card .card-data .card-number
-    .mu-card .card-data .card-progress
+    .mu-card .card-extra .card-number
+    .mu-card .card-extra .card-number
     .mu-dialog .troop .name
     .mu-dialog .troop .quantity
       &.red
