@@ -34,6 +34,9 @@
         mu-chip.double
           i.ra.ra-emerald
           span {{ data.type | translate }}
+        mu-chip.simple(v-if="data.evasion || data.frenzy || data.resurrection || data.counter || data.healing")
+          i.ra.ra-sapphire
+          span {{ data.evasion ? 'lbl_stat_evasion' : data.frenzy ? 'lbl_stat_frenzy' : data.resurrection ? 'lbl_stat_resurrection' : data.counter ? 'lbl_stat_counter' : 'lbl_stat_healing' | translate }}
 
     template(v-if="troop")
       form(@submit.stop.prevent="confirm('disband')")

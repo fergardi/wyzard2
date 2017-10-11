@@ -39,10 +39,16 @@
           span {{ data.manaMaintenance | numeric }}
         mu-chip.double
           i.ra.ra-hourglass
-          span {{ data.turnsCost | numeric }}
-        mu-chip.double
-          i.ra.ra-hourglass
           span {{ data.turns | numeric }}
+        mu-chip.double
+          i.ra.ra-clockwork
+          span {{ data.research | numeric }}
+        mu-chip.double
+          i.ra.ra-lightning-trio
+          span {{ data.battle ? 'lbl_stat_battle' : data.summon ? 'lbl_stat_summon' : 'lbl_stat_support' | translate }}
+        mu-chip.double
+          i.ra.ra-cog
+          span {{ data.enchantment ? 'lbl_stat_enchantment' : 'lbl_stat_spell' | translate }}
 
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")
