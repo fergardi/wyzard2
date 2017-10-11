@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.unit
     mu-card-media
-      img(:src="data.image", :alt="translate(data.name)")
+      img(:src="settings.cartoon ? data.cartoon : data.image", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
       .card-info
@@ -34,9 +34,9 @@
         mu-chip.double
           i.ra.ra-emerald
           span {{ data.type | translate }}
-        mu-chip.simple(v-if="data.evasion || data.frenzy || data.resurrection || data.counter || data.healing")
+        mu-chip.simple
           i.ra.ra-sapphire
-          span {{ data.evasion ? 'lbl_stat_evasion' : data.frenzy ? 'lbl_stat_frenzy' : data.resurrection ? 'lbl_stat_resurrection' : data.counter ? 'lbl_stat_counter' : 'lbl_stat_healing' | translate }}
+          span {{ data.evasion ? 'lbl_stat_evasion' : data.frenzy ? 'lbl_stat_frenzy' : data.resurrection ? 'lbl_stat_resurrection' : data.counter ? 'lbl_stat_counter' : data.healing ? 'lbl_stat_healing' : 'lbl_stat_none' | translate }}
 
     template(v-if="troop")
       form(@submit.stop.prevent="confirm('disband')")
@@ -100,6 +100,11 @@
         this.type = null
         this.dialog = false
         this.amount = 0
+      }
+    },
+    computed: {
+      settings () {
+        return store.state.user ? store.state.user.settings : store.state.settings
       }
     }
   }

@@ -371,6 +371,7 @@ export default {
     lbl_stat_evasion: 'Evasión',
     lbl_stat_frenzy: 'Locura',
     lbl_stat_counter: 'Contraataque',
+    lbl_stat_none: 'Sin Habilidades',
     // buildings
     lbl_building_node: 'Nodos',
     lbl_building_node_description: 'Almacenan y generan Maná al turno',
