@@ -568,7 +568,7 @@ export default {
     lbl_toast_tax_ok: 'Recaudación completada',
     lbl_toast_tax_error: 'Error al recaudar',
     lbl_toast_disband_ok: 'Desbande completado',
-    lbl_toast_disband_error: 'Error al desbandar',
+    lbl_toast_disband_error: 'No tienes suficientes tropas',
     lbl_toast_activate_ok: 'Activación realizada',
     lbl_toast_activate_error: 'Error al activar',
     lbl_toast_sell_ok: 'Venta realizada',

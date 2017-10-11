@@ -43,7 +43,7 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="data.quantity", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_disband' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canDisband") {{ 'lbl_button_disband' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -89,11 +89,17 @@
         }
       },
       disband () {
-        database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
-          unit.quantity = Math.max(0, unit.quantity - this.amount)
-          return unit
-        })
-        store.commit('success', 'lbl_toast_disband_ok')
+        if (this.canDisband) {
+          database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
+            if (unit) {
+              unit.quantity = Math.max(0, unit.quantity - this.amount)
+            }
+            return unit
+          })
+          store.commit('success', 'lbl_toast_disband_ok')
+        } else {
+          store.commit('success', 'lbl_toast_disband_error')
+        }
         this.close()
       },
       close () {
@@ -105,6 +111,9 @@
     computed: {
       settings () {
         return store.state.user ? store.state.user.settings : store.state.settings
+      },
+      canDisband () {
+        return this.amount > 0 && this.amount < this.data.quantity
       }
     }
   }
