@@ -29,9 +29,9 @@
     template(v-if="tavern")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_bid' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="isMine || !hasGold || !hasTurns || !canBid") {{ 'lbl_button_bid' | translate }}
 
     template(v-if="contract")
       form(@submit.stop.prevent="confirm('disband')")
@@ -84,27 +84,32 @@
         }
       },
       bid () {
-        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
-          if (this.amount > this.data.gold) {
+        if (this.hasGold && this.hasTurns) { // user has resources
+          if (this.canBid && !this.mine) { // bid accepted
             database.ref('tavern').child(this.data['.key']).transaction(auction => {
-              auction.gold = this.amount
-              auction.bidder = store.state.uid
-              database.ref('users').child(store.state.uid).transaction(user => {
-                user.gold = Math.max(0, user.gold - this.amount)
-                user.turns = Math.max(0, user.turns - 1)
-                return user
-              })
-              return auction
+              if (auction) {
+                auction.gold = this.amount
+                auction.bidder = store.state.uid
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.gold = Math.max(0, user.gold - this.amount)
+                    user.turns = Math.max(0, user.turns - 1)
+                    // TODO
+                  }
+                  return user
+                })
+                return auction
+              }
             })
             store.commit('success', 'lbl_toast_bid_ok')
           } else {
             store.commit('error', 'lbl_toast_bid_error')
           }
         } else {
-          if (this.amount > this.user.gold) {
+          if (!this.hasGold) {
             store.commit('error', 'lbl_toast_resource_gold')
           }
-          if (this.turns > this.user.turns) {
+          if (!this.hasTurns) {
             store.commit('error', 'lbl_toast_resource_turns')
           }
         }
@@ -119,6 +124,18 @@
     computed: {
       user () {
         return store.state.user
+      },
+      isMine () {
+        return this.data.owner === store.state.uid || this.data.bidder === store.state.uid
+      },
+      hasGold () {
+        return this.amount <= this.user.gold
+      },
+      canBid () {
+        return this.amount > this.data.gold
+      },
+      hasTurns () {
+        return this.turns <= this.user.turns
       }
     }
   }

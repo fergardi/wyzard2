@@ -52,6 +52,9 @@
       spells: database.ref('spells'),
       units: database.ref('units'),
       users: database.ref('users'),
+      auctions: database.ref('auctions'),
+      tavern: database.ref('tavern'),
+      heroes: database.ref('heroes'),
       artifacts: database.ref('artifacts'),
       places: database.ref('places'),
       buildings: database.ref('buildings'),
@@ -166,6 +169,34 @@
               text: 'lbl_message_welcome_text'
             }
             this.$firebaseRefs.users.child(auth.currentUser.uid).child('messages').push(message)
+            // auction
+            this.$firebaseRefs.artifacts.once('value', snapshot => {
+              let auctions = []
+              snapshot.forEach(artifact => {
+                let auction = {...artifact.val()}
+                auction.quantity = 1
+                auction.gold = 0
+                delete auction['.key']
+                auctions.push(auction)
+              })
+              // random
+              const index = Math.floor(Math.random() * auctions.length)
+              this.$firebaseRefs.auctions.push(auctions[index])
+            })
+            // contract
+            this.$firebaseRefs.heroes.once('value', snapshot => {
+              let contracts = []
+              snapshot.forEach(hero => {
+                let contract = {...hero.val()}
+                contract.level = Math.floor(Math.random() * 10)
+                contract.gold = 0
+                delete contract['.key']
+                contracts.push(contract)
+              })
+              // random
+              const index = Math.floor(Math.random() * contracts.length)
+              this.$firebaseRefs.tavern.push(contracts[index])
+            })
             // uid
             store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')

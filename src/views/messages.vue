@@ -26,9 +26,10 @@
         mu-card.dialog
           mu-card-media
             img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
+            .card-extra
+              .card-title(:class="selected.color") {{ selected.name | translate }}
             .card-info
               .card-title {{ selected.subject | translate }}
-              .card-number(:class="selected.color") {{ selected.name | translate }}
 
           .scroll
             mu-card-text.battle(v-if="selected.battle")

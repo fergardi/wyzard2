@@ -38,7 +38,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "blood_pact" : {
     "color": "red",
@@ -79,7 +79,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "bone_wall" : {
     "color": "purple",
@@ -120,7 +120,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "break_enchantment" : {
     "color": "white",
@@ -161,7 +161,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "calm" : {
     "color": "white",
@@ -202,7 +202,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "heaven_doors" : {
     "color": "white",
@@ -243,7 +243,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "concentration" : {
     "color": "blue",
@@ -284,7 +284,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "corruption" : {
     "color": "purple",
@@ -325,7 +325,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "witchcraft" : {
     "color": "purple",
@@ -366,7 +366,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "create_artifact" : {
     "color": "blue",
@@ -407,7 +407,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "curse" : {
     "color": "purple",
@@ -448,7 +448,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "destroy_artifact" : {
     "color": "white",
@@ -489,7 +489,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "divine_protection" : {
     "color": "white",
@@ -530,7 +530,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "eclipse" : {
     "color": "purple",
@@ -571,7 +571,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "elemental_gathering" : {
     "color": "blue",
@@ -612,7 +612,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "epiphany" : {
     "color": "white",
@@ -653,7 +653,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "fake_gold" : {
     "color": "blue",
@@ -694,7 +694,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "fear" : {
     "color": "purple",
@@ -735,7 +735,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "fire_circle" : {
     "color": "red",
@@ -776,7 +776,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "fireball" : {
     "color": "red",
@@ -817,7 +817,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "flame_shield" : {
     "color": "red",
@@ -858,7 +858,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "haste" : {
     "color": "blue",
@@ -899,7 +899,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "healing_hands" : {
     "color": "white",
@@ -940,7 +940,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "hypnosis" : {
     "color": "blue",
@@ -981,7 +981,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "inferno" : {
     "color": "red",
@@ -1022,7 +1022,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "mana_drain" : {
     "color": "red",
@@ -1063,7 +1063,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "mana_shield" : {
     "color": "blue",
@@ -1104,7 +1104,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "meteor_shower" : {
     "color": "red",
@@ -1145,7 +1145,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "necromancy" : {
     "color": "purple",
@@ -1186,7 +1186,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "oracle" : {
     "color": "blue",
@@ -1227,7 +1227,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "peace" : {
     "color": "white",
@@ -1268,7 +1268,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "plague" : {
     "color": "purple",
@@ -1309,7 +1309,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "prosperity" : {
     "color": "white",
@@ -1350,7 +1350,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "resurrection" : {
     "color": "purple",
@@ -1391,7 +1391,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "sunrise" : {
     "color": "white",
@@ -1432,7 +1432,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "tsunami" : {
     "color": "blue",
@@ -1473,7 +1473,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "volcano" : {
     "color": "red",
@@ -1514,7 +1514,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "voodoo" : {
     "color": "purple",
@@ -1555,7 +1555,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "war_drums" : {
     "color": "red",
@@ -1596,7 +1596,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "wisdom" : {
     "color": "green",
@@ -1637,7 +1637,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "counter_spell": {
     "color": "blue",
@@ -1678,7 +1678,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "nature_favor": {
     "color": "green",
@@ -1719,7 +1719,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "hurricane": {
     "color": "green",
@@ -1760,7 +1760,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "tornado": {
     "color": "green",
@@ -1801,7 +1801,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "rust_armor": {
     "color": "green",
@@ -1842,7 +1842,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "climate_control": {
     "color": "green",
@@ -1883,7 +1883,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "elemental_wrath": {
     "color": "green",
@@ -1924,7 +1924,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "beast_council": {
     "color": "green",
@@ -1965,7 +1965,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "regenerate": {
     "color": "green",
@@ -2006,7 +2006,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "fountain_of_youth": {
     "color": "green",
@@ -2047,7 +2047,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_air_elemental" : {
     "color": "blue",
@@ -2088,7 +2088,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "summon_angel" : {
     "color": "white",
@@ -2129,7 +2129,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "summon_archangel" : {
     "color": "white",
@@ -2170,7 +2170,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "summon_basilisk" : {
     "color": "green",
@@ -2211,7 +2211,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "summon_behemoth" : {
     "color": "green",
@@ -2252,7 +2252,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "summon_black_dragon" : {
     "color": "purple",
@@ -2293,7 +2293,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "summon_blue_dragon" : {
     "color": "blue",
@@ -2334,7 +2334,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "summon_cerberus" : {
     "color": "red",
@@ -2375,7 +2375,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_chimera" : {
     "color": "red",
@@ -2416,7 +2416,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "summon_griffin" : {
     "color": "white",
@@ -2457,7 +2457,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_crusader" : {
     "color": "white",
@@ -2498,7 +2498,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "summon_cyclops" : {
     "color": "green",
@@ -2539,7 +2539,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_death_knight" : {
     "color": "purple",
@@ -2580,7 +2580,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "summon_diablo" : {
     "color": "red",
@@ -2621,7 +2621,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "summon_djinn" : {
     "color": "blue",
@@ -2662,7 +2662,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_dominion" : {
     "color": "white",
@@ -2703,7 +2703,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "summon_earth_elemental" : {
     "color": "green",
@@ -2744,7 +2744,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "summon_efreet" : {
     "color": "red",
@@ -2785,7 +2785,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "summon_elf" : {
     "color": "green",
@@ -2826,7 +2826,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "summon_flame_elemental" : {
     "color": "red",
@@ -2867,7 +2867,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "summon_goblin" : {
     "color": "red",
@@ -2908,7 +2908,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "summon_green_dragon" : {
     "color": "green",
@@ -2949,7 +2949,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "summon_hydra" : {
     "color": "green",
@@ -2990,7 +2990,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "summon_ice_elemental" : {
     "color": "blue",
@@ -3031,7 +3031,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "summon_leviathan" : {
     "color": "blue",
@@ -3072,7 +3072,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "summon_lich" : {
     "color": "purple",
@@ -3113,7 +3113,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "summon_light_elemental" : {
     "color": "white",
@@ -3154,7 +3154,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "summon_mage" : {
     "color": "blue",
@@ -3195,7 +3195,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "summon_medusa" : {
     "color": "blue",
@@ -3236,7 +3236,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "summon_minotaur" : {
     "color": "red",
@@ -3277,7 +3277,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "summon_naga" : {
     "color": "blue",
@@ -3318,7 +3318,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "summon_orc" : {
     "color": "red",
@@ -3359,7 +3359,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "summon_paladin" : {
     "color": "white",
@@ -3400,7 +3400,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "summon_pegasus" : {
     "color": "white",
@@ -3441,7 +3441,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "summon_phoenix" : {
     "color": "red",
@@ -3482,7 +3482,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 1000
+    "completion": 1000
   },
   "summon_red_dragon" : {
     "color": "red",
@@ -3523,7 +3523,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "summon_skeleton" : {
     "color": "purple",
@@ -3564,7 +3564,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 100
+    "completion": 100
   },
   "summon_smoke_elemental" : {
     "color": "purple",
@@ -3605,7 +3605,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 500
+    "completion": 500
   },
   "summon_spider" : {
     "color": "purple",
@@ -3646,7 +3646,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 300
+    "completion": 300
   },
   "summon_storm_elemental" : {
     "color": "blue",
@@ -3687,7 +3687,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "summon_treant" : {
     "color": "green",
@@ -3728,7 +3728,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "summon_troll" : {
     "color": "green",
@@ -3769,7 +3769,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "summon_unicorn" : {
     "color": "white",
@@ -3810,7 +3810,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   },
   "summon_vampire" : {
     "color": "purple",
@@ -3851,7 +3851,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 700
+    "completion": 700
   },
   "summon_water_elemental" : {
     "color": "blue",
@@ -3892,7 +3892,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "summon_werewolf" : {
     "color": "purple",
@@ -3933,7 +3933,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 600
+    "completion": 600
   },
   "summon_white_dragon" : {
     "color": "white",
@@ -3974,7 +3974,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 900
+    "completion": 900
   },
   "summon_wraith" : {
     "color": "purple",
@@ -4015,7 +4015,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 400
+    "completion": 400
   },
   "summon_wyvern" : {
     "color": "green",
@@ -4056,7 +4056,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 800
+    "completion": 800
   },
   "summon_zombie" : {
     "color": "purple",
@@ -4097,6 +4097,6 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "turns": 0,
-    "investigation": 200
+    "completion": 200
   }
 }

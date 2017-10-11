@@ -18,7 +18,7 @@
       store.commit('title', 'lbl_title_auction')
     },
     firebase: {
-      auctions: database.ref('auctions').orderByChild('gold')
+      auctions: database.ref('auctions').orderByChild('timestamp')
     }
   }
 </script>

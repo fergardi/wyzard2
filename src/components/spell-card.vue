@@ -125,16 +125,25 @@
         }
       },
       research () {
-        database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
-          let min = research.turns - research.invested
-          research.invested = research.invested + Math.min(min, this.amount)
-          if (research.invested >= research.turns) research.completed = true
-          database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
-            return Math.max(0, turns - Math.min(min, this.amount))
+        if (this.turns <= this.user.turns) { // user has resources
+          database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
+            if (research) {
+              let min = research.completion - research.invested
+              research.invested = research.invested + Math.min(min, this.amount)
+              if (research.invested >= research.completion) research.completed = true
+              database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
+                if (turns) {
+                  turns = Math.max(0, turns - Math.min(min, this.amount))
+                }
+                return turns
+              })
+            }
+            return research
           })
-          return research
-        })
-        store.commit('success', 'lbl_toast_investigation_ok')
+          store.commit('success', 'lbl_toast_investigation_ok')
+        } else {
+          store.commit('error', 'lbl_toast_resource_turns')
+        }
         this.close()
       },
       conjure () {

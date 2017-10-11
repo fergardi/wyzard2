@@ -243,6 +243,7 @@
     .none
       display none
     .mu-dialog
+      font-size inherit !important
       width 95%
       min-width 95%
       max-height 95%
