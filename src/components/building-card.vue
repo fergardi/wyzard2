@@ -85,28 +85,28 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_demolish_construct' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canConstruct") {{ 'lbl_button_demolish_construct' | translate }}
 
     template(v-if="exploration")
       form(@submit.stop.prevent="confirm('explore')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_explore' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canExplore") {{ 'lbl_button_explore' | translate }}
 
     template(v-if="meditation")
       form(@submit.stop.prevent="confirm('meditate')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_meditate' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canMeditate") {{ 'lbl_button_meditate' | translate }}
 
     template(v-if="taxation")
       form(@submit.stop.prevent="confirm('collect')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit") {{ 'lbl_button_collect' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canTax") {{ 'lbl_button_collect' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
@@ -144,9 +144,6 @@
         amount: 0
       }
     },
-    created () {
-      if (store.state.uid) this.$bindAsObject('user', database.ref('users').child(store.state.uid))
-    },
     methods: {
       confirm (type) {
         this.type = type
@@ -169,28 +166,28 @@
         }
       },
       construct () {
-        if (this.amount <= this.user.terrain) { // user has resources
+        if (this.hasTerrain) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
               database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {
                   if (this.amount > 0) {
-                    if (building.goldCost * this.amount <= user.gold && building.manaCost * this.amount <= user.mana && building.peopleCost * this.amount <= user.people && building.turnsCost * this.amount <= user.turns) {
+                    if (this.hasGold && this.hasPeople && this.hasMana && this.hasTurns) {
                       building.quantity += Math.min(user.terrain, this.amount)
                       user.terrain -= Math.min(user.terrain, this.amount)
-                      user.turns = Math.max(0, user.turns - Math.abs(this.amount))
+                      user.turns = Math.max(0, user.turns - Math.abs(this.amount * this.data.turns))
                     } else {
-                      if (building.turnsCost * this.amount <= user.turns) {
+                      if (!this.hasTurns) {
                         store.commit('error', 'lbl_toast_resource_turns')
                       }
-                      if (building.goldCost * this.amount <= user.gold) {
+                      if (!this.hasGold) {
                         store.commit('error', 'lbl_toast_resource_gold')
                       }
-                      if (building.manaCost * this.amount <= user.mana) {
-                        store.commit('error', 'lbl_toast_resource_mana')
-                      }
-                      if (building.peopleCost * this.amount <= user.people) {
+                      if (!this.hasPeople) {
                         store.commit('error', 'lbl_toast_resource_people')
+                      }
+                      if (!this.hasMana) {
+                        store.commit('error', 'lbl_toast_resource_mana')
                       }
                     }
                   } else {
@@ -210,7 +207,7 @@
         this.close()
       },
       explore () {
-        if (this.amount <= this.user.turns) { // user has resources
+        if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
               for (let i = 0; i < this.amount; i++) {
@@ -233,7 +230,7 @@
         this.close()
       },
       meditate () {
-        if (this.amount <= this.user.turns) { // user has resources
+        if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
               database.ref('users').child(store.state.uid).transaction(user => {
@@ -257,7 +254,7 @@
         this.close()
       },
       collect () {
-        if (this.amount <= this.user.turns) { // user has resources
+        if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
               database.ref('users').child(store.state.uid).transaction(user => {
@@ -289,6 +286,40 @@
       exit () {
         this.tooltip = false
         this.trigger = null
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
+      },
+      hasGold () {
+        return this.amount * this.data.goldCost <= this.user.gold
+      },
+      hasPeople () {
+        return this.amount * this.data.peopleCost <= this.user.people
+      },
+      hasMana () {
+        return this.amount * this.data.manaCost <= this.user.mana
+      },
+      hasTerrain () {
+        return this.amount <= this.user.terrain
+      },
+      hasTurns () {
+        return this.amount <= this.user.turns
+      },
+      canExplore () {
+        return this.amount > 0 && this.amount <= this.user.turns
+      },
+      canMeditate () {
+        return this.amount > 0 && this.amount <= this.user.turns
+      },
+      canTax () {
+        return this.amount > 0 && this.amount <= this.user.turns
+      },
+      canConstruct () {
+        return this.amount > 0
+          ? this.hasGold && this.hasPeople && this.hasMana && this.amount * this.data.turns <= this.user.turns
+          : this.amount < 0
       }
     }
   }
