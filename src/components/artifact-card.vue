@@ -24,17 +24,20 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!hasTurns")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!hasTurns") {{ 'lbl_button_sell' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canSell") {{ 'lbl_button_sell' | translate }}
 
     template(v-if="enable && tab === 'activate'")
       form(@submit.stop.prevent="confirm('activate')")
+        mu-card-text(v-if="!data.battle && !data.support")
+          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
+            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!hasTurns") {{ 'lbl_button_activate' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canActive") {{ 'lbl_button_activate' | translate }}
 
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.gold", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns")
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !hasGold || !hasTurns || !canBid") {{ 'lbl_button_bid' | translate }}
 
@@ -225,6 +228,12 @@
       },
       hasTurns () {
         return this.turns <= this.user.turns
+      },
+      canActive () {
+        return !this.battle
+      },
+      canSell () {
+        return this.amount > 0
       }
     }
   }
