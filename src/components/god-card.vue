@@ -2,24 +2,28 @@
   mu-card.god
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
+      .card-extra
+        .card-number(:class="data.color")
+          i.ra.ra-gold-bar
+          span {{ data.gold | numeric }}
       .card-info
-        .card-title(:class="data.color") {{ data.name | translate }}
+        .card-text(:class="data.color") {{ data.name | translate }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="mine")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!canOffer")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="mine") {{ 'lbl_button_offer' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canOffer") {{ 'lbl_button_offer' | translate }}
 
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
         mu-card-media
           img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
           .card-info
-            .card-title {{ 'lbl_label_confirm' | translate }}
+            .card-text {{ 'lbl_label_confirm' | translate }}
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
@@ -58,16 +62,20 @@
         }
       },
       offer () {
-        if (this.amount <= this.user.gold && this.turns <= this.user.turns) {
-          if (this.amount > this.data.gold) {
+        if (this.hasGold && this.hasTurns) {
+          if (this.canOffer) {
             database.ref('gods').child(this.data['.key']).transaction(offer => {
-              offer.gold = this.amount
-              offer.uid = store.state.uid
-              database.ref('users').child(store.state.uid).transaction(user => {
-                user.gold = Math.max(0, user.gold - this.amount)
-                user.turns = Math.max(0, user.turns - 1)
-                return user
-              })
+              if (offer) {
+                offer.gold = this.amount
+                offer.uid = store.state.uid
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.gold = Math.max(0, user.gold - this.amount)
+                    user.turns = Math.max(0, user.turns - this.turns)
+                  }
+                  return user
+                })
+              }
               return offer
             })
             store.commit('success', 'lbl_toast_offer_ok')
@@ -75,10 +83,10 @@
             store.commit('error', 'lbl_toast_offer_error')
           }
         } else {
-          if (this.amount > this.user.gold) {
+          if (!this.hasGold) {
             store.commit('error', 'lbl_toast_resource_gold')
           }
-          if (this.turns > this.user.turns) {
+          if (!this.hasTurns) {
             store.commit('error', 'lbl_toast_resource_turns')
           }
         }
@@ -94,8 +102,14 @@
       user () {
         return store.state.user
       },
-      mine () {
-        return store.state.uid === this.data.uid
+      hasGold () {
+        return this.amount <= this.user.gold
+      },
+      hasTurns () {
+        return this.turns <= this.user.turns
+      },
+      canOffer () {
+        return this.amount > this.data.gold && store.state.uid === this.data.uid
       }
     }
   }

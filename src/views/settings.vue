@@ -1,12 +1,12 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="100", desktop="100")
+    mu-col(width="100", tablet="66", desktop="50")
       mu-card.settings.animated.fadeInUp
         form(@submit.stop.prevent="confirm('restore')")
           mu-card-media
             img(src="http://dovga.net/images/photo/872-drevnie-chasi-1000.jpg", :alt="translate('lbl_label_settings')")
             .card-info
-              .card-title {{ 'lbl_label_settings' | translate }}
+              .card-text {{ 'lbl_label_settings' | translate }}
           mu-card-text
             p {{ 'lbl_description_settings' | translate }}
 
@@ -30,7 +30,7 @@
             mu-card-media
               img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
               .card-info
-                .card-title {{ 'lbl_label_confirm' | translate }}
+                .card-text {{ 'lbl_label_confirm' | translate }}
             mu-card-text
               p {{ 'lbl_label_cannot_undo' | translate }}
             mu-card-actions

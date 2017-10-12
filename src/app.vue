@@ -62,9 +62,9 @@
             mu-icon(slot="left", value=":ra ra-queen-crown")
           mu-list-item(:title="translate('lbl_title_domains')", to="domains", @click="toggle")
             mu-icon(slot="left", value=":ra ra-wooden-sign")
-          mu-list-item(:title="translate('lbl_title_levy')", to="levy", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_levy')", to="taxes", @click="toggle")
             mu-icon(slot="left", value=":ra ra-scroll-unfurled")
-          mu-list-item(:title="translate('lbl_title_explore')", to="explore", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_explore')", to="exploration", @click="toggle")
             mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
@@ -318,7 +318,7 @@
           position absolute
           width 100%
           text-align center
-          .card-title
+          .card-text
           .card-number
             border-radius $radius
             text-align center
@@ -332,25 +332,27 @@
               margin-left 3px
             span + i
               margin-right 3px
-          .card-title
-            min-width 50%
-            max-width 65%
-            width auto
-          .card-number
-            min-width 10%
-            max-width 30%
-            with auto
-          .card-number
-            min-width 10%
-            max-width 50%
-            width auto
-          .card-title + .card-number
+          .card-text + .card-number
           .card-number + .card-number
             margin-left 3px
+          .card-text
+            min-width 10%
+            width auto
+          .card-number
+            min-width 10%
+            with auto
         .card-extra
           bottom 20px
+          .card-text
+            max-width 45%
+          .card-number
+            max-width 45%
         .card-info
           bottom -16px
+          .card-text
+            max-width 75%
+          .card-number
+            max-width 20%
       .mu-card-media + .mu-card-text
         margin-top 10px
       .mu-card-text + .mu-card-text
@@ -455,7 +457,7 @@
     // background colors
     .mu-toast
     .mu-chip
-    .mu-card .card-info .card-title
+    .mu-card .card-info .card-text
     .mu-card .card-info .card-number
     .mu-card .card-extra .card-number
     .mu-card .card-extra .card-number

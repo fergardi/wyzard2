@@ -20,10 +20,10 @@ import domains from '@/views/domains'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
 import messages from '@/views/messages'
-import explore from '@/views/explore'
+import exploration from '@/views/exploration'
 import meditate from '@/views/meditate'
 import auction from '@/views/auction'
-import levy from '@/views/levy'
+import taxes from '@/views/taxes'
 import dispel from '@/views/dispel'
 import quests from '@/views/quests'
 import troops from '@/views/troops'
@@ -138,9 +138,9 @@ export default new Router({
       component: meditate
     },
     {
-      path: '/explore',
-      name: 'explore',
-      component: explore
+      path: '/exploration',
+      name: 'exploration',
+      component: exploration
     },
     {
       path: '/auction',
@@ -153,9 +153,9 @@ export default new Router({
       component: contracts
     },
     {
-      path: '/levy',
-      name: 'levy',
-      component: levy
+      path: '/taxes',
+      name: 'taxes',
+      component: taxes
     },
     {
       path: '/dispel',

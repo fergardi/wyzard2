@@ -7,7 +7,7 @@
         mu-card-media
           img(src="https://i.pinimg.com/originals/8b/b0/96/8bb09649164365bf93dbcc0b12031f34.jpg", :alt="translate('lbl_label_conquest')")
           .card-info
-            .card-title {{ name | translate }}
+            .card-text {{ name | translate }}
         mu-card-text.conquest
           .army
             .troop(v-for="troop, index in army", :key="index")

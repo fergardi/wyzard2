@@ -3,7 +3,7 @@
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
       .card-info
-        .card-title(:class="data.color") {{ data.name | translate }}
+        .card-text(:class="data.color") {{ data.name | translate }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 </template>

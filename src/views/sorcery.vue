@@ -1,8 +1,8 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="research, index in researches", :key="index")
-        spell-card.animated.fadeInUp(:data="research", :conjuration="true", :users="users")
+      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in book", :key="index")
+        spell-card.animated.fadeInUp(:data="spell", :conjuration="true", :users="users")
 </template>
 
 <script>
@@ -16,7 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_sorcery')
-      this.$bindAsArray('researches', database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true))
+      this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book'))
     },
     firebase: {
       users: database.ref('users').orderByChild('name')

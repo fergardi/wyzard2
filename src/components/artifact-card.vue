@@ -7,8 +7,10 @@
           i.ra.ra-gold-bar
           span {{ data.gold | numeric }}
       .card-info
-        .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
+        .card-text(:class="data.color") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="data.quantity != null")
+          i.ra.ra-vase
+          span {{ data.quantity | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
@@ -32,7 +34,7 @@
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns")
+          mu-text-field(type="number", v-model.number="amount", :min="data.gold", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !hasGold || !hasTurns || !canBid") {{ 'lbl_button_bid' | translate }}
 
@@ -41,7 +43,7 @@
         mu-card-media
           img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
           .card-info
-            .card-title {{ 'lbl_label_confirm' | translate }}
+            .card-text {{ 'lbl_label_confirm' | translate }}
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions

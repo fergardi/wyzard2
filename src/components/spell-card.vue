@@ -17,10 +17,10 @@
           span {{ data.turns | numeric }}
         .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
       .card-info
-        .card-title(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.level != null")
+        .card-text(:class="data.color") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="data.magic != null")
           i.ra.ra-trophy
-          span {{ data.level | numeric }}
+          span {{ data.magic | numeric }}
     mu-card-text
       p.card-description {{ data.description | translate }}
       
@@ -81,7 +81,7 @@
         mu-card-media
           img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
           .card-info
-            .card-title {{ 'lbl_label_confirm' | translate }}
+            .card-text {{ 'lbl_label_confirm' | translate }}
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
@@ -138,10 +138,6 @@
             if (research) {
               let min = research.completion - research.invested
               research.invested = research.invested + Math.min(min, this.amount)
-              if (research.invested >= research.completion) {
-                research.completed = true
-                completed = true
-              }
               database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {
                   user.turns = Math.max(0, user.turns - Math.min(min, this.amount))
@@ -149,6 +145,12 @@
                 }
                 return user
               })
+              if (research.invested >= research.completion) {
+                let page = {...research}
+                delete page['.key']
+                database.ref('users').child(store.state.uid).child('book').push(page)
+                return null
+              }
             }
             return research
           })
@@ -254,7 +256,7 @@
         return this.data.turns <= this.user.turns
       },
       canResearch () {
-        return this.amount > 0 && this.amount <= this.user.turns && this.data.level <= this.user.magic
+        return this.amount > 0 && this.amount <= this.user.turns && this.data.magic <= this.user.magic
       }
     }
   }

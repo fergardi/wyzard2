@@ -1,11 +1,11 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="100", desktop="100")
+    mu-col(width="100", tablet="66", desktop="50")
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="https://pbs.twimg.com/media/CqFp0UsVYAED9A8.jpg", :alt="translate('lbl_label_messages')")
           .card-info
-            .card-title {{ 'lbl_label_messages' | translate }}
+            .card-text {{ 'lbl_label_messages' | translate }}
             .card-number {{ messages.length | numeric }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
@@ -27,9 +27,9 @@
           mu-card-media
             img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
             .card-extra
-              .card-title(:class="selected.color") {{ selected.name | translate }}
+              .card-text(:class="selected.color") {{ selected.name | translate }}
             .card-info
-              .card-title {{ selected.subject | translate }}
+              .card-text {{ selected.subject | translate }}
 
           .scroll
             mu-card-text.battle(v-if="selected.battle")

@@ -1,12 +1,12 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="100", desktop="100")
+    mu-col(width="100", tablet="66", desktop="50")
       mu-card.animated.fadeInUp
         form(@submit.stop.prevent="accept")
           mu-card-media
             img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png", :alt="translate('lbl_label_enter')")
             .card-info
-              .card-title {{ 'lbl_label_enter' | translate }}
+              .card-text {{ 'lbl_label_enter' | translate }}
 
           mu-card-text
             mu-tabs(:value="tab", @change="change")
