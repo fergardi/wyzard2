@@ -121,7 +121,7 @@
               })
             })
             // spells
-            this.$firebaseRefs.spells.orderByChild('colorLevel').equalTo(player.color + '1').once('value', snapshot => {
+            this.$firebaseRefs.spells.orderByChild('color').equalTo(player.color).once('value', snapshot => {
               snapshot.forEach(spell => {
                 let research = {...spell.val()}
                 research.invested = 0

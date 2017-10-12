@@ -66,8 +66,8 @@
     template(v-if="conjuration")
       form(@submit.stop.prevent="confirm('conjure')")
         mu-card-text
-          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", v-if="!data.support", required, :errorText="data.battle ? translate('lbl_label_battle_only') : ''", :disabled="data.battle")
-            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')")
+          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", v-if="!data.support && !data.battle", required)
+            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canCast || busy") {{ 'lbl_button_cast' | translate }}
 
@@ -133,25 +133,40 @@
       },
       research () {
         if (this.canResearch) { // user has resources
+          let completed = false
           database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
               let min = research.completion - research.invested
               research.invested = research.invested + Math.min(min, this.amount)
               if (research.invested >= research.completion) {
                 research.completed = true
-                store.commit('success', 'lbl_toast_investigation_complete')
+                completed = true
               }
-              database.ref('users').child(store.state.uid).child('turns').transaction(turns => {
-                if (turns) {
-                  turns = Math.max(0, turns - Math.min(min, this.amount))
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  user.turns = Math.max(0, user.turns - Math.min(min, this.amount))
                   // TODO
                 }
-                return turns
+                return user
               })
             }
             return research
           })
-          store.commit('success', 'lbl_toast_investigation_ok')
+          if (completed) {
+            database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true).once('value', snapshot => {
+              if (snapshot && snapshot.hasChildren()) {
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.magic = 1 + Math.floor(snapshot.numChildren() / 2)
+                  }
+                  return user
+                })
+              }
+            })
+            store.commit('success', 'lbl_toast_investigation_complete')
+          } else {
+            store.commit('success', 'lbl_toast_investigation_ok')
+          }
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
         }
@@ -220,6 +235,9 @@
         this.dialog = false
         this.amount = 0
         this.busy = false
+      },
+      myself (uid) {
+        return store.state.uid === uid
       }
     },
     computed: {
@@ -236,7 +254,7 @@
         return this.data.turns <= this.user.turns
       },
       canResearch () {
-        return this.amount > 0 && this.amount <= this.user.turns
+        return this.amount > 0 && this.amount <= this.user.turns && this.data.level <= this.user.magic
       }
     }
   }
