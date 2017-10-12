@@ -84,12 +84,6 @@ Vue.filter('percentage', (number) => {
 Vue.filter('translate', (label) => {
   return translate(label)
 })
-Vue.filter('ipsum', () => {
-  return 'Muy lejos, más allá de las montañas de palabras...'
-})
-Vue.filter('lorem', () => {
-  return 'Muy lejos, más allá de las montañas de palabras, alejados de los países de las vocales y las consonantes, viven los textos simulados. Viven aislados en casas de letras, en la costa de la semántica, un gran océano de lenguas...'
-})
 // security zone
 let open = [
   'login',

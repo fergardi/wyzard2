@@ -7,7 +7,8 @@
           .card-info
             .card-text {{ 'lbl_label_defense' | translate }}
         mu-card-text
-          p {{ '' | lorem }}
+          p {{ 'lbl_label_protection' | translate }}
+
         mu-card-text
           mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true")
             mu-menu-item(v-for="spell, index in spells", :key="index", :value="spell.name", :title="translate(spell.name)")

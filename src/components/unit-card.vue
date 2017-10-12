@@ -3,14 +3,16 @@
     mu-card-media
       img(:src="settings.cartoon ? data.cartoon : data.image", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
+        .card-number(:class="data.color", v-if="data.quantity != null")
+          i.ra.ra-crossed-axes
+          span {{ data.quantity | numeric }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color")
           i.ra.ra-trophy
           span {{ data.level | numeric }}
     mu-card-text
-      p.card-description {{ data.description | lorem }}
+      p.card-description {{ data.description | translate }}
 
       .card-stats(v-if="info")
         mu-chip.double
