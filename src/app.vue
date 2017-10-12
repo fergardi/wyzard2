@@ -34,27 +34,27 @@
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
             mu-icon(slot="left", value=":ra ra-hourglass")
             mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.turns < 300 ? 'green' : 'red'") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
               span {{ user.turns | numeric }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
             mu-icon(slot="left", value=":ra ra-gold-bar")
             mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.goldPerTurn > 0 ? 'green' : 'red'") {{ user.goldPerTurn > 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.gold | numeric }}
           mu-list-item(:title="translate('lbl_resource_population')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.peoplePerTurn > 0 ? 'green' : 'red'") {{ user.peoplePerTurn > 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.people | numeric }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-            mu-icon(slot="left", value=":ra ra-droplet")
+            mu-icon(slot="left", value=":ra ra-burst-blob")
             mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.manaPerTurn > 0 ? 'green' : 'red'") {{ user.manaPerTurn > 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_territory')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
-              span.income(:class="income ? 'green' : 'red'") {{ income ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.terrainPerTurn > 0 ? 'green' : 'red'") {{ user.terrainPerTurn > 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.terrain | numeric }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
@@ -103,7 +103,7 @@
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-trophy")
+            mu-icon(slot="left", value=":ra ra-tombstone")
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
@@ -202,9 +202,6 @@
       },
       user () {
         return store.state.user
-      },
-      income () {
-        return Math.random() >= 0.5
       },
       settings () {
         return store.state.user ? store.state.user.settings : store.state.settings
@@ -336,10 +333,10 @@
           .card-number + .card-number
             margin-left 3px
           .card-text
-            min-width 10%
+            min-width 5%
             width auto
           .card-number
-            min-width 10%
+            min-width 5%
             with auto
         .card-extra
           bottom 20px

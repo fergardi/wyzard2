@@ -4,9 +4,12 @@
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="https://pbs.twimg.com/media/CqFp0UsVYAED9A8.jpg", :alt="translate('lbl_label_messages')")
+          .card-extra
+            .card-number
+              i.ra.ra-quill-ink
+              span {{ messages.length | numeric }}
           .card-info
             .card-text {{ 'lbl_label_messages' | translate }}
-            .card-number {{ messages.length | numeric }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
             mu-tr

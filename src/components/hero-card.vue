@@ -23,7 +23,7 @@
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaMaintenance | numeric }}
 
     template(v-if="tavern")

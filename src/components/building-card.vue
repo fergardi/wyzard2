@@ -5,9 +5,9 @@
       .card-extra
         template(v-if="construction || meditation")
           .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= data.quantity * data.manaCap ? 'red' : ''")
-            i.ra.ra-droplet
+            i.ra.ra-burst-blob
             span {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
-          .card-number(v-if="data.name === 'lbl_building_barrack'")
+          .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= data.quantity * data.armyCap ? 'red' : ''")
             i.ra.ra-crossed-axes
             span {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
           .card-number(v-if="data.name === 'lbl_building_barrier'")
@@ -22,7 +22,7 @@
           .card-number(v-if="data.name === 'lbl_building_temple'")
             i.ra.ra-crystals
             span +{{ parseInt(data.quantity / data.enchantmentCap) | numeric }}
-          .card-number(v-if="data.name === 'lbl_building_village'")
+          .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= data.quantity * data.peopleCap ? 'red' : ''")
             i.ra.ra-double-team
             span {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
           .card-number(v-if="data.name === 'lbl_building_workshop'")
@@ -35,7 +35,7 @@
           i.ra.ra-tower
           span +{{ parseInt((data.territoryCap - data.quantity) / 100) | numeric }}
         .card-number(v-if="meditation")
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span +{{ data.quantity * data.manaProduction * 2 | numeric }}
         .card-number(v-if="taxation")
           i.ra.ra-gold-bar
@@ -59,7 +59,7 @@
           i.ra.ra-double-team
           span {{ data.peopleCost | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaCost | numeric }}
         mu-chip.triple
           i.ra.ra-gold-bar
@@ -68,7 +68,7 @@
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaMaintenance | numeric }}
         mu-chip.triple
           i.ra.ra-gold-bar
@@ -77,7 +77,7 @@
           i.ra.ra-double-team
           span {{ data.peopleProduction | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaProduction | numeric }}
 
     template(v-if="construction")

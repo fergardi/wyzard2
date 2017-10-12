@@ -10,7 +10,7 @@
           i.ra.ra-hourglass
           span {{ data.invested | numeric }} / {{ data.completion | numeric }}
         .card-number(:class="data.color", v-if="conjuration")
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaCost | numeric }}
         .card-number(:class="data.color", v-if="conjuration")
           i.ra.ra-hourglass
@@ -32,7 +32,7 @@
           i.ra.ra-double-team
           span {{ data.peopleCost | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaCost | numeric }}
         mu-chip.triple
           i.ra.ra-gold-bar
@@ -41,13 +41,13 @@
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaMaintenance | numeric }}
         mu-chip.double
           i.ra.ra-hourglass
           span {{ data.turns | numeric }}
         mu-chip.double
-          i.ra.ra-clockwork
+          i.ra.ra-stopwatch
           span {{ data.research | numeric }}
         mu-chip.double
           i.ra.ra-lightning-trio

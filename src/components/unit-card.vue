@@ -28,7 +28,7 @@
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | numeric }}
         mu-chip.triple
-          i.ra.ra-droplet
+          i.ra.ra-burst-blob
           span {{ data.manaMaintenance | numeric }}
         mu-chip.double
           i.ra.ra-gem
