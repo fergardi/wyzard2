@@ -3,7 +3,7 @@
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="data.gold != null")
+        .card-number(:class="data.color", v-if="auction")
           i.ra.ra-gold-bar
           span {{ data.gold | numeric }}
       .card-info
