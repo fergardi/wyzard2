@@ -93,6 +93,7 @@
           database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
             if (unit) {
               unit.quantity = Math.max(0, unit.quantity - this.amount)
+              if (unit.quantity <= 0) return null
             }
             return unit
           })
@@ -113,7 +114,7 @@
         return store.state.user ? store.state.user.settings : store.state.settings
       },
       canDisband () {
-        return this.amount > 0 && this.amount < this.data.quantity
+        return this.amount > 0 && this.amount <= this.data.quantity
       }
     }
   }

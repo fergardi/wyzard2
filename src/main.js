@@ -60,6 +60,11 @@ Vue.mixin({
     },
     percentage (number) {
       return percentage(number)
+    },
+    random (number) {
+      let max = number
+      let min = max * 0.90 // +- 10%
+      return Math.floor(Math.random() * (max - min + 1) + min)
     }
   }
 })

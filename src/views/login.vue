@@ -23,8 +23,8 @@
 
           mu-card-actions
             mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="disabled")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'", :disabled="busy")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="disabled || busy")
 </template>
 
 <script>
@@ -34,6 +34,7 @@
   export default {
     data () {
       return {
+        busy: false,
         error: false,
         code: null,
         tab: 'login',
@@ -75,22 +76,27 @@
         }
       },
       login () {
+        this.busy = true
         authenticate(this.email, this.password)
         .then(response => {
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
-          this.$router.push('/census')
+          this.busy = false
+          this.$router.push('/sorcery')
         })
         .catch(error => {
           this.error = true
           this.code = 'invalid'
+          this.busy = false
           store.commit('error', error.code)
         })
       },
       signin () {
+        this.busy = true
         if (this.users.find(u => u.name.toLowerCase() === this.username.toLowerCase()) !== undefined) {
           this.error = true
           this.code = 'taken'
+          this.busy = false
           store.commit('error', 'auth/username-already-exists')
         }
         if (!this.disabled) {
@@ -200,6 +206,7 @@
             // uid
             store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')
+            this.busy = false
             // router
             this.$router.push('/census')
           })
@@ -208,6 +215,7 @@
               this.error = true
               this.code = 'exists'
             }
+            this.busy = false
             store.commit('error', error.code)
           })
         }
