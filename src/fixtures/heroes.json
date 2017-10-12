@@ -1,7 +1,7 @@
 {
   "alchemist" : {
     "color" : "blue",
-    "image" : "https://i.pinimg.com/736x/4c/70/54/4c7054a5b2013c01f03f319a970a216a--fantasy-pictures-character-concept.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_alchemist.jpg?alt=media",
     "name" : "lbl_hero_alchemist",
     "description" : "lbl_hero_alchemist_description",
     "goldMaintenance": 0,
@@ -10,7 +10,7 @@
   },
   "commander" : {
     "color" : "white",
-    "image" : "https://i.ytimg.com/vi/4vBFdbsnNXc/maxresdefault.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_commander.jpg?alt=media",
     "name" : "lbl_hero_commander",
     "description" : "lbl_hero_commander_description",
     "goldMaintenance": 0,
@@ -19,7 +19,7 @@
   },
   "demon_king" : {
     "color" : "red",
-    "image" : "https://i.pinimg.com/736x/54/1c/75/541c7521a1d16615546db98e52f85b6b--character-concept-concept-art.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_demon_king.jpg?alt=media",
     "name" : "lbl_hero_demon_king",
     "description" : "lbl_hero_demon_king_description",
     "goldMaintenance": 0,
@@ -28,7 +28,7 @@
   },
   "dragon_rider" : {
     "color" : "red",
-    "image" : "http://2.bp.blogspot.com/_FLeEulk_Eto/TMirjV2md3I/AAAAAAAAAG8/81718NhAPhc/s1600/MTG_AkoumDragonrider.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_dragon_rider.jpg?alt=media",
     "name" : "lbl_hero_dragon_rider",
     "description" : "lbl_hero_dragon_rider_description",
     "goldMaintenance": 0,
@@ -37,7 +37,7 @@
   },
   "druid" : {
     "color" : "green",
-    "image" : "https://i.pinimg.com/736x/b5/44/1b/b5441b341974855b1f357d05c6e9f333--character-portraits-fantasy-characters.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_druid.jpg?alt=media",
     "name" : "lbl_hero_druid",
     "description" : "lbl_hero_druid_description",
     "goldMaintenance": 0,
@@ -46,7 +46,7 @@
   },
   "dryad" : {
     "color" : "green",
-    "image" : "https://img06.deviantart.net/6c8e/i/2012/359/4/0/dryad_by_okha-d4w88tu.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_dryad.jpg?alt=media",
     "name" : "lbl_hero_dryad",
     "description" : "lbl_hero_dryad_description",
     "goldMaintenance": 0,
@@ -55,7 +55,7 @@
   },
   "elementalist" : {
     "color" : "blue",
-    "image" : "https://i.pinimg.com/originals/36/d3/cc/36d3cc6491287d8b8733562d231f1215.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_elementalist.jpg?alt=media",
     "name" : "lbl_hero_elementalist",
     "description" : "lbl_hero_elementalist_description",
     "goldMaintenance": 0,
@@ -64,7 +64,7 @@
   },
   "headless_horseman" : {
     "color" : "purple",
-    "image" : "http://www.joblo.com/images_arrownews/main-headless-horseman_MED.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_headless_horseman.jpg?alt=media",
     "name" : "lbl_hero_headless_horseman",
     "description" : "lbl_hero_headless_horseman_description",
     "goldMaintenance": 0,
@@ -73,7 +73,7 @@
   },
   "leprechaunt" : {
     "color" : "green",
-    "image" : "http://2.bp.blogspot.com/-Pli34qcIfSc/Trgld8YFDfI/AAAAAAAAKzw/--Osr2E9TkU/s640/gnomo+mushroom_hunter_by_lordeeas-d39dgzq.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_leprechaunt.jpg?alt=media",
     "name" : "lbl_hero_leprechaunt",
     "description" : "lbl_hero_leprechaunt_description",
     "goldMaintenance": 0,
@@ -82,7 +82,7 @@
   },
   "merchant" : {
     "color" : "white",
-    "image" : "http://3.bp.blogspot.com/-ULmmq0HlJCc/UA7jiJ0VG3I/AAAAAAAAAhk/kDUwRbQ4Sn8/s1600/Merchant_02.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_merchant.jpg?alt=media",
     "name" : "lbl_hero_merchant",
     "description" : "lbl_hero_merchant_description",
     "goldMaintenance": 0,
@@ -91,7 +91,7 @@
   },
   "necromancer" : {
     "color" : "purple",
-    "image" : "https://i.pinimg.com/736x/eb/b9/61/ebb96114e80b514a023b355703c23801--dark-fantasy-fantasy-art.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_necromancer.jpg?alt=media",
     "name" : "lbl_hero_necromancer",
     "description" : "lbl_hero_necromancer_description",
     "goldMaintenance": 0,
@@ -100,7 +100,7 @@
   },
   "seraph" : {
     "color" : "white",
-    "image" : "https://i.pinimg.com/originals/c4/26/a9/c426a9e6d0e01bbaf7047c887bb43572.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_seraph.jpg?alt=media",
     "name" : "lbl_hero_seraph",
     "description" : "lbl_hero_seraph_description",
     "goldMaintenance": 0,
@@ -109,7 +109,7 @@
   },
   "succubus" : {
     "color" : "red",
-    "image" : "https://i.pinimg.com/originals/56/b1/87/56b187bbeeb11e83b93dc753c5351357.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_succubus.jpg?alt=media",
     "name" : "lbl_hero_succubus",
     "description" : "lbl_hero_succubus_description",
     "goldMaintenance": 0,
@@ -118,16 +118,16 @@
   },
   "witch" : {
     "color" : "purple",
-    "image" : "https://sentierodelletenebre.files.wordpress.com/2017/02/img_20170203_181416.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_witch.jpg?alt=media",
     "name" : "lbl_hero_witch",
     "description" : "lbl_hero_witch_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0
   },
-  "wizard" : {
+  "arcanist" : {
     "color" : "blue",
-    "image" : "https://i.pinimg.com/736x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211--wizard-staff-grand-wizard.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_arcanist.jpg?alt=media",
     "name" : "lbl_hero_wizard",
     "description" : "lbl_hero_wizard_description",
     "goldMaintenance": 0,

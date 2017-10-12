@@ -1,6 +1,6 @@
 {
   "barrack" : {
-    "image" : "http://img08.deviantart.net/5e6f/i/2013/170/a/2/fortress_town_by_flaviobolla-d69qb60.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_barrack.jpg?alt=media",
     "name" : "lbl_building_barrack",
     "description" : "lbl_building_barrack_description",
     "buildable": true,
@@ -18,7 +18,7 @@
     "manaCap": 0,
     "armyCap": 1000,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -26,7 +26,7 @@
     "power": 50
   },
   "barrier" : {
-    "image" : "http://media.wizards.com/images/magic/daily/li/li218_hover_barrier.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_barrier.jpg?alt=media",
     "name" : "lbl_building_barrier",
     "description" : "lbl_building_barrier_description",
     "buildable": true,
@@ -44,7 +44,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 5,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -52,7 +52,7 @@
     "power": 250
   },
   "farm" : {
-    "image" : "https://w-dog.net/wallpapers/13/1/543578873086345/art-jonathan-powell-landscape-farm-mill-cow-airship.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_farm.jpg?alt=media",
     "name" : "lbl_building_farm",
     "description" : "lbl_building_farm_description",
     "buildable": true,
@@ -70,7 +70,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -78,7 +78,7 @@
     "power": 150
   },
   "fortress" : {
-    "image" : "http://www.dsogaming.com/wp-content/uploads/2012/10/DA3_Concept_3.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_fortress.jpg?alt=media",
     "name" : "lbl_building_fortress",
     "description" : "lbl_building_fortress_description",
     "buildable": true,
@@ -96,7 +96,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 10,
     "researchBonus": 0,
@@ -104,7 +104,7 @@
     "power": 250
   },
   "guild" : {
-    "image" : "https://d.wattpad.com/story_parts/187290334/images/1418a7793e4f1774.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_guild.jpg?alt=media",
     "name" : "lbl_building_guild",
     "description" : "lbl_building_guild_description",
     "buildable": true,
@@ -122,7 +122,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 25,
@@ -130,7 +130,7 @@
     "power": 50
   },
   "node" : {
-    "image" : "http://coolvibe.com/wp-content/uploads/2012/11/Sci-fi-Art-Kim-Hee-Wan-Mana-Tank.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_node.jpg?alt=media",
     "name" : "lbl_building_node",
     "description" : "lbl_building_node_description",
     "buildable": true,
@@ -148,7 +148,7 @@
     "manaCap": 1000,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -156,9 +156,9 @@
     "power": 150
   },
   "terrain" : {
-    "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-    "name" : "lbl_building_territory",
-    "description" : "lbl_building_territory_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_terrain.jpg?alt=media",
+    "name" : "lbl_building_terrain",
+    "description" : "lbl_building_terrain_description",
     "buildable": false,
     "goldCost": 0,
     "peopleCost": 0,
@@ -174,7 +174,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 3500,
+    "terrainCap": 3500,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -182,7 +182,7 @@
     "power": 100
   },
   "village" : {
-    "image" : "https://i.pinimg.com/originals/86/33/06/863306078517fee1ffc5b99670e47f98.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_village.jpg?alt=media",
     "name" : "lbl_building_village",
     "description" : "lbl_building_village_description",
     "buildable": true,
@@ -200,7 +200,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -208,7 +208,7 @@
     "power": 150
   },
   "workshop" : {
-    "image" : "https://i.pinimg.com/736x/26/5e/85/265e8548725ec841b88d5eb57d7ce5ab.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_workshop.jpg?alt=media",
     "name" : "lbl_building_workshop",
     "description" : "lbl_building_workshop_description",
     "buildable": true,
@@ -226,7 +226,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 0,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,
@@ -234,7 +234,7 @@
     "power": 50
   },
   "temple" : {
-    "image" : "https://i.pinimg.com/736x/14/01/51/1401519b1f78462f0afc291b7916588c.jpg",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_temple.jpg?alt=media",
     "name" : "lbl_building_temple",
     "description" : "lbl_building_temple_description",
     "buildable": true,
@@ -252,7 +252,7 @@
     "manaCap": 0,
     "armyCap": 0,
     "enchantmentCap": 50,
-    "territoryCap": 0,
+    "terrainCap": 0,
     "magicalDefenseBonus": 0,
     "physicalDefenseBonus": 0,
     "researchBonus": 0,

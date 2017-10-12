@@ -33,7 +33,7 @@
             span {{ user.gold | numeric }}
         .card-number(v-if="exploration")
           i.ra.ra-tower
-          span +{{ parseInt((data.territoryCap - data.quantity) / 100) | numeric }}
+          span +{{ parseInt((data.terrainCap - data.quantity) / 100) | numeric }}
         .card-number(v-if="meditation")
           i.ra.ra-burst-blob
           span +{{ data.quantity * data.manaProduction * 2 | numeric }}
@@ -211,7 +211,7 @@
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
               for (let i = 0; i < this.amount; i++) {
-                building.quantity += Math.max(0, Math.floor((building.territoryCap - building.quantity) / 100))
+                building.quantity += Math.max(0, Math.floor((building.terrainCap - building.quantity) / 100))
               }
               database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {

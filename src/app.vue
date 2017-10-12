@@ -51,7 +51,7 @@
             mu-badge(slot="after")
               span.income(:class="user.manaPerTurn > 0 ? 'green' : 'red'") {{ user.manaPerTurn > 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.mana | numeric }}
-          mu-list-item(:title="translate('lbl_resource_territory')", disabled)
+          mu-list-item(:title="translate('lbl_resource_terrain')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
               span.income(:class="user.terrainPerTurn > 0 ? 'green' : 'red'") {{ user.terrainPerTurn > 0 ? '&#9650;' : '&#9660;' }}

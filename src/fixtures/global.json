@@ -149,7 +149,7 @@
     "terrain" : {
       "buildable" : false,
       "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-      "name" : "lbl_building_territory"
+      "name" : "lbl_building_terrain"
     },
     "village" : {
       "buildable" : true,
@@ -2274,9 +2274,9 @@
       "image" : "https://sentierodelletenebre.files.wordpress.com/2017/02/img_20170203_181416.jpg",
       "name" : "lbl_hero_witch"
     },
-    "wizard" : {
+    "arcanist" : {
       "color" : "blue",
-      "image" : "https://i.pinimg.com/736x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211--wizard-staff-grand-wizard.jpg",
+      "image" : "https://i.pinimg.com/736x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211--arcanist-staff-grand-arcanist.jpg",
       "name" : "lbl_hero_wizard"
     }
   },
@@ -2439,7 +2439,7 @@
     "elemental_gathering" : {
       "color" : "blue",
       "colorLevel" : "blue7",
-      "image" : "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-wizard-fantasy-art.jpg",
+      "image" : "https://i.pinimg.com/736x/bd/cb/b8/bdcbb8b1c2236586679e794971ac3197--fantasy-arcanist-fantasy-art.jpg",
       "level" : 7,
       "name" : "lbl_spell_elemental_gathering",
       "turns" : 700
@@ -2752,15 +2752,15 @@
       "turns" : 100,
       "unit" : "crusader"
     },
-    "summon_cyclops" : {
+    "summon_ogre" : {
       "color" : "green",
       "colorLevel" : "green3",
       "image" : "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
       "level" : 3,
-      "name" : "lbl_spell_summon_cyclops",
+      "name" : "lbl_spell_summon_ogre",
       "number" : 0,
       "turns" : 300,
-      "unit" : "cyclops"
+      "unit" : "ogre"
     },
     "summon_death_knight" : {
       "color" : "purple",
@@ -2862,15 +2862,15 @@
       "turns" : 900,
       "unit" : "green_dragon"
     },
-    "summon_griffin" : {
+    "summon_griffon" : {
       "color" : "white",
       "colorLevel" : "white3",
-      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg",
+      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffon_by_sandara-d2m67v5.jpg",
       "level" : 3,
-      "name" : "lbl_spell_summon_griffin",
+      "name" : "lbl_spell_summon_griffon",
       "number" : 0,
       "turns" : 300,
-      "unit" : "griffin"
+      "unit" : "griffon"
     },
     "summon_hydra" : {
       "color" : "green",
@@ -3296,12 +3296,12 @@
       "level" : 1,
       "name" : "lbl_unit_crusader"
     },
-    "cyclops" : {
+    "ogre" : {
       "color" : "green",
       "image" : "http://img-fotki.yandex.ru/get/5606/7477216.9/0_6933d_fe0e08e1_orig",
       "initial" : false,
       "level" : 3,
-      "name" : "lbl_unit_cyclops"
+      "name" : "lbl_unit_ogre"
     },
     "death_knight" : {
       "color" : "purple",
@@ -3373,12 +3373,12 @@
       "level" : 9,
       "name" : "lbl_unit_green_dragon"
     },
-    "griffin" : {
+    "griffon" : {
       "color" : "white",
-      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffin_by_sandara-d2m67v5.jpg",
+      "image" : "https://orig00.deviantart.net/4577/f/2011/329/4/a/griffon_by_sandara-d2m67v5.jpg",
       "initial" : false,
       "level" : 3,
-      "name" : "lbl_unit_griffin"
+      "name" : "lbl_unit_griffon"
     },
     "hydra" : {
       "color" : "green",
@@ -3638,7 +3638,7 @@
         "-KvGoojushZMleIRxSXy" : {
           "buildable" : false,
           "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-          "name" : "lbl_building_territory",
+          "name" : "lbl_building_terrain",
           "quantity" : 500
         },
         "-KvGoojwg_3LQ_YXkJcG" : {

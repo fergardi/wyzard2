@@ -113,7 +113,7 @@
             this.$firebaseRefs.buildings.once('value', snapshot => {
               snapshot.forEach(building => {
                 let construction = {...building.val()}
-                construction.quantity = construction.name === 'lbl_building_territory'
+                construction.quantity = construction.name === 'lbl_building_terrain'
                   ? 500
                   : 10
                 delete construction['.key']

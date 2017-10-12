@@ -45,7 +45,7 @@
       },
       "terrain" : {
         "image" : "http://pre12.deviantart.net/b3b7/th/pre/f/2015/313/b/b/hidden_river_by_abyss1956-d9g2j6m.png",
-        "name" : "lbl_building_territory",
+        "name" : "lbl_building_terrain",
         "quantity" : 0,
         "buildable": false
       },
