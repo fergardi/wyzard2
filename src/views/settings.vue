@@ -4,7 +4,7 @@
       mu-card.settings.animated.fadeInUp
         form(@submit.stop.prevent="confirm('restore')")
           mu-card-media
-            img(src="http://dovga.net/images/photo/872-drevnie-chasi-1000.jpg", :alt="translate('lbl_label_settings')")
+            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/settings.jpg?alt=media", :alt="translate('lbl_label_settings')")
             .card-info
               .card-text {{ 'lbl_label_settings' | translate }}
           mu-card-text

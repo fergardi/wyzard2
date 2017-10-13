@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
-      mu-card.world.animated.fadeInUp
+      mu-card.world.animated.fadeIn
         land-card
 </template>
 

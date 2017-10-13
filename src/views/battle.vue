@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.battle.animated.fadeInUp
         mu-card-media
-          img(src="http://coolvibe.com/wp-content/uploads/2011/08/orc-battle.jpg", :alt="translate('lbl_label_battle')")
+          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/battle.jpg?alt=media", :alt="translate('lbl_label_battle')")
           .card-info
             .card-text {{ 'lbl_label_attack' | translate }}
         mu-card-text
