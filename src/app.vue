@@ -430,7 +430,6 @@
           margin-left 5px
     .mu-drawer
       min-width 256px
-      width 85%
       height 100%
       overflow hidden
       &.right
@@ -537,6 +536,9 @@
         width 75%
         min-width 75%
         max-width 75%
+    @media only screen and (max-width 479px)
+      .mu-drawer
+        width 85%
     @media only screen and (min-width 480px)
       .mu-appbar
         height 56px
