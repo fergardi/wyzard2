@@ -2,7 +2,9 @@
   "gold" : 10000000,
   "magic" : 1,
   "mana" : 100000,
+  "manaCap": 1000,
   "people" : 10000,
+  "peopleCap": 1000,
   "settings" : {
     "lang" : "es",
     "navbar" : false

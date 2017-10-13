@@ -181,7 +181,7 @@
               snapshot.forEach(artifact => {
                 let auction = {...artifact.val()}
                 auction.quantity = 1
-                auction.gold = 0
+                auction.bid = 0
                 delete auction['.key']
                 auctions.push(auction)
                 // TODO DEVELOPMENT ONLY
@@ -197,7 +197,7 @@
               snapshot.forEach(hero => {
                 let contract = {...hero.val()}
                 contract.level = Math.floor(Math.random() * 5) + 1
-                contract.gold = 0
+                contract.bid = 0
                 delete contract['.key']
                 contracts.push(contract)
                 // TODO DEVELOPMENT ONLY

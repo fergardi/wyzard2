@@ -8,7 +8,7 @@
           span {{ data.turns | minimize }} / {{ data.experience * data.level | minimize }}
         .card-number(:class="data.color", v-if="tavern")
           i.ra.ra-gold-bar
-          span {{ data.gold | minimize }}
+          span {{ data.bid | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="contract || tavern")
@@ -93,7 +93,7 @@
           if (this.canBid && !this.mine) { // bid accepted
             database.ref('tavern').child(this.data['.key']).transaction(auction => {
               if (auction) {
-                auction.gold = this.amount
+                auction.bid = this.amount
                 auction.bidder = store.state.uid
                 database.ref('users').child(store.state.uid).transaction(user => {
                   if (user) {
@@ -148,7 +148,7 @@
         return this.amount <= this.user.gold
       },
       canBid () {
-        return this.amount > this.data.gold
+        return this.amount > this.data.bid
       },
       hasTurns () {
         return this.turns <= this.user.turns

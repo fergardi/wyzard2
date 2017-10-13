@@ -5,7 +5,7 @@
       .card-extra
         .card-number(:class="data.color", v-if="auction")
           i.ra.ra-gold-bar
-          span {{ data.gold | minimize }}
+          span {{ data.bid | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null")
@@ -32,7 +32,7 @@
           mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canActive") {{ 'lbl_button_activate' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canActivate") {{ 'lbl_button_activate' | translate }}
 
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
@@ -100,26 +100,55 @@
       },
       activate () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
-            if (artifact) {
-              artifact.quantity -= 1 // decrease quantity
-              // TODO
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  user.turns = Math.max(0, user.turns - 1) // decrease turns
+          if (this.canActivate) {
+            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
+              if (artifact) {
+                if (artifact.support) { // ally
+                  if (artifact.summon) {
+
+                  } else if (artifact.enchantment) {
+
+                  } else if (artifact.place) {
+
+                  } else if (artifact.level > 0) {
+
+                  } else if (artifact.gold > 0 || artifact.people > 0 || artifact.mana > 0) {
+                    database.ref('users').child(store.state.uid).transaction(user => {
+                      if (user) {
+                        user.gold += this.random(artifact.gold)
+                        user.people *= 1 + (artifact.people / 100)
+                        user.mana *= 1 + (artifact.mana / 100)
+                      }
+                      return user
+                    })
+                  } else if (artifact.terrain > 0) {
+                  }
+                } else { // enemy
                   // TODO
                 }
-                return user
-              })
-            }
-            return artifact
-          })
-          .then(transaction => {
-            if (transaction.snapshot.val().quantity <= 0) { // if no quantity left
-              database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove() // remove the artifact
-            }
-          })
-          store.commit('success', 'lbl_toast_activate_ok')
+                artifact.quantity -= 1 // decrease quantity
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.turns = Math.max(0, user.turns - 1) // decrease turns
+                    // TODO
+                  }
+                  return user
+                })
+                if (artifact.quantity <= 0) return null
+              }
+              return artifact
+            })
+            /*
+            .then(transaction => {
+              if (transaction.snapshot.val().quantity <= 0) { // if no quantity left
+                database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).remove() // remove the artifact
+              }
+            })
+            */
+            store.commit('success', 'lbl_toast_activate_ok')
+          } else {
+            store.commit('error', 'lbl_toast_activate_error')
+          }
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
         }
@@ -131,7 +160,7 @@
             if (artifact) {
               artifact.quantity -= 1 // decrease quantity
               let auction = {...artifact} // create an auction
-              auction.gold = this.amount // set minimum price
+              auction.bid = this.amount // set minimum price
               auction.quantity = 1 // set quantity
               auction.owner = store.state.uid // set owner
               database.ref('auctions').push(auction) // insert the auction
@@ -224,12 +253,12 @@
         return this.amount <= this.user.gold
       },
       canBid () {
-        return this.amount > this.data.gold
+        return this.amount > this.data.bid
       },
       hasTurns () {
         return this.turns <= this.user.turns
       },
-      canActive () {
+      canActivate () {
         return !this.data.battle
       },
       canSell () {
