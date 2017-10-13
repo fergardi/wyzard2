@@ -6,10 +6,10 @@
         template(v-if="construction || meditation")
           .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= data.quantity * data.manaCap ? 'red' : ''")
             i.ra.ra-burst-blob
-            span {{ user.mana | numeric }} / {{ data.quantity * data.manaCap | numeric }}
+            span {{ user.mana | minimize }} / {{ data.quantity * data.manaCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= data.quantity * data.armyCap ? 'red' : ''")
             i.ra.ra-crossed-axes
-            span {{ user.army | numeric }} / {{ data.quantity * data.armyCap | numeric }}
+            span {{ user.army | minimize }} / {{ data.quantity * data.armyCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_barrier'")
             i.ra.ra-eye-shield
             span +{{ data.quantity / data.magicalDefenseBonus | percentage }}
@@ -21,30 +21,30 @@
             span -{{ data.quantity / data.researchBonus | percentage }}
           .card-number(v-if="data.name === 'lbl_building_temple'")
             i.ra.ra-crystals
-            span +{{ parseInt(data.quantity / data.enchantmentCap) | numeric }}
+            span +{{ parseInt(data.quantity / data.enchantmentCap) | minimize }}
           .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= data.quantity * data.peopleCap ? 'red' : ''")
             i.ra.ra-double-team
-            span {{ user.people | numeric }} / {{ data.quantity * data.peopleCap | numeric }}
+            span {{ user.people | minimize }} / {{ data.quantity * data.peopleCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_workshop'")
             i.ra.ra-hourglass
             span -{{ data.quantity / data.constructionBonus | percentage }}
           .card-number(v-if="data.name === 'lbl_building_farm'")
             i.ra.ra-gold-bar
-            span {{ user.gold | numeric }}
+            span {{ user.gold | minimize }}
         .card-number(v-if="exploration")
           i.ra.ra-tower
-          span +{{ parseInt((data.terrainCap - data.quantity) / 100) | numeric }}
+          span +{{ parseInt((data.terrainCap - data.quantity) / 100) | minimize }}
         .card-number(v-if="meditation")
           i.ra.ra-burst-blob
-          span +{{ data.quantity * data.manaProduction * 2 | numeric }}
+          span +{{ data.quantity * data.manaProduction * 2 | minimize }}
         .card-number(v-if="taxation")
           i.ra.ra-gold-bar
-          span +{{ data.quantity * data.goldProduction * 2 | numeric }}
+          span +{{ data.quantity * data.goldProduction * 2 | minimize }}
       .card-info
         .card-text {{ data.name | translate }}
         .card-number(v-if="data.quantity != null")
           i.ra.ra-tower
-          span {{ data.quantity | numeric }}
+          span {{ data.quantity | minimize }}
     mu-card-text
       p.card-description(v-if="!exploration && !meditation && !taxation") {{ data.description | translate }}
       p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}
@@ -54,31 +54,31 @@
       .card-stats(v-if="info")
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldCost | numeric }}
+          span {{ data.goldCost | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleCost | numeric }}
+          span {{ data.peopleCost | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaCost | numeric }}
+          span {{ data.manaCost | minimize }}
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldMaintenance | numeric }}
+          span {{ data.goldMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleMaintenance | numeric }}
+          span {{ data.peopleMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaMaintenance | numeric }}
+          span {{ data.manaMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldProduction | numeric }}
+          span {{ data.goldProduction | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleProduction | numeric }}
+          span {{ data.peopleProduction | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaProduction | numeric }}
+          span {{ data.manaProduction | minimize }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")

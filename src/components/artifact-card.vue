@@ -5,12 +5,12 @@
       .card-extra
         .card-number(:class="data.color", v-if="auction")
           i.ra.ra-gold-bar
-          span {{ data.gold | numeric }}
+          span {{ data.gold | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.quantity != null")
           i.ra.ra-vase
-          span {{ data.quantity | numeric }}
+          span {{ data.quantity | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 

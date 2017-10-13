@@ -7,7 +7,7 @@
           .card-extra
             .card-number
               i.ra.ra-quill-ink
-              span {{ messages.length | numeric }}
+              span {{ messages.length | minimize }}
           .card-info
             .card-text {{ 'lbl_label_messages' | translate }}
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
@@ -43,7 +43,7 @@
             mu-card-text
               p {{ selected.text | translate }}
               p(v-if="selected.attachment")
-                mu-chip {{ selected.attachment.quantity | numeric }}
+                mu-chip {{ selected.attachment.quantity | minimize }}
 
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}

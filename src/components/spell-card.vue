@@ -5,50 +5,50 @@
       .card-extra
         .card-number(:class="data.color", v-if="breaking")
           i.ra.ra-hourglass
-          span {{ data.remaining | numeric }} / {{ data.incantation | numeric }}
+          span {{ data.remaining | minimize }} / {{ data.incantation | minimize }}
         .card-number(:class="data.color", v-if="investigation")
           i.ra.ra-hourglass
-          span {{ data.invested | numeric }} / {{ data.completion | numeric }}
+          span {{ data.invested | minimize }} / {{ data.completion | minimize }}
         .card-number(:class="data.color", v-if="conjuration")
           i.ra.ra-burst-blob
-          span {{ data.manaCost | numeric }}
+          span {{ data.manaCost | minimize }}
         .card-number(:class="data.color", v-if="conjuration")
           i.ra.ra-hourglass
-          span {{ data.turns | numeric }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | numeric }}
+          span {{ data.turns | minimize }}
+        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.magic != null")
           i.ra.ra-trophy
-          span {{ data.magic | numeric }}
+          span {{ data.magic | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
       
       .card-stats(v-if="info")
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldCost | numeric }}
+          span {{ data.goldCost | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleCost | numeric }}
+          span {{ data.peopleCost | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaCost | numeric }}
+          span {{ data.manaCost | minimize }}
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldMaintenance | numeric }}
+          span {{ data.goldMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleMaintenance | numeric }}
+          span {{ data.peopleMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaMaintenance | numeric }}
+          span {{ data.manaMaintenance | minimize }}
         mu-chip.double
           i.ra.ra-hourglass
-          span {{ data.turns | numeric }}
+          span {{ data.turns | minimize }}
         mu-chip.double
           i.ra.ra-stopwatch
-          span {{ data.research | numeric }}
+          span {{ data.research | minimize }}
         mu-chip.double
           i.ra.ra-lightning-trio
           span {{ data.battle ? 'lbl_stat_battle' : data.summon ? 'lbl_stat_summon' : 'lbl_stat_support' | translate }}

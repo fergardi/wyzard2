@@ -5,7 +5,7 @@
       .card-extra
         .card-number(:class="data.color")
           i.ra.ra-gold-bar
-          span {{ data.gold | numeric }}
+          span {{ data.gold | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
     mu-card-text

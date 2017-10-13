@@ -28,34 +28,34 @@
           mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", to="disenchant", @click="toggle")
             // mu-avatar(icon=":ra ra-chain", :backgroundColor="enchantment.color", slot="leftAvatar")
             mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
-            mu-badge(slot="after") {{ enchantment.remaining | numeric }}
+            mu-badge(slot="after") {{ enchantment.remaining | minimize }}
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
             mu-icon(slot="left", value=":ra ra-hourglass")
             mu-badge(slot="after")
               span.income(:class="user.turns < 300 ? 'green' : 'red'") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
-              span {{ user.turns | numeric }}
+              span {{ user.turns | minimize }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
             mu-icon(slot="left", value=":ra ra-gold-bar")
             mu-badge(slot="after")
               span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.gold | numeric }}
+              span {{ user.gold | minimize }}
           mu-list-item(:title="translate('lbl_resource_population')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
               span.income(:class="user.peoplePerTurn >= 0 ? 'green' : 'red'") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.people | numeric }}
+              span {{ user.people | minimize }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
             mu-icon(slot="left", value=":ra ra-burst-blob")
             mu-badge(slot="after")
               span.income(:class="user.manaPerTurn >= 0 ? 'green' : 'red'") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.mana | numeric }}
+              span {{ user.mana | minimize }}
           mu-list-item(:title="translate('lbl_resource_terrain')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
               span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.terrain | numeric }}
+              span {{ user.terrain | minimize }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")

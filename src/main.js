@@ -18,7 +18,7 @@ Vue.use(VueFire)
 // mapbox
 window.mapboxgl = require('mapbox-gl')
 // helpers
-function numeric (number) {
+function minimize (number) {
   return !number
   ? parseFloat(0)
   : number / 1000000000 >= 1
@@ -28,6 +28,11 @@ function numeric (number) {
       : number / 1000 >= 1
         ? parseFloat((number / 1000).toFixed(2)).toLocaleString() + ' K'
         : parseFloat(number.toFixed(2)).toLocaleString()
+}
+function numeric (number) {
+  return !number
+  ? parseFloat(0)
+  : parseFloat(number.toFixed(2)).toLocaleString()
 }
 function percentage (number) {
   return !number
@@ -55,6 +60,9 @@ Vue.mixin({
     datetime (timestamp) {
       return datetime(timestamp)
     },
+    minimize (number) {
+      return minimize(number)
+    },
     numeric (number) {
       return numeric(number)
     },
@@ -74,6 +82,9 @@ Vue.filter('datetime', (timestamp) => {
 })
 Vue.filter('timesince', (timestamp) => {
   return timesince(timestamp)
+})
+Vue.filter('minimize', (number) => {
+  return minimize(number)
 })
 Vue.filter('numeric', (number) => {
   return numeric(number)

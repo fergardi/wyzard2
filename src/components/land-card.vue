@@ -12,7 +12,7 @@
           .army
             .troop(v-for="troop, index in army", :key="index")
               .name(:class="troop.color") {{ troop.name | translate }}
-              .quantity(:class="troop.color") {{ troop.quantity | numeric }}
+              .quantity(:class="troop.color") {{ troop.quantity | minimize }}
 
         mu-card-actions
           mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")

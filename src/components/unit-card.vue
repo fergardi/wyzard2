@@ -5,31 +5,31 @@
       .card-extra
         .card-number(:class="data.color", v-if="data.quantity != null")
           i.ra.ra-crossed-axes
-          span {{ data.quantity | numeric }}
+          span {{ data.quantity | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color")
           i.ra.ra-trophy
-          span {{ data.level | numeric }}
+          span {{ data.level | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
       .card-stats(v-if="info")
         mu-chip.double
           i.ra.ra-sword
-          span {{ data.damage | numeric }}
+          span {{ data.damage | minimize }}
         mu-chip.double
           i.ra.ra-hearts
-          span {{ data.health | numeric }}
+          span {{ data.health | minimize }}
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldMaintenance | numeric }}
+          span {{ data.goldMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleMaintenance | numeric }}
+          span {{ data.peopleMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaMaintenance | numeric }}
+          span {{ data.manaMaintenance | minimize }}
         mu-chip.double
           i.ra.ra-gem
           span {{ data.family | translate }}

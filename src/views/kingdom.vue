@@ -21,29 +21,29 @@
             mu-tr(v-for="building, index in user.constructions", :key="index")
               mu-td
                 mu-chip(:class="building.color") {{ building.name | translate }}
-              mu-td {{ building.quantity }}
-              mu-td {{ building.quantity * (building.goldProduction - building.goldMaintenance) }}
-              mu-td {{ building.quantity * (building.peopleProduction - building.peopleMaintenance) }}
-              mu-td {{ building.quantity * (building.manaProduction - building.manaMaintenance) }}
-              mu-td {{ building.quantity * building.power }}
+              mu-td {{ building.quantity | numeric }}
+              mu-td {{ building.quantity * (building.goldProduction - building.goldMaintenance) | numeric }}
+              mu-td {{ building.quantity * (building.peopleProduction - building.peopleMaintenance) | numeric }}
+              mu-td {{ building.quantity * (building.manaProduction - building.manaMaintenance) | numeric }}
+              mu-td {{ building.quantity * building.power | numeric }}
 
             mu-tr(v-for="unit, index in user.troops", :key="index")
               mu-td
                 mu-chip(:class="unit.color") {{ unit.name | translate }}
-              mu-td {{ unit.quantity }}
-              mu-td {{ unit.quantity * unit.goldMaintenance }}
-              mu-td {{ unit.quantity * unit.peopleMaintenance }}
-              mu-td {{ unit.quantity * unit.manaMaintenance }}
-              mu-td {{ unit.quantity * unit.power }}
+              mu-td {{ unit.quantity | numeric }}
+              mu-td {{ unit.quantity * unit.goldMaintenance | numeric }}
+              mu-td {{ unit.quantity * unit.peopleMaintenance | numeric }}
+              mu-td {{ unit.quantity * unit.manaMaintenance | numeric }}
+              mu-td {{ unit.quantity * unit.power | numeric }}
 
             mu-tr(v-for="hero, index in user.contracts", :key="index")
               mu-td
                 mu-chip(:class="hero.color") {{ hero.name | translate }}
-              mu-td {{ hero.level }}
-              mu-td {{ hero.level * hero.goldMaintenance }}
-              mu-td {{ hero.level * hero.peopleMaintenance }}
-              mu-td {{ hero.level * hero.manaMaintenance }}
-              mu-td {{ hero.level * hero.power }}
+              mu-td {{ hero.level | numeric }}
+              mu-td {{ hero.level * hero.goldMaintenance | numeric }}
+              mu-td {{ hero.level * hero.peopleMaintenance | numeric }}
+              mu-td {{ hero.level * hero.manaMaintenance | numeric }}
+              mu-td {{ hero.level * hero.power | numeric }}
             
             mu-tr
               mu-td {{ 'lbl_table_total' | translate }}

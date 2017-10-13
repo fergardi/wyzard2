@@ -7,7 +7,7 @@
           .card-extra
             .card-number
               i.ra.ra-tombstone
-              span {{ users.length | numeric }}
+              span {{ users.length | minimize }}
           .card-info
             .card-text {{ 'lbl_label_players' | translate }}
             
@@ -19,10 +19,10 @@
               mu-th {{ 'lbl_table_power' | translate }}
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
-              mu-td {{ (current - 1) * size + index + 1 | numeric }}
+              mu-td {{ (current - 1) * size + index + 1 | minimize }}
               mu-td
                 mu-chip(:class="user.color") {{ user.name }}
-              mu-td {{ user.power | numeric }}
+              mu-td {{ user.power | minimize }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="size")
 </template>

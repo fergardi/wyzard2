@@ -5,28 +5,28 @@
       .card-extra
         .card-number(:class="data.color", v-if="contract")
           i.ra.ra-trefoil-lily
-          span {{ data.turns | numeric }} / {{ data.experience * data.level | numeric }}
+          span {{ data.turns | minimize }} / {{ data.experience * data.level | minimize }}
         .card-number(:class="data.color", v-if="tavern")
           i.ra.ra-gold-bar
-          span {{ data.gold | numeric }}
+          span {{ data.gold | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="contract || tavern")
           i.ra.ra-trophy
-          span {{ data.level | numeric }}
+          span {{ data.level | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
       .card-stats(v-if="info")
         mu-chip.triple
           i.ra.ra-gold-bar
-          span {{ data.goldMaintenance | numeric }}
+          span {{ data.goldMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-double-team
-          span {{ data.peopleMaintenance | numeric }}
+          span {{ data.peopleMaintenance | minimize }}
         mu-chip.triple
           i.ra.ra-burst-blob
-          span {{ data.manaMaintenance | numeric }}
+          span {{ data.manaMaintenance | minimize }}
 
     template(v-if="tavern")
       form(@submit.stop.prevent="confirm('bid')")

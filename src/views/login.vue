@@ -196,7 +196,7 @@
               let contracts = []
               snapshot.forEach(hero => {
                 let contract = {...hero.val()}
-                contract.level = Math.floor(Math.random() * 10) + 1
+                contract.level = Math.floor(Math.random() * 5) + 1
                 contract.gold = 0
                 delete contract['.key']
                 contracts.push(contract)
