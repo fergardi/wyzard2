@@ -7,6 +7,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "commander" : {
@@ -17,6 +18,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "demon_king" : {
@@ -27,6 +29,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "dragon_rider" : {
@@ -37,6 +40,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "druid" : {
@@ -47,6 +51,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "dryad" : {
@@ -57,6 +62,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "elementalist" : {
@@ -67,6 +73,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "headless_horseman" : {
@@ -77,6 +84,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "leprechaunt" : {
@@ -87,6 +95,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "merchant" : {
@@ -97,6 +106,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "necromancer" : {
@@ -107,6 +117,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "seraph" : {
@@ -117,6 +128,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "succubus" : {
@@ -127,6 +139,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "witch" : {
@@ -137,6 +150,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   },
   "arcanist" : {
@@ -147,6 +161,7 @@
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
+    "next": 50,
     "power": 0
   }
 }

@@ -18,8 +18,7 @@ const vuex = new Vuex.Store({
     logged: false,
     settings: {
       lang: 'es',
-      navbar: false,
-      cartoon: false
+      navbar: false
     },
     user: null, // firebase user
     toasts: [],

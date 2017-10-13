@@ -15,10 +15,6 @@
             mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
 
           mu-card-text
-            .mu-text-field-label {{ 'lbl_settings_copyright' | translate }}
-            mu-checkbox(v-model="settings.cartoon", :label="translate('lbl_settings_cartoon')", @change="save")
-
-          mu-card-text
             mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')", :fullWidth="true", @input="save")
               mu-menu-item(v-for="language, index in languages", :key="index", :value="language.key", :title="translate(language.value)")
 

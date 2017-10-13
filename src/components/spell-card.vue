@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.spell
     mu-card-media
-      img(:src="settings.cartoon ? data.cartoon : data.image", :alt="translate(data.name)")
+      img(:src="data.image", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="breaking")
           i.ra.ra-hourglass

@@ -230,7 +230,7 @@
         return this.turns <= this.user.turns
       },
       canActive () {
-        return !this.battle
+        return !this.data.battle
       },
       canSell () {
         return this.amount > 0

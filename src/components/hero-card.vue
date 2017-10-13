@@ -3,13 +3,15 @@
     mu-card-media
       img(:src="data.image", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="contract") {{ data.experience | numeric }} / {{ data.next | numeric }}
+        .card-number(:class="data.color", v-if="contract")
+          i.ra.ra-trefoil-lily
+          span {{ data.experience | numeric }} / {{ data.next * data.level | numeric }}
         .card-number(:class="data.color", v-if="tavern")
           i.ra.ra-gold-bar
           span {{ data.gold | numeric }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="tavern")
+        .card-number(:class="data.color")
           i.ra.ra-trophy
           span {{ data.level | numeric }}
     mu-card-text
@@ -34,7 +36,7 @@
           mu-raised-button(primary, type="submit", :disabled="isMine || !hasGold || !hasTurns || !canBid") {{ 'lbl_button_bid' | translate }}
 
     template(v-if="contract")
-      form(@submit.stop.prevent="confirm('disband')")
+      form(@submit.stop.prevent="confirm('fire')")
         mu-card-actions
           mu-raised-button(primary, type="submit") {{ 'lbl_button_fire' | translate }}
 
@@ -81,6 +83,9 @@
           case 'bid':
             this.bid()
             break
+          case 'fire':
+            this.fire()
+            break
         }
       },
       bid () {
@@ -115,6 +120,17 @@
         }
         this.close()
       },
+      fire () {
+        if (this.canFire) { // can fire
+          database.ref('users').child(store.state.uid).child('contracts').child(this.data['.key']).transaction(contract => {
+            return null
+          })
+          store.commit('success', 'lbl_toast_firing_ok')
+        } else {
+          store.commit('error', 'lbl_toast_firing_error')
+        }
+        this.close()
+      },
       close () {
         this.type = null
         this.dialog = false
@@ -136,6 +152,9 @@
       },
       hasTurns () {
         return this.turns <= this.user.turns
+      },
+      canFire () {
+        return true
       }
     }
   }

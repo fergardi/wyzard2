@@ -40,10 +40,10 @@
               mu-td
                 mu-chip(:class="hero.color") {{ hero.name | translate }}
               mu-td {{ hero.level }}
-              mu-td {{ hero.quantity * hero.goldMaintenance }}
-              mu-td {{ hero.quantity * hero.peopleMaintenance }}
-              mu-td {{ hero.quantity * hero.manaMaintenance }}
-              mu-td {{ hero.quantity * hero.power }}
+              mu-td {{ hero.level * hero.goldMaintenance }}
+              mu-td {{ hero.level * hero.peopleMaintenance }}
+              mu-td {{ hero.level * hero.manaMaintenance }}
+              mu-td {{ hero.level * hero.power }}
             
             mu-tr
               mu-td {{ 'lbl_table_total' | translate }}

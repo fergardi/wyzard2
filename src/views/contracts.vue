@@ -2,7 +2,7 @@
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(v-for="contract, index in contracts", :key="index", width="100", tablet="50", desktop="33")
-        hero-card.animated.fadeInUp(:data="contract")
+        hero-card.animated.fadeInUp(:data="contract", :contract="true")
 </template>
 
 <script>

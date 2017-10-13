@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.unit
     mu-card-media
-      img(:src="settings.cartoon ? data.cartoon : data.image", :alt="translate(data.name)")
+      img(:src="data.image", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="data.quantity != null")
           i.ra.ra-crossed-axes

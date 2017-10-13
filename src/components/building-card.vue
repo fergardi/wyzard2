@@ -83,28 +83,28 @@
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", :max="user.terrain", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canConstruct") {{ 'lbl_button_demolish_construct' | translate }}
 
     template(v-if="exploration")
       form(@submit.stop.prevent="confirm('explore')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canExplore") {{ 'lbl_button_explore' | translate }}
 
     template(v-if="meditation")
       form(@submit.stop.prevent="confirm('meditate')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canMeditate") {{ 'lbl_button_meditate' | translate }}
 
     template(v-if="taxation")
       form(@submit.stop.prevent="confirm('collect')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canTax") {{ 'lbl_button_collect' | translate }}
 
