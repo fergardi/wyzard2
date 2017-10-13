@@ -19,16 +19,6 @@
 
       mu-list.scroll
         template(v-if="logged")
-          mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
-          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", to="devotion", @click="toggle")
-            // mu-avatar(icon=":ra ra-bleeding-eye", :backgroundColor="blessing.color", slot="leftAvatar")
-            mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
-
-          mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
-          mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", to="disenchant", @click="toggle")
-            // mu-avatar(icon=":ra ra-chain", :backgroundColor="enchantment.color", slot="leftAvatar")
-            mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
-            mu-badge(slot="after") {{ enchantment.remaining | minimize }}
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
@@ -57,6 +47,25 @@
               span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.terrain | minimize }}
 
+          mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
+          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
+            mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
+
+          mu-sub-header(v-if="user.enchantments") {{ 'lbl_title_enchantments' | translate }}
+          mu-list-item(v-for="enchantment, index in user.enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+            mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
+            mu-badge(slot="after") {{ enchantment.remaining | minimize }}
+
+          mu-sub-header(v-if="user.contracts") {{ 'lbl_title_contracts' | translate }}
+          mu-list-item(v-for="contract, index in user.contracts", :title="translate(contract.name)", :key="index", disabled)
+            mu-icon(slot="left", value=":ra ra-hood", :class="contract.color")
+            mu-badge(slot="after") {{ contract.level | minimize }}
+
+          mu-sub-header(v-if="user.troops") {{ 'lbl_title_troops' | translate }}
+          mu-list-item(v-for="troop, index in user.troops", :title="translate(troop.name)", :key="index", disabled)
+            mu-icon(slot="left", value=":ra ra-crossed-axes", :class="troop.color")
+            mu-badge(slot="after") {{ troop.quantity | minimize }}
+
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
             mu-icon(slot="left", value=":ra ra-queen-crown")
@@ -77,9 +86,9 @@
           mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crystal-wand")
           mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-crystals")
+            mu-icon(slot="left", value=":ra ra-mirror")
           mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-vase")
+            mu-icon(slot="left", value=":ra ra-crystals")
 
           mu-sub-header {{ 'lbl_title_military' | translate }}
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
@@ -166,23 +175,12 @@
       store.watch((state) => state.logged, (value) => {
         if (value) {
           store.dispatch('user', database.ref('users').child(store.state.uid))
-          this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments'))
           this.$bindAsArray('blessings', database.ref('gods').orderByChild('uid').equalTo(store.state.uid))
           database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
-            store.commit('info', this.translate(message.val().subject))
+            store.commit('info', this.translate('lbl_label_message') + ': ' + this.translate(message.val().subject))
           })
         }
       })
-      // messaging
-      /*
-      messaging.requestPermission()
-      .then(() => {
-        store.commit('info', 'lbl_toast_notifications_ok')
-      })
-      .catch(() => {
-        store.commit('info', 'lbl_toast_notifications_error')
-      })
-      */
     },
     computed: {
       menu () {
@@ -431,6 +429,8 @@
         .mu-raised-button + .mu-raised-button
           margin-left 5px
     .mu-drawer
+      min-width 256px
+      width 85%
       height 100%
       overflow hidden
       &.right
@@ -521,40 +521,10 @@
       font-weight bold
       border 1px solid
       border-radius $radius
-    .tooltip
-      display block !important
-      z-index 10000
-      margin-bottom 5px
-      border 1px solid
-      border-radius 16px
-      .tooltip-inner
-        background darken($dark, 20%)
-        color $gold
-        border-radius 16px
-        padding 5px 10px 4px
-      .tooltip-arrow
-        width 0
-        height 0
-        border-style solid
-        position absolute
-        margin 5px
-        border-color $gold
-        border-width 5px 5px 0 5px
-        border-left-color transparent !important
-        border-right-color transparent !important
-        border-bottom-color transparent !important
-        bottom -5px
-        left calc(50% - 5px)
-        margin-top 0
-        margin-bottom 0
-    .tooltip[aria-hidden='true']
-      visibility hidden
-      opacity 0
-      transition opacity .15s, visibility .15s
-    .tooltip[aria-hidden='false']
-      visibility visible
-      opacity 1
-      transition opacity .15s
+    .ellipsis
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
     @media only screen and (min-width 480px) and (max-width 1079px)
       .mu-toast
         width 250px

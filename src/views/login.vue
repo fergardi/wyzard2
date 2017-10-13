@@ -52,6 +52,7 @@
       factions: database.ref('factions'),
       spells: database.ref('spells'),
       units: database.ref('units'),
+      gods: database.ref('gods'),
       users: database.ref('users'),
       auctions: database.ref('auctions'),
       tavern: database.ref('tavern'),
@@ -206,6 +207,21 @@
               // random
               const index = Math.floor(Math.random() * contracts.length)
               this.$firebaseRefs.tavern.push(contracts[index])
+            })
+            // TODO DEVELOPMENT ONLY
+            this.$firebaseRefs.spells.orderByChild('enchantment').equalTo(true).once('value', snapshot => {
+              snapshot.forEach(spell => {
+                let enchantment = {...spell.val()}
+                enchantment.remaining = enchantment.duration
+                delete enchantment['.key']
+                this.$firebaseRefs.users.child(auth.currentUser.uid).child('enchantments').push(enchantment)
+              })
+            })
+            // TODO DEVELOPMENT ONLY
+            this.$firebaseRefs.gods.once('value', snapshot => {
+              snapshot.forEach(god => {
+                this.$firebaseRefs.gods.child(god.key).child('uid').set(auth.currentUser.uid)
+              })
             })
             // uid
             store.commit('uid', auth.currentUser.uid)

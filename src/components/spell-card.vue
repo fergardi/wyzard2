@@ -5,7 +5,7 @@
       .card-extra
         .card-number(:class="data.color", v-if="breaking")
           i.ra.ra-hourglass
-          span {{ data.remaining | minimize }} / {{ data.incantation | minimize }}
+          span {{ data.remaining | minimize }} / {{ data.duration | minimize }}
         .card-number(:class="data.color", v-if="investigation")
           i.ra.ra-hourglass
           span {{ data.invested | minimize }} / {{ data.completion | minimize }}
