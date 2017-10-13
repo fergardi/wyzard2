@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="100", desktop="100")
-      mu-card.domains.animated.fadeInUp
+      mu-card.world.animated.fadeInUp
         land-card
 </template>
 
@@ -14,7 +14,7 @@
       'land-card': land
     },
     created () {
-      store.commit('title', 'lbl_title_domains')
+      store.commit('title', 'lbl_title_world')
     }
   }
 </script>

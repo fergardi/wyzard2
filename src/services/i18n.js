@@ -470,7 +470,7 @@ export default {
     lbl_title_tavern: 'Taberna',
     lbl_title_devotion: 'Devoción',
     lbl_title_kingdom: 'Reino',
-    lbl_title_domains: 'Dominios',
+    lbl_title_world: 'Mundo',
     lbl_title_settings: 'Preferencias',
     lbl_title_messages: 'Mensajes',
     lbl_title_account: 'Cuenta',

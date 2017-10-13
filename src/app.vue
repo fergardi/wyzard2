@@ -60,7 +60,7 @@
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
             mu-icon(slot="left", value=":ra ra-queen-crown")
-          mu-list-item(:title="translate('lbl_title_domains')", to="domains", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
             mu-icon(slot="left", value=":ra ra-wooden-sign")
           mu-list-item(:title="translate('lbl_title_levy')", to="taxes", @click="toggle")
             mu-icon(slot="left", value=":ra ra-scroll-unfurled")
@@ -458,8 +458,6 @@
     .mu-card .card-info .card-number
     .mu-card .card-extra .card-number
     .mu-card .card-extra .card-number
-    .mu-dialog .troop .name
-    .mu-dialog .troop .quantity
       &.red
         background-color $red
       &.green

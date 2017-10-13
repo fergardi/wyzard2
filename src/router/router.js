@@ -16,7 +16,7 @@ import census from '@/views/census'
 import sorcery from '@/views/sorcery'
 import tavern from '@/views/tavern'
 import devotion from '@/views/devotion'
-import domains from '@/views/domains'
+import world from '@/views/world'
 import kingdom from '@/views/kingdom'
 import settings from '@/views/settings'
 import messages from '@/views/messages'
@@ -54,7 +54,7 @@ export default new Router({
     { path: '/tavern', name: 'tavern', component: tavern },
     { path: '/devotion', name: 'devotion', component: devotion },
     { path: '/kingdom', name: 'kingdom', component: kingdom },
-    { path: '/domains', name: 'domains', component: domains },
+    { path: '/world', name: 'world', component: world },
     { path: '/settings', name: 'settings', component: settings },
     { path: '/messages', name: 'messages', component: messages },
     { path: '/meditate', name: 'meditate', component: meditate },
