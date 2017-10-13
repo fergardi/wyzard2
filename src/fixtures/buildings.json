@@ -20,10 +20,10 @@
     "armyCap": 1000,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 50
   },
   "barrier" : {
@@ -47,10 +47,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 5,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 5,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 250
   },
   "farm" : {
@@ -74,10 +74,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 150
   },
   "fortress" : {
@@ -101,10 +101,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 10,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 10,
+    "research": 0,
+    "construction": 0,
     "power": 250
   },
   "guild" : {
@@ -128,10 +128,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 25,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 25,
+    "construction": 0,
     "power": 50
   },
   "node" : {
@@ -155,10 +155,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 150
   },
   "terrain" : {
@@ -182,10 +182,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 3500,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 100
   },
   "village" : {
@@ -209,10 +209,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 150
   },
   "workshop" : {
@@ -236,10 +236,10 @@
     "armyCap": 0,
     "enchantmentCap": 0,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 25,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 25,
     "power": 50
   },
   "temple" : {
@@ -263,10 +263,10 @@
     "armyCap": 0,
     "enchantmentCap": 50,
     "terrainCap": 0,
-    "magicalDefenseBonus": 0,
-    "physicalDefenseBonus": 0,
-    "researchBonus": 0,
-    "constructionBonus": 0,
+    "magicalDefense": 0,
+    "physicalDefense": 0,
+    "research": 0,
+    "construction": 0,
     "power": 150
   }
 }

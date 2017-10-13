@@ -5,13 +5,13 @@
       .card-extra
         .card-number(:class="data.color", v-if="contract")
           i.ra.ra-trefoil-lily
-          span {{ data.experience | numeric }} / {{ data.next * data.level | numeric }}
+          span {{ data.turns | numeric }} / {{ data.experience * data.level | numeric }}
         .card-number(:class="data.color", v-if="tavern")
           i.ra.ra-gold-bar
           span {{ data.gold | numeric }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color")
+        .card-number(:class="data.color", v-if="contract || tavern")
           i.ra.ra-trophy
           span {{ data.level | numeric }}
     mu-card-text
