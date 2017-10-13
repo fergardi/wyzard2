@@ -18,7 +18,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "angel" : {
     "color": "white",
@@ -39,7 +40,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_celestial",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "archangel" : {
     "color": "white",
@@ -60,7 +62,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_celestial",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "basilisk" : {
     "color": "green",
@@ -81,7 +84,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "behemoth" : {
     "color": "green",
@@ -102,7 +106,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "black_dragon" : {
     "color": "purple",
@@ -123,7 +128,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "blue_dragon" : {
     "color": "blue",
@@ -144,7 +150,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "cerberus" : {
     "color": "red",
@@ -165,7 +172,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "chimera" : {
     "color": "red",
@@ -186,7 +194,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "griffon" : {
     "color": "white",
@@ -207,7 +216,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "crusader" : {
     "color": "white",
@@ -228,7 +238,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "ogre" : {
     "color": "green",
@@ -249,7 +260,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "death_knight" : {
     "color": "purple",
@@ -270,7 +282,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "diablo" : {
     "color": "red",
@@ -291,7 +304,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "djinn" : {
     "color": "blue",
@@ -312,7 +326,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_demon",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "dominion" : {
     "color": "white",
@@ -333,7 +348,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_celestial",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "earth_elemental" : {
     "color": "green",
@@ -354,7 +370,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "efreet" : {
     "color": "red",
@@ -375,7 +392,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "elf" : {
     "color": "green",
@@ -396,7 +414,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "flame_elemental" : {
     "color": "red",
@@ -417,7 +436,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "goblin" : {
     "color": "red",
@@ -438,7 +458,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "green_dragon" : {
     "color": "green",
@@ -459,7 +480,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "hydra" : {
     "color": "green",
@@ -480,7 +502,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "ice_elemental" : {
     "color": "blue",
@@ -501,7 +524,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "leviathan" : {
     "color": "blue",
@@ -522,7 +546,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "lich" : {
     "color": "purple",
@@ -543,7 +568,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "light_elemental" : {
     "color": "white",
@@ -564,7 +590,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "mage" : {
     "color": "blue",
@@ -585,7 +612,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "medusa" : {
     "color": "blue",
@@ -606,7 +634,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "minotaur" : {
     "color": "red",
@@ -627,7 +656,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "naga" : {
     "color": "blue",
@@ -648,7 +678,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "orc" : {
     "color": "red",
@@ -669,7 +700,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "paladin" : {
     "color": "white",
@@ -690,7 +722,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "pegasus" : {
     "color": "white",
@@ -711,7 +744,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "phoenix" : {
     "color": "red",
@@ -732,7 +766,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "red_dragon" : {
     "color": "red",
@@ -753,7 +788,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "skeleton" : {
     "color": "purple",
@@ -774,7 +810,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "smoke_elemental" : {
     "color": "purple",
@@ -795,7 +832,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "spider" : {
     "color": "purple",
@@ -816,7 +854,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "storm_elemental" : {
     "color": "blue",
@@ -837,7 +876,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "treant" : {
     "color": "green",
@@ -858,7 +898,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "troll" : {
     "color": "green",
@@ -879,7 +920,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "unicorn" : {
     "color": "white",
@@ -900,7 +942,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "vampire" : {
     "color": "purple",
@@ -921,7 +964,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "water_elemental" : {
     "color": "blue",
@@ -942,7 +986,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "werewolf" : {
     "color": "purple",
@@ -963,7 +1008,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   },
   "white_dragon" : {
     "color": "white",
@@ -984,7 +1030,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "wraith" : {
     "color": "purple",
@@ -1005,7 +1052,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_range"
+    "type": "lbl_type_range",
+    "power": 0
   },
   "wyvern" : {
     "color": "green",
@@ -1026,7 +1074,8 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_dragon",
-    "type": "lbl_type_fly"
+    "type": "lbl_type_fly",
+    "power": 0
   },
   "zombie" : {
     "color": "purple",
@@ -1047,6 +1096,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_undead",
-    "type": "lbl_type_melee"
+    "type": "lbl_type_melee",
+    "power": 0
   }
 }

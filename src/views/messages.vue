@@ -1,6 +1,6 @@
 <template lang="pug">
   mu-row
-    mu-col(width="100", tablet="66", desktop="50")
+    mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="https://pbs.twimg.com/media/CqFp0UsVYAED9A8.jpg", :alt="translate('lbl_label_messages')")

@@ -82,7 +82,7 @@
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/sorcery')
+          this.$router.push('/kingdom')
         })
         .catch(error => {
           this.error = true
@@ -194,7 +194,7 @@
               let contracts = []
               snapshot.forEach(hero => {
                 let contract = {...hero.val()}
-                contract.level = Math.floor(Math.random() * 10)
+                contract.level = Math.floor(Math.random() * 10) + 1
                 contract.gold = 0
                 delete contract['.key']
                 contracts.push(contract)

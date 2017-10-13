@@ -6,7 +6,8 @@
     "description" : "lbl_hero_alchemist_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "commander" : {
     "color" : "white",
@@ -15,7 +16,8 @@
     "description" : "lbl_hero_commander_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "demon_king" : {
     "color" : "red",
@@ -24,7 +26,8 @@
     "description" : "lbl_hero_demon_king_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "dragon_rider" : {
     "color" : "red",
@@ -33,7 +36,8 @@
     "description" : "lbl_hero_dragon_rider_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "druid" : {
     "color" : "green",
@@ -42,7 +46,8 @@
     "description" : "lbl_hero_druid_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "dryad" : {
     "color" : "green",
@@ -51,7 +56,8 @@
     "description" : "lbl_hero_dryad_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "elementalist" : {
     "color" : "blue",
@@ -60,7 +66,8 @@
     "description" : "lbl_hero_elementalist_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "headless_horseman" : {
     "color" : "purple",
@@ -69,7 +76,8 @@
     "description" : "lbl_hero_headless_horseman_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "leprechaunt" : {
     "color" : "green",
@@ -78,7 +86,8 @@
     "description" : "lbl_hero_leprechaunt_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "merchant" : {
     "color" : "white",
@@ -87,7 +96,8 @@
     "description" : "lbl_hero_merchant_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "necromancer" : {
     "color" : "purple",
@@ -96,7 +106,8 @@
     "description" : "lbl_hero_necromancer_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "seraph" : {
     "color" : "white",
@@ -105,7 +116,8 @@
     "description" : "lbl_hero_seraph_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "succubus" : {
     "color" : "red",
@@ -114,7 +126,8 @@
     "description" : "lbl_hero_succubus_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "witch" : {
     "color" : "purple",
@@ -123,7 +136,8 @@
     "description" : "lbl_hero_witch_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   },
   "arcanist" : {
     "color" : "blue",
@@ -132,6 +146,7 @@
     "description" : "lbl_hero_wizard_description",
     "goldMaintenance": 0,
     "peopleMaintenance": 0,
-    "manaMaintenance": 0
+    "manaMaintenance": 0,
+    "power": 0
   }
 }

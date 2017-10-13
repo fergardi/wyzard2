@@ -39,22 +39,22 @@
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
             mu-icon(slot="left", value=":ra ra-gold-bar")
             mu-badge(slot="after")
-              span.income(:class="user.goldPerTurn > 0 ? 'green' : 'red'") {{ user.goldPerTurn > 0 ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.gold | numeric }}
           mu-list-item(:title="translate('lbl_resource_population')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
-              span.income(:class="user.peoplePerTurn > 0 ? 'green' : 'red'") {{ user.peoplePerTurn > 0 ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.peoplePerTurn >= 0 ? 'green' : 'red'") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.people | numeric }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
             mu-icon(slot="left", value=":ra ra-burst-blob")
             mu-badge(slot="after")
-              span.income(:class="user.manaPerTurn > 0 ? 'green' : 'red'") {{ user.manaPerTurn > 0 ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.manaPerTurn >= 0 ? 'green' : 'red'") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.mana | numeric }}
           mu-list-item(:title="translate('lbl_resource_terrain')", disabled)
             mu-icon(slot="left", value=":ra ra-tower")
             mu-badge(slot="after")
-              span.income(:class="user.terrainPerTurn > 0 ? 'green' : 'red'") {{ user.terrainPerTurn > 0 ? '&#9650;' : '&#9660;' }}
+              span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.terrain | numeric }}
 
           mu-sub-header {{ 'lbl_title_economy' | translate }}
@@ -447,10 +447,10 @@
         .mu-item
           min-height 36px
           height 36px
-          .income
-            margin-right 5px
         .mu-item-left
           justify-content center
+    .income
+      margin-right 5px
     // background colors
     .mu-toast
     .mu-chip
