@@ -36,166 +36,39 @@ import login from '@/views/login'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: login
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: login
-    },
-    {
-      path: '/spells',
-      name: 'spells',
-      component: spells
-    },
-    {
-      path: '/units',
-      name: 'units',
-      component: units
-    },
-    {
-      path: '/artifacts',
-      name: 'artifacts',
-      component: artifacts
-    },
-    {
-      path: '/buildings',
-      name: 'buildings',
-      component: buildings
-    },
-    {
-      path: '/heroes',
-      name: 'heroes',
-      component: heroes
-    },
-    {
-      path: '/gods',
-      name: 'gods',
-      component: gods
-    },
-    {
-      path: '/factions',
-      name: 'factions',
-      component: factions
-    },
-    {
-      path: '/infrastructure',
-      name: 'infrastructure',
-      component: infrastructure
-    },
-    {
-      path: '/research',
-      name: 'research',
-      component: research
-    },
-    {
-      path: '/census',
-      name: 'census',
-      component: census
-    },
-    {
-      path: '/sorcery',
-      name: 'sorcery',
-      component: sorcery
-    },
-    {
-      path: '/tavern',
-      name: 'tavern',
-      component: tavern
-    },
-    {
-      path: '/devotion',
-      name: 'devotion',
-      component: devotion
-    },
-    {
-      path: '/kingdom',
-      name: 'kingdom',
-      component: kingdom
-    },
-    {
-      path: '/domains',
-      name: 'domains',
-      component: domains
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: settings
-    },
-    {
-      path: '/messages',
-      name: 'messages',
-      component: messages
-    },
-    {
-      path: '/meditate',
-      name: 'meditate',
-      component: meditate
-    },
-    {
-      path: '/exploration',
-      name: 'exploration',
-      component: exploration
-    },
-    {
-      path: '/auction',
-      name: 'auction',
-      component: auction
-    },
-    {
-      path: '/contracts',
-      name: 'contracts',
-      component: contracts
-    },
-    {
-      path: '/taxes',
-      name: 'taxes',
-      component: taxes
-    },
-    {
-      path: '/dispel',
-      name: 'dispel',
-      component: dispel
-    },
-    {
-      path: '/quests',
-      name: 'quests',
-      component: quests
-    },
-    {
-      path: '/places',
-      name: 'places',
-      component: places
-    },
-    {
-      path: '/troops',
-      name: 'troops',
-      component: troops
-    },
-    {
-      path: '/battle',
-      name: 'battle',
-      component: battle
-    },
-    {
-      path: '/defense',
-      name: 'defense',
-      component: defense
-    },
-    {
-      path: '/help',
-      name: 'help',
-      component: help
-    },
-    {
-      path: '/relics',
-      name: 'relics',
-      component: relics
-    }
+    { path: '/', name: 'index', component: login },
+    { path: '/login', name: 'login', component: login },
+    { path: '/spells', name: 'spells', component: spells },
+    { path: '/units', name: 'units', component: units },
+    { path: '/artifacts', name: 'artifacts', component: artifacts },
+    { path: '/buildings', name: 'buildings', component: buildings },
+    { path: '/heroes', name: 'heroes', component: heroes },
+    { path: '/gods', name: 'gods', component: gods },
+    { path: '/factions', name: 'factions', component: factions },
+    { path: '/infrastructure', name: 'infrastructure', component: infrastructure },
+    { path: '/research', name: 'research', component: research },
+    { path: '/census', name: 'census', component: census },
+    { path: '/sorcery', name: 'sorcery', component: sorcery },
+    { path: '/tavern', name: 'tavern', component: tavern },
+    { path: '/devotion', name: 'devotion', component: devotion },
+    { path: '/kingdom', name: 'kingdom', component: kingdom },
+    { path: '/domains', name: 'domains', component: domains },
+    { path: '/settings', name: 'settings', component: settings },
+    { path: '/messages', name: 'messages', component: messages },
+    { path: '/meditate', name: 'meditate', component: meditate },
+    { path: '/exploration', name: 'exploration', component: exploration },
+    { path: '/auction', name: 'auction', component: auction },
+    { path: '/contracts', name: 'contracts', component: contracts },
+    { path: '/taxes', name: 'taxes', component: taxes },
+    { path: '/dispel', name: 'dispel', component: dispel },
+    { path: '/quests', name: 'quests', component: quests },
+    { path: '/places', name: 'places', component: places },
+    { path: '/troops', name: 'troops', component: troops },
+    { path: '/battle', name: 'battle', component: battle },
+    { path: '/defense', name: 'defense', component: defense },
+    { path: '/help', name: 'help', component: help },
+    { path: '/relics', name: 'relics', component: relics }
   ]
 })

@@ -229,7 +229,7 @@
       height 100%
       position absolute
       filter grayscale(100%)
-      background url("https://cdn.allwallpaper.in/wallpapers/1920x1200/2705/scrolls-v-skyrim-artwork-dragons-games-towns-1920x1200-wallpaper.jpg") no-repeat center center fixed
+      background url("https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/background.jpg?alt=media") no-repeat center center fixed
       background-size cover
       z-index -9999
     #app
