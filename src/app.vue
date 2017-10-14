@@ -537,6 +537,17 @@
       white-space nowrap
       overflow hidden
       text-overflow ellipsis
+    .lazy
+      width 100%
+      transition opacity .5s ease-in
+      opacity .5
+    .lazy.lazy-load-progress
+      filter blur(5px)
+    .lazy.lazy-load-success
+      opacity 1
+    .lazy.lazy-load-error
+      filter blur(3px) sepia(1)
+      outline 4px solid red
     @media only screen and (min-width 480px) and (max-width 1079px)
       .mu-toast
         width 250px

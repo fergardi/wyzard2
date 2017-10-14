@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.god
     mu-card-media
-      img(:src="data.image", :alt="translate(data.name)")
+      img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color")
           i.ra.ra-gold-bar

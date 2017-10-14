@@ -6,11 +6,14 @@ import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
 import moment from 'moment'
+import LazyImg from 'v-lazy-img'
 
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 
+// lazy
+Vue.use(LazyImg)
 // UI
 Vue.use(MuseUI)
 // firebase
