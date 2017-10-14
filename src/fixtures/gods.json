@@ -4,39 +4,64 @@
     "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/gods%2Fimg_god_of_blood.jpg?alt=media",
     "name" : "lbl_god_of_blood",
     "description": "lbl_god_of_blood_description",
+    "damage": 20,
+    "health": 0,
     "gold": 0,
-    "power": 0
+    "people": 0,
+    "mana": 0,
+    "bid": 0,
+    "power": 1000000
   },
   "god_of_death" : {
     "color" : "purple",
     "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/gods%2Fimg_god_of_death.jpg?alt=media",
     "name" : "lbl_god_of_death",
     "description": "lbl_god_of_death_description",
+    "damage": 0,
+    "health": 0,
     "gold": 0,
-    "power": 0
+    "people": 20,
+    "mana": 0,
+    "bid": 0,
+    "power": 1000000
   },
   "god_of_life" : {
     "color" : "green",
     "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/gods%2Fimg_god_of_life.jpg?alt=media",
     "name" : "lbl_god_of_life",
     "description": "lbl_god_of_life_description",
+    "damage": 0,
+    "health": 20,
     "gold": 0,
-    "power": 0
+    "people": 0,
+    "mana": 0,
+    "bid": 0,
+    "power": 1000000
   },
   "god_of_light" : {
     "color" : "white",
     "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/gods%2Fimg_god_of_light.jpg?alt=media",
     "name" : "lbl_god_of_light",
     "description": "lbl_god_of_light_description",
-    "gold": 0,
-    "power": 0
+    "damage": 0,
+    "health": 0,
+    "gold": 20,
+    "people": 0,
+    "mana": 0,
+    "bid": 0,
+    "power": 1000000
   },
   "god_of_magic" : {
     "color" : "blue",
     "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/gods%2Fimg_god_of_magic.jpg?alt=media",
     "name" : "lbl_god_of_magic",
     "description": "lbl_god_of_magic_description",
+    "damage": 0,
+    "health": 0,
     "gold": 0,
-    "power": 0
+    "people": 0,
+    "mana": 20,
+    "bid": 0,
+    "power": 1000000
   }
 }

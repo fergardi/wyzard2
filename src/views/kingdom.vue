@@ -45,6 +45,24 @@
               mu-td {{ hero.level * hero.manaMaintenance | numeric }}
               mu-td {{ hero.level * hero.power | numeric }}
             
+            mu-tr(v-for="enchantment, index in praises", :key="index")
+              mu-td
+                mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
+              mu-td {{ enchantment.magic | numeric }}
+              mu-td {{ enchantment.magic * enchantment.goldMaintenance | numeric }}
+              mu-td {{ enchantment.magic * enchantment.peopleMaintenance | numeric }}
+              mu-td {{ enchantment.magic * enchantment.manaMaintenance | numeric }}
+              mu-td {{ enchantment.magic * enchantment.power | numeric }}
+
+            mu-tr(v-for="enchantment, index in curses", :key="index")
+              mu-td
+                mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
+              mu-td {{ enchantment.magic | numeric }}
+              mu-td {{ enchantment.magic * 0 | numeric }}
+              mu-td {{ enchantment.magic * 0 | numeric }}
+              mu-td {{ enchantment.magic * 0 | numeric }}
+              mu-td {{ enchantment.magic * enchantment.power | numeric }}
+            
             mu-tr
               mu-td {{ 'lbl_table_total' | translate }}
               mu-td =
@@ -62,14 +80,22 @@
 
 <script>
   import store from '../vuex/store'
+  import { database } from '../services/firebase'
   
   export default {
     created () {
       store.commit('title', 'lbl_title_kingdom')
+      this.$bindAsArray('enchantments', database.ref('enchantments'))
     },
     computed: {
       user () {
         return store.state.user
+      },
+      praises () {
+        return this.enchantments.filter(e => e.support && e.target === store.state.uid && e.source === store.state.uid)
+      },
+      curses () {
+        return this.enchantments.filter(e => !e.support && e.target === store.state.uid && e.source !== store.state.uid)
       }
     }
   }

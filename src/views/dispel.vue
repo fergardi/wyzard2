@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="enchantment, index in enchantments", :key="index")
+      mu-col(width="100", tablet="50", desktop="33", v-for="enchantment, index in dispels", :key="index")
         spell-card.animated.fadeInUp(:data="enchantment", :breaking="true")
 </template>
 
@@ -16,7 +16,12 @@
     },
     created () {
       store.commit('title', 'lbl_title_dispel')
-      this.$bindAsArray('enchantments', database.ref('users').child(store.state.uid).child('enchantments').orderByChild('remaining'))
+      this.$bindAsArray('enchantments', database.ref('enchantments'))
+    },
+    computed: {
+      dispels () {
+        return this.enchantments.filter(e => e.target === store.state.uid || e.source === store.state.uid)
+      }
     }
   }
 </script>

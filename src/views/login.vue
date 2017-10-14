@@ -83,7 +83,7 @@
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/kingdom')
+          this.$router.push('/dispel')
         })
         .catch(error => {
           this.error = true
@@ -182,7 +182,6 @@
               snapshot.forEach(artifact => {
                 let auction = {...artifact.val()}
                 auction.quantity = 1
-                auction.bid = 0
                 delete auction['.key']
                 auctions.push(auction)
                 // TODO DEVELOPMENT ONLY
@@ -198,7 +197,6 @@
               snapshot.forEach(hero => {
                 let contract = {...hero.val()}
                 contract.level = Math.floor(Math.random() * 5) + 1
-                contract.bid = 0
                 delete contract['.key']
                 contracts.push(contract)
                 // TODO DEVELOPMENT ONLY
@@ -212,15 +210,28 @@
             this.$firebaseRefs.spells.orderByChild('enchantment').equalTo(true).once('value', snapshot => {
               snapshot.forEach(spell => {
                 let enchantment = {...spell.val()}
+                enchantment.duration *= 5
                 enchantment.remaining = enchantment.duration
+                enchantment.target = auth.currentUser.uid
+                enchantment.targetColor = this.color
+                enchantment.targetName = this.username
+                if (enchantment.support) {
+                  enchantment.source = auth.currentUser.uid
+                  enchantment.sourceColor = this.color
+                  enchantment.sourceName = this.username
+                } else {
+                  enchantment.source = 'test'
+                  enchantment.sourceColor = enchantment.color
+                  enchantment.sourceName = 'test'
+                }
                 delete enchantment['.key']
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('enchantments').push(enchantment)
+                database.ref('enchantments').push(enchantment)
               })
             })
             // TODO DEVELOPMENT ONLY
             this.$firebaseRefs.gods.once('value', snapshot => {
               snapshot.forEach(god => {
-                this.$firebaseRefs.gods.child(god.key).child('uid').set(auth.currentUser.uid)
+                this.$firebaseRefs.gods.child(god.key).child('blessed').set(auth.currentUser.uid)
               })
             })
             // uid

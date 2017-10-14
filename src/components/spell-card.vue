@@ -79,7 +79,7 @@
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
         mu-card-media
-          img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
+          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
           .card-info
             .card-text {{ 'lbl_label_confirm' | translate }}
         mu-card-text
@@ -217,10 +217,23 @@
       },
       disenchant () {
         if (this.canBreak) { // user has resources
-          database.ref('users').child(store.state.uid).child('enchantments').child(this.data['.key']).transaction(enchantment => {
+          database.ref('enchantments').child(this.data['.key']).transaction(enchantment => {
             if (enchantment) {
-              if (Math.random() >= 0.5) {
+              let broken = false
+              if (enchantment.source === store.state.uid) {
+                broken = true
+              } else {
+                broken = Math.random() >= 0.5
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.turns = Math.max(0, user.turns - this.data.turns)
+                  }
+                  return user
+                })
+              }
+              if (broken) {
                 store.commit('success', 'lbl_toast_dispel_ok')
+                return null
               } else {
                 store.commit('error', 'lbl_toast_dispel_error')
               }

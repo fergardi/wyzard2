@@ -51,8 +51,8 @@
           mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
             mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
 
-          mu-sub-header(v-if="user.enchantments") {{ 'lbl_title_enchantments' | translate }}
-          mu-list-item(v-for="enchantment, index in user.enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+          mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
+          mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
             mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
             mu-badge(slot="after") {{ enchantment.remaining | minimize }}
 
@@ -147,19 +147,6 @@
 
   export default {
     name: 'app',
-    methods: {
-      toggle () {
-        store.commit('toggle')
-      },
-      untoast () {
-        store.commit('untoast')
-      },
-      logout () {
-        auth.signOut()
-        store.commit('uid', null)
-        this.$router.push('/login')
-      }
-    },
     created () {
       // toast
       store.watch((state) => state.toasts, (toasts) => {
@@ -175,12 +162,26 @@
       store.watch((state) => state.logged, (value) => {
         if (value) {
           store.dispatch('user', database.ref('users').child(store.state.uid))
-          this.$bindAsArray('blessings', database.ref('gods').orderByChild('uid').equalTo(store.state.uid))
+          this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
+          this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
           database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
             store.commit('info', this.translate('lbl_label_message') + ': ' + this.translate(message.val().subject))
           })
         }
       })
+    },
+    methods: {
+      toggle () {
+        store.commit('toggle')
+      },
+      untoast () {
+        store.commit('untoast')
+      },
+      logout () {
+        auth.signOut()
+        store.commit('uid', null)
+        this.$router.push('/login')
+      }
     },
     computed: {
       menu () {

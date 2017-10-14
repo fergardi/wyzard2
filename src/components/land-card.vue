@@ -5,7 +5,7 @@
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
         mu-card-media
-          img(src="https://i.pinimg.com/originals/8b/b0/96/8bb09649164365bf93dbcc0b12031f34.jpg", :alt="translate('lbl_label_conquest')")
+          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/conquest.jpg?alt=media", :alt="translate('lbl_label_conquest')")
           .card-info
             .card-text {{ name | translate }}
         mu-card-text.conquest

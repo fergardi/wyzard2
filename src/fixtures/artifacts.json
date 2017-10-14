@@ -21,7 +21,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "bonfire" : {
     "color" : "white",
@@ -45,7 +46,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 10000
+    "number": 10000,
+    "bid": 0
   },
   "necronomicon" : {
     "color" : "purple",
@@ -69,7 +71,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 10000
+    "number": 10000,
+    "bid": 0
   },
   "broken_mirror" : {
     "color" : "blue",
@@ -93,7 +96,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "cursed_map" : {
     "color" : "purple",
@@ -117,7 +121,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "defense_remedy" : {
     "color" : "green",
@@ -141,7 +146,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "demon_in_a_bottle" : {
     "color" : "red",
@@ -165,7 +171,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 10000
+    "number": 10000,
+    "bid": 0
   },
   "dragon_egg" : {
     "color" : "red",
@@ -189,7 +196,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 25
+    "number": 25,
+    "bid": 0
   },
   "elemental_book" : {
     "color" : "blue",
@@ -213,7 +221,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 500
+    "number": 500,
+    "bid": 0
   },
   "forbidden_book" : {
     "color" : "blue",
@@ -237,7 +246,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "hero_manual" : {
     "color" : "white",
@@ -261,7 +271,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 1,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "live_bait" : {
     "color" : "green",
@@ -285,7 +296,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 10000
+    "number": 10000,
+    "bid": 0
   },
   "love_elixir" : {
     "color" : "white",
@@ -309,7 +321,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "magic_compass" : {
     "color" : "green",
@@ -333,7 +346,8 @@
     "terrain": 150,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "mana_potion" : {
     "color" : "blue",
@@ -357,7 +371,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "medusa_head" : {
     "color" : "purple",
@@ -381,7 +396,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "powder_barrel" : {
     "color" : "red",
@@ -405,7 +421,8 @@
     "terrain": -150,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "sacred_bible" : {
     "color" : "white",
@@ -429,7 +446,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 1000
+    "number": 1000,
+    "bid": 0
   },
   "treasure_chest" : {
     "color" : "green",
@@ -453,7 +471,8 @@
     "terrain": 0,
     "turns": 0,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   },
   "voodoo_doll" : {
     "color" : "purple",
@@ -477,6 +496,7 @@
     "terrain": 0,
     "turns": -25,
     "level": 0,
-    "number": 0
+    "number": 0,
+    "bid": 0
   }
 }

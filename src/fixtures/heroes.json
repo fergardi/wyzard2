@@ -20,7 +20,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "commander" : {
     "color" : "white",
@@ -43,7 +44,8 @@
     "health": 1,
     "family": "lbl_family_human",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "demon_king" : {
     "color" : "red",
@@ -66,7 +68,8 @@
     "health": 1,
     "family": "lbl_family_demon",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "dragon_rider" : {
     "color" : "red",
@@ -89,7 +92,8 @@
     "health": 1,
     "family": "lbl_family_dragon",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "druid" : {
     "color" : "green",
@@ -112,7 +116,8 @@
     "health": 1,
     "family": "lbl_family_beast",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "dryad" : {
     "color" : "green",
@@ -135,7 +140,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "elementalist" : {
     "color" : "blue",
@@ -158,7 +164,8 @@
     "health": 1,
     "family": "lbl_family_elemental",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "headless_horseman" : {
     "color" : "purple",
@@ -181,7 +188,8 @@
     "health": 1,
     "family": "lbl_unit_undead",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "leprechaunt" : {
     "color" : "green",
@@ -204,7 +212,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "merchant" : {
     "color" : "white",
@@ -227,7 +236,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "necromancer" : {
     "color" : "purple",
@@ -250,7 +260,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "seraph" : {
     "color" : "white",
@@ -273,7 +284,8 @@
     "health": 1,
     "family": "lbl_family_celestial",
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "succubus" : {
     "color" : "red",
@@ -296,7 +308,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "witch" : {
     "color" : "purple",
@@ -319,7 +332,8 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   },
   "arcanist" : {
     "color" : "blue",
@@ -342,6 +356,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
-    "power": 1000
+    "power": 1000,
+    "bid": 0
   }
 }

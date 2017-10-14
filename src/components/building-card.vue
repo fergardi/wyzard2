@@ -111,7 +111,7 @@
     mu-dialog(:open="dialog", @close="close")
       mu-card.dialog
         mu-card-media
-          img(src="https://static1.squarespace.com/static/5356aa98e4b0e10db1993391/t/535b376de4b0482b3e27feb8/1398486899036/Sign+in+Blood.jpg", :alt="translate('lbl_label_confirm')")
+          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
           .card-info
             .card-text {{ 'lbl_label_confirm' | translate }}
         mu-card-text
