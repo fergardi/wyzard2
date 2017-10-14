@@ -149,11 +149,11 @@
     "number": 0,
     "bid": 0
   },
-  "demon_in_a_bottle" : {
+  "bottled_evil" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_demon_in_a_bottle.jpg?alt=media",
-    "name" : "lbl_artifact_demon_in_a_bottle",
-    "description" : "lbl_artifact_demon_in_a_bottle_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_bottled_evil.jpg?alt=media",
+    "name" : "lbl_artifact_bottled_evil",
+    "description" : "lbl_artifact_bottled_evil_description",
     "battle": false,
     "support": true,
     "summon": true,
@@ -199,11 +199,11 @@
     "number": 25,
     "bid": 0
   },
-  "elemental_book" : {
+  "elemental_compendium" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_elemental_book.jpg?alt=media",
-    "name" : "lbl_artifact_elemental_book",
-    "description" : "lbl_artifact_elemental_book_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_elemental_compendium.jpg?alt=media",
+    "name" : "lbl_artifact_elemental_compendium",
+    "description" : "lbl_artifact_elemental_compendium_description",
     "battle": false,
     "support": true,
     "summon": true,
@@ -424,11 +424,11 @@
     "number": 0,
     "bid": 0
   },
-  "sacred_bible" : {
+  "holy_codex" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_sacred_bible.jpg?alt=media",
-    "name" : "lbl_artifact_sacred_bible",
-    "description" : "lbl_artifact_sacred_bible_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_holy_codex.jpg?alt=media",
+    "name" : "lbl_artifact_holy_codex",
+    "description" : "lbl_artifact_holy_codex_description",
     "battle": false,
     "support": true,
     "summon": true,
