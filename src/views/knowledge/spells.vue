@@ -38,7 +38,7 @@
           setTimeout(() => {
             this.max += 9
             this.loading = false
-          }, 250)
+          }, 500)
         }
       }
     },

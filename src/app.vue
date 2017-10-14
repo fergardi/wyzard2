@@ -519,7 +519,7 @@
       font-weight bold
       border 1px solid
       border-radius $radius
-      padding 0
+      padding 5px
       .mu-circle-spinner
         border-color $gold
     .mu-toast
@@ -542,11 +542,11 @@
       transition opacity .5s ease-in
       opacity .5
     .lazy.lazy-load-progress
-      filter blur(5px)
+      filter blur(1px)
     .lazy.lazy-load-success
       opacity 1
     .lazy.lazy-load-error
-      filter blur(3px) sepia(1)
+      filter blur(1px) sepia(1)
       outline 4px solid red
     @media only screen and (min-width 480px) and (max-width 1079px)
       .mu-toast

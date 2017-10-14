@@ -1,8 +1,9 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(v-for="unit, index in units", :key="index", width="100", tablet="50", desktop="33")
+      mu-col(v-for="unit, index in scrolled", :key="index", width="100", tablet="50", desktop="33")
         unit-card.animated.fadeInUp(:data="unit", :info="true")
+      mu-infinite-scroll(v-if="visible", :scroller="scroller", :loading="loading", @load="more", :loadingText="translate('lbl_label_loading')", key="-1")
 </template>
 
 <script>
@@ -14,11 +15,40 @@
     components: {
       'unit-card': unit
     },
+    data () {
+      return {
+        scroller: null,
+        loading: false,
+        max: 9
+      }
+    },
     created () {
       store.commit('title', 'lbl_title_units')
     },
+    mounted () {
+      this.scroller = this.$el
+    },
     firebase: {
       units: database.ref('units').orderByChild('color')
+    },
+    methods: {
+      more () {
+        if (this.max < this.units.length) {
+          this.loading = true
+          setTimeout(() => {
+            this.max += 9
+            this.loading = false
+          }, 500)
+        }
+      }
+    },
+    computed: {
+      scrolled () {
+        return this.units.slice(0, Math.min(this.units.length - 1, this.max))
+      },
+      visible () {
+        return this.scroller && this.max > 0 && this.max < this.units.length
+      }
     }
   }
 </script>
