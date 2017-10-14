@@ -4,7 +4,7 @@
       mu-card.animated.fadeInUp
         form(@submit.stop.prevent="accept")
           mu-card-media
-            img(src="https://img00.deviantart.net/283d/i/2013/268/6/1/portals_7th_heaven_by_ivany86-d6m22w2.png", :alt="translate('lbl_label_enter')")
+            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media", :alt="translate('lbl_label_enter')")
             .card-info
               .card-text {{ 'lbl_label_enter' | translate }}
 

@@ -165,7 +165,7 @@
           this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
           this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
           database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
-            store.commit('info', this.translate('lbl_label_message') + ': ' + this.translate(message.val().subject))
+            store.commit('info', this.translate(message.val().subject))
           })
         }
       })
