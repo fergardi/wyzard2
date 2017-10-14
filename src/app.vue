@@ -314,6 +314,7 @@
           position absolute
           width 100%
           text-align center
+          z-index 5000
           .card-text
           .card-number
             border-radius $radius
