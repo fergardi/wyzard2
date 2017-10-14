@@ -495,6 +495,7 @@ export default {
     lbl_strategy_pillage: 'Pillaje',
     lbl_strategy_conquest: 'Conquista',
     // labels
+    lbl_label_loading: 'Cargando...',
     lbl_label_strategy: 'Estrategia',
     lbl_label_conquest: 'Conquistar',
     lbl_label_summary: 'Resumen del Reino',

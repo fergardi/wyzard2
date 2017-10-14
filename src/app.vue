@@ -458,6 +458,7 @@
     .mu-card .card-info .card-number
     .mu-card .card-extra .card-number
     .mu-card .card-extra .card-number
+      background-color $dark
       &.red
         background-color $red
       &.green
@@ -508,16 +509,26 @@
       &.active
         border 1px solid
         border-radius 5px
+    .mu-infinite-scroll
+      background-color $dark
+      color $gold
+      text-align center
+      width 100%
+      max-width 100%
+      font-weight bold
+      border 1px solid
+      border-radius $radius
+      padding 0
+      .mu-circle-spinner
+        border-color $gold
     .mu-toast
       text-align center
       height 48px
       line-height 48px
       padding 0 24px
-      width 98%
-      max-width 98%
+      width 100%
+      max-width 100%
       position fixed
-      left 1%
-      bottom 1%
       font-weight bold
       border 1px solid
       border-radius $radius

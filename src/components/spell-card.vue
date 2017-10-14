@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.spell
     mu-card-media
-      img(:src="data.image", :alt="translate(data.name)")
+      img.lazy-loaded(:v-lazy-load="data.image", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="breaking")
           i.ra.ra-hourglass
@@ -276,4 +276,28 @@
 </script>
 
 <style lang="stylus" scoped>
+  .lazy-loaded {
+    /* setting a fixed width is recommended */
+    width: 100%;
+    /* nice effect as an example */
+    transition: opacity .5s ease-in;
+    opacity: .5;
+  }
+
+  /* applied as soon as loading starts */
+  .lazy-loaded.lazy-load-progress {
+    filter: blur(5px);
+  }
+
+  /* applied as soon as loading succeeds */
+  .lazy-loaded.lazy-load-success {
+    opacity: 1;
+  }
+
+  /* applied if loading fails */
+  .lazy-loaded.lazy-load-error {
+    filter: blur(3px) sepia(1);
+    outline: 4px solid red;
+  }
+
 </style>
