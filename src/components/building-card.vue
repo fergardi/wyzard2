@@ -124,6 +124,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
+  import { calculate } from '../services/api'
 
   export default {
     name: 'building-card',
@@ -222,6 +223,9 @@
               })
               return building
             }
+          }).then(response => {
+            console.log('Checking...')
+            calculate(store.state.uid, this.amount)
           })
           store.commit('success', 'lbl_toast_exploration_ok')
         } else {
