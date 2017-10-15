@@ -210,8 +210,6 @@
             this.$firebaseRefs.spells.orderByChild('enchantment').equalTo(true).once('value', snapshot => {
               snapshot.forEach(spell => {
                 let enchantment = {...spell.val()}
-                enchantment.duration *= 5
-                enchantment.remaining = enchantment.duration
                 enchantment.target = auth.currentUser.uid
                 enchantment.targetColor = this.color
                 enchantment.targetName = this.username
@@ -219,11 +217,15 @@
                   enchantment.source = auth.currentUser.uid
                   enchantment.sourceColor = this.color
                   enchantment.sourceName = this.username
+                  enchantment.magic = this.magic
                 } else {
                   enchantment.source = 'test'
                   enchantment.sourceColor = enchantment.color
                   enchantment.sourceName = 'test'
+                  enchantment.magic = 10
                 }
+                enchantment.duration *= enchantment.magic
+                enchantment.remaining = enchantment.duration
                 delete enchantment['.key']
                 database.ref('enchantments').push(enchantment)
               })

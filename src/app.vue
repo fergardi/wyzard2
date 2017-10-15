@@ -167,6 +167,132 @@
           database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
             store.commit('info', this.translate(message.val().subject))
           })
+          // DEV ONLY
+          database.ref('users').child(store.state.uid).transaction(user => {
+            if (user) {
+              // base
+              let goldPerTurn = 0
+              let peoplePerTurn = 0
+              let manaPerTurn = 0
+              console.log('INITIAL')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // constructions
+              database.ref('users').child(store.state.uid).child('constructions').once('value', constructions => {
+                if (constructions) {
+                  constructions.forEach(building => {
+                    goldPerTurn += building.val().quantity * building.val().goldProduction
+                    peoplePerTurn += building.val().quantity * building.val().peopleProduction
+                    manaPerTurn += building.val().quantity * building.val().manaProduction
+                  })
+                }
+              })
+              console.log('BUILDINGS PROFITS')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // enchantments
+              database.ref('enchantments').orderByChild('source').equalTo(store.state.uid).once('value', curses => {
+                if (curses) {
+                  curses.forEach(curse => {
+                    goldPerTurn *= (1 + goldPerTurn >= 0 ? (curse.val().goldProduction / 100) : 0)
+                    peoplePerTurn *= (1 + peoplePerTurn >= 0 ? (curse.val().peopleProduction / 100) : 0)
+                    manaPerTurn *= (1 + manaPerTurn >= 0 ? (curse.val().manaProduction / 100) : 0)
+                  })
+                }
+              })
+              console.log('ENCHANTMENTS PROFITS')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // contracts
+              database.ref('users').child(store.state.uid).child('contracts').once('value', contracts => {
+                if (contracts) {
+                  contracts.forEach(contract => {
+                    goldPerTurn += contract.val().level * contract.val().goldProduction
+                    peoplePerTurn += contract.val().level * contract.val().peopleProduction
+                    manaPerTurn += contract.val().level * contract.val().manaProduction
+                  })
+                }
+              })
+              console.log('CONTRACTS PROFITS')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // blessings
+              database.ref('gods').orderByChild('blessed').equalTo(store.state.uid).once('value', blessings => {
+                if (blessings) {
+                  blessings.forEach(god => {
+                    goldPerTurn *= 1 + (goldPerTurn >= 0 ? (god.val().goldProduction / 100) : 0)
+                    peoplePerTurn *= 1 + (peoplePerTurn >= 0 ? (god.val().peopleProduction / 100) : 0)
+                    manaPerTurn *= 1 + (manaPerTurn >= 0 ? (god.val().manaProduction / 100) : 0)
+                  })
+                }
+              })
+              console.log('BLESSINGS PROFITS')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // EXPENSES
+              // constructions
+              database.ref('users').child(store.state.uid).child('constructions').once('value', constructions => {
+                if (constructions) {
+                  constructions.forEach(building => {
+                    goldPerTurn -= building.val().quantity * building.val().goldMaintenance
+                    peoplePerTurn -= building.val().quantity * building.val().peopleMaintenance
+                    manaPerTurn -= building.val().quantity * building.val().manaMaintenance
+                  })
+                }
+              })
+              console.log('BUILDINGS LOSSES')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // troops
+              database.ref('users').child(store.state.uid).child('troops').once('value', troops => {
+                if (troops) {
+                  troops.forEach(troop => {
+                    goldPerTurn -= troop.val().quantity * troop.val().goldMaintenance
+                    peoplePerTurn -= troop.val().quantity * troop.val().peopleMaintenance
+                    manaPerTurn -= troop.val().quantity * troop.val().manaMaintenance
+                  })
+                }
+              })
+              console.log('TROOPS LOSSES')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // contracts outcome
+              database.ref('users').child(store.state.uid).child('contracts').once('value', contracts => {
+                if (contracts) {
+                  contracts.forEach(contract => {
+                    goldPerTurn -= contract.val().level * contract.val().goldMaintenance
+                    peoplePerTurn -= contract.val().level * contract.val().peopleMaintenance
+                    manaPerTurn -= contract.val().level * contract.val().manaMaintenance
+                  })
+                }
+              })
+              console.log('CONTRACTS LOSSES')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+              // enchantments
+              database.ref('enchantments').orderByChild('source').equalTo(store.state.uid).once('value', enchantments => {
+                if (enchantments) {
+                  enchantments.forEach(enchantment => {
+                    goldPerTurn -= enchantment.val().magic * enchantment.val().goldMaintenance
+                    peoplePerTurn -= enchantment.val().magic * enchantment.val().peopleMaintenance
+                    manaPerTurn -= enchantment.val().magic * enchantment.val().manaMaintenance
+                  })
+                }
+              })
+              console.log('ENCHANTMENTS LOSSES')
+              console.log('Gold: ', goldPerTurn)
+              console.log('People: ', peoplePerTurn)
+              console.log('Mana: ', manaPerTurn)
+            }
+          })
         }
       })
     },

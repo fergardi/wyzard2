@@ -3,8 +3,17 @@ const admin = require('firebase-admin')
 
 admin.initializeApp(functions.config().firebase)
 
-exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event => {
-  admin.database().ref('users').child(event.params.uid).once('value', snapshot => {
+exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event => { // when turns are updated
+  admin.database().ref('users').child(event.params.uid).once('value', snapshot => { // get user
+    // resources
+    // let goldPerTurn = 0
+    // let peoplePerTurn = 0
+    // let manaPerTurn = 0
+    // buildings
+    // heroes
+    // enchantments
+    // gods
+    // units
     console.log('User ' + snapshot.val().name + ' went from ' + event.data.previous.val() + ' turns to ' + event.data.current.val())
   })
   return true
