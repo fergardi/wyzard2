@@ -17,7 +17,7 @@
       var useCapture = usesListenerOptions ? options.capture : options;
 
       options = usesListenerOptions ? options : {};
-      options.passive = true // options.passive !== undefined ? options.passive : defaultOptions.passive;
+      options.passive = options.passive !== undefined ? options.passive : defaultOptions.passive;
       options.capture = useCapture !== undefined ? useCapture : defaultOptions.capture;
       
       superMethod.call(this, type, listener, options);

@@ -1,9 +1,9 @@
 {
-  "alchemist" : {
+  "shaman" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_alchemist.jpg?alt=media",
-    "name" : "lbl_hero_alchemist",
-    "description" : "lbl_hero_alchemist_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_shaman.jpg?alt=media",
+    "name" : "lbl_hero_shaman",
+    "description" : "lbl_hero_shaman_description",
     "goldProduction": 0,
     "peopleProduction": 0,
     "manaProduction": 1,
@@ -119,11 +119,11 @@
     "power": 1000,
     "bid": 0
   },
-  "dryad" : {
+  "lord_of_the_beasts" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_dryad.jpg?alt=media",
-    "name" : "lbl_hero_dryad",
-    "description" : "lbl_hero_dryad_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_lord_of_the_beasts.jpg?alt=media",
+    "name" : "lbl_hero_lord_of_the_beasts",
+    "description" : "lbl_hero_lord_of_the_beasts_description",
     "goldProduction": 0,
     "peopleProduction": 0,
     "manaProduction": 0,
@@ -335,11 +335,11 @@
     "power": 1000,
     "bid": 0
   },
-  "arcanist" : {
+  "sage" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_arcanist.jpg?alt=media",
-    "name" : "lbl_hero_arcanist",
-    "description" : "lbl_hero_arcanist_description",
+    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_sage.jpg?alt=media",
+    "name" : "lbl_hero_sage",
+    "description" : "lbl_hero_sage_description",
     "goldProduction": 0,
     "peopleProduction": 0,
     "manaProduction": 0,
