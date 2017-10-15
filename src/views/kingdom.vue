@@ -7,7 +7,7 @@
           .card-info
             .card-text {{ 'lbl_label_summary' | translate }}
 
-        mu-table(:showCheckbox="false", :selectable="false")
+        mu-table.kingdom(:showCheckbox="false", :selectable="false")
           mu-thead
             mu-tr
               mu-th.title {{ 'lbl_table_name' | translate }}
@@ -102,4 +102,15 @@
 </script>
 
 <style lang="stylus" scoped>
+  @media only screen and (max-width 479px)
+    .kingdom
+      .mu-th
+      .mu-td
+        padding-left 6px
+        padding-right 6px
+        font-size 10px
+        &.title
+          width 25%
+        .mu-chip
+          padding 0 6px
 </style>

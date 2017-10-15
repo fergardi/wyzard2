@@ -114,9 +114,6 @@
             this.$firebaseRefs.buildings.once('value', snapshot => {
               snapshot.forEach(building => {
                 let construction = {...building.val()}
-                construction.quantity = construction.name === 'lbl_building_terrain'
-                  ? 500
-                  : 10
                 delete construction['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('constructions').push(construction)
               })
@@ -125,8 +122,6 @@
             this.$firebaseRefs.spells.orderByChild('color').equalTo(player.color).once('value', snapshot => {
               snapshot.forEach(spell => {
                 let research = {...spell.val()}
-                research.invested = 0
-                research.completed = false
                 delete research['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)
               })
@@ -135,7 +130,7 @@
             this.$firebaseRefs.units.orderByChild('initial').equalTo(player.color).once('value', snapshot => {
               snapshot.forEach(unit => {
                 let troop = {...unit.val()}
-                troop.quantity = 1000
+                troop.quantity = this.random(troop.quantity)
                 delete troop['.key']
                 this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
                 this.$firebaseRefs.users.child(auth.currentUser.uid).transaction(user => {
@@ -217,7 +212,7 @@
                   enchantment.source = auth.currentUser.uid
                   enchantment.sourceColor = this.color
                   enchantment.sourceName = this.username
-                  enchantment.magic = this.magic
+                  enchantment.magic = 1
                 } else {
                   enchantment.source = 'test'
                   enchantment.sourceColor = enchantment.color
