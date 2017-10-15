@@ -20,6 +20,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -44,6 +45,7 @@
     "health": 1,
     "family": "lbl_family_human",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -68,6 +70,7 @@
     "health": 1,
     "family": "lbl_family_demon",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -92,6 +95,7 @@
     "health": 1,
     "family": "lbl_family_dragon",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -116,6 +120,7 @@
     "health": 1,
     "family": "lbl_family_beast",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -140,6 +145,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -164,6 +170,7 @@
     "health": 1,
     "family": "lbl_family_elemental",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -188,6 +195,7 @@
     "health": 1,
     "family": "lbl_unit_undead",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -212,6 +220,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -236,6 +245,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -260,6 +270,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -284,6 +295,7 @@
     "health": 1,
     "family": "lbl_family_celestial",
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -308,6 +320,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -332,6 +345,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   },
@@ -356,6 +370,7 @@
     "health": 0,
     "family": false,
     "experience": 50,
+    "invested": 0,
     "power": 1000,
     "bid": 0
   }

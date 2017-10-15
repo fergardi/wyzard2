@@ -117,8 +117,8 @@
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
 </template>
 
 <script>
@@ -142,7 +142,8 @@
         trigger: null,
         dialog: false,
         type: null,
-        amount: 0
+        amount: 0,
+        busy: false
       }
     },
     methods: {
@@ -208,6 +209,7 @@
         this.close()
       },
       explore () {
+        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -224,14 +226,14 @@
               return building
             }
           }).then(response => {
-            console.log('Checking...')
             calculate(store.state.uid, this.amount)
+            store.commit('success', 'lbl_toast_exploration_ok')
+            this.close()
           })
-          store.commit('success', 'lbl_toast_exploration_ok')
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
+          this.close()
         }
-        this.close()
       },
       meditate () {
         if (this.hasTurns) { // user has resources
@@ -281,6 +283,7 @@
         this.type = null
         this.dialog = false
         this.amount = 0
+        this.busy = false
       },
       hover (reference) {
         console.log(this.$refs, reference)

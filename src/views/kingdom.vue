@@ -21,61 +21,70 @@
             mu-tr(v-for="building, index in user.constructions", :key="index")
               mu-td.title
                 mu-chip(:class="building.color") {{ building.name | translate }}
-              mu-td.number {{ building.quantity | numeric }}
-              mu-td.number {{ building.quantity * (building.goldProduction - building.goldMaintenance) | numeric }}
-              mu-td.number {{ building.quantity * (building.peopleProduction - building.peopleMaintenance) | numeric }}
-              mu-td.number {{ building.quantity * (building.manaProduction - building.manaMaintenance) | numeric }}
-              mu-td.number {{ building.quantity * building.power | numeric }}
+              mu-td.number {{ building.quantity | minimize }}
+              mu-td.number {{ building.quantity * building.goldProduction | minimize }}
+              mu-td.number {{ building.quantity * building.peopleProduction | minimize }}
+              mu-td.number {{ building.quantity * building.manaProduction | minimize }}
+              mu-td.number {{ building.quantity * building.power | minimize }}
 
             mu-tr(v-for="unit, index in user.troops", :key="index")
               mu-td.title
                 mu-chip(:class="unit.color") {{ unit.name | translate }}
-              mu-td.number {{ unit.quantity | numeric }}
-              mu-td.number {{ unit.quantity * unit.goldMaintenance | numeric }}
-              mu-td.number {{ unit.quantity * unit.peopleMaintenance | numeric }}
-              mu-td.number {{ unit.quantity * unit.manaMaintenance | numeric }}
-              mu-td.number {{ unit.quantity * unit.power | numeric }}
+              mu-td.number {{ unit.quantity | minimize }}
+              mu-td.number -{{ unit.quantity * unit.goldMaintenance | minimize }}
+              mu-td.number -{{ unit.quantity * unit.peopleMaintenance | minimize }}
+              mu-td.number -{{ unit.quantity * unit.manaMaintenance | minimize }}
+              mu-td.number {{ unit.quantity * unit.power | minimize }}
 
             mu-tr(v-for="hero, index in user.contracts", :key="index")
               mu-td.title
                 mu-chip(:class="hero.color") {{ hero.name | translate }}
-              mu-td.number {{ hero.level | numeric }}
-              mu-td.number {{ hero.level * hero.goldMaintenance | numeric }}
-              mu-td.number {{ hero.level * hero.peopleMaintenance | numeric }}
-              mu-td.number {{ hero.level * hero.manaMaintenance | numeric }}
-              mu-td.number {{ hero.level * hero.power | numeric }}
+              mu-td.number {{ hero.level | minimize }}
+              mu-td.number {{ hero.level * hero.goldProduction | percentage }}
+              mu-td.number {{ hero.level * hero.peopleProduction | percentage }}
+              mu-td.number {{ hero.level * hero.manaProduction | percentage }}
+              mu-td.number {{ hero.level * hero.power | minimize }}
             
             mu-tr(v-for="enchantment, index in praises", :key="index")
               mu-td.title
                 mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
-              mu-td.number {{ enchantment.magic | numeric }}
-              mu-td.number {{ enchantment.magic * enchantment.goldMaintenance | numeric }}
-              mu-td.number {{ enchantment.magic * enchantment.peopleMaintenance | numeric }}
-              mu-td.number {{ enchantment.magic * enchantment.manaMaintenance | numeric }}
-              mu-td.number {{ enchantment.magic * enchantment.power | numeric }}
+              mu-td.number {{ enchantment.magic | minimize }}
+              mu-td.number {{ enchantment.magic * enchantment.goldProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.peopleProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.manaProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
             mu-tr(v-for="enchantment, index in curses", :key="index")
               mu-td.title
                 mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
-              mu-td.number {{ enchantment.magic | numeric }}
-              mu-td.number {{ enchantment.magic * 0 | numeric }}
-              mu-td.number {{ enchantment.magic * 0 | numeric }}
-              mu-td.number {{ enchantment.magic * 0 | numeric }}
-              mu-td.number {{ enchantment.magic * enchantment.power | numeric }}
+              mu-td.number {{ enchantment.magic | minimize }}
+              mu-td.number {{ enchantment.magic * enchantment.goldProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.peopleProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.manaProduction | percentage }}
+              mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
+
+            mu-tr(v-for="blessing, index in blessings", :key="index")
+              mu-td.title
+                mu-chip(:class="blessing.color") {{ blessing.name | translate }}
+              mu-td.number ?
+              mu-td.number {{ blessing.goldProduction | percentage }}
+              mu-td.number {{ blessing.peopleProduction | percentage }}
+              mu-td.number {{ blessing.manaProduction | percentage }}
+              mu-td.number {{ blessing.magic * blessing.power | minimize }}
             
             mu-tr
               mu-td.title {{ 'lbl_table_total' | translate }}
               mu-td.number =
               mu-td.number
                 span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-                span {{ user.goldPerTurn }}
+                span {{ user.goldPerTurn | minimize }}
               mu-td.number
                 span.income(:class="user.peoplePerTurn >= 0 ? 'green' : 'red'") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-                span {{ user.peoplePerTurn }}
+                span {{ user.peoplePerTurn | minimize }}
               mu-td.number
                 span.income(:class="user.manaPerTurn >= 0 ? 'green' : 'red'") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-                span {{ user.manaPerTurn }}
-              mu-td.number {{ user.power }}
+                span {{ user.manaPerTurn | minimize }}
+              mu-td.number {{ user.power | minimize }}
 </template>
 
 <script>
@@ -86,6 +95,7 @@
     created () {
       store.commit('title', 'lbl_title_kingdom')
       this.$bindAsArray('enchantments', database.ref('enchantments'))
+      this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
     },
     computed: {
       user () {

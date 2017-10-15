@@ -22,7 +22,7 @@
             mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
 
           mu-card-actions
-            mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset", :disabled="busy")
             mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'", :disabled="busy")
             mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="disabled || busy")
 </template>
@@ -83,7 +83,7 @@
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/exploration')
+          this.$router.push('/kingdom')
         })
         .catch(error => {
           this.error = true
@@ -236,7 +236,7 @@
             store.commit('success', 'auth/registration-ok')
             this.busy = false
             // router
-            this.$router.push('/census')
+            this.$router.push('/kingdom')
           })
           .catch(error => {
             if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {

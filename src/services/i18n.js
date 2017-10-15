@@ -654,6 +654,8 @@ export default {
     lbl_toast_resource_terrain: 'Terrenos insuficiente',
     lbl_toast_notifications_ok: 'Notificaciones habilitadas',
     lbl_toast_notifications_error: 'Notificaciones deshabilitadas',
+    lbl_toast_enchantment_finished: 'Encantamiento finalizado',
+    lbl_toast_hero_levelup: 'Subida de nivel',
     // tooltips
     ttp_gold_cost: 'Coste de Oro',
     ttp_people_cost: 'Coste de Población',

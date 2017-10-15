@@ -5,7 +5,7 @@
       .card-extra
         .card-number(:class="data.color", v-if="contract")
           i.ra.ra-trefoil-lily
-          span {{ data.turns | minimize }} / {{ data.experience * data.level | minimize }}
+          span {{ data.invested | minimize }} / {{ data.experience * data.level | minimize }}
         .card-number(:class="data.color", v-if="tavern")
           i.ra.ra-gold-bar
           span {{ data.bid | minimize }}

@@ -25,18 +25,18 @@ window.mapboxgl = require('mapbox-gl')
 function minimize (number) {
   return !number
   ? parseFloat(0)
-  : number / 1000000000 >= 1
-    ? parseFloat((number / 1000000000).toFixed(2)).toLocaleString() + ' B'
-    : number / 1000000 >= 1
-      ? parseFloat((number / 1000000).toFixed(2)).toLocaleString() + ' M'
-      : number / 1000 >= 1
-        ? parseFloat((number / 1000).toFixed(2)).toLocaleString() + ' K'
-        : parseFloat(number.toFixed(2)).toLocaleString()
+  : Math.abs(number / 1000000000) >= 1
+    ? parseFloat((number / 1000000000).toFixed(1)).toLocaleString() + ' B'
+    : Math.abs(number / 1000000) >= 1
+      ? parseFloat((number / 1000000).toFixed(1)).toLocaleString() + ' M'
+      : Math.abs(number / 1000) >= 1
+        ? parseFloat((number / 1000).toFixed(1)).toLocaleString() + ' K'
+        : parseFloat(number.toFixed(1)).toLocaleString()
 }
 function numeric (number) {
   return !number
   ? parseFloat(0)
-  : parseFloat(number.toFixed(2)).toLocaleString()
+  : parseFloat(number.toFixed(1)).toLocaleString()
 }
 function percentage (number) {
   return !number

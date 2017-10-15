@@ -4,13 +4,7 @@ const admin = require('firebase-admin')
 admin.initializeApp(functions.config().firebase)
 
 exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event => { // when turns are updated
-  let from = event.data.previous.val()
-  let to = event.data.current.val()
-  admin.database().ref('users').child(event.params.uid).once('value', user => {
-    if (user) {
-      console.log('User ' + user.val().name + ' went from ' + from + ' turns to ' + to)
-    }
-  })
+  console.log('User ' + event.data.parent.val().name + ' went from ' + event.data.previous.val() + ' turns to ' + event.data.current.val())
   return true
 })
 
