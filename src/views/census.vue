@@ -16,13 +16,13 @@
             mu-tr
               mu-th {{ 'lbl_table_position' | translate }}
               mu-th {{ 'lbl_table_name' | translate }}
-              mu-th {{ 'lbl_table_power' | translate }}
+              mu-th.number {{ 'lbl_table_power' | translate }}
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
               mu-td {{ (current - 1) * size + index + 1 | minimize }}
               mu-td
                 mu-chip(:class="user.color") {{ user.name }}
-              mu-td {{ user.power | minimize }}
+              mu-td.number {{ user.power | minimize }}
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="size")
 </template>

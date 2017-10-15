@@ -537,6 +537,10 @@
       white-space nowrap
       overflow hidden
       text-overflow ellipsis
+    .mu-td
+    .mu-th
+      &.number
+        text-align right
     .lazy
       width 100%
       transition opacity .5s ease-in
@@ -563,6 +567,15 @@
     @media only screen and (max-width 479px)
       .mu-drawer
         width 85%
+      .mu-th
+      .mu-td
+        padding-left 6px
+        padding-right 6px
+        font-size 10px
+        &.title
+          width 25%
+        .mu-chip
+          padding 0 6px
     @media only screen and (min-width 480px)
       .mu-appbar
         height 56px
