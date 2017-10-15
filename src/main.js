@@ -6,12 +6,13 @@ import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
 import moment from 'moment'
+// performance
+import '../static/default-passive-events.js'
 import LazyImg from 'v-lazy-img'
-
+// theming
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
-
 // lazy
 Vue.use(LazyImg)
 // UI
