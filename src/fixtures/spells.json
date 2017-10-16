@@ -1056,7 +1056,7 @@
     "name": "lbl_spell_mana_drain",
     "description": "lbl_spell_mana_drain_description",
     "battle": true,
-    "enchantment": false,
+    "enchantment": true,
     "summon": false,
     "support": false,
     "multiple": false,
@@ -1089,7 +1089,7 @@
     "completed": false,
     "completion": 400,
     "invested": 0,
-    "duration": 0
+    "duration": 50
   },
   "mana_shield" : {
     "color": "blue",

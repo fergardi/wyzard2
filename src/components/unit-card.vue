@@ -3,7 +3,7 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="data.quantity != null")
+        .card-number(:class="data.color", v-if="troop")
           i.ra.ra-crossed-axes
           span {{ data.quantity | minimize }}
       .card-info

@@ -202,7 +202,7 @@
     "goldMaintenance": 10,
     "peopleMaintenance": 20,
     "manaMaintenance": 30,
-    "family": "lbl_family_beast",
+    "family": "lbl_family_demon",
     "type": "lbl_type_fly",
     "power": 0
   },
@@ -663,7 +663,7 @@
     "peopleMaintenance": 20,
     "manaMaintenance": 30,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_range",
     "power": 0
   },
   "minotaur" : {
@@ -685,7 +685,7 @@
     "goldMaintenance": 10,
     "peopleMaintenance": 20,
     "manaMaintenance": 30,
-    "family": "lbl_family_beast",
+    "family": "lbl_family_demon",
     "type": "lbl_type_melee",
     "power": 0
   },

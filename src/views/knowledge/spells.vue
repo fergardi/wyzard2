@@ -1,9 +1,14 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in scrolled", :key="index")
+      mu-col(width="100", tablet="100", desktop="100", key="-2")
+        mu-card
+          mu-card-text
+            form
+              mu-text-field(v-model="search", name="search", :label="translate('lbl_label_search')", :hintText="translate('lbl_label_search')", :fullWidth="true")
+      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in filtered", :key="index")
         spell-card.animated.fadeInUp(:data="spell", :info="true")
-      mu-infinite-scroll(v-if="visible", :scroller="scroller", :loading="loading", @load="more", :loadingText="translate('lbl_label_loading')", key="-1")
+      // mu-infinite-scroll(v-if="visible", :scroller="scroller", :loading="loading", @load="more", :loadingText="translate('lbl_label_loading')", key="-1")
 </template>
 
 <script>
@@ -17,6 +22,7 @@
     },
     data () {
       return {
+        search: '',
         scroller: null,
         loading: false,
         max: 9
@@ -48,6 +54,14 @@
       },
       visible () {
         return this.scroller && this.max > 0 && this.max < this.spells.length
+      },
+      filtered () {
+        return this.search && this.search !== ''
+          ? this.spells.filter(u => {
+            return this.translate(u.name).toLowerCase().includes(this.search.toLowerCase()) ||
+              this.translate(u.description).toLowerCase().includes(this.search.toLowerCase())
+          })
+          : this.spells
       }
     }
   }
