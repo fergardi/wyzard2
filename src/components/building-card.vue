@@ -44,7 +44,7 @@
         .card-text {{ data.name | translate }}
         .card-number(v-if="data.quantity != null")
           i.ra.ra-tower
-          span {{ data.quantity | minimize }}
+          span {{ data.quantity | numeric }}
     mu-card-text
       p.card-description(v-if="!exploration && !meditation && !taxation") {{ data.description | translate }}
       p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}
@@ -168,6 +168,7 @@
         }
       },
       construct () {
+        this.busy = true
         if (this.hasTerrain) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -202,11 +203,14 @@
               return building
             }
           })
-          store.commit('success', 'lbl_toast_construction_ok')
+          .then(response => {
+            store.commit('success', 'lbl_toast_construction_ok')
+            this.close()
+          })
         } else {
           store.commit('error', 'lbl_toast_resource_terrain')
+          this.close()
         }
-        this.close()
       },
       explore () {
         this.busy = true
@@ -236,6 +240,7 @@
         }
       },
       meditate () {
+        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -253,13 +258,18 @@
               return building
             }
           })
-          store.commit('success', 'lbl_toast_meditation_ok')
+          .then(response => {
+            calculate(store.state.uid, this.amount)
+            store.commit('success', 'lbl_toast_meditation_ok')
+            this.close()
+          })
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
+          this.close()
         }
-        this.close()
       },
       collect () {
+        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -273,11 +283,15 @@
               return building
             }
           })
-          store.commit('success', 'lbl_toast_tax_ok')
+          .then(response => {
+            calculate(store.state.uid, this.amount)
+            store.commit('success', 'lbl_toast_tax_ok')
+            this.close()
+          })
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
+          this.close()
         }
-        this.close()
       },
       close () {
         this.type = null

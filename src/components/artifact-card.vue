@@ -126,10 +126,10 @@
                 } else { // enemy
                   // TODO
                 }
-                artifact.quantity -= 1 // decrease quantity
+                artifact.quantity-- // decrease quantity
                 database.ref('users').child(store.state.uid).transaction(user => {
                   if (user) {
-                    user.turns = Math.max(0, user.turns - 1) // decrease turns
+                    user.turns = Math.max(0, user.turns - this.turns) // decrease turns
                     // TODO
                   }
                   return user

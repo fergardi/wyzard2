@@ -4,6 +4,16 @@ import store from '../vuex/store'
 let goldPerTurn = 0
 let peoplePerTurn = 0
 let manaPerTurn = 0
+let terrainPerTurn = 0
+
+const increaseBuildingQuantity = (uid, id, quantity) => { // eslint-disable-line
+  return database.ref('users').child(uid).child('constructions').child(id).transaction(construction => {
+    if (construction) {
+      construction.quantity += parseInt(quantity)
+    }
+    return construction
+  })
+}
 
 const checkBuildingsProduction = (uid) => {
   return database.ref('users').child(uid).child('constructions').once('value', constructions => {
@@ -70,6 +80,38 @@ const checkCursesProduction = (uid) => {
               goldPerTurn *= (1 + curse.magic * curse.goldProduction / 100)
               peoplePerTurn *= (1 + curse.magic * curse.peopleProduction / 100)
               manaPerTurn *= (1 + curse.magic * curse.manaProduction / 100)
+              if (curse.terrain < 0) {
+                terrainPerTurn = curse.magic * curse.terrain
+                database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(true).once('value', constructions => {
+                  if (constructions) {
+                    let random = Math.floor(Math.random() * constructions.numChildren())
+                    let index = 0
+                    constructions.forEach(construction => {
+                      index++
+                      if (random === index) {
+                        let quantity = Math.max(construction.val().quantity, Math.abs(curse.magic * curse.terrain))
+                        construction.ref.transaction(cons => {
+                          if (cons) cons.quantity -= quantity
+                          return cons
+                        })
+                        database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
+                          if (terrains) {
+                            terrains.forEach(terrain => {
+                              terrain.ref.transaction(terr => {
+                                if (terr) terr.quantity += quantity
+                                return terr
+                              })
+                            })
+                          }
+                          return terrains
+                        })
+                        return constructions
+                      }
+                    })
+                  }
+                  return constructions
+                })
+              }
             }
             curse.remaining--
             if (curse.remaining <= 0) {
@@ -146,11 +188,12 @@ const checkEnchantmentsMaintenance = (uid) => {
   })
 }
 
-const avarice = async (uid) => {
+const checkMaintenances = async (uid) => {
   // base productions
   goldPerTurn = 0
   peoplePerTurn = 0
   manaPerTurn = 0
+  terrainPerTurn = 0
   // individual checks
   await checkBuildingsProduction(uid)
   await checkHeroesProduction(uid)
@@ -167,11 +210,24 @@ const avarice = async (uid) => {
       user.goldPerTurn = Math.floor(goldPerTurn)
       user.peoplePerTurn = Math.floor(peoplePerTurn)
       user.manaPerTurn = Math.floor(manaPerTurn)
+      user.terrainPerTurn = terrainPerTurn
       user.gold += goldPerTurn
       user.people += peoplePerTurn
       user.mana += manaPerTurn
-      if (user.gold < 0 || user.people < 0 || user.mana < 0) {
-        // TODO
+      if (user.gold < 0) {
+        // TODO DISBAND
+        user.gold = 0
+        return user
+      }
+      if (user.people < 0) {
+        // TODO DISBAND
+        user.people = 0
+        return user
+      }
+      if (user.mana < 0) {
+        // TODO DISBAND
+        user.mana = 0
+        return user
       }
     }
     return user
@@ -180,6 +236,6 @@ const avarice = async (uid) => {
 
 export const calculate = (uid, turns) => {
   for (let i = 0; i < turns; i++) {
-    avarice(uid)
+    checkMaintenances(uid)
   }
 }
