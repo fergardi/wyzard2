@@ -6,9 +6,13 @@ let goldPerTurn = 0
 let peoplePerTurn = 0
 let manaPerTurn = 0
 let terrainPerTurn = 0
+let peopleCap = 0
+let manaCap = 0
+let armyCap = 0
 let gold = 0
 let people = 0
 let mana = 0
+let power = 0
 
 const checkBuildingsProduction = (uid) => {
   return database.ref('users').child(uid).child('constructions').once('value', constructions => {
@@ -245,9 +249,13 @@ const checkMaintenances = async (uid) => {
   peoplePerTurn = 0
   manaPerTurn = 0
   terrainPerTurn = 0
+  peopleCap = 0
+  manaCap = 0
+  armyCap = 0
   gold = 0
   people = 0
   mana = 0
+  power = 0
   // checks
   await checkBuildingsProduction(uid)
   await checkHeroesProduction(uid)
@@ -274,6 +282,9 @@ const checkMaintenances = async (uid) => {
       // console.log('People this turn... ' + people)
       mana = user.mana
       // console.log('Mana this turn... ' + mana)
+      user.peopleCap = peopleCap
+      user.manaCap = manaCap
+      user.armyCap = armyCap
       user.turns = Math.max(0, user.turns--)
     }
     return user
@@ -286,6 +297,7 @@ const checkMaintenances = async (uid) => {
       user.gold = Math.max(0, user.gold)
       user.people = Math.max(0, user.people)
       user.mana = Math.max(0, user.mana)
+      user.power = Math.max(0, power)
     }
     return user
   })
