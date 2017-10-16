@@ -12,7 +12,7 @@
         mu-card-actions
           mu-raised-button(primary, type="number") {{ 'lbl_button_start' | translate }}
 
-    mu-dialog(:open="dialog", @close="close")
+    mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
@@ -21,8 +21,8 @@
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
 </template>
 
 <script>
@@ -37,7 +37,8 @@
     data () {
       return {
         dialog: false,
-        type: null
+        type: null,
+        busy: false
       }
     },
     methods: {
@@ -46,6 +47,7 @@
         this.dialog = true
       },
       accept () {
+        this.busy = true
         switch (this.type) {
           case 'start':
             this.start()
@@ -60,6 +62,7 @@
       close () {
         this.type = null
         this.dialog = false
+        this.busy = false
       }
     }
   }

@@ -411,6 +411,7 @@
       flex-wrap wrap
       width 100%
     .mu-table
+      margin-top 5px
       border-radius $radius
       .mu-tr
         cursor pointer

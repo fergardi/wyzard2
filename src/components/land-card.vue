@@ -2,7 +2,7 @@
   .map
     mapbox#map(:access-token="token", :map-options="options", @map-load="ready")
     
-    mu-dialog(:open="dialog", @close="close")
+    mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/conquest.jpg?alt=media", :alt="translate('lbl_label_conquest')")

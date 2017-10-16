@@ -160,7 +160,7 @@
               mu-td.number
                 span.income(class="green") &#9650;
                 span {{ blessing.manaProduction | percentage }}
-              mu-td.number {{ blessing.magic * blessing.power | minimize }}
+              mu-td.number {{ blessing.power | minimize }}
             
             mu-tr
               mu-td.title {{ 'lbl_table_total' | translate }}

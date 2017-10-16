@@ -45,9 +45,9 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="data.quantity", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canDisband") {{ 'lbl_button_disband' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
 
-    mu-dialog(:open="dialog", @close="close")
+    mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
@@ -56,8 +56,8 @@
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
 </template>
 
 <script>
@@ -75,7 +75,8 @@
       return {
         dialog: false,
         type: null,
-        amount: 0
+        amount: 0,
+        busy: false
       }
     },
     methods: {
@@ -84,6 +85,7 @@
         this.dialog = true
       },
       accept () {
+        this.busy = true
         switch (this.type) {
           case 'disband':
             this.disband()
@@ -109,6 +111,7 @@
         this.type = null
         this.dialog = false
         this.amount = 0
+        this.busy = false
       }
     },
     computed: {

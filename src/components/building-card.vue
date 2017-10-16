@@ -85,30 +85,30 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", :max="user.terrain", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canConstruct") {{ 'lbl_button_demolish_construct' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canConstruct || busy") {{ 'lbl_button_demolish_construct' | translate }}
 
     template(v-if="exploration")
       form(@submit.stop.prevent="confirm('explore')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canExplore") {{ 'lbl_button_explore' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canExplore || busy") {{ 'lbl_button_explore' | translate }}
 
     template(v-if="meditation")
       form(@submit.stop.prevent="confirm('meditate')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canMeditate") {{ 'lbl_button_meditate' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canMeditate || busy") {{ 'lbl_button_meditate' | translate }}
 
     template(v-if="taxation")
       form(@submit.stop.prevent="confirm('collect')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canTax") {{ 'lbl_button_collect' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canTax || busy") {{ 'lbl_button_collect' | translate }}
 
-    mu-dialog(:open="dialog", @close="close")
+    mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
@@ -124,7 +124,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { calculate } from '../services/api'
+  import { checkTurnMaintenances } from '../services/api'
 
   export default {
     name: 'building-card',
@@ -138,8 +138,6 @@
     },
     data () {
       return {
-        tooltip: false,
-        trigger: null,
         dialog: false,
         type: null,
         amount: 0,
@@ -152,6 +150,7 @@
         this.dialog = true
       },
       accept () {
+        this.busy = true
         switch (this.type) {
           case 'explore':
             this.explore()
@@ -168,7 +167,6 @@
         }
       },
       construct () {
-        this.busy = true
         if (this.hasTerrain) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -204,6 +202,9 @@
             }
           })
           .then(response => {
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
             store.commit('success', 'lbl_toast_construction_ok')
             this.close()
           })
@@ -213,7 +214,6 @@
         }
       },
       explore () {
-        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -229,8 +229,11 @@
               })
               return building
             }
-          }).then(response => {
-            calculate(store.state.uid, this.amount)
+          })
+          .then(response => {
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
             store.commit('success', 'lbl_toast_exploration_ok')
             this.close()
           })
@@ -240,7 +243,6 @@
         }
       },
       meditate () {
-        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -259,7 +261,9 @@
             }
           })
           .then(response => {
-            calculate(store.state.uid, this.amount)
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
             store.commit('success', 'lbl_toast_meditation_ok')
             this.close()
           })
@@ -269,7 +273,6 @@
         }
       },
       collect () {
-        this.busy = true
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -284,7 +287,9 @@
             }
           })
           .then(response => {
-            calculate(store.state.uid, this.amount)
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
             store.commit('success', 'lbl_toast_tax_ok')
             this.close()
           })
@@ -298,15 +303,6 @@
         this.dialog = false
         this.amount = 0
         this.busy = false
-      },
-      hover (reference) {
-        console.log(this.$refs, reference)
-        this.trigger = this.$refs[reference]
-        this.tooltip = true
-      },
-      exit () {
-        this.tooltip = false
-        this.trigger = null
       }
     },
     computed: {

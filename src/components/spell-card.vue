@@ -76,7 +76,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canBreak || busy") {{ 'lbl_button_dispel' | translate }}
 
-    mu-dialog(:open="dialog", @close="close")
+    mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
@@ -85,13 +85,14 @@
         mu-card-text
           p {{ 'lbl_label_cannot_undo' | translate }}
         mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
+          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
+          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
+  import { checkTurnMaintenances } from '../services/api'
 
   export default {
     name: 'spell-card',
@@ -138,13 +139,6 @@
             if (research) {
               let min = research.completion - research.invested
               research.invested = research.invested + Math.min(min, this.amount)
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  user.turns = Math.max(0, user.turns - Math.min(min, this.amount))
-                  // TODO
-                }
-                return user
-              })
               if (research.invested >= research.completion) {
                 let page = {...research}
                 delete page['.key']
@@ -154,25 +148,26 @@
             }
             return research
           })
-          if (completed) {
-            database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true).once('value', snapshot => {
-              if (snapshot && snapshot.hasChildren()) {
-                database.ref('users').child(store.state.uid).transaction(user => {
-                  if (user) {
-                    user.magic = 1 + Math.floor(snapshot.numChildren() / 2)
-                  }
-                  return user
-                })
-              }
-            })
-            store.commit('success', 'lbl_toast_investigation_complete')
-          } else {
-            store.commit('success', 'lbl_toast_investigation_ok')
-          }
+          .then(response => {
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
+            if (completed) {
+              database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true).once('value', snapshot => {
+                if (snapshot && snapshot.hasChildren()) {
+                  database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(snapshot.numChildren() / 2) })
+                }
+              })
+              store.commit('success', 'lbl_toast_investigation_complete')
+            } else {
+              store.commit('success', 'lbl_toast_investigation_ok')
+            }
+            this.close()
+          })
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
+          this.close()
         }
-        this.close()
       },
       conjure () {
         if (this.canCast) { // user has resources
@@ -208,12 +203,18 @@
                 return user
               })
             })
+            .then(response => {
+              return checkTurnMaintenances(store.state.uid, this.amount)
+            })
+            .then(response => {
+              store.commit('success', 'lbl_toast_casting_ok')
+              this.close()
+            })
           }
-          store.commit('success', 'lbl_toast_casting_ok')
         } else {
           store.commit('success', 'lbl_toast_casting_error')
+          this.close()
         }
-        this.close()
       },
       disenchant () {
         if (this.canBreak) { // user has resources
@@ -224,12 +225,6 @@
                 broken = true
               } else {
                 broken = Math.random() >= 0.5
-                database.ref('users').child(store.state.uid).transaction(user => {
-                  if (user) {
-                    user.turns = Math.max(0, user.turns - this.data.turns)
-                  }
-                  return user
-                })
               }
               if (broken) {
                 store.commit('success', 'lbl_toast_dispel_ok')
@@ -240,10 +235,16 @@
             }
             return enchantment
           })
+          .then(response => {
+            return checkTurnMaintenances(store.state.uid, this.amount)
+          })
+          .then(response => {
+            store.commit('error', 'lbl_toast_resource_turns')
+            this.close()
+          })
         } else {
-          store.commit('error', 'lbl_toast_resource_turns')
+          this.close()
         }
-        this.close()
       },
       close () {
         this.type = null

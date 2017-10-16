@@ -21,7 +21,7 @@
           mu-card-actions
             mu-raised-button(primary, type="submit") {{ 'lbl_button_restore' | translate }}
 
-        mu-dialog(:open="dialog", @close="close")
+        mu-dialog(:open="dialog")
           mu-card.dialog
             mu-card-media
               img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
@@ -30,8 +30,8 @@
             mu-card-text
               p {{ 'lbl_label_cannot_undo' | translate }}
             mu-card-actions
-              mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
-              mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept")
+              mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
+              mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
 </template>
 
 <script>
@@ -49,7 +49,8 @@
         languages: [
           { key: 'es', value: 'lbl_language_spanish' },
           { key: 'en', value: 'lbl_language_english' }
-        ]
+        ],
+        busy: false
       }
     },
     methods: {
@@ -58,6 +59,7 @@
         this.dialog = true
       },
       accept () {
+        this.busy = true
         switch (this.type) {
           case 'restore':
             this.restore()
@@ -71,6 +73,9 @@
               settings = this.settings
             }
             return settings
+          })
+          .then(response => {
+            store.commit('success', 'lbl_toast_settings_saved')
           })
         }
       },
@@ -87,11 +92,15 @@
           }
           return updated
         })
-        this.close()
+        .then(response => {
+          store.commit('success', 'lbl_toast_settings_restored')
+          this.close()
+        })
       },
       close () {
         this.type = null
         this.dialog = false
+        this.busy = false
       }
     },
     computed: {
