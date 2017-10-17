@@ -248,6 +248,15 @@
       .mu-dialog-body
         padding 0
         color inherit
+      .mu-circular-progress
+        position absolute
+        width 99% !important
+        height 99% !important
+        display flex
+        border-radius $radius
+        background-color rgba(0,0,0,0.5)
+        justify-content center
+        align-items center
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -603,7 +612,7 @@
         .toggler
           visibility hidden
       .mu-dialog
-        width 50%
-        min-width 50%
-        max-width 50%
+        width 35%
+        min-width 35%
+        max-width 35%
 </style>

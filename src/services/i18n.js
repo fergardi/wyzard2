@@ -495,6 +495,7 @@ export default {
     lbl_strategy_pillage: 'Pillaje',
     lbl_strategy_conquest: 'Conquista',
     // labels
+    lbl_label_processing: 'Procesando...',
     lbl_label_search: 'Buscar',
     lbl_label_loading: 'Cargando...',
     lbl_label_strategy: 'Estrategia',
