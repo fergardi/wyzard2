@@ -4,7 +4,7 @@
       mu-card-media
         transition(name="fade", mode="out-in", enter-active-class="animated fadeIn")
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
-        mu-circular-progress(v-if="busy", :size="90", color="red")
+        mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
         .card-info
           .card-text {{ 'lbl_label_confirm' | translate }}
       mu-card-text

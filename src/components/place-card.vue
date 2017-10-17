@@ -12,24 +12,18 @@
         mu-card-actions
           mu-raised-button(primary, type="number") {{ 'lbl_button_start' | translate }}
 
-    mu-dialog(:open="dialog")
-      mu-card.dialog
-        mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
-          .card-info
-            .card-text {{ 'lbl_label_confirm' | translate }}
-        mu-card-text
-          p {{ 'lbl_label_cannot_undo' | translate }}
-        mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
+    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
   import store from '../vuex/store'
+  import confirm from './confirm-dialog'
 
   export default {
     name: 'place-card',
+    components: {
+      'confirm-dialog': confirm
+    },
     props: {
       data: Object,
       adventure: Boolean

@@ -47,25 +47,19 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
 
-    mu-dialog(:open="dialog")
-      mu-card.dialog
-        mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
-          .card-info
-            .card-text {{ 'lbl_label_confirm' | translate }}
-        mu-card-text
-          p {{ 'lbl_label_cannot_undo' | translate }}
-        mu-card-actions
-          mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
-          mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
+    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
+  import confirm from './confirm-dialog'
 
   export default {
     name: 'unit',
+    components: {
+      'confirm-dialog': confirm
+    },
     props: {
       data: Object,
       info: Boolean,
