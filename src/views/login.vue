@@ -5,6 +5,7 @@
         form(@submit.stop.prevent="accept")
           mu-card-media
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media", :alt="translate('lbl_label_enter')")
+            mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
             .card-info
               .card-text {{ 'lbl_label_enter' | translate }}
 
@@ -83,7 +84,7 @@
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/meditate')
+          this.$router.push('/kingdom')
         })
         .catch(error => {
           this.error = true

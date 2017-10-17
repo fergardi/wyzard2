@@ -10,12 +10,16 @@
               span {{ messages.length | minimize }}
           .card-info
             .card-text {{ 'lbl_label_messages' | translate }}
+
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
             mu-tr
-              mu-th {{ 'lbl_table_since' | translate }}
-              mu-th {{ 'lbl_table_from' | translate }}
-              mu-th {{ 'lbl_table_subject' | translate }}
+              mu-th
+                mu-icon(value=":ra ra-stopwatch")
+              mu-th
+                mu-icon(value=":ra ra-player")
+              mu-th
+                mu-icon(value=":ra ra-help")
           mu-tbody
             mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}

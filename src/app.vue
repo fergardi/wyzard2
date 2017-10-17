@@ -112,7 +112,7 @@
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-tombstone")
+            mu-icon(slot="left", value=":ra ra-trophy")
 
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
@@ -248,15 +248,15 @@
       .mu-dialog-body
         padding 0
         color inherit
-      .mu-circular-progress
-        position absolute
-        width 99% !important
-        height 99% !important
-        display flex
-        border-radius $radius
-        background-color rgba(0,0,0,0.5)
-        justify-content center
-        align-items center
+    .mu-circular-progress
+      position absolute
+      width calc(100% - 2px) !important
+      height calc(100% - 2px) !important
+      display flex
+      border-radius $radius
+      background-color rgba(0,0,0,0.5)
+      justify-content center
+      align-items center
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
@@ -396,6 +396,10 @@
               width 45%
             &.triple
               width 30%
+            &.one-quarter
+              width 30%
+            &.three-quarters
+              width 60%
       .mu-card-actions
         display flex
         align-items center
@@ -469,50 +473,50 @@
     .mu-card .card-info .card-number
     .mu-card .card-extra .card-number
     .mu-card .card-extra .card-number
-      background-color $dark
+      background-color $dark !important
       &.red
-        background-color $red
+        background-color $red !important
       &.green
-        background-color $green
+        background-color $green !important
       &.purple
-        background-color $purple
+        background-color $purple !important
       &.blue
-        background-color $blue
+        background-color $blue !important
       &.white
-        background-color $white
+        background-color $white !important
       &.dark
-        background-color $dark
+        background-color $dark !important
     // font colors
     .mu-icon
     .income
       &.red
-        color $red
+        color $red !important
       &.green
-        color $green
+        color $green !important
       &.purple
-        color $purple
+        color $purple !important
       &.blue
-        color $blue
+        color $blue !important
       &.white
-        color $white
+        color $white !important
       &.dark
-        color $dark
+        color $dark !important
     // border colors
     .bordered
       border 3px solid
       border-radius 50%
       &.red
-        border-color $red
+        border-color $red !important
       &.green
-        border-color $green
+        border-color $green !important
       &.purple
-        border-color $purple
+        border-color $purple !important
       &.blue
-        border-color $blue
+        border-color $blue !important
       &.white
-        border-color $white
+        border-color $white !important
       &.dark
-        border-color $dark
+        border-color $dark !important
     .mu-raised-button
       border-radius $radius
     .mu-pagination-item
@@ -549,8 +553,7 @@
       text-overflow ellipsis
     .mu-td
     .mu-th
-      &.number
-        text-align right
+      text-align center !important
     .lazy
       width 100%
       transition opacity .5s ease-in

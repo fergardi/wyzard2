@@ -182,6 +182,10 @@
         "image": "https://i.pinimg.com/736x/e4/51/58/e4515821a313a33764e06502561b79bf--fantasy-illustration-d-art.jpg",
         "quantity": 120
       }
+    },
+    "rewards": {
+      "experience": 50,
+      "terrain": 100
     }
   },
   "estonia": {

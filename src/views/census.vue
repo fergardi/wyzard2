@@ -6,7 +6,7 @@
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/census.jpg?alt=media", :alt="translate('lbl_label_users')")
           .card-extra
             .card-number
-              i.ra.ra-tombstone
+              i.ra.ra-player
               span {{ users.length | minimize }}
           .card-info
             .card-text {{ 'lbl_label_players' | translate }}
@@ -14,9 +14,12 @@
         mu-table(:showCheckbox="false", :selectable="false")
           mu-thead
             mu-tr
-              mu-th {{ 'lbl_table_position' | translate }}
-              mu-th {{ 'lbl_table_name' | translate }}
-              mu-th.number {{ 'lbl_table_power' | translate }}
+              mu-th
+                mu-icon(value=":ra ra-trophy")
+              mu-th
+                mu-icon(value=":ra ra-player")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
               mu-td {{ (current - 1) * size + index + 1 | minimize }}

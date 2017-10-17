@@ -11,9 +11,9 @@
           mu-thead
             mu-tr
               mu-th.title
-                mu-icon(value=":ra ra-scroll-unfurled")
+                mu-icon(value=":ra ra-help")
               mu-th.number
-                mu-icon(value=":ra ra-kaleidoscope")
+                mu-icon(value=":ra ra-daggers")
               mu-th.number
                 mu-icon(value=":ra ra-gold-bar")
               mu-th.number
@@ -21,7 +21,7 @@
               mu-th.number
                 mu-icon(value=":ra ra-burst-blob")
               mu-th.number
-                mu-icon(value=":ra ra-sword")
+                mu-icon(value=":ra ra-fire-symbol")
 
           mu-tbody
             mu-tr(v-for="building, index in user.constructions", :key="index")

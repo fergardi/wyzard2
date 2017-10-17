@@ -1,12 +1,13 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="100", desktop="100", key="-2")
-        mu-card
-          mu-card-text
-            form
-              mu-text-field(v-model="search", name="search", :label="translate('lbl_label_search')", :hintText="translate('lbl_label_search')", :fullWidth="true")
-      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in filtered", :key="index")
+      //
+        mu-col(width="100", tablet="100", desktop="100", key="-2")
+          mu-card
+            mu-card-text
+              form
+                mu-text-field(v-model="search", name="search", :label="translate('lbl_label_search')", :hintText="translate('lbl_label_search')", :fullWidth="true")
+      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in spells", :key="index")
         spell-card.animated.fadeInUp(:data="spell", :info="true")
       // mu-infinite-scroll(v-if="visible", :scroller="scroller", :loading="loading", @load="more", :loadingText="translate('lbl_label_loading')", key="-1")
 </template>
@@ -44,7 +45,7 @@
           setTimeout(() => {
             this.max += 9
             this.loading = false
-          }, 500)
+          }, 0)
         }
       }
     },

@@ -88,10 +88,10 @@ const checkCursesProduction = (uid) => {
                     constructions.forEach(construction => {
                       index++
                       if (random === index) {
-                        let quantity = Math.max(construction.val().quantity, Math.abs(curse.magic * curse.terrain))
+                        let quantity = Math.min(construction.val().quantity, Math.abs(curse.magic * curse.terrain))
                         if (quantity > 0) {
                           construction.ref.transaction(cons => {
-                            if (cons) cons.quantity = Math.max(0, quantity)
+                            if (cons) cons.quantity -= quantity
                             return cons
                           })
                           database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {

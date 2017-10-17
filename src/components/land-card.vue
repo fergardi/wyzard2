@@ -8,11 +8,24 @@
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/conquest.jpg?alt=media", :alt="translate('lbl_label_conquest')")
           .card-info
             .card-text {{ name | translate }}
-        mu-card-text.conquest
-          .army
-            .troop(v-for="troop, index in army", :key="index")
-              mu-chip(:class="troop.color") {{ troop.name | translate }}
-              mu-chip(:class="troop.color") {{ troop.quantity | minimize }}
+
+        mu-card-text.troops(v-if="troops")
+          .card-stats(v-for="troop, index in troops", :key="index")
+            mu-chip.double(:class="troop.color")
+              i.ra.ra-crossed-axes
+              span {{ troop.name | translate }}
+            mu-chip.double
+              i.ra.ra-tower
+              span {{ troop.quantity | minimize }}
+
+        mu-card-text.rewards(v-if="rewards")
+          .card-stats
+            mu-chip.double
+              i.ra.ra-tower
+              span {{ rewards.terrain | numeric }}
+            mu-chip.double
+              i.ra.ra-trefoil-lily
+              span {{ rewards.experience | numeric }}
 
         mu-card-actions
           mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close")
@@ -32,7 +45,7 @@
     },
     data () {
       return {
-        army: [],
+        troops: [],
         name: null,
         dialog: false,
         map: null,
@@ -127,7 +140,8 @@
             map.setFilter('country-selected', ['==', 'name', name])
             let bbox = extent(e.features[0].geometry)
             map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
-            this.$bindAsArray('army', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
+            this.$bindAsArray('troops', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
+            this.$bindAsObject('rewards', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('rewards'))
             this.name = 'lbl_country_' + name.replace(' ', '_').toLowerCase()
             this.dialog = true
           }
@@ -136,7 +150,7 @@
       close () {
         this.dialog = false
         this.name = null
-        this.army = []
+        this.troops = []
       },
       conquest () {
         // TODO
@@ -152,27 +166,6 @@
 </script>
 
 <style src="../../node_modules/mapbox-gl/dist/mapbox-gl.css"></style>
-
-<style lang="stylus">
-  .mu-dialog
-    .mu-dialog-body
-      .conquest
-        margin-top 0 !important
-        .army
-          .troop
-            margin-top 3px
-            display flex
-            justify-content space-between
-            align-items center
-            .name
-            .quantity
-              padding 5px 10px
-              font-weight bold
-              border-radius 5px
-              font-size 0.9em
-              border 1px solid
-              display inline-block
-</style>
 
 <style lang="stylus">
   #map
