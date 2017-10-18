@@ -8,6 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var Visualizer = require('webpack-visualizer-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -20,7 +21,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: 'cheap-module-source-map', // config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
@@ -32,12 +33,24 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     new webpack.optimize.UglifyJsPlugin({
+      mangle: true,      
       compress: {
         warnings: false,
-        comparisons: false
+        comparisons: false,
+        pure_getters: true,
+        unsafe_comps: true,
+        screw_ie8: true,
+        unsafe: true,
+        unsafe_comps: true
       },
-      sourceMap: true
+      sourceMap: false,
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
+    // ignore moment
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),    
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
@@ -95,7 +108,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new Visualizer({
+      filename: './production.html'
+    })
   ]
 })
 
