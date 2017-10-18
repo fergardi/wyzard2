@@ -6,7 +6,6 @@ import MuseUI from 'muse-ui'
 import i18n from './services/i18n'
 import store from './vuex/store'
 import moment from 'moment'
-// import '../static/default-passive-events.js'
 import LazyImg from 'v-lazy-img'
 // theming
 import '../node_modules/muse-ui/dist/muse-ui.css'

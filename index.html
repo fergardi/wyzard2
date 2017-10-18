@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1e2329">
-    <link async defer rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,400italic">
     <link rel="manifest" href="static/manifest.json">   
     <link rel="icon" href="static/favicon.ico" type="image/x-icon">
   </head>
@@ -21,7 +20,7 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js', { scope: '/' })
       .then(registration => {
-        console.log('Registration succeeded. Scope is ' + registration.scope)
+        console.log('Registration succeeded! Scope is ' + registration.scope)
       }).catch(error => {
         console.log('Registration failed with ' + error)
       })

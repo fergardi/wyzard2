@@ -3,12 +3,14 @@ var utils = require('./utils')
 var webpack = require('webpack')
 var config = require('../config')
 var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var Visualizer = require('webpack-visualizer-plugin')
+const baseWebpackConfig = require('./webpack.base.conf')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const FontminPlugin = require('fontmin-webpack')
+const NukeCssPlugin = require('nukecss-webpack')
+const Visualizer = require('webpack-visualizer-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -55,6 +57,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
     }),
+    // eliminate unused css
+    // new NukeCssPlugin(),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({

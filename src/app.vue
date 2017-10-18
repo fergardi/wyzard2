@@ -210,6 +210,7 @@
 </script>
 
 <style src="../node_modules/animate.css/animate.min.css"></style>
+<style src="./assets/css/raleway.css"></style>
 
 <style lang="stylus">
   $opacity = 0.975
@@ -278,7 +279,6 @@
     .row
       justify-content flex-start
     .mu-chip
-      font-weight bold
       width auto
       border 1px solid
       background-color $dark
@@ -296,7 +296,6 @@
       border 1px solid
       .mu-card-header
         text-align center
-        font-weight bold
         .mu-card-header-title
           padding-right 0
       .card-description
@@ -333,7 +332,6 @@
             width auto
             display inline-block
             padding 5px 10px
-            font-weight bold
             i + span
               margin-left 3px
             span + i
@@ -408,7 +406,6 @@
           flex 1 1 0
           color inherit
           border 1px solid
-          font-weight bold
           width 100%
           text-transform none
           &.hover .mu-raised-button-wrapper
@@ -439,7 +436,6 @@
           flex 1 1 0
           color inherit
           border 1px solid
-          font-weight bold
           width 100%
           text-transform none
         .mu-raised-button + .mu-raised-button
@@ -530,7 +526,6 @@
       text-align center
       width 100%
       max-width 100%
-      font-weight bold
       border 1px solid
       border-radius $radius
       padding 5px
@@ -544,7 +539,6 @@
       width 100%
       max-width 100%
       position fixed
-      font-weight bold
       border 1px solid
       border-radius $radius
     .ellipsis
