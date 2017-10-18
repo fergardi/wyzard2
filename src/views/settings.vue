@@ -48,7 +48,8 @@
         dialog: false,
         languages: [
           { key: 'es', value: 'lbl_language_spanish' },
-          { key: 'en', value: 'lbl_language_english' }
+          { key: 'en', value: 'lbl_language_english' },
+          { key: 'fr', value: 'lbl_language_french' }
         ],
         busy: false
       }

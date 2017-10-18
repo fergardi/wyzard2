@@ -867,5 +867,7 @@ export default {
     lbl_country_zimbabwe: ''
   },
   en: {
+  },
+  fr: {
   }
 }
