@@ -13,6 +13,9 @@ let gold = 0
 let people = 0
 let mana = 0
 let power = 0
+let disbanded = false
+let deserted = false
+let dispeled = false
 
 const checkBuildingsProduction = (uid) => {
   return database.ref('users').child(uid).child('constructions').once('value', constructions => {
@@ -200,11 +203,11 @@ const checkEnchantmentsAffordance = (uid) => {
     if (enchantments) {
       enchantments.forEach(enchantment => {
         // console.log('Checking enchantment affordance... ' + enchantment.val().name)
-        if ((gold < 0 && enchantment.val().goldMaintenance > 0) || (people < 0 && enchantment.val().peopleMaintenance > 0) || (mana < 0 && enchantment.val().manaMaintenance > 0)) {
+        if (!dispeled && ((gold < 0 && enchantment.val().goldMaintenance > 0) || (people < 0 && enchantment.val().peopleMaintenance > 0) || (mana < 0 && enchantment.val().manaMaintenance > 0))) {
           // console.log('Cant afford ' + enchantment.val().name + ', breaking it...')
           enchantment.ref.remove()
           store.commit('error', 'lbl_toast_enchantment_broken')
-          return true
+          dispeled = true
         }
       })
     }
@@ -216,11 +219,11 @@ const checkHeroesAffordance = (uid) => {
     if (contracts) {
       contracts.forEach(contract => {
         // console.log('Checking hero affordance... ' + contract.val().name)
-        if ((gold < 0 && contract.val().goldMaintenance > 0) || (people < 0 && contract.val().peopleMaintenance > 0) || (mana < 0 && contract.val().manaMaintenance > 0)) {
+        if (!deserted && ((gold < 0 && contract.val().goldMaintenance > 0) || (people < 0 && contract.val().peopleMaintenance > 0) || (mana < 0 && contract.val().manaMaintenance > 0))) {
           // console.log('Cant afford ' + contract.val().name + ', firing it...')
           contract.ref.remove()
           store.commit('error', 'lbl_toast_hero_resigned')
-          return true
+          deserted = true
         }
       })
     }
@@ -232,11 +235,11 @@ const checkUnitsAffordance = (uid) => {
     if (troops) {
       troops.forEach(troop => {
         // console.log('Checking unit affordance... ' + troop.val().name)
-        if ((gold < 0 && troop.val().goldMaintenance > 0) || (people < 0 && troop.val().peopleMaintenance > 0) || (mana < 0 && troop.val().manaMaintenance > 0)) {
+        if (!disbanded && ((gold < 0 && troop.val().goldMaintenance > 0) || (people < 0 && troop.val().peopleMaintenance > 0) || (mana < 0 && troop.val().manaMaintenance > 0))) {
           // console.log('Cant afford ' + troop.val().name + ', disbanding it...')
           troop.ref.remove()
           store.commit('error', 'lbl_toast_unit_disbanded')
-          return true
+          disbanded = true
         }
       })
     }
@@ -256,6 +259,9 @@ const checkMaintenances = async (uid) => {
   people = 0
   mana = 0
   power = 0
+  dispeled = false
+  deserted = false
+  disbanded = false
   // checks
   await checkBuildingsProduction(uid)
   await checkHeroesProduction(uid)
@@ -290,8 +296,8 @@ const checkMaintenances = async (uid) => {
     return user
   })
   await checkUnitsAffordance(uid)
-  await checkEnchantmentsAffordance(uid)
-  await checkHeroesAffordance(uid)
+  if (!disbanded) await checkEnchantmentsAffordance(uid)
+  if (!disbanded && !dispeled) await checkHeroesAffordance(uid)
   await database.ref('users').child(uid).transaction(user => {
     if (user) {
       user.gold = Math.max(0, user.gold)

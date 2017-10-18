@@ -7,7 +7,7 @@
         .card-info
           .card-text {{ 'lbl_label_confirm' | translate }}
       mu-card-text
-        p {{ busy ? 'lbl_label_procesing_maintenances' : 'lbl_label_cannot_undo' | translate }}
+        p {{ busy ? 'lbl_label_processing_maintenances' : 'lbl_label_cannot_undo' | translate }}
       mu-card-actions
         mu-raised-button(primary, :label="translate('lbl_button_cancel')", @click="close", :disabled="busy")
         mu-raised-button(primary, :label="translate('lbl_button_confirm')", @click="accept", :disabled="busy")
