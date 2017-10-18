@@ -212,31 +212,32 @@
       },
       disenchant () {
         if (this.canBreak) { // user has resources
-          database.ref('enchantments').child(this.data['.key']).transaction(enchantment => {
+          let broken = false
+          let turns = 0
+          database.ref('enchantments').child(this.data['.key']).once('value', enchantment => {
             if (enchantment) {
-              let broken = false
               if (enchantment.source === store.state.uid) {
                 broken = true
               } else {
+                turns = enchantment.val().turns
                 broken = Math.random() >= 0.5
               }
-              if (broken) {
-                store.commit('success', 'lbl_toast_dispel_ok')
-                return null
-              } else {
-                store.commit('error', 'lbl_toast_dispel_error')
-              }
             }
-            return enchantment
           })
           .then(response => {
-            return checkTurnMaintenances(store.state.uid, this.amount)
+            return checkTurnMaintenances(store.state.uid, turns)
           })
           .then(response => {
-            store.commit('error', 'lbl_toast_resource_turns')
+            if (broken) {
+              database.ref('enchantments').child(this.data['.key']).remove()
+              store.commit('success', 'lbl_toast_dispel_ok')
+            } else {
+              store.commit('error', 'lbl_toast_dispel_error')
+            }
             this.close()
           })
         } else {
+          store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }
       },
@@ -266,6 +267,9 @@
       canResearch () {
         return this.amount > 0 && this.amount <= this.user.turns && this.data.magic <= this.user.magic
       }
+    },
+    destroy () {
+      // this.busy = false
     }
   }
 </script>
