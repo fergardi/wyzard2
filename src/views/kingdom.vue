@@ -208,8 +208,6 @@
       .mu-td
         padding-left 6px
         padding-right 6px
-        &.title
-          width 25%
         .mu-chip
           padding 0 6px
       .mu-td

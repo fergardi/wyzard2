@@ -10,8 +10,10 @@
           p {{ 'lbl_label_battle' | translate }}
         mu-card-text
           form
-          
-            mu-select-field(v-model="target", :label="translate('lbl_label_target')", :fullWidth="true")
+
+            mu-auto-complete(v-model="search", :label="translate('lbl_label_target')", :hintText="translate('lbl_label_target')", :fullWidth="true", :dataSource="targets", :openOnFocus="true", @select="choose")
+
+            //mu-select-field(v-model="target", :label="translate('lbl_label_target')", :fullWidth="true")
               mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="translate(user.name)", v-if="!myself(user['.key'])")
 
             mu-select-field(v-model="type", :label="translate('lbl_label_strategy')", :fullWidth="true")
@@ -89,6 +91,7 @@
         type: 'conquest',
         spell: null,
         artifact: null,
+        search: '',
         target: null
       }
     },
@@ -107,6 +110,16 @@
       },
       myself (uid) {
         return store.state.uid === uid
+      },
+      choose (target) {
+        this.target = target.value
+      }
+    },
+    computed: {
+      targets () {
+        return this.search // TODO remove myself
+          ? this.users.filter(u => u.name.toLowerCase().includes(this.search.toLowerCase())).map(u => { return { text: u.name, value: u['.key'] } })
+          : this.users.map(u => { return { text: u.name, value: u['.key'] } })
       }
     }
   }
