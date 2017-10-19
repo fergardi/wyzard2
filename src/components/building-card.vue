@@ -27,7 +27,7 @@
             span {{ user.people | minimize }} / {{ user.peopleCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_workshop'")
             i.ra.ra-hourglass
-            span -{{ data.quantity / data.constructionBonus | percentage }}
+            span -{{ data.quantity / data.construction | percentage }}
           .card-number(v-if="data.name === 'lbl_building_farm'")
             i.ra.ra-gold-bar
             span {{ user.gold | minimize }}
@@ -161,109 +161,71 @@
         }
       },
       construct () {
-        if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
-          let reduction = 1
-          let totalTurns = this.amount * this.data.turns
-          database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
-            if (constructions) {
-              constructions.forEach(construction => {
-                let terrain = construction.val()
-                reduction -= Math.max(0.75, (terrain.quantity * terrain.construction / 100))
-              })
-            }
-          })
-          .then(response => {
-            totalTurns = Math.ceil(totalTurns * reduction)
-            if (totalTurns <= this.user.turns) {
-              database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity + this.amount })
-              database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
-                if (terrains) {
-                  terrains.forEach(terrain => {
-                    terrain.ref.update({ quantity: this.user.terrain - this.amount })
-                  })
-                }
-              })
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  user.gold -= this.amount * this.data.goldCost
-                  user.people -= this.amount * this.data.peopleCost
-                  user.mana -= this.amount * this.data.manaCost
-                  user.terrain -= this.amount
-                }
-                return user
-              })
-              .then(response => {
-                return checkTurnMaintenances(store.state.uid, totalTurns)
-              })
-              .then(response => {
-                store.commit('success', 'lbl_toast_construction_ok')
-                this.close()
-              })
-            } else {
-              store.commit('error', 'lbl_toast_resource_turns')
-            }
-          })
-        } else {
-          if (!this.hasTerrain) {
-            store.commit('error', 'lbl_toast_resource_terrain')
-          }
-          if (!this.hasGold) {
-            store.commit('error', 'lbl_toast_resource_gold')
-          }
-          if (!this.hasPeople) {
-            store.commit('error', 'lbl_toast_resource_people')
-          }
-          if (!this.hasMana) {
-            store.commit('error', 'lbl_toast_resource_mana')
-          }
-        }
-        /*
-        if (this.hasTerrain) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
-            if (building) {
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  if (this.amount > 0) {
-                    if (this.hasGold && this.hasPeople && this.hasMana && this.hasTurns) {
-                      building.quantity += Math.min(user.terrain, this.amount)
-                      user.terrain -= Math.min(user.terrain, this.amount)
-                      user.turns = Math.max(0, user.turns - Math.abs(this.amount * this.data.turns))
-                    } else {
-                      if (!this.hasTurns) {
-                        store.commit('error', 'lbl_toast_resource_turns')
-                      }
-                      if (!this.hasGold) {
-                        store.commit('error', 'lbl_toast_resource_gold')
-                      }
-                      if (!this.hasPeople) {
-                        store.commit('error', 'lbl_toast_resource_people')
-                      }
-                      if (!this.hasMana) {
-                        store.commit('error', 'lbl_toast_resource_mana')
-                      }
-                    }
-                  } else {
-                    user.terrain += Math.min(building.quantity, Math.abs(this.amount))
-                    building.quantity -= Math.min(building.quantity, Math.abs(this.amount))
+        if (this.amount < 0) {
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity - Math.abs(this.amount) })
+          database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + Math.abs(this.amount) })
+          store.commit('success', 'lbl_toast_destruction_ok')
+          this.close()
+        } else if (this.amount > 0) {
+          if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
+            let reduction = 1
+            let totalTurns = this.amount * this.data.turns
+            database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
+              if (constructions) {
+                constructions.forEach(construction => {
+                  let terrain = construction.val()
+                  reduction -= Math.min(0.75, (terrain.quantity + 1) / terrain.construction / 100)
+                })
+              }
+            })
+            .then(response => {
+              totalTurns = Math.ceil(totalTurns * reduction)
+              if (totalTurns <= this.user.turns) {
+                database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity + this.amount })
+                database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
+                  if (terrains) {
+                    terrains.forEach(terrain => {
+                      terrain.ref.update({ quantity: this.user.terrain - this.amount })
+                    })
+                  }
+                })
+                database.ref('users').child(store.state.uid).transaction(user => {
+                  if (user) {
+                    user.gold -= this.amount * this.data.goldCost
+                    user.people -= this.amount * this.data.peopleCost
+                    user.mana -= this.amount * this.data.manaCost
+                    user.terrain -= this.amount
                   }
                   return user
-                }
-              })
-              return building
+                })
+                .then(response => {
+                  return checkTurnMaintenances(store.state.uid, totalTurns)
+                })
+                .then(response => {
+                  store.commit('success', 'lbl_toast_construction_ok')
+                  this.close()
+                })
+              } else {
+                store.commit('error', 'lbl_toast_resource_turns')
+                this.close()
+              }
+            })
+          } else {
+            if (!this.hasTerrain) {
+              store.commit('error', 'lbl_toast_resource_terrain')
             }
-          })
-          .then(response => {
-            return checkTurnMaintenances(store.state.uid, this.amount)
-          })
-          .then(response => {
-            store.commit('success', 'lbl_toast_construction_ok')
+            if (!this.hasGold) {
+              store.commit('error', 'lbl_toast_resource_gold')
+            }
+            if (!this.hasPeople) {
+              store.commit('error', 'lbl_toast_resource_people')
+            }
+            if (!this.hasMana) {
+              store.commit('error', 'lbl_toast_resource_mana')
+            }
             this.close()
-          })
-        } else {
-          store.commit('error', 'lbl_toast_resource_terrain')
-          this.close()
+          }
         }
-        */
       },
       explore () {
         if (this.hasTurns) { // user has resources
@@ -368,12 +330,9 @@
         return this.amount > 0 && this.amount <= this.user.turns
       },
       canConstruct () {
-        return true
-        /*
         return this.amount > 0
-          ? this.hasGold && this.hasPeople && this.hasMana && this.amount * this.data.turns <= this.user.turns
+          ? this.hasGold && this.hasPeople && this.hasMana && this.hasTerrain
           : this.amount < 0
-        */
       }
     }
   }

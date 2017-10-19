@@ -631,6 +631,7 @@ export default {
     lbl_toast_dispel_error: 'Fallo al desencantar',
     lbl_toast_construction_ok: 'Construcción terminada',
     lbl_toast_construction_error: 'Error al construir',
+    lbl_toast_destruction_ok: 'Demolición terminada',
     lbl_toast_exploration_ok: 'Exploración finalizada',
     lbl_toast_exploration_error: 'Error al explorar',
     lbl_toast_meditation_ok: 'Meditación completada',
