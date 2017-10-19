@@ -161,6 +161,63 @@
         }
       },
       construct () {
+        if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
+          let reduction = 1
+          let totalTurns = this.amount * this.data.turns
+          database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
+            if (constructions) {
+              constructions.forEach(construction => {
+                let terrain = construction.val()
+                reduction -= Math.max(0.75, (terrain.quantity * terrain.construction / 100))
+              })
+            }
+          })
+          .then(response => {
+            totalTurns = Math.ceil(totalTurns * reduction)
+            if (totalTurns <= this.user.turns) {
+              database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity + this.amount })
+              database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
+                if (terrains) {
+                  terrains.forEach(terrain => {
+                    terrain.ref.update({ quantity: this.user.terrain - this.amount })
+                  })
+                }
+              })
+              database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  user.gold -= this.amount * this.data.goldCost
+                  user.people -= this.amount * this.data.peopleCost
+                  user.mana -= this.amount * this.data.manaCost
+                  user.terrain -= this.amount
+                }
+                return user
+              })
+              .then(response => {
+                return checkTurnMaintenances(store.state.uid, totalTurns)
+              })
+              .then(response => {
+                store.commit('success', 'lbl_toast_construction_ok')
+                this.close()
+              })
+            } else {
+              store.commit('error', 'lbl_toast_resource_turns')
+            }
+          })
+        } else {
+          if (!this.hasTerrain) {
+            store.commit('error', 'lbl_toast_resource_terrain')
+          }
+          if (!this.hasGold) {
+            store.commit('error', 'lbl_toast_resource_gold')
+          }
+          if (!this.hasPeople) {
+            store.commit('error', 'lbl_toast_resource_people')
+          }
+          if (!this.hasMana) {
+            store.commit('error', 'lbl_toast_resource_mana')
+          }
+        }
+        /*
         if (this.hasTerrain) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
@@ -206,6 +263,7 @@
           store.commit('error', 'lbl_toast_resource_terrain')
           this.close()
         }
+        */
       },
       explore () {
         if (this.hasTurns) { // user has resources
@@ -282,6 +340,9 @@
       user () {
         return store.state.user
       },
+      hasTerrain () {
+        return this.amount <= this.user.terrain
+      },
       hasGold () {
         return this.amount * this.data.goldCost <= this.user.gold
       },
@@ -291,8 +352,8 @@
       hasMana () {
         return this.amount * this.data.manaCost <= this.user.mana
       },
-      hasTerrain () {
-        return this.amount <= this.user.terrain
+      hasConstructionTurns () {
+        return this.amount * this.data.turns <= this.user.turns
       },
       hasTurns () {
         return this.amount <= this.user.turns
@@ -307,9 +368,12 @@
         return this.amount > 0 && this.amount <= this.user.turns
       },
       canConstruct () {
+        return true
+        /*
         return this.amount > 0
           ? this.hasGold && this.hasPeople && this.hasMana && this.amount * this.data.turns <= this.user.turns
           : this.amount < 0
+        */
       }
     }
   }

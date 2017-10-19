@@ -61,7 +61,7 @@ const checkTerrainProductionDestruction = (uid) => {
                     if (quantity !== 0) {
                       // console.log('Losing terrain... ', curse.magic * curse.terrainProduction)
                       construction.ref.update({ quantity: Math.max(0, building.quantity - quantity) })
-                      database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
+                      database.ref('users').child(uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
                         if (terrains) {
                           terrains.forEach(terrain => {
                             let lands = terrain.val()
