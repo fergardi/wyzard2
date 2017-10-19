@@ -623,6 +623,7 @@ export default {
     lbl_toast_firing_error: 'Error al despedir',
     lbl_toast_investigation_ok: 'Investigación progresada',
     lbl_toast_investigation_complete: 'Investigación completada',
+    lbl_toast_investigation_level: 'Poder mágico aumentado',
     lbl_toast_investigation_error: 'Error al investigar',
     lbl_toast_casting_ok: 'Conjuración completada',
     lbl_toast_casting_error: 'Error al conjurar',
@@ -660,7 +661,7 @@ export default {
     lbl_toast_enchantment_broken: 'Encantamiento roto',
     lbl_toast_unit_disbanded: 'Unidad desbandada',
     lbl_toast_hero_resigned: 'Héroe desertado',
-    lbl_toast_hero_levelup: 'Subida de nivel',
+    lbl_toast_hero_levelup: 'Héroe sube de nivel',
     lbl_toast_settings_saved: 'Preferencias guardadas',
     lbl_toast_settings_restored: 'Preferencias restauradas',
     // tooltips

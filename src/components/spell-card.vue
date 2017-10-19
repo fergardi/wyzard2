@@ -148,8 +148,9 @@
           .then(response => {
             if (completed) {
               database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true).once('value', snapshot => {
-                if (snapshot && snapshot.hasChildren()) {
+                if (snapshot && snapshot.hasChildren() && (1 + Math.floor(snapshot.numChildren() / 2)) > this.user.magic) {
                   database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(snapshot.numChildren() / 2) })
+                  store.commit('success', 'lbl_toast_investigation_level')
                 }
               })
               store.commit('success', 'lbl_toast_investigation_complete')

@@ -4,12 +4,12 @@
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
         template(v-if="construction || meditation")
-          .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= data.quantity * data.manaCap ? 'red' : ''")
+          .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= user.manaCap ? 'red' : ''")
             i.ra.ra-burst-blob
-            span {{ user.mana | minimize }} / {{ data.quantity * data.manaCap | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= data.quantity * data.armyCap ? 'red' : ''")
+            span {{ user.mana | minimize }} / {{ user.manaCap | minimize }}
+          .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= user.armyCap ? 'red' : ''")
             i.ra.ra-crossed-axes
-            span {{ user.army | minimize }} / {{ data.quantity * data.armyCap | minimize }}
+            span {{ user.army | minimize }} / {{ user.armyCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_barrier'")
             i.ra.ra-eye-shield
             span +{{ data.quantity / data.magicalDefenseBonus | percentage }}
@@ -22,9 +22,9 @@
           .card-number(v-if="data.name === 'lbl_building_temple'")
             i.ra.ra-crystals
             span +{{ parseInt(data.quantity / data.enchantmentCap) | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= data.quantity * data.peopleCap ? 'red' : ''")
+          .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= user.peopleCap ? 'red' : ''")
             i.ra.ra-double-team
-            span {{ user.people | minimize }} / {{ data.quantity * data.peopleCap | minimize }}
+            span {{ user.people | minimize }} / {{ user.peopleCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_workshop'")
             i.ra.ra-hourglass
             span -{{ data.quantity / data.constructionBonus | percentage }}
@@ -214,13 +214,7 @@
               for (let i = 0; i < this.amount; i++) {
                 building.quantity += Math.max(0, Math.floor((building.terrainCap - building.quantity) / 100))
               }
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  user.terrain = building.quantity
-                  user.turns = Math.max(0, user.turns - this.amount)
-                  return user
-                }
-              })
+              database.ref('users').child(store.state.uid).update({ terrain: building.quantity })
               return building
             }
           })

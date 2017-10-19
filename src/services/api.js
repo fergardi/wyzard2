@@ -9,6 +9,7 @@ let terrainPerTurn = 0
 let peopleCap = 0
 let manaCap = 0
 let armyCap = 0
+let army = 0
 let gold = 0
 let people = 0
 let mana = 0
@@ -56,10 +57,10 @@ const checkTerrainProductionDestruction = (uid) => {
                 constructions.forEach(construction => {
                   let building = construction.val()
                   if (random === index) {
-                    let quantity = Math.min(building.quantity, curse.magic * curse.terrainProduction)
+                    let quantity = Math.min(building.quantity, Math.abs(curse.magic * curse.terrainProduction))
                     if (quantity !== 0) {
                       // console.log('Losing terrain... ', curse.magic * curse.terrainProduction)
-                      construction.ref.update({ quantity: building.quantity + quantity })
+                      construction.ref.update({ quantity: Math.max(0, building.quantity - quantity) })
                       database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
                         if (terrains) {
                           terrains.forEach(terrain => {
@@ -75,12 +76,12 @@ const checkTerrainProductionDestruction = (uid) => {
                 })
               }
             })
-            curse.remaining--
-            if (curse.remaining <= 0) {
-              // console.log('Enchantment finished... ' + curse.name)
-              store.commit('info', 'lbl_toast_enchantment_finished')
-              return null
-            }
+          }
+          curse.remaining--
+          if (curse.remaining <= 0) {
+            // console.log('Enchantment finished... ' + curse.name)
+            store.commit('info', 'lbl_toast_enchantment_finished')
+            return null
           }
           return curse
         })
@@ -175,6 +176,8 @@ const checkUnitsMaintenance = (uid) => {
         goldPerTurn -= unit.quantity * unit.goldMaintenance
         peoplePerTurn -= unit.quantity * unit.peopleMaintenance
         manaPerTurn -= unit.quantity * unit.manaMaintenance
+        army += unit.quantity
+        power += unit.quantity * unit.power
       })
     }
   })
@@ -208,6 +211,7 @@ const checkUnitsAffordance = (uid) => {
           goldPerTurn += unit.quantity * unit.goldMaintenance
           peoplePerTurn += unit.quantity * unit.peopleMaintenance
           manaPerTurn += unit.quantity * unit.manaMaintenance
+          army -= unit.quantity
           power -= unit.quantity * unit.power
           disbanded = true
           troop.ref.remove()
@@ -279,17 +283,26 @@ const checkMaintenances = async (uid) => {
   people = 0
   mana = 0
   power = 0
+  army = 0
   dispeled = false
   deserted = false
   disbanded = false
   // checks
+  console.log(manaCap, peopleCap)
   await checkTerrainProductionDestruction(uid)
+  console.log(manaCap, peopleCap)
   await checkBuildingsProductionMaintenance(uid)
+  console.log(manaCap, peopleCap)
   await checkHeroesProductionMaintenance(uid)
+  console.log(manaCap, peopleCap)
   await checkEnchantmentsProduction(uid)
+  console.log(manaCap, peopleCap)
   await checkEnchantmentsMaintenance(uid)
+  console.log(manaCap, peopleCap)
   await checkGodsProduction(uid)
+  console.log(manaCap, peopleCap)
   await checkUnitsMaintenance(uid)
+  console.log(manaCap, peopleCap)
   // update
   await database.ref('users').child(uid).transaction(user => { // opens transaction
     if (user) {
@@ -297,16 +310,18 @@ const checkMaintenances = async (uid) => {
       user.peoplePerTurn = Math.floor(peoplePerTurn)
       user.manaPerTurn = Math.floor(manaPerTurn)
       user.terrainPerTurn = terrainPerTurn
+      user.army = army
+      user.power = power
       user.gold += goldPerTurn
       user.people += peoplePerTurn
       user.mana += manaPerTurn
-      gold = user.gold
-      people = user.people
-      mana = user.mana
       user.peopleCap = peopleCap
       user.manaCap = manaCap
       user.armyCap = armyCap
       user.turns--
+      gold = user.gold
+      people = user.people
+      mana = user.mana
       // console.log('Gold this turn... ' + gold)
       // console.log('People this turn... ' + people)
       // console.log('Mana this turn... ' + mana)
@@ -319,9 +334,8 @@ const checkMaintenances = async (uid) => {
   await database.ref('users').child(uid).transaction(user => {
     if (user) {
       user.gold = Math.max(0, user.gold)
-      user.people = Math.max(0, user.people)
-      user.mana = Math.max(0, user.mana)
-      user.power = power
+      user.people = Math.max(0, Math.min(peopleCap, user.people))
+      user.mana = Math.max(0, Math.min(manaCap, user.mana))
     }
     return user
   })

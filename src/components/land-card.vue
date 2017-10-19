@@ -46,6 +46,7 @@
     data () {
       return {
         troops: [],
+        rewards: null,
         name: null,
         dialog: false,
         map: null,
