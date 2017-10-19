@@ -441,8 +441,8 @@
         .mu-raised-button + .mu-raised-button
           margin-left 5px
     .mu-drawer
-      min-width 25%
-      width 25%
+      min-width none
+      width 20%
       height 100%
       overflow hidden
       &.right
@@ -549,11 +549,6 @@
     .mu-td
     .mu-th
       text-align center
-    .mu-td.title
-    .mu-th.title
-      text-align left
-      min-width 25%
-      width 25%
     .lazy
       width 100%
       transition opacity .5s ease-in
@@ -608,9 +603,9 @@
       .topbar
       .router
         &.left
-          padding-left 25%
+          padding-left 20%
         &.right
-          padding-right 25%
+          padding-right 20%
       .topbar
         .toggler
           visibility hidden

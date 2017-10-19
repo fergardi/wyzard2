@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-dialog(:open="dialog", @close="close")
+  mu-dialog(:open="dialog", @close="close", @keyup.esc="close", @keyup.enter="accept")
     mu-card.dialog
       mu-card-media
         img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")

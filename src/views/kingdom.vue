@@ -21,6 +21,8 @@
               mu-th.number
                 mu-icon(value=":ra ra-burst-blob")
               mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
                 mu-icon(value=":ra ra-fire-symbol")
 
           mu-tbody
@@ -49,6 +51,8 @@
                 div
                   span.income(class="red") &#9660;
                   span -{{ building.quantity * building.manaMaintenance | minimize }}
+              mu-td.number
+                span ?
               mu-td.number {{ building.quantity * building.power | minimize }}
 
             mu-tr(v-for="unit, index in user.troops", :key="index")
@@ -64,6 +68,8 @@
               mu-td.number
                 span.income(class="red") &#9660;
                 span -{{ unit.quantity * unit.manaMaintenance | minimize }}
+              mu-td.number
+                span ?
               mu-td.number {{ unit.quantity * unit.power | minimize }}
 
             mu-tr(v-for="hero, index in user.contracts", :key="index")
@@ -73,24 +79,26 @@
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ hero.level * hero.goldProduction | percentage }}
+                  span {{ hero.level * hero.goldProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span -{{ hero.level * hero.goldMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ hero.level * hero.peopleProduction | percentage }}
+                  span {{ hero.level * hero.peopleProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span -{{ hero.level * hero.peopleMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ hero.level * hero.manaProduction | percentage }}
+                  span {{ hero.level * hero.manaProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span -{{ hero.level * hero.manaMaintenance | minimize }}
+              mu-td.number
+                span ?
               mu-td.number {{ hero.level * hero.power | minimize }}
             
             mu-tr(v-for="enchantment, index in praises", :key="index")
@@ -100,24 +108,28 @@
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.goldProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.goldProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.goldMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.peopleProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.peopleProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.peopleMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.manaProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.manaProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.manaMaintenance | minimize }}
+              mu-td.number
+                div
+                  span.income(class="green") &#9650;
+                  span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
             mu-tr(v-for="enchantment, index in curses", :key="index")
@@ -127,24 +139,28 @@
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.goldProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.goldProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.goldMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.peopleProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.peopleProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.peopleMaintenance | minimize }}
               mu-td.number
                 div
                   span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.manaProduction | percentage }}
+                  span {{ enchantment.magic * enchantment.manaProduction | minimize }}
                 div
                   span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.manaMaintenance | minimize }}
+              mu-td.number
+                div
+                  span.income(class="red") &#9660;
+                  span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
             mu-tr(v-for="blessing, index in blessings", :key="index")
@@ -153,18 +169,20 @@
               mu-td.number ?
               mu-td.number
                 span.income(class="green") &#9650;
-                span {{ blessing.goldProduction | percentage }}
+                span {{ blessing.goldProduction | minimize }}
               mu-td.number
                 span.income(class="green") &#9650;
-                span {{ blessing.peopleProduction | percentage }}
+                span {{ blessing.peopleProduction | minimize }}
               mu-td.number
                 span.income(class="green") &#9650;
-                span {{ blessing.manaProduction | percentage }}
+                span {{ blessing.manaProduction | minimize }}
+              mu-td.number
+                span ?
               mu-td.number {{ blessing.power | minimize }}
             
             mu-tr
               mu-td.title {{ 'lbl_table_total' | translate }}
-              mu-td.number =
+              mu-td.number ?
               mu-td.number
                 span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
                 span {{ user.goldPerTurn | minimize }}
@@ -174,6 +192,9 @@
               mu-td.number
                 span.income(:class="user.manaPerTurn >= 0 ? 'green' : 'red'") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
                 span {{ user.manaPerTurn | minimize }}
+              mu-td.number
+                span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
+                span {{ user.terrainPerTurn | minimize }}
               mu-td.number {{ user.power | minimize }}
 </template>
 
@@ -202,6 +223,11 @@
 </script>
 
 <style lang="stylus" scoped>
+  .mu-td.title
+  .mu-th.title
+    text-align left
+    min-width 20%
+    width 20%
   @media only screen and (max-width 479px)
     .kingdom
       .mu-th

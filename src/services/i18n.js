@@ -578,7 +578,7 @@ export default {
     // table
     lbl_table_position: 'Posición',
     lbl_table_quantity: 'Cantidad',
-    lbl_table_total: 'Total',
+    lbl_table_total: 'Total / Turno',
     lbl_table_name: 'Nombre',
     lbl_table_gold: 'Oro',
     lbl_table_people: 'Población',

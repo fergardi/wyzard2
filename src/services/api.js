@@ -17,114 +17,69 @@ let disbanded = false
 let deserted = false
 let dispeled = false
 
-const checkBuildingsProduction = (uid) => {
-  return database.ref('users').child(uid).child('constructions').once('value', constructions => {
-    if (constructions) {
-      constructions.forEach(building => {
-        console.log('Checking building production... ' + building.val().name)
-        goldPerTurn += building.val().quantity * building.val().goldProduction
-        peoplePerTurn += building.val().quantity * building.val().peopleProduction
-        manaPerTurn += building.val().quantity * building.val().manaProduction
-      })
-    }
-  })
-}
+// check maintenances
+  // check terrain production - destruction
+  // check building production - maintenance
+  // check hero production - maintenance
+  // check enchantment on myself production
+  // check enchantment owned by me maintenance
+  // check unit maintenance
+  // check god production
+  // check unit affordance
+  // check enchantment affordance
+  // check hero affordance
 
-const checkEnchantmentsProduction = (uid) => {
-  return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
-      enchantments.forEach(praise => {
-        if (praise.val().support) {
-          console.log('Checking enchantment production... ' + praise.val().name)
-          goldPerTurn *= (1 + praise.val().magic * praise.val().goldProduction / 100)
-          peoplePerTurn *= (1 + praise.val().magic * praise.val().peopleProduction / 100)
-          manaPerTurn *= (1 + praise.val().magic * praise.val().manaProduction / 100)
-        }
-      })
-    }
-  })
-}
-
-const checkHeroesProduction = (uid) => {
-  return database.ref('users').child(uid).child('contracts').once('value', contracts => {
-    if (contracts) {
-      contracts.forEach(contract => {
-        console.log('Checking hero production... ' + contract.val().name)
-        goldPerTurn *= 1 + contract.val().level * contract.val().goldProduction / 100
-        peoplePerTurn *= 1 + contract.val().level * contract.val().peopleProduction / 100
-        manaPerTurn *= 1 + contract.val().level * contract.val().manaProduction / 100
-      })
-    }
-  })
-}
-
-const checkGodsProduction = (uid) => {
-  return database.ref('gods').orderByChild('blessed').equalTo(uid).once('value', blessings => {
-    if (blessings) {
-      blessings.forEach(god => {
-        console.log('Checking god production... ' + god.val().name)
-        goldPerTurn *= 1 + god.val().goldProduction / 100
-        peoplePerTurn *= 1 + god.val().peopleProduction / 100
-        manaPerTurn *= 1 + god.val().manaProduction / 100
-      })
-    }
-  })
-}
-
-const checkCursesProduction = (uid) => {
+// check terrain production - destruction
+const checkTerrainProductionDestruction = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
     if (enchantments) {
       enchantments.forEach(enchantment => {
         enchantment.ref.transaction(curse => {
-          if (curse) {
-            if (!curse.support) {
-              console.log('Checking enchantment negative production... ' + curse.name)
-              goldPerTurn *= (1 + curse.magic * curse.goldProduction / 100)
-              peoplePerTurn *= (1 + curse.magic * curse.peopleProduction / 100)
-              manaPerTurn *= (1 + curse.magic * curse.manaProduction / 100)
-              if (curse.terrain < 0) {
-                terrainPerTurn = curse.magic * curse.terrain
-                database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(true).once('value', constructions => {
-                  if (constructions) {
-                    let random = Math.floor(Math.random() * constructions.numChildren())
-                    let index = 0
-                    constructions.forEach(construction => {
-                      index++
-                      if (random === index) {
-                        let quantity = Math.min(construction.val().quantity, Math.abs(curse.magic * curse.terrain))
-                        if (quantity > 0) {
-                          construction.ref.transaction(cons => {
-                            if (cons) cons.quantity -= quantity
-                            return cons
-                          })
-                          database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
-                            if (terrains) {
-                              terrains.forEach(terrain => {
-                                terrain.ref.transaction(terr => {
-                                  if (terr) {
-                                    terr.quantity += quantity
-                                    database.ref('users').child(uid).update({ terrain: terr.quantity })
-                                  }
-                                  return terr
-                                })
-                              })
-                            }
-                            return terrains
-                          })
-                        }
-                        return constructions
-                      }
-                    })
-                  }
-                  return constructions
+          // console.log('Checking terrain production and destruction... ' + curse.name)
+          terrainPerTurn += curse.magic * curse.terrainProduction
+          if (curse.terrainProduction > 0) {
+            database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
+              if (terrains) {
+                terrains.forEach(terrain => {
+                  let lands = terrain.val()
+                  // console.log('Winning terrain... ', curse.magic * curse.terrainProduction)
+                  terrain.ref.update({ quantity: lands.quantity + curse.magic * curse.terrainProduction })
+                  database.ref('users').child(uid).update({ terrain: lands.quantity + curse.magic * curse.terrainProduction })
                 })
               }
-            }
+            })
+          } else if (curse.terrainProduction < 0) {
+            database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(true).once('value', constructions => {
+              if (constructions) {
+                let random = Math.floor(Math.random() * constructions.numChildren())
+                let index = 0
+                constructions.forEach(construction => {
+                  let building = construction.val()
+                  if (random === index) {
+                    let quantity = Math.min(building.quantity, curse.magic * curse.terrainProduction)
+                    if (quantity !== 0) {
+                      // console.log('Losing terrain... ', curse.magic * curse.terrainProduction)
+                      construction.ref.update({ quantity: building.quantity + quantity })
+                      database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
+                        if (terrains) {
+                          terrains.forEach(terrain => {
+                            let lands = terrain.val()
+                            terrain.ref.update({ quantity: lands.quantity + quantity })
+                            database.ref('users').child(uid).update({ terrain: lands.quantity + quantity })
+                          })
+                        }
+                      })
+                    }
+                  }
+                  index++
+                })
+              }
+            })
             curse.remaining--
             if (curse.remaining <= 0) {
-              console.log('Enchantment finished... ' + curse.name)
+              // console.log('Enchantment finished... ' + curse.name)
               store.commit('info', 'lbl_toast_enchantment_finished')
-              return null // expired
+              return null
             }
           }
           return curse
@@ -134,50 +89,42 @@ const checkCursesProduction = (uid) => {
   })
 }
 
-const checkBuildingsMaintenance = (uid) => {
+// check building production - maintenance
+const checkBuildingsProductionMaintenance = (uid) => {
   return database.ref('users').child(uid).child('constructions').once('value', constructions => {
     if (constructions) {
-      constructions.forEach(building => {
-        console.log('Checking building maintenance... ' + building.val().name)
-        goldPerTurn -= building.val().quantity * building.val().goldMaintenance
-        peoplePerTurn -= building.val().quantity * building.val().peopleMaintenance
-        manaPerTurn -= building.val().quantity * building.val().manaMaintenance
+      constructions.forEach(construction => {
+        let building = construction.val()
+        // console.log('Checking building production and maintenances... ' + building.name)
+        goldPerTurn += building.quantity * (building.goldProduction - building.goldMaintenance)
+        peoplePerTurn += building.quantity * (building.peopleProduction - building.peopleMaintenance)
+        manaPerTurn += building.quantity * (building.manaProduction - building.manaMaintenance)
+        peopleCap += building.quantity * building.peopleCap
+        manaCap += building.quantity * building.manaCap
+        armyCap += building.quantity * building.armyCap
+        power += building.quantity * building.power
       })
     }
   })
 }
 
-const checkUnitsMaintenance = (uid) => {
-  return database.ref('users').child(uid).child('troops').once('value', troops => {
-    if (troops) {
-      troops.forEach(troop => {
-        console.log('Checking unit maintenance... ' + troop.val().name)
-        goldPerTurn -= troop.val().quantity * troop.val().goldMaintenance
-        peoplePerTurn -= troop.val().quantity * troop.val().peopleMaintenance
-        manaPerTurn -= troop.val().quantity * troop.val().manaMaintenance
-      })
-    }
-  })
-}
-
-const checkHeroesMaintenance = (uid) => {
+// check hero production - maintenance
+const checkHeroesProductionMaintenance = (uid) => {
   return database.ref('users').child(uid).child('contracts').once('value', contracts => {
     if (contracts) {
       contracts.forEach(contract => {
         contract.ref.transaction(hero => {
-          if (hero) {
-            console.log('Checking hero maintenance... ' + hero.name)
-            goldPerTurn -= hero.level * hero.goldMaintenance
-            peoplePerTurn -= hero.level * hero.goldMaintenance
-            manaPerTurn -= hero.level * hero.goldMaintenance
-            hero.invested++
-            if (hero.invested >= hero.level * hero.experience) {
-              console.log('Hero leveled up... ' + hero.name)
-              hero.level++
-              hero.invested = 0
-              store.commit('info', 'lbl_toast_hero_levelup')
-            }
+          // console.log('Checking hero production and maintenances... ' + hero.name)
+          if (hero.invested++ >= hero.level * hero.experience) {
+            // console.log('Hero leveled up... ' + hero.name)
+            hero.level++
+            hero.invested = 0
+            store.commit('info', 'lbl_toast_hero_levelup')
           }
+          goldPerTurn += hero.level * (hero.goldProduction - hero.goldMaintenance)
+          peoplePerTurn += hero.level * (hero.peopleProduction - hero.peopleMaintenance)
+          manaPerTurn += hero.level * (hero.manaProduction - hero.manaMaintenance)
+          power += hero.level * hero.power
           return hero
         })
       })
@@ -185,67 +132,140 @@ const checkHeroesMaintenance = (uid) => {
   })
 }
 
+// check enchantment on myself production
+const checkEnchantmentsProduction = (uid) => {
+  return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
+    if (enchantments) {
+      enchantments.forEach(enchantment => {
+        let spell = enchantment.val()
+        // console.log('Checking enchantment production... ' + spell.name)
+        goldPerTurn += spell.magic * spell.goldProduction
+        peoplePerTurn += spell.magic * spell.peopleProduction
+        manaPerTurn += spell.magic * spell.manaProduction
+        if (spell.source === spell.target === uid) {
+          power += spell.magic * spell.power
+        }
+      })
+    }
+  })
+}
+
+// check enchantment owned by me maintenance
 const checkEnchantmentsMaintenance = (uid) => {
   return database.ref('enchantments').orderByChild('source').equalTo(uid).once('value', enchantments => {
     if (enchantments) {
       enchantments.forEach(enchantment => {
-        console.log('Checking enchantment maintenance... ' + enchantment.val().name)
-        goldPerTurn -= enchantment.val().magic * enchantment.val().goldMaintenance
-        peoplePerTurn -= enchantment.val().magic * enchantment.val().peopleMaintenance
-        manaPerTurn -= enchantment.val().magic * enchantment.val().manaMaintenance
+        let enchant = enchantment.val()
+        // console.log('Checking enchantment maintenance... ' + enchant.name)
+        goldPerTurn -= enchant.magic * enchant.goldMaintenance
+        peoplePerTurn -= enchant.magic * enchant.peopleMaintenance
+        manaPerTurn -= enchant.magic * enchant.manaMaintenance
       })
     }
   })
 }
 
-const checkEnchantmentsAffordance = (uid) => {
-  return database.ref('enchantments').orderByChild('source').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
-      enchantments.forEach(enchantment => {
-        console.log('Checking enchantment affordance... ' + enchantment.val().name)
-        if (!dispeled && ((gold < 0 && enchantment.val().goldMaintenance > 0) || (people < 0 && enchantment.val().peopleMaintenance > 0) || (mana < 0 && enchantment.val().manaMaintenance > 0))) {
-          console.log('Cant afford ' + enchantment.val().name + ', breaking it...')
-          enchantment.ref.remove()
-          store.commit('error', 'lbl_toast_enchantment_broken')
-          dispeled = true
-        }
+// check unit maintenance
+const checkUnitsMaintenance = (uid) => {
+  return database.ref('users').child(uid).child('troops').once('value', troops => {
+    if (troops) {
+      troops.forEach(troop => {
+        let unit = troop.val()
+        // console.log('Checking unit maintenance... ' + unit.name)
+        goldPerTurn -= unit.quantity * unit.goldMaintenance
+        peoplePerTurn -= unit.quantity * unit.peopleMaintenance
+        manaPerTurn -= unit.quantity * unit.manaMaintenance
       })
     }
   })
 }
 
-const checkHeroesAffordance = (uid) => {
-  return database.ref('users').child(uid).child('contracts').once('value', contracts => {
-    if (contracts) {
-      contracts.forEach(contract => {
-        console.log('Checking hero affordance... ' + contract.val().name)
-        if (!deserted && ((gold < 0 && contract.val().goldMaintenance > 0) || (people < 0 && contract.val().peopleMaintenance > 0) || (mana < 0 && contract.val().manaMaintenance > 0))) {
-          console.log('Cant afford ' + contract.val().name + ', firing it...')
-          contract.ref.remove()
-          store.commit('error', 'lbl_toast_hero_resigned')
-          deserted = true
-        }
+// check god production
+const checkGodsProduction = (uid) => {
+  return database.ref('gods').orderByChild('blessed').equalTo(uid).once('value', blessings => {
+    if (blessings) {
+      blessings.forEach(blessing => {
+        let god = blessing.val()
+        // console.log('Checking god production... ' + god.name)
+        goldPerTurn += god.goldProduction
+        peoplePerTurn += god.peopleProduction
+        manaPerTurn += god.manaProduction
+        power += god.power
       })
     }
   })
 }
 
+// check unit affordance
 const checkUnitsAffordance = (uid) => {
   return database.ref('users').child(uid).child('troops').once('value', troops => {
     if (troops) {
       troops.forEach(troop => {
-        console.log('Checking unit affordance... ' + troop.val().name)
-        if (!disbanded && ((gold < 0 && troop.val().goldMaintenance > 0) || (people < 0 && troop.val().peopleMaintenance > 0) || (mana < 0 && troop.val().manaMaintenance > 0))) {
-          console.log('Cant afford ' + troop.val().name + ', disbanding it...')
+        let unit = troop.val()
+        // console.log('Checking unit affordance... ' + unit.name)
+        if (!disbanded && ((gold < 0 && unit.goldMaintenance > 0) || (people < 0 && unit.peopleMaintenance > 0) || (mana < 0 && unit.manaMaintenance > 0))) {
+          // console.log('Cant afford ' + unit.name + ', disbanding it...')
+          goldPerTurn += unit.quantity * unit.goldMaintenance
+          peoplePerTurn += unit.quantity * unit.peopleMaintenance
+          manaPerTurn += unit.quantity * unit.manaMaintenance
+          power -= unit.quantity * unit.power
+          disbanded = true
           troop.ref.remove()
           store.commit('error', 'lbl_toast_unit_disbanded')
-          disbanded = true
         }
       })
     }
   })
 }
 
+// check enchantment affordance
+const checkEnchantmentsAffordance = (uid) => {
+  return database.ref('enchantments').orderByChild('source').equalTo(uid).once('value', enchantments => {
+    if (enchantments) {
+      enchantments.forEach(enchantment => {
+        let spell = enchantment.val()
+        // console.log('Checking enchantment affordance... ' + spell.name)
+        if (!dispeled && ((gold < 0 && spell.goldMaintenance > 0) || (people < 0 && spell.peopleMaintenance > 0) || (mana < 0 && spell.manaMaintenance > 0))) {
+          // console.log('Cant afford ' + spell.name + ', breaking it...')
+          if (spell.source === spell.target === uid) {
+            goldPerTurn -= spell.magic * (spell.goldProduction - spell.goldMaintenance)
+            peoplePerTurn -= spell.magic * (spell.peopleProduction - spell.peopleMaintenance)
+            manaPerTurn -= spell.magic * (spell.manaProduction - spell.manaMaintenance)
+            terrainPerTurn -= spell.magic * Math.abs(terrainPerTurn)
+            power -= spell.magic * spell.power
+          }
+          dispeled = true
+          enchantment.ref.remove()
+          store.commit('error', 'lbl_toast_enchantment_broken')
+        }
+      })
+    }
+  })
+}
+
+// check hero affordance
+const checkHeroesAffordance = (uid) => {
+  return database.ref('users').child(uid).child('contracts').once('value', contracts => {
+    if (contracts) {
+      contracts.forEach(contract => {
+        let hero = contract.val()
+        // console.log('Checking hero affordance... ' + hero.name)
+        if (!deserted && ((gold < 0 && hero.goldMaintenance > 0) || (people < 0 && hero.peopleMaintenance > 0) || (mana < 0 && hero.manaMaintenance > 0))) {
+          // console.log('Cant afford ' + hero.name + ', firing it...')
+          goldPerTurn -= hero.level * (hero.goldProduction - hero.goldMaintenance)
+          peoplePerTurn -= hero.level * (hero.peopleProduction - hero.peopleMaintenance)
+          manaPerTurn -= hero.level * (hero.manaProduction - hero.manaMaintenance)
+          power -= hero.level * hero.power
+          deserted = true
+          contract.ref.remove()
+          store.commit('error', 'lbl_toast_hero_resigned')
+        }
+      })
+    }
+  })
+}
+
+// check maintenances
 const checkMaintenances = async (uid) => {
   // base
   goldPerTurn = 0
@@ -263,14 +283,12 @@ const checkMaintenances = async (uid) => {
   deserted = false
   disbanded = false
   // checks
-  await checkBuildingsProduction(uid)
-  await checkHeroesProduction(uid)
+  await checkTerrainProductionDestruction(uid)
+  await checkBuildingsProductionMaintenance(uid)
+  await checkHeroesProductionMaintenance(uid)
   await checkEnchantmentsProduction(uid)
-  await checkGodsProduction(uid)
-  await checkCursesProduction(uid)
-  await checkBuildingsMaintenance(uid)
-  await checkHeroesMaintenance(uid)
   await checkEnchantmentsMaintenance(uid)
+  await checkGodsProduction(uid)
   await checkUnitsMaintenance(uid)
   // update
   await database.ref('users').child(uid).transaction(user => { // opens transaction
@@ -283,15 +301,15 @@ const checkMaintenances = async (uid) => {
       user.people += peoplePerTurn
       user.mana += manaPerTurn
       gold = user.gold
-      console.log('Gold this turn... ' + gold)
       people = user.people
-      console.log('People this turn... ' + people)
       mana = user.mana
-      console.log('Mana this turn... ' + mana)
       user.peopleCap = peopleCap
       user.manaCap = manaCap
       user.armyCap = armyCap
-      user.turns = Math.max(0, user.turns--)
+      user.turns--
+      // console.log('Gold this turn... ' + gold)
+      // console.log('People this turn... ' + people)
+      // console.log('Mana this turn... ' + mana)
     }
     return user
   })
@@ -303,19 +321,18 @@ const checkMaintenances = async (uid) => {
       user.gold = Math.max(0, user.gold)
       user.people = Math.max(0, user.people)
       user.mana = Math.max(0, user.mana)
-      user.power = Math.max(0, power)
+      user.power = power
     }
     return user
   })
 }
 
+// check maintenances every turn
 export const checkTurnMaintenances = (uid, turns) => {
   return new Promise(async (resolve, reject) => {
     if (turns && turns > 0) {
       let iterations = [...Array(turns).keys()]
-      console.log(iterations)
       for (let iteration of iterations) { // eslint-disable-line
-        console.log('Checking maintenances in turn ' + iteration + '/' + turns)
         await checkMaintenances(uid)
       }
     }
