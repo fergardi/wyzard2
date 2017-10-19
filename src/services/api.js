@@ -288,21 +288,13 @@ const checkMaintenances = async (uid) => {
   deserted = false
   disbanded = false
   // checks
-  console.log(manaCap, peopleCap)
   await checkTerrainProductionDestruction(uid)
-  console.log(manaCap, peopleCap)
   await checkBuildingsProductionMaintenance(uid)
-  console.log(manaCap, peopleCap)
   await checkHeroesProductionMaintenance(uid)
-  console.log(manaCap, peopleCap)
   await checkEnchantmentsProduction(uid)
-  console.log(manaCap, peopleCap)
   await checkEnchantmentsMaintenance(uid)
-  console.log(manaCap, peopleCap)
   await checkGodsProduction(uid)
-  console.log(manaCap, peopleCap)
   await checkUnitsMaintenance(uid)
-  console.log(manaCap, peopleCap)
   // update
   await database.ref('users').child(uid).transaction(user => { // opens transaction
     if (user) {

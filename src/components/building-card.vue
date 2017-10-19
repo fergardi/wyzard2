@@ -209,13 +209,14 @@
       },
       explore () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
             if (building) {
+              let terrain = building.val()
               for (let i = 0; i < this.amount; i++) {
-                building.quantity += Math.max(0, Math.floor((building.terrainCap - building.quantity) / 100))
+                terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
               }
-              database.ref('users').child(store.state.uid).update({ terrain: building.quantity })
-              return building
+              building.ref.update({ quantity: terrain.quantity })
+              database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })
             }
           })
           .then(response => {
@@ -234,17 +235,7 @@
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  let meditation = building.quantity * building.manaProduction * this.amount * 2
-                  if (user.mana + meditation >= building.quantity * building.manaCap) {
-                    store.commit('error', 'lbl_toast_meditation_error')
-                  }
-                  user.mana = Math.min(building.quantity * building.manaCap, user.mana + meditation)
-                  user.turns = Math.max(0, user.turns - this.amount)
-                  return user
-                }
-              })
+              database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + building.quantity * building.manaProduction * this.amount * 2) })
               return building
             }
           })
@@ -264,13 +255,7 @@
         if (this.hasTurns) { // user has resources
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
             if (building) {
-              database.ref('users').child(store.state.uid).transaction(user => {
-                if (user) {
-                  user.gold += building.quantity * building.goldProduction * this.amount * 2
-                  user.turns = Math.max(0, user.turns - this.amount)
-                  return user
-                }
-              })
+              database.ref('users').child(store.state.uid).update({ gold: this.user.gold + building.quantity * building.goldProduction * this.amount * 2 })
               return building
             }
           })
