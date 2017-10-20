@@ -665,6 +665,8 @@ export default {
     lbl_toast_hero_levelup: 'Héroe sube de nivel',
     lbl_toast_settings_saved: 'Preferencias guardadas',
     lbl_toast_settings_restored: 'Preferencias restauradas',
+    lbl_toast_defense_saved: 'Defensa establecida',
+    lbl_toast_defense_restored: 'Defensa desactivada',
     // tooltips
     ttp_gold_cost: 'Coste de Oro',
     ttp_people_cost: 'Coste de Población',

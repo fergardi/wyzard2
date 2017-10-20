@@ -2,41 +2,84 @@
   mu-row
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.defense.animated.fadeInUp
-        mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/defense.jpg?alt=media", :alt="translate('lbl_label_defense')")
-          .card-info
-            .card-text {{ 'lbl_label_defense' | translate }}
-        mu-card-text
-          p {{ 'lbl_label_protection' | translate }}
+        form(@submit.stop.prevent="confirm('save')")
+          mu-card-media
+            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/defense.jpg?alt=media", :alt="translate('lbl_label_defense')")
+            .card-info
+              .card-text {{ 'lbl_label_defense' | translate }}
+          mu-card-text
+            p {{ 'lbl_label_protection' | translate }}
 
-        mu-card-text
-          mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true")
-            mu-menu-item(v-for="spell, index in spells", :key="index", :value="spell.name", :title="translate(spell.name)")
-          mu-select-field(v-model="artifact", :label="translate('lbl_label_artifact')", :fullWidth="true")
-            mu-menu-item(v-for="artifact, index in artifacts", :key="index", :value="artifact.name", :title="translate(artifact.name)")
-        mu-card-actions
-          mu-raised-button(primary, @click="save") {{ 'lbl_button_save' | translate }}
+          mu-card-text
+            mu-select-field(v-model="user.counter", :label="translate('lbl_label_spell')", :fullWidth="true")
+              mu-menu-item(v-for="spell, index in book", :key="index", :value="spell['.key']", :title="translate(spell.name)")
+
+            mu-select-field(v-model="user.trap", :label="translate('lbl_label_artifact')", :fullWidth="true")
+              mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact['.key']", :title="translate(artifact.name)")
+
+          mu-card-actions
+            mu-raised-button(primary, type="reset", @click="restore") {{ 'lbl_button_restore' | translate }}
+            mu-raised-button(primary, type="submit") {{ 'lbl_button_save' | translate }}
+
+    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept") 
 </template>
 
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
+  import { updateGeneralStatus } from '../services/api'
+  import confirm from '../components/confirm-dialog'
   
   export default {
+    components: {
+      'confirm-dialog': confirm
+    },
     data () {
       return {
-        spell: null,
-        artifact: null
+        busy: false,
+        type: null,
+        dialog: false
       }
     },
     created () {
       store.commit('title', 'lbl_title_defense')
-      this.$bindAsArray('spells', database.ref('users').child(store.state.uid).child('spells').orderByChild('defensive').equalTo(true))
-      this.$bindAsArray('artifacts', database.ref('users').child(store.state.uid).child('artifacts').orderByChild('defensive').equalTo(true))
+      this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
+      this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))
     },
     methods: {
+      confirm (type) {
+        this.type = type
+        this.dialog = true
+      },
+      accept () {
+        this.busy = true
+        switch (this.type) {
+          case 'save':
+            this.save()
+            break
+        }
+      },
       save () {
-        // TODO
+        if (this.user.trap) database.ref('users').child(store.state.uid).update({ trap: this.user.trap })
+        if (this.user.counter) database.ref('users').child(store.state.uid).update({ counter: this.user.counter })
+        updateGeneralStatus(store.state.uid)
+        store.commit('success', 'lbl_toast_defense_saved')
+        this.close()
+      },
+      restore () {
+        database.ref('users').child(store.state.uid).child('trap').remove()
+        database.ref('users').child(store.state.uid).child('counter').remove()
+        store.commit('success', 'lbl_toast_defense_restored')
+      },
+      close () {
+        this.type = null
+        this.dialog = false
+        this.busy = false
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
       }
     }
   }

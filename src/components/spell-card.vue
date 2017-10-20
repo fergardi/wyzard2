@@ -135,6 +135,7 @@
               research.invested = research.invested + Math.min(min, this.amount)
               if (research.invested >= research.completion) {
                 completed = true
+                research.completed = true
                 let page = {...research}
                 delete page['.key']
                 database.ref('users').child(store.state.uid).child('book').push(page)
