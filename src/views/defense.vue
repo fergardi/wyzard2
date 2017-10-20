@@ -69,6 +69,7 @@
       restore () {
         database.ref('users').child(store.state.uid).child('trap').remove()
         database.ref('users').child(store.state.uid).child('counter').remove()
+        updateGeneralStatus(store.state.uid)
         store.commit('success', 'lbl_toast_defense_restored')
       },
       close () {
