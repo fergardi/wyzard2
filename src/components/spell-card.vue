@@ -134,10 +134,10 @@
               let min = research.completion - research.invested
               research.invested = research.invested + Math.min(min, this.amount)
               if (research.invested >= research.completion) {
+                completed = true
                 let page = {...research}
                 delete page['.key']
                 database.ref('users').child(store.state.uid).child('book').push(page)
-                return null
               }
             }
             return research
@@ -147,7 +147,8 @@
           })
           .then(response => {
             if (completed) {
-              database.ref('users').child(store.state.uid).child('researches').orderByChild('completed').equalTo(true).once('value', snapshot => {
+              database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).remove()
+              database.ref('users').child(store.state.uid).child('book').once('value', snapshot => {
                 if (snapshot && snapshot.hasChildren() && (1 + Math.floor(snapshot.numChildren() / 2)) > this.user.magic) {
                   database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(snapshot.numChildren() / 2) })
                   store.commit('success', 'lbl_toast_investigation_level')
@@ -189,17 +190,15 @@
               }
               database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {
-                  user.army += this.data.number
                   user.gold = Math.max(0, user.gold - this.data.goldCost)
                   user.people = Math.max(0, user.people - this.data.peopleCost)
                   user.mana = Math.max(0, user.mana - this.data.manaCost)
-                  user.turns = Math.max(0, user.turns - this.data.turns)
                 }
                 return user
               })
             })
             .then(response => {
-              return checkTurnMaintenances(store.state.uid, this.amount)
+              return checkTurnMaintenances(store.state.uid, this.data.turns)
             })
             .then(response => {
               store.commit('success', 'lbl_toast_casting_ok')
