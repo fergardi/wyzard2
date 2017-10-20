@@ -10,7 +10,8 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "*visualizer*.html"
     ],
     "headers": [ {
       "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",

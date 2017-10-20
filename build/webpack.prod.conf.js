@@ -9,8 +9,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const FontminPlugin = require('fontmin-webpack')
-const NukeCssPlugin = require('nukecss-webpack')
-const Visualizer = require('webpack-visualizer-plugin')
+const VisualizerPlugin = require('webpack-visualizer-plugin')
+const HtmlCriticalPlugin = require('html-critical-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -23,7 +24,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: 'cheap-module-source-map', // config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.build.productionSourceMap ? '#cheap-module-source-map' : false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
@@ -85,6 +86,9 @@ var webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer'      
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -113,8 +117,21 @@ var webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
-    new Visualizer({
-      filename: './production.html'
+    new VisualizerPlugin({
+      filename: './visualizer_production.html'
+    }),
+    new HtmlCriticalPlugin({
+      base: path.join(path.resolve(__dirname), '../dist/'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      width: 375,
+      height: 565,
+      penthouse: {
+        blockJSRequests: false,
+      }
     })
   ]
 })

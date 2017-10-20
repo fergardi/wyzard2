@@ -5,7 +5,7 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-var Visualizer = require('webpack-visualizer-plugin')
+var VisualizerPlugin = require('webpack-visualizer-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -32,8 +32,8 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new FriendlyErrorsPlugin(),
-    new Visualizer({
-      filename: './development.html'
+    new VisualizerPlugin({
+      filename: './visualizer_development.html'
     })
   ]
 })
