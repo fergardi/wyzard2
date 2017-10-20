@@ -215,8 +215,8 @@
                   enchantment.sourceName = this.username
                   enchantment.magic = 1
                 } else {
-                  enchantment.source = 'kZJqxb3EjneA5t6NfhbwIKXsYE73'
-                  enchantment.sourceColor = 'blue'
+                  enchantment.source = 'Pb0lhTW38SUlhiLRwMi4URt2BLV2'
+                  enchantment.sourceColor = 'red'
                   enchantment.sourceName = 'prueba'
                   enchantment.magic = 10
                 }

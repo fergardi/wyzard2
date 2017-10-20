@@ -1080,7 +1080,7 @@
     "troop": 0,
     "number": 0,
     "terrainProduction": 0,
-    "power": -10000,
+    "power": -1000,
     "barrier": 0,
     "fortress": 0,
     "health": 0,

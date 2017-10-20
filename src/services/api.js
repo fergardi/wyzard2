@@ -322,13 +322,13 @@ const checkMaintenances = async (uid) => {
   power = 0
   army = 0
   // checks
-  checkTerrainProductionDestruction(uid)
-  checkBuildingsProductionMaintenance(uid)
-  checkHeroesProductionMaintenance(uid)
-  checkEnchantmentsProduction(uid)
-  checkEnchantmentsMaintenance(uid)
-  checkGodsProduction(uid)
-  checkUnitsMaintenance(uid)
+  await checkTerrainProductionDestruction(uid)
+  await checkBuildingsProductionMaintenance(uid)
+  await checkHeroesProductionMaintenance(uid)
+  await checkEnchantmentsProduction(uid)
+  await checkEnchantmentsMaintenance(uid)
+  await checkGodsProduction(uid)
+  await checkUnitsMaintenance(uid)
   await checkGeneralStatus(uid)
   await checkAffordances(uid)
 }
@@ -344,23 +344,20 @@ export const checkAffordances = async (uid) => {
 }
 
 // check maintenances every turn
-export const checkTurnMaintenances = (uid, turns) => {
-  return new Promise(async (resolve, reject) => {
-    if (turns && turns > 0) {
-      let iterations = [...Array(turns).keys()]
-      for (let iteration of iterations) { // eslint-disable-line
-        await checkMaintenances(uid)
-      }
+export const checkTurnMaintenances = async (uid, turns) => {
+  if (turns && turns > 0) {
+    let iterations = [...Array(turns).keys()]
+    for (let iteration of iterations) { // eslint-disable-line
+      await checkMaintenances(uid)
     }
-    await database.ref('users').child(uid).transaction(user => {
-      if (user) {
-        user.gold = Math.max(0, user.gold)
-        user.people = Math.max(0, Math.min(peopleCap, user.people))
-        user.mana = Math.max(0, Math.min(manaCap, user.mana))
-      }
-      return user
-    })
-    resolve()
+  }
+  return database.ref('users').child(uid).transaction(user => {
+    if (user) {
+      user.gold = Math.max(0, user.gold)
+      user.people = Math.max(0, Math.min(peopleCap, user.people))
+      user.mana = Math.max(0, Math.min(manaCap, user.mana))
+    }
+    return user
   })
 }
 
@@ -372,47 +369,45 @@ const checkTerrainProductionMaintenance = (uid) => {
         let enchant = enchantment.val()
         console.log('Checking terrain production and destruction... ' + enchant.name)
         terrainPerTurn += enchant.magic * enchant.terrainProduction
+        console.log(terrainPerTurn)
       })
     }
   })
 }
 
 // check general status
-export const updateGeneralStatus = (uid) => {
-  return new Promise((resolve, reject) => {
-    goldPerTurn = 0
-    peoplePerTurn = 0
-    manaPerTurn = 0
-    terrainPerTurn = 0
-    peopleCap = 0
-    manaCap = 0
-    armyCap = 0
-    gold = 0
-    people = 0
-    mana = 0
-    power = 0
-    army = 0
-    checkTerrainProductionMaintenance(uid)
-    checkBuildingsProductionMaintenance(uid)
-    checkHeroesProductionMaintenance(uid)
-    checkEnchantmentsProduction(uid)
-    checkEnchantmentsMaintenance(uid)
-    checkGodsProduction(uid)
-    checkUnitsMaintenance(uid)
-    database.ref('users').child(uid).transaction(user => { // opens transaction
-      if (user) {
-        user.goldPerTurn = Math.floor(goldPerTurn)
-        user.peoplePerTurn = Math.floor(peoplePerTurn)
-        user.manaPerTurn = Math.floor(manaPerTurn)
-        user.terrainPerTurn = terrainPerTurn
-        user.army = army
-        user.power = power
-        user.peopleCap = peopleCap
-        user.manaCap = manaCap
-        user.armyCap = armyCap
-      }
-      return user
-    })
-    resolve()
+export const updateGeneralStatus = async (uid) => {
+  goldPerTurn = 0
+  peoplePerTurn = 0
+  manaPerTurn = 0
+  terrainPerTurn = 0
+  peopleCap = 0
+  manaCap = 0
+  armyCap = 0
+  gold = 0
+  people = 0
+  mana = 0
+  power = 0
+  army = 0
+  await checkTerrainProductionMaintenance(uid)
+  await checkBuildingsProductionMaintenance(uid)
+  await checkHeroesProductionMaintenance(uid)
+  await checkEnchantmentsProduction(uid)
+  await checkEnchantmentsMaintenance(uid)
+  await checkGodsProduction(uid)
+  await checkUnitsMaintenance(uid)
+  return database.ref('users').child(uid).transaction(user => {
+    if (user) {
+      user.goldPerTurn = Math.floor(goldPerTurn)
+      user.peoplePerTurn = Math.floor(peoplePerTurn)
+      user.manaPerTurn = Math.floor(manaPerTurn)
+      user.terrainPerTurn = terrainPerTurn
+      user.army = army
+      user.power = power
+      user.peopleCap = peopleCap
+      user.manaCap = manaCap
+      user.armyCap = armyCap
+    }
+    return user
   })
 }

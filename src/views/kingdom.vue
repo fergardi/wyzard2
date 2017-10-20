@@ -138,25 +138,16 @@
               mu-td.number {{ enchantment.magic | numeric }}
               mu-td.number
                 div
-                  span.income(class="green") &#9650;
+                  span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.goldProduction | numeric }}
-                div
-                  span.income(class="red") &#9660;
-                  span -{{ enchantment.magic * enchantment.goldMaintenance | numeric }}
               mu-td.number
                 div
-                  span.income(class="green") &#9650;
+                  span.income(class="red") &#9660;
                   span {{ enchantment.magic * enchantment.peopleProduction | numeric }}
-                div
-                  span.income(class="red") &#9660;
-                  span -{{ enchantment.magic * enchantment.peopleMaintenance | numeric }}
               mu-td.number
                 div
-                  span.income(class="green") &#9650;
-                  span {{ enchantment.magic * enchantment.manaProduction | numeric }}
-                div
                   span.income(class="red") &#9660;
-                  span -{{ enchantment.magic * enchantment.manaMaintenance | numeric }}
+                  span {{ enchantment.magic * enchantment.manaProduction | numeric }}
               mu-td.number
                 div
                   span.income(class="red") &#9660;
@@ -213,10 +204,10 @@
         return store.state.user
       },
       praises () {
-        return this.enchantments.filter(e => e.support && e.target === store.state.uid) //  && e.source === store.state.uid
+        return this.enchantments.filter(e => e.support && e.target === store.state.uid && e.source === store.state.uid)
       },
       curses () {
-        return this.enchantments.filter(e => !e.support && e.target === store.state.uid) //  && e.source !== store.state.uid
+        return this.enchantments.filter(e => !e.support && e.target === store.state.uid && e.source !== store.state.uid)
       }
     }
   }
