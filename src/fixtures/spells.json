@@ -1321,7 +1321,7 @@
     "peopleMaintenance": 200,
     "manaMaintenance": 100,
     "goldProduction": 0,
-    "peopleProduction": -1,
+    "peopleProduction": -2000,
     "manaProduction": 0,
     "artifact": 0,
     "resurrection": 0,

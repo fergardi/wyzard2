@@ -82,7 +82,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -211,32 +211,25 @@
           this.close()
         }
       },
-      disenchant () {
+      async disenchant () {
         if (this.canBreak) { // user has resources
-          let broken = false
-          let turns = 0
-          database.ref('enchantments').child(this.data['.key']).once('value', enchantment => {
-            if (enchantment) {
-              if (enchantment.source === store.state.uid) {
-                broken = true
-              } else {
-                turns = enchantment.val().turns
-                broken = Math.random() >= 0.5
-              }
-            }
-          })
-          .then(response => {
-            return checkTurnMaintenances(store.state.uid, turns)
-          })
-          .then(response => {
-            if (broken) {
+          if (this.data.source === store.state.uid) {
+            database.ref('enchantments').child(this.data['.key']).remove()
+            await updateGeneralStatus(this.data.target)
+            store.commit('success', 'lbl_toast_dispel_ok')
+            this.close()
+          } else {
+            if (Math.random() >= 0.5) { // TODO
               database.ref('enchantments').child(this.data['.key']).remove()
+              await updateGeneralStatus(this.data.source)
+              await checkTurnMaintenances(store.state.uid, this.data.turns)
               store.commit('success', 'lbl_toast_dispel_ok')
+              this.close()
             } else {
               store.commit('error', 'lbl_toast_dispel_error')
+              this.close()
             }
-            this.close()
-          })
+          }
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()

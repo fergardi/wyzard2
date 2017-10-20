@@ -181,7 +181,7 @@
                 delete auction['.key']
                 auctions.push(auction)
                 // TODO DEVELOPMENT ONLY
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('relics').push(auction)
+                // this.$firebaseRefs.users.child(auth.currentUser.uid).child('relics').push(auction)
               })
               // random
               const index = Math.floor(Math.random() * auctions.length)
@@ -196,7 +196,7 @@
                 delete contract['.key']
                 contracts.push(contract)
                 // TODO DEVELOPMENT ONLY
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('contracts').push(contract)
+                // this.$firebaseRefs.users.child(auth.currentUser.uid).child('contracts').push(contract)
               })
               // random
               const index = Math.floor(Math.random() * contracts.length)
@@ -215,9 +215,9 @@
                   enchantment.sourceName = this.username
                   enchantment.magic = 1
                 } else {
-                  enchantment.source = 'test'
-                  enchantment.sourceColor = enchantment.color
-                  enchantment.sourceName = 'test'
+                  enchantment.source = 'kZJqxb3EjneA5t6NfhbwIKXsYE73'
+                  enchantment.sourceColor = 'blue'
+                  enchantment.sourceName = 'prueba'
                   enchantment.magic = 10
                 }
                 enchantment.duration *= enchantment.magic

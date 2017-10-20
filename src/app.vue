@@ -144,6 +144,7 @@
 <script>
   import store from './vuex/store'
   import { database, auth } from './services/firebase'
+  import { updateGeneralStatus } from './services/api'
 
   export default {
     name: 'app',
@@ -167,6 +168,7 @@
           database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
             store.commit('info', this.translate(message.val().subject))
           })
+          updateGeneralStatus(store.state.uid)
         }
       })
     },
