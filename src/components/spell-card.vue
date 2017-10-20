@@ -219,13 +219,14 @@
             store.commit('success', 'lbl_toast_dispel_ok')
             this.close()
           } else {
-            if (Math.random() >= 0.5) { // TODO
+            if (Math.random() >= 0.5) {
               database.ref('enchantments').child(this.data['.key']).remove()
               await updateGeneralStatus(this.data.source)
               await checkTurnMaintenances(store.state.uid, this.data.turns)
               store.commit('success', 'lbl_toast_dispel_ok')
               this.close()
             } else {
+              await checkTurnMaintenances(store.state.uid, this.data.turns)
               store.commit('error', 'lbl_toast_dispel_error')
               this.close()
             }

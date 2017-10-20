@@ -443,8 +443,8 @@
         .mu-raised-button + .mu-raised-button
           margin-left 5px
     .mu-drawer
-      min-width none
-      width 20%
+      min-width 256px
+      width 22.5%
       height 100%
       overflow hidden
       &.right
@@ -574,7 +574,7 @@
         width 75%
         min-width 75%
         max-width 75%
-    @media only screen and (max-width 479px)
+    @media only screen and (max-width 1079px)
       .mu-drawer
         width 85%
     @media only screen and (min-width 480px)
@@ -605,9 +605,9 @@
       .topbar
       .router
         &.left
-          padding-left 20%
+          padding-left 22.5%
         &.right
-          padding-right 20%
+          padding-right 22.5%
       .topbar
         .toggler
           visibility hidden

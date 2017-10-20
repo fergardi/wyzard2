@@ -114,7 +114,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -164,6 +164,7 @@
         if (this.amount < 0) {
           database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity - Math.abs(this.amount) })
           database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + Math.abs(this.amount) })
+          updateGeneralStatus(store.state.uid)
           store.commit('success', 'lbl_toast_destruction_ok')
           this.close()
         } else if (this.amount > 0) {
@@ -253,10 +254,10 @@
       },
       meditate () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
             if (building) {
-              database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + building.quantity * building.manaProduction * this.amount * 2) })
-              return building
+              let nodes = building.val()
+              database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + nodes.quantity * nodes.manaProduction * this.amount * 2) })
             }
           })
           .then(response => {
@@ -273,10 +274,10 @@
       },
       collect () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).transaction(building => {
+          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
             if (building) {
-              database.ref('users').child(store.state.uid).update({ gold: this.user.gold + building.quantity * building.goldProduction * this.amount * 2 })
-              return building
+              let villages = building.val()
+              database.ref('users').child(store.state.uid).update({ gold: this.user.gold + villages.quantity * villages.goldProduction * this.amount * 2 })
             }
           })
           .then(response => {
