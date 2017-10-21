@@ -154,6 +154,23 @@
                   span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
+            mu-tr(v-for="relic, index in user.relics", :key="index")
+              mu-td.title
+                mu-chip(:class="relic.color") {{ relic.name | translate }}
+              mu-td.number {{ relic.quantity | minimize }}
+              mu-td.number
+                span.income(class="green") &#9650;
+                span ?
+              mu-td.number
+                span.income(class="green") &#9650;
+                span ?
+              mu-td.number
+                span.income(class="green") &#9650;
+                span 
+              mu-td.number
+                span ?
+              mu-td.number {{ relic.power * relic.quantity | minimize }}
+
             mu-tr(v-for="blessing, index in blessings", :key="index")
               mu-td.title
                 mu-chip(:class="blessing.color") {{ blessing.name | translate }}

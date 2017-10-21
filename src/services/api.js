@@ -205,6 +205,20 @@ const checkGodsProduction = (uid) => {
   })
 }
 
+// check artifact production
+const checkArtifactProduction = (uid) => {
+  return database.ref('users').child(uid).child('relics').once('value', relics => {
+    if (relics) {
+      relics.forEach(relic => {
+        let artifact = relic.val()
+        // console.log('Checking artifact production... ' + artifact.name)
+        power += artifact.power * artifact.quantity
+        // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
+      })
+    }
+  })
+}
+
 // check unit affordance
 const checkUnitsAffordance = (uid) => {
   return database.ref('users').child(uid).child('troops').once('value', troops => {
@@ -328,6 +342,7 @@ const checkMaintenances = async (uid) => {
   await checkEnchantmentsProduction(uid)
   await checkEnchantmentsMaintenance(uid)
   await checkGodsProduction(uid)
+  await checkArtifactProduction(uid)
   await checkUnitsMaintenance(uid)
   await checkGeneralStatus(uid)
   await checkAffordances(uid)
@@ -395,6 +410,7 @@ export const updateGeneralStatus = async (uid) => {
   await checkEnchantmentsProduction(uid)
   await checkEnchantmentsMaintenance(uid)
   await checkGodsProduction(uid)
+  await checkArtifactProduction(uid)
   await checkUnitsMaintenance(uid)
   return database.ref('users').child(uid).transaction(user => {
     if (user) {
@@ -411,5 +427,132 @@ export const updateGeneralStatus = async (uid) => {
       user.mana = Math.min(user.manaCap, user.mana)
     }
     return user
+  })
+}
+
+const random = (number) => {
+  let max = number
+  let min = max * 0.90 // +- 10%
+  return Math.ceil(Math.random() * (max - min + 1) + min)
+}
+
+// create new user
+export const createNewUser = (uid, player) => {
+  // buildings
+  database.ref('buildings').once('value', snapshot => {
+    snapshot.forEach(building => {
+      let construction = {...building.val()}
+      delete construction['.key']
+      database.ref('users').child(uid).child('constructions').push(construction)
+    })
+  })
+  // spells
+  database.ref('spells').orderByChild('color').equalTo(player.color).once('value', snapshot => {
+    snapshot.forEach(spell => {
+      let research = {...spell.val()}
+      delete research['.key']
+      database.ref('users').child(uid).child('researches').push(research)
+    })
+  })
+  // units
+  database.ref('units').orderByChild('initial').equalTo(player.color).once('value', snapshot => {
+    snapshot.forEach(unit => {
+      let troop = {...unit.val()}
+      troop.quantity = random(troop.quantity)
+      delete troop['.key']
+      database.ref('users').child(uid).child('troops').push(troop)
+    })
+  })
+  // relics
+  database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', snapshot => {
+    let relics = []
+    snapshot.forEach(artifact => {
+      let relic = {...artifact.val()}
+      relic.quantity = 1
+      delete relic['.key']
+      relics.push(relic)
+    })
+    // random
+    const index = Math.floor(Math.random() * relics.length)
+    database.ref('users').child(uid).child('relics').push(relics[index])
+  })
+  // places
+  database.ref('places').orderByChild('color').equalTo(player.color).once('value', snapshot => {
+    snapshot.forEach(place => {
+      let quest = {...place.val()}
+      delete quest['.key']
+      database.ref('users').child(uid).child('quests').push(quest)
+    })
+  })
+  // messages
+  let message = {
+    name: 'lbl_name_admin',
+    color: 'dark',
+    timestamp: Date.now(),
+    subject: 'lbl_message_welcome_subject',
+    text: 'lbl_message_welcome_text'
+  }
+  database.ref('users').child(uid).child('messages').push(message)
+  // auction
+  database.ref('artifacts').once('value', snapshot => {
+    let auctions = []
+    snapshot.forEach(artifact => {
+      let auction = {...artifact.val()}
+      auction.quantity = 1
+      delete auction['.key']
+      auctions.push(auction)
+      // TODO DEVELOPMENT ONLY
+      database.ref('users').child(uid).child('relics').push(auction)
+    })
+    // random
+    const index = Math.floor(Math.random() * auctions.length)
+    database.ref('auctions').push(auctions[index])
+  })
+  // contract
+  database.ref('heroes').once('value', snapshot => {
+    let contracts = []
+    snapshot.forEach(hero => {
+      let contract = {...hero.val()}
+      contract.level = Math.floor(Math.random() * 5) + 1
+      delete contract['.key']
+      contracts.push(contract)
+      // TODO DEVELOPMENT ONLY
+      database.ref('users').child(uid).child('contracts').push(contract)
+    })
+    // random
+    const index = Math.floor(Math.random() * contracts.length)
+    database.ref('tavern').push(contracts[index])
+  })
+  /*
+  // TODO DEVELOPMENT ONLY
+  database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', snapshot => {
+    snapshot.forEach(spell => {
+      let enchantment = {...spell.val()}
+      enchantment.target = uid
+      enchantment.targetColor = player.color
+      enchantment.targetName = player.username
+      if (enchantment.support) {
+        enchantment.source = uid
+        enchantment.sourceColor = player.color
+        enchantment.sourceName = player.username
+        enchantment.magic = 1
+      } else {
+        enchantment.source = 'Pb0lhTW38SUlhiLRwMi4URt2BLV2'
+        enchantment.sourceColor = 'red'
+        enchantment.sourceName = 'prueba'
+        enchantment.magic = 10
+      }
+      enchantment.duration *= enchantment.magic
+      enchantment.remaining = enchantment.duration
+      delete enchantment['.key']
+      database.ref('enchantments').push(enchantment)
+    })
+  })
+  */
+  // TODO DEVELOPMENT ONLY
+  database.ref('gods').once('value', snapshot => {
+    snapshot.forEach(god => {
+      database.ref('gods').child(god.key).child('blessed').set(uid)
+    })
   })
 }

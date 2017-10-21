@@ -31,6 +31,7 @@
 <script>
   import { authenticate, register, database, auth } from '../services/firebase'
   import store from '../vuex/store'
+  import { createNewUser } from '../services/api'
   
   export default {
     data () {
@@ -111,133 +112,13 @@
             player.color = this.color
             delete player['.key']
             this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
-            // buildings
-            this.$firebaseRefs.buildings.once('value', snapshot => {
-              snapshot.forEach(building => {
-                let construction = {...building.val()}
-                delete construction['.key']
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('constructions').push(construction)
-              })
+            .then(response => {
+              createNewUser(auth.currentUser.uid, player)
+              store.commit('uid', auth.currentUser.uid)
+              store.commit('success', 'auth/registration-ok')
+              this.busy = false
+              this.$router.push('/kingdom')
             })
-            // spells
-            this.$firebaseRefs.spells.orderByChild('color').equalTo(player.color).once('value', snapshot => {
-              snapshot.forEach(spell => {
-                let research = {...spell.val()}
-                delete research['.key']
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('researches').push(research)
-              })
-            })
-            // units
-            this.$firebaseRefs.units.orderByChild('initial').equalTo(player.color).once('value', snapshot => {
-              snapshot.forEach(unit => {
-                let troop = {...unit.val()}
-                troop.quantity = this.random(troop.quantity)
-                delete troop['.key']
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('troops').push(troop)
-                this.$firebaseRefs.users.child(auth.currentUser.uid).transaction(user => {
-                  if (user) {
-                    user.army += troop.quantity
-                  }
-                  return user
-                })
-              })
-            })
-            // relics
-            this.$firebaseRefs.artifacts.orderByChild('color').equalTo(player.color).once('value', snapshot => {
-              let relics = []
-              snapshot.forEach(artifact => {
-                let relic = {...artifact.val()}
-                relic.quantity = 1
-                delete relic['.key']
-                relics.push(relic)
-              })
-              // random
-              const index = Math.floor(Math.random() * relics.length)
-              this.$firebaseRefs.users.child(auth.currentUser.uid).child('relics').push(relics[index])
-            })
-            // places
-            this.$firebaseRefs.places.orderByChild('color').equalTo(player.color).once('value', snapshot => {
-              snapshot.forEach(place => {
-                let quest = {...place.val()}
-                delete quest['.key']
-                this.$firebaseRefs.users.child(auth.currentUser.uid).child('quests').push(quest)
-              })
-            })
-            // messages
-            let message = {
-              name: 'lbl_name_admin',
-              color: 'dark',
-              timestamp: Date.now(),
-              subject: 'lbl_message_welcome_subject',
-              text: 'lbl_message_welcome_text'
-            }
-            this.$firebaseRefs.users.child(auth.currentUser.uid).child('messages').push(message)
-            // auction
-            this.$firebaseRefs.artifacts.once('value', snapshot => {
-              let auctions = []
-              snapshot.forEach(artifact => {
-                let auction = {...artifact.val()}
-                auction.quantity = 1
-                delete auction['.key']
-                auctions.push(auction)
-                // TODO DEVELOPMENT ONLY
-                // this.$firebaseRefs.users.child(auth.currentUser.uid).child('relics').push(auction)
-              })
-              // random
-              const index = Math.floor(Math.random() * auctions.length)
-              this.$firebaseRefs.auctions.push(auctions[index])
-            })
-            // contract
-            this.$firebaseRefs.heroes.once('value', snapshot => {
-              let contracts = []
-              snapshot.forEach(hero => {
-                let contract = {...hero.val()}
-                contract.level = Math.floor(Math.random() * 5) + 1
-                delete contract['.key']
-                contracts.push(contract)
-                // TODO DEVELOPMENT ONLY
-                // this.$firebaseRefs.users.child(auth.currentUser.uid).child('contracts').push(contract)
-              })
-              // random
-              const index = Math.floor(Math.random() * contracts.length)
-              this.$firebaseRefs.tavern.push(contracts[index])
-            })
-            // TODO DEVELOPMENT ONLY
-            this.$firebaseRefs.spells.orderByChild('enchantment').equalTo(true).once('value', snapshot => {
-              snapshot.forEach(spell => {
-                let enchantment = {...spell.val()}
-                enchantment.target = auth.currentUser.uid
-                enchantment.targetColor = this.color
-                enchantment.targetName = this.username
-                if (enchantment.support) {
-                  enchantment.source = auth.currentUser.uid
-                  enchantment.sourceColor = this.color
-                  enchantment.sourceName = this.username
-                  enchantment.magic = 1
-                } else {
-                  enchantment.source = 'Pb0lhTW38SUlhiLRwMi4URt2BLV2'
-                  enchantment.sourceColor = 'red'
-                  enchantment.sourceName = 'prueba'
-                  enchantment.magic = 10
-                }
-                enchantment.duration *= enchantment.magic
-                enchantment.remaining = enchantment.duration
-                delete enchantment['.key']
-                database.ref('enchantments').push(enchantment)
-              })
-            })
-            // TODO DEVELOPMENT ONLY
-            this.$firebaseRefs.gods.once('value', snapshot => {
-              snapshot.forEach(god => {
-                this.$firebaseRefs.gods.child(god.key).child('blessed').set(auth.currentUser.uid)
-              })
-            })
-            // uid
-            store.commit('uid', auth.currentUser.uid)
-            store.commit('success', 'auth/registration-ok')
-            this.busy = false
-            // router
-            this.$router.push('/kingdom')
           })
           .catch(error => {
             if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {
