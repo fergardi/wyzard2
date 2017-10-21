@@ -9,9 +9,9 @@
 
         mu-table.kingdom(:showCheckbox="false", :selectable="false")
           mu-thead
-            mu-tr
+            mu-tr(v-if="user.constructions")
               mu-th.title
-                mu-icon(value=":ra ra-help")
+                span {{ 'lbl_table_infrastructure' | translate }}
               mu-th.number
                 mu-icon(value=":ra ra-daggers")
               mu-th.number
@@ -54,6 +54,22 @@
               mu-td.number
                 span ?
               mu-td.number {{ building.quantity * building.power | minimize }}
+            
+            mu-tr(v-if="user.troops")
+              mu-th.title
+                span {{ 'lbl_table_troops' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
 
             mu-tr(v-for="unit, index in user.troops", :key="index")
               mu-td.title
@@ -71,6 +87,22 @@
               mu-td.number
                 span ?
               mu-td.number {{ unit.quantity * unit.power | minimize }}
+
+            mu-tr(v-if="user.contracts")
+              mu-th.title
+                span {{ 'lbl_table_contracts' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
 
             mu-tr(v-for="hero, index in user.contracts", :key="index")
               mu-td.title
@@ -100,6 +132,22 @@
               mu-td.number
                 span ?
               mu-td.number {{ hero.level * hero.power | minimize }}
+
+            mu-tr(v-if="praises.length")
+              mu-th.title
+                span {{ 'lbl_table_praises' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
             
             mu-tr(v-for="enchantment, index in praises", :key="index")
               mu-td.title
@@ -132,6 +180,22 @@
                   span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
+            mu-tr(v-if="curses.length")
+              mu-th.title
+                span {{ 'lbl_table_curses' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
+
             mu-tr(v-for="enchantment, index in curses", :key="index")
               mu-td.title
                 mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
@@ -154,6 +218,22 @@
                   span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
+            mu-tr(v-if="user.relics")
+              mu-th.title
+                span {{ 'lbl_table_relics' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
+
             mu-tr(v-for="relic, index in user.relics", :key="index")
               mu-td.title
                 mu-chip(:class="relic.color") {{ relic.name | translate }}
@@ -166,10 +246,26 @@
                 span ?
               mu-td.number
                 span.income(class="green") &#9650;
-                span 
+                span ?
               mu-td.number
                 span ?
               mu-td.number {{ relic.power * relic.quantity | minimize }}
+
+            mu-tr(v-if="blessings.length")
+              mu-th.title
+                span {{ 'lbl_table_blessings' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
 
             mu-tr(v-for="blessing, index in blessings", :key="index")
               mu-td.title
@@ -187,9 +283,25 @@
               mu-td.number
                 span ?
               mu-td.number {{ blessing.power | minimize }}
+
+            mu-tr
+              mu-th.title
+                span {{ 'lbl_table_total' | translate }}
+              mu-th.number
+                mu-icon(value=":ra ra-daggers")
+              mu-th.number
+                mu-icon(value=":ra ra-gold-bar")
+              mu-th.number
+                mu-icon(value=":ra ra-double-team")
+              mu-th.number
+                mu-icon(value=":ra ra-burst-blob")
+              mu-th.number
+                mu-icon(value=":ra ra-tower")
+              mu-th.number
+                mu-icon(value=":ra ra-fire-symbol")
             
             mu-tr
-              mu-td.title {{ 'lbl_table_total' | translate }}
+              mu-td.title {{ 'lbl_table_total_per_turn' | translate }}
               mu-td.number ?
               mu-td.number
                 span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}

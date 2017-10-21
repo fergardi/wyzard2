@@ -578,7 +578,6 @@ export default {
     // table
     lbl_table_position: 'Posición',
     lbl_table_quantity: 'Cantidad',
-    lbl_table_total: 'Total / Turno',
     lbl_table_name: 'Nombre',
     lbl_table_gold: 'Oro',
     lbl_table_people: 'Población',
@@ -590,6 +589,15 @@ export default {
     lbl_table_actions: 'Acciones',
     lbl_table_subject: 'Asunto',
     lbl_table_army: 'Ejército',
+    lbl_table_infrastructure: 'Infraestructura',
+    lbl_table_troops: 'Tropas',
+    lbl_table_contracts: 'Contratos',
+    lbl_table_praises: 'Encantamientos',
+    lbl_table_curses: 'Maldiciones',
+    lbl_table_relics: 'Reliquias',
+    lbl_table_blessings: 'Bendiciones',
+    lbl_table_total: 'Total',
+    lbl_table_total_per_turn: 'Al Turno',
     // settings
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
