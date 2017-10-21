@@ -498,7 +498,7 @@ export const createNewUser = (uid, player) => {
     let auctions = []
     snapshot.forEach(artifact => {
       let auction = {...artifact.val()}
-      auction.quantity = 1
+      auction.quantity = 999 // TODO DEV ONLY
       delete auction['.key']
       auctions.push(auction)
       // TODO DEVELOPMENT ONLY
