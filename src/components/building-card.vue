@@ -254,18 +254,18 @@
       },
       meditate () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-            if (building) {
-              let nodes = building.val()
-              database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + nodes.quantity * nodes.manaProduction * this.amount * 2) })
-            }
-          })
+          checkTurnMaintenances(store.state.uid, this.amount)
           .then(response => {
-            return checkTurnMaintenances(store.state.uid, this.amount)
-          })
-          .then(response => {
-            store.commit('success', 'lbl_toast_meditation_ok')
-            this.close()
+            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+              if (building) {
+                let nodes = building.val()
+                database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + nodes.quantity * nodes.manaProduction * this.amount * 2) })
+              }
+            })
+            .then(response => {
+              store.commit('success', 'lbl_toast_meditation_ok')
+              this.close()
+            })
           })
         } else {
           store.commit('error', 'lbl_toast_resource_turns')

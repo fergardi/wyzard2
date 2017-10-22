@@ -54,6 +54,7 @@
   import { database } from '../services/firebase'
   import store from '../vuex/store'
   import confirm from './confirm-dialog'
+  import { updateGeneralStatus } from '../services/api'
 
   export default {
     name: 'unit',
@@ -95,11 +96,15 @@
             }
             return unit
           })
-          store.commit('success', 'lbl_toast_disband_ok')
+          .then(response => {
+            updateGeneralStatus(store.state.uid)
+            store.commit('success', 'lbl_toast_disband_ok')
+            this.close()
+          })
         } else {
           store.commit('success', 'lbl_toast_disband_error')
+          this.close()
         }
-        this.close()
       },
       close () {
         this.type = null

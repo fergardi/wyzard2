@@ -47,7 +47,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -98,104 +98,143 @@
       activate () {
         if (this.hasTurns) { // user has resources
           if (this.canActivate) {
-            database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
-              if (artifact) {
-                if (artifact.support) { // ally
-                  if (artifact.summon) {
-                    database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
-                      if (units) {
-                        let summons = []
-                        units.forEach(unit => {
-                          let summon = {...unit.val()}
-                          summon.quantity = this.random(summon.quantity)
-                          delete summon['.key']
-                          summons.push(summon)
-                        })
-                        const index = Math.floor(Math.random() * summons.length)
-                        let summon = summons[index]
-                        database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(summon.name).once('value', troops => {
-                          if (troops && troops.hasChildren()) {
-                            troops.forEach(troop => {
-                              troop.ref.update({ quantity: troop.val().quantity + summon.quantity })
-                            })
-                          } else {
-                            database.ref('users').child(store.state.uid).child('troops').push(summon)
-                          }
-                        })
-                      }
-                    })
-                  } else if (artifact.enchantment) {
-                    database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
-                      if (enchantments && enchantments.hasChildren()) {
-                        let enchant = []
-                        enchantments.forEach(enchantment => {
-                          enchant.push(enchantment.key)
-                        })
-                        const index = Math.floor(Math.random() * enchant.length)
-                        database.ref('enchantments').child(enchant[index]).remove()
-                      }
-                    })
-                  } else if (artifact.place) {
-                    database.ref('places').once('value', places => {
-                      let quests = []
-                      places.forEach(place => {
-                        let quest = {...place.val()}
-                        delete quest['.key']
-                        quests.push(quest)
+            checkTurnMaintenances(store.state.uid, this.turns)
+            .then(response => {
+              database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
+                if (artifact) {
+                  if (artifact.support) { // ally
+                    if (artifact.summon) {
+                      database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
+                        if (units) {
+                          let summons = []
+                          units.forEach(unit => {
+                            let summon = {...unit.val()}
+                            summon.quantity = this.random(summon.quantity * this.user.magic)
+                            delete summon['.key']
+                            summons.push(summon)
+                          })
+                          const index = Math.floor(Math.random() * summons.length)
+                          let summon = summons[index]
+                          database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(summon.name).once('value', troops => {
+                            if (troops && troops.hasChildren()) {
+                              troops.forEach(troop => {
+                                troop.ref.update({ quantity: troop.val().quantity + summon.quantity })
+                              })
+                            } else {
+                              database.ref('users').child(store.state.uid).child('troops').push(summon)
+                            }
+                          })
+                        }
                       })
-                      const index = Math.floor(Math.random() * quests.length)
-                      database.ref('users').child(store.state.uid).child('quests').push(quests[index])
-                    })
-                  } else if (artifact.level > 0) {
-                    database.ref('users').child(store.state.uid).child('contracts').once('value', contracts => {
-                      if (contracts && contracts.hasChildren()) {
-                        let heroes = []
-                        contracts.forEach(contract => {
-                          heroes.push(contract.key)
+                    } else if (artifact.enchantment) {
+                      database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
+                        if (enchantments && enchantments.hasChildren()) {
+                          let enchant = []
+                          enchantments.forEach(enchantment => {
+                            enchant.push(enchantment.key)
+                          })
+                          const index = Math.floor(Math.random() * enchant.length)
+                          database.ref('enchantments').child(enchant[index]).remove()
+                        }
+                      })
+                    } else if (artifact.place) {
+                      database.ref('places').once('value', places => {
+                        let quests = []
+                        places.forEach(place => {
+                          let quest = {...place.val()}
+                          delete quest['.key']
+                          quests.push(quest)
                         })
-                        const index = Math.floor(Math.random() * heroes.length)
-                        database.ref('users').child(store.state.uid).child('contracts').child(heroes[index]).transaction(hero => {
-                          if (hero) {
-                            hero.level++
+                        const index = Math.floor(Math.random() * quests.length)
+                        database.ref('users').child(store.state.uid).child('quests').push(quests[index])
+                      })
+                    } else if (artifact.level > 0) {
+                      database.ref('users').child(store.state.uid).child('contracts').once('value', contracts => {
+                        if (contracts && contracts.hasChildren()) {
+                          let heroes = []
+                          contracts.forEach(contract => {
+                            heroes.push(contract.key)
+                          })
+                          const index = Math.floor(Math.random() * heroes.length)
+                          database.ref('users').child(store.state.uid).child('contracts').child(heroes[index]).transaction(hero => {
+                            if (hero) {
+                              hero.level++
+                            }
+                            return hero
+                          })
+                        }
+                      })
+                    } else if (artifact.gold > 0 || artifact.people > 0 || artifact.mana > 0) {
+                      database.ref('users').child(store.state.uid).transaction(user => {
+                        if (user) {
+                          user.gold += this.random(artifact.gold)
+                          user.people *= 1 + (artifact.people / 100)
+                          user.mana *= 1 + (artifact.mana / 100)
+                        }
+                        return user
+                      })
+                    } else if (artifact.terrain > 0) {
+                      database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', constructions => {
+                        if (constructions) {
+                          let quantity = this.random(this.data.terrain)
+                          constructions.forEach(construction => {
+                            construction.ref.update({ quantity: construction.val().quantity + quantity })
+                            database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + quantity })
+                          })
+                        }
+                      })
+                    } else if (artifact.research) {
+                      let known = []
+                      database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
+                        if (researches) {
+                          researches.forEach(research => {
+                            known.push(research.val().name)
+                          })
+                        }
+                      })
+                      .then(response => {
+                        database.ref('users').child(store.state.uid).child('book').once('value', book => {
+                          if (book) {
+                            book.forEach(page => {
+                              known.push(page.val().name)
+                            })
                           }
-                          return hero
                         })
-                      }
-                    })
-                  } else if (artifact.gold > 0 || artifact.people > 0 || artifact.mana > 0) {
-                    database.ref('users').child(store.state.uid).transaction(user => {
-                      if (user) {
-                        user.gold += this.random(artifact.gold)
-                        user.people *= 1 + (artifact.people / 100)
-                        user.mana *= 1 + (artifact.mana / 100)
-                      }
-                      return user
-                    })
-                  } else if (artifact.terrain > 0) {
-                    database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', constructions => {
-                      if (constructions) {
-                        let quantity = this.random(this.data.terrain)
-                        constructions.forEach(construction => {
-                          construction.ref.update({ quantity: construction.val().quantity + quantity })
-                          database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + quantity })
+                        .then(response => {
+                          let unknown = []
+                          database.ref('spells').once('value', spells => {
+                            if (spells) {
+                              spells.forEach(spell => {
+                                if (!known.includes(spell.val().name)) {
+                                  let research = {...spell.val()}
+                                  delete research['.key']
+                                  unknown.push(research)
+                                }
+                              })
+                            }
+                          })
+                          .then(response => {
+                            if (unknown.length > 0) {
+                              const index = Math.floor(Math.random() * unknown.length)
+                              database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
+                            }
+                          })
                         })
-                      }
-                    })
+                      })
+                    }
+                  } else { // enemy
+                    // TODO
                   }
-                } else { // enemy
-                  // TODO
+                  artifact.quantity-- // decrease quantity
+                  if (artifact.quantity <= 0) return null
                 }
-                artifact.quantity-- // decrease quantity
-                if (artifact.quantity <= 0) return null
-              }
-              return artifact
-            })
-            .then(response => {
-              return checkTurnMaintenances(store.state.uid, this.turns)
-            })
-            .then(response => {
-              store.commit('success', 'lbl_toast_activate_ok')
-              this.close()
+                return artifact
+              })
+              .then(response => {
+                updateGeneralStatus(store.state.uid)
+                store.commit('success', 'lbl_toast_activate_ok')
+                this.close()
+              })
             })
           } else {
             store.commit('error', 'lbl_toast_activate_error')

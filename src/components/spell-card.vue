@@ -59,9 +59,9 @@
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
+          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true", :disabled="!canLearn || busy")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canResearch || busy") {{ 'lbl_button_research' | translate }}
+          mu-raised-button(primary, type="submit", :disabled="!canResearch || !canLearn || busy") {{ 'lbl_button_research' | translate }}
 
     template(v-if="conjuration")
       form(@submit.stop.prevent="confirm('conjure')")
@@ -174,7 +174,7 @@
                 snapshot.forEach(unit => {
                   database.ref('users').child(store.state.uid).child('troops').child(unit.key).transaction(troop => {
                     if (troop) {
-                      troop.quantity += this.random(this.data.number)
+                      troop.quantity += this.random(this.data.quantity * this.user.magic)
                     }
                     return troop
                   })
@@ -250,21 +250,18 @@
       user () {
         return store.state.user
       },
-      settings () {
-        return store.state.user ? store.state.user.settings : store.state.settings
-      },
       canCast () {
         return this.data.turns <= this.user.turns && this.data.goldCost <= this.user.gold && this.data.peopleCost <= this.user.people && this.data.manaCost <= this.user.mana && !this.data.battle
       },
       canBreak () {
         return this.data.turns <= this.user.turns
       },
+      canLearn () {
+        return this.data.magic <= this.user.magic
+      },
       canResearch () {
-        return this.amount > 0 && this.amount <= this.user.turns && this.data.magic <= this.user.magic
+        return this.amount > 0 && this.amount <= this.user.turns
       }
-    },
-    destroy () {
-      // this.busy = false
     }
   }
 </script>

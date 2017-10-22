@@ -458,7 +458,7 @@ export const createNewUser = (uid, player) => {
   database.ref('units').orderByChild('initial').equalTo(player.color).once('value', snapshot => {
     snapshot.forEach(unit => {
       let troop = {...unit.val()}
-      troop.quantity = random(troop.quantity)
+      troop.quantity = random(troop.quantity * player.magic)
       delete troop['.key']
       database.ref('users').child(uid).child('troops').push(troop)
     })

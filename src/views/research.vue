@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="research, index in researchables", :key="index")
+      mu-col(width="100", tablet="50", desktop="33", v-for="research, index in researches", :key="index")
         spell-card.animated.fadeInUp(:data="research", :investigation="true")
 </template>
 
@@ -21,9 +21,6 @@
     computed: {
       user () {
         return store.state.user
-      },
-      researchables () {
-        return this.researches.filter(r => r.magic <= this.user.magic)
       }
     }
   }
