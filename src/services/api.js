@@ -584,3 +584,11 @@ export const createNewUser = (uid, player) => {
   })
   */
 }
+
+// battle pve
+export const battlePlayerVersusEnvironment = (uid, country) => {
+}
+
+// battle pvp
+export const battlePlayerVersusPlayer = (uid, country) => {
+}

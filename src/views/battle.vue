@@ -61,6 +61,7 @@
   import { database } from '../services/firebase'
   import store from '../vuex/store'
   import confirm from '../components/confirm-dialog'
+  import { checkTurnMaintenances, updateGeneralStatus, battlePlayerVersusPlayer } from '../services/api'
   
   export default {
     components: {
@@ -128,9 +129,18 @@
             break
         }
       },
-      attack () {
-        // TODO
-        this.close()
+      async attack () {
+        if (this.canAttack && !this.busy) {
+          await checkTurnMaintenances(store.state.uid, this.turns)
+          await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
+          updateGeneralStatus(store.state.uid)
+          updateGeneralStatus(this.target)
+          store.commit('success', 'lbl_toast_battle_ok')
+          this.close()
+        } else {
+          store.commit('error', 'lbl_toast_battle_error')
+          this.close()
+        }
       },
       myself (uid) {
         return store.state.uid === uid
