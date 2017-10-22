@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-row
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
-      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in book", :key="index")
+      mu-col(width="100", tablet="50", desktop="33", v-for="spell, index in dev", :key="index")
         spell-card.animated.fadeInUp(:data="spell", :conjuration="true", :users="users")
 </template>
 
@@ -20,6 +20,11 @@
     },
     firebase: {
       users: database.ref('users').orderByChild('name')
+    },
+    computed: {
+      dev () {
+        return this.book.filter(b => !b.summon && !b.battle && !b.enchantment && b.support)
+      }
     }
   }
 </script>

@@ -230,22 +230,23 @@
       },
       explore () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-            if (building) {
-              let terrain = building.val()
-              for (let i = 0; i < this.amount; i++) {
-                terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
+          checkTurnMaintenances(store.state.uid, this.amount)
+          .then(response => {
+            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+              if (building) {
+                let terrain = building.val()
+                for (let i = 0; i < this.amount; i++) {
+                  terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
+                }
+                building.ref.update({ quantity: terrain.quantity })
+                database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })
               }
-              building.ref.update({ quantity: terrain.quantity })
-              database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })
-            }
-          })
-          .then(response => {
-            return checkTurnMaintenances(store.state.uid, this.amount)
-          })
-          .then(response => {
-            store.commit('success', 'lbl_toast_exploration_ok')
-            this.close()
+            })
+            .then(response => {
+              updateGeneralStatus(store.state.uid)
+              store.commit('success', 'lbl_toast_exploration_ok')
+              this.close()
+            })
           })
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
@@ -263,6 +264,7 @@
               }
             })
             .then(response => {
+              updateGeneralStatus(store.state.uid)
               store.commit('success', 'lbl_toast_meditation_ok')
               this.close()
             })
@@ -274,20 +276,21 @@
       },
       collect () {
         if (this.hasTurns) { // user has resources
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-            if (building) {
-              let villages = building.val()
-              database.ref('users').child(store.state.uid).update({ gold: this.user.gold + villages.quantity * villages.goldProduction * this.amount * 2 })
-            }
-          })
+          checkTurnMaintenances(store.state.uid, this.amount)
           .then(response => {
-            return checkTurnMaintenances(store.state.uid, this.amount)
-          })
-          .then(response => {
-            store.commit('success', 'lbl_toast_tax_ok')
-            this.close()
+            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+              if (building) {
+                let villages = building.val()
+                database.ref('users').child(store.state.uid).update({ gold: this.user.gold + villages.quantity * villages.goldProduction * this.amount * 2 })
+              }
+            })
+            .then(response => {
+              store.commit('success', 'lbl_toast_tax_ok')
+              this.close()
+            })
           })
         } else {
+          updateGeneralStatus(store.state.uid)
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }

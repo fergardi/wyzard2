@@ -14,6 +14,7 @@ let gold = 0
 let people = 0
 let mana = 0
 let power = 0
+let terrain = 0
 let disbanded = false
 let deserted = false
 let dispeled = false
@@ -104,6 +105,9 @@ const checkBuildingsProductionMaintenance = (uid) => {
         manaCap += building.quantity * building.manaCap
         armyCap += building.quantity * building.armyCap
         power += building.quantity * building.power
+        if (building.name === 'lbl_building_terrain') {
+          terrain = building.quantity
+        }
         // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
       })
     }
@@ -308,6 +312,7 @@ const checkGeneralStatus = (uid) => {
       user.peopleCap = peopleCap
       user.manaCap = manaCap
       user.armyCap = armyCap
+      user.terrain = terrain
       user.turns--
       gold = user.gold
       people = user.people
@@ -322,20 +327,7 @@ const checkGeneralStatus = (uid) => {
 
 // check maintenances
 const checkMaintenances = async (uid) => {
-  // aux
-  goldPerTurn = 0
-  peoplePerTurn = 0
-  manaPerTurn = 0
-  terrainPerTurn = 0
-  peopleCap = 0
-  manaCap = 0
-  armyCap = 0
-  gold = 0
-  people = 0
-  mana = 0
-  power = 0
-  army = 0
-  // checks
+  resetAuxVariables()
   await checkTerrainProductionDestruction(uid)
   await checkBuildingsProductionMaintenance(uid)
   await checkHeroesProductionMaintenance(uid)
@@ -350,9 +342,6 @@ const checkMaintenances = async (uid) => {
 
 // check affordances
 export const checkAffordances = async (uid) => {
-  dispeled = false
-  deserted = false
-  disbanded = false
   await checkUnitsAffordance(uid)
   if (!disbanded) await checkEnchantmentsAffordance(uid)
   if (!disbanded && !dispeled) await checkHeroesAffordance(uid)
@@ -390,8 +379,7 @@ const checkTerrainProductionMaintenance = (uid) => {
   })
 }
 
-// check general status
-export const updateGeneralStatus = async (uid) => {
+export const resetAuxVariables = () => {
   goldPerTurn = 0
   peoplePerTurn = 0
   manaPerTurn = 0
@@ -404,6 +392,15 @@ export const updateGeneralStatus = async (uid) => {
   mana = 0
   power = 0
   army = 0
+  terrain = 0
+  dispeled = false
+  deserted = false
+  disbanded = false
+}
+
+// check general status
+export const updateGeneralStatus = async (uid) => {
+  resetAuxVariables()
   await checkTerrainProductionMaintenance(uid)
   await checkBuildingsProductionMaintenance(uid)
   await checkHeroesProductionMaintenance(uid)
@@ -425,6 +422,7 @@ export const updateGeneralStatus = async (uid) => {
       user.armyCap = armyCap
       user.people = Math.min(user.peopleCap, user.people)
       user.mana = Math.min(user.manaCap, user.mana)
+      user.terrain = terrain
     }
     return user
   })
@@ -439,24 +437,24 @@ const random = (number) => {
 // create new user
 export const createNewUser = (uid, player) => {
   // buildings
-  database.ref('buildings').once('value', snapshot => {
-    snapshot.forEach(building => {
+  database.ref('buildings').once('value', buildings => {
+    buildings.forEach(building => {
       let construction = {...building.val()}
       delete construction['.key']
       database.ref('users').child(uid).child('constructions').push(construction)
     })
   })
   // spells
-  database.ref('spells').orderByChild('color').equalTo(player.color).once('value', snapshot => {
-    snapshot.forEach(spell => {
+  database.ref('spells').orderByChild('color').equalTo(player.color).once('value', spells => {
+    spells.forEach(spell => {
       let research = {...spell.val()}
       delete research['.key']
       database.ref('users').child(uid).child('researches').push(research)
     })
   })
   // units
-  database.ref('units').orderByChild('initial').equalTo(player.color).once('value', snapshot => {
-    snapshot.forEach(unit => {
+  database.ref('units').orderByChild('initial').equalTo(player.color).once('value', units => {
+    units.forEach(unit => {
       let troop = {...unit.val()}
       troop.quantity = random(troop.quantity * player.magic)
       delete troop['.key']
@@ -464,9 +462,9 @@ export const createNewUser = (uid, player) => {
     })
   })
   // relics
-  database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', snapshot => {
+  database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', artifacts => {
     let relics = []
-    snapshot.forEach(artifact => {
+    artifacts.forEach(artifact => {
       let relic = {...artifact.val()}
       relic.quantity = 1
       delete relic['.key']
@@ -477,8 +475,8 @@ export const createNewUser = (uid, player) => {
     database.ref('users').child(uid).child('relics').push(relics[index])
   })
   // places
-  database.ref('places').orderByChild('color').equalTo(player.color).once('value', snapshot => {
-    snapshot.forEach(place => {
+  database.ref('places').orderByChild('color').equalTo(player.color).once('value', places => {
+    places.forEach(place => {
       let quest = {...place.val()}
       delete quest['.key']
       database.ref('users').child(uid).child('quests').push(quest)
@@ -494,9 +492,9 @@ export const createNewUser = (uid, player) => {
   }
   database.ref('users').child(uid).child('messages').push(message)
   // auction
-  database.ref('artifacts').once('value', snapshot => {
+  database.ref('artifacts').once('value', artifacts => {
     let auctions = []
-    snapshot.forEach(artifact => {
+    artifacts.forEach(artifact => {
       let auction = {...artifact.val()}
       auction.quantity = 1
       delete auction['.key']
@@ -509,9 +507,9 @@ export const createNewUser = (uid, player) => {
     database.ref('auctions').push(auctions[index])
   })
   // contract
-  database.ref('heroes').once('value', snapshot => {
+  database.ref('heroes').once('value', heroes => {
     let contracts = []
-    snapshot.forEach(hero => {
+    heroes.forEach(hero => {
       let contract = {...hero.val()}
       contract.level = Math.floor(Math.random() * 5) + 1
       delete contract['.key']
@@ -524,8 +522,8 @@ export const createNewUser = (uid, player) => {
     database.ref('tavern').push(contracts[index])
   })
   // TODO DEVELOPMENT ONLY
-  database.ref('spells').once('value', snapshot => {
-    snapshot.forEach(spell => {
+  database.ref('spells').once('value', spells => {
+    spells.forEach(spell => {
       let research = {...spell.val()}
       research.completed = true
       delete research['.key']
@@ -534,8 +532,8 @@ export const createNewUser = (uid, player) => {
   })
   /*
   // TODO DEVELOPMENT ONLY
-  database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', snapshot => {
-    snapshot.forEach(spell => {
+  database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
+    spells.forEach(spell => {
       let enchantment = {...spell.val()}
       enchantment.target = uid
       enchantment.targetColor = player.color
@@ -560,8 +558,8 @@ export const createNewUser = (uid, player) => {
   */
   /*
   // TODO DEVELOPMENT ONLY
-  database.ref('gods').once('value', snapshot => {
-    snapshot.forEach(god => {
+  database.ref('gods').once('value', gods => {
+    gods.forEach(god => {
       database.ref('gods').child(god.key).child('blessed').set(uid)
     })
   })

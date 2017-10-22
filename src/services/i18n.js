@@ -97,7 +97,7 @@ export default {
     lbl_spell_sunrise: 'Amanecer',
     lbl_spell_sunrise_description: 'Reduce el Daño en la batalla de todas las Unidades enemigas un 1% por Nivel',
     lbl_spell_epiphany: 'Epifanía',
-    lbl_spell_epiphany_description: 'Incrementa la probabilidad de aprender un nuevo Hechizo al azar un 1% por Nivel',
+    lbl_spell_epiphany_description: 'Incrementa la probabilidad de aprender un nuevo Hechizo al azar un 5% por Nivel',
     lbl_spell_prosperity: 'Prosperidad',
     lbl_spell_prosperity_description: 'Encanta al reino objetivo para Incrementar la producción de Oro un 1% por Nivel',
     lbl_spell_peace: 'Paz',

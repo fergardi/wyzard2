@@ -15,7 +15,7 @@
         .card-number(:class="data.color", v-if="conjuration")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
-        .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | minimize }}
+        // .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | minimize }}
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="data.magic != null")
@@ -65,7 +65,7 @@
 
     template(v-if="conjuration")
       form(@submit.stop.prevent="confirm('conjure')")
-        mu-card-text(v-if="!data.support && !data.battle")
+        //mu-card-text(v-if="!data.support && !data.battle")
           mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
@@ -100,11 +100,11 @@
     },
     data () {
       return {
+        // selected: null,
         busy: false,
         type: null,
         amount: 0,
-        dialog: false,
-        selected: null
+        dialog: false
       }
     },
     methods: {
@@ -148,9 +148,9 @@
             .then(response => {
               if (completed) {
                 database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).remove()
-                database.ref('users').child(store.state.uid).child('book').once('value', snapshot => {
-                  if (snapshot && snapshot.hasChildren() && (1 + Math.floor(snapshot.numChildren() / 2)) > this.user.magic) {
-                    database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(snapshot.numChildren() / 2) })
+                database.ref('users').child(store.state.uid).child('book').once('value', book => {
+                  if (book && book.hasChildren() && (1 + Math.floor(book.numChildren() / 2)) > this.user.magic) {
+                    database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(book.numChildren() / 2) })
                     store.commit('success', 'lbl_toast_investigation_level')
                   }
                 })
@@ -166,60 +166,109 @@
           this.close()
         }
       },
-      conjure () {
+      async conjure () {
         if (this.canCast) { // user has resources
-          checkTurnMaintenances(store.state.uid, this.data.turns)
-          .then(response => {
-            if (this.data.summon) { // summon troops
-              database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo('lbl_unit_' + this.data.unit).once('value', snapshot => {
-                if (snapshot && snapshot.hasChildren()) {
-                  snapshot.forEach(unit => {
-                    database.ref('users').child(store.state.uid).child('troops').child(unit.key).transaction(troop => {
-                      if (troop) {
-                        troop.quantity += this.random(this.data.quantity * this.user.magic)
-                      }
-                      return troop
-                    })
-                  })
-                } else {
-                  database.ref('units').child(this.data.unit).once('value', snapshot => {
-                    if (snapshot) {
-                      let summon = {...snapshot.val()}
-                      summon.quantity = this.random(this.data.number)
-                      delete summon['.key']
-                      database.ref('users').child(store.state.uid).child('troops').push(summon)
-                    }
+          await database.ref('users').child(store.state.uid).transaction(user => {
+            if (user) {
+              user.gold = Math.max(0, user.gold - this.data.goldCost)
+              user.people = Math.max(0, user.people - this.data.peopleCost)
+              user.mana = Math.max(0, user.mana - this.data.manaCost)
+            }
+            return user
+          })
+          await checkTurnMaintenances(store.state.uid, this.data.turns)
+          if (this.data.summon) { // summon troops
+            let troops = []
+            if (this.data.family) {
+              await database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
+                if (units && units.hasChildren()) {
+                  units.forEach(unit => {
+                    troops.push(unit.val().name)
                   })
                 }
-                database.ref('users').child(store.state.uid).transaction(user => {
-                  if (user) {
-                    user.gold = Math.max(0, user.gold - this.data.goldCost)
-                    user.people = Math.max(0, user.people - this.data.peopleCost)
-                    user.mana = Math.max(0, user.mana - this.data.manaCost)
+              })
+            } else {
+              troops.push('lbl_unit_' + this.data.unit)
+            }
+            const index = Math.floor(Math.random() * troops.length)
+            await database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(troops[index]).once('value', units => {
+              if (units && units.hasChildren()) {
+                units.forEach(unit => {
+                  database.ref('users').child(store.state.uid).child('troops').child(unit.key).transaction(troop => {
+                    if (troop) {
+                      troop.quantity += this.random(unit.val().quantity * this.user.magic)
+                    }
+                    return troop
+                  })
+                })
+              } else {
+                database.ref('units').child(troops[index].replace('lbl_unit_', '')).once('value', unit => {
+                  if (unit) {
+                    let summon = {...unit.val()}
+                    summon.quantity = this.random(summon.quantity * this.user.magic)
+                    delete summon['.key']
+                    database.ref('users').child(store.state.uid).child('troops').push(summon)
                   }
-                  return user
+                })
+              }
+            })
+          } else if (this.data.enchantment && this.data.support) {
+            let enchantment = {...this.data}
+            enchantment.target = store.state.uid
+            enchantment.targetColor = this.user.color
+            enchantment.targetName = this.user.name
+            enchantment.source = store.state.uid
+            enchantment.sourceColor = this.user.color
+            enchantment.sourceName = this.user.name
+            enchantment.magic = this.user.magic
+            enchantment.duration *= enchantment.magic
+            enchantment.remaining = enchantment.duration
+            delete enchantment['.key']
+            database.ref('enchantments').push(enchantment)
+          } else if (this.data.spell > 0) {
+            if (this.data.spell * this.user.magic >= Math.random() * 100) {
+              let known = []
+              database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
+                if (researches) {
+                  researches.forEach(research => {
+                    known.push(research.val().name)
+                  })
+                }
+              })
+              .then(response => {
+                database.ref('users').child(store.state.uid).child('book').once('value', book => {
+                  if (book) {
+                    book.forEach(page => {
+                      known.push(page.val().name)
+                    })
+                  }
+                })
+                .then(response => {
+                  let unknown = []
+                  database.ref('spells').once('value', spells => {
+                    if (spells) {
+                      spells.forEach(spell => {
+                        if (!known.includes(spell.val().name)) {
+                          let research = {...spell.val()}
+                          delete research['.key']
+                          unknown.push(research)
+                        }
+                      })
+                    }
+                  })
+                  .then(response => {
+                    if (unknown.length > 0) {
+                      const index = Math.floor(Math.random() * unknown.length)
+                      database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
+                    }
+                  })
                 })
               })
-            } else if (this.data.enchantment && this.data.support) {
-              let enchantment = {...this.data}
-              enchantment.target = store.state.uid
-              enchantment.targetColor = this.user.color
-              enchantment.targetName = this.user.username
-              enchantment.source = store.state.uid
-              enchantment.sourceColor = this.user.color
-              enchantment.sourceName = this.user.username
-              enchantment.magic = this.user.magic
-              enchantment.duration *= enchantment.magic
-              enchantment.remaining = enchantment.duration
-              delete enchantment['.key']
-              database.ref('enchantments').push(enchantment)
             }
-          })
-          .then(async response => {
-            await updateGeneralStatus(store.state.uid)
-            store.commit('success', 'lbl_toast_casting_ok')
-            this.close()
-          })
+          }
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_casting_ok')
+          this.close()
         } else {
           store.commit('success', 'lbl_toast_casting_error')
           this.close()
@@ -229,14 +278,14 @@
         if (this.canBreak) { // user has resources
           if (this.data.source === store.state.uid) {
             database.ref('enchantments').child(this.data['.key']).remove()
-            await updateGeneralStatus(this.data.target)
+            updateGeneralStatus(this.data.target)
             store.commit('success', 'lbl_toast_dispel_ok')
             this.close()
           } else {
             await checkTurnMaintenances(store.state.uid, this.data.turns)
             if (Math.random() >= 0.5) { // TODO
               database.ref('enchantments').child(this.data['.key']).remove()
-              await updateGeneralStatus(this.data.source)
+              updateGeneralStatus(this.data.source)
               store.commit('success', 'lbl_toast_dispel_ok')
               this.close()
             } else {
