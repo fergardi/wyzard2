@@ -368,6 +368,7 @@
       .mu-card-text
         text-align center
         .mu-select-field
+        .mu-text-field
           text-align left
         .mu-text-field.disabled
           color inherit
@@ -465,6 +466,8 @@
           justify-content center
     .income
       margin-right 5px
+    .mu-popover
+      overflow-x auto
     // background colors
     .mu-toast
     .mu-chip

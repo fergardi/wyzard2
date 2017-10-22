@@ -34,14 +34,14 @@ let dispeled = false
 // check terrain production - destruction
 const checkTerrainProductionDestruction = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
+    if (enchantments && enchantments.hasChildren()) {
       enchantments.forEach(enchantment => {
         enchantment.ref.transaction(curse => {
           // console.log('Checking terrain production and destruction... ' + curse.name)
           terrainPerTurn += curse.magic * curse.terrainProduction
           if (curse.terrainProduction > 0) {
             database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
-              if (terrains) {
+              if (terrains && terrain.hasChildren()) {
                 terrains.forEach(terrain => {
                   let lands = terrain.val()
                   // console.log('Winning terrain... ', curse.magic * curse.terrainProduction)
@@ -52,7 +52,7 @@ const checkTerrainProductionDestruction = (uid) => {
             })
           } else if (curse.terrainProduction < 0) {
             database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(true).once('value', constructions => {
-              if (constructions) {
+              if (constructions && constructions.hasChildren()) {
                 let random = Math.floor(Math.random() * constructions.numChildren())
                 let index = 0
                 constructions.forEach(construction => {
@@ -63,7 +63,7 @@ const checkTerrainProductionDestruction = (uid) => {
                       // console.log('Losing terrain... ', curse.magic * curse.terrainProduction)
                       construction.ref.update({ quantity: Math.max(0, building.quantity - quantity) })
                       database.ref('users').child(uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
-                        if (terrains) {
+                        if (terrains && terrains.hasChildren()) {
                           terrains.forEach(terrain => {
                             let lands = terrain.val()
                             terrain.ref.update({ quantity: lands.quantity + quantity })
@@ -94,7 +94,7 @@ const checkTerrainProductionDestruction = (uid) => {
 // check building production - maintenance
 const checkBuildingsProductionMaintenance = (uid) => {
   return database.ref('users').child(uid).child('constructions').once('value', constructions => {
-    if (constructions) {
+    if (constructions && constructions.hasChildren()) {
       constructions.forEach(construction => {
         let building = construction.val()
         // console.log('Checking building production and maintenances... ' + building.name)
@@ -117,7 +117,7 @@ const checkBuildingsProductionMaintenance = (uid) => {
 // check hero production - maintenance
 const checkHeroesProductionMaintenance = (uid) => {
   return database.ref('users').child(uid).child('contracts').once('value', contracts => {
-    if (contracts) {
+    if (contracts && contracts.hasChildren()) {
       contracts.forEach(contract => {
         contract.ref.transaction(hero => {
           // console.log('Checking hero production and maintenances... ' + hero.name)
@@ -142,7 +142,7 @@ const checkHeroesProductionMaintenance = (uid) => {
 // check enchantment on myself production
 const checkEnchantmentsProduction = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
+    if (enchantments && enchantments.hasChildren()) {
       enchantments.forEach(enchantment => {
         let spell = enchantment.val()
         // console.log('Checking enchantment production... ' + spell.name)
@@ -161,7 +161,7 @@ const checkEnchantmentsProduction = (uid) => {
 // check enchantment owned by me maintenance
 const checkEnchantmentsMaintenance = (uid) => {
   return database.ref('enchantments').orderByChild('source').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
+    if (enchantments && enchantments.hasChildren()) {
       enchantments.forEach(enchantment => {
         let enchant = enchantment.val()
         // console.log('Checking enchantment maintenance... ' + enchant.name, enchant.goldMaintenance, enchant.peopleMaintenance, enchant.manaMaintenance)
@@ -177,7 +177,7 @@ const checkEnchantmentsMaintenance = (uid) => {
 // check unit maintenance
 const checkUnitsMaintenance = (uid) => {
   return database.ref('users').child(uid).child('troops').once('value', troops => {
-    if (troops) {
+    if (troops && troops.hasChildren()) {
       troops.forEach(troop => {
         let unit = troop.val()
         // console.log('Checking unit maintenance... ' + unit.name)
@@ -195,7 +195,7 @@ const checkUnitsMaintenance = (uid) => {
 // check god production
 const checkGodsProduction = (uid) => {
   return database.ref('gods').orderByChild('blessed').equalTo(uid).once('value', blessings => {
-    if (blessings) {
+    if (blessings && blessings.hasChildren()) {
       blessings.forEach(blessing => {
         let god = blessing.val()
         // console.log('Checking god production... ' + god.name)
@@ -212,7 +212,7 @@ const checkGodsProduction = (uid) => {
 // check artifact production
 const checkArtifactProduction = (uid) => {
   return database.ref('users').child(uid).child('relics').once('value', relics => {
-    if (relics) {
+    if (relics && relics.hasChildren()) {
       relics.forEach(relic => {
         let artifact = relic.val()
         // console.log('Checking artifact production... ' + artifact.name)
@@ -226,7 +226,7 @@ const checkArtifactProduction = (uid) => {
 // check unit affordance
 const checkUnitsAffordance = (uid) => {
   return database.ref('users').child(uid).child('troops').once('value', troops => {
-    if (troops) {
+    if (troops && troops.hasChildren()) {
       troops.forEach(troop => {
         let unit = troop.val()
         // console.log('Checking unit affordance... ' + unit.name)
@@ -250,7 +250,7 @@ const checkUnitsAffordance = (uid) => {
 // check enchantment affordance
 const checkEnchantmentsAffordance = (uid) => {
   return database.ref('enchantments').orderByChild('source').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
+    if (enchantments && enchantments.hasChildren()) {
       enchantments.forEach(enchantment => {
         let spell = enchantment.val()
         // console.log('Checking enchantment affordance... ' + spell.name)
@@ -276,7 +276,7 @@ const checkEnchantmentsAffordance = (uid) => {
 // check hero affordance
 const checkHeroesAffordance = (uid) => {
   return database.ref('users').child(uid).child('contracts').once('value', contracts => {
-    if (contracts) {
+    if (contracts && contracts.hasChildren()) {
       contracts.forEach(contract => {
         let hero = contract.val()
         // console.log('Checking hero affordance... ' + hero.name)
@@ -368,7 +368,7 @@ export const checkTurnMaintenances = async (uid, turns) => {
 // check terrain production - maintenance
 const checkTerrainProductionMaintenance = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
-    if (enchantments) {
+    if (enchantments && enchantments.hasChildren()) {
       enchantments.forEach(enchantment => {
         let enchant = enchantment.val()
         // console.log('Checking terrain production and destruction... ' + enchant.name)
@@ -438,130 +438,149 @@ const random = (number) => {
 export const createNewUser = (uid, player) => {
   // buildings
   database.ref('buildings').once('value', buildings => {
-    buildings.forEach(building => {
-      let construction = {...building.val()}
-      delete construction['.key']
-      database.ref('users').child(uid).child('constructions').push(construction)
-    })
+    if (buildings && buildings.hasChildren()) {
+      buildings.forEach(building => {
+        let construction = {...building.val()}
+        delete construction['.key']
+        database.ref('users').child(uid).child('constructions').push(construction)
+      })
+    }
   })
   // spells
   database.ref('spells').orderByChild('color').equalTo(player.color).once('value', spells => {
-    spells.forEach(spell => {
-      let research = {...spell.val()}
-      delete research['.key']
-      database.ref('users').child(uid).child('researches').push(research)
-    })
+    if (spells && spells.hasChildren()) {
+      spells.forEach(spell => {
+        let research = {...spell.val()}
+        delete research['.key']
+        database.ref('users').child(uid).child('researches').push(research)
+      })
+    }
   })
   // units
   database.ref('units').orderByChild('initial').equalTo(player.color).once('value', units => {
-    units.forEach(unit => {
-      let troop = {...unit.val()}
-      troop.quantity = random(troop.quantity * player.magic)
-      delete troop['.key']
-      database.ref('users').child(uid).child('troops').push(troop)
-    })
+    if (units && units.hasChildren()) {
+      units.forEach(unit => {
+        let troop = {...unit.val()}
+        troop.quantity = random(troop.quantity * player.magic)
+        delete troop['.key']
+        database.ref('users').child(uid).child('troops').push(troop)
+      })
+    }
   })
   // relics
   database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', artifacts => {
-    let relics = []
-    artifacts.forEach(artifact => {
-      let relic = {...artifact.val()}
-      relic.quantity = 1
-      delete relic['.key']
-      relics.push(relic)
-    })
-    // random
-    const index = Math.floor(Math.random() * relics.length)
-    database.ref('users').child(uid).child('relics').push(relics[index])
+    if (artifacts && artifacts.hasChildren()) {
+      let relics = []
+      artifacts.forEach(artifact => {
+        let relic = {...artifact.val()}
+        relic.quantity = 1
+        delete relic['.key']
+        relics.push(relic)
+      })
+      // random
+      const index = Math.floor(Math.random() * relics.length)
+      database.ref('users').child(uid).child('relics').push(relics[index])
+    }
   })
   // places
   database.ref('places').orderByChild('color').equalTo(player.color).once('value', places => {
-    places.forEach(place => {
-      let quest = {...place.val()}
-      delete quest['.key']
-      database.ref('users').child(uid).child('quests').push(quest)
-    })
+    if (places && places.hasChildren()) {
+      places.forEach(place => {
+        let quest = {...place.val()}
+        delete quest['.key']
+        database.ref('users').child(uid).child('quests').push(quest)
+      })
+    }
   })
   // messages
-  let message = {
+  database.ref('users').child(uid).child('messages').push({
     name: 'lbl_name_admin',
     color: 'dark',
     timestamp: Date.now(),
     subject: 'lbl_message_welcome_subject',
     text: 'lbl_message_welcome_text'
-  }
-  database.ref('users').child(uid).child('messages').push(message)
+  })
   // auction
   database.ref('artifacts').once('value', artifacts => {
-    let auctions = []
-    artifacts.forEach(artifact => {
-      let auction = {...artifact.val()}
-      auction.quantity = 1
-      delete auction['.key']
-      auctions.push(auction)
-      // TODO DEVELOPMENT ONLY
-      // database.ref('users').child(uid).child('relics').push(auction)
-    })
-    // random
-    const index = Math.floor(Math.random() * auctions.length)
-    database.ref('auctions').push(auctions[index])
+    if (artifacts && artifacts.hasChildren()) {
+      let auctions = []
+      artifacts.forEach(artifact => {
+        let auction = {...artifact.val()}
+        auction.quantity = 1
+        delete auction['.key']
+        auctions.push(auction)
+        // TODO DEVELOPMENT ONLY
+        // database.ref('users').child(uid).child('relics').push(auction)
+      })
+      // random
+      const index = Math.floor(Math.random() * auctions.length)
+      database.ref('auctions').push(auctions[index])
+    }
   })
   // contract
   database.ref('heroes').once('value', heroes => {
-    let contracts = []
-    heroes.forEach(hero => {
-      let contract = {...hero.val()}
-      contract.level = Math.floor(Math.random() * 5) + 1
-      delete contract['.key']
-      contracts.push(contract)
-      // TODO DEVELOPMENT ONLY
-      // database.ref('users').child(uid).child('contracts').push(contract)
-    })
-    // random
-    const index = Math.floor(Math.random() * contracts.length)
-    database.ref('tavern').push(contracts[index])
+    if (heroes && heroes.hasChildren()) {
+      let contracts = []
+      heroes.forEach(hero => {
+        let contract = {...hero.val()}
+        contract.level = Math.floor(Math.random() * 5) + 1
+        delete contract['.key']
+        contracts.push(contract)
+        // TODO DEVELOPMENT ONLY
+        // database.ref('users').child(uid).child('contracts').push(contract)
+      })
+      // random
+      const index = Math.floor(Math.random() * contracts.length)
+      database.ref('tavern').push(contracts[index])
+    }
   })
   // TODO DEVELOPMENT ONLY
   database.ref('spells').once('value', spells => {
-    spells.forEach(spell => {
-      let research = {...spell.val()}
-      research.completed = true
-      delete research['.key']
-      database.ref('users').child(uid).child('book').push(research)
-    })
+    if (spells && spells.hasChildren()) {
+      spells.forEach(spell => {
+        let research = {...spell.val()}
+        research.completed = true
+        delete research['.key']
+        database.ref('users').child(uid).child('book').push(research)
+      })
+    }
   })
   /*
   // TODO DEVELOPMENT ONLY
   database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
-    spells.forEach(spell => {
-      let enchantment = {...spell.val()}
-      enchantment.target = uid
-      enchantment.targetColor = player.color
-      enchantment.targetName = player.username
-      if (enchantment.support) {
-        enchantment.source = uid
-        enchantment.sourceColor = player.color
-        enchantment.sourceName = player.username
-        enchantment.magic = 1
-      } else {
-        enchantment.source = 'Pb0lhTW38SUlhiLRwMi4URt2BLV2'
-        enchantment.sourceColor = 'red'
-        enchantment.sourceName = 'prueba'
-        enchantment.magic = 10
-      }
-      enchantment.duration *= enchantment.magic
-      enchantment.remaining = enchantment.duration
-      delete enchantment['.key']
-      database.ref('enchantments').push(enchantment)
-    })
+    if (spells && spells.hasChildren()) {
+      spells.forEach(spell => {
+        let enchantment = {...spell.val()}
+        enchantment.target = uid
+        enchantment.targetColor = player.color
+        enchantment.targetName = player.username
+        if (enchantment.support) {
+          enchantment.source = uid
+          enchantment.sourceColor = player.color
+          enchantment.sourceName = player.username
+          enchantment.magic = 1
+        } else {
+          enchantment.source = 'Pb0lhTW38SUlhiLRwMi4URt2BLV2'
+          enchantment.sourceColor = 'red'
+          enchantment.sourceName = 'prueba'
+          enchantment.magic = 10
+        }
+        enchantment.duration *= enchantment.magic
+        enchantment.remaining = enchantment.duration
+        delete enchantment['.key']
+        database.ref('enchantments').push(enchantment)
+      })
+    }
   })
   */
   /*
   // TODO DEVELOPMENT ONLY
   database.ref('gods').once('value', gods => {
-    gods.forEach(god => {
-      database.ref('gods').child(god.key).child('blessed').set(uid)
-    })
+    if (gods && gods.hasChildren()) {
+      gods.forEach(god => {
+        database.ref('gods').child(god.key).child('blessed').set(uid)
+      })
+    }
   })
   */
 }
