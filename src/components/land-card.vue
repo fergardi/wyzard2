@@ -62,7 +62,8 @@
           speed: 1,
           curve: 1,
           interactive: true,
-          attributionControl: false
+          attributionControl: false,
+          optimize: true
         },
         visibility: 0.1,
         position: {
