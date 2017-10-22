@@ -88,7 +88,7 @@
           mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
             mu-icon.green(slot="left", value=":ra ra-mirror")
           mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
-            mu-icon.red(slot="left", value=":ra ra-crystals")
+            mu-icon.green(slot="left", value=":ra ra-crystals")
 
           mu-sub-header {{ 'lbl_title_military' | translate }}
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")

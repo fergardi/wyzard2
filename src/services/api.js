@@ -498,11 +498,11 @@ export const createNewUser = (uid, player) => {
     let auctions = []
     snapshot.forEach(artifact => {
       let auction = {...artifact.val()}
-      auction.quantity = 999 // TODO DEV ONLY
+      auction.quantity = 1
       delete auction['.key']
       auctions.push(auction)
       // TODO DEVELOPMENT ONLY
-      database.ref('users').child(uid).child('relics').push(auction)
+      // database.ref('users').child(uid).child('relics').push(auction)
     })
     // random
     const index = Math.floor(Math.random() * auctions.length)
@@ -517,11 +517,20 @@ export const createNewUser = (uid, player) => {
       delete contract['.key']
       contracts.push(contract)
       // TODO DEVELOPMENT ONLY
-      database.ref('users').child(uid).child('contracts').push(contract)
+      // database.ref('users').child(uid).child('contracts').push(contract)
     })
     // random
     const index = Math.floor(Math.random() * contracts.length)
     database.ref('tavern').push(contracts[index])
+  })
+  // TODO DEVELOPMENT ONLY
+  database.ref('spells').once('value', snapshot => {
+    snapshot.forEach(spell => {
+      let research = {...spell.val()}
+      research.completed = true
+      delete research['.key']
+      database.ref('users').child(uid).child('book').push(research)
+    })
   })
   /*
   // TODO DEVELOPMENT ONLY
@@ -549,10 +558,12 @@ export const createNewUser = (uid, player) => {
     })
   })
   */
+  /*
   // TODO DEVELOPMENT ONLY
   database.ref('gods').once('value', snapshot => {
     snapshot.forEach(god => {
       database.ref('gods').child(god.key).child('blessed').set(uid)
     })
   })
+  */
 }
