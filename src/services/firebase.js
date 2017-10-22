@@ -1,4 +1,7 @@
-import firebase from 'firebase'
+var firebase = require('firebase/app')
+require('firebase/auth')
+require('firebase/database')
+// require('firebase/messaging')
 
 var config = {
   apiKey: 'AIzaSyDHUJ22pxTxUjRtM9eQYZqPYNuvH2cWg3Q',
@@ -15,7 +18,7 @@ export const database = app.database()
 
 export const auth = app.auth()
 
-export const messaging = firebase.messaging()
+// export const messaging = firebase.messaging()
 
 export const authenticate = (email, password) => {
   return auth.signInWithEmailAndPassword(email, password)

@@ -12,6 +12,7 @@ const FontminPlugin = require('fontmin-webpack')
 const VisualizerPlugin = require('webpack-visualizer-plugin')
 const HtmlCriticalPlugin = require('html-critical-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -76,6 +77,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         : config.build.index,
       template: 'index.html',
       inject: true,
+      minifyCSS: true,
+      minifyJS: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -89,6 +92,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'      
     }),
+    new PreloadWebpackPlugin(),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
