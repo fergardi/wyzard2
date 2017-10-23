@@ -41,7 +41,7 @@ const checkTerrainProductionDestruction = (uid) => {
           terrainPerTurn += curse.magic * curse.terrainProduction
           if (curse.terrainProduction > 0) {
             database.ref('users').child(uid).child('constructions').orderByChild('buildable').equalTo(false).once('value', terrains => {
-              if (terrains && terrain.hasChildren()) {
+              if (terrains && terrains.hasChildren()) {
                 terrains.forEach(terrain => {
                   let lands = terrain.val()
                   // console.log('Winning terrain... ', curse.magic * curse.terrainProduction)
