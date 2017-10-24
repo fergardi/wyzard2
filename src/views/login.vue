@@ -108,21 +108,19 @@
         }
         if (!this.disabled) {
           register(this.email, this.password)
-          .then(response => {
+          .then(async response => {
             // player
             let player = {...this.user}
             player.name = this.username
             player.email = this.email
             player.color = this.color
             delete player['.key']
-            this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
-            .then(response => {
-              createNewUser(auth.currentUser.uid, player)
-              store.commit('uid', auth.currentUser.uid)
-              store.commit('success', 'auth/registration-ok')
-              this.busy = false
-              this.$router.push('/kingdom')
-            })
+            await this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
+            await createNewUser(auth.currentUser.uid, player)
+            store.commit('uid', auth.currentUser.uid)
+            store.commit('success', 'auth/registration-ok')
+            this.busy = false
+            this.$router.push('/kingdom')
           })
           .catch(error => {
             if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {

@@ -61,21 +61,19 @@
             break
         }
       },
-      save () {
+      async save () {
         if (store.state.uid) {
-          database.ref('users').child(store.state.uid).child('settings').transaction(settings => {
+          await database.ref('users').child(store.state.uid).child('settings').transaction(settings => {
             if (settings) {
               settings = this.settings
             }
             return settings
           })
-          .then(response => {
-            store.commit('success', 'lbl_toast_settings_saved')
-          })
+          store.commit('success', 'lbl_toast_settings_saved')
         }
       },
-      restore () {
-        database.ref('user').child('settings').transaction(updated => {
+      async restore () {
+        await database.ref('user').child('settings').transaction(updated => {
           if (updated) {
             if (store.state.uid) {
               let clone = {...updated}
@@ -87,10 +85,8 @@
           }
           return updated
         })
-        .then(response => {
-          store.commit('success', 'lbl_toast_settings_restored')
-          this.close()
-        })
+        store.commit('success', 'lbl_toast_settings_restored')
+        this.close()
       },
       close () {
         this.type = null

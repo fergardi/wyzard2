@@ -435,9 +435,9 @@ const random = (number) => {
 }
 
 // create new user
-export const createNewUser = (uid, player) => {
+export const createNewUser = async (uid, player) => {
   // buildings
-  database.ref('buildings').once('value', buildings => {
+  await database.ref('buildings').once('value', buildings => {
     if (buildings && buildings.hasChildren()) {
       buildings.forEach(building => {
         let construction = {...building.val()}
@@ -447,7 +447,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // spells
-  database.ref('spells').orderByChild('color').equalTo(player.color).once('value', spells => {
+  await database.ref('spells').orderByChild('color').equalTo(player.color).once('value', spells => {
     if (spells && spells.hasChildren()) {
       spells.forEach(spell => {
         let research = {...spell.val()}
@@ -457,7 +457,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // units
-  database.ref('units').orderByChild('initial').equalTo(player.color).once('value', units => {
+  await database.ref('units').orderByChild('initial').equalTo(player.color).once('value', units => {
     if (units && units.hasChildren()) {
       units.forEach(unit => {
         let troop = {...unit.val()}
@@ -468,7 +468,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // relics
-  database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', artifacts => {
+  await database.ref('artifacts').orderByChild('color').equalTo(player.color).once('value', artifacts => {
     if (artifacts && artifacts.hasChildren()) {
       let relics = []
       artifacts.forEach(artifact => {
@@ -483,7 +483,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // places
-  database.ref('places').orderByChild('color').equalTo(player.color).once('value', places => {
+  await database.ref('places').orderByChild('color').equalTo(player.color).once('value', places => {
     if (places && places.hasChildren()) {
       places.forEach(place => {
         let quest = {...place.val()}
@@ -493,7 +493,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // messages
-  database.ref('users').child(uid).child('messages').push({
+  await database.ref('users').child(uid).child('messages').push({
     name: 'lbl_name_admin',
     color: 'dark',
     timestamp: Date.now(),
@@ -501,7 +501,7 @@ export const createNewUser = (uid, player) => {
     text: 'lbl_message_welcome_text'
   })
   // auction
-  database.ref('artifacts').once('value', artifacts => {
+  await database.ref('artifacts').once('value', artifacts => {
     if (artifacts && artifacts.hasChildren()) {
       let auctions = []
       artifacts.forEach(artifact => {
@@ -518,7 +518,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // contract
-  database.ref('heroes').once('value', heroes => {
+  await database.ref('heroes').once('value', heroes => {
     if (heroes && heroes.hasChildren()) {
       let contracts = []
       heroes.forEach(hero => {
@@ -535,7 +535,7 @@ export const createNewUser = (uid, player) => {
     }
   })
   // TODO DEVELOPMENT ONLY
-  database.ref('spells').once('value', spells => {
+  await database.ref('spells').once('value', spells => {
     if (spells && spells.hasChildren()) {
       spells.forEach(spell => {
         let research = {...spell.val()}
@@ -547,7 +547,7 @@ export const createNewUser = (uid, player) => {
   })
   /*
   // TODO DEVELOPMENT ONLY
-  database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
+  await database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
     if (spells && spells.hasChildren()) {
       spells.forEach(spell => {
         let enchantment = {...spell.val()}
@@ -575,7 +575,7 @@ export const createNewUser = (uid, player) => {
   */
   /*
   // TODO DEVELOPMENT ONLY
-  database.ref('gods').once('value', gods => {
+  await database.ref('gods').once('value', gods => {
     if (gods && gods.hasChildren()) {
       gods.forEach(god => {
         database.ref('gods').child(god.key).child('blessed').set(uid)

@@ -24,7 +24,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -58,24 +58,22 @@
             break
         }
       },
-      offer () {
+      async offer () {
         if (this.hasGold && this.hasTurns) {
           if (this.canOffer) {
-            database.ref('gods').child(this.data['.key']).transaction(offer => {
+            await database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
+            await checkTurnMaintenances(store.state.uid, this.turns)
+            await database.ref('gods').child(this.data['.key']).transaction(offer => {
               if (offer) {
-                offer.gold = this.amount
+                offer.bid = this.amount
+                if (offer.uid) updateGeneralStatus(offer.uid)
                 offer.uid = store.state.uid
-                database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
               }
               return offer
             })
-            .then(response => {
-              return checkTurnMaintenances(store.state.uid, this.amount)
-            })
-            .then(response => {
-              store.commit('success', 'lbl_toast_offer_ok')
-              this.close()
-            })
+            await updateGeneralStatus(store.state.uid)
+            store.commit('success', 'lbl_toast_offer_ok')
+            this.close()
           } else {
             store.commit('error', 'lbl_toast_offer_error')
             this.close()

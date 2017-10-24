@@ -160,18 +160,18 @@
             break
         }
       },
-      construct () {
+      async construct () {
         if (this.amount < 0) {
-          database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity - Math.abs(this.amount) })
-          database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + Math.abs(this.amount) })
-          updateGeneralStatus(store.state.uid)
+          await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity - Math.abs(this.amount) })
+          await database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + Math.abs(this.amount) })
+          await updateGeneralStatus(store.state.uid)
           store.commit('success', 'lbl_toast_destruction_ok')
           this.close()
         } else if (this.amount > 0) {
           if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
             let reduction = 1
             let totalTurns = this.amount * this.data.turns
-            database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
+            await database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
               if (constructions) {
                 constructions.forEach(construction => {
                   let terrain = construction.val()
@@ -179,38 +179,33 @@
                 })
               }
             })
-            .then(response => {
-              totalTurns = Math.ceil(totalTurns * reduction)
-              if (totalTurns <= this.user.turns) {
-                database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity + this.amount })
-                database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
-                  if (terrains) {
-                    terrains.forEach(terrain => {
-                      terrain.ref.update({ quantity: this.user.terrain - this.amount })
-                    })
-                  }
-                })
-                database.ref('users').child(store.state.uid).transaction(user => {
-                  if (user) {
-                    user.gold -= this.amount * this.data.goldCost
-                    user.people -= this.amount * this.data.peopleCost
-                    user.mana -= this.amount * this.data.manaCost
-                    user.terrain -= this.amount
-                  }
-                  return user
-                })
-                .then(response => {
-                  return checkTurnMaintenances(store.state.uid, totalTurns)
-                })
-                .then(response => {
-                  store.commit('success', 'lbl_toast_construction_ok')
-                  this.close()
-                })
-              } else {
-                store.commit('error', 'lbl_toast_resource_turns')
-                this.close()
-              }
-            })
+            totalTurns = Math.ceil(totalTurns * reduction)
+            if (totalTurns <= this.user.turns) {
+              await database.ref('users').child(store.state.uid).transaction(user => {
+                if (user) {
+                  user.gold -= this.amount * this.data.goldCost
+                  user.people -= this.amount * this.data.peopleCost
+                  user.mana -= this.amount * this.data.manaCost
+                  user.terrain -= this.amount
+                }
+                return user
+              })
+              await checkTurnMaintenances(store.state.uid, totalTurns)
+              await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity + this.amount })
+              await database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_terrain').once('value', terrains => {
+                if (terrains) {
+                  terrains.forEach(terrain => {
+                    terrain.ref.update({ quantity: this.user.terrain - this.amount })
+                  })
+                }
+              })
+              await updateGeneralStatus(store.state.uid)
+              store.commit('success', 'lbl_toast_construction_ok')
+              this.close()
+            } else {
+              store.commit('error', 'lbl_toast_resource_turns')
+              this.close()
+            }
           } else {
             if (!this.hasTerrain) {
               store.commit('error', 'lbl_toast_resource_terrain')
@@ -228,69 +223,58 @@
           }
         }
       },
-      explore () {
+      async explore () {
         if (this.hasTurns) { // user has resources
-          checkTurnMaintenances(store.state.uid, this.amount)
-          .then(response => {
-            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-              if (building) {
-                let terrain = building.val()
-                for (let i = 0; i < this.amount; i++) {
-                  terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
-                }
-                building.ref.update({ quantity: terrain.quantity })
-                database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })
+          await checkTurnMaintenances(store.state.uid, this.amount)
+          await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+            if (building) {
+              let terrain = building.val()
+              for (let i = 0; i < this.amount; i++) {
+                terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
               }
-            })
-            .then(response => {
-              updateGeneralStatus(store.state.uid)
-              store.commit('success', 'lbl_toast_exploration_ok')
-              this.close()
-            })
+              building.ref.update({ quantity: terrain.quantity })
+              database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })
+            }
           })
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_exploration_ok')
+          this.close()
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }
       },
-      meditate () {
+      async meditate () {
         if (this.hasTurns) { // user has resources
-          checkTurnMaintenances(store.state.uid, this.amount)
-          .then(response => {
-            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-              if (building) {
-                let nodes = building.val()
-                database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + nodes.quantity * nodes.manaProduction * this.amount * 2) })
-              }
-            })
-            .then(response => {
-              updateGeneralStatus(store.state.uid)
-              store.commit('success', 'lbl_toast_meditation_ok')
-              this.close()
-            })
+          await checkTurnMaintenances(store.state.uid, this.amount)
+          await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+            if (building) {
+              let nodes = building.val()
+              database.ref('users').child(store.state.uid).update({ mana: Math.min(this.user.manaCap, this.user.mana + nodes.quantity * nodes.manaProduction * this.amount * 2) })
+            }
           })
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_meditation_ok')
+          this.close()
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }
       },
-      collect () {
+      async collect () {
         if (this.hasTurns) { // user has resources
-          checkTurnMaintenances(store.state.uid, this.amount)
-          .then(response => {
-            database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
-              if (building) {
-                let villages = building.val()
-                database.ref('users').child(store.state.uid).update({ gold: this.user.gold + villages.quantity * villages.goldProduction * this.amount * 2 })
-              }
-            })
-            .then(response => {
-              store.commit('success', 'lbl_toast_tax_ok')
-              this.close()
-            })
+          await checkTurnMaintenances(store.state.uid, this.amount)
+          await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).once('value', building => {
+            if (building) {
+              let villages = building.val()
+              database.ref('users').child(store.state.uid).update({ gold: this.user.gold + villages.quantity * villages.goldProduction * this.amount * 2 })
+            }
           })
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_tax_ok')
+          this.close()
         } else {
-          updateGeneralStatus(store.state.uid)
+          await updateGeneralStatus(store.state.uid)
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }

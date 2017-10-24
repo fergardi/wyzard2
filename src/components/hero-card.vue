@@ -46,7 +46,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from './confirm-dialog'
   
   export default {
@@ -85,10 +85,11 @@
             break
         }
       },
-      bid () {
+      async bid () {
         if (this.hasGold && this.hasTurns) { // user has resources
           if (this.canBid && !this.mine) { // bid accepted
-            database.ref('tavern').child(this.data['.key']).transaction(auction => {
+            await checkTurnMaintenances(store.state.uid, this.turns)
+            await database.ref('tavern').child(this.data['.key']).transaction(auction => {
               if (auction) {
                 auction.bid = this.amount
                 auction.bidder = store.state.uid
@@ -103,13 +104,9 @@
                 return auction
               }
             })
-            .then(response => {
-              return checkTurnMaintenances(store.state.uid, this.turns)
-            })
-            .then(response => {
-              store.commit('success', 'lbl_toast_bid_ok')
-              this.close()
-            })
+            await updateGeneralStatus(store.state.uid)
+            store.commit('success', 'lbl_toast_bid_ok')
+            this.close()
           } else {
             store.commit('error', 'lbl_toast_bid_error')
             this.close()
@@ -125,9 +122,9 @@
           }
         }
       },
-      fire () {
+      async fire () {
         if (this.canFire) { // can fire
-          database.ref('users').child(store.state.uid).child('contracts').child(this.data['.key']).remove()
+          await database.ref('users').child(store.state.uid).child('contracts').child(this.data['.key']).remove()
           store.commit('success', 'lbl_toast_firing_ok')
           this.close()
         } else {

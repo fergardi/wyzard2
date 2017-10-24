@@ -87,20 +87,18 @@
             break
         }
       },
-      disband () {
+      async disband () {
         if (this.canDisband) {
-          database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
+          await database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
             if (unit) {
               unit.quantity = Math.max(0, unit.quantity - this.amount)
               if (unit.quantity <= 0) return null
             }
             return unit
           })
-          .then(response => {
-            updateGeneralStatus(store.state.uid)
-            store.commit('success', 'lbl_toast_disband_ok')
-            this.close()
-          })
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_disband_ok')
+          this.close()
         } else {
           store.commit('success', 'lbl_toast_disband_error')
           this.close()

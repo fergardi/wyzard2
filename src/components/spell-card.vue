@@ -126,41 +126,38 @@
             break
         }
       },
-      research () {
+      async research () {
         if (this.canResearch) { // user has resources
           let completed = false
-          checkTurnMaintenances(store.state.uid, this.amount)
-          .then(response => {
-            database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
-              if (research) {
-                let min = research.completion - research.invested
-                research.invested = research.invested + Math.min(min, this.amount)
-                if (research.invested >= research.completion) {
-                  completed = true
-                  research.completed = true
-                  let page = {...research}
-                  delete page['.key']
-                  database.ref('users').child(store.state.uid).child('book').push(page)
-                }
+          await checkTurnMaintenances(store.state.uid, this.amount)
+          await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
+            if (research) {
+              let min = research.completion - research.invested
+              research.invested = research.invested + Math.min(min, this.amount)
+              if (research.invested >= research.completion) {
+                completed = true
+                research.completed = true
+                let page = {...research}
+                delete page['.key']
+                database.ref('users').child(store.state.uid).child('book').push(page)
               }
-              return research
-            })
-            .then(response => {
-              if (completed) {
-                database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).remove()
-                database.ref('users').child(store.state.uid).child('book').once('value', book => {
-                  if (book && book.hasChildren() && (1 + Math.floor(book.numChildren() / 2)) > this.user.magic) {
-                    database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(book.numChildren() / 2) })
-                    store.commit('success', 'lbl_toast_investigation_level')
-                  }
-                })
-                store.commit('success', 'lbl_toast_investigation_complete')
-              } else {
-                store.commit('success', 'lbl_toast_investigation_ok')
-              }
-              this.close()
-            })
+            }
+            return research
           })
+          if (completed) {
+            await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).remove()
+            await database.ref('users').child(store.state.uid).child('book').once('value', book => {
+              if (book && book.hasChildren() && (1 + Math.floor(book.numChildren() / 2)) > this.user.magic) {
+                database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(book.numChildren() / 2) })
+                store.commit('success', 'lbl_toast_investigation_level')
+              }
+            })
+            store.commit('success', 'lbl_toast_investigation_complete')
+            this.close()
+          } else {
+            store.commit('success', 'lbl_toast_investigation_ok')
+            this.close()
+          }
         } else {
           store.commit('error', 'lbl_toast_resource_turns')
           this.close()
@@ -228,42 +225,36 @@
           } else if (this.data.spell > 0) {
             if (this.data.spell * this.user.magic >= Math.random() * 100) {
               let known = []
-              database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
+              await database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
                 if (researches) {
                   researches.forEach(research => {
                     known.push(research.val().name)
                   })
                 }
               })
-              .then(response => {
-                database.ref('users').child(store.state.uid).child('book').once('value', book => {
-                  if (book) {
-                    book.forEach(page => {
-                      known.push(page.val().name)
-                    })
-                  }
-                })
-                .then(response => {
-                  let unknown = []
-                  database.ref('spells').once('value', spells => {
-                    if (spells) {
-                      spells.forEach(spell => {
-                        if (!known.includes(spell.val().name)) {
-                          let research = {...spell.val()}
-                          delete research['.key']
-                          unknown.push(research)
-                        }
-                      })
-                    }
+              await database.ref('users').child(store.state.uid).child('book').once('value', book => {
+                if (book) {
+                  book.forEach(page => {
+                    known.push(page.val().name)
                   })
-                  .then(response => {
-                    if (unknown.length > 0) {
-                      const index = Math.floor(Math.random() * unknown.length)
-                      database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
-                    }
-                  })
-                })
+                }
               })
+              let unknown = []
+              await database.ref('spells').once('value', spells => {
+                if (spells) {
+                  spells.forEach(spell => {
+                    if (!known.includes(spell.val().name)) {
+                      let research = {...spell.val()}
+                      delete research['.key']
+                      unknown.push(research)
+                    }
+                  })
+                }
+              })
+              if (unknown.length > 0) {
+                const index = Math.floor(Math.random() * unknown.length)
+                database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
+              }
             }
           }
           await updateGeneralStatus(store.state.uid)
@@ -277,15 +268,15 @@
       async disenchant () {
         if (this.canBreak) { // user has resources
           if (this.data.source === store.state.uid) {
-            database.ref('enchantments').child(this.data['.key']).remove()
-            updateGeneralStatus(this.data.target)
+            await database.ref('enchantments').child(this.data['.key']).remove()
+            await updateGeneralStatus(this.data.target)
             store.commit('success', 'lbl_toast_dispel_ok')
             this.close()
           } else {
             await checkTurnMaintenances(store.state.uid, this.data.turns)
             if (Math.random() >= 0.5) { // TODO
-              database.ref('enchantments').child(this.data['.key']).remove()
-              updateGeneralStatus(this.data.source)
+              await database.ref('enchantments').child(this.data['.key']).remove()
+              await updateGeneralStatus(this.data.source)
               store.commit('success', 'lbl_toast_dispel_ok')
               this.close()
             } else {
