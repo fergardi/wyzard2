@@ -147,8 +147,8 @@
           if (completed) {
             await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).remove()
             await database.ref('users').child(store.state.uid).child('book').once('value', book => {
-              if (book && book.hasChildren() && (1 + Math.floor(book.numChildren() / 2)) > this.user.magic) {
-                database.ref('users').child(store.state.uid).update({ magic: 1 + Math.floor(book.numChildren() / 2) })
+              if (book && book.hasChildren() && Math.floor(book.numChildren() / 2) + 1 > this.user.magic) {
+                database.ref('users').child(store.state.uid).update({ magic: Math.min(10, Math.floor(book.numChildren() / 2) + 1) })
                 store.commit('success', 'lbl_toast_investigation_level')
               }
             })

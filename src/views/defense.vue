@@ -7,14 +7,17 @@
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/defense.jpg?alt=media", :alt="translate('lbl_label_defense')")
             .card-info
               .card-text {{ 'lbl_label_defense' | translate }}
+              .card-number
+                i.ra.ra-hourglass
+                span {{ turns | minimize }}
           mu-card-text
             p {{ 'lbl_label_protection' | translate }}
 
           mu-card-text
-            mu-select-field(v-model="user.counter", :label="translate('lbl_label_spell')", :fullWidth="true")
+            mu-select-field(v-model="user.counter", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
               mu-menu-item(v-for="spell, index in book", :key="index", :value="spell['.key']", :title="translate(spell.name)")
 
-            mu-select-field(v-model="user.trap", :label="translate('lbl_label_artifact')", :fullWidth="true")
+            mu-select-field(v-model="user.trap", :label="translate('lbl_label_artifact')", :fullWidth="true", :maxHeight="300")
               mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact['.key']", :title="translate(artifact.name)")
 
           mu-card-actions
@@ -27,7 +30,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { updateGeneralStatus } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from '../components/confirm-dialog'
   
   export default {
@@ -38,7 +41,8 @@
       return {
         busy: false,
         type: null,
-        dialog: false
+        dialog: false,
+        turns: 1
       }
     },
     created () {
@@ -59,17 +63,18 @@
             break
         }
       },
-      save () {
-        if (this.user.trap) database.ref('users').child(store.state.uid).update({ trap: this.user.trap })
-        if (this.user.counter) database.ref('users').child(store.state.uid).update({ counter: this.user.counter })
-        updateGeneralStatus(store.state.uid)
+      async save () {
+        await checkTurnMaintenances(store.state.uid, this.turns)
+        if (this.user.trap) await database.ref('users').child(store.state.uid).update({ trap: this.user.trap })
+        if (this.user.counter) await database.ref('users').child(store.state.uid).update({ counter: this.user.counter })
+        await updateGeneralStatus(store.state.uid)
         store.commit('success', 'lbl_toast_defense_saved')
         this.close()
       },
-      restore () {
-        database.ref('users').child(store.state.uid).child('trap').remove()
-        database.ref('users').child(store.state.uid).child('counter').remove()
-        updateGeneralStatus(store.state.uid)
+      async restore () {
+        await database.ref('users').child(store.state.uid).child('trap').remove()
+        await database.ref('users').child(store.state.uid).child('counter').remove()
+        await updateGeneralStatus(store.state.uid)
         store.commit('success', 'lbl_toast_defense_restored')
       },
       close () {

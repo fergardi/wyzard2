@@ -510,8 +510,8 @@ export default {
     lbl_label_enter: 'Expande tu Mundo',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
-    lbl_label_battle: 'Atacar',
-    lbl_label_attack: 'Atacar',
+    lbl_label_battle: 'Realiza un ataque contra otro jugador para destruirle, robarle o inflingirle daño',
+    lbl_label_attack: 'Organizar Ataque',
     lbl_label_target: 'Objetivo',
     lbl_label_army_one: 'Primera Tropa',
     lbl_label_army_two: 'Segunda Tropa',
@@ -529,6 +529,7 @@ export default {
     lbl_label_confirm: 'Confirmar acción',
     lbl_label_cannot_undo: 'Esta acción no se puede deshacer',
     lbl_label_battle_only: 'Sólo en batalla',
+    lbl_label_protection: 'Establece un Artefacto y/o Hechizo para usarlo en caso de ataque enemigo',
     // descriptions
     lbl_description_meditation: 'Generarás más Maná cuantos más Nodos tengas y más Turnos inviertas al meditar',
     lbl_description_taxation: 'Generarás más Oro cuantas más Granjas tengas y más Turnos inviertas al recaudar',

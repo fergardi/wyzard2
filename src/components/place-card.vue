@@ -4,6 +4,9 @@
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
+        .card-number(:class="data.color")
+          i.ra.ra-hourglass
+          span {{ turns | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
@@ -32,7 +35,8 @@
       return {
         dialog: false,
         type: null,
-        busy: false
+        busy: false,
+        turns: 5
       }
     },
     methods: {

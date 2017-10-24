@@ -7,17 +7,19 @@
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/battle.jpg?alt=media", :alt="translate('lbl_label_battle')")
             .card-info
               .card-text {{ 'lbl_label_attack' | translate }}
+              .card-number
+                i.ra.ra-hourglass
+                span {{ turns | minimize }}
           mu-card-text
             p {{ 'lbl_label_battle' | translate }}
 
           mu-card-text
-            mu-auto-complete(v-model="search", :label="translate('lbl_label_target')", :hintText="translate('lbl_label_search')", :fullWidth="true", :dataSource="targets", filter="noFilter", :openOnFocus="true", @select="choose", required)
+            .form-row
+              mu-auto-complete(v-model="search", :label="translate('lbl_label_target')", :hintText="translate('lbl_label_search')", :fullWidth="true", :dataSource="targets", filter="noFilter", :openOnFocus="true", @select="choose", :maxHeight="300", required)
 
-            //mu-select-field(v-model="target", :label="translate('lbl_label_target')", :fullWidth="true")
-              mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="translate(user.name)", v-if="!myself(user['.key'])")
-
-            mu-select-field(v-model="strategy", :label="translate('lbl_label_strategy')", :fullWidth="true", required)
-              mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy.key", :title="translate(strategy.value)")
+            .form-row
+              mu-select-field(v-model="strategy", :label="translate('lbl_label_strategy')", :fullWidth="true", required)
+                mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy.key", :title="translate(strategy.value)")
             
             .form-row
               mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
@@ -44,11 +46,13 @@
               mu-select-field(v-model="army.five", :label="translate('lbl_label_army_five')", :fullWidth="true")
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
-            mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true")
-              mu-menu-item(v-for="spell, index in book", :key="index", :value="spell.name", :title="translate(spell.name)")
+            .form-row
+              mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
+                mu-menu-item(v-for="spell, index in book", :key="index", :value="spell.name", :title="translate(spell.name)")
             
-            mu-select-field(v-model="artifact", :label="translate('lbl_label_artifact')", :fullWidth="true")
-              mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact.name", :title="translate(artifact.name)")
+            .form-row
+              mu-select-field(v-model="artifact", :label="translate('lbl_label_artifact')", :fullWidth="true", :maxHeight="300")
+                mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact.name", :title="translate(artifact.name)")
                 
           mu-card-actions
             mu-raised-button(primary, type="reset", @click="reset", :disabled="busy") {{ 'lbl_button_clear' | translate }}
@@ -133,8 +137,8 @@
         if (this.canAttack && !this.busy) {
           await checkTurnMaintenances(store.state.uid, this.turns)
           await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
-          updateGeneralStatus(store.state.uid)
-          updateGeneralStatus(this.target)
+          await updateGeneralStatus(store.state.uid)
+          await updateGeneralStatus(this.target)
           store.commit('success', 'lbl_toast_battle_ok')
           this.close()
         } else {
@@ -180,9 +184,7 @@
       display flex
       justify-content space-between
       align-items center
-      .mu-text-field
-        width 25%
-      .mu-select-field
-        width 70%
-        margin-left 5%
+      .mu-text-field + .mu-select-field
+        width 100%
+        margin-left 1%
 </style>
