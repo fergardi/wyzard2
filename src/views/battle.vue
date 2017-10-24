@@ -22,29 +22,29 @@
                 mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy.key", :title="translate(strategy.value)")
             
             .form-row
-              mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
-              mu-select-field(v-model="army.one.name", :label="translate('lbl_label_army_one')", :fullWidth="true")
-                mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.first.quantity", min="1", :max="army.first.troop ? army.first.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
+              mu-select-field(v-model="army.first.troop", :label="translate('lbl_label_army_first')", :fullWidth="true")
+                mu-menu-item(v-for="troop, index in first", :key="index", :value="troop", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.two.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
-              mu-select-field(v-model="army.two", :label="translate('lbl_label_army_two')", :fullWidth="true")
-                mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.second.quantity", min="1", :max="army.second.troop ? army.second.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canSecond")
+              mu-select-field(v-model="army.second.troop", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond")
+                mu-menu-item(v-for="troop, index in second", :key="index", :value="troop", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.three.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
-              mu-select-field(v-model="army.three", :label="translate('lbl_label_army_three')", :fullWidth="true")
-                mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.third.quantity", min="1", :max="army.third.troop ? army.third.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canThird")
+              mu-select-field(v-model="army.third.troop", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird")
+                mu-menu-item(v-for="troop, index in third", :key="index", :value="troop", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.four.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
-              mu-select-field(v-model="army.four", :label="translate('lbl_label_army_four')", :fullWidth="true")
-                mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.fourth.quantity", min="1", :max="army.fourth.troop ? army.fourth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFourth")
+              mu-select-field(v-model="army.fourth.troop", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth")
+                mu-menu-item(v-for="troop, index in fourth", :key="index", :value="troop", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.five.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
-              mu-select-field(v-model="army.five", :label="translate('lbl_label_army_five')", :fullWidth="true")
-                mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.fifth.quantity", min="1", :max="army.fifth.troop ? army.fifth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFifth")
+              mu-select-field(v-model="army.fifth.troop", :label="translate('lbl_label_army_fifth')", :fullWidth="true", :disabled="!canFifth")
+                mu-menu-item(v-for="troop, index in fifth", :key="index", :value="troop", :title="translate(troop.name)")
             
             .form-row
               mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
@@ -74,24 +74,24 @@
     data () {
       return {
         army: {
-          one: {
-            name: null,
+          first: {
+            troop: null,
             quantity: 0
           },
-          two: {
-            name: null,
+          second: {
+            troop: null,
             quantity: 0
           },
-          three: {
-            name: null,
+          third: {
+            troop: null,
             quantity: 0
           },
-          four: {
-            name: null,
+          fourth: {
+            troop: null,
             quantity: 0
           },
-          five: {
-            name: null,
+          fifth: {
+            troop: null,
             quantity: 0
           }
         },
@@ -134,15 +134,20 @@
         }
       },
       async attack () {
-        if (this.canAttack && !this.busy) {
-          await checkTurnMaintenances(store.state.uid, this.turns)
-          await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
-          await updateGeneralStatus(store.state.uid)
-          await updateGeneralStatus(this.target)
-          store.commit('success', 'lbl_toast_battle_ok')
-          this.close()
+        if (this.hasTurns) {
+          if (this.canAttack) {
+            await checkTurnMaintenances(store.state.uid, this.turns)
+            await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
+            await updateGeneralStatus(store.state.uid)
+            await updateGeneralStatus(this.target)
+            store.commit('success', 'lbl_toast_battle_ok')
+            this.close()
+          } else {
+            store.commit('error', 'lbl_toast_battle_error')
+            this.close()
+          }
         } else {
-          store.commit('error', 'lbl_toast_battle_error')
+          store.commit('error', 'lbl_toast_resource_turns')
           this.close()
         }
       },
@@ -157,6 +162,16 @@
         this.artifact = null
         this.target = null
         this.strategy = null
+        this.army.first.troop = null
+        this.army.first.quantity = 0
+        this.army.second.troop = null
+        this.army.second.quantity = 0
+        this.army.third.troop = null
+        this.army.third.quantity = 0
+        this.army.fourth.troop = null
+        this.army.fourth.quantity = 0
+        this.army.fifth.troop = null
+        this.army.fifth.quantity = 0
         this.search = ''
       },
       close () {
@@ -167,12 +182,71 @@
     },
     computed: {
       targets () {
-        return this.search // TODO remove myself
+        return this.search
           ? this.users.filter(u => u['.key'] !== store.state.uid && u.name.toLowerCase().includes(this.search.toLowerCase())).map(u => { return { text: u.name, value: u['.key'] } })
           : this.users.filter(u => u['.key'] !== store.state.uid).map(u => { return { text: u.name, value: u['.key'] } })
       },
       canAttack () {
-        return this.target !== null
+        return this.hasTurns && this.target !== null && this.hasFirst
+      },
+      first () {
+        return this.troops
+      },
+      second () {
+        return this.army.first.troop
+          ? this.first.filter(t => t['.key'] !== this.army.first.troop['.key'])
+          : []
+      },
+      third () {
+        return this.army.second.troop
+          ? this.second.filter(t => t['.key'] !== this.army.second.troop['.key'])
+          : []
+      },
+      fourth () {
+        return this.army.third.troop
+          ? this.third.filter(t => t['.key'] !== this.army.third.troop['.key'])
+          : []
+      },
+      fifth () {
+        return this.army.fourth.troop
+          ? this.fourth.filter(t => t['.key'] !== this.army.fourth.troop['.key'])
+          : []
+      },
+      canFirst () {
+        return this.troops && this.troops.length > 0
+      },
+      canSecond () {
+        return this.canFirst && this.hasFirst
+      },
+      canThird () {
+        return this.canSecond && this.hasSecond
+      },
+      canFourth () {
+        return this.canThird && this.canThird
+      },
+      canFifth () {
+        return this.canFourth && this.canFourth
+      },
+      hasFirst () {
+        return this.army.first.troop && this.army.first.quantity > 0
+      },
+      hasSecond () {
+        return this.army.second.troop && this.army.second.quantity > 0
+      },
+      hasThird () {
+        return this.army.third.troop && this.army.third.quantity > 0
+      },
+      hasFourth () {
+        return this.army.fourth.troop && this.army.fourth.quantity > 0
+      },
+      hasFifth () {
+        return this.army.fifth.troop && this.army.fifth.quantity > 0
+      },
+      hasTurns () {
+        return this.turns <= this.user.turns
+      },
+      user () {
+        return store.state.user
       }
     }
   }
@@ -184,7 +258,11 @@
       display flex
       justify-content space-between
       align-items center
+      .mu-text-field
+        width 25%
       .mu-text-field + .mu-select-field
+        margin-left 5px
         width 100%
-        margin-left 1%
+      .mu-select-field
+        width 100%
 </style>
