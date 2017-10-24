@@ -3,7 +3,7 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="troop")
+        .card-number(v-if="troop", :class="data.color")
           i.ra.ra-crossed-axes
           span {{ data.quantity | minimize }}
       .card-info
@@ -47,7 +47,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>

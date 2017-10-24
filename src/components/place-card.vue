@@ -4,23 +4,24 @@
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-info
         .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color")
+        .card-number(v-if="adventure", :class="data.color")
           i.ra.ra-hourglass
-          span {{ turns | minimize }}
+          span {{ data.turns | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
     template(v-if="adventure")
       form(@submit.stop.prevent="confirm('start')")
         mu-card-actions
-          mu-raised-button(primary, type="number") {{ 'lbl_button_start' | translate }}
+          mu-raised-button(primary, type="number", :disabled="!hasTurns || busy") {{ 'lbl_button_start' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
   import store from '../vuex/store'
   import confirm from './confirm-dialog'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
 
   export default {
     name: 'place-card',
@@ -29,14 +30,14 @@
     },
     props: {
       data: Object,
+      info: Boolean,
       adventure: Boolean
     },
     data () {
       return {
         dialog: false,
         type: null,
-        busy: false,
-        turns: 5
+        busy: false
       }
     },
     methods: {
@@ -52,15 +53,27 @@
             break
         }
       },
-      start () {
-        // TODO
-        store.commit('success', 'lbl_toast_start_ok')
-        this.close()
+      async start () {
+        if (this.hasTurns) {
+          await checkTurnMaintenances(store.state.uid, this.data.turns)
+          // TODO
+          await updateGeneralStatus(store.state.uid)
+          store.commit('success', 'lbl_toast_start_ok')
+          this.close()
+        }
       },
       close () {
         this.type = null
         this.dialog = false
         this.busy = false
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
+      },
+      hasTurns () {
+        return this.data.turns <= this.user.turns
       }
     }
   }

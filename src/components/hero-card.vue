@@ -40,7 +40,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="busy") {{ 'lbl_button_fire' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>

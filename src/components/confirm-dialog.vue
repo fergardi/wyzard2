@@ -4,6 +4,9 @@
       mu-card-media
         img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
         mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
+        .progress(v-if="user && busy")
+          i.ra.ra-lg.ra-hourglass
+          span {{ user.turns }}
         .card-info
           .card-text {{ 'lbl_label_confirm' | translate }}
       mu-card-text.card-description
@@ -14,6 +17,8 @@
 </template>
 
 <script>
+  import store from '../vuex/store'
+
   export default {
     name: 'confirm-dialog',
     props: {
@@ -26,6 +31,11 @@
       },
       accept () {
         if (!this.busy) this.$emit('accept')
+      }
+    },
+    computed: {
+      user () {
+        return store.state.user
       }
     }
   }

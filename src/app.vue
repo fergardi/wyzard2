@@ -260,6 +260,18 @@
       background-color rgba(0,0,0,0.5)
       justify-content center
       align-items center
+    .progress
+      color $gold
+      display flex
+      justify-content center
+      align-items center
+      flex-direction column
+      width 100%
+      height 100%
+      position absolute
+      i
+        animation e 1568ms linear infinite // to reuse muse.ui mu-circular-progress one
+        margin-bottom 5px
     .topbar
       position fixed
     .scroll::-webkit-scrollbar

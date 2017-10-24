@@ -30,8 +30,8 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   import confirm from '../components/confirm-dialog'
+  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   
   export default {
     components: {

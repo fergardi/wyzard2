@@ -3,7 +3,7 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color")
+        .card-number(v-if="pray", :class="data.color")
           i.ra.ra-gold-bar
           span {{ data.gold | minimize }}
       .card-info
@@ -18,7 +18,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
@@ -34,6 +34,7 @@
     },
     props: {
       data: Object,
+      info: Boolean,
       pray: Boolean
     },
     data () {

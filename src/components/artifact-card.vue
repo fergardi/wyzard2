@@ -41,7 +41,7 @@
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !hasGold || !hasTurns || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
@@ -57,6 +57,7 @@
     },
     props: {
       data: Object,
+      info: Boolean,
       quantity: Number,
       auction: Boolean,
       enable: Boolean,
@@ -140,6 +141,7 @@
                     let quests = []
                     places.forEach(place => {
                       let quest = {...place.val()}
+                      quest.turns = this.random(20)
                       delete quest['.key']
                       quests.push(quest)
                     })

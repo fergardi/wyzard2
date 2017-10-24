@@ -42,7 +42,7 @@
           span +{{ data.quantity * data.goldProduction * 2 | minimize }}
       .card-info
         .card-text {{ data.name | translate }}
-        .card-number(v-if="data.quantity != null")
+        .card-number(v-if="exploration || meditation || taxation")
           i.ra.ra-tower
           span {{ data.quantity | numeric }}
     mu-card-text
@@ -108,7 +108,7 @@
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canTax || busy") {{ 'lbl_button_collect' | translate }}
 
-    confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
+    confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
 
 <script>
