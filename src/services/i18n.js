@@ -597,7 +597,7 @@ export default {
     lbl_table_relics: 'Reliquias',
     lbl_table_blessings: 'Bendiciones',
     lbl_table_total: 'Total',
-    lbl_table_total_per_turn: 'Al Turno',
+    lbl_table_turn: 'Turno',
     // settings
     lbl_settings_navbar: 'Invertir menú lateral',
     lbl_settings_menu: 'Menu',
@@ -686,6 +686,7 @@ export default {
     ttp_people_production: 'Producción de Población al Turno',
     ttp_mana_production: 'Producción de Maná al Turno',
     // firebase error
+    'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',
     'auth/registration-ok': 'Registrado correctamente',
     'auth/username-already-exists': 'Ese usuario ya existe',

@@ -301,7 +301,7 @@
                 mu-icon(value=":ra ra-fire-symbol")
             
             mu-tr
-              mu-td.title {{ 'lbl_table_total_per_turn' | translate }}
+              mu-td.title {{ 'lbl_table_turn' | translate }}
               mu-td.number ?
               mu-td.number
                 span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}

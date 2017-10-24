@@ -11,19 +11,19 @@
 
         mu-card-text.troops(v-if="troops")
           .card-stats(v-for="troop, index in troops", :key="index")
-            mu-chip.double(:class="troop.color")
+            mu-chip.three-quarters(:class="troop.color")
               i.ra.ra-crossed-axes
               span {{ troop.name | translate }}
-            mu-chip.double
-              i.ra.ra-tower
+            mu-chip.one-quarter(:class="troop.color")
+              i.ra.ra-crossed-axes
               span {{ troop.quantity | minimize }}
 
         mu-card-text.rewards(v-if="rewards")
           .card-stats
-            mu-chip.double
+            mu-chip.single
               i.ra.ra-tower
               span {{ rewards.terrain | numeric }}
-            mu-chip.double
+            mu-chip.single
               i.ra.ra-trefoil-lily
               span {{ rewards.experience | numeric }}
 

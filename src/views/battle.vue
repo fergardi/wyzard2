@@ -11,7 +11,7 @@
             p {{ 'lbl_label_battle' | translate }}
 
           mu-card-text
-            mu-auto-complete(v-model="search", :label="translate('lbl_label_target')", :hintText="translate('lbl_label_search')", :fullWidth="true", :dataSource="targets", :openOnFocus="true", @select="choose", required)
+            mu-auto-complete(v-model="search", :label="translate('lbl_label_target')", :hintText="translate('lbl_label_search')", :fullWidth="true", :dataSource="targets", filter="noFilter", :openOnFocus="true", @select="choose", required)
 
             //mu-select-field(v-model="target", :label="translate('lbl_label_target')", :fullWidth="true")
               mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="translate(user.name)", v-if="!myself(user['.key'])")
@@ -25,22 +25,22 @@
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
+              mu-text-field(v-model="army.two.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
               mu-select-field(v-model="army.two", :label="translate('lbl_label_army_two')", :fullWidth="true")
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
+              mu-text-field(v-model="army.three.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
               mu-select-field(v-model="army.three", :label="translate('lbl_label_army_three')", :fullWidth="true")
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
+              mu-text-field(v-model="army.four.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
               mu-select-field(v-model="army.four", :label="translate('lbl_label_army_four')", :fullWidth="true")
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
             .form-row
-              mu-text-field(v-model="army.one.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
+              mu-text-field(v-model="army.five.quantity", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')")
               mu-select-field(v-model="army.five", :label="translate('lbl_label_army_five')", :fullWidth="true")
                 mu-menu-item(v-for="troop, index in troops", :key="index", :value="troop.name", :title="translate(troop.name)")
             
@@ -184,4 +184,5 @@
         width 25%
       .mu-select-field
         width 70%
+        margin-left 5%
 </style>

@@ -15,11 +15,15 @@
               mu-tab(value="signin", :title="translate('lbl_tab_registration')")
 
           mu-card-text
-            mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", required)
+            mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="long ? translate('auth/username-too-long') : error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", :maxLength="20", required)
+
             mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
               mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
+
             mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
+
             mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
+
             mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
 
           mu-card-actions
@@ -143,7 +147,10 @@
         return this.tab === 'signin' && this.password.length <= 5
       },
       disabled () {
-        return this.mismatch || this.insecure || this.error
+        return this.mismatch || this.insecure || this.error || this.long
+      },
+      long () {
+        return this.username.length >= 20
       }
     }
   }
