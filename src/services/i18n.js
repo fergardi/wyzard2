@@ -529,7 +529,7 @@ export default {
     lbl_label_confirm: 'Confirmar acción',
     lbl_label_cannot_undo: 'Esta acción no se puede deshacer',
     lbl_label_battle_only: 'Sólo en batalla',
-    lbl_label_protection: 'Establece un Artefacto y/o Hechizo para usarlo en caso de ataque enemigo',
+    lbl_label_protection: 'Establece tu estrategia defensiva en caso de un ataque enemigo',
     // descriptions
     lbl_description_meditation: 'Generarás más Maná cuantos más Nodos tengas y más Turnos inviertas al meditar',
     lbl_description_taxation: 'Generarás más Oro cuantas más Granjas tengas y más Turnos inviertas al recaudar',

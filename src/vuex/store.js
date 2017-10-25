@@ -26,7 +26,7 @@ const vuex = new Vuex.Store({
       color: null,
       show: false,
       message: null,
-      delay: 2000 // milliseconds
+      delay: 2500 // milliseconds
     }
   },
   mutations: {

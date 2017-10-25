@@ -7,17 +7,29 @@
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/defense.jpg?alt=media", :alt="translate('lbl_label_defense')")
             .card-info
               .card-text {{ 'lbl_label_defense' | translate }}
-              .card-number
-                i.ra.ra-hourglass
-                span {{ turns | minimize }}
           mu-card-text
             p {{ 'lbl_label_protection' | translate }}
 
           mu-card-text
-            mu-select-field(v-model="user.counter", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
+            mu-select-field(v-model="defense.first", :label="translate('lbl_label_army_first')", :fullWidth="true")
+              mu-menu-item(v-for="troop, index in first", :key="index", :value="troop['.key']", :title="translate(troop.name)")
+          
+            mu-select-field(v-model="defense.second", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond")
+              mu-menu-item(v-for="troop, index in second", :key="index", :value="troop['.key']", :title="translate(troop.name)")
+          
+            mu-select-field(v-model="defense.third", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird")
+              mu-menu-item(v-for="troop, index in third", :key="index", :value="troop['.key']", :title="translate(troop.name)")
+          
+            mu-select-field(v-model="defense.fourth", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth")
+              mu-menu-item(v-for="troop, index in fourth", :key="index", :value="troop['.key']", :title="translate(troop.name)")
+          
+            mu-select-field(v-model="defense.fifth", :label="translate('lbl_label_army_fifth')", :fullWidth="true", :disabled="!canFifth")
+              mu-menu-item(v-for="troop, index in fifth", :key="index", :value="troop['.key']", :title="translate(troop.name)")
+
+            mu-select-field(v-model="defense.spell", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
               mu-menu-item(v-for="spell, index in book", :key="index", :value="spell['.key']", :title="translate(spell.name)")
 
-            mu-select-field(v-model="user.trap", :label="translate('lbl_label_artifact')", :fullWidth="true", :maxHeight="300")
+            mu-select-field(v-model="defense.artifact", :label="translate('lbl_label_artifact')", :fullWidth="true", :maxHeight="300")
               mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact['.key']", :title="translate(artifact.name)")
 
           mu-card-actions
@@ -31,7 +43,6 @@
   import { database } from '../services/firebase'
   import store from '../vuex/store'
   import confirm from '../components/confirm-dialog'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
   
   export default {
     components: {
@@ -41,12 +52,12 @@
       return {
         busy: false,
         type: null,
-        dialog: false,
-        turns: 1
+        dialog: false
       }
     },
     created () {
       store.commit('title', 'lbl_title_defense')
+      this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('name'))
       this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
       this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))
     },
@@ -64,17 +75,20 @@
         }
       },
       async save () {
-        await checkTurnMaintenances(store.state.uid, this.turns)
-        if (this.user.trap) await database.ref('users').child(store.state.uid).update({ trap: this.user.trap })
-        if (this.user.counter) await database.ref('users').child(store.state.uid).update({ counter: this.user.counter })
-        await updateGeneralStatus(store.state.uid)
+        await database.ref('users').child(store.state.uid).child('defense').set({
+          first: this.defense.first,
+          second: this.defense.second,
+          third: this.defense.third,
+          fourth: this.defense.fourth,
+          fifth: this.defense.fifth,
+          artifact: this.defense.artifact,
+          spell: this.defense.spell
+        })
         store.commit('success', 'lbl_toast_defense_saved')
         this.close()
       },
       async restore () {
-        await database.ref('users').child(store.state.uid).child('trap').remove()
-        await database.ref('users').child(store.state.uid).child('counter').remove()
-        await updateGeneralStatus(store.state.uid)
+        await database.ref('users').child(store.state.uid).child('defense').remove()
         store.commit('success', 'lbl_toast_defense_restored')
       },
       close () {
@@ -86,6 +100,72 @@
     computed: {
       user () {
         return store.state.user
+      },
+      defense () {
+        return this.user.defense
+          ? this.user.defense
+          : {
+            first: null,
+            second: null,
+            third: null,
+            fourth: null,
+            fifth: null,
+            artifact: null,
+            spell: null
+          }
+      },
+      first () {
+        return this.troops
+      },
+      second () {
+        return this.defense.first
+          ? this.first.filter(t => t['.key'] !== this.defense.first)
+          : []
+      },
+      third () {
+        return this.defense.second
+          ? this.second.filter(t => t['.key'] !== this.defense.second)
+          : []
+      },
+      fourth () {
+        return this.defense.third
+          ? this.third.filter(t => t['.key'] !== this.defense.third)
+          : []
+      },
+      fifth () {
+        return this.defense.fourth
+          ? this.fourth.filter(t => t['.key'] !== this.defense.fourth)
+          : []
+      },
+      canFirst () {
+        return this.troops && this.troops.length > 0
+      },
+      canSecond () {
+        return this.canFirst && this.hasFirst
+      },
+      canThird () {
+        return this.canSecond && this.hasSecond
+      },
+      canFourth () {
+        return this.canThird && this.hasThird
+      },
+      canFifth () {
+        return this.canFourth && this.hasFourth
+      },
+      hasFirst () {
+        return this.defense.first !== null
+      },
+      hasSecond () {
+        return this.defense.second !== null
+      },
+      hasThird () {
+        return this.defense.third !== null
+      },
+      hasFourth () {
+        return this.defense.fourth !== null
+      },
+      hasFifth () {
+        return this.defense.fifth !== null
       }
     }
   }

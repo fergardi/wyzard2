@@ -171,7 +171,7 @@
               message.ref.update({ read: true })
             }
           })
-          await updateGeneralStatus(store.state.uid)
+          updateGeneralStatus(store.state.uid)
         }
       })
     },
