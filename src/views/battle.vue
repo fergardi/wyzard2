@@ -65,7 +65,7 @@
   import { database } from '../services/firebase'
   import store from '../vuex/store'
   import confirm from '../components/confirm-dialog'
-  import { checkTurnMaintenances, updateGeneralStatus, battlePlayerVersusPlayer } from '../services/api' // eslint-disable-line
+  import { checkTurnMaintenances, updateGeneralStatus, battlePlayerVersusPlayer, sendUserMessage } from '../services/api' // eslint-disable-line
   
   export default {
     components: {

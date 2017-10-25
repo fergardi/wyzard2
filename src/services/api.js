@@ -493,14 +493,7 @@ export const createNewUser = async (uid, player) => {
     }
   })
   // messages
-  await database.ref('users').child(uid).child('messages').push({
-    name: 'lbl_name_admin',
-    color: 'dark',
-    timestamp: Date.now(),
-    subject: 'lbl_message_welcome_subject',
-    text: 'lbl_message_welcome_text',
-    read: false
-  })
+  await sendUserMessage(uid, 'lbl_name_admin', 'dark', 'lbl_message_welcome_subject', 'lbl_message_welcome_text')
   // auction
   await database.ref('artifacts').once('value', artifacts => {
     if (artifacts && artifacts.hasChildren()) {
@@ -586,15 +579,27 @@ export const createNewUser = async (uid, player) => {
   */
 }
 
+// messages
+export const sendUserMessage = (uid, from, color, subject, text) => {
+  console.log(uid, from, color, subject, text)
+  return database.ref('users').child(uid).child('messages').push({
+    name: from,
+    color: color,
+    timestamp: Date.now(),
+    subject: subject,
+    text: text,
+    read: false
+  })
+}
+
 // battle pve
 export const battlePlayerVersusEnvironment = (uid, country) => {
 }
 
 // battle pvp
-/* eslint-disable */
 export const battlePlayerVersusPlayer = async (uid, target, strategy, attackerArmy, attackerSpell, attackerArtifact) => {
   console.log(uid, target, strategy, attackerArmy, attackerSpell, attackerArtifact)
-  await database.ref('users').child(uid).once('value', async attacker => {
+  return database.ref('users').child(uid).once('value', async attacker => {
     if (attacker) {
       await database.ref('users').child(target).once('value', async defender => {
         if (defender) {
@@ -724,6 +729,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, attackerAr
           console.log(defenderArmy, defenderSpell, defenderArtifact, defenderDamageBonus, defenderHealthBonus, defenderDragonDamageBonus, defenderDragonHealthBonus, defenderElementalDamageBonus, defenderElementalHealthBonus, defenderBeastDamageBonus, defenderBeastHealthBonus, defenderHumanDamageBonus, defenderHumanHealthBonus, defenderCelestialDamageBonus, defenderCelestialHealthBonus, defenderDemonDamageBonus, defenderDemonHealthBonus, defenderUndeadDamageBonus, defenderUndeadHealthBonus)
           // rounds
           let victory = false
+          let report = 'battle test'
           if (victory) {
             switch (strategy) {
               case 'conquest': // steal lands
@@ -733,6 +739,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, attackerAr
               case 'siege': // destroy buildings
                 break
             }
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_text_win', report)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_text_lose', report)
+          } else {
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_text_lose', report)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_text_win', report)
           }
         }
       })

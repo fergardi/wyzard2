@@ -489,10 +489,8 @@
     // background colors
     .mu-toast
     .mu-chip
-    .mu-card .card-info .card-text
-    .mu-card .card-info .card-number
-    .mu-card .card-extra .card-number
-    .mu-card .card-extra .card-number
+    .mu-card .card-text
+    .mu-card .card-number
       background-color $dark !important
       &.red
         background-color $red !important
