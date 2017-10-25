@@ -498,7 +498,8 @@ export const createNewUser = async (uid, player) => {
     color: 'dark',
     timestamp: Date.now(),
     subject: 'lbl_message_welcome_subject',
-    text: 'lbl_message_welcome_text'
+    text: 'lbl_message_welcome_text',
+    read: false
   })
   // auction
   await database.ref('artifacts').once('value', artifacts => {
@@ -590,5 +591,151 @@ export const battlePlayerVersusEnvironment = (uid, country) => {
 }
 
 // battle pvp
-export const battlePlayerVersusPlayer = (uid, country) => {
+/* eslint-disable */
+export const battlePlayerVersusPlayer = async (uid, target, strategy, attackerArmy, attackerSpell, attackerArtifact) => {
+  console.log(uid, target, strategy, attackerArmy, attackerSpell, attackerArtifact)
+  await database.ref('users').child(uid).once('value', async attacker => {
+    if (attacker) {
+      await database.ref('users').child(target).once('value', async defender => {
+        if (defender) {
+          // blessings
+          let attackerDamageBonus = 0
+          let attackerHealthBonus = 0
+          await database.ref('gods').orderByChild('uid').equalTo(uid).once('value', attackerBlessings => {
+            if (attackerBlessings) {
+              attackerBlessings.forEach(attackerBlessing => {
+                attackerDamageBonus += attackerBlessing.damage
+                attackerHealthBonus += attackerBlessing.health
+              })
+            }
+          })
+          let defenderDamageBonus = 0
+          let defenderHealthBonus = 0
+          await database.ref('gods').orderByChild('uid').equalTo(target).once('value', defenderBlessings => {
+            if (defenderBlessings) {
+              defenderBlessings.forEach(defenderBlessing => {
+                defenderDamageBonus += defenderBlessing.damage
+                defenderHealthBonus += defenderBlessing.health
+              })
+            }
+          })
+          // heroes
+          let attackerDragonDamageBonus = 0
+          let attackerDragonHealthBonus = 0
+          let attackerElementalDamageBonus = 0
+          let attackerElementalHealthBonus = 0
+          let attackerBeastDamageBonus = 0
+          let attackerBeastHealthBonus = 0
+          let attackerHumanDamageBonus = 0
+          let attackerHumanHealthBonus = 0
+          let attackerCelestialDamageBonus = 0
+          let attackerCelestialHealthBonus = 0
+          let attackerDemonDamageBonus = 0
+          let attackerDemonHealthBonus = 0
+          let attackerUndeadDamageBonus = 0
+          let attackerUndeadHealthBonus = 0
+          let atk = attacker.val()
+          if (atk.contracts) {
+            atk.contracts.forEach(attackerContract => {
+              if (attackerContract.family === 'lbl_family_dragon') {
+                attackerDragonDamageBonus += attackerContract.damage * attackerContract.level
+                attackerDragonHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_elemental') {
+                attackerElementalDamageBonus += attackerContract.damage * attackerContract.level
+                attackerElementalHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_beast') {
+                attackerBeastDamageBonus += attackerContract.damage * attackerContract.level
+                attackerBeastHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_human') {
+                attackerHumanDamageBonus += attackerContract.damage * attackerContract.level
+                attackerHumanHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_celestial') {
+                attackerCelestialDamageBonus += attackerContract.damage * attackerContract.level
+                attackerCelestialHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_demon') {
+                attackerDemonDamageBonus += attackerContract.damage * attackerContract.level
+                attackerDemonHealthBonus += attackerContract.health * attackerContract.level
+              }
+              if (attackerContract.family === 'lbl_family_undead') {
+                attackerUndeadDamageBonus += attackerContract.damage * attackerContract.level
+                attackerUndeadHealthBonus += attackerContract.health * attackerContract.level
+              }
+            })
+          }
+          let defenderDragonDamageBonus = 0
+          let defenderDragonHealthBonus = 0
+          let defenderElementalDamageBonus = 0
+          let defenderElementalHealthBonus = 0
+          let defenderBeastDamageBonus = 0
+          let defenderBeastHealthBonus = 0
+          let defenderHumanDamageBonus = 0
+          let defenderHumanHealthBonus = 0
+          let defenderCelestialDamageBonus = 0
+          let defenderCelestialHealthBonus = 0
+          let defenderDemonDamageBonus = 0
+          let defenderDemonHealthBonus = 0
+          let defenderUndeadDamageBonus = 0
+          let defenderUndeadHealthBonus = 0
+          let def = defender.val()
+          if (def.contracts) {
+            def.contracts.forEach(defenderContract => {
+              if (defenderContract.family === 'lbl_family_dragon') {
+                defenderDragonDamageBonus += defenderContract.damage * defenderContract.level
+                defenderDragonHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_elemental') {
+                defenderElementalDamageBonus += defenderContract.damage * defenderContract.level
+                defenderElementalHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_beast') {
+                defenderBeastDamageBonus += defenderContract.damage * defenderContract.level
+                defenderBeastHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_human') {
+                defenderHumanDamageBonus += defenderContract.damage * defenderContract.level
+                defenderHumanHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_celestial') {
+                defenderCelestialDamageBonus += defenderContract.damage * defenderContract.level
+                defenderCelestialHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_demon') {
+                defenderDemonDamageBonus += defenderContract.damage * defenderContract.level
+                defenderDemonHealthBonus += defenderContract.health * defenderContract.level
+              }
+              if (defenderContract.family === 'lbl_family_undead') {
+                defenderUndeadDamageBonus += defenderContract.damage * defenderContract.level
+                defenderUndeadHealthBonus += defenderContract.health * defenderContract.level
+              }
+            })
+          }
+          // defense
+          let defenderArmy = def.troops
+          let defenderSpell = def.counter
+          let defenderArtifact = def.trap
+          console.log('ATTACKER')
+          console.log(attackerArmy, attackerSpell, attackerArtifact, attackerDamageBonus, attackerHealthBonus, attackerDragonDamageBonus, attackerDragonHealthBonus, attackerElementalDamageBonus, attackerElementalHealthBonus, attackerBeastDamageBonus, attackerBeastHealthBonus, attackerHumanDamageBonus, attackerHumanHealthBonus, attackerCelestialDamageBonus, attackerCelestialHealthBonus, attackerDemonDamageBonus, attackerDemonHealthBonus, attackerUndeadDamageBonus, attackerUndeadHealthBonus)
+          console.log('DEFENDER')
+          console.log(defenderArmy, defenderSpell, defenderArtifact, defenderDamageBonus, defenderHealthBonus, defenderDragonDamageBonus, defenderDragonHealthBonus, defenderElementalDamageBonus, defenderElementalHealthBonus, defenderBeastDamageBonus, defenderBeastHealthBonus, defenderHumanDamageBonus, defenderHumanHealthBonus, defenderCelestialDamageBonus, defenderCelestialHealthBonus, defenderDemonDamageBonus, defenderDemonHealthBonus, defenderUndeadDamageBonus, defenderUndeadHealthBonus)
+          // rounds
+          let victory = false
+          if (victory) {
+            switch (strategy) {
+              case 'conquest': // steal lands
+                break
+              case 'pillage': // steal resources
+                break
+              case 'siege': // destroy buildings
+                break
+            }
+          }
+        }
+      })
+    }
+  })
 }

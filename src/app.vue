@@ -160,15 +160,18 @@
         }
       })
       // firebase
-      store.watch((state) => state.logged, (value) => {
+      store.watch((state) => state.logged, async (value) => {
         if (value) {
           store.dispatch('user', database.ref('users').child(store.state.uid))
           this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
           this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-          database.ref('users').child(store.state.uid).child('messages').on('child_added', message => {
-            store.commit('info', this.translate(message.val().subject))
+          database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+            if (message) {
+              store.commit('info', this.translate(message.val().subject))
+              message.ref.update({ read: true })
+            }
           })
-          updateGeneralStatus(store.state.uid)
+          await updateGeneralStatus(store.state.uid)
         }
       })
     },
@@ -275,10 +278,13 @@
     .topbar
       position fixed
     .scroll::-webkit-scrollbar
+    .mu-menu-list::-webkit-scrollbar
       width 3px
     .scroll::-webkit-scrollbar-track
+    .mu-menu-list::-webkit-scrollbar-track
       background transparent
     .scroll::-webkit-scrollbar-thumb
+    .mu-menu-list::-webkit-scrollbar-thumb
       background $gold
     .router
       margin-top 56px

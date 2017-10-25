@@ -510,7 +510,7 @@ export default {
     lbl_label_enter: 'Expande tu Mundo',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
-    lbl_label_battle: 'Realiza un ataque contra otro jugador para destruirle, robarle o inflingirle daño',
+    lbl_label_battle: 'Realiza un ataque contra otro jugador para conquistarle tierras, destruirle edificios o robarle recursos',
     lbl_label_attack: 'Organizar Ataque',
     lbl_label_target: 'Objetivo',
     lbl_label_army_first: 'Primera Tropa',
@@ -676,6 +676,8 @@ export default {
     lbl_toast_settings_restored: 'Preferencias restauradas',
     lbl_toast_defense_saved: 'Defensa establecida',
     lbl_toast_defense_restored: 'Defensa desactivada',
+    lbl_toast_battle_ok: 'Batalla finalizada',
+    lbl_toast_battle_error: 'Error en la batalla',
     // tooltips
     ttp_gold_cost: 'Coste de Oro',
     ttp_people_cost: 'Coste de Población',

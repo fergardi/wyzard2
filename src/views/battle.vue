@@ -48,11 +48,11 @@
             
             .form-row
               mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
-                mu-menu-item(v-for="spell, index in book", :key="index", :value="spell.name", :title="translate(spell.name)")
+                mu-menu-item(v-for="spell, index in book", :key="index", :value="spell", :title="translate(spell.name)")
             
             .form-row
               mu-select-field(v-model="artifact", :label="translate('lbl_label_artifact')", :fullWidth="true", :maxHeight="300")
-                mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact.name", :title="translate(artifact.name)")
+                mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact", :title="translate(artifact.name)")
                 
           mu-card-actions
             mu-raised-button(primary, type="reset", @click="reset", :disabled="busy") {{ 'lbl_button_clear' | translate }}
@@ -65,7 +65,7 @@
   import { database } from '../services/firebase'
   import store from '../vuex/store'
   import confirm from '../components/confirm-dialog'
-  import { checkTurnMaintenances, updateGeneralStatus, battlePlayerVersusPlayer } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, battlePlayerVersusPlayer } from '../services/api' // eslint-disable-line
   
   export default {
     components: {
@@ -136,11 +136,12 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
-            await checkTurnMaintenances(store.state.uid, this.turns)
+            // await checkTurnMaintenances(store.state.uid, this.turns)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
             await updateGeneralStatus(store.state.uid)
             await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
+            this.reset()
             this.close()
           } else {
             store.commit('error', 'lbl_toast_battle_error')
@@ -161,7 +162,7 @@
         this.spell = null
         this.artifact = null
         this.target = null
-        this.strategy = null
+        this.strategy = 'conquest'
         this.army.first.troop = null
         this.army.first.quantity = 0
         this.army.second.troop = null
