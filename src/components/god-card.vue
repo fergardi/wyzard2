@@ -14,7 +14,7 @@
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!canOffer")
+          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true")
         mu-card-actions
           mu-raised-button(primary, type="submit", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
 
@@ -67,8 +67,8 @@
             await database.ref('gods').child(this.data['.key']).transaction(offer => {
               if (offer) {
                 offer.bid = this.amount
-                if (offer.uid) updateGeneralStatus(offer.uid)
-                offer.uid = store.state.uid
+                if (offer.blessed) updateGeneralStatus(offer.blessed)
+                offer.blessed = store.state.uid
               }
               return offer
             })
@@ -108,7 +108,7 @@
         return this.turns <= this.user.turns
       },
       canOffer () {
-        return this.amount > this.data.gold && store.state.uid === this.data.uid
+        return this.amount > this.data.bid && store.state.uid !== this.data.blessed
       }
     }
   }

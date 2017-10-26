@@ -399,7 +399,7 @@ export default {
     lbl_artifact_powder_barrel: 'Barril de Pólvora',
     lbl_artifact_powder_barrel_description: 'Destruye un numeroso grupo de Edificios al azar del reino objetivo',
     lbl_artifact_voodoo_doll: 'Muñeca Voodoo',
-    lbl_artifact_voodoo_doll_description: 'Destruye una gran cantidad de Turnos del reino objetivo',
+    lbl_artifact_voodoo_doll_description: 'Extiende la duración de la batalla otorgando una ronda adicional',
     lbl_artifact_holy_codex: 'Códice Sagrado',
     lbl_artifact_holy_codex_description: 'Invoca un numeroso grupo de Celestiales al azar para que se unan a tu ejército',
     lbl_artifact_cursed_map: 'Mapa Maldito',
@@ -510,7 +510,7 @@ export default {
     lbl_label_enter: 'Expande tu Mundo',
     lbl_label_mage: 'Mago',
     lbl_label_select: 'Seleccionar',
-    lbl_label_battle: 'Realiza un ataque contra otro jugador para conquistarle tierras, destruirle edificios o robarle recursos',
+    lbl_label_battle: 'Realiza un ataque contra otro jugador para conquistar tierras, destruir edificios o robar recursos',
     lbl_label_attack: 'Organizar Ataque',
     lbl_label_target: 'Objetivo',
     lbl_label_army_first: 'Primera Tropa',
@@ -622,9 +622,8 @@ export default {
     // messages
     lbl_message_welcome_subject: 'Bienvenid@',
     lbl_message_welcome_text: 'Bienvenido al juego',
-    lbl_message_battle_subject: 'Batalla',
-    lbl_message_battle_text_win: 'Victoria',
-    lbl_message_battle_text_lose: 'Derrota',
+    lbl_message_battle_win: 'Victoria',
+    lbl_message_battle_lose: 'Derrota',
     lbl_message_auction_outbid: 'Sobrepuja',
     lbl_message_auction_outbid_text: 'Otra persona se ha mostrado interesada en la misma subasta que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original, excepto el 10% del importe total en concepto de impuestos.',
     // toasts
@@ -678,6 +677,8 @@ export default {
     lbl_toast_defense_restored: 'Defensa desactivada',
     lbl_toast_battle_ok: 'Batalla finalizada',
     lbl_toast_battle_error: 'Error en la batalla',
+    lbl_toast_battle_win: 'Victoria',
+    lbl_toast_battle_lose: 'Derrota',
     // tooltips
     ttp_terrain_production: 'Producción de Terrenos al Turno',
     ttp_turn_cost: 'Coste de Turnos',

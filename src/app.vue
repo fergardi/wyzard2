@@ -592,6 +592,7 @@
         color white
         border-radius $radius
         padding 5px 10px
+        font-size 0.8em
       .tooltip-arrow
         width 0
         height 0
