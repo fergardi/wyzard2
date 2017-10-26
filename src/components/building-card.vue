@@ -4,45 +4,45 @@
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
         template(v-if="construction || meditation")
-          .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= user.manaCap ? 'red' : ''")
+          .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= user.manaCap ? 'red' : ''", v-tooltip="translate('ttp_mana_reservation')")
             i.ra.ra-burst-blob
             span {{ user.mana | minimize }} / {{ user.manaCap | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= user.armyCap ? 'red' : ''")
+          .card-number(v-if="data.name === 'lbl_building_barrack'", :class="user.army >= user.armyCap ? 'red' : ''", v-tooltip="translate('ttp_army_reservation')")
             i.ra.ra-crossed-axes
             span {{ user.army | minimize }} / {{ user.armyCap | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_barrier'")
+          .card-number(v-if="data.name === 'lbl_building_barrier'", v-tooltip="translate('ttp_magical_bonus')")
             i.ra.ra-eye-shield
             span +{{ data.quantity / data.magicalDefenseBonus | percentage }}
-          .card-number(v-if="data.name === 'lbl_building_fortress'")
+          .card-number(v-if="data.name === 'lbl_building_fortress'", v-tooltip="translate('ttp_physical_bonus')")
             i.ra.ra-eye-shield
             span +{{ data.quantity / data.physicalDefenseBonus | percentage }}
-          .card-number(v-if="data.name === 'lbl_building_guild'")
+          .card-number(v-if="data.name === 'lbl_building_guild'", v-tooltip="translate('ttp_research_bonus')")
             i.ra.ra-crystal-ball
             span -{{ data.quantity / data.researchBonus | percentage }}
-          .card-number(v-if="data.name === 'lbl_building_temple'")
+          .card-number(v-if="data.name === 'lbl_building_temple'", v-tooltip="translate('ttp_enchantment_reservation')")
             i.ra.ra-crystals
             span +{{ parseInt(data.quantity / data.enchantmentCap) | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= user.peopleCap ? 'red' : ''")
+          .card-number(v-if="data.name === 'lbl_building_village'", :class="user.people >= user.peopleCap ? 'red' : ''", v-tooltip="translate('ttp_people_reservation')")
             i.ra.ra-double-team
             span {{ user.people | minimize }} / {{ user.peopleCap | minimize }}
-          .card-number(v-if="data.name === 'lbl_building_workshop'")
+          .card-number(v-if="data.name === 'lbl_building_workshop'", v-tooltip="translate('ttp_construction_bonus')")
             i.ra.ra-hourglass
             span -{{ data.quantity / data.construction | percentage }}
-          .card-number(v-if="data.name === 'lbl_building_farm'")
+          .card-number(v-if="data.name === 'lbl_building_farm'", v-tooltip="translate('ttp_gold_reservation')")
             i.ra.ra-gold-bar
             span {{ user.gold | minimize }}
-        .card-number(v-if="exploration")
+        .card-number(v-if="exploration", v-tooltip="translate('ttp_terrain_production')")
           i.ra.ra-tower
           span +{{ parseInt((data.terrainCap - data.quantity) / 100) | minimize }}
-        .card-number(v-if="meditation")
+        .card-number(v-if="meditation", v-tooltip="translate('ttp_mana_production')")
           i.ra.ra-burst-blob
           span +{{ data.quantity * data.manaProduction * 2 | minimize }}
-        .card-number(v-if="taxation")
+        .card-number(v-if="taxation", v-tooltip="translate('ttp_gold_production')")
           i.ra.ra-gold-bar
           span +{{ data.quantity * data.goldProduction * 2 | minimize }}
       .card-info
-        .card-text {{ data.name | translate }}
-        .card-number(v-if="exploration || meditation || taxation")
+        .card-text(v-tooltip="translate('ttp_building_name')") {{ data.name | translate }}
+        .card-number(v-if="!info", v-tooltip="translate('ttp_building_quantity')")
           i.ra.ra-tower
           span {{ data.quantity | numeric }}
     mu-card-text
@@ -52,31 +52,31 @@
       p.card-description(v-if="taxation") {{ 'lbl_description_taxation' | translate }}
       
       .card-stats(v-if="info")
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
           i.ra.ra-gold-bar
           span {{ data.goldCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_cost')")
           i.ra.ra-double-team
           span {{ data.peopleCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
           span {{ data.manaCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_production')")
           i.ra.ra-gold-bar
           span {{ data.goldProduction | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_production')")
           i.ra.ra-double-team
           span {{ data.peopleProduction | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_production')")
           i.ra.ra-burst-blob
           span {{ data.manaProduction | minimize }}
 

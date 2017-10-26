@@ -3,40 +3,40 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(v-if="troop", :class="data.color")
+        .card-number(v-if="troop", :class="data.color", v-tooltip="translate('ttp_unit_quantity')")
           i.ra.ra-crossed-axes
           span {{ data.quantity | minimize }}
       .card-info
-        .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color")
+        .card-text(:class="data.color", v-tooltip="translate('ttp_unit_name')") {{ data.name | translate }}
+        .card-number(:class="data.color", v-tooltip="translate('ttp_unit_level')")
           i.ra.ra-trophy
           span {{ data.level | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
       .card-stats(v-if="info")
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_unit_damage')")
           i.ra.ra-sword
           span {{ data.damage | minimize }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_unit_health')")
           i.ra.ra-hearts
           span {{ data.health | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_unit_family')")
           i.ra.ra-gem
           span {{ data.family | translate }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_unit_type')")
           i.ra.ra-emerald
           span {{ data.type | translate }}
-        mu-chip.simple
+        mu-chip.simple(v-tooltip="translate('ttp_unit_skill')")
           i.ra.ra-sapphire
           span {{ data.evasion ? 'lbl_stat_evasion' : data.frenzy ? 'lbl_stat_frenzy' : data.resurrection ? 'lbl_stat_resurrection' : data.counter ? 'lbl_stat_counter' : data.healing ? 'lbl_stat_healing' : 'lbl_stat_none' | translate }}
 

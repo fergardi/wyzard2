@@ -3,8 +3,8 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-info
-        .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(v-if="adventure", :class="data.color")
+        .card-text(:class="data.color", v-tooltip="translate('ttp_place_name')") {{ data.name | translate }}
+        .card-number(v-if="adventure", :class="data.color", v-tooltip="translate('ttp_turn_cost')")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
     mu-card-text

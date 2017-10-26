@@ -3,12 +3,12 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="auction")
+        .card-number(:class="data.color", v-if="auction", v-tooltip="translate('ttp_gold_bid')")
           i.ra.ra-gold-bar
           span {{ data.bid | minimize }}
       .card-info
-        .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.quantity != null")
+        .card-text(:class="data.color", v-tooltip="translate('ttp_artifact_name')") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="!info", v-tooltip="translate('ttp_artifact_quantity')")
           i.ra.ra-vase
           span {{ data.quantity | minimize }}
     mu-card-text

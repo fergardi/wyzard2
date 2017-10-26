@@ -5,7 +5,7 @@
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/census.jpg?alt=media", :alt="translate('lbl_label_users')")
           .card-extra
-            .card-number
+            .card-number(v-tooltip="translate('ttp_census_quantity')")
               i.ra.ra-player
               span {{ users.length | minimize }}
           .card-info
@@ -14,12 +14,12 @@
         mu-table(:showCheckbox="false", :selectable="false")
           mu-thead
             mu-tr
-              mu-th
-                mu-icon(value=":ra ra-trophy")
-              mu-th
-                mu-icon(value=":ra ra-player")
-              mu-th.number
-                mu-icon(value=":ra ra-fire-symbol")
+              mu-th(v-tooltip="translate('ttp_census_position')")
+                i.ra.ra-lg.ra-trophy
+              mu-th(v-tooltip="translate('ttp_census_name')")
+                i.ra.ra-lg.ra-player
+              mu-th.number(v-tooltip="translate('ttp_census_power')")
+                i.ra.ra-lg.ra-fire-symbol
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
               mu-td {{ (current - 1) * size + index + 1 | minimize }}

@@ -7,7 +7,7 @@
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/battle.jpg?alt=media", :alt="translate('lbl_label_battle')")
             .card-info
               .card-text {{ 'lbl_label_attack' | translate }}
-              .card-number
+              .card-number(v-tooltip="translate('ttp_turn_cost')")
                 i.ra.ra-hourglass
                 span {{ turns | minimize }}
           mu-card-text

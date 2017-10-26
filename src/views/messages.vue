@@ -5,7 +5,7 @@
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
           .card-extra
-            .card-number
+            .card-number(v-tooltip="translate('ttp_message_quantity')")
               i.ra.ra-quill-ink
               span {{ messages.length | minimize }}
           .card-info
@@ -14,12 +14,12 @@
         mu-table(:showCheckbox="false", :enableSelectAll="false", :multiSelectable="false", @rowClick="select")
           mu-thead
             mu-tr
-              mu-th
-                mu-icon(value=":ra ra-stopwatch")
-              mu-th
-                mu-icon(value=":ra ra-player")
-              mu-th
-                mu-icon(value=":ra ra-help")
+              mu-th(v-tooltip="translate('ttp_message_time')")
+                .ra.ra-lg.ra-stopwatch
+              mu-th(v-tooltip="translate('ttp_message_name')")
+                .ra.ra-lg.ra-player
+              mu-th(v-tooltip="translate('ttp_message_subject')")
+                .ra.ra-lg.ra-help
           mu-tbody
             mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}

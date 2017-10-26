@@ -3,28 +3,28 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="contract")
+        .card-number(:class="data.color", v-if="contract", v-tooltip="translate('ttp_hero_experience')")
           i.ra.ra-trefoil-lily
           span {{ data.invested | minimize }} / {{ data.experience * data.level | minimize }}
-        .card-number(:class="data.color", v-if="tavern")
+        .card-number(:class="data.color", v-if="tavern", v-tooltip="translate('ttp_gold_bid')")
           i.ra.ra-gold-bar
           span {{ data.bid | minimize }}
       .card-info
-        .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="contract || tavern")
+        .card-text(:class="data.color", v-tooltip="translate('ttp_hero_name')") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="contract || tavern", v-tooltip="translate('ttp_hero_level')")
           i.ra.ra-trophy
           span {{ data.level | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
 
       .card-stats(v-if="info")
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
 

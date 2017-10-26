@@ -3,56 +3,55 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="breaking")
+        .card-number(:class="data.color", v-if="breaking", v-tooltip="translate('ttp_spell_duration')")
           i.ra.ra-hourglass
           span {{ data.remaining | minimize }} / {{ data.duration | minimize }}
-        .card-number(:class="data.color", v-if="investigation")
+        .card-number(:class="data.color", v-if="investigation", v-tooltip="translate('ttp_spell_research')")
           i.ra.ra-hourglass
           span {{ data.invested | minimize }} / {{ data.completion | minimize }}
-        .card-number(:class="data.color", v-if="conjuration")
+        .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
           span {{ data.manaCost | minimize }}
-        .card-number(:class="data.color", v-if="conjuration")
+        .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_turn_cost')")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
-        // .card-number(:class="data.color", v-if="data.quantity != null") {{ data.quantity | minimize }}
       .card-info
-        .card-text(:class="data.color") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.magic != null")
+        .card-text(:class="data.color", v-tooltip="translate('ttp_spell_name')") {{ data.name | translate }}
+        .card-number(:class="data.color", v-if="data.magic != null", v-tooltip="translate('ttp_spell_level')")
           i.ra.ra-trophy
           span {{ data.magic | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
       
       .card-stats(v-if="info")
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
           i.ra.ra-gold-bar
           span {{ data.goldCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_cost')")
           i.ra.ra-double-team
           span {{ data.peopleCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
           span {{ data.manaCost | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_turn_cost')")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_spell_research')")
           i.ra.ra-stopwatch
           span {{ data.research | minimize }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_spell_class')")
           i.ra.ra-lightning-trio
           span {{ data.battle ? 'lbl_stat_battle' : data.summon ? 'lbl_stat_summon' : 'lbl_stat_support' | translate }}
-        mu-chip.double
+        mu-chip.double(v-tooltip="translate('ttp_spell_type')")
           i.ra.ra-cog
           span {{ data.enchantment ? 'lbl_stat_enchantment' : 'lbl_stat_spell' | translate }}
 
