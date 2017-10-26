@@ -75,15 +75,16 @@
         }
       },
       async save () {
-        await database.ref('users').child(store.state.uid).child('defense').set({
-          first: this.defense.first,
-          second: this.defense.second,
-          third: this.defense.third,
-          fourth: this.defense.fourth,
-          fifth: this.defense.fifth,
-          artifact: this.defense.artifact,
-          spell: this.defense.spell
-        })
+        let defense = {
+          first: this.defense.first || null,
+          second: this.defense.second || null,
+          third: this.defense.third || null,
+          fourth: this.defense.fourth || null,
+          fifth: this.defense.fifth || null,
+          artifact: this.defense.artifact || null,
+          spell: this.defense.spell || null
+        }
+        await database.ref('users').child(store.state.uid).child('defense').set(defense)
         store.commit('success', 'lbl_toast_defense_saved')
         this.close()
       },
@@ -118,24 +119,24 @@
         return this.troops
       },
       second () {
-        return this.defense.first
+        return this.first
           ? this.first.filter(t => t['.key'] !== this.defense.first)
-          : []
+          : null
       },
       third () {
-        return this.defense.second
+        return this.second
           ? this.second.filter(t => t['.key'] !== this.defense.second)
-          : []
+          : null
       },
       fourth () {
-        return this.defense.third
+        return this.third
           ? this.third.filter(t => t['.key'] !== this.defense.third)
-          : []
+          : null
       },
       fifth () {
-        return this.defense.fourth
+        return this.fourth
           ? this.fourth.filter(t => t['.key'] !== this.defense.fourth)
-          : []
+          : null
       },
       canFirst () {
         return this.troops && this.troops.length > 0
@@ -153,19 +154,19 @@
         return this.canFourth && this.hasFourth
       },
       hasFirst () {
-        return this.defense.first !== null
+        return this.defense.first || false
       },
       hasSecond () {
-        return this.defense.second !== null
+        return this.defense.second || false
       },
       hasThird () {
-        return this.defense.third !== null
+        return this.defense.third || false
       },
       hasFourth () {
-        return this.defense.fourth !== null
+        return this.defense.fourth || false
       },
       hasFifth () {
-        return this.defense.fifth !== null
+        return this.defense.fifth || false
       }
     }
   }
