@@ -27,7 +27,7 @@ export default {
     lbl_type_fly: 'Volador',
     // texts
     lbl_text_round: 'Ronda',
-    lbl_text_bounty: 'Botín de Guerra',
+    lbl_text_battle_end: 'Fin de la Batalla',
     // spells
     lbl_spell_eclipse: 'Eclipse',
     lbl_spell_eclipse_description: 'Aumenta el Daño en la batalla de todas las unidades aliadas un 1% por Nivel',

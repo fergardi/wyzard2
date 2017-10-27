@@ -581,14 +581,17 @@ export const createNewUser = async (uid, player) => {
 }
 
 // messages
-export const sendUserMessage = (uid, from, color, subject, text) => {
-  console.log(uid, from, color, subject, text)
+export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, terrain = null) => {
   return database.ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
-    timestamp: Date.now(),
     subject: subject,
     text: text,
+    battle: battle,
+    artifact: artifact,
+    gold: gold,
+    terrain: terrain,
+    timestamp: Date.now(),
     read: false
   })
 }
@@ -649,7 +652,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
           let defenderSpell = def.defense && def.defense.counter
           let defenderArtifact = def.defense && def.defense.trap
           let victory = false
-          let report = []
+          let battle = []
           if (defenderArmy.length <= 0) {
             victory = true
           } else {
@@ -829,6 +832,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
             let defenderIndex = 0
             let rounds = Math.min(Math.max(attackerArmy.length, defenderArmy.length), 5)
             for (let i = 0; i < rounds; i++) {
+              let log = {}
               let attackerTroop = attackerArmy[attackerIndex]
               let defenderTroop = defenderArmy[attackerIndex]
               console.log('ROUND ' + parseInt(i + 1) + '/' + rounds)
@@ -839,27 +843,32 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 console.log('Defender casualties', defenderCasualties)
+                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, kills: defenderCasualties }
                 console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
-                console.log('Attacker casualties', attackerCasualties)
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
+                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
+                console.log('Attacker casualties', attackerCasualties)
               } else {
                 console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
+                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
                 console.log('Attacker casualties', attackerCasualties)
                 console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
+                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
                 console.log('Defender casualties', defenderCasualties)
               }
+              battle.push(log)
               if (attackerTroop.quantity <= 0) attackerArmy.splice(attackerIndex, 1)
               if (defenderTroop.quantity <= 0) defenderArmy.splice(defenderIndex, 1)
-              attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.rand() * attackerArmy.length)
-              defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.rand() * defenderArmy.length)
+              attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.random() * attackerArmy.length)
+              defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.random() * defenderArmy.length)
               if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined ) break
             }
             console.log('POWER', attackerPowerLost, defenderPowerLost)
@@ -869,23 +878,32 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 : true
               : false
           }
+          let terrain = null
+          let gold = null
+          let artifact = null
           // result
           if (victory) {
             switch (strategy) {
               case 'conquest': // steal lands
+                terrain = Math.random() * 100
                 break
               case 'pillage': // steal resources
+                gold = Math.random() * 10000
+                artifact = {
+                  name: 'lbl_artifact_mana_potion',
+                  color: 'blue'
+                }
                 break
               case 'siege': // destroy buildings
                 break
             }
             store.commit('info', 'lbl_toast_battle_win')
-            // await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', report)
-            // await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', report)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, terrain)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, terrain)
           } else {
             store.commit('info', 'lbl_toast_battle_lose')
-            // await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', report)
-            // await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', report)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, terrain)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, terrain)
           }
         }
       })

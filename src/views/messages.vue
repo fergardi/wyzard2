@@ -39,31 +39,39 @@
               .card-text {{ selected.subject | translate }}
 
           .scroll
-            mu-card-text.battle(v-if="selected.battle")
+            mu-card-text(v-if="selected.battle")
               .log(v-for="log, index in selected.battle", :key="index")
-                .round {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
-                .attacker(:class="log.attacker.left ? 'left' : 'right'")
+                .info {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
+                .info(:class="log.attacker.left ? 'left' : 'right'")
                   mu-chip(:class="log.attacker.color")
                     span {{ log.attacker.name | translate }}
                     i.ra.ra-crossed-axes
                     span {{ log.defender.name | translate }}
-                .defender(:class="log.defender.left ? 'left' : 'right'")
+                .info(:class="log.defender.left ? 'left' : 'right'")
                   mu-chip(:class="log.defender.color")
                     span {{ log.defender.name | translate }}
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.name | translate }}
-              
-              .log(v-if="selected.bounty")
-                .bounty {{ 'lbl_text_bounty' | translate }}
-                mu-chip(:class="selected.bounty.color")
-                  i.ra.ra-crystals
-                  span {{ selected.bounty.name | translate }}
-
               .log
-                p {{ selected.text | translate }}
-                mu-chip(v-if="selected.relic", :class="selected.relic.color")
+                .info {{ 'lbl_text_battle_end' | translate }}
+              
+            mu-card-text(v-if="selected.artifact")
+              .log
+                mu-chip(:class="selected.artifact.color")
                   i.ra.ra-crystals
-                  span {{ selected.relic.name | translate }}
+                  span {{ selected.artifact.name | translate }}
+
+            mu-card-text(v-if="selected.gold")
+              .log
+                mu-chip
+                  i.ra.ra-gold-bar
+                  span {{ selected.gold | numeric }}
+
+            mu-card-text(v-if="selected.terrain")
+              .log
+                mu-chip
+                  i.ra.ra-tower
+                  span {{ selected.terrain | numeric }}
 
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
@@ -92,43 +100,6 @@
       },
       select (index) {
         this.selected = this.messages[index]
-        this.selected.battle = [
-          {
-            attacker: {
-              left: true,
-              name: 'lbl_unit_goblin',
-              color: 'red',
-              kills: 5
-            },
-            defender: {
-              left: false,
-              name: 'lbl_unit_elf',
-              color: 'green',
-              quantity: 233,
-              kills: 23
-            }
-          },
-          {
-            attacker: {
-              left: false,
-              name: 'lbl_unit_elf',
-              color: 'green',
-              quantity: 233,
-              kills: 9
-            },
-            defender: {
-              left: true,
-              name: 'lbl_unit_goblin',
-              color: 'red',
-              quantity: 23,
-              kills: 6
-            }
-          }
-        ]
-        this.selected.bounty = {
-          name: 'lbl_artifact_mana_potion',
-          color: 'blue'
-        }
         this.dialog = true
       },
       close () {
@@ -157,27 +128,26 @@
       overflow-y auto
       .mu-card-text:first-of-type
         margin-top 10px
-      .battle
-        .log
-          .mu-chip
-            padding 5px 10px
-            i
-              margin 0 5px
-          .attacker
-          .defender
-          .bounty
-            margin 5px
-            display flex
-            align-items center
-            justify-content  center
+      .log
+        .mu-chip
+          padding 5px 10px
+          i
+            margin 0 5px
+        .info
+          margin 5px
+          display flex
+          align-items center
+          justify-content  center
+          &.left
+          &.right
             max-width 90%
             width 90%
             min-width 90%
-            &.left
-              justify-content flex-start
-            &.right
+          &.left
+            justify-content flex-start
+          &.right
+            justify-content flex-end
+            margin-left 10%
+            .mu-chip
               justify-content flex-end
-              margin-left 10%
-              .mu-chip
-                justify-content flex-end
 </style>
