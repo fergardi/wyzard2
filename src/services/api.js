@@ -603,7 +603,7 @@ const rockScissorsPaper = (attacker, defender) => {
   return false
 }
 
-const translate = (label) => {
+const translate = (label) => { // eslint-disable-line
   return i18n[store.state.user ? store.state.user.settings.lang : store.state.settings.lang][label] || label
 }
 
@@ -835,34 +835,34 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               let log = {}
               let attackerTroop = attackerArmy[attackerIndex]
               let defenderTroop = defenderArmy[attackerIndex]
-              console.log('ROUND ' + parseInt(i + 1) + '/' + rounds)
-              console.log(attackerTroop.quantity, translate(attackerTroop.troop.name), translate(attackerTroop.troop.family), translate(attackerTroop.troop.type), '+' + attackerTroop.damage + '% Dmg', '+' + attackerTroop.health + '% Hth', '<== VS ==>', defenderTroop.quantity, translate(defenderTroop.troop.name), translate(defenderTroop.troop.family), translate(defenderTroop.troop.type), '+' + defenderTroop.damage + '% Dmg', '+' + defenderTroop.health + '% Hth')
+              // console.log('ROUND ' + parseInt(i + 1) + '/' + rounds)
+              // console.log(attackerTroop.quantity, translate(attackerTroop.troop.name), translate(attackerTroop.troop.family), translate(attackerTroop.troop.type), '+' + attackerTroop.damage + '% Dmg', '+' + attackerTroop.health + '% Hth', '<== VS ==>', defenderTroop.quantity, translate(defenderTroop.troop.name), translate(defenderTroop.troop.family), translate(defenderTroop.troop.type), '+' + defenderTroop.damage + '% Dmg', '+' + defenderTroop.health + '% Hth')
               if (rockScissorsPaper(attackerTroop.troop.type, defenderTroop.troop.type)) {
-                console.log('ATTACKER => DEFENDER')
+                // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
+                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.troop.quantity, casualties: defenderCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
-                console.log('Defender casualties', defenderCasualties)
-                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, kills: defenderCasualties }
-                console.log('ATTACKER <= DEFENDER')
+                // console.log('Defender casualties', defenderCasualties)
+                // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
+                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.troop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
-                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
-                console.log('Attacker casualties', attackerCasualties)
+                // console.log('Attacker casualties', attackerCasualties)
               } else {
-                console.log('ATTACKER <= DEFENDER')
+                // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
+                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.troop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
-                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
-                console.log('Attacker casualties', attackerCasualties)
-                console.log('ATTACKER => DEFENDER')
+                // console.log('Attacker casualties', attackerCasualties)
+                // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
+                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: attackerTroop.troop.quantity, casualties: attackerCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
-                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, kills: attackerCasualties }
-                console.log('Defender casualties', defenderCasualties)
+                // console.log('Defender casualties', defenderCasualties)
               }
               battle.push(log)
               if (attackerTroop.quantity <= 0) attackerArmy.splice(attackerIndex, 1)
@@ -871,7 +871,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.random() * defenderArmy.length)
               if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined ) break
             }
-            console.log('POWER', attackerPowerLost, defenderPowerLost)
+            // console.log('POWER', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
               ? defenderArmy.length > 0 // if he still has army
                 ? defenderPowerLost > attackerPowerLost * 1.20 // if i lost less than him + 20%

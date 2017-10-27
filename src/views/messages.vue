@@ -15,11 +15,11 @@
           mu-thead
             mu-tr
               mu-th(v-tooltip="translate('ttp_message_time')")
-                .ra.ra-stopwatch
+                .ra.ra-lg.ra-stopwatch
               mu-th(v-tooltip="translate('ttp_message_name')")
-                .ra.ra-player
+                .ra.ra-lg.ra-player
               mu-th(v-tooltip="translate('ttp_message_subject')")
-                .ra.ra-help
+                .ra.ra-lg.ra-help
           mu-tbody
             mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}
@@ -34,9 +34,13 @@
           mu-card-media
             img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
             .card-extra
-              .card-text(:class="selected.color") {{ selected.name | translate }}
+              .card-text
+                i.ra.ra-quill-ink
+                span {{ selected.subject | translate }}
             .card-info
-              .card-text {{ selected.subject | translate }}
+              .card-text(:class="selected.color")
+                i.ra.ra-player
+                span {{ selected.name | translate }}
 
           .scroll
             mu-card-text(v-if="selected.battle")
@@ -44,31 +48,35 @@
                 .info {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
                 .info(:class="log.attacker.left ? 'left' : 'right'")
                   mu-chip(:class="log.attacker.color")
-                    span {{ log.attacker.name | translate }}
                     i.ra.ra-crossed-axes
-                    span {{ log.defender.name | translate }}
+                    span {{ log.attacker.quantity | numeric }}
+                  mu-chip(:class="log.attacker.color")
+                    span {{ log.attacker.name | translate }}
+                  mu-chip(:class="log.attacker.color")
+                    i.ra.ra-death-skull
+                    span {{ log.attacker.kills | translate }}
                 .info(:class="log.defender.left ? 'left' : 'right'")
                   mu-chip(:class="log.defender.color")
+                    i.ra.ra-death-skull
+                    span {{ log.defender.kills | translate }}
+                  mu-chip(:class="log.defender.color")
                     span {{ log.defender.name | translate }}
+                  mu-chip(:class="log.defender.color")
                     i.ra.ra-crossed-axes
-                    span {{ log.attacker.name | translate }}
+                    span {{ log.defender.quantity | numeric }}
               .log
                 .info {{ 'lbl_text_battle_end' | translate }}
               
-            mu-card-text(v-if="selected.artifact")
-              .log
+            mu-card-text(v-if="selected.artifact || selected.gold || selected.terrain")
+              .attachment(v-if="selected.artifact")
                 mu-chip(:class="selected.artifact.color")
                   i.ra.ra-crystals
                   span {{ selected.artifact.name | translate }}
-
-            mu-card-text(v-if="selected.gold")
-              .log
+              .attachment(v-if="selected.gold")
                 mu-chip
                   i.ra.ra-gold-bar
                   span {{ selected.gold | numeric }}
-
-            mu-card-text(v-if="selected.terrain")
-              .log
+              .attachment(v-if="selected.terrain")
                 mu-chip
                   i.ra.ra-tower
                   span {{ selected.terrain | numeric }}
@@ -129,15 +137,16 @@
       .mu-card-text:first-of-type
         margin-top 10px
       .log
+      .attachment
         .mu-chip
           padding 5px 10px
           i
-            margin 0 5px
+            margin-right 5px
         .info
           margin 5px
           display flex
           align-items center
-          justify-content  center
+          justify-content center
           &.left
           &.right
             max-width 90%

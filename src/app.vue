@@ -384,7 +384,7 @@
         margin-top 10px
       .mu-card-text + .mu-card-text
       .mu-card-text + form .mu-card-text
-      .mu-card-text + .mu-card-actions
+      //.mu-card-text + .mu-card-actions
         padding-top 0
       .mu-card-text
         text-align center
@@ -426,6 +426,7 @@
         display flex
         align-items center
         justify-content center
+        border-top 1px solid
         .mu-raised-button
           flex 1 1 0
           color inherit
