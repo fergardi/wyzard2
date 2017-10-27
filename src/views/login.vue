@@ -89,7 +89,7 @@
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/battle') // TODO DEV
+          this.$router.push('/messages') // TODO DEV
         })
         .catch(error => {
           this.error = true

@@ -15,11 +15,11 @@
           mu-thead
             mu-tr
               mu-th(v-tooltip="translate('ttp_message_time')")
-                .ra.ra-lg.ra-stopwatch
+                .ra.ra-stopwatch
               mu-th(v-tooltip="translate('ttp_message_name')")
-                .ra.ra-lg.ra-player
+                .ra.ra-player
               mu-th(v-tooltip="translate('ttp_message_subject')")
-                .ra.ra-lg.ra-help
+                .ra.ra-help
           mu-tbody
             mu-tr(v-for="message, index in paginated", :key="index")
               mu-td {{ message.timestamp | timesince }}
@@ -40,14 +40,30 @@
 
           .scroll
             mu-card-text.battle(v-if="selected.battle")
-              .army
-                .troop(v-for="wave, index in selected.battle", :key="index", :class="wave.location")
-                  .name(:class="wave.color") {{ wave.name | translate }}
+              .log(v-for="log, index in selected.battle", :key="index")
+                .round {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
+                .attacker(:class="log.attacker.left ? 'left' : 'right'")
+                  mu-chip(:class="log.attacker.color")
+                    span {{ log.attacker.name | translate }}
+                    i.ra.ra-crossed-axes
+                    span {{ log.defender.name | translate }}
+                .defender(:class="log.defender.left ? 'left' : 'right'")
+                  mu-chip(:class="log.defender.color")
+                    span {{ log.defender.name | translate }}
+                    i.ra.ra-crossed-axes
+                    span {{ log.attacker.name | translate }}
+              
+              .log(v-if="selected.bounty")
+                .bounty {{ 'lbl_text_bounty' | translate }}
+                mu-chip(:class="selected.bounty.color")
+                  i.ra.ra-crystals
+                  span {{ selected.bounty.name | translate }}
 
-            mu-card-text
-              p {{ selected.text | translate }}
-              p(v-if="selected.attachment")
-                mu-chip {{ selected.attachment.quantity | minimize }}
+              .log
+                p {{ selected.text | translate }}
+                mu-chip(v-if="selected.relic", :class="selected.relic.color")
+                  i.ra.ra-crystals
+                  span {{ selected.relic.name | translate }}
 
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
@@ -76,6 +92,43 @@
       },
       select (index) {
         this.selected = this.messages[index]
+        this.selected.battle = [
+          {
+            attacker: {
+              left: true,
+              name: 'lbl_unit_goblin',
+              color: 'red',
+              kills: 5
+            },
+            defender: {
+              left: false,
+              name: 'lbl_unit_elf',
+              color: 'green',
+              quantity: 233,
+              kills: 23
+            }
+          },
+          {
+            attacker: {
+              left: false,
+              name: 'lbl_unit_elf',
+              color: 'green',
+              quantity: 233,
+              kills: 9
+            },
+            defender: {
+              left: true,
+              name: 'lbl_unit_goblin',
+              color: 'red',
+              quantity: 23,
+              kills: 6
+            }
+          }
+        ]
+        this.selected.bounty = {
+          name: 'lbl_artifact_mana_potion',
+          color: 'blue'
+        }
         this.dialog = true
       },
       close () {
@@ -105,23 +158,26 @@
       .mu-card-text:first-of-type
         margin-top 10px
       .battle
-        .army
-          .troop
-            margin-top 5px
+        .log
+          .mu-chip
+            padding 5px 10px
+            i
+              margin 0 5px
+          .attacker
+          .defender
+          .bounty
+            margin 5px
             display flex
             align-items center
+            justify-content  center
             max-width 90%
-            &.attacker
+            width 90%
+            min-width 90%
+            &.left
+              justify-content flex-start
+            &.right
               justify-content flex-end
               margin-left 10%
-            &.defender
-              justify-content flex-start
-            .name
-            .quantity
-              padding 5px 10px
-              font-weight bold
-              border-radius 5px
-              font-size 0.9em
-              border 1px solid
-              display inline-block
+              .mu-chip
+                justify-content flex-end
 </style>

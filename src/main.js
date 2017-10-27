@@ -23,7 +23,7 @@ Vue.use(VueFire)
 // mapbox
 window.mapboxgl = require('mapbox-gl')
 // helpers
-function minimize (number) {
+const minimize = (number) => {
   return !number
   ? parseFloat(0)
   : Math.abs(number / 1000000000) >= 1
@@ -34,23 +34,23 @@ function minimize (number) {
         ? parseFloat((number / 1000).toFixed(1)).toLocaleString() + ' K'
         : parseFloat(number.toFixed(1)).toLocaleString()
 }
-function numeric (number) {
+const numeric = (number) => {
   return !number
   ? parseFloat(0)
   : parseFloat(number.toFixed(1)).toLocaleString()
 }
-function percentage (number) {
+const percentage = (number) => {
   return !number
   ? parseFloat(0) + ' %'
   : parseFloat(Math.floor(number)) + ' %'
 }
-function timesince (timestamp) {
+const timesince = (timestamp) => {
   return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).fromNow(true)
 }
-function datetime (timestamp) {
+const datetime = (timestamp) => {
   return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).format('LLLL')
 }
-function translate (label) {
+const translate = (label) => {
   return i18n[store.state.user ? store.state.user.settings.lang : store.state.settings.lang][label] || label
 }
 // mixins
@@ -114,7 +114,7 @@ let open = [
   'spells',
   'units'
 ]
-function opened (route) {
+const opened = (route) => {
   return open.includes(route)
 }
 // redirect to home if not logged in

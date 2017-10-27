@@ -25,6 +25,9 @@ export default {
     lbl_type_melee: 'Melee',
     lbl_type_range: 'Distancia',
     lbl_type_fly: 'Volador',
+    // texts
+    lbl_text_round: 'Ronda',
+    lbl_text_bounty: 'Botín de Guerra',
     // spells
     lbl_spell_eclipse: 'Eclipse',
     lbl_spell_eclipse_description: 'Aumenta el Daño en la batalla de todas las unidades aliadas un 1% por Nivel',

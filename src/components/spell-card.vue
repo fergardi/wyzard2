@@ -48,12 +48,12 @@
         mu-chip.double(v-tooltip="translate('ttp_spell_research')")
           i.ra.ra-stopwatch
           span {{ data.research | minimize }}
-        mu-chip.double(v-tooltip="translate('ttp_spell_class')")
-          i.ra.ra-lightning-trio
-          span {{ data.battle ? 'lbl_stat_battle' : data.summon ? 'lbl_stat_summon' : 'lbl_stat_support' | translate }}
         mu-chip.double(v-tooltip="translate('ttp_spell_type')")
           i.ra.ra-cog
           span {{ data.enchantment ? 'lbl_stat_enchantment' : 'lbl_stat_spell' | translate }}
+        mu-chip.double(v-tooltip="translate('ttp_spell_class')")
+          i.ra.ra-lightning-trio
+          span {{ data.battle ? 'lbl_stat_battle' : data.summon ? 'lbl_stat_summon' : 'lbl_stat_support' | translate }}
 
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")

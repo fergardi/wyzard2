@@ -9,7 +9,7 @@
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_artifact_name')") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="!info", v-tooltip="translate('ttp_artifact_quantity')")
-          i.ra.ra-vase
+          i.ra.ra-crystals
           span {{ data.quantity | minimize }}
     mu-card-text
       p.card-description {{ data.description | translate }}
