@@ -581,7 +581,7 @@ export const createNewUser = async (uid, player) => {
 }
 
 // messages
-export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, terrain = null) => {
+export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null) => {
   return database.ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
@@ -590,7 +590,10 @@ export const sendUserMessage = (uid, from, color, subject, text = null, battle =
     battle: battle,
     artifact: artifact,
     gold: gold,
-    terrain: terrain,
+    people: people,
+    kills: kills,
+    conquered: conquered,
+    sieged: sieged,
     timestamp: Date.now(),
     read: false
   })
@@ -651,9 +654,32 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
           }
           let defenderSpell = def.defense && def.defense.counter
           let defenderArtifact = def.defense && def.defense.trap
+          let discovered = false
+          if (strategy === 'pillage') {
+            let defenderTerrain = 0
+            let defenderUnits = 0
+            let attackerUnits = 0
+            defenderArmy.forEach(troop => {
+              defenderUnits += troop.quantity
+            })
+            attackerArmy.forEach(troop => {
+              attackerUnits += troop.quantity
+            })
+            await defender.ref.child('constructions').once('value', constructions => {
+              if (constructions) {
+                constructions.forEach(construction => {
+                  defenderTerrain += construction.val().quantity
+                })
+              }
+            })
+            let discoveryChance1 = Math.max(100, defenderUnits / (defenderTerrain + 1))
+            let discoveryChance2 = Math.max(100, attackerUnits / (defenderTerrain + 1))
+            let discoveryChance = Math.max(discoveryChance1, discoveryChance2)
+            discovered = Math.random() * 100 <= discoveryChance
+          }
           let victory = false
           let battle = []
-          if (defenderArmy.length <= 0) {
+          if (defenderArmy.length <= 0 || (strategy === 'pillage' && !discovered)) {
             victory = true
           } else {
             // blessings
@@ -874,36 +900,69 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
             // console.log('POWER', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
               ? defenderArmy.length > 0 // if he still has army
-                ? defenderPowerLost > attackerPowerLost * 1.20 // if i lost less than him + 20%
+                ? defenderPowerLost > attackerPowerLost * 1.20 // if he loses more than me by > 20%
                 : true
               : false
           }
-          let terrain = null
+          let conquered = null
+          let sieged = null
           let gold = null
+          let people = null
+          let kills = null
           let artifact = null
           // result
           if (victory) {
-            switch (strategy) {
-              case 'conquest': // steal lands
-                terrain = Math.random() * 100
-                break
-              case 'pillage': // steal resources
-                gold = Math.random() * 10000
-                artifact = {
-                  name: 'lbl_artifact_mana_potion',
-                  color: 'blue'
-                }
-                break
-              case 'siege': // destroy buildings
-                break
+            if (strategy === 'pillage') {
+              let attackerUnits = 0
+              attackerArmy.forEach(troop => {
+                attackerUnits += troop.quantity
+              })
+              gold = attackerUnits * 150
+              people = attackerUnits * 50
+              await defender.ref.update({ people: def.people - people, gold: def.gold - gold })
+              await defender.ref.update({ people: atk.people + people, gold: atk.gold + gold })
+            } else {
+              sieged = 0
+              let siege = []
+              let percent = strategy === 'conquest' ? 0.03 : 0.06
+              kills = Math.ceil(def.people * percent)
+              await defender.ref.update({ people: def.people - kills })
+              await defender.ref.child('constructions').once('value', constructions => {
+                constructions.forEach(construction => {
+                  construction.ref.transaction(cons => {
+                    if (cons) {
+                      let quantity = Math.ceil(cons.quantity * percent)
+                      sieged += quantity
+                      siege.push(quantity)
+                      cons.quantity -= quantity
+                    }
+                    return cons
+                  })
+                })
+              })
+              if (strategy === 'conquest') {
+                let index = 0
+                conquered = sieged
+                await attacker.ref.child('constructions').once('value', constructions => {
+                  constructions.forEach(construction => {
+                    construction.ref.transaction(cons => {
+                      if (cons) {
+                        cons.quantity += siege[index]
+                      }
+                      index++
+                      return cons
+                    })
+                  })
+                })
+              }
             }
-            store.commit('info', 'lbl_toast_battle_win')
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, terrain)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, terrain)
+            // store.commit('info', 'lbl_toast_battle_win')
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, people, kills, conquered, sieged)
           } else {
-            store.commit('info', 'lbl_toast_battle_lose')
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, terrain)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, terrain)
+            // store.commit('info', 'lbl_toast_battle_lose')
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, people, kills, conquered, sieged)
           }
         }
       })
