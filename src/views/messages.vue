@@ -42,7 +42,6 @@
                 i.ra.ra-player
                 span {{ selected.name | translate }}
                 
-
           .scroll
             mu-card-text
               p {{ selected.text | translate }}
@@ -98,6 +97,7 @@
                   span {{ selected.artifact.name | translate }}
 
           mu-card-actions
+            mu-raised-button(primary, @click="remove") {{ 'lbl_button_remove' | translate }}
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
 </template>
 
@@ -125,6 +125,11 @@
       select (index) {
         this.selected = this.messages[index]
         this.dialog = true
+      },
+      async remove () {
+        await database.ref('users').child(store.state.uid).child('messages').child(this.selected['.key']).remove()
+        store.commit('success', 'lbl_toast_message_ok')
+        this.close()
       },
       close () {
         this.dialog = false
