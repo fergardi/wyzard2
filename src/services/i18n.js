@@ -25,9 +25,9 @@ export default {
     lbl_type_melee: 'Melee',
     lbl_type_range: 'Distancia',
     lbl_type_fly: 'Volador',
-    // texts
-    lbl_text_round: 'Ronda',
-    lbl_text_battle_end: 'Fin de la Batalla',
+    // battle
+    lbl_battle_round: 'Ronda',
+    lbl_battle_finish: 'Fin de Batalla',
     // spells
     lbl_spell_eclipse: 'Eclipse',
     lbl_spell_eclipse_description: 'Aumenta el Daño en la batalla de todas las unidades aliadas un 1% por Nivel',
@@ -743,7 +743,7 @@ export default {
     ttp_kingdom_mana: 'Maná',
     ttp_kingdom_terrain: 'Terreno',
     ttp_kingdom_power: 'Poder',
-    // firebase error
+    // firebase
     'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',
     'auth/registration-ok': 'Registrado correctamente',
@@ -754,7 +754,8 @@ export default {
     'auth/email-already-exists': 'Ese email ya existe',
     'auth/email-already-in-use': 'Ese email ya existe',
     'auth/password-insecure': 'Contraseña insegura',
-    'auth/password-mismatch': 'Contraseñas incoherentes',
+    'auth/password-mismatch': 'Contraseñas incoherentes'// ,
+    /*
     // countries
     lbl_country_afghanistan: '',
     lbl_country_angola: '',
@@ -936,6 +937,7 @@ export default {
     lbl_country_south_africa: '',
     lbl_country_zambia: '',
     lbl_country_zimbabwe: ''
+    */
   },
   en: {
   },

@@ -620,6 +620,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
     if (attacker) {
       await database.ref('users').child(target).once('value', async defender => {
         if (defender) {
+          let report = []
           let atk = attacker.val()
           let def = defender.val()
           let attackerArmy = []
@@ -675,7 +676,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
             discovered = Math.random() * 100 <= discoveryChance
           }
           let victory = false
-          let battle = []
           if (defenderArmy.length <= 0 || (strategy === 'lbl_strategy_pillage' && !discovered)) {
             victory = true
           } else {
@@ -887,7 +887,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
               }
-              battle.push(log)
+              report.push(log)
               if (attackerTroop.quantity <= 0) attackerArmy.splice(attackerIndex, 1)
               if (defenderTroop.quantity <= 0) defenderArmy.splice(defenderIndex, 1)
               attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.random() * attackerArmy.length)
@@ -944,11 +944,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 })
               }
             }
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy, battle, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy, battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy, report, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy, report, artifact, gold, people, kills, conquered, sieged)
           } else {
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy, battle, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy, battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy, report, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy, report, artifact, gold, people, kills, conquered, sieged)
           }
         }
       })

@@ -21,11 +21,16 @@
               mu-th(v-tooltip="translate('ttp_message_subject')")
                 .ra.ra-lg.ra-help
           mu-tbody
-            mu-tr(v-for="message, index in paginated", :key="index")
-              mu-td {{ message.timestamp | timesince }}
-              mu-td
-                mu-chip(:class="message.color") {{ message.name | translate }}
-              mu-td {{ message.subject | translate }}
+            template(v-if="paginated.length")
+              mu-tr(v-for="message, index in paginated", :key="index")
+                mu-td {{ message.timestamp | timesince }}
+                mu-td
+                  mu-chip(:class="message.color") {{ message.name | translate }}
+                mu-td {{ message.subject | translate }}
+            mu-tr(v-else)
+              mu-td -
+              mu-td -
+              mu-td -
           mu-tfoot(slot="footer")
             mu-pagination(:total="total", :current="current", @pageChange="move", :pageSize="size")
 
@@ -48,7 +53,7 @@
 
             mu-card-text(v-if="selected.battle")
               .log(v-for="log, index in selected.battle", :key="index")
-                .info {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
+                .info {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
                 .info(:class="log.attacker.left ? 'left' : 'right'")
                   mu-chip(:class="log.attacker.color")
                     i.ra.ra-crossed-axes
@@ -68,7 +73,7 @@
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
               .log
-                .info {{ 'lbl_text_battle_end' | translate }}
+                .info {{ 'lbl_battle_finish' | translate }}
               
             mu-card-text.attachments
               .attachment(v-if="selected.gold")
@@ -123,8 +128,10 @@
         this.current = page
       },
       select (index) {
-        this.selected = this.messages[index]
-        this.dialog = true
+        if (index && this.messages[index] !== undefined) {
+          this.selected = this.messages[index]
+          this.dialog = true
+        }
       },
       async remove () {
         await database.ref('users').child(store.state.uid).child('messages').child(this.selected['.key']).remove()
