@@ -348,6 +348,7 @@
           z-index 5000
           .card-text
           .card-number
+            position relative
             border-radius $radius
             text-align center
             border 1px solid
@@ -359,9 +360,18 @@
               margin-left 3px
             span + i
               margin-right 3px
+            &:before
+              content ""
+              position absolute
+              top 0
+              bottom 0
+              left 0
+              right 0
+              z-index -1
+              box-shadow 0 0 30px black
           .card-text + .card-number
           .card-number + .card-number
-            margin-left 3px
+            margin-left 5px
           .card-text
             min-width 5%
             width auto
@@ -369,7 +379,7 @@
             min-width 5%
             with auto
         .card-extra
-          bottom 20px
+          bottom 23px
           .card-text
             max-width 45%
           .card-number
@@ -380,8 +390,8 @@
             max-width 75%
           .card-number
             max-width 20%
-      .mu-card-media + .mu-card-text
-        margin-top 10px
+      //.mu-card-media + .mu-card-text
+        //margin-top 10px
       .mu-card-text + .mu-card-text
       .mu-card-text + form .mu-card-text
       //.mu-card-text + .mu-card-actions
