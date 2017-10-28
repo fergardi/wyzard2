@@ -5,14 +5,14 @@
     .toast
       mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="toast.color", @close="untoast")
 
-    mu-paper
+    mu-paper(:zDepth="6")
       mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
         mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
         mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!settings.navbar ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
         mu-icon-button.logout(icon=":ra ra-key", :slot="!settings.navbar ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
-      mu-paper
+      mu-paper(:zDepth="6")
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
           mu-icon-button.settings(icon=":ra ra-gears", :slot="!settings.navbar ? 'right' : 'left'", to="settings", @click="toggle")
@@ -381,9 +381,9 @@
         .card-extra
           bottom 23px
           .card-text
-            max-width 45%
+            max-width 60%
           .card-number
-            max-width 45%
+            max-width 60%
         .card-info
           bottom -16px
           .card-text
@@ -397,6 +397,8 @@
       //.mu-card-text + .mu-card-actions
         padding-top 0
       .mu-card-text
+        font-style italic
+        font-size 0.9em
         text-align center
         .mu-select-field
         .mu-text-field
@@ -405,9 +407,6 @@
           color inherit
           .mu-text-field-content
             color inherit
-        p
-          font-style italic
-          font-size 0.9em
         .card-stats
           display flex
           justify-content center

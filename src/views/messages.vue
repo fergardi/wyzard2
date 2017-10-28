@@ -41,8 +41,12 @@
               .card-text(:class="selected.color")
                 i.ra.ra-player
                 span {{ selected.name | translate }}
+                
 
           .scroll
+            mu-card-text
+              p {{ selected.text | translate }}
+
             mu-card-text(v-if="selected.battle")
               .log(v-for="log, index in selected.battle", :key="index")
                 .info {{ 'lbl_text_round' | translate }}  {{ index + 1 | numeric }}
@@ -54,32 +58,44 @@
                     span {{ log.attacker.name | translate }}
                   mu-chip(:class="log.attacker.color")
                     i.ra.ra-death-skull
-                    span {{ log.attacker.kills | translate }}
+                    span {{ log.attacker.casualties | translate }}
                 .info(:class="log.defender.left ? 'left' : 'right'")
-                  mu-chip(:class="log.defender.color")
-                    i.ra.ra-death-skull
-                    span {{ log.defender.kills | translate }}
-                  mu-chip(:class="log.defender.color")
-                    span {{ log.defender.name | translate }}
                   mu-chip(:class="log.defender.color")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
+                  mu-chip(:class="log.defender.color")
+                    span {{ log.defender.name | translate }}
+                  mu-chip(:class="log.defender.color")
+                    i.ra.ra-death-skull
+                    span {{ log.defender.casualties | translate }}
               .log
                 .info {{ 'lbl_text_battle_end' | translate }}
               
-            mu-card-text(v-if="selected.artifact || selected.gold || selected.terrain")
-              .attachment(v-if="selected.artifact")
-                mu-chip(:class="selected.artifact.color")
-                  i.ra.ra-crystals
-                  span {{ selected.artifact.name | translate }}
+            mu-card-text.attachments
               .attachment(v-if="selected.gold")
                 mu-chip
                   i.ra.ra-gold-bar
                   span {{ selected.gold | numeric }}
-              .attachment(v-if="selected.terrain")
+              .attachment(v-if="selected.people")
+                mu-chip
+                  i.ra.ra-double-team
+                  span {{ selected.people | numeric }}
+              .attachment(v-if="selected.kills")
+                mu-chip
+                  i.ra.ra-decapitation
+                  span {{ selected.kills | numeric }}
+              .attachment(v-if="selected.conquered")
                 mu-chip
                   i.ra.ra-tower
-                  span {{ selected.terrain | numeric }}
+                  span {{ selected.conquered | numeric }}
+              .attachment(v-if="selected.sieged")
+                mu-chip
+                  i.ra.ra-fire
+                  span {{ selected.sieged | numeric }}
+              .attachment(v-if="selected.artifact")
+                mu-chip(:class="selected.artifact.color")
+                  i.ra.ra-crystals
+                  span {{ selected.artifact.name | translate }}
 
           mu-card-actions
             mu-raised-button(primary, @click="close") {{ 'lbl_button_close' | translate }}
@@ -136,6 +152,10 @@
       overflow-y auto
       .mu-card-text:first-of-type
         margin-top 10px
+      .attachments
+        display flex
+        justify-content center
+        align-items center
       .log
       .attachment
         .mu-chip

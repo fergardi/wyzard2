@@ -19,7 +19,7 @@
 
             .form-row
               mu-select-field(v-model="strategy", :label="translate('lbl_label_strategy')", :fullWidth="true", required)
-                mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy.key", :title="translate(strategy.value)")
+                mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy", :title="translate(strategy)")
             
             .form-row
               mu-text-field(type="number", v-model.number="army.first.quantity", :min="army.first.troop ? 1 : 0", :max="army.first.troop ? army.first.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
@@ -96,11 +96,11 @@
           }
         },
         strategies: [
-          { key: 'conquest', value: 'lbl_strategy_conquest' },
-          { key: 'siege', value: 'lbl_strategy_siege' },
-          { key: 'pillage', value: 'lbl_strategy_pillage' }
+          'lbl_strategy_conquest',
+          'lbl_strategy_siege',
+          'lbl_strategy_pillage'
         ],
-        strategy: 'conquest',
+        strategy: 'lbl_strategy_conquest',
         spell: null,
         artifact: null,
         search: '',
@@ -136,10 +136,10 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
-            // await checkTurnMaintenances(store.state.uid, this.turns)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
+            await checkTurnMaintenances(store.state.uid, this.turns)
             // await updateGeneralStatus(store.state.uid)
-            // await updateGeneralStatus(this.target)
+            updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
             this.close()
             // this.reset()
@@ -261,6 +261,7 @@
       align-items center
       .mu-text-field
         width 25%
+        min-width 25%
       .mu-text-field + .mu-select-field
         margin-left 5px
         width 100%

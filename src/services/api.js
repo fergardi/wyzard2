@@ -614,10 +614,8 @@ const translate = (label) => { // eslint-disable-line
 export const battlePlayerVersusEnvironment = (uid, country) => {
 }
 
-/* eslint-disable */
 // battle pvp
 export const battlePlayerVersusPlayer = async (uid, target, strategy, army, attackerSpell, attackerArtifact) => {
-  // console.log(uid, target, strategy, army, attackerSpell, attackerArtifact)
   return database.ref('users').child(uid).once('value', async attacker => {
     if (attacker) {
       await database.ref('users').child(target).once('value', async defender => {
@@ -639,7 +637,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
             if (def.defense.fourth.troop) defenderArmy.push({ troop: def.defense.fourth.troop, quantity: def.defense.fourth.troop.quantity })
             if (def.defense.fifth.troop) defenderArmy.push({ troop: def.defense.fifth.troop, quantity: def.defense.fifth.troop.quantity })
           } else {
-            let index = 0
             await defender.ref.child('troops').limitToFirst(5).once('value', troops => {
               if (troops) {
                 troops.forEach(unit => {
@@ -652,10 +649,10 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               }
             })
           }
-          let defenderSpell = def.defense && def.defense.counter
-          let defenderArtifact = def.defense && def.defense.trap
+          // let defenderSpell = def.defense && def.defense.counter
+          // let defenderArtifact = def.defense && def.defense.trap
           let discovered = false
-          if (strategy === 'pillage') {
+          if (strategy === 'lbl_strategy_pillage') {
             let defenderTerrain = 0
             let defenderUnits = 0
             let attackerUnits = 0
@@ -672,14 +669,14 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 })
               }
             })
-            let discoveryChance1 = Math.max(100, defenderUnits / (defenderTerrain + 1))
-            let discoveryChance2 = Math.max(100, attackerUnits / (defenderTerrain + 1))
+            let discoveryChance1 = Math.min(100, defenderUnits / (defenderTerrain + 1))
+            let discoveryChance2 = Math.min(100, attackerUnits / (defenderTerrain + 1))
             let discoveryChance = Math.max(discoveryChance1, discoveryChance2)
             discovered = Math.random() * 100 <= discoveryChance
           }
           let victory = false
           let battle = []
-          if (defenderArmy.length <= 0 || (strategy === 'pillage' && !discovered)) {
+          if (defenderArmy.length <= 0 || (strategy === 'lbl_strategy_pillage' && !discovered)) {
             victory = true
           } else {
             // blessings
@@ -797,24 +794,24 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                   wave.health = attackerGodHealthBonus + attackerElementalHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerBeastDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerBeastHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerHumanDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerHumanHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerCelestialDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerCelestialHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerDemonDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerDemonHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerUndeadDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerUndeadHealthBonus
                   break
               }
             })
@@ -829,24 +826,24 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                   wave.health = defenderGodHealthBonus + defenderElementalHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderBeastDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderBeastHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderHumanDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderHumanHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderCelestialDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderCelestialHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderDemonDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderDemonHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderUndeadDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderUndeadHealthBonus
                   break
               }
             })
@@ -866,26 +863,26 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               if (rockScissorsPaper(attackerTroop.troop.type, defenderTroop.troop.type)) {
                 // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
-                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.troop.quantity, casualties: defenderCasualties }
+                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.quantity, casualties: defenderCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
                 // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
-                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.troop.quantity, casualties: attackerCasualties }
+                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
                 // console.log('Attacker casualties', attackerCasualties)
               } else {
                 // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
-                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.troop.quantity, casualties: attackerCasualties }
+                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
                 // console.log('Attacker casualties', attackerCasualties)
                 // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
-                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: attackerTroop.troop.quantity, casualties: attackerCasualties }
+                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: attackerTroop.quantity, casualties: attackerCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
@@ -895,7 +892,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               if (defenderTroop.quantity <= 0) defenderArmy.splice(defenderIndex, 1)
               attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.random() * attackerArmy.length)
               defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.random() * defenderArmy.length)
-              if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined ) break
+              if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined) break
             }
             // console.log('POWER', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
@@ -912,57 +909,46 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
           let artifact = null
           // result
           if (victory) {
-            if (strategy === 'pillage') {
+            if (strategy === 'lbl_strategy_pillage') {
               let attackerUnits = 0
               attackerArmy.forEach(troop => {
                 attackerUnits += troop.quantity
               })
-              gold = attackerUnits * 150
-              people = attackerUnits * 50
+              gold = Math.min(def.gold, attackerUnits * 150)
+              people = Math.min(def.people, attackerUnits * 50)
               await defender.ref.update({ people: def.people - people, gold: def.gold - gold })
               await defender.ref.update({ people: atk.people + people, gold: atk.gold + gold })
             } else {
+              let percent = strategy === 'lbl_strategy_conquest' ? 0.03 : 0.06
               sieged = 0
               let siege = []
-              let percent = strategy === 'conquest' ? 0.03 : 0.06
-              kills = Math.ceil(def.people * percent)
+              kills = Math.floor(def.people * percent)
               await defender.ref.update({ people: def.people - kills })
               await defender.ref.child('constructions').once('value', constructions => {
                 constructions.forEach(construction => {
-                  construction.ref.transaction(cons => {
-                    if (cons) {
-                      let quantity = Math.ceil(cons.quantity * percent)
-                      sieged += quantity
-                      siege.push(quantity)
-                      cons.quantity -= quantity
-                    }
-                    return cons
-                  })
+                  let checkTerrainProductionDestruction = construction.val()
+                  let quantity = Math.floor(checkTerrainProductionDestruction.quantity * percent)
+                  construction.ref.update({ quantity: checkTerrainProductionDestruction.quantity - quantity })
+                  sieged += quantity
+                  siege.push(quantity)
                 })
               })
-              if (strategy === 'conquest') {
+              if (strategy === 'lbl_strategy_conquest') {
                 let index = 0
                 conquered = sieged
                 await attacker.ref.child('constructions').once('value', constructions => {
                   constructions.forEach(construction => {
-                    construction.ref.transaction(cons => {
-                      if (cons) {
-                        cons.quantity += siege[index]
-                      }
-                      index++
-                      return cons
-                    })
+                    let cons = construction.val()
+                    construction.ref.update({ quantity: cons.quantity - siege[index] })
                   })
                 })
               }
             }
-            // store.commit('info', 'lbl_toast_battle_win')
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy, battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy, battle, artifact, gold, people, kills, conquered, sieged)
           } else {
-            // store.commit('info', 'lbl_toast_battle_lose')
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', 'lbl_message_battle_lose', battle, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', 'lbl_message_battle_win', battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy, battle, artifact, gold, people, kills, conquered, sieged)
+            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy, battle, artifact, gold, people, kills, conquered, sieged)
           }
         }
       })
