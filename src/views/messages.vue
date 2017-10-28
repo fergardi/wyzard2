@@ -32,7 +32,7 @@
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
           mu-card-media
-            img(src="http://i.jeuxactus.com/datas/jeux/e/m/empire-total-war/xl/empire-total-war-4e2610bfb95fd.jpg")
+            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/message.jpg?alt=media")
             .card-extra
               .card-text
                 i.ra.ra-quill-ink

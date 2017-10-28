@@ -23,13 +23,13 @@ import meditate from '@/views/meditate'
 import auction from '@/views/auction'
 import taxes from '@/views/taxes'
 import dispel from '@/views/dispel'
-import quests from '@/views/quests'
 import troops from '@/views/troops'
 import contracts from '@/views/contracts'
 import battle from '@/views/battle'
 import defense from '@/views/defense'
 import help from '@/views/help'
 import login from '@/views/login'
+// import quests from '@/views/quests'
 // import places from '@/views/knowledge/places'
 // import world from '@/views/world'
 
@@ -62,12 +62,12 @@ export default new Router({
     { path: '/contracts', name: 'contracts', component: contracts },
     { path: '/taxes', name: 'taxes', component: taxes },
     { path: '/dispel', name: 'dispel', component: dispel },
-    { path: '/quests', name: 'quests', component: quests },
     { path: '/troops', name: 'troops', component: troops },
     { path: '/battle', name: 'battle', component: battle },
     { path: '/defense', name: 'defense', component: defense },
     { path: '/help', name: 'help', component: help },
     { path: '/relics', name: 'relics', component: relics }// ,
+    // { path: '/quests', name: 'quests', component: quests },
     // { path: '/world', name: 'world', component: world },
     // { path: '/places', name: 'places', component: places }
   ]
