@@ -16,6 +16,8 @@ let people = 0
 let mana = 0
 let power = 0
 let terrain = 0
+let magicalDefense = 0
+let physicalDefense = 0
 let disbanded = false
 let deserted = false
 let dispeled = false
@@ -108,6 +110,10 @@ const checkBuildingsProductionMaintenance = (uid) => {
         power += building.quantity * building.power
         if (building.name === 'lbl_building_terrain') {
           terrain = building.quantity
+        } else if (building.name === 'lbl_building_fortress') {
+          physicalDefense = Math.floor(building.quantity / building.physicalDefense)
+        } else if (building.name === 'lbl_building_barrier') {
+          magicalDefense = Math.floor(building.quantity / building.magicalDefense)
         }
         // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
       })
@@ -131,6 +137,8 @@ const checkHeroesProductionMaintenance = (uid) => {
           goldPerTurn += hero.level * (hero.goldProduction - hero.goldMaintenance)
           peoplePerTurn += hero.level * (hero.peopleProduction - hero.peopleMaintenance)
           manaPerTurn += hero.level * (hero.manaProduction - hero.manaMaintenance)
+          magicalDefense += hero.level * hero.magicalDefense
+          physicalDefense += hero.level * hero.physicalDefense
           power += hero.level * hero.power
           // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
           return hero
@@ -150,6 +158,8 @@ const checkEnchantmentsProduction = (uid) => {
         goldPerTurn += spell.magic * spell.goldProduction
         peoplePerTurn += spell.magic * spell.peopleProduction
         manaPerTurn += spell.magic * spell.manaProduction
+        magicalDefense += spell.magic * spell.magicalDefense
+        physicalDefense += spell.magic * spell.physicalDefense
         if (spell.source === spell.target === uid) {
           power += spell.magic * spell.power
         }
@@ -262,6 +272,8 @@ const checkEnchantmentsAffordance = (uid) => {
             peoplePerTurn -= spell.magic * (spell.peopleProduction - spell.peopleMaintenance)
             manaPerTurn -= spell.magic * (spell.manaProduction - spell.manaMaintenance)
             terrainPerTurn -= spell.magic * Math.abs(terrainPerTurn)
+            magicalDefense -= spell.magic * spell.magicalDefense
+            physicalDefense -= spell.magic * spell.physicalDefense
             power -= spell.magic * spell.power
           }
           dispeled = true
@@ -286,6 +298,8 @@ const checkHeroesAffordance = (uid) => {
           goldPerTurn -= hero.level * (hero.goldProduction - hero.goldMaintenance)
           peoplePerTurn -= hero.level * (hero.peopleProduction - hero.peopleMaintenance)
           manaPerTurn -= hero.level * (hero.manaProduction - hero.manaMaintenance)
+          magicalDefense -= hero.level * hero.magicalDefense
+          physicalDefense -= hero.level * hero.physicalDefense
           power -= hero.level * hero.power
           deserted = true
           contract.ref.remove()
@@ -314,6 +328,8 @@ const checkGeneralStatus = (uid) => {
       user.manaCap = manaCap
       user.armyCap = armyCap
       user.terrain = terrain
+      user.magicalDefense = magicalDefense
+      user.physicalDefense = physicalDefense
       user.turns--
       gold = user.gold
       people = user.people
@@ -394,6 +410,8 @@ export const resetAuxVariables = () => {
   power = 0
   army = 0
   terrain = 0
+  magicalDefense = 0
+  physicalDefense = 0
   dispeled = false
   deserted = false
   disbanded = false
@@ -424,6 +442,8 @@ export const updateGeneralStatus = async (uid) => {
       user.people = Math.min(user.peopleCap, user.people)
       user.mana = Math.min(user.manaCap, user.mana)
       user.terrain = terrain
+      user.magicalDefense = magicalDefense
+      user.physicalDefense = physicalDefense
     }
     return user
   })
@@ -615,7 +635,7 @@ export const battlePlayerVersusEnvironment = (uid, country) => {
 }
 
 // battle pvp
-export const battlePlayerVersusPlayer = async (uid, target, strategy, army, attackerSpell, attackerArtifact) => {
+export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spell, artifact) => {
   return database.ref('users').child(uid).once('value', async attacker => {
     if (attacker) {
       await database.ref('users').child(target).once('value', async defender => {
@@ -650,8 +670,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
               }
             })
           }
-          // let defenderSpell = def.defense && def.defense.counter
-          // let defenderArtifact = def.defense && def.defense.trap
           let discovered = false
           if (strategy === 'lbl_strategy_pillage') {
             let defenderTerrain = 0
@@ -783,6 +801,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, atta
                 }
               })
             }
+            // artifacts and spells
+            // let defenderSpell = def.defense && def.defense.counter
+            // let defenderArtifact = def.defense && def.defense.trap
+            // let attackerSpell = spell
+            // let attackerArtifact = artifact
             attackerArmy.forEach(wave => {
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':

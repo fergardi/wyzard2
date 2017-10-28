@@ -36,6 +36,7 @@
         mu-chip.double(v-tooltip="translate('ttp_unit_type')")
           i.ra.ra-emerald
           span {{ data.type | translate }}
+      //
         mu-chip.simple(v-tooltip="translate('ttp_unit_skill')")
           i.ra.ra-sapphire
           span {{ data.evasion ? 'lbl_stat_evasion' : data.frenzy ? 'lbl_stat_frenzy' : data.resurrection ? 'lbl_stat_resurrection' : data.counter ? 'lbl_stat_counter' : data.healing ? 'lbl_stat_healing' : 'lbl_stat_none' | translate }}

@@ -136,10 +136,10 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
+            await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
             await checkTurnMaintenances(store.state.uid, this.turns)
-            // await updateGeneralStatus(store.state.uid)
-            updateGeneralStatus(this.target)
+            await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
             this.close()
             // this.reset()
@@ -188,7 +188,7 @@
           : this.users.filter(u => u['.key'] !== store.state.uid).map(u => { return { text: u.name, value: u['.key'] } })
       },
       canAttack () {
-        return this.hasTurns && this.target !== null && this.hasFirst
+        return this.hasTurns && this.hasMana && this.hasQuantity && this.target !== null && this.hasFirst
       },
       first () {
         return this.troops
@@ -245,6 +245,16 @@
       },
       hasTurns () {
         return this.turns <= this.user.turns
+      },
+      hasMana () {
+        return this.spell
+          ? this.spell.manaCost <= this.user.mana
+          : true
+      },
+      hasQuantity () {
+        return this.artifact
+          ? this.artifact.quantity > 0
+          : true
       },
       user () {
         return store.state.user
