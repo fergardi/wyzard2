@@ -136,14 +136,14 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
-            if (this.spell) await database.ref('users').child(store.state.uid).update({ mana: this.user.mana - this.spell.manaCost })
             await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
             // await checkTurnMaintenances(store.state.uid, this.turns)
             await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
-            this.close()
             // this.reset()
+            this.close()
+            this.$router.push('/messages')
           } else {
             store.commit('error', 'lbl_toast_battle_error')
             this.close()
@@ -163,7 +163,7 @@
         this.spell = null
         this.artifact = null
         this.target = null
-        this.strategy = 'conquest'
+        this.strategy = 'lbl_strategy_conquest'
         this.army.first.troop = null
         this.army.first.quantity = 0
         this.army.second.troop = null

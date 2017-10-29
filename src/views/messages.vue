@@ -57,22 +57,36 @@
             mu-card-text(v-if="selected.battle")
               .log(v-for="log, index in selected.battle", :key="index")
                 .info.title {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
-                .info(:class="log.attacker.left ? 'left' : 'right'")
-                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
+                .info(v-if="log.attacker", :class="log.attacker.left ? 'left' : 'right'")
+                  mu-chip(v-if="log.attacker.quantity", :class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.quantity | numeric }}
-                  mu-chip.ellipsis(:class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
-                    span {{ log.attacker.name | translate }}
-                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
+                  mu-chip(v-if="log.attacker.level", :class="log.attacker.color", v-tooltip="translate('ttp_spell_level')")
+                    i.ra.ra-trophy
+                    span {{ log.attacker.level | numeric }}
+                  mu-chip.ellipsis(v-if="log.attacker.unit", :class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
+                    span {{ log.attacker.unit | translate }}
+                  mu-chip.ellipsis(v-if="log.attacker.spell", :class="log.attacker.color", v-tooltip="translate('ttp_spell_name')")
+                    span {{ log.attacker.spell | translate }}
+                  mu-chip.ellipsis(v-if="log.attacker.artifact", :class="log.attacker.color", v-tooltip="translate('ttp_artifact_name')")
+                    span {{ log.attacker.artifact | translate }}
+                  mu-chip(v-if="log.attacker.casualties", :class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.attacker.casualties | translate }}
-                .info(:class="log.defender.left ? 'left' : 'right'")
-                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
+                .info(v-if="log.defender", :class="log.defender.left ? 'left' : 'right'")
+                  mu-chip(v-if="log.defender.quantity", :class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
-                  mu-chip.ellipsis(:class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
-                    span {{ log.defender.name | translate }}
-                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
+                  mu-chip(v-if="log.defender.level", :class="log.defender.color", v-tooltip="translate('ttp_spell_level')")
+                    i.ra.ra-trophy
+                    span {{ log.defender.level | numeric }}
+                  mu-chip.ellipsis(v-if="log.defender.unit", :class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
+                    span {{ log.defender.unit | translate }}
+                  mu-chip.ellipsis(v-if="log.defender.spell", :class="log.defender.color", v-tooltip="translate('ttp_spell_name')")
+                    span {{ log.defender.spell | translate }}
+                  mu-chip.ellipsis(v-if="log.defender.artifact", :class="log.defender.color", v-tooltip="translate('ttp_artifact_name')")
+                    span {{ log.defender.artifact | translate }}
+                  mu-chip(v-if="log.defender.casualties", :class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
               .log
@@ -97,7 +111,7 @@
                   span {{ selected.conquered | numeric }}
               .attachment(v-if="selected.sieged", v-tooltip="translate('ttp_message_sieged')")
                 mu-chip
-                  i.ra.ra-fire
+                  i.ra.ra-demolish
                   span {{ selected.sieged | numeric }}
               .attachment(v-if="selected.artifact", v-tooltip="translate('ttp_message_artifact')")
                 mu-chip(:class="selected.artifact.color")

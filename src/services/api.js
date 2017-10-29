@@ -631,6 +631,8 @@ export const battlePlayerVersusEnvironment = (uid, country) => {
 export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spell, artifact) => {
   return database.ref('users').child(uid).once('value', async attacker => {
     if (attacker) {
+      let attackerArtifact = artifact
+      let attackerSpell = spell
       await database.ref('users').child(target).once('value', async defender => {
         if (defender) {
           let report = []
@@ -729,7 +731,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let attackerUndeadDamageBonus = 0
             let attackerUndeadHealthBonus = 0
             if (atk.contracts) {
-              attacker.ref.child('contracts').once('value', contracts => {
+              await attacker.ref.child('contracts').once('value', contracts => {
                 if (contracts) {
                   contracts.forEach(contract => {
                     let attackerContract = contract.val()
@@ -774,7 +776,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderUndeadDamageBonus = 0
             let defenderUndeadHealthBonus = 0
             if (def.contracts) {
-              defender.ref.child('contracts').once('value', contracts => {
+              await defender.ref.child('contracts').once('value', contracts => {
                 if (contracts) {
                   contracts.forEach(contract => {
                     let defenderContract = contract.val()
@@ -806,29 +808,39 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             }
             // counters
             let defenderSpell = def.defense && def.defense.counter
-            let attackerSpell = spell
             if (defenderSpell) {
               if (defenderSpell.counter > 0 && defenderSpell.manaCost <= def.mana) {
-                defender.ref.update({ mana: def.mana - defenderSpell.manaCost })
                 let counterChance = defenderSpell.counter * def.magic
                 if (Math.random() * 100 <= counterChance) {
+                  report.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
                   attackerSpell = null
                 }
               }
             }
             if (attackerSpell) {
               if (attackerSpell.counter > 0) {
-                let counterChance = attackerSpell.counter * atk.magic
-                if (Math.random() * 100 <= counterChance) {
-                  defenderSpell = null
+                let spellChance = Math.random() * 100
+                if (spellChance > def.magicalDefense) {
+                  let counterChance = attackerSpell.counter * atk.magic
+                  if (Math.random() * 100 <= counterChance) {
+                    report.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                    defenderSpell = null
+                  }
                 }
               }
             }
             // spells
+            if (defenderSpell) {
+              await database.ref('users').child(target).update({ mana: def.mana - defenderSpell.manaCost })
+              report.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
+              // TODO
+            }
             if (attackerSpell) {
-              if (attackerSpell.enchantment) {
-                let enchantmentChance = Math.random() * 100
-                if (enchantmentChance > def.magicalDefense) {
+              let enchantmentChance = Math.random() * 100
+              if (enchantmentChance > def.magicalDefense) {
+                await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
+                report.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                if (attackerSpell.enchantment) {
                   let enchantment = attackerSpell
                   enchantment.target = target
                   enchantment.targetColor = def.color
@@ -842,72 +854,93 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   delete enchantment['.key']
                   await database.ref('enchantments').push(enchantment)
                 }
+              } else {
+                // TODO
               }
             }
             // artifacts
-            // let defenderArtifact = def.defense && def.defense.trap
-            // let attackerArtifact = artifact
+            let defenderArtifactDamageBonus = 0
+            let defenderArtifactHealthBonus = 0
+            let rounds = Math.min(Math.max(attackerArmy.length, defenderArmy.length), 5)
+            let defenderArtifact = def.defense && def.defense.trap
+            if (defenderArtifact) {
+              defenderArtifactDamageBonus += defenderArtifact.damage
+              defenderArtifactHealthBonus += defenderArtifact.health
+              // rounds += defenderArtifact.rounds
+              report.push({ defender: { left: false, artifact: defenderArtifact.name, color: defenderArtifact.color } })
+            }
+            let attackerArtifactDamageBonus = 0
+            let attackerArtifactHealthBonus = 0
+            if (attackerArtifact) {
+              let artifactChance = Math.random() * 100
+              if (artifactChance > def.magicalDefense) {
+                attackerArtifactDamageBonus += attackerArtifact.damage
+                attackerArtifactHealthBonus += attackerArtifact.health
+                // rounds += attackerArtifact.rounds
+                report.push({ attacker: { left: true, artifact: attackerArtifact.name, color: attackerArtifact.color } })
+              }
+            }
             attackerArmy.forEach(wave => {
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_elemental':
-                  wave.damage = attackerGodDamageBonus + attackerElementalDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerElementalHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerElementalDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerElementalHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage = attackerGodDamageBonus + attackerBeastDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerBeastHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerBeastDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerBeastHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage = attackerGodDamageBonus + attackerHumanDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerHumanHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerHumanDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerHumanHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage = attackerGodDamageBonus + attackerCelestialDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerCelestialHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerCelestialDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerCelestialHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage = attackerGodDamageBonus + attackerDemonDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDemonHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerDemonDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerDemonHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage = attackerGodDamageBonus + attackerUndeadDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerUndeadHealthBonus
+                  wave.damage = attackerGodDamageBonus + attackerUndeadDamageBonus + attackerArtifactDamageBonus
+                  wave.health = attackerGodHealthBonus + attackerUndeadHealthBonus + attackerArtifactHealthBonus
                   break
               }
             })
             defenderArmy.forEach(wave => {
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
-                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderDragonDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderDragonHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_elemental':
-                  wave.damage = defenderGodDamageBonus + defenderElementalDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderElementalHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderElementalDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderElementalHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage = defenderGodDamageBonus + defenderBeastDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderBeastHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderBeastDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderBeastHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage = defenderGodDamageBonus + defenderHumanDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderHumanHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderHumanDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderHumanHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage = defenderGodDamageBonus + defenderCelestialDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderCelestialHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderCelestialDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderCelestialHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage = defenderGodDamageBonus + defenderDemonDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderDemonHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderDemonDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderDemonHealthBonus + defenderArtifactHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage = defenderGodDamageBonus + defenderUndeadDamageBonus
-                  wave.health = defenderGodHealthBonus + defenderUndeadHealthBonus
+                  wave.damage = defenderGodDamageBonus + defenderUndeadDamageBonus + defenderArtifactDamageBonus
+                  wave.health = defenderGodHealthBonus + defenderUndeadHealthBonus + defenderArtifactHealthBonus
                   break
               }
             })
@@ -917,7 +950,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             // rounds
             let attackerIndex = 0
             let defenderIndex = 0
-            let rounds = Math.min(Math.max(attackerArmy.length, defenderArmy.length), 5)
             for (let i = 0; i < rounds; i++) {
               let log = {}
               let attackerTroop = attackerArmy[attackerIndex]
@@ -927,26 +959,26 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (rockScissorsPaper(attackerTroop.troop.type, defenderTroop.troop.type)) {
                 // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
-                log.attacker = { left: true, name: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.quantity, casualties: defenderCasualties }
+                log.attacker = { left: true, unit: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.quantity, casualties: defenderCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
                 // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
-                log.defender = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
+                log.defender = { left: false, unit: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
                 // console.log('Attacker casualties', attackerCasualties)
               } else {
                 // console.log('ATTACKER <= DEFENDER')
                 let attackerCasualties = Math.min(attackerTroop.quantity, Math.floor((defenderTroop.troop.damage * defenderTroop.quantity * (1 + defenderTroop.damage / 100)) / (attackerTroop.troop.health * (1 + attackerTroop.health / 100))))
-                log.attacker = { left: false, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
+                log.attacker = { left: false, unit: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: defenderTroop.quantity, casualties: attackerCasualties }
                 attackerTroop.quantity -= attackerCasualties
                 attackerPowerLost += attackerCasualties * attackerTroop.troop.power
                 // console.log('Attacker casualties', attackerCasualties)
                 // console.log('ATTACKER => DEFENDER')
                 let defenderCasualties = Math.min(defenderTroop.quantity, Math.floor((attackerTroop.troop.damage * attackerTroop.quantity * (1 + attackerTroop.damage / 100)) / (defenderTroop.troop.health * (1 + defenderTroop.health / 100))))
-                log.attacker = { left: true, name: defenderTroop.troop.name, color: defenderTroop.troop.color, quantity: attackerTroop.quantity, casualties: attackerCasualties }
+                log.defender = { left: true, unit: attackerTroop.troop.name, color: attackerTroop.troop.color, quantity: attackerTroop.quantity, casualties: defenderCasualties }
                 defenderTroop.quantity -= defenderCasualties
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
@@ -1000,10 +1032,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (strategy === 'lbl_strategy_conquest') {
                 let index = 0
                 conquered = sieged
+                sieged = null
                 await attacker.ref.child('constructions').once('value', constructions => {
                   constructions.forEach(construction => {
                     let cons = construction.val()
-                    construction.ref.update({ quantity: cons.quantity - siege[index] })
+                    construction.ref.update({ quantity: cons.quantity + siege[index] })
                   })
                 })
               }
