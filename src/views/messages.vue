@@ -56,12 +56,12 @@
 
             mu-card-text(v-if="selected.battle")
               .log(v-for="log, index in selected.battle", :key="index")
-                .info {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
+                .info.title {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
                 .info(:class="log.attacker.left ? 'left' : 'right'")
                   mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.quantity | numeric }}
-                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
+                  mu-chip.ellipsis(:class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.attacker.name | translate }}
                   mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
@@ -70,13 +70,13 @@
                   mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
-                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
+                  mu-chip.ellipsis(:class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.defender.name | translate }}
                   mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
               .log
-                .info {{ 'lbl_battle_finish' | translate }}
+                .info.title {{ 'lbl_battle_finish' | translate }}
               
             mu-card-text.attachments
               .attachment(v-if="selected.gold", v-tooltip="translate('ttp_resource_gold')")
@@ -161,6 +161,7 @@
 </script>
 
 <style lang="stylus">
+  @import '../css/colors.styl'
   .mu-dialog
     .scroll
       max-height 30vh
@@ -177,6 +178,10 @@
           padding 5px 10px
           i
             margin-right 5px
+          &.ellipsis
+            white-space nowrap
+            overflow hidden
+            text-overflow ellipsis
         .info
           margin 5px
           display flex
@@ -194,4 +199,22 @@
             margin-left 10%
             .mu-chip
               justify-content flex-end
+          &.title
+            overflow hidden
+            text-align center
+            &:before
+            &:after
+              background-color $gold
+              content ""
+              display inline-block
+              height 1px
+              position relative
+              vertical-align middle
+              width 50%
+            &:before
+              right 0.5em
+              margin-left -50%
+            &:after
+              left 0.5em
+              margin-right -50%
 </style>

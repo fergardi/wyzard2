@@ -495,11 +495,11 @@ export default {
     lbl_title_login: 'Entrar',
     // strategy
     lbl_strategy_conquest: 'Conquista',
-    lbl_strategy_conquest_description: 'La Conquista adquiere edificios del reino enemigo y los agrega a tus propias construcciones',
+    lbl_strategy_conquest_description: 'La Conquista adquiere y anexiona edificios del reino enemigo a los tuyos propios',
     lbl_strategy_siege: 'Asedio',
-    lbl_strategy_siege_description: 'El Asedio destruye tropas, edificios y personas del reino enemigo para reducir su capacidad ofensiva y poder',
+    lbl_strategy_siege_description: 'El Asedio destruye y mata tropas, edificios y personas del reino enemigo',
     lbl_strategy_pillage: 'Pillaje',
-    lbl_strategy_pillage_description: 'El Pillaje intenta robar recursos al reino enemigo sin ser descubierto, que depende del número de tropas',
+    lbl_strategy_pillage_description: 'El Pillaje intenta robar oro y artefactos al reino enemigo sin ser descubierto',
     // labels
     lbl_label_processing_maintenances: 'Gastando turnos y calculando mantenimientos...',
     lbl_label_search: 'Buscar',
