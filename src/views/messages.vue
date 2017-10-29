@@ -55,21 +55,48 @@
               p {{ selected.text | translate }}
 
             mu-card-text(v-if="selected.battle")
-              .log(v-for="log, index in selected.battle", :key="index")
+              .spell(v-for="spell, index in selected.battle.spells", :key="index")
+                .info.title {{ 'lbl_battle_spells' | translate }}
+                .info(v-if="spell.attacker", :class="spell.attacker.left ? 'left' : 'right'")
+                  mu-chip(v-if="spell.attacker.level", :class="spell.attacker.color", v-tooltip="translate('ttp_spell_level')")
+                    i.ra.ra-trophy
+                    span {{ spell.attacker.level | numeric }}
+                  mu-chip.ellipsis(v-if="spell.attacker.spell", :class="spell.attacker.color", v-tooltip="translate('ttp_spell_name')")
+                    span {{ spell.attacker.spell | translate }}
+                  mu-chip(v-if="spell.attacker.casualties", :class="spell.attacker.color", v-tooltip="translate('ttp_message_casualties')")
+                    i.ra.ra-death-skull
+                    span {{ spell.attacker.casualties | translate }}
+                .info(v-if="spell.defender", :class="spell.defender.left ? 'left' : 'right'")
+                  mu-chip(v-if="spell.defender.level", :class="spell.defender.color", v-tooltip="translate('ttp_spell_level')")
+                    i.ra.ra-trophy
+                    span {{ spell.defender.level | numeric }}
+                  mu-chip.ellipsis(v-if="spell.defender.spell", :class="spell.defender.color", v-tooltip="translate('ttp_spell_name')")
+                    span {{ spell.defender.spell | translate }}
+                  mu-chip(v-if="spell.defender.casualties", :class="spell.defender.color", v-tooltip="translate('ttp_message_casualties')")
+                    i.ra.ra-death-skull
+                    span {{ spell.defender.casualties | translate }}
+              .artifact(v-for="artifact, index in selected.battle.artifacts", :key="index")
+                .info.title {{ 'lbl_battle_artifacts' | translate }}
+                .info(v-if="artifact.attacker", :class="artifact.attacker.left ? 'left' : 'right'")
+                  mu-chip.ellipsis(v-if="artifact.attacker.artifact", :class="artifact.attacker.color", v-tooltip="translate('ttp_artifact_name')")
+                    span {{ artifact.attacker.artifact | translate }}
+                  mu-chip(v-if="artifact.attacker.casualties", :class="artifact.attacker.color", v-tooltip="translate('ttp_message_casualties')")
+                    i.ra.ra-death-skull
+                    span {{ artifact.attacker.casualties | translate }}
+                .info(v-if="artifact.defender", :class="artifact.defender.left ? 'left' : 'right'")
+                  mu-chip.ellipsis(v-if="artifact.defender.artifact", :class="artifact.defender.color", v-tooltip="translate('ttp_artifact_name')")
+                    span {{ artifact.defender.artifact | translate }}
+                  mu-chip(v-if="artifact.defender.casualties", :class="artifact.defender.color", v-tooltip="translate('ttp_message_casualties')")
+                    i.ra.ra-death-skull
+                    span {{ artifact.defender.casualties | translate }}
+              .log(v-for="log, index in selected.battle.logs", :key="index")
                 .info.title {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
                 .info(v-if="log.attacker", :class="log.attacker.left ? 'left' : 'right'")
                   mu-chip(v-if="log.attacker.quantity", :class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.quantity | numeric }}
-                  mu-chip(v-if="log.attacker.level", :class="log.attacker.color", v-tooltip="translate('ttp_spell_level')")
-                    i.ra.ra-trophy
-                    span {{ log.attacker.level | numeric }}
                   mu-chip.ellipsis(v-if="log.attacker.unit", :class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.attacker.unit | translate }}
-                  mu-chip.ellipsis(v-if="log.attacker.spell", :class="log.attacker.color", v-tooltip="translate('ttp_spell_name')")
-                    span {{ log.attacker.spell | translate }}
-                  mu-chip.ellipsis(v-if="log.attacker.artifact", :class="log.attacker.color", v-tooltip="translate('ttp_artifact_name')")
-                    span {{ log.attacker.artifact | translate }}
                   mu-chip(v-if="log.attacker.casualties", :class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.attacker.casualties | translate }}
@@ -77,15 +104,8 @@
                   mu-chip(v-if="log.defender.quantity", :class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
-                  mu-chip(v-if="log.defender.level", :class="log.defender.color", v-tooltip="translate('ttp_spell_level')")
-                    i.ra.ra-trophy
-                    span {{ log.defender.level | numeric }}
                   mu-chip.ellipsis(v-if="log.defender.unit", :class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.defender.unit | translate }}
-                  mu-chip.ellipsis(v-if="log.defender.spell", :class="log.defender.color", v-tooltip="translate('ttp_spell_name')")
-                    span {{ log.defender.spell | translate }}
-                  mu-chip.ellipsis(v-if="log.defender.artifact", :class="log.defender.color", v-tooltip="translate('ttp_artifact_name')")
-                    span {{ log.defender.artifact | translate }}
                   mu-chip(v-if="log.defender.casualties", :class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
@@ -185,6 +205,8 @@
         justify-content center
         align-items center
       .log
+      .artifact
+      .spell
       .attachment
         .mu-chip
           padding 2px 5px

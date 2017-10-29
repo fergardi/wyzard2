@@ -635,7 +635,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
       let attackerSpell = spell
       await database.ref('users').child(target).once('value', async defender => {
         if (defender) {
-          let report = []
+          let report = {
+            spells: [],
+            artifacts: [],
+            logs: []
+          }
           let atk = attacker.val()
           let def = defender.val()
           let attackerArmy = []
@@ -812,7 +816,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderSpell.counter > 0 && defenderSpell.manaCost <= def.mana) {
                 let counterChance = defenderSpell.counter * def.magic
                 if (Math.random() * 100 <= counterChance) {
-                  report.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
+                  report.spells.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
                   attackerSpell = null
                 }
               }
@@ -823,7 +827,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (spellChance > def.magicalDefense) {
                   let counterChance = attackerSpell.counter * atk.magic
                   if (Math.random() * 100 <= counterChance) {
-                    report.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                    report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
                     defenderSpell = null
                   }
                 }
@@ -832,14 +836,14 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             // spells
             if (defenderSpell) {
               await database.ref('users').child(target).update({ mana: def.mana - defenderSpell.manaCost })
-              report.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
+              report.spells.push({ defender: { left: false, level: def.magic, spell: defenderSpell.name, color: defenderSpell.color } })
               // TODO
             }
             if (attackerSpell) {
               let enchantmentChance = Math.random() * 100
               if (enchantmentChance > def.magicalDefense) {
                 await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
-                report.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
                 if (attackerSpell.enchantment) {
                   let enchantment = attackerSpell
                   enchantment.target = target
@@ -867,7 +871,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               defenderArtifactDamageBonus += defenderArtifact.damage
               defenderArtifactHealthBonus += defenderArtifact.health
               // rounds += defenderArtifact.rounds
-              report.push({ defender: { left: false, artifact: defenderArtifact.name, color: defenderArtifact.color } })
+              report.artifacts.push({ defender: { left: false, artifact: defenderArtifact.name, color: defenderArtifact.color } })
             }
             let attackerArtifactDamageBonus = 0
             let attackerArtifactHealthBonus = 0
@@ -877,7 +881,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 attackerArtifactDamageBonus += attackerArtifact.damage
                 attackerArtifactHealthBonus += attackerArtifact.health
                 // rounds += attackerArtifact.rounds
-                report.push({ attacker: { left: true, artifact: attackerArtifact.name, color: attackerArtifact.color } })
+                report.artifacts.push({ attacker: { left: true, artifact: attackerArtifact.name, color: attackerArtifact.color } })
               }
             }
             attackerArmy.forEach(wave => {
@@ -983,7 +987,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 defenderPowerLost += defenderCasualties * defenderTroop.troop.power
                 // console.log('Defender casualties', defenderCasualties)
               }
-              report.push(log)
+              report.logs.push(log)
               if (attackerTroop.quantity <= 0) attackerArmy.splice(attackerIndex, 1)
               if (defenderTroop.quantity <= 0) defenderArmy.splice(defenderIndex, 1)
               attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.random() * attackerArmy.length)

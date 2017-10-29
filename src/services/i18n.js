@@ -26,6 +26,8 @@ export default {
     lbl_type_range: 'Distancia',
     lbl_type_fly: 'Volador',
     // battle
+    lbl_battle_spells: 'Hechizos',
+    lbl_battle_artifacts: 'Artefactos',
     lbl_battle_round: 'Ronda',
     lbl_battle_finish: 'Fin de Batalla',
     // spells
