@@ -595,6 +595,7 @@
       filter blur(1px) sepia(1)
       outline 4px solid red
     .tooltip
+      z-index 99999999 !important
       display block !important
       z-index 10000
       .tooltip-inner

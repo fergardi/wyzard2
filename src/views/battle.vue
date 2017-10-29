@@ -138,7 +138,7 @@
           if (this.canAttack) {
             await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
-            await checkTurnMaintenances(store.state.uid, this.turns)
+            // await checkTurnMaintenances(store.state.uid, this.turns)
             await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
             this.close()

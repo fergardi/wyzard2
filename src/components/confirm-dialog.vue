@@ -2,7 +2,7 @@
   mu-dialog(:open="dialog", @close="close", @keyup.esc="close", @keyup.enter="accept")
     mu-card.dialog
       mu-card-media
-        img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media", :alt="translate('lbl_label_confirm')")
+        img.lazy(v-lazy-load="'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media'", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate('lbl_label_confirm')")
         mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
         .progress(v-if="user && busy")
           i.ra.ra-lg.ra-hourglass

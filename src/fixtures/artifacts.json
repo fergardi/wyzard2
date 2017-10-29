@@ -499,7 +499,7 @@
     "name" : "lbl_artifact_voodoo_doll",
     "description" : "lbl_artifact_voodoo_doll_description",
     "battle": true,
-    "support": false,
+    "support": true,
     "summon": false,
     "family": false,
     "multiple": false,

@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
+          img.lazy(v-lazy-load="'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media'", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
               i.ra.ra-quill-ink
@@ -39,13 +39,16 @@
           mu-card-media
             img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/message.jpg?alt=media")
             .card-extra
-              .card-text
-                i.ra.ra-quill-ink
-                span {{ selected.subject | translate }}
-            .card-info
-              .card-text(:class="selected.color")
+              .card-text(:class="selected.color", v-tooltip="translate('ttp_message_name')")
                 i.ra.ra-player
                 span {{ selected.name | translate }}
+              .card-number(v-tooltip="translate('ttp_message_time')")
+                i.ra.ra-stopwatch
+                span {{ selected.timestamp | timesince }}
+            .card-info
+              .card-text(v-tooltip="translate('ttp_message_subject')")
+                i.ra.ra-quill-ink
+                span {{ selected.subject | translate }}
                 
           .scroll
             mu-card-text
@@ -55,48 +58,48 @@
               .log(v-for="log, index in selected.battle", :key="index")
                 .info {{ 'lbl_battle_round' | translate }}  {{ index + 1 | numeric }}
                 .info(:class="log.attacker.left ? 'left' : 'right'")
-                  mu-chip(:class="log.attacker.color")
+                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.quantity | numeric }}
-                  mu-chip(:class="log.attacker.color")
+                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.attacker.name | translate }}
-                  mu-chip(:class="log.attacker.color")
+                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.attacker.casualties | translate }}
                 .info(:class="log.defender.left ? 'left' : 'right'")
-                  mu-chip(:class="log.defender.color")
+                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
-                  mu-chip(:class="log.defender.color")
+                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.defender.name | translate }}
-                  mu-chip(:class="log.defender.color")
+                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
               .log
                 .info {{ 'lbl_battle_finish' | translate }}
               
             mu-card-text.attachments
-              .attachment(v-if="selected.gold")
+              .attachment(v-if="selected.gold", v-tooltip="translate('ttp_resource_gold')")
                 mu-chip
                   i.ra.ra-gold-bar
                   span {{ selected.gold | numeric }}
-              .attachment(v-if="selected.people")
+              .attachment(v-if="selected.people", v-tooltip="translate('ttp_resource_people')")
                 mu-chip
                   i.ra.ra-double-team
                   span {{ selected.people | numeric }}
-              .attachment(v-if="selected.kills")
+              .attachment(v-if="selected.kills", v-tooltip="translate('ttp_message_kills')")
                 mu-chip
                   i.ra.ra-decapitation
                   span {{ selected.kills | numeric }}
-              .attachment(v-if="selected.conquered")
+              .attachment(v-if="selected.conquered", v-tooltip="translate('ttp_message_conquered')")
                 mu-chip
                   i.ra.ra-tower
                   span {{ selected.conquered | numeric }}
-              .attachment(v-if="selected.sieged")
+              .attachment(v-if="selected.sieged", v-tooltip="translate('ttp_message_sieged')")
                 mu-chip
                   i.ra.ra-fire
                   span {{ selected.sieged | numeric }}
-              .attachment(v-if="selected.artifact")
+              .attachment(v-if="selected.artifact", v-tooltip="translate('ttp_message_artifact')")
                 mu-chip(:class="selected.artifact.color")
                   i.ra.ra-crystals
                   span {{ selected.artifact.name | translate }}
@@ -128,7 +131,7 @@
         this.current = page
       },
       select (index) {
-        if (index && this.messages[index] !== undefined) {
+        if (index !== null && this.messages[index] !== undefined) {
           this.selected = this.messages[index]
           this.dialog = true
         }
