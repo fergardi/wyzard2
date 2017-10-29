@@ -136,6 +136,7 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
+            if (this.spell) await database.ref('users').child(store.state.uid).update({ mana: this.user.mana - this.spell.manaCost })
             await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
             // await checkTurnMaintenances(store.state.uid, this.turns)

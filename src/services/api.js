@@ -829,7 +829,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (attackerSpell.enchantment) {
                 let enchantmentChance = Math.random() * 100
                 if (enchantmentChance > def.magicalDefense) {
-                  console.log(enchantmentChance)
                   let enchantment = attackerSpell
                   enchantment.target = target
                   enchantment.targetColor = def.color

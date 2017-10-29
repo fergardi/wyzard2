@@ -601,6 +601,7 @@ export default {
     lbl_table_contracts: 'Contratos',
     lbl_table_praises: 'Encantamientos',
     lbl_table_curses: 'Maldiciones',
+    lbl_table_torments: 'Tormentos',
     lbl_table_relics: 'Reliquias',
     lbl_table_blessings: 'Bendiciones',
     lbl_table_total: 'Total',

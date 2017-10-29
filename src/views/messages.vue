@@ -164,10 +164,8 @@
   @import '../css/colors.styl'
   .mu-dialog
     .scroll
-      max-height 30vh
+      max-height 40vh
       overflow-y auto
-      .mu-card-text:first-of-type
-        margin-top 10px
       .attachments
         display flex
         justify-content center
@@ -175,9 +173,9 @@
       .log
       .attachment
         .mu-chip
-          padding 5px 10px
+          padding 2px 5px
           i
-            margin-right 5px
+            margin-right 3px
           &.ellipsis
             white-space nowrap
             overflow hidden
