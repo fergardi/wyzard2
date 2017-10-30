@@ -52,7 +52,8 @@
       }
     },
     created () {
-      store.commit('title', 'lbl_wyzard')
+      store.commit('title', 'lbl_title_wyzard')
+      store.commit('help', 'txt_help_login')
     },
     firebase: {
       factions: database.ref('factions'),

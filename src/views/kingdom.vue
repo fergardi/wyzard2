@@ -325,6 +325,7 @@
   export default {
     created () {
       store.commit('title', 'lbl_title_kingdom')
+      store.commit('help', 'txt_help_kingdom')
       this.$bindAsArray('enchantments', database.ref('enchantments'))
       this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
     },

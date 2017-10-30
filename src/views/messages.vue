@@ -84,6 +84,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_messages')
+      store.commit('help', 'txt_help_messages')
       this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
     },
     methods: {

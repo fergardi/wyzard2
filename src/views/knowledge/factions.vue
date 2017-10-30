@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_factions')
+      store.commit('help', 'txt_help_factions')
     },
     firebase: {
       factions: database.ref('factions').orderByChild('color')

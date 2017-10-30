@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_buildings')
+      store.commit('help', 'txt_help_buildings')
     },
     firebase: {
       buildings: database.ref('buildings').orderByChild('name')

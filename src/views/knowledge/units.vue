@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_units')
+      store.commit('help', 'txt_help_units')
     },
     firebase: {
       units: database.ref('units').orderByChild('color')

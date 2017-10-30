@@ -35,6 +35,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_settings')
+      store.commit('help', 'txt_help_settings')
     },
     data () {
       return {

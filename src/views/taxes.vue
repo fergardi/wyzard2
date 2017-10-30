@@ -15,7 +15,8 @@
       'building-card': building
     },
     created () {
-      store.commit('title', 'lbl_title_levy')
+      store.commit('title', 'lbl_title_taxes')
+      store.commit('help', 'txt_help_taxes')
       this.$bindAsArray('buildings', database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_farm'))
     }
   }

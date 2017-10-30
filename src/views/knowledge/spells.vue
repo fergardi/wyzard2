@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_spells')
+      store.commit('help', 'txt_help_spells')
     },
     firebase: {
       spells: database.ref('spells').orderByChild('color')

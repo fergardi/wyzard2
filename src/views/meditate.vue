@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_meditate')
+      store.commit('help', 'txt_help_meditate')
       this.$bindAsArray('buildings', database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_node'))
     }
   }

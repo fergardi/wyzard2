@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_tavern')
+      store.commit('help', 'txt_help_tavern')
     },
     firebase: {
       heroes: database.ref('tavern').orderByChild('color')

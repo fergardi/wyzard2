@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_dispel')
+      store.commit('help', 'txt_help_dispel')
       this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('remaining'))
     },
     computed: {

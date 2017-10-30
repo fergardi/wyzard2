@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_sorcery')
+      store.commit('help', 'txt_help_sorcery')
       this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('magic'))
     },
     firebase: {

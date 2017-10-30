@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_research')
+      store.commit('help', 'txt_help_research')
       this.$bindAsArray('researches', database.ref('users').child(store.state.uid).child('researches').orderByChild('magic'))
     },
     computed: {

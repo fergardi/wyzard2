@@ -43,6 +43,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_census')
+      store.commit('help', 'txt_help_census')
     },
     firebase: {
       users: database.ref('users').orderByChild('name')

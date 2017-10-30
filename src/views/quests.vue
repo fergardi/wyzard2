@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_quests')
+      store.commit('help', 'txt_help_quests')
       this.$bindAsArray('quests', database.ref('users').child(store.state.uid).child('quests'))
     }
   }

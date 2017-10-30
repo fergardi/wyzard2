@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_artifacts')
+      store.commit('help', 'txt_help_artifacts')
     },
     firebase: {
       artifacts: database.ref('artifacts').orderByChild('color')

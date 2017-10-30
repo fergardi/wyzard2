@@ -8,13 +8,15 @@
     mu-paper
       mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
         mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
-        mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!settings.navbar ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
-        mu-icon-button.logout(icon=":ra ra-key", :slot="!settings.navbar ? 'right' : 'left'", to="login", :class="logged ? 'none': ''")
+        mu-icon-button.tutorial(icon=":ra ra-help", :slot="!settings.navbar ? 'right' : 'left'", @click="sos")
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
       mu-paper
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
+          mu-icon-button.help(icon=":ra ra-help", :slot="settings.navbar ? 'right' : 'left'", to="help", @click="toggle")
+          mu-icon-button.logout(icon=":ra ra-key", :slot="!settings.navbar ? 'right' : 'left'", to="login", @click="toggle", :class="logged ? 'none': ''")
+          mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!settings.navbar ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
           mu-icon-button.settings(icon=":ra ra-gears", :slot="!settings.navbar ? 'right' : 'left'", to="settings", @click="toggle")
 
       mu-list.scroll
@@ -71,9 +73,9 @@
             mu-icon(slot="left", value=":ra ra-queen-crown")
           mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
             mu-icon.red(slot="left", value=":ra ra-wooden-sign")
-          mu-list-item(:title="translate('lbl_title_levy')", to="taxes", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_taxes')", to="taxes", @click="toggle")
             mu-icon(slot="left", value=":ra ra-scroll-unfurled")
-          mu-list-item(:title="translate('lbl_title_explore')", to="exploration", @click="toggle")
+          mu-list-item(:title="translate('lbl_title_exploration')", to="exploration", @click="toggle")
             mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
@@ -139,6 +141,11 @@
           mu-icon(slot="left", value=":ra ra-lightning-storm")
 
     router-view.router.scroll(:class="settings.navbar ? 'right' : 'left'")
+
+    mu-popup(position="bottom", :open="popup", @close="sos")
+      mu-appbar(:title="translate(title)")
+      mu-content-block
+        p {{ help | translate }}
 </template>
 
 <script>
@@ -149,6 +156,8 @@
   export default {
     name: 'app',
     created () {
+      store.commit('title', 'lbl_title_wyzard')
+      store.commit('help', 'txt_help_login')
       // toast
       store.watch((state) => state.toasts, (toasts) => {
         if (toasts.length > 0) {
@@ -182,6 +191,9 @@
       untoast () {
         store.commit('untoast')
       },
+      sos () {
+        store.commit('sos')
+      },
       logout () {
         auth.signOut()
         store.commit('uid', null)
@@ -194,6 +206,12 @@
       },
       title () {
         return store.state.title
+      },
+      popup () {
+        return store.state.popup
+      },
+      help () {
+        return store.state.help
       },
       toast () {
         return store.state.toast
@@ -633,6 +651,7 @@
         max-width 75%
     @media only screen and (max-width 1079px)
       .mu-drawer
+      .mu-popup
         width 85%
     @media only screen and (min-width 480px)
       .mu-appbar
@@ -650,9 +669,6 @@
         transform translateZ(0)
         visibility visible
         opacity $opacity
-        .toggler
-        .settings
-          visibility hidden
         &.left
           .mu-list
             border-right 1px solid
@@ -665,9 +681,7 @@
           padding-left 22.5%
         &.right
           padding-right 22.5%
-      .topbar
-        .toggler
-          visibility hidden
+      .mu-popup
       .mu-dialog
         width 35%
         min-width 35%

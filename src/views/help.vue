@@ -16,6 +16,7 @@
   export default {
     created () {
       store.commit('title', 'lbl_title_help')
+      store.commit('help', 'txt_help_help')
     }
   }
 </script>

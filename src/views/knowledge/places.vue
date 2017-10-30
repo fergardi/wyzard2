@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_places')
+      store.commit('help', 'txt_help_places')
     },
     firebase: {
       places: database.ref('places').orderByChild('color')

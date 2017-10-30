@@ -15,6 +15,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_world')
+      store.commit('help', 'txt_help_world')
     }
   }
 </script>

@@ -12,8 +12,10 @@ const vuex = new Vuex.Store({
   // strict: true,
   state: {
     lang: 'es',
-    title: 'lbl_wyzard',
+    title: 'lbl_title_wyzard',
+    help: 'txt_help_login',
     menu: false,
+    popup: false,
     uid: null,
     logged: false,
     settings: {
@@ -35,6 +37,9 @@ const vuex = new Vuex.Store({
     },
     title (state, title) {
       state.title = title
+    },
+    help (state, help) {
+      state.help = help
     },
     uid (state, uid) {
       state.uid = uid
@@ -78,6 +83,9 @@ const vuex = new Vuex.Store({
       state.toast.message = null
       if (this.timer) clearTimeout(this.timer)
       this.timer = setTimeout(() => { state.toasts.splice(0, 1) }, 0)
+    },
+    sos (state) {
+      state.popup = !state.popup
     },
     ...firebaseMutations
   },

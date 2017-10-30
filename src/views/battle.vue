@@ -113,6 +113,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_battle')
+      store.commit('help', 'txt_help_battle')
       this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('name'))
       this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
       this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))

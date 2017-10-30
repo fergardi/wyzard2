@@ -16,6 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_auction')
+      store.commit('help', 'txt_help_auction')
     },
     firebase: {
       auctions: database.ref('auctions').orderByChild('timestamp')
