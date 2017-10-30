@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          img.lazy(v-lazy-load="'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/confirm.jpg?alt=media'", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
+          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
               i.ra.ra-quill-ink

@@ -4,7 +4,7 @@
       mu-card.animated.fadeInUp
         form(@submit.stop.prevent="accept")
           mu-card-media
-            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media", :alt="translate('lbl_label_enter')")
+            img(:src="image", :alt="translate('lbl_label_enter')")
             mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
             .card-info
               .card-text {{ 'lbl_label_enter' | translate }}
@@ -36,6 +36,7 @@
   import { authenticate, register, database, auth } from '../services/firebase'
   import store from '../vuex/store'
   import { createNewUser } from '../services/api'
+  import moment from 'moment'
   
   export default {
     data () {
@@ -151,6 +152,24 @@
       },
       long () {
         return this.username.length >= 20
+      },
+      image () {
+        let now = moment(Date.now())
+        if (now.isBetween('1900-01-15', '2999-02-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/valentines.jpg?alt=media'
+        } else if (now.isBetween('1900-02-15', '2999-03-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/chinese.jpg?alt=media'
+        } else if (now.isBetween('1900-03-15', '2999-04-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/carnival.jpg?alt=media'
+        } else if (now.isBetween('1900-09-15', '2999-10-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/oktoberfest.jpg?alt=media'
+        } else if (now.isBetween('1900-10-15', '2999-11-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/halloween.jpg?alt=media'
+        } else if (now.isBetween('1900-12-15', '2999-01-15', 'days')) {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/christmas.jpg?alt=media'
+        } else {
+          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media'
+        }
       }
     }
   }
