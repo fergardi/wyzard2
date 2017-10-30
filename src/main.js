@@ -53,6 +53,9 @@ const datetime = (timestamp) => {
 const translate = (label) => {
   return i18n[store.state.user ? store.state.user.settings.lang : store.state.settings.lang][label] || label
 }
+const nl2br = (string) => {
+  return string.replace(/\r?\n/g, '<br/><br/>')
+}
 // mixins
 Vue.mixin({
   methods: {
@@ -78,6 +81,9 @@ Vue.mixin({
       let max = number
       let min = max * 0.90 // +- 10%
       return Math.ceil(Math.random() * (max - min + 1) + min)
+    },
+    nl2br (string) {
+      return nl2br(string)
     }
   }
 })
@@ -99,6 +105,9 @@ Vue.filter('percentage', (number) => {
 })
 Vue.filter('translate', (label) => {
   return translate(label)
+})
+Vue.filter('nl2br', (string) => {
+  return nl2br(string)
 })
 // security zone
 let open = [

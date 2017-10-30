@@ -3,9 +3,12 @@
     mu-card-media
       img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
       .card-extra
-        .card-number(:class="data.color", v-if="auction", v-tooltip="translate('ttp_gold_bid')")
+        .card-number(v-if="auction", v-tooltip="translate('ttp_gold_bid')")
           i.ra.ra-gold-bar
           span {{ data.bid | minimize }}
+        .card-number(v-if="auction || enable", v-tooltip="translate('ttp_turn_cost')")
+          i.ra.ra-hourglass
+          span {{turns | minimize }}
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_artifact_name')") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="!info", v-tooltip="translate('ttp_artifact_quantity')")

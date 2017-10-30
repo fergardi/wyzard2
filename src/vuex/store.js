@@ -15,7 +15,7 @@ const vuex = new Vuex.Store({
     title: 'lbl_title_wyzard',
     help: 'txt_help_login',
     menu: false,
-    popup: false,
+    popup: true,
     uid: null,
     logged: false,
     settings: {

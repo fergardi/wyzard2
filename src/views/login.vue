@@ -43,6 +43,7 @@
         busy: false,
         error: false,
         code: null,
+        remember: true,
         tab: 'login',
         username: 'prueba',
         color: 'red',

@@ -16,7 +16,7 @@
     },
     created () {
       store.commit('title', 'lbl_title_heroes')
-      store.commit('help', 'txt_help_gods')
+      store.commit('help', 'txt_help_heroes')
     },
     firebase: {
       heroes: database.ref('heroes').orderByChild('color')

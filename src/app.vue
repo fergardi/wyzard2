@@ -115,10 +115,10 @@
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
             mu-icon(slot="left", value=":ra ra-trophy")
-
-        mu-sub-header {{ 'lbl_title_account' | translate }}
-        mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-gears")
+        //
+          mu-sub-header {{ 'lbl_title_account' | translate }}
+          mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-gears")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_help')", to="help", @click="toggle")
@@ -144,8 +144,8 @@
 
     mu-popup(position="bottom", :open="popup", @close="sos")
       mu-appbar(:title="translate(title)")
-      mu-content-block
-        p {{ help | translate }}
+      mu-content-block.scroll
+        p(v-html="nl2br(translate(help))")
 </template>
 
 <script>
@@ -174,13 +174,13 @@
           store.dispatch('user', database.ref('users').child(store.state.uid))
           this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
           this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-          database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+          await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
             if (message) {
               store.commit('info', this.translate(message.val().subject))
               message.ref.update({ read: true })
             }
           })
-          updateGeneralStatus(store.state.uid)
+          await updateGeneralStatus(store.state.uid)
         }
       })
     },
@@ -310,6 +310,7 @@
       overflow-y auto
     .mu-appbar
       border-bottom 1px solid
+      height 56px !important
     .mu-appbar-title
       display flex
       justify-content center
@@ -601,6 +602,14 @@
     .mu-td
     .mu-th
       text-align center
+    .mu-popup
+      max-height 50vh
+      .scroll
+        max-height calc(50vh - 56px)
+        overflow-y auto
+        p
+          font-size 0.9em
+          font-style italic
     .lazy
       width 100%
       transition opacity .5s ease-in
@@ -662,11 +671,9 @@
         max-width 75%
     @media only screen and (max-width 1079px)
       .mu-drawer
-      .mu-popup
         width 85%
-    @media only screen and (min-width 480px)
-      .mu-appbar
-        height 56px
+      .mu-popup
+        width 100%
     @media only screen and (min-width 1080px)
       .mu-toast
         width 250px
