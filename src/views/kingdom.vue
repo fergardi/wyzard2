@@ -218,6 +218,41 @@
                   span {{ enchantment.magic * enchantment.terrainProduction | minimize }}
               mu-td.number {{ enchantment.magic * enchantment.power | minimize }}
 
+            mu-tr(v-if="torments.length")
+              mu-th.title(v-tooltip="translate('ttp_kingdom_name')")
+                span {{ 'lbl_table_torments' | translate }}
+              mu-th.number(v-tooltip="translate('ttp_kingdom_quantity')")
+                i.ra.ra-lg.ra-help
+              mu-th.number(v-tooltip="translate('ttp_kingdom_gold')")
+                i.ra.ra-lg.ra-gold-bar
+              mu-th.number(v-tooltip="translate('ttp_kingdom_people')")
+                i.ra.ra-lg.ra-double-team
+              mu-th.number(v-tooltip="translate('ttp_kingdom_mana')")
+                i.ra.ra-lg.ra-burst-blob
+              mu-th.number(v-tooltip="translate('ttp_kingdom_terrain')")
+                i.ra.ra-lg.ra-tower
+              mu-th.number(v-tooltip="translate('ttp_kingdom_power')")
+                i.ra.ra-lg.ra-fire-symbol
+            
+            mu-tr(v-for="enchantment, index in torments", :key="index")
+              mu-td.title
+                mu-chip(:class="enchantment.color") {{ enchantment.name | translate }}
+              mu-td.number {{ enchantment.magic | minimize }}
+              mu-td.number
+                div
+                  span.income(class="red") &#9660;
+                  span -{{ enchantment.magic * enchantment.goldMaintenance | minimize }}
+              mu-td.number
+                div
+                  span.income(class="red") &#9660;
+                  span -{{ enchantment.magic * enchantment.peopleMaintenance | minimize }}
+              mu-td.number
+                div
+                  span.income(class="red") &#9660;
+                  span -{{ enchantment.magic * enchantment.manaMaintenance | minimize }}
+              mu-td.number ?
+              mu-td.number 0
+
             mu-tr(v-if="user.relics")
               mu-th.title(v-tooltip="translate('ttp_kingdom_name')")
                 span {{ 'lbl_table_relics' | translate }}
@@ -338,6 +373,9 @@
       },
       curses () {
         return this.enchantments.filter(e => !e.support && e.target === store.state.uid && e.source !== store.state.uid)
+      },
+      torments () {
+        return this.enchantments.filter(e => !e.support && e.target !== store.state.uid && e.source === store.state.uid)
       }
     }
   }

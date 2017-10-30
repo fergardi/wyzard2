@@ -23,9 +23,11 @@ export default {
     lbl_type_melee: 'Melee',
     lbl_type_range: 'Distancia',
     lbl_type_fly: 'Volador',
-    // texts
-    lbl_text_round: 'Ronda',
-    lbl_text_bounty: 'Botín de Guerra',
+    // battle
+    lbl_battle_spells: 'Hechizos',
+    lbl_battle_artifacts: 'Artefactos',
+    lbl_battle_round: 'Ronda',
+    lbl_battle_finish: 'Fin de Batalla',
     // spells
     lbl_spell_eclipse: 'Eclipse',
     lbl_spell_eclipse_description: 'Aumenta el Daño en la batalla de todas las unidades aliadas un 1% por Nivel',
@@ -332,7 +334,7 @@ export default {
     lbl_hero_dragon_rider: 'Jinete de Dragones',
     lbl_hero_dragon_rider_description: 'Incrementa el Daño y la Vida en la batalla de tus unidades Dragones un 1% por Nivel',
     lbl_hero_succubus: 'Súcubo',
-    lbl_hero_succubus_description: 'Incrementa la probabilidad de encontrar un Artefacto al azar un 1% por Nivel',
+    lbl_hero_succubus_description: 'Incrementa la protección contra Ataques enemigos un 1% por Nivel',
     lbl_hero_demon_king: 'Rey Demonio',
     lbl_hero_demon_king_description: 'Incrementa el Daño y la Vida en la batalla de tus unidades Demonios un 1% por Nivel',
     lbl_hero_elementalist: 'Elementalista',
@@ -342,7 +344,7 @@ export default {
     lbl_hero_sage: 'Sabio',
     lbl_hero_sage_description: 'Reduce el tiempo de investigación de Hechizos de tu reino un 1% por Nivel',
     lbl_hero_druid: 'Druida',
-    lbl_hero_druid_description: 'Incrementa la protección contra Ataques y Hechizos enemigos un 1% por Nivel',
+    lbl_hero_druid_description: 'Incrementa la protección contra Hechizos enemigos un 1% por Nivel',
     lbl_hero_leprechaunt: 'Leprechaunt',
     lbl_hero_leprechaunt_description: 'Incrementa la producción de Oro de tu reino un 1% al turno por Nivel',
     lbl_hero_lord_of_the_beasts: 'Señor de las Bestias',
@@ -493,9 +495,12 @@ export default {
     lbl_title_logout: 'Salir',
     lbl_title_login: 'Entrar',
     // strategy
-    lbl_strategy_siege: 'Asedio',
-    lbl_strategy_pillage: 'Pillaje',
     lbl_strategy_conquest: 'Conquista',
+    lbl_strategy_conquest_description: 'La Conquista adquiere y anexiona edificios del reino enemigo a los tuyos propios',
+    lbl_strategy_siege: 'Asedio',
+    lbl_strategy_siege_description: 'El Asedio destruye y mata tropas, edificios y personas del reino enemigo',
+    lbl_strategy_pillage: 'Pillaje',
+    lbl_strategy_pillage_description: 'El Pillaje intenta robar oro y artefactos al reino enemigo sin ser descubierto',
     // labels
     lbl_label_processing_maintenances: 'Gastando turnos y calculando mantenimientos...',
     lbl_label_search: 'Buscar',
@@ -563,8 +568,8 @@ export default {
     lbl_button_close: 'Cerrar',
     lbl_button_cancel: 'Cancelar',
     lbl_button_confirm: 'Confirmar',
-    lbl_button_remove: 'Remove',
-    lbl_button_create: 'Create',
+    lbl_button_remove: 'Borrar',
+    lbl_button_create: 'Crear',
     lbl_button_explore: 'Explorar',
     lbl_button_meditate: 'Meditar',
     lbl_button_buy: 'Comprar',
@@ -597,6 +602,7 @@ export default {
     lbl_table_contracts: 'Contratos',
     lbl_table_praises: 'Encantamientos',
     lbl_table_curses: 'Maldiciones',
+    lbl_table_torments: 'Tormentos',
     lbl_table_relics: 'Reliquias',
     lbl_table_blessings: 'Bendiciones',
     lbl_table_total: 'Total',
@@ -679,6 +685,8 @@ export default {
     lbl_toast_battle_error: 'Error en la batalla',
     lbl_toast_battle_win: 'Victoria',
     lbl_toast_battle_lose: 'Derrota',
+    lbl_toast_message_ok: 'Mensaje borrado',
+    lbl_toast_message_error: 'Error al borrar',
     // tooltips
     ttp_terrain_production: 'Producción de Terrenos al Turno',
     ttp_turn_cost: 'Coste de Turnos',
@@ -723,14 +731,19 @@ export default {
     ttp_artifact_quantity: 'Cantidad',
     ttp_unit_quantity: 'Cantidad',
     ttp_hero_level: 'Nivel',
-    ttp_message_quantity: 'Cantidad',
     ttp_census_quantity: 'Cantidad',
     ttp_census_position: 'Posición',
     ttp_census_name: 'Nombre',
     ttp_census_power: 'Poder',
+    ttp_message_quantity: 'Cantidad',
     ttp_message_time: 'Fecha',
     ttp_message_name: 'Nombre',
     ttp_message_subject: 'Asunto',
+    ttp_message_casualties: 'Bajas',
+    ttp_message_kills: 'Asesinado',
+    ttp_message_conquered: 'Conquistado',
+    ttp_message_sieged: 'Destruido',
+    ttp_message_artifact: 'Artefacto',
     ttp_kingdom_name: 'Nombre',
     ttp_kingdom_quantity: 'Cantidad',
     ttp_kingdom_gold: 'Oro',
@@ -770,7 +783,7 @@ export default {
     txt_help_taxes: '',
     txt_help_troops: '',
     txt_help_world: '',
-    // firebase error
+    // firebase
     'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',
     'auth/registration-ok': 'Registrado correctamente',
@@ -781,7 +794,8 @@ export default {
     'auth/email-already-exists': 'Ese email ya existe',
     'auth/email-already-in-use': 'Ese email ya existe',
     'auth/password-insecure': 'Contraseña insegura',
-    'auth/password-mismatch': 'Contraseñas incoherentes',
+    'auth/password-mismatch': 'Contraseñas incoherentes'// ,
+    /*
     // countries
     lbl_country_afghanistan: '',
     lbl_country_angola: '',
@@ -963,6 +977,7 @@ export default {
     lbl_country_south_africa: '',
     lbl_country_zambia: '',
     lbl_country_zimbabwe: ''
+    */
   },
   en: {
   },

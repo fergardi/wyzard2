@@ -21,7 +21,7 @@ Vue.use(MuseUI)
 // firebase
 Vue.use(VueFire)
 // mapbox
-window.mapboxgl = require('mapbox-gl')
+// window.mapboxgl = require('mapbox-gl')
 // helpers
 const minimize = (number) => {
   return !number

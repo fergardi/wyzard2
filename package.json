@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "deploy": "node build/build.js && firebase deploy",
+    "publish": "node build/build.js && firebase deploy",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -17,8 +17,6 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "firebase": "^4.1.3",
-    "mapbox-gl": "^0.38.0",
-    "mapbox-gl-vue": "^1.4.0",
     "moment": "^2.18.1",
     "muse-ui": "^2.1.0",
     "pug": "^2.0.0-rc.2",
@@ -27,15 +25,14 @@
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "turf-extent": "^1.0.4",
     "v-lazy-img": "^0.1.0",
     "v-tooltip": "^2.0.0-rc.8",
-    "vue": "^2.3.3",
+    "vue": "^2.5.2",
     "vue-router": "^2.6.0",
-    "vue2-animate": "^1.0.4",
     "vuefire": "^1.4.3",
     "vuex": "^2.3.1",
-    "vuexfire": "^2.3.0"
+    "vuexfire": "^2.3.0",
+    "webpack": "^2.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

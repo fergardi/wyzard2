@@ -5,13 +5,13 @@
     .toast
       mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="toast.color", @close="untoast")
 
-    mu-paper
+    mu-paper(:zDepth="6")
       mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
         mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
         mu-icon-button.tutorial(icon=":ra ra-help", :slot="!settings.navbar ? 'right' : 'left'", @click="sos")
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
-      mu-paper
+      mu-paper(:zDepth="6")
         mu-appbar {{ 'lbl_title_menu' | translate }}
           mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
           mu-icon-button.help(icon=":ra ra-help", :slot="settings.navbar ? 'right' : 'left'", to="help", @click="toggle")
@@ -71,7 +71,7 @@
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
             mu-icon(slot="left", value=":ra ra-queen-crown")
-          mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
+          //mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
             mu-icon.red(slot="left", value=":ra ra-wooden-sign")
           mu-list-item(:title="translate('lbl_title_taxes')", to="taxes", @click="toggle")
             mu-icon(slot="left", value=":ra ra-scroll-unfurled")
@@ -96,11 +96,11 @@
           mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crossed-axes")
           mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
-            mu-icon.red(slot="left", value=":ra ra-dripping-blade")
+            mu-icon(slot="left", value=":ra ra-dripping-blade")
           mu-list-item(:title="translate('lbl_title_contracts')", to="contracts", @click="toggle")
             mu-icon(slot="left", value=":ra ra-hood")
-          mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
-            mu-icon.red(slot="left", value=":ra ra-torch")
+          //mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-torch")
           mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
             mu-icon(slot="left", value=":ra ra-eye-shield")
 
@@ -133,7 +133,7 @@
           mu-icon(slot="left", value=":ra ra-batwings")
         mu-list-item(:title="translate('lbl_title_artifacts')", to="artifacts", @click="toggle")
           mu-icon(slot="left", value=":ra ra-round-bottom-flask")
-        mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
+        //mu-list-item(:title="translate('lbl_title_places')", to="places", @click="toggle")
           mu-icon(slot="left", value=":ra ra-pyramids")
         mu-list-item(:title="translate('lbl_title_heroes')", to="heroes", @click="toggle")
           mu-icon(slot="left", value=":ra ra-helmet")
@@ -366,6 +366,7 @@
           z-index 5000
           .card-text
           .card-number
+            position relative
             border-radius $radius
             text-align center
             border 1px solid
@@ -377,9 +378,18 @@
               margin-left 3px
             span + i
               margin-right 3px
+            &:before
+              content ""
+              position absolute
+              top 0
+              bottom 0
+              left 0
+              right 0
+              z-index -1
+              box-shadow 0 0 30px black
           .card-text + .card-number
           .card-number + .card-number
-            margin-left 3px
+            margin-left 5px
           .card-text
             min-width 5%
             width auto
@@ -387,24 +397,26 @@
             min-width 5%
             with auto
         .card-extra
-          bottom 20px
+          bottom 23px
           .card-text
-            max-width 45%
+            max-width 60%
           .card-number
-            max-width 45%
+            max-width 60%
         .card-info
           bottom -16px
           .card-text
             max-width 75%
           .card-number
             max-width 20%
-      .mu-card-media + .mu-card-text
-        margin-top 10px
+      //.mu-card-media + .mu-card-text
+        //margin-top 10px
       .mu-card-text + .mu-card-text
       .mu-card-text + form .mu-card-text
-      .mu-card-text + .mu-card-actions
+      //.mu-card-text + .mu-card-actions
         padding-top 0
       .mu-card-text
+        font-style italic
+        font-size 0.9em
         text-align center
         .mu-select-field
         .mu-text-field
@@ -413,9 +425,6 @@
           color inherit
           .mu-text-field-content
             color inherit
-        p
-          font-style italic
-          font-size 0.9em
         .card-stats
           display flex
           justify-content center
@@ -444,6 +453,7 @@
         display flex
         align-items center
         justify-content center
+        border-top 1px solid
         .mu-raised-button
           flex 1 1 0
           color inherit
@@ -603,6 +613,7 @@
       filter blur(1px) sepia(1)
       outline 4px solid red
     .tooltip
+      z-index 99999999 !important
       display block !important
       z-index 10000
       .tooltip-inner

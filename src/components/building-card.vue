@@ -12,13 +12,13 @@
             span {{ user.army | minimize }} / {{ user.armyCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_barrier'", v-tooltip="translate('ttp_magical_bonus')")
             i.ra.ra-eye-shield
-            span +{{ data.quantity / data.magicalDefenseBonus | percentage }}
+            span +{{ data.quantity / data.magicalDefense | percentage }}
           .card-number(v-if="data.name === 'lbl_building_fortress'", v-tooltip="translate('ttp_physical_bonus')")
             i.ra.ra-eye-shield
-            span +{{ data.quantity / data.physicalDefenseBonus | percentage }}
+            span +{{ data.quantity / data.physicalDefense | percentage }}
           .card-number(v-if="data.name === 'lbl_building_guild'", v-tooltip="translate('ttp_research_bonus')")
             i.ra.ra-crystal-ball
-            span -{{ data.quantity / data.researchBonus | percentage }}
+            span -{{ data.quantity / data.research | percentage }}
           .card-number(v-if="data.name === 'lbl_building_temple'", v-tooltip="translate('ttp_enchantment_reservation')")
             i.ra.ra-crystals
             span +{{ parseInt(data.quantity / data.enchantmentCap) | minimize }}

@@ -17,5 +17,7 @@
   "goldPerTurn": 0,
   "peoplePerTurn": 0,
   "manaPerTurn": 0,
-  "terrainPerTurn": 0
+  "terrainPerTurn": 0,
+  "magicalDefense": 0,
+  "physicalDefense": 0
 }
