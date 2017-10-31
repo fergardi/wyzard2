@@ -1,13 +1,13 @@
 <template lang="pug">
   mu-row
     mu-col(width="100", tablet="66", desktop="50")
-      mu-card.animated.fadeInUp
+      mu-card.login.animated.fadeInUp
         form(@submit.stop.prevent="accept")
           mu-card-media
-            img(:src="image", :alt="translate('lbl_label_enter')")
+            img(:src="image", :alt="translate('slogan')")
             mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
             .card-info
-              .card-text {{ 'lbl_label_enter' | translate }}
+              .card-text {{ slogan | translate }}
 
           mu-card-text
             mu-tabs(:value="tab", @change="change")
@@ -15,16 +15,19 @@
               mu-tab(value="signin", :title="translate('lbl_tab_registration')")
 
           mu-card-text
-            mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="long ? translate('auth/username-too-long') : error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", :maxLength="20", required)
-
-            mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
-              mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
-
-            mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
-
-            mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
-
-            mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
+            .form-row
+              mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="long ? translate('auth/username-too-long') : error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", :maxLength="20", required)
+            .form-row
+              mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
+                mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
+            .form-row
+              mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", required)
+            .form-row
+              mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
+            .form-row
+              mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
+            .form-row
+              mu-checkbox(v-model="remember", :label="translate('lbl_label_remember')")
 
           mu-card-actions
             mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset", :disabled="busy")
@@ -87,7 +90,7 @@
       },
       login () {
         this.busy = true
-        authenticate(this.email, this.password)
+        authenticate(this.email, this.password, this.remember)
         .then(response => {
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
@@ -110,7 +113,7 @@
           store.commit('error', 'auth/username-already-exists')
         }
         if (!this.disabled) {
-          register(this.email, this.password)
+          register(this.email, this.password, this.remember)
           .then(async response => {
             // player
             let player = {...this.user}
@@ -138,6 +141,24 @@
       change (value) {
         this.tab = value
         this.error = false
+      },
+      holyday (type) {
+        const now = moment()
+        if (now.isBetween(moment('15/01/____', 'DD/MM/____'), moment('15/02/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/valentines.jpg?alt=media' : 'lbl_slogan_valentines'
+        } else if (now.isBetween(moment('15/02/____', 'DD/MM/____'), moment('15/03/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/chinese.jpg?alt=media' : 'lbl_slogan_chinese'
+        } else if (now.isBetween(moment('15/03/____', 'DD/MM/____'), moment('15/04/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/carnival.jpg?alt=media' : 'lbl_slogan_carnivale'
+        } else if (now.isBetween(moment('15/09/____', 'DD/MM/____'), moment('15/10/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/oktoberfest.jpg?alt=media' : 'lbl_slogan_oktoberfest'
+        } else if (now.isBetween(moment('15/10/____', 'DD/MM/____'), moment('15/11/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/halloween.jpg?alt=media' : 'lbl_slogan_halloween'
+        } else if (now.isBetween(moment('01/12/____', 'DD/MM/____'), moment('31/12/____', 'DD/MM/____'), 'days', '[)')) {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/christmas.jpg?alt=media' : 'lbl_slogan_christmas'
+        } else {
+          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media' : 'lbl_slogan_default'
+        }
       }
     },
     computed: {
@@ -154,26 +175,23 @@
         return this.username.length >= 20
       },
       image () {
-        let now = moment(Date.now())
-        if (now.isBetween('1900-01-15', '2999-02-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/valentines.jpg?alt=media'
-        } else if (now.isBetween('1900-02-15', '2999-03-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/chinese.jpg?alt=media'
-        } else if (now.isBetween('1900-03-15', '2999-04-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/carnival.jpg?alt=media'
-        } else if (now.isBetween('1900-09-15', '2999-10-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/oktoberfest.jpg?alt=media'
-        } else if (now.isBetween('1900-10-15', '2999-11-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/halloween.jpg?alt=media'
-        } else if (now.isBetween('1900-12-15', '2999-01-15', 'days')) {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/christmas.jpg?alt=media'
-        } else {
-          return 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media'
-        }
+        return this.holyday('image')
+      },
+      slogan () {
+        return this.holyday('slogan')
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+  .login
+    .form-row
+      display flex
+      justify-content flex-start
+      align-items center
+      .mu-text-field
+        width 100%
+      .mu-select-field
+        width 100%
 </style>

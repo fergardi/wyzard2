@@ -8,6 +8,7 @@ import store from './vuex/store'
 import moment from 'moment'
 import LazyImg from 'v-lazy-img'
 import VTooltip from 'v-tooltip'
+import { database, auth } from './services/firebase'
 // theming
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
@@ -136,9 +137,21 @@ router.beforeEach((to, from, next) => {
 })
 // production
 Vue.config.productionTip = false
-// main app
-let Main = Vue.component('app', App) // eslint-disable-line
-Main = new Main({
-  el: '#app',
-  router
-})
+// login
+console.log(auth)
+async function createApp () {
+  auth.onAuthStateChanged(status => {
+    if (auth.currentUser !== null) {
+      store.commit('uid', auth.currentUser.uid)
+      store.dispatch('user', database.ref('users').child(store.state.uid))
+    }
+    // main app
+    let Main = Vue.component('app', App) // eslint-disable-line
+    Main = new Main({
+      el: '#app',
+      router
+    })
+  })
+}
+
+createApp()

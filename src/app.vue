@@ -169,22 +169,26 @@
         }
       })
       // firebase
-      store.watch((state) => state.logged, async (value) => {
+      store.watch((state) => state.uid, async (value) => {
         if (value) {
-          store.dispatch('user', database.ref('users').child(store.state.uid))
-          this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
-          this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-          await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
-            if (message) {
-              store.commit('info', this.translate(message.val().subject))
-              message.ref.update({ read: true })
-            }
-          })
-          await updateGeneralStatus(store.state.uid)
+          this.prepare()
         }
       })
+      if (store.state.uid) this.prepare()
     },
     methods: {
+      async prepare () {
+        store.dispatch('user', database.ref('users').child(store.state.uid))
+        this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
+        this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
+        await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+          if (message) {
+            store.commit('info', this.translate(message.val().subject))
+            message.ref.update({ read: true })
+          }
+        })
+        await updateGeneralStatus(store.state.uid)
+      },
       toggle () {
         store.commit('toggle')
       },
@@ -217,7 +221,7 @@
         return store.state.toast
       },
       logged () {
-        return store.state.logged
+        return store.state.logged && store.state.uid && store.state.user
       },
       overlay () {
         return window.innerWidth > 1024
