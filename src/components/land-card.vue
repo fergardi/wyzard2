@@ -33,15 +33,15 @@
 </template>
 
 <script>
-  import mapbox from 'mapbox-gl-vue'
-  import extent from 'turf-extent'
+  // import mapbox from 'mapbox-gl-vue'
+  // import extent from 'turf-extent'
   import store from '../vuex/store'
   import { database } from '../services/firebase'
 
   export default {
     name: 'land-card',
     components: {
-      'mapbox': mapbox
+      // 'mapbox': mapbox
     },
     data () {
       return {
@@ -140,8 +140,8 @@
           if (e.features && e.features.length > 0) {
             const name = e.features[0].properties.name
             map.setFilter('country-selected', ['==', 'name', name])
-            let bbox = extent(e.features[0].geometry)
-            map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
+            // let bbox = extent(e.features[0].geometry)
+            // map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
             this.$bindAsArray('troops', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
             this.$bindAsObject('rewards', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('rewards'))
             this.name = 'lbl_country_' + name.replace(' ', '_').toLowerCase()
@@ -167,7 +167,7 @@
   }
 </script>
 
-<style src="../../node_modules/mapbox-gl/dist/mapbox-gl.css"></style>
+<!--<style src="../../node_modules/mapbox-gl/dist/mapbox-gl.css"></style>-->
 
 <style lang="stylus">
   #map
