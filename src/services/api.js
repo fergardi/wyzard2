@@ -122,13 +122,13 @@ const checkBuildingsProductionMaintenance = (uid) => {
 }
 
 // check hero production - maintenance
-const checkHeroesProductionMaintenance = (uid) => {
+const checkHeroesProductionMaintenance = (uid, experience = false) => {
   return database.ref('users').child(uid).child('contracts').once('value', contracts => {
     if (contracts && contracts.hasChildren()) {
       contracts.forEach(contract => {
         contract.ref.transaction(hero => {
           // console.log('Checking hero production and maintenances... ' + hero.name)
-          if (hero.invested++ >= hero.level * hero.experience) {
+          if (experience && hero.invested + 1 >= hero.level * hero.experience) {
             // console.log('Hero leveled up... ' + hero.name)
             hero.level++
             hero.invested = 0
@@ -347,7 +347,7 @@ const checkMaintenances = async (uid) => {
   resetAuxVariables()
   await checkTerrainProductionDestruction(uid)
   await checkBuildingsProductionMaintenance(uid)
-  await checkHeroesProductionMaintenance(uid)
+  await checkHeroesProductionMaintenance(uid, true)
   await checkEnchantmentsProduction(uid)
   await checkEnchantmentsMaintenance(uid)
   await checkGodsProduction(uid)

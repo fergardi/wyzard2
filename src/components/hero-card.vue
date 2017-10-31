@@ -9,6 +9,9 @@
         .card-number(:class="data.color", v-if="tavern", v-tooltip="translate('ttp_gold_bid')")
           i.ra.ra-gold-bar
           span {{ data.bid | minimize }}
+        .card-number(:class="data.color", v-if="tavern", v-tooltip="translate('ttp_turn_cost')")
+          i.ra.ra-hourglass
+          span {{ turns | minimize }}
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_hero_name')") {{ data.name | translate }}
         .card-number(:class="data.color", v-if="contract || tavern", v-tooltip="translate('ttp_hero_level')")
