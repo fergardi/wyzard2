@@ -11,12 +11,12 @@
             p {{ 'lbl_description_settings' | translate }}
 
           mu-card-text
-            .mu-text-field-label {{ 'lbl_settings_menu' | translate }}
-            mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
-
-          mu-card-text
-            mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')", :fullWidth="true", @input="save")
-              mu-menu-item(v-for="language, index in languages", :key="index", :value="language.key", :title="translate(language.value)")
+            .form-row
+              mu-select-field(v-model="settings.lang", :label="translate('lbl_settings_language')", :fullWidth="true", @input="save")
+                mu-menu-item(v-for="language, index in languages", :key="index", :value="language.key", :title="translate(language.value)")
+            
+            .form-row
+              mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
 
           mu-card-actions
             mu-raised-button(primary, type="submit") {{ 'lbl_button_restore' | translate }}
@@ -70,7 +70,7 @@
             }
             return settings
           })
-          store.commit('success', 'lbl_toast_settings_saved')
+          // store.commit('success', 'lbl_toast_settings_saved')
         }
       },
       async restore () {
@@ -105,12 +105,12 @@
 
 <style lang="stylus" scoped>
   .settings
-    .mu-checkbox
-      float left
-    .mu-text-field-label
-      font-size 16px
-      width 100%
-      text-align left
-    .mu-card-text + .mu-card-text
-      margin-top 16px
+    .form-row
+      display flex
+      justify-content flex-start
+      align-items center
+      .mu-text-field
+        width 100%
+      .mu-select-field
+        width 100%
 </style>

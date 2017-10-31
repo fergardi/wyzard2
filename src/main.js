@@ -138,8 +138,7 @@ router.beforeEach((to, from, next) => {
 // production
 Vue.config.productionTip = false
 // login
-console.log(auth)
-async function createApp () {
+const createApp = async () => {
   auth.onAuthStateChanged(status => {
     if (auth.currentUser !== null) {
       store.commit('uid', auth.currentUser.uid)
@@ -153,5 +152,5 @@ async function createApp () {
     })
   })
 }
-
+// run
 createApp()

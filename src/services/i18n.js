@@ -633,6 +633,7 @@ export default {
     // languages
     lbl_language_spanish: 'Español',
     lbl_language_english: 'Inglés',
+    lbl_language_french: 'Francés',
     // messages
     lbl_message_welcome_subject: 'Bienvenid@',
     lbl_message_welcome_text: 'Bienvenido al juego',
