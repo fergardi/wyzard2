@@ -320,7 +320,7 @@
       justify-content center
       align-items center
     .row
-      justify-content flex-start
+      justify-content center
     .mu-chip
       cursor default
       width auto
@@ -688,7 +688,7 @@
         bottom auto !important
       .sidebar
         border none
-        transform translateZ(0)
+        transform translateZ(0) !important
         visibility visible
         opacity $opacity
         &.left
