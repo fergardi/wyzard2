@@ -12,12 +12,18 @@
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
       mu-paper(:zDepth="6")
-        mu-appbar {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.toggler(icon=":ra ra-three-keys", :slot="settings.navbar ? 'right' : 'left'", @click="toggle")
-          mu-icon-button.help(icon=":ra ra-help", :slot="settings.navbar ? 'right' : 'left'", to="help", @click="toggle")
-          mu-icon-button.logout(icon=":ra ra-key", :slot="!settings.navbar ? 'right' : 'left'", to="login", @click="toggle", :class="logged ? 'none': ''")
-          mu-icon-button.login(icon=":ra ra-locked-fortress", :slot="!settings.navbar ? 'right' : 'left'", @click="logout", :class="!logged ? 'none': ''")
-          mu-icon-button.settings(icon=":ra ra-gears", :slot="!settings.navbar ? 'right' : 'left'", to="settings", @click="toggle")
+        mu-appbar(v-if="!settings.navbar") {{ 'lbl_title_menu' | translate }}
+          mu-icon-button.toggler(icon=":ra ra-three-keys", slot="left", @click="toggle")
+          mu-icon-button.help(icon=":ra ra-help", slot="left", to="help", @click="toggle")
+          mu-icon-button.logout(icon=":ra ra-key", slot="right", to="login", @click="toggle", :class="logged ? 'none': ''")
+          mu-icon-button.login(icon=":ra ra-locked-fortress", slot="right", @click="logout", :class="!logged ? 'none': ''")
+          mu-icon-button.settings(icon=":ra ra-gears", slot="right", to="settings", @click="toggle")
+        mu-appbar(v-else) {{ 'lbl_title_menu' | translate }}
+          mu-icon-button.settings(icon=":ra ra-gears", slot="left", to="settings", @click="toggle")
+          mu-icon-button.login(icon=":ra ra-locked-fortress", slot="left", @click="logout", :class="!logged ? 'none': ''")
+          mu-icon-button.logout(icon=":ra ra-key", slot="left", to="login", @click="toggle", :class="logged ? 'none': ''")
+          mu-icon-button.help(icon=":ra ra-help", slot="right", to="help", @click="toggle")
+          mu-icon-button.toggler(icon=":ra ra-three-keys", slot="right", @click="toggle")
 
       mu-list.scroll
         template(v-if="logged")
@@ -188,6 +194,7 @@
           }
         })
         await updateGeneralStatus(store.state.uid)
+        store.commit('success', 'auth/authentication-ok')
       },
       toggle () {
         store.commit('toggle')

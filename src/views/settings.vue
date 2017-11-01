@@ -16,7 +16,7 @@
                 mu-menu-item(v-for="language, index in languages", :key="index", :value="language.key", :title="translate(language.value)")
             
             .form-row
-              mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @change="save")
+              mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @input="save")
 
           mu-card-actions
             mu-raised-button(primary, type="submit") {{ 'lbl_button_restore' | translate }}
@@ -62,15 +62,10 @@
             break
         }
       },
-      async save () {
+      async save (value) {
         if (store.state.uid) {
-          await database.ref('users').child(store.state.uid).child('settings').transaction(settings => {
-            if (settings) {
-              settings = this.settings
-            }
-            return settings
-          })
-          // store.commit('success', 'lbl_toast_settings_saved')
+          await database.ref('users').child(store.state.uid).child('settings').set(this.settings)
+          store.commit('success', 'lbl_toast_settings_saved')
         }
       },
       async restore () {
@@ -97,7 +92,7 @@
     },
     computed: {
       settings () {
-        return store.state.user ? store.state.user.settings : store.state.settings
+        return store.state.user !== null ? store.state.user.settings : store.state.settings
       }
     }
   }
