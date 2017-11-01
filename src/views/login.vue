@@ -91,7 +91,7 @@
       login () {
         this.busy = true
         authenticate(this.email, this.password, this.remember)
-        .then(response => {
+        .then(() => {
           store.commit('uid', auth.currentUser.uid)
           store.commit('success', 'auth/authentication-ok')
           this.busy = false
@@ -114,7 +114,7 @@
         }
         if (!this.disabled) {
           register(this.email, this.password, this.remember)
-          .then(async response => {
+          .then(async () => {
             // player
             let player = {...this.user}
             player.name = this.username

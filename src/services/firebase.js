@@ -20,14 +20,14 @@ export const auth = app.auth()
 
 // export const messaging = firebase.messaging()
 
-export const authenticate = (email, password, remember) => {
+export const authenticate = (email, password, remember = false) => {
   let persistence = remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION
   return auth.setPersistence(persistence).then(async () => {
     await auth.signInWithEmailAndPassword(email, password)
   })
 }
 
-export const register = (email, password, remember) => {
+export const register = (email, password, remember = false) => {
   let persistence = remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION
   return auth.setPersistence(persistence).then(async () => {
     await auth.createUserWithEmailAndPassword(email, password)
