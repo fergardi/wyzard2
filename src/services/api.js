@@ -22,18 +22,6 @@ let disbanded = false
 let deserted = false
 let dispeled = false
 
-// check maintenances
-  // check terrain production - destruction
-  // check building production - maintenance
-  // check hero production - maintenance
-  // check enchantment on myself production
-  // check enchantment owned by me maintenance
-  // check unit maintenance
-  // check god production
-  // check unit affordance
-  // check enchantment affordance
-  // check hero affordance
-
 // check terrain production - destruction
 const checkTerrainProductionDestruction = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
@@ -840,26 +828,26 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               // TODO
             }
             if (attackerSpell) {
-              let enchantmentChance = Math.random() * 100
-              if (enchantmentChance > def.magicalDefense) {
-                await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
-                report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
-                if (attackerSpell.enchantment) {
-                  let enchantment = attackerSpell
-                  enchantment.target = target
-                  enchantment.targetColor = def.color
-                  enchantment.targetName = def.name
-                  enchantment.source = uid
-                  enchantment.sourceColor = atk.color
-                  enchantment.sourceName = atk.name
-                  enchantment.magic = atk.magic
-                  enchantment.duration *= enchantment.magic
-                  enchantment.remaining = enchantment.duration
-                  delete enchantment['.key']
-                  await database.ref('enchantments').push(enchantment)
+              if (attackerSpell.enchantment) {
+                let enchantmentChance = Math.random() * 100
+                if (enchantmentChance > def.magicalDefense) {
+                  await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
+                  report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                  if (attackerSpell.enchantment) {
+                    let enchantment = attackerSpell
+                    enchantment.target = target
+                    enchantment.targetColor = def.color
+                    enchantment.targetName = def.name
+                    enchantment.source = uid
+                    enchantment.sourceColor = atk.color
+                    enchantment.sourceName = atk.name
+                    enchantment.magic = atk.magic
+                    enchantment.duration *= enchantment.magic
+                    enchantment.remaining = enchantment.duration
+                    delete enchantment['.key']
+                    await database.ref('enchantments').push(enchantment)
+                  }
                 }
-              } else {
-                // TODO
               }
             }
             // artifacts
@@ -870,7 +858,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             if (defenderArtifact) {
               defenderArtifactDamageBonus += defenderArtifact.damage
               defenderArtifactHealthBonus += defenderArtifact.health
-              // rounds += defenderArtifact.rounds
+              rounds += defenderArtifact.rounds
               report.artifacts.push({ defender: { left: false, artifact: defenderArtifact.name, color: defenderArtifact.color } })
             }
             let attackerArtifactDamageBonus = 0
@@ -880,39 +868,39 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (artifactChance > def.magicalDefense) {
                 attackerArtifactDamageBonus += attackerArtifact.damage
                 attackerArtifactHealthBonus += attackerArtifact.health
-                // rounds += attackerArtifact.rounds
+                rounds += attackerArtifact.rounds
                 report.artifacts.push({ attacker: { left: true, artifact: attackerArtifact.name, color: attackerArtifact.color } })
               }
             }
             attackerArmy.forEach(wave => {
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
-                  wave.damage = attackerGodDamageBonus + attackerDragonDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDragonHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerDragonDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerDragonHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_elemental':
-                  wave.damage = attackerGodDamageBonus + attackerElementalDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerElementalHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerElementalDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerElementalHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage = attackerGodDamageBonus + attackerBeastDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerBeastHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerBeastDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerBeastHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage = attackerGodDamageBonus + attackerHumanDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerHumanHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerHumanDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerHumanHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage = attackerGodDamageBonus + attackerCelestialDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerCelestialHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerCelestialDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerCelestialHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage = attackerGodDamageBonus + attackerDemonDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerDemonHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerDemonDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerDemonHealthBonus + attackerArtifactHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage = attackerGodDamageBonus + attackerUndeadDamageBonus + attackerArtifactDamageBonus
-                  wave.health = attackerGodHealthBonus + attackerUndeadHealthBonus + attackerArtifactHealthBonus
+                  wave.damage += attackerGodDamageBonus + attackerUndeadDamageBonus + attackerArtifactDamageBonus
+                  wave.health += attackerGodHealthBonus + attackerUndeadHealthBonus + attackerArtifactHealthBonus
                   break
               }
             })
