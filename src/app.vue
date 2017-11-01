@@ -3,7 +3,7 @@
     .background
 
     .toast
-      mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="toast.color", @close="untoast")
+      mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="[toast.color, settings.navbar ? 'left' : 'right']", @close="untoast")
 
     mu-paper(:zDepth="6")
       mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
@@ -12,18 +12,18 @@
 
     mu-drawer.sidebar(:open="menu", :docked="overlay", :right="settings.navbar", :class="settings.navbar ? 'right' : 'left'", @close="toggle")
       mu-paper(:zDepth="6")
-        mu-appbar(v-if="!settings.navbar") {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.toggler(icon=":ra ra-three-keys", slot="left", @click="toggle")
-          mu-icon-button.help(icon=":ra ra-help", slot="left", to="help", @click="toggle")
-          mu-icon-button.logout(icon=":ra ra-key", slot="right", to="login", @click="toggle", :class="logged ? 'none': ''")
-          mu-icon-button.login(icon=":ra ra-locked-fortress", slot="right", @click="logout", :class="!logged ? 'none': ''")
-          mu-icon-button.settings(icon=":ra ra-gears", slot="right", to="settings", @click="toggle")
-        mu-appbar(v-else) {{ 'lbl_title_menu' | translate }}
-          mu-icon-button.settings(icon=":ra ra-gears", slot="left", to="settings", @click="toggle")
-          mu-icon-button.login(icon=":ra ra-locked-fortress", slot="left", @click="logout", :class="!logged ? 'none': ''")
-          mu-icon-button.logout(icon=":ra ra-key", slot="left", to="login", @click="toggle", :class="logged ? 'none': ''")
-          mu-icon-button.help(icon=":ra ra-help", slot="right", to="help", @click="toggle")
-          mu-icon-button.toggler(icon=":ra ra-three-keys", slot="right", @click="toggle")
+        mu-appbar(v-if="!settings.navbar")
+          mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
+          mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
+          mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-if="!logged")
+          mu-icon-button.login(icon=":ra ra-locked-fortress", @click="logout", v-else)
+          mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
+        mu-appbar(v-else)
+          mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
+          mu-icon-button.login(icon=":ra ra-locked-fortress", @click="logout", v-if="logged")
+          mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-else)
+          mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
+          mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
 
       mu-list.scroll
         template(v-if="logged")
@@ -80,7 +80,7 @@
           //mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
             mu-icon.red(slot="left", value=":ra ra-wooden-sign")
           mu-list-item(:title="translate('lbl_title_taxes')", to="taxes", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-scroll-unfurled")
+            mu-icon(slot="left", value=":ra ra-mining-diamonds")
           mu-list-item(:title="translate('lbl_title_exploration')", to="exploration", @click="toggle")
             mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
@@ -149,7 +149,7 @@
     router-view.router.scroll(:class="settings.navbar ? 'right' : 'left'")
 
     mu-popup(position="bottom", :open="popup", @close="sos")
-      mu-appbar(:title="translate(title)")
+      mu-appbar.popup(:title="translate(title)")
       mu-content-block.scroll
         p(v-html="nl2br(translate(help))")
 </template>
@@ -322,10 +322,17 @@
     .mu-appbar
       border-bottom 1px solid
       height 56px !important
-    .mu-appbar-title
-      display flex
-      justify-content center
-      align-items center
+    .topbar
+    .popup
+      .mu-appbar-title
+        display flex
+        justify-content center
+        align-items center
+    .sidebar
+      .mu-appbar-title
+        display flex
+        justify-content space-between
+        align-items center
     .row
       justify-content center
     .mu-chip
@@ -484,6 +491,7 @@
       display flex
       flex-wrap wrap
       width 100%
+      justify-content center
     .mu-table
       margin-top 5px
       border-radius $radius
@@ -509,10 +517,6 @@
       width 22.5%
       height 100%
       overflow hidden
-      &.right
-        border-left 1px solid
-      &.left
-        border-right 1px solid
       .mu-list
         overflow-y auto
         height calc(100% - 56px)
@@ -668,31 +672,31 @@
       visibility visible
       opacity 1
       transition opacity .15s
-    @media only screen and (min-width 480px) and (max-width 1079px)
-      .mu-toast
-        width 250px
-        min-width 250px
-        right 2% !important
-        top 10% !important
-        left auto !important
-        bottom auto !important
+    @media only screen and (max-width 1079px)
+      .mu-drawer
+        width 85%
+        &.left
+          border-right 1px solid
+        &.right
+          border-left 1px solid
+      .mu-popup
+        width 100%
       .mu-dialog
         width 75%
         min-width 75%
         max-width 75%
-    @media only screen and (max-width 1079px)
-      .mu-drawer
-        width 85%
-      .mu-popup
-        width 100%
     @media only screen and (min-width 1080px)
       .mu-toast
         width 250px
         min-width 250px
         top 10% !important
-        right 2% !important
-        left auto !important
         bottom auto !important
+        &.left
+          left 1% !important
+          right auto !important
+        &.right
+          right 1% !important
+          left auto !important
       .sidebar
         border none
         transform translateZ(0) !important
@@ -704,6 +708,11 @@
         &.right
           .mu-list
             border-left 1px solid
+        .toggler
+          display none
+      .topbar
+        .toggler
+          visibility hidden
       .topbar
       .router
         &.left
