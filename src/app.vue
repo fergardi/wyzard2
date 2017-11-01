@@ -176,7 +176,7 @@
       })
       // firebase
       store.watch((state) => state.uid, async (value) => {
-        if (value) {
+        if (value && this.user !== null) {
           this.prepare()
         }
       })
@@ -194,7 +194,6 @@
           }
         })
         await updateGeneralStatus(store.state.uid)
-        store.commit('success', 'auth/authentication-ok')
       },
       toggle () {
         store.commit('toggle')
@@ -206,6 +205,7 @@
         store.commit('sos')
       },
       logout () {
+        this.toggle()
         auth.signOut()
         store.commit('uid', null)
         this.$router.push('/login')

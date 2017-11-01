@@ -92,10 +92,8 @@
         this.busy = true
         authenticate(this.email, this.password, this.remember)
         .then(() => {
-          store.commit('uid', auth.currentUser.uid)
-          store.commit('success', 'auth/authentication-ok')
           this.busy = false
-          this.$router.push('/messages') // TODO DEV
+          this.$router.push('/messages')
         })
         .catch(error => {
           this.error = true

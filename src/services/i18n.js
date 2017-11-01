@@ -793,6 +793,7 @@ export default {
     txt_help_troops: 'Aquí se muestra una lista de todas las Tropas que tienes actualmente en tu Reino.\nPuedes desbandar Tropas si no puedes pagar sus mantenimientos.\nDesbandar no consume Turnos.',
     txt_help_world: 'Aquí se muestra un Mapa del mundo para completar Misiones.',
     // firebase
+    'auth/authentication-required': 'Autenticación necesaria',
     'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',
     'auth/registration-ok': 'Registrado correctamente',
