@@ -625,6 +625,8 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
       await database.ref('users').child(target).once('value', async defender => {
         if (defender) {
           let report = {
+            gods: [],
+            heroes: [],
             spells: [],
             artifacts: [],
             logs: []
@@ -692,6 +694,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (attackerBlessings) {
                 attackerBlessings.forEach(attackerBlessing => {
                   let blessing = attackerBlessing.val()
+                  report.gods.push({ left: true, god: blessing.name, color: blessing.color })
                   attackerGodDamageBonus += blessing.damage
                   attackerGodHealthBonus += blessing.health
                 })
@@ -703,6 +706,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderBlessings) {
                 defenderBlessings.forEach(defenderBlessing => {
                   let blessing = defenderBlessing.val()
+                  report.gods.push({ left: false, god: blessing.name, color: blessing.color })
                   defenderGodDamageBonus += blessing.damage
                   defenderGodHealthBonus += blessing.health
                 })
@@ -728,27 +732,38 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (contracts) {
                   contracts.forEach(contract => {
                     let attackerContract = contract.val()
-                    if (attackerContract.family === 'lbl_family_dragon') {
-                      attackerDragonDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerDragonHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_elemental') {
-                      attackerElementalDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerElementalHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_beast') {
-                      attackerBeastDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerBeastHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_human') {
-                      attackerHumanDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerHumanHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_celestial') {
-                      attackerCelestialDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerCelestialHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_demon') {
-                      attackerDemonDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerDemonHealthBonus += attackerContract.health * attackerContract.level
-                    } else if (attackerContract.family === 'lbl_family_undead') {
-                      attackerUndeadDamageBonus += attackerContract.damage * attackerContract.level
-                      attackerUndeadHealthBonus += attackerContract.health * attackerContract.level
+                    if (attackerContract.battle) {
+                      report.heroes.push({ left: true, hero: attackerContract.name, color: attackerContract.color, level: attackerContract.level })
+                      switch (attackerContract.family) {
+                        case 'lbl_family_dragon':
+                          attackerDragonDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerDragonHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_elemental':
+                          attackerElementalDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerElementalHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_beast':
+                          attackerBeastDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerBeastHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_human':
+                          attackerHumanDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerHumanHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_celestial':
+                          attackerCelestialDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerCelestialHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_demon':
+                          attackerDemonDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerDemonHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                        case 'lbl_family_undead':
+                          attackerUndeadDamageBonus += attackerContract.damage * attackerContract.level
+                          attackerUndeadHealthBonus += attackerContract.health * attackerContract.level
+                          break
+                      }
                     }
                   })
                 }
@@ -773,27 +788,38 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (contracts) {
                   contracts.forEach(contract => {
                     let defenderContract = contract.val()
-                    if (defenderContract.family === 'lbl_family_dragon') {
-                      defenderDragonDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderDragonHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_elemental') {
-                      defenderElementalDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderElementalHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_beast') {
-                      defenderBeastDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderBeastHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_human') {
-                      defenderHumanDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderHumanHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_celestial') {
-                      defenderCelestialDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderCelestialHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_demon') {
-                      defenderDemonDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderDemonHealthBonus += defenderContract.health * defenderContract.level
-                    } else if (defenderContract.family === 'lbl_family_undead') {
-                      defenderUndeadDamageBonus += defenderContract.damage * defenderContract.level
-                      defenderUndeadHealthBonus += defenderContract.health * defenderContract.level
+                    if (defenderContract.battle) {
+                      report.heroes.push({ left: false, hero: defenderContract.name, color: defenderContract.color, level: defenderContract.level })
+                      switch (defenderContract.family) {
+                        case 'lbl_family_dragon':
+                          defenderDragonDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderDragonHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_elemental':
+                          defenderElementalDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderElementalHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_beast':
+                          defenderBeastDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderBeastHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_human':
+                          defenderHumanDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderHumanHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_celestial':
+                          defenderCelestialDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderCelestialHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_demon':
+                          defenderDemonDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderDemonHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                        case 'lbl_family_undead':
+                          defenderUndeadDamageBonus += defenderContract.damage * defenderContract.level
+                          defenderUndeadHealthBonus += defenderContract.health * defenderContract.level
+                          break
+                      }
                     }
                   })
                 }
@@ -845,27 +871,23 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderSpellKills = 0
             // let attackerResurrection = 0
             if (attackerSpell && attackerSpell.battle) {
-              if (attackerSpell.enchantment) {
-                let enchantmentChance = Math.random() * 100
-                if (enchantmentChance > def.magicalDefense) {
-                  await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
-                  report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
-                  if (attackerSpell.enchantment) {
-                    if (!attackerSpell.support) {
-                      let enchantment = attackerSpell
-                      enchantment.target = target
-                      enchantment.targetColor = def.color
-                      enchantment.targetName = def.name
-                      enchantment.source = uid
-                      enchantment.sourceColor = atk.color
-                      enchantment.sourceName = atk.name
-                      enchantment.magic = atk.magic
-                      enchantment.duration *= enchantment.magic
-                      enchantment.remaining = enchantment.duration
-                      delete enchantment['.key']
-                      await database.ref('enchantments').push(enchantment)
-                    }
-                  }
+              let spellChance = Math.random() * 100
+              if (spellChance > def.magicalDefense) {
+                await database.ref('users').child(uid).update({ mana: atk.mana - attackerSpell.manaCost })
+                report.spells.push({ attacker: { left: true, level: atk.magic, spell: attackerSpell.name, color: attackerSpell.color } })
+                if (attackerSpell.enchantment && !attackerSpell.support) {
+                  let enchantment = attackerSpell
+                  enchantment.target = target
+                  enchantment.targetColor = def.color
+                  enchantment.targetName = def.name
+                  enchantment.source = uid
+                  enchantment.sourceColor = atk.color
+                  enchantment.sourceName = atk.name
+                  enchantment.magic = atk.magic
+                  enchantment.duration *= enchantment.magic
+                  enchantment.remaining = enchantment.duration
+                  delete enchantment['.key']
+                  await database.ref('enchantments').push(enchantment)
                 } else {
                   if (defenderSpell.support) {
                     if (defenderSpell.damage > 0) defenderSpellDamageBonus += defenderSpell.damage * def.magic
