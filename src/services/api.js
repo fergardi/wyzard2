@@ -616,7 +616,6 @@ export const battlePlayerVersusEnvironment = (uid, country) => {
   // TODO
 }
 
-/* eslint-disable */
 // battle pvp
 export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spell, artifact) => {
   return database.ref('users').child(uid).once('value', async attacker => {
@@ -826,8 +825,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderSpellDamageBonus = 0
             let defenderSpellHealthBonus = 0
             let attackerSpellKills = 0
-            let defenderSpellRandom = true
-            let defenderResurrection = 0
+            // let defenderResurrection = 0
             // spells
             if (defenderSpell && defenderSpell.battle) {
               await database.ref('users').child(target).update({ mana: def.mana - defenderSpell.manaCost })
@@ -835,19 +833,17 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderSpell.support) {
                 if (defenderSpell.damage > 0) defenderSpellDamageBonus += defenderSpell.damage * def.magic
                 if (defenderSpell.health > 0) defenderSpellHealthBonus += defenderSpell.health * def.magic
-                if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
+                // if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
               } else {
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                 if (defenderSpell.troop > 0) attackerSpellKills += defenderSpell.troop * def.magic
               }
-              defenderSpellRandom = !defenderSpell.multiple
             }
             let attackerSpellDamageBonus = 0
             let attackerSpellHealthBonus = 0
             let defenderSpellKills = 0
-            let attackerSpellRandom = true
-            let attackerResurrection = 0
+            // let attackerResurrection = 0
             if (attackerSpell && attackerSpell.battle) {
               if (attackerSpell.enchantment) {
                 let enchantmentChance = Math.random() * 100
@@ -874,119 +870,174 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   if (defenderSpell.support) {
                     if (defenderSpell.damage > 0) defenderSpellDamageBonus += defenderSpell.damage * def.magic
                     if (defenderSpell.health > 0) defenderSpellHealthBonus += defenderSpell.health * def.magic
-                    if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
+                    // if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
                   } else {
                     if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                     if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                     if (defenderSpell.troop > 0) attackerSpellKills += defenderSpell.troop * def.magic
                   }
-                  defenderSpellRandom = !defenderSpell.multiple
                 }
               }
             }
             // rounds
             let rounds = Math.min(Math.max(attackerArmy.length, defenderArmy.length), 5)
             // artifacts
+            // defender artifact
             let defenderArtifactDamageBonus = 0
             let defenderArtifactHealthBonus = 0
-            let defenderArtifactRandom = true
             let attackerArtifactKills = 0
             let defenderArtifact = def.defense && def.defense.trap
             if (defenderArtifact) {
               defenderArtifactDamageBonus = defenderArtifact.damage
               defenderArtifactHealthBonus = defenderArtifact.health
-              defenderArtifactRandom = !defenderArtifact.multiple
               attackerArtifactKills = defenderArtifact.troop
               rounds += defenderArtifact.rounds
               report.artifacts.push({ defender: { left: false, artifact: defenderArtifact.name, color: defenderArtifact.color } })
             }
+            // attacker artifact
             let attackerArtifactDamageBonus = 0
             let attackerArtifactHealthBonus = 0
-            let attackerArtifactRandom = null
             let defenderArtifactKills = 0
             if (attackerArtifact) {
               let artifactChance = Math.random() * 100
               if (artifactChance > def.magicalDefense) {
                 attackerArtifactDamageBonus += attackerArtifact.damage
                 attackerArtifactHealthBonus += attackerArtifact.health
-                attackerArtifactRandom = attackerArtifact.multiple
                 defenderArtifactKills += attackerArtifact.troop
                 rounds += attackerArtifact.rounds
                 report.artifacts.push({ attacker: { left: true, artifact: attackerArtifact.name, color: attackerArtifact.color } })
               }
             }
             // waves
-            attackerArtifactIndex = Math.floor(Math.random() * defenderArmy.length)
-            attackerSpellIndex = Math.floor(Math.random() * defenderArmy.length)
-            defenderArtifactIndex = Math.floor(Math.random() * defenderArmy.length)
-            defenderSpellIndex = Math.floor(Math.random() * defenderArmy.length)
-            attackerArmy.forEach(wave => {
-              wave.damage = 0
-              wave.health = 0
-              switch (wave.troop.family) {
-                case 'lbl_family_dragon':
-                  wave.damage += attackerGodDamageBonus + attackerDragonDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerDragonHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_elemental':
-                  wave.damage += attackerGodDamageBonus + attackerElementalDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerElementalHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_beast':
-                  wave.damage += attackerGodDamageBonus + attackerBeastDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerBeastHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_human':
-                  wave.damage += attackerGodDamageBonus + attackerHumanDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerHumanHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_celestial':
-                  wave.damage += attackerGodDamageBonus + attackerCelestialDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerCelestialHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_demon':
-                  wave.damage += attackerGodDamageBonus + attackerDemonDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerDemonHealthBonus + attackerArtifactHealthBonus
-                  break
-                case 'lbl_family_undead':
-                  wave.damage += attackerGodDamageBonus + attackerUndeadDamageBonus + attackerArtifactDamageBonus
-                  wave.health += attackerGodHealthBonus + attackerUndeadHealthBonus + attackerArtifactHealthBonus
-                  break
-              }
-            })
+            // random indexes
+            let attackerArtifactIndex = Math.floor(Math.random() * defenderArmy.length)
+            let attackerSpellIndex = Math.floor(Math.random() * defenderArmy.length)
+            let defenderArtifactIndex = Math.floor(Math.random() * defenderArmy.length)
+            let defenderSpellIndex = Math.floor(Math.random() * defenderArmy.length)
+            let defenderArmyIndex = 0
             defenderArmy.forEach(wave => {
-              wave.damage = 0
-              wave.health = 0
+              // defender blessings
+              wave.damage = defenderGodDamageBonus
+              wave.health = defenderGodHealthBonus
+              // defender artifact
+              if (defenderArtifact && defenderArtifact.support && (defenderArtifact.multiple || defenderArmyIndex === defenderArtifactIndex)) {
+                wave.damage += defenderArtifactDamageBonus
+                wave.health += defenderArtifactHealthBonus
+              }
+              // defender spell
+              if (defenderSpell && defenderSpell.support && (defenderSpell.multiple || defenderArmyIndex === defenderSpellIndex)) {
+                wave.damage += defenderSpellDamageBonus
+                wave.health += defenderSpellHealthBonus
+              }
+              // attacker artifact
+              if (attackerArtifact && !attackerArtifact.support && (attackerArtifact.multiple || defenderArmyIndex === attackerArtifactIndex)) {
+                wave.damage += attackerArtifactDamageBonus
+                wave.health += attackerArtifactHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 - (attackerArtifactKills / 100)))
+              }
+              // attacker spell
+              if (attackerSpell && !attackerSpell.support && (attackerSpell.multiple || defenderArmyIndex === attackerSpellIndex)) {
+                wave.damage += attackerSpellDamageBonus
+                wave.health += attackerSpellHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 - (attackerSpellKills / 100)))
+              }
+              // defender heroes
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
-                  wave.damage += defenderGodDamageBonus + defenderDragonDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderDragonHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderDragonDamageBonus
+                  wave.health += defenderDragonHealthBonus
                   break
                 case 'lbl_family_elemental':
-                  wave.damage += defenderGodDamageBonus + defenderElementalDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderElementalHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderElementalDamageBonus
+                  wave.health += defenderElementalHealthBonus
                   break
                 case 'lbl_family_beast':
-                  wave.damage += defenderGodDamageBonus + defenderBeastDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderBeastHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderBeastDamageBonus
+                  wave.health += defenderBeastHealthBonus
                   break
                 case 'lbl_family_human':
-                  wave.damage += defenderGodDamageBonus + defenderHumanDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderHumanHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderHumanDamageBonus
+                  wave.health += defenderHumanHealthBonus
                   break
                 case 'lbl_family_celestial':
-                  wave.damage += defenderGodDamageBonus + defenderCelestialDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderCelestialHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderCelestialDamageBonus
+                  wave.health += defenderCelestialHealthBonus
                   break
                 case 'lbl_family_demon':
-                  wave.damage += defenderGodDamageBonus + defenderDemonDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderDemonHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderDemonDamageBonus
+                  wave.health += defenderDemonHealthBonus
                   break
                 case 'lbl_family_undead':
-                  wave.damage += defenderGodDamageBonus + defenderUndeadDamageBonus + defenderArtifactDamageBonus
-                  wave.health += defenderGodHealthBonus + defenderUndeadHealthBonus + defenderArtifactHealthBonus
+                  wave.damage += defenderUndeadDamageBonus
+                  wave.health += defenderUndeadHealthBonus
                   break
               }
+              defenderArmyIndex++
+            })
+            // random targets
+            attackerArtifactIndex = Math.floor(Math.random() * attackerArmy.length)
+            attackerSpellIndex = Math.floor(Math.random() * attackerArmy.length)
+            defenderArtifactIndex = Math.floor(Math.random() * attackerArmy.length)
+            defenderSpellIndex = Math.floor(Math.random() * attackerArmy.length)
+            let attackerArmyIndex = 0
+            attackerArmy.forEach(wave => {
+              // attacker blessings
+              wave.damage = attackerGodDamageBonus
+              wave.health = attackerGodHealthBonus
+              // attacker artifact
+              if (attackerArtifact && attackerArtifact.support && (attackerArtifact.multiple || attackerArmyIndex === attackerArtifactIndex)) {
+                wave.damage += attackerArtifactDamageBonus
+                wave.health += attackerArtifactHealthBonus
+              }
+              // attacker spell
+              if (attackerSpell && attackerSpell.support && (attackerSpell.multiple || attackerArmyIndex === attackerSpellIndex)) {
+                wave.damage += attackerSpellDamageBonus
+                wave.health += attackerSpellHealthBonus
+              }
+              // defender artifact
+              if (defenderArtifact && !defenderArtifact.support && (defenderArtifact.multiple || attackerArmyIndex === defenderArtifactIndex)) {
+                wave.damage += defenderArtifactDamageBonus
+                wave.health += defenderArtifactHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 - (defenderArtifactKills / 100)))
+              }
+              // defender spell
+              if (defenderSpell && !defenderSpell.support && (defenderSpell.multiple || attackerArmyIndex === defenderSpellIndex)) {
+                wave.damage += defenderSpellDamageBonus
+                wave.health += defenderSpellHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 - (defenderSpellKills / 100)))
+              }
+              // attacker heroes
+              switch (wave.troop.family) {
+                case 'lbl_family_dragon':
+                  wave.damage += attackerDragonDamageBonus
+                  wave.health += attackerDragonHealthBonus
+                  break
+                case 'lbl_family_elemental':
+                  wave.damage += attackerElementalDamageBonus
+                  wave.health += attackerElementalHealthBonus
+                  break
+                case 'lbl_family_beast':
+                  wave.damage += attackerBeastDamageBonus
+                  wave.health += attackerBeastHealthBonus
+                  break
+                case 'lbl_family_human':
+                  wave.damage += attackerHumanDamageBonus
+                  wave.health += attackerHumanHealthBonus
+                  break
+                case 'lbl_family_celestial':
+                  wave.damage += attackerCelestialDamageBonus
+                  wave.health += attackerCelestialHealthBonus
+                  break
+                case 'lbl_family_demon':
+                  wave.damage += attackerDemonDamageBonus
+                  wave.health += attackerDemonHealthBonus
+                  break
+                case 'lbl_family_undead':
+                  wave.damage += attackerUndeadDamageBonus
+                  wave.health += attackerUndeadHealthBonus
+                  break
+              }
+              attackerArmyIndex++
             })
             // power
             let attackerPowerLost = 0

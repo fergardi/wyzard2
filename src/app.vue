@@ -674,7 +674,7 @@
       transition opacity .15s
     @media only screen and (max-width 1079px)
       .mu-drawer
-        width 85%
+        width 90%
         &.left
           border-right 1px solid
         &.right
@@ -682,9 +682,9 @@
       .mu-popup
         width 100%
       .mu-dialog
-        width 75%
-        min-width 75%
-        max-width 75%
+        width 90%
+        min-width 90%
+        max-width 90%
     @media only screen and (min-width 1080px)
       .mu-toast
         width 250px
