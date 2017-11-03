@@ -21,13 +21,13 @@
         mu-chip.double(v-tooltip="translate('ttp_unit_health')")
           i.ra.ra-hearts
           span {{ data.health | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
+        mu-chip.triple(v-tooltip="translate('ttp_gold_api')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
+        mu-chip.triple(v-tooltip="translate('ttp_people_api')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
+        mu-chip.triple(v-tooltip="translate('ttp_mana_api')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
         mu-chip.double(v-tooltip="translate('ttp_unit_family')")
