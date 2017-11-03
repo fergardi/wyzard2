@@ -32,7 +32,8 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             heroes: [],
             spells: [],
             artifacts: [],
-            logs: []
+            logs: [],
+            resurrections: []
           }
           let atk = attacker.val()
           let def = defender.val()
@@ -257,7 +258,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 }
               })
             }
-            console.log(defenderSpell)
             if (defenderSpell && defenderSpell.battle) {
               if (defenderSpell.counter > 0 && defenderSpell.manaCost <= def.mana) {
                 let counterChance = defenderSpell.counter * def.magic
@@ -282,7 +282,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderSpellDamageBonus = 0
             let defenderSpellHealthBonus = 0
             let attackerSpellKills = 0
-            // let defenderResurrection = 0
+            let defenderResurrection = 0
             // spells
             if (defenderSpell && defenderSpell.battle) {
               await database.ref('users').child(target).update({ mana: def.mana - defenderSpell.manaCost })
@@ -290,7 +290,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderSpell.support) {
                 if (defenderSpell.damage > 0) defenderSpellDamageBonus += defenderSpell.damage * def.magic
                 if (defenderSpell.health > 0) defenderSpellHealthBonus += defenderSpell.health * def.magic
-                // if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
+                if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
               } else {
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
@@ -300,7 +300,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let attackerSpellDamageBonus = 0
             let attackerSpellHealthBonus = 0
             let defenderSpellKills = 0
-            // let attackerResurrection = 0
+            let attackerResurrection = 0
             if (attackerSpell && attackerSpell.battle) {
               let spellChance = Math.random() * 100
               if (spellChance > def.magicalDefense) {
@@ -323,7 +323,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   if (attackerSpell.support) {
                     if (attackerSpell.damage > 0) attackerSpellDamageBonus += attackerSpell.damage * def.magic
                     if (attackerSpell.health > 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
-                    // if (attackerSpell.resurrection > 0) defenderResurrection += attackerSpell.resurrection * def.magic
+                    if (attackerSpell.resurrection > 0) attackerResurrection += attackerSpell.resurrection * def.magic
                   } else {
                     if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
                     if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
@@ -349,10 +349,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             }
             console.log(defenderArtifact)
             if (defenderArtifact && defenderArtifact.battle) {
-              defenderArtifactDamageBonus = defenderArtifact.damage
-              defenderArtifactHealthBonus = defenderArtifact.health
-              attackerArtifactKills = defenderArtifact.troop
-              rounds += defenderArtifact.round
+              if (defenderArtifact.damage > 0) defenderArtifactDamageBonus = defenderArtifact.damage
+              if (defenderArtifact.health > 0) defenderArtifactHealthBonus = defenderArtifact.health
+              if (defenderArtifact.troop > 0) attackerArtifactKills = defenderArtifact.troop
+              if (defenderArtifact.resurrection > 0) defenderResurrection += defenderArtifact.resurrection
+              if (defenderArtifact.round > 0) rounds += defenderArtifact.round
               report.artifacts.push({ left: false, name: defenderArtifact.name, color: defenderArtifact.color })
             }
             // attacker artifact
@@ -362,10 +363,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             if (attackerArtifact && attackerArtifact.battle) {
               let artifactChance = Math.random() * 100
               if (artifactChance > def.magicalDefense) {
-                attackerArtifactDamageBonus += attackerArtifact.damage
-                attackerArtifactHealthBonus += attackerArtifact.health
-                defenderArtifactKills += attackerArtifact.troop
-                rounds += attackerArtifact.round
+                if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
+                if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
+                if (attackerArtifact.troop > 0) defenderArtifactKills += attackerArtifact.troop
+                if (attackerArtifact.resurrection > 0) attackerResurrection += attackerArtifact.resurrection
+                if (attackerArtifact.round > 0) rounds += attackerArtifact.round
                 report.artifacts.push({ left: true, name: attackerArtifact.name, color: attackerArtifact.color })
               }
             }
@@ -553,6 +555,13 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 ? defenderPowerLost > attackerPowerLost * 1.20 // if he loses more than me by > 20%
                 : true
               : false
+            // resurrection
+            if (attackerResurrection > 0) {
+              // TODO
+            }
+            if (defenderResurrection > 0) {
+              // TODO
+            }
           }
           let conquered = null
           let sieged = null
