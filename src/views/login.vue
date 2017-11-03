@@ -120,7 +120,7 @@
             player.color = this.color
             delete player['.key']
             await this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
-            createNewUser(auth.currentUser.uid, player)
+            await createNewUser(auth.currentUser.uid, player)
             store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')
             this.busy = false

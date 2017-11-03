@@ -14,7 +14,7 @@ import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 // tooltips
-Vue.use(VTooltip)
+Vue.use(VTooltip, { disposeTimeout: 500 })
 // lazy
 Vue.use(LazyImg)
 // UI

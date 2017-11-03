@@ -138,14 +138,14 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
-            await updateGeneralStatus(this.target)
+            // await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
             // await checkTurnMaintenances(store.state.uid, this.turns)
             await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
             // this.reset()
             this.close()
-            this.$router.push('/messages')
+            // this.$router.push('/messages')
           } else {
             store.commit('error', 'lbl_toast_battle_error')
             this.close()
