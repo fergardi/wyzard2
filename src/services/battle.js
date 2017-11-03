@@ -44,12 +44,32 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
           if (army.fifth.troop) attackerArmy.push(army.fifth)
           // defense
           let defenderArmy = []
-          if (def.defense) {
-            if (def.defense.first.troop) defenderArmy.push({ troop: def.defense.first.troop, quantity: def.defense.first.troop.quantity })
-            if (def.defense.second.troop) defenderArmy.push({ troop: def.defense.second.troop, quantity: def.defense.second.troop.quantity })
-            if (def.defense.third.troop) defenderArmy.push({ troop: def.defense.third.troop, quantity: def.defense.third.troop.quantity })
-            if (def.defense.fourth.troop) defenderArmy.push({ troop: def.defense.fourth.troop, quantity: def.defense.fourth.troop.quantity })
-            if (def.defense.fifth.troop) defenderArmy.push({ troop: def.defense.fifth.troop, quantity: def.defense.fifth.troop.quantity })
+          if (def.defense && (def.defense.first || def.defense.second || def.defense.third || def.defense.fourth || def.defense.fifth)) {
+            if (def.defense.first) {
+              await defender.ref.child('troops').child(def.defense.first).once('value', troop => {
+                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+              })
+            }
+            if (def.defense.second) {
+              await defender.ref.child('troops').child(def.defense.second).once('value', troop => {
+                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+              })
+            }
+            if (def.defense.third) {
+              await defender.ref.child('troops').child(def.defense.third).once('value', troop => {
+                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+              })
+            }
+            if (def.defense.fourth) {
+              await defender.ref.child('troops').child(def.defense.fourth).once('value', troop => {
+                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+              })
+            }
+            if (def.defense.fifth) {
+              await defender.ref.child('troops').child(def.defense.fifth).once('value', troop => {
+                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+              })
+            }
           } else {
             await defender.ref.child('troops').limitToFirst(5).once('value', troops => {
               if (troops) {
@@ -229,7 +249,15 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               })
             }
             // counters
-            let defenderSpell = def.defense && def.defense.counter
+            let defenderSpell = null
+            if (def.defense && def.defense.spell) {
+              await database.ref('users').child(target).child('book').child(def.defense.spell).once('value', spell => {
+                if (spell) {
+                  defenderSpell = spell.val()
+                }
+              })
+            }
+            console.log(defenderSpell)
             if (defenderSpell && defenderSpell.battle) {
               if (defenderSpell.counter > 0 && defenderSpell.manaCost <= def.mana) {
                 let counterChance = defenderSpell.counter * def.magic
@@ -311,8 +339,16 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderArtifactDamageBonus = 0
             let defenderArtifactHealthBonus = 0
             let attackerArtifactKills = 0
-            let defenderArtifact = def.defense && def.defense.trap
-            if (defenderArtifact) {
+            let defenderArtifact = null
+            if (def.defense && def.defense.artifact) {
+              await database.ref('users').child(target).child('relics').child(def.defense.artifact).once('value', artifact => {
+                if (artifact) {
+                  defenderArtifact = artifact.val()
+                }
+              })
+            }
+            console.log(defenderArtifact)
+            if (defenderArtifact && defenderArtifact.battle) {
               defenderArtifactDamageBonus = defenderArtifact.damage
               defenderArtifactHealthBonus = defenderArtifact.health
               attackerArtifactKills = defenderArtifact.troop
@@ -323,7 +359,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let attackerArtifactDamageBonus = 0
             let attackerArtifactHealthBonus = 0
             let defenderArtifactKills = 0
-            if (attackerArtifact) {
+            if (attackerArtifact && attackerArtifact.battle) {
               let artifactChance = Math.random() * 100
               if (artifactChance > def.magicalDefense) {
                 attackerArtifactDamageBonus += attackerArtifact.damage
