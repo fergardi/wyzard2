@@ -260,7 +260,7 @@
           : true
       },
       user () {
-        return store.state.user
+        return store.state.user || {}
       }
     }
   }

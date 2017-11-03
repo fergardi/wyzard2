@@ -52,7 +52,7 @@ const datetime = (timestamp) => {
   return moment(timestamp).locale(store.state.user ? store.state.user.settings.lang : store.state.settings.lang).format('LLLL')
 }
 const translate = (label) => {
-  return i18n[store.state.user ? store.state.user.settings.lang : store.state.settings.lang][label] || label
+  return i18n[store.state.user && store.state.user.settings ? store.state.user.settings.lang : store.state.settings.lang][label] || label
 }
 const nl2br = (string) => {
   return string.replace(/\r?\n/g, '<br/><br/>')

@@ -98,6 +98,7 @@ const checkBuildingsProductionMaintenance = (uid) => {
         power += building.quantity * building.power
         if (building.name === 'lbl_building_terrain') {
           terrain = building.quantity
+          console.log('TERRAIN ', terrain)
         } else if (building.name === 'lbl_building_fortress') {
           physicalDefense = Math.floor(building.quantity / building.physicalDefense)
         } else if (building.name === 'lbl_building_barrier') {
@@ -548,6 +549,7 @@ export const createNewUser = async (uid, player) => {
       })
     }
   })
+  /*
   // TODO DEVELOPMENT ONLY
   await database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
     if (spells && spells.hasChildren()) {
@@ -569,7 +571,7 @@ export const createNewUser = async (uid, player) => {
       })
     }
   })
-  /*
+  */
   // TODO DEVELOPMENT ONLY
   await database.ref('gods').once('value', gods => {
     if (gods && gods.hasChildren()) {
@@ -578,7 +580,7 @@ export const createNewUser = async (uid, player) => {
       })
     }
   })
-  */
+  await updateGeneralStatus(uid)
 }
 
 // messages

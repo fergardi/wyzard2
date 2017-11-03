@@ -55,14 +55,16 @@
               span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.terrain | numeric }}
 
-          mu-sub-header(v-if="blessings.length") {{ 'lbl_title_blessings' | translate }}
-          mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
-            mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
+          template(v-if="blessings && blessings.length")
+            mu-sub-header {{ 'lbl_title_blessings' | translate }}
+            mu-list-item(v-for="blessing, index in blessings", :title="translate(blessing.name)", :key="index", disabled)
+              mu-icon(slot="left", value=":ra ra-bleeding-eye", :class="blessing.color")
 
-          mu-sub-header(v-if="enchantments.length") {{ 'lbl_title_enchantments' | translate }}
-          mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
-            mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
-            mu-badge(slot="after") {{ enchantment.remaining | minimize }}
+          template(v-if="enchantments && enchantments.length")
+            mu-sub-header {{ 'lbl_title_enchantments' | translate }}
+            mu-list-item(v-for="enchantment, index in enchantments", :title="translate(enchantment.name)", :key="index", disabled)
+              mu-icon(slot="left", value=":ra ra-mirror", :class="enchantment.color")
+              mu-badge(slot="after") {{ enchantment.remaining | minimize }}
 
           mu-sub-header(v-if="user.contracts") {{ 'lbl_title_contracts' | translate }}
           mu-list-item(v-for="contract, index in user.contracts", :title="translate(contract.name)", :key="index", disabled)
@@ -157,10 +159,16 @@
 <script>
   import store from './vuex/store'
   import { database, auth } from './services/firebase'
-  import { updateGeneralStatus } from './services/api'
+  import { updateGeneralStatus } from './services/api' // eslint-disable-line
 
   export default {
     name: 'app',
+    data () {
+      return {
+        enchantments: [],
+        blessings: []
+      }
+    },
     created () {
       store.commit('title', 'lbl_title_wyzard')
       store.commit('help', 'txt_help_login')
@@ -174,27 +182,20 @@
           if (this.timer) clearTimeout(this.timer)
         }
       })
-      // firebase
-      store.watch((state) => state.uid, async (value) => {
-        if (value && this.user !== null) {
-          this.prepare()
-        }
-      })
-      if (store.state.uid) this.prepare()
-    },
-    methods: {
-      async prepare () {
+      // initial
+      if (store.state.uid) {
         store.dispatch('user', database.ref('users').child(store.state.uid))
         this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
         this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-        await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+        database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
           if (message) {
             store.commit('info', this.translate(message.val().subject))
             message.ref.update({ read: true })
           }
         })
-        await updateGeneralStatus(store.state.uid)
-      },
+      }
+    },
+    methods: {
       toggle () {
         store.commit('toggle')
       },
@@ -234,10 +235,10 @@
         return window.innerWidth > 1024
       },
       user () {
-        return store.state.user
+        return store.state.user || {}
       },
       settings () {
-        return store.state.user ? store.state.user.settings : store.state.settings
+        return store.state.user != null && store.state.user.settings != null ? store.state.user.settings : store.state.settings
       }
     }
   }
@@ -610,6 +611,8 @@
       position fixed
       border 1px solid
       border-radius $radius
+      left 0 !important
+      bottom 0 !important
     .ellipsis
       white-space nowrap
       overflow hidden
@@ -672,6 +675,18 @@
       visibility visible
       opacity 1
       transition opacity .15s
+    @media only screen and (min-width 480px)
+      .mu-toast
+        width 250px
+        min-width 250px
+        top 10% !important
+        bottom auto !important
+        &.left
+          left 1% !important
+          right auto !important
+        &.right
+          right 1% !important
+          left auto !important
     @media only screen and (max-width 1079px)
       .mu-drawer
         width 90%
@@ -686,17 +701,6 @@
         min-width 90%
         max-width 90%
     @media only screen and (min-width 1080px)
-      .mu-toast
-        width 250px
-        min-width 250px
-        top 10% !important
-        bottom auto !important
-        &.left
-          left 1% !important
-          right auto !important
-        &.right
-          right 1% !important
-          left auto !important
       .sidebar
         border none
         transform translateZ(0) !important

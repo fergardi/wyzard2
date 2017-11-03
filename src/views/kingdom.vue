@@ -4,6 +4,7 @@
       mu-card.animated.fadeInUp
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/kingdom.jpg?alt=media", :alt="translate('lbl_label_summary')")
+          mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-info
             .card-text {{ 'lbl_label_summary' | translate }}
 
@@ -366,7 +367,7 @@
     },
     computed: {
       user () {
-        return store.state.user
+        return store.state.user || {}
       },
       praises () {
         return this.enchantments.filter(e => e.support && e.target === store.state.uid && e.source === store.state.uid)
@@ -376,6 +377,9 @@
       },
       torments () {
         return this.enchantments.filter(e => !e.support && e.target !== store.state.uid && e.source === store.state.uid)
+      },
+      busy () {
+        return this.user['.key'] === undefined
       }
     }
   }

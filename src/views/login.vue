@@ -38,7 +38,7 @@
 <script>
   import { authenticate, register, database, auth } from '../services/firebase'
   import store from '../vuex/store'
-  import { createNewUser } from '../services/api'
+  import { createNewUser, updateGeneralStatus } from '../services/api'
   import moment from 'moment'
   
   export default {
@@ -79,6 +79,7 @@
     },
     methods: {
       accept () {
+        this.busy = true
         switch (this.tab) {
           case 'login':
             this.login()
@@ -89,9 +90,9 @@
         }
       },
       login () {
-        this.busy = true
         authenticate(this.email, this.password, this.remember)
-        .then(() => {
+        .then(async () => {
+          await updateGeneralStatus(store.state.uid)
           this.busy = false
           this.$router.push('/messages')
         })
@@ -103,7 +104,6 @@
         })
       },
       signin () {
-        this.busy = true
         if (this.users.find(u => u.name.toLowerCase() === this.username.toLowerCase()) !== undefined) {
           this.error = true
           this.code = 'taken'
@@ -120,7 +120,7 @@
             player.color = this.color
             delete player['.key']
             await this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
-            await createNewUser(auth.currentUser.uid, player)
+            createNewUser(auth.currentUser.uid, player)
             store.commit('uid', auth.currentUser.uid)
             store.commit('success', 'auth/registration-ok')
             this.busy = false

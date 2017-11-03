@@ -4,6 +4,7 @@
       mu-card.messages.animated.fadeInUp
         mu-card-media
           img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
+          mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
               i.ra.ra-quill-ink
@@ -112,7 +113,7 @@
               .log
                 .info.title {{ 'lbl_battle_finish' | translate }}
               
-            mu-card-text.attachments
+            mu-card-text.attachments(v-if="attachment")
               .attachment(v-if="selected.gold", v-tooltip="translate('ttp_resource_gold')")
                 mu-chip
                   i.ra.ra-gold-bar
@@ -156,10 +157,10 @@
         selected: {}
       }
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_messages')
       store.commit('help', 'txt_help_messages')
-      this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
+      await this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
     },
     methods: {
       move (page) {
@@ -190,6 +191,12 @@
       },
       paginated () {
         return this.sorted.slice((this.current - 1) * this.size, this.current * this.size)
+      },
+      attachment () {
+        return this.selected && (this.selected.gold || this.selected.people || this.selected.kills || this.selected.conquered || this.selected.sieged || this.selected.artifact)
+      },
+      busy () {
+        return !this.messages || !this.messages.length
       }
     }
   }
