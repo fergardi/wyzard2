@@ -18,16 +18,16 @@
 9. Red Dragon
 10. Phoenix
 ### Spells
-1. Fireball
-2. Berserker
-3. War Drums
-4. Mana Drain
-5. Fire Circle
-6. Flame Shield
-7. Inferno
-8. Blood Pact
-9. Meteor Shower
-10. Volcano
+1. Fireball DESTRUCCION
+2. Berserker SUBE DAÑO
+3. War Drums SUBE DAÑO TODAS
+4. Mana Drain MALDICION
+5. Fire Circle ENCANTAMIENTO
+6. Flame Shield SUBE VIDA
+7. Inferno DESTRUCCION TODAS
+8. Blood Pact INVOCACION
+9. Meteor Shower MALDICION
+10. Volcano MALDICION
 ### Heroes
 * Dragon Rider
 * Succubus

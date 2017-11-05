@@ -294,7 +294,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               } else {
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
-                if (defenderSpell.troop > 0) attackerSpellKills += defenderSpell.troop * def.magic
+                if (defenderSpell.troop < 0) attackerSpellKills += defenderSpell.troop * def.magic
               }
             }
             let attackerSpellDamageBonus = 0
@@ -327,7 +327,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   } else {
                     if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
                     if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
-                    if (attackerSpell.troop > 0) attackerSpellKills += attackerSpell.troop * def.magic
+                    if (attackerSpell.troop < 0) attackerSpellKills += attackerSpell.troop * def.magic
                   }
                 }
               }
@@ -351,7 +351,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             if (defenderArtifact && defenderArtifact.battle) {
               if (defenderArtifact.damage > 0) defenderArtifactDamageBonus = defenderArtifact.damage
               if (defenderArtifact.health > 0) defenderArtifactHealthBonus = defenderArtifact.health
-              if (defenderArtifact.troop > 0) attackerArtifactKills = defenderArtifact.troop
+              if (defenderArtifact.troop < 0) attackerArtifactKills = defenderArtifact.troop
               if (defenderArtifact.resurrection > 0) defenderResurrection += defenderArtifact.resurrection
               if (defenderArtifact.round > 0) rounds += defenderArtifact.round
               report.artifacts.push({ left: false, name: defenderArtifact.name, color: defenderArtifact.color })
@@ -365,7 +365,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (artifactChance > def.magicalDefense) {
                 if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
                 if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
-                if (attackerArtifact.troop > 0) defenderArtifactKills += attackerArtifact.troop
+                if (attackerArtifact.troop < 0) defenderArtifactKills += attackerArtifact.troop
                 if (attackerArtifact.resurrection > 0) attackerResurrection += attackerArtifact.resurrection
                 if (attackerArtifact.round > 0) rounds += attackerArtifact.round
                 report.artifacts.push({ left: true, name: attackerArtifact.name, color: attackerArtifact.color })
