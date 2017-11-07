@@ -151,6 +151,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let attackerDemonHealthBonus = 0
             let attackerUndeadDamageBonus = 0
             let attackerUndeadHealthBonus = 0
+            let attackerContractTroops = 0
             if (atk.contracts) {
               await attacker.ref.child('contracts').once('value', contracts => {
                 if (contracts) {
@@ -158,6 +159,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                     let attackerContract = contract.val()
                     if (attackerContract.battle) {
                       report.heroes.push({ left: true, name: attackerContract.name, color: attackerContract.color, level: attackerContract.level })
+                      attackerContractTroops += attackerContract.troop * attackerContract.level
                       switch (attackerContract.family) {
                         case 'lbl_family_dragon':
                           attackerDragonDamageBonus += attackerContract.damage * attackerContract.level
@@ -207,6 +209,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderDemonHealthBonus = 0
             let defenderUndeadDamageBonus = 0
             let defenderUndeadHealthBonus = 0
+            let defenderContractTroops = 0
             if (def.contracts) {
               await defender.ref.child('contracts').once('value', contracts => {
                 if (contracts) {
@@ -214,6 +217,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                     let defenderContract = contract.val()
                     if (defenderContract.battle) {
                       report.heroes.push({ left: false, name: defenderContract.name, color: defenderContract.color, level: defenderContract.level })
+                      defenderContractTroops += defenderContract.troop * defenderContract.level
                       switch (defenderContract.family) {
                         case 'lbl_family_dragon':
                           defenderDragonDamageBonus += defenderContract.damage * defenderContract.level
@@ -281,8 +285,10 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             }
             let defenderSpellDamageBonus = 0
             let defenderSpellHealthBonus = 0
-            let attackerSpellKills = 0
-            let defenderResurrection = 0
+            let attackerSpellTroops = 0
+            let defenderSpellTroops = 0
+            let attackerSpellDamageBonus = 0
+            let attackerSpellHealthBonus = 0
             // spells
             if (defenderSpell && defenderSpell.battle) {
               await database.ref('users').child(target).update({ mana: def.mana - defenderSpell.manaCost })
@@ -290,17 +296,13 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderSpell.support) {
                 if (defenderSpell.damage > 0) defenderSpellDamageBonus += defenderSpell.damage * def.magic
                 if (defenderSpell.health > 0) defenderSpellHealthBonus += defenderSpell.health * def.magic
-                if (defenderSpell.resurrection > 0) defenderResurrection += defenderSpell.resurrection * def.magic
+                if (defenderSpell.troop > 0) defenderSpellTroops += defenderSpell.troop * def.magic
               } else {
+                if (defenderSpell.damage < 0) attackerSpellDamageBonus += defenderSpell.damage * def.magic
                 if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
-                if (defenderSpell.health < 0) attackerSpellHealthBonus += defenderSpell.health * def.magic
-                if (defenderSpell.troop < 0) attackerSpellKills += defenderSpell.troop * def.magic
+                if (defenderSpell.troop < 0) attackerSpellTroops += defenderSpell.troop * def.magic
               }
             }
-            let attackerSpellDamageBonus = 0
-            let attackerSpellHealthBonus = 0
-            let defenderSpellKills = 0
-            let attackerResurrection = 0
             if (attackerSpell && attackerSpell.battle) {
               let spellChance = Math.random() * 100
               if (spellChance > def.magicalDefense) {
@@ -323,11 +325,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   if (attackerSpell.support) {
                     if (attackerSpell.damage > 0) attackerSpellDamageBonus += attackerSpell.damage * def.magic
                     if (attackerSpell.health > 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
-                    if (attackerSpell.troop > 0) attackerSpellKills += attackerSpell.troop * def.magic
+                    if (attackerSpell.troop > 0) attackerSpellTroops += attackerSpell.troop * def.magic
                   } else {
                     if (attackerSpell.damage < 0) defenderSpellDamageBonus += attackerSpell.damage * def.magic
                     if (attackerSpell.health < 0) defenderSpellHealthBonus += attackerSpell.health * def.magic
-                    if (attackerSpell.troop < 0) defenderSpellKills += attackerSpell.troop * def.magic
+                    if (attackerSpell.troop < 0) defenderSpellTroops += attackerSpell.troop * def.magic
                   }
                 }
               }
@@ -338,8 +340,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             // defender artifact
             let defenderArtifactDamageBonus = 0
             let defenderArtifactHealthBonus = 0
-            let attackerArtifactKills = 0
+            let attackerArtifactTroops = 0
+            let defenderArtifactTroops = 0
             let defenderArtifact = null
+            let attackerArtifactDamageBonus = 0
+            let attackerArtifactHealthBonus = 0
             if (def.defense && def.defense.artifact) {
               await database.ref('users').child(target).child('relics').child(def.defense.artifact).once('value', artifact => {
                 if (artifact) {
@@ -347,27 +352,35 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 }
               })
             }
-            console.log(defenderArtifact)
             if (defenderArtifact && defenderArtifact.battle) {
-              if (defenderArtifact.damage > 0) defenderArtifactDamageBonus = defenderArtifact.damage
-              if (defenderArtifact.health > 0) defenderArtifactHealthBonus = defenderArtifact.health
-              if (defenderArtifact.troop < 0) attackerArtifactKills = defenderArtifact.troop
-              if (defenderArtifact.resurrection > 0) defenderResurrection += defenderArtifact.resurrection
-              if (defenderArtifact.round > 0) rounds += defenderArtifact.round
+              if (defenderArtifact.support) {
+                if (defenderArtifact.damage > 0) defenderArtifactDamageBonus += defenderArtifact.damage
+                if (defenderArtifact.health > 0) defenderArtifactHealthBonus += defenderArtifact.health
+                if (defenderArtifact.troop > 0) defenderArtifactTroops += defenderArtifact.troop
+                if (defenderArtifact.round > 0) rounds += defenderArtifact.round
+              } else {
+                if (defenderArtifact.damage < 0) attackerArtifactDamageBonus += defenderArtifact.damage
+                if (defenderArtifact.health < 0) attackerArtifactHealthBonus += defenderArtifact.health
+                if (defenderArtifact.troop < 0) attackerArtifactTroops += defenderArtifact.troop
+                if (defenderArtifact.round < 0) rounds += defenderArtifact.round
+              }
               report.artifacts.push({ left: false, name: defenderArtifact.name, color: defenderArtifact.color })
             }
             // attacker artifact
-            let attackerArtifactDamageBonus = 0
-            let attackerArtifactHealthBonus = 0
-            let defenderArtifactKills = 0
             if (attackerArtifact && attackerArtifact.battle) {
               let artifactChance = Math.random() * 100
               if (artifactChance > def.magicalDefense) {
-                if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
-                if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
-                if (attackerArtifact.troop < 0) defenderArtifactKills += attackerArtifact.troop
-                if (attackerArtifact.resurrection > 0) attackerResurrection += attackerArtifact.resurrection
-                if (attackerArtifact.round > 0) rounds += attackerArtifact.round
+                if (attackerArtifact.support) {
+                  if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
+                  if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
+                  if (attackerArtifact.troop > 0) attackerArtifactTroops += attackerArtifact.troop
+                  if (attackerArtifact.round > 0) rounds += attackerArtifact.round
+                } else {
+                  if (attackerArtifact.damage < 0) defenderArtifactDamageBonus += attackerArtifact.damage
+                  if (attackerArtifact.health < 0) defenderArtifactHealthBonus += attackerArtifact.health
+                  if (attackerArtifact.troop < 0) defenderArtifactTroops += attackerArtifact.troop
+                  if (attackerArtifact.round < 0) rounds += attackerArtifact.round
+                }
                 report.artifacts.push({ left: true, name: attackerArtifact.name, color: attackerArtifact.color })
               }
             }
@@ -386,25 +399,28 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (defenderArtifact && defenderArtifact.support && (defenderArtifact.multiple || defenderArmyIndex === defenderArtifactIndex)) {
                 wave.damage += defenderArtifactDamageBonus
                 wave.health += defenderArtifactHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 + (defenderArtifactTroops / 100)))
               }
               // defender spell
               if (defenderSpell && defenderSpell.support && (defenderSpell.multiple || defenderArmyIndex === defenderSpellIndex)) {
                 wave.damage += defenderSpellDamageBonus
                 wave.health += defenderSpellHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 + (defenderSpellTroops / 100)))
               }
               // attacker artifact
               if (attackerArtifact && !attackerArtifact.support && (attackerArtifact.multiple || defenderArmyIndex === attackerArtifactIndex)) {
                 wave.damage += attackerArtifactDamageBonus
                 wave.health += attackerArtifactHealthBonus
-                wave.quantity = Math.floor(wave.quantity * (1 - (attackerArtifactKills / 100)))
+                wave.quantity = Math.floor(wave.quantity * (1 + (attackerArtifactTroops / 100)))
               }
               // attacker spell
               if (attackerSpell && !attackerSpell.support && (attackerSpell.multiple || defenderArmyIndex === attackerSpellIndex)) {
                 wave.damage += attackerSpellDamageBonus
                 wave.health += attackerSpellHealthBonus
-                wave.quantity = Math.floor(wave.quantity * (1 - (attackerSpellKills / 100)))
+                wave.quantity = Math.floor(wave.quantity * (1 + (attackerSpellTroops / 100)))
               }
               // defender heroes
+              wave.quantity = Math.floor(wave.quantity * (1 + (defenderContractTroops / 100)))
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
                   wave.damage += defenderDragonDamageBonus
@@ -451,25 +467,28 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (attackerArtifact && attackerArtifact.support && (attackerArtifact.multiple || attackerArmyIndex === attackerArtifactIndex)) {
                 wave.damage += attackerArtifactDamageBonus
                 wave.health += attackerArtifactHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 + (attackerArtifactTroops / 100)))
               }
               // attacker spell
               if (attackerSpell && attackerSpell.support && (attackerSpell.multiple || attackerArmyIndex === attackerSpellIndex)) {
                 wave.damage += attackerSpellDamageBonus
                 wave.health += attackerSpellHealthBonus
+                wave.quantity = Math.floor(wave.quantity * (1 + (attackerSpellTroops / 100)))
               }
               // defender artifact
               if (defenderArtifact && !defenderArtifact.support && (defenderArtifact.multiple || attackerArmyIndex === defenderArtifactIndex)) {
                 wave.damage += defenderArtifactDamageBonus
                 wave.health += defenderArtifactHealthBonus
-                wave.quantity = Math.floor(wave.quantity * (1 - (defenderArtifactKills / 100)))
+                wave.quantity = Math.floor(wave.quantity * (1 + (defenderArtifactTroops / 100)))
               }
               // defender spell
               if (defenderSpell && !defenderSpell.support && (defenderSpell.multiple || attackerArmyIndex === defenderSpellIndex)) {
                 wave.damage += defenderSpellDamageBonus
                 wave.health += defenderSpellHealthBonus
-                wave.quantity = Math.floor(wave.quantity * (1 - (defenderSpellKills / 100)))
+                wave.quantity = Math.floor(wave.quantity * (1 + (defenderSpellTroops / 100)))
               }
               // attacker heroes
+              wave.quantity = Math.floor(wave.quantity * (1 + (attackerContractTroops / 100)))
               switch (wave.troop.family) {
                 case 'lbl_family_dragon':
                   wave.damage += attackerDragonDamageBonus
@@ -555,13 +574,6 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 ? defenderPowerLost > attackerPowerLost * 1.20 // if he loses more than me by > 20%
                 : true
               : false
-            // resurrection
-            if (attackerResurrection > 0) {
-              // TODO
-            }
-            if (defenderResurrection > 0) {
-              // TODO
-            }
           }
           let conquered = null
           let sieged = null
