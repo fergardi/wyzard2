@@ -94,6 +94,7 @@
         .then(async () => {
           await updateGeneralStatus(store.state.uid)
           this.busy = false
+          store.commit('success', 'auth/authentication-ok')
           this.$router.push('/messages')
         })
         .catch(error => {

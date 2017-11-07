@@ -295,11 +295,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   if (attackerSpell.support) {
                     if (attackerSpell.damage > 0) attackerSpellDamageBonus += attackerSpell.damage * def.magic
                     if (attackerSpell.health > 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
-                    // if (attackerSpell.resurrection > 0) defenderResurrection += attackerSpell.resurrection * def.magic
-                  } else {
-                    if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
-                    if (attackerSpell.health < 0) attackerSpellHealthBonus += attackerSpell.health * def.magic
                     if (attackerSpell.troop > 0) attackerSpellKills += attackerSpell.troop * def.magic
+                  } else {
+                    if (attackerSpell.damage < 0) defenderSpellDamageBonus += attackerSpell.damage * def.magic
+                    if (attackerSpell.health < 0) defenderSpellHealthBonus += attackerSpell.health * def.magic
+                    if (attackerSpell.troop < 0) defenderSpellKills += attackerSpell.troop * def.magic
                   }
                 }
               }

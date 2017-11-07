@@ -11,7 +11,7 @@
           span {{ data.invested | minimize }} / {{ data.completion | minimize }}
         .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
-          span {{ data.manaCost | minimize }}
+          span {{ data.manaCost * (user.magic || 1) | minimize }}
         .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_turn_cost')")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
@@ -166,9 +166,9 @@
         if (this.canCast) { // user has resources
           await database.ref('users').child(store.state.uid).transaction(user => {
             if (user) {
-              user.gold = Math.max(0, user.gold - this.data.goldCost)
-              user.people = Math.max(0, user.people - this.data.peopleCost)
-              user.mana = Math.max(0, user.mana - this.data.manaCost)
+              user.gold = Math.max(0, user.gold - this.data.goldCost * this.user.magic)
+              user.people = Math.max(0, user.people - this.data.peopleCost * this.user.magic)
+              user.mana = Math.max(0, user.mana - this.data.manaCost * this.user.magic)
             }
             return user
           })
@@ -303,13 +303,28 @@
         return store.state.user
       },
       canCast () {
-        return this.data.turns <= this.user.turns && this.data.goldCost <= this.user.gold && this.data.peopleCost <= this.user.people && this.data.manaCost <= this.user.mana && !this.data.battle && this.data.magic <= this.user.magic
+        return this.hasTurns() && this.hasGold() && this.hasMana() && this.hasPeople() && this.hasMagic() && !this.data.battle
       },
-      canBreak () {
+      hasTurns () {
         return this.data.turns <= this.user.turns
       },
-      canLearn () {
+      hasGold () {
+        return this.data.gold * this.user.magic <= this.user.gold
+      },
+      hasMana () {
+        return this.data.mana * this.user.magic <= this.user.mana
+      },
+      hasPeople () {
+        return this.data.people * this.user.magic <= this.user.people
+      },
+      hasMagic () {
         return this.data.magic <= this.user.magic
+      },
+      canBreak () {
+        return this.hasTurns()
+      },
+      canLearn () {
+        return this.hasMagic()
       },
       canResearch () {
         return this.amount > 0 && this.amount <= this.user.turns
