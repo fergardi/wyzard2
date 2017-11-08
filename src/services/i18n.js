@@ -646,6 +646,7 @@ export default {
     lbl_message_auction_outbid: 'Sobrepuja',
     lbl_message_auction_outbid_text: 'Otra persona se ha mostrado interesada en la misma subasta que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original, excepto el 10% del importe total en concepto de impuestos.',
     // toasts
+    lbl_toast_army_error: 'No puedes almacenar más tropas',
     lbl_toast_firing_ok: 'Despido completado',
     lbl_toast_firing_error: 'Error al despedir',
     lbl_toast_investigation_ok: 'Investigación progresada',

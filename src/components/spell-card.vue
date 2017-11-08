@@ -178,40 +178,39 @@
           })
           await checkTurnMaintenances(store.state.uid, this.data.turns)
           if (this.data.summon) { // summon troops
-            let troops = []
-            if (this.data.family) {
-              await database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
-                if (units && units.hasChildren()) {
-                  units.forEach(unit => {
-                    troops.push(unit.val().name)
+            if (this.canSummon) {
+              let troops = []
+              if (this.data.family) {
+                await database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
+                  if (units && units.hasChildren()) {
+                    units.forEach(unit => {
+                      troops.push(unit.val().name)
+                    })
+                  }
+                })
+              } else {
+                troops.push('lbl_unit_' + this.data.unit)
+              }
+              const index = Math.floor(Math.random() * troops.length)
+              await database.ref('units').child(troops[index].replace('lbl_unit_', '')).once('value', async unit => {
+                if (unit) {
+                  await database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(troops[index]).once('value', async units => {
+                    if (units && units.hasChildren()) {
+                      units.forEach(async uni => {
+                        await database.ref('users').child(store.state.uid).child('troops').child(uni.key).update({ quantity: uni.val().quantity + this.random(unit.val().quantity) * this.user.magic })
+                      })
+                    } else {
+                      let summon = {...unit.val()}
+                      summon.quantity = this.random(summon.quantity) * this.user.magic
+                      delete summon['.key']
+                      await database.ref('users').child(store.state.uid).child('troops').push(summon)
+                    }
                   })
                 }
               })
             } else {
-              troops.push('lbl_unit_' + this.data.unit)
+              store.commit('success', 'lbl_toast_army_error')
             }
-            const index = Math.floor(Math.random() * troops.length)
-            await database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(troops[index]).once('value', units => {
-              if (units && units.hasChildren()) {
-                units.forEach(unit => {
-                  database.ref('users').child(store.state.uid).child('troops').child(unit.key).transaction(troop => {
-                    if (troop) {
-                      troop.quantity += this.random(unit.val().quantity * this.user.magic)
-                    }
-                    return troop
-                  })
-                })
-              } else {
-                database.ref('units').child(troops[index].replace('lbl_unit_', '')).once('value', unit => {
-                  if (unit) {
-                    let summon = {...unit.val()}
-                    summon.quantity = this.random(summon.quantity * this.user.magic)
-                    delete summon['.key']
-                    database.ref('users').child(store.state.uid).child('troops').push(summon)
-                  }
-                })
-              }
-            })
           } else if (this.data.enchantment && this.data.support) {
             await database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
               if (enchantments && enchantments.numChildren() <= this.user.enchantmentCap) {
@@ -339,6 +338,9 @@
       },
       canEnchant () {
         return this.enchantments && this.enchantments.length <= this.user.enchantmentCap
+      },
+      canSummon () {
+        return this.user.army < this.user.armyCap
       }
     }
   }

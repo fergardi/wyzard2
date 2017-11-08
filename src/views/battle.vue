@@ -23,29 +23,29 @@
                 mu-menu-item(v-for="strategy, index in strategies", :key="index", :value="strategy", :title="translate(strategy)")
             
             .form-row
-              mu-text-field(type="number", v-model.number="army.first.quantity", :min="army.first.troop ? 1 : 0", :max="army.first.troop ? army.first.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
-              mu-select-field(v-model="army.first.troop", :label="translate('lbl_label_army_first')", :fullWidth="true")
+              mu-select-field(v-model="army.first.troop", :label="translate('lbl_label_army_first')", :fullWidth="true", @input="changeFirst")
                 mu-menu-item(v-for="troop, index in first", :key="index", :value="troop", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.first.quantity", :min="army.first.troop ? 1 : 0", :max="army.first.troop ? army.first.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", required)
             
             .form-row
-              mu-text-field(type="number", v-model.number="army.second.quantity", :min="army.second.troop ? 1 : 0", :max="army.second.troop ? army.second.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canSecond")
-              mu-select-field(v-model="army.second.troop", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond")
+              mu-select-field(v-model="army.second.troop", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond", @input="changeSecond")
                 mu-menu-item(v-for="troop, index in second", :key="index", :value="troop", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.second.quantity", :min="army.second.troop ? 1 : 0", :max="army.second.troop ? army.second.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canSecond")
             
             .form-row
-              mu-text-field(type="number", v-model.number="army.third.quantity", :min="army.third.troop ? 1 : 0", :max="army.third.troop ? army.third.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canThird")
-              mu-select-field(v-model="army.third.troop", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird")
+              mu-select-field(v-model="army.third.troop", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird", @input="changeThird")
                 mu-menu-item(v-for="troop, index in third", :key="index", :value="troop", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.third.quantity", :min="army.third.troop ? 1 : 0", :max="army.third.troop ? army.third.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canThird")
             
             .form-row
-              mu-text-field(type="number", v-model.number="army.fourth.quantity", :min="army.fourth.troop ? 1 : 0", :max="army.fourth.troop ? army.fourth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFourth")
-              mu-select-field(v-model="army.fourth.troop", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth")
+              mu-select-field(v-model="army.fourth.troop", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth", @input="changeFourth")
                 mu-menu-item(v-for="troop, index in fourth", :key="index", :value="troop", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.fourth.quantity", :min="army.fourth.troop ? 1 : 0", :max="army.fourth.troop ? army.fourth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFourth")
             
             .form-row
-              mu-text-field(type="number", v-model.number="army.fifth.quantity", :min="army.fifth.troop ? 1 : 0", :max="army.fifth.troop ? army.fifth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFifth")
-              mu-select-field(v-model="army.fifth.troop", :label="translate('lbl_label_army_fifth')", :fullWidth="true", :disabled="!canFifth")
+              mu-select-field(v-model="army.fifth.troop", :label="translate('lbl_label_army_fifth')", :fullWidth="true", :disabled="!canFifth", @input="changeFifth")
                 mu-menu-item(v-for="troop, index in fifth", :key="index", :value="troop", :title="translate(troop.name)")
+              mu-text-field(type="number", v-model.number="army.fifth.quantity", :min="army.fifth.troop ? 1 : 0", :max="army.fifth.troop ? army.fifth.troop.quantity : 0", :label="translate('lbl_label_quantity')", :hintText="translate('lbl_label_quantity')", :disabled="!canFifth")
             
             .form-row
               mu-select-field(v-model="spell", :label="translate('lbl_label_spell')", :fullWidth="true", :maxHeight="300")
@@ -183,6 +183,21 @@
         this.type = null
         this.dialog = false
         this.busy = false
+      },
+      changeFirst () {
+        this.army.first.quantity = this.army.first.troop.quantity
+      },
+      changeSecond () {
+        this.army.second.quantity = this.army.second.troop.quantity
+      },
+      changeThird () {
+        this.army.third.quantity = this.army.third.troop.quantity
+      },
+      changeFourth () {
+        this.army.fourth.quantity = this.army.fourth.troop.quantity
+      },
+      changeFifth () {
+        this.army.fifth.quantity = this.army.fifth.troop.quantity
       }
     },
     computed: {
@@ -276,9 +291,9 @@
       .mu-text-field
         width 25%
         min-width 25%
-      .mu-text-field + .mu-select-field
+      .mu-select-field + .mu-text-field
         margin-left 5px
-        width 100%
+        width 25%
       .mu-select-field
         width 100%
 </style>
