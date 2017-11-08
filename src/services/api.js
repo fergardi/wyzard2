@@ -17,6 +17,9 @@ let power = 0
 let terrain = 0
 let magicalDefense = 0
 let physicalDefense = 0
+let constructionBonus = 0
+let researchBonus = 0
+let enchantmentCap = 0
 let disbanded = false
 let deserted = false
 let dispeled = false
@@ -98,9 +101,15 @@ const checkBuildingsProductionMaintenance = (uid) => {
         if (building.name === 'lbl_building_terrain') {
           terrain = building.quantity
         } else if (building.name === 'lbl_building_fortress') {
-          physicalDefense = Math.floor(building.quantity / building.physicalDefense)
+          physicalDefense = Math.floor(building.quantity / (1 + building.physicalDefense))
         } else if (building.name === 'lbl_building_barrier') {
-          magicalDefense = Math.floor(building.quantity / building.magicalDefense)
+          magicalDefense = Math.floor(building.quantity / (1 + building.magicalDefense))
+        } else if (building.name === 'lbl_building_workshop') {
+          constructionBonus = Math.floor(building.quantity / (1 + building.construction))
+        } else if (building.name === 'lbl_building_guild') {
+          researchBonus = Math.floor(building.quantity / (1 + building.research))
+        } else if (building.name === 'lbl_building_temple') {
+          enchantmentCap = Math.floor(building.quantity / (1 + building.enchantmentCap))
         }
         // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
       })
@@ -126,6 +135,8 @@ const checkHeroesProductionMaintenance = (uid, experience = false) => {
           manaPerTurn += hero.level * (hero.manaProduction - hero.manaMaintenance)
           magicalDefense += hero.level * hero.magicalDefense
           physicalDefense += hero.level * hero.physicalDefense
+          researchBonus += hero.level * hero.research
+          constructionBonus += hero.level * hero.construction
           power += hero.level * hero.power
           // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
           return hero
@@ -147,6 +158,7 @@ const checkEnchantmentsProduction = (uid) => {
         manaPerTurn += spell.magic * spell.manaProduction
         magicalDefense += spell.magic * spell.magicalDefense
         physicalDefense += spell.magic * spell.physicalDefense
+        researchBonus += spell.magic * spell.research
         if (spell.source === spell.target === uid) {
           power += spell.magic * spell.power
         }
@@ -317,6 +329,9 @@ const checkGeneralStatus = (uid) => {
       user.terrain = terrain
       user.magicalDefense = magicalDefense
       user.physicalDefense = physicalDefense
+      user.researchBonus = researchBonus
+      user.constructionBonus = constructionBonus
+      user.enchantmentCap = enchantmentCap
       user.turns--
       gold = user.gold
       people = user.people
@@ -399,6 +414,9 @@ export const resetAuxVariables = () => {
   terrain = 0
   magicalDefense = 0
   physicalDefense = 0
+  constructionBonus = 0
+  researchBonus = 0
+  enchantmentCap = 0
   dispeled = false
   deserted = false
   disbanded = false

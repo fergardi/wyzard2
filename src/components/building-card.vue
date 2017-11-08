@@ -61,13 +61,13 @@
         mu-chip.triple(v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
           span {{ data.manaCost | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_gold_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_people_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_mana_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
         mu-chip.triple(v-tooltip="translate('ttp_gold_production')")
@@ -169,17 +169,8 @@
           this.close()
         } else if (this.amount > 0) {
           if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
-            let reduction = 1
             let totalTurns = this.amount * this.data.turns
-            await database.ref('users').child(store.state.uid).child('constructions').orderByChild('name').equalTo('lbl_building_workshop').once('value', constructions => {
-              if (constructions) {
-                constructions.forEach(construction => {
-                  let terrain = construction.val()
-                  reduction -= Math.min(0.75, (terrain.quantity + 1) / terrain.construction / 100)
-                })
-              }
-            })
-            totalTurns = Math.ceil(totalTurns * reduction)
+            totalTurns = Math.ceil(totalTurns * (1 - Math.min(0.75, this.user.constructionBonus / 100)))
             if (totalTurns <= this.user.turns) {
               await database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {

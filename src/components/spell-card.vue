@@ -24,22 +24,22 @@
       p.card-description {{ data.description | translate }}
       
       .card-stats(v-if="info")
-        mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
+        mu-chip.triple(v-tooltip="translate('ttp_gold_cost_level')")
           i.ra.ra-gold-bar
           span {{ data.goldCost | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_people_cost')")
+        mu-chip.triple(v-tooltip="translate('ttp_people_cost_level')")
           i.ra.ra-double-team
           span {{ data.peopleCost | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_mana_cost')")
+        mu-chip.triple(v-tooltip="translate('ttp_mana_cost_level')")
           i.ra.ra-burst-blob
           span {{ data.manaCost | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_gold_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_gold_maintenance_level')")
           i.ra.ra-gold-bar
           span {{ data.goldMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_people_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_people_maintenance_level')")
           i.ra.ra-double-team
           span {{ data.peopleMaintenance | minimize }}
-        mu-chip.triple(v-tooltip="translate('ttp_mana_api')")
+        mu-chip.triple(v-tooltip="translate('ttp_mana_maintenance_level')")
           i.ra.ra-burst-blob
           span {{ data.manaMaintenance | minimize }}
         mu-chip.double(v-tooltip="translate('ttp_turn_cost')")
@@ -106,6 +106,9 @@
         dialog: false
       }
     },
+    created () {
+      this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
+    },
     methods: {
       confirm (type) {
         this.type = type
@@ -131,8 +134,9 @@
           await checkTurnMaintenances(store.state.uid, this.amount)
           await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
-              let min = research.completion - research.invested
-              research.invested = research.invested + Math.min(min, this.amount)
+              let totalTurns = this.amount
+              totalTurns = Math.ceil(totalTurns * (1 - Math.min(0.75, this.user.researchBonus / 100)))
+              research.invested += totalTurns
               if (research.invested >= research.completion) {
                 completed = true
                 research.completed = true
@@ -209,18 +213,22 @@
               }
             })
           } else if (this.data.enchantment && this.data.support) {
-            let enchantment = {...this.data}
-            enchantment.target = store.state.uid
-            enchantment.targetColor = this.user.color
-            enchantment.targetName = this.user.name
-            enchantment.source = store.state.uid
-            enchantment.sourceColor = this.user.color
-            enchantment.sourceName = this.user.name
-            enchantment.magic = this.user.magic
-            enchantment.duration *= enchantment.magic
-            enchantment.remaining = enchantment.duration
-            delete enchantment['.key']
-            database.ref('enchantments').push(enchantment)
+            await database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
+              if (enchantments && enchantments.numChildren() <= this.user.enchantmentCap) {
+                let enchantment = {...this.data}
+                enchantment.target = store.state.uid
+                enchantment.targetColor = this.user.color
+                enchantment.targetName = this.user.name
+                enchantment.source = store.state.uid
+                enchantment.sourceColor = this.user.color
+                enchantment.sourceName = this.user.name
+                enchantment.magic = this.user.magic
+                enchantment.duration *= enchantment.magic
+                enchantment.remaining = enchantment.duration
+                delete enchantment['.key']
+                database.ref('enchantments').push(enchantment)
+              }
+            })
           } else if (this.data.spell > 0) {
             if (this.data.spell * this.user.magic >= Math.random() * 100) {
               let known = []
@@ -303,7 +311,7 @@
         return store.state.user
       },
       canCast () {
-        return this.hasTurns() && this.hasGold() && this.hasMana() && this.hasPeople() && this.hasMagic() && !this.data.battle
+        return this.hasTurns() && this.hasGold() && this.hasMana() && this.hasPeople() && this.hasMagic() && !this.data.battle && (this.data.enchantment && this.canEnchant() || !this.data.enchantment)
       },
       hasTurns () {
         return this.data.turns <= this.user.turns
@@ -328,6 +336,9 @@
       },
       canResearch () {
         return this.amount > 0 && this.amount <= this.user.turns
+      },
+      canEnchant () {
+        return this.data.enchantment && this.data.support && this.enchantments && this.enchantments.length <= this.user.enchantmentCap
       }
     }
   }
