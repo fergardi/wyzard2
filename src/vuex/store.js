@@ -26,6 +26,7 @@ const vuex = new Vuex.Store({
     toasts: [],
     toast: {
       color: null,
+      icon: null,
       show: false,
       message: null,
       delay: 3000 // milliseconds
@@ -51,7 +52,8 @@ const vuex = new Vuex.Store({
     success (state, message) {
       let toast = {
         color: 'green',
-        message: '✔ ' + message,
+        icon: '✔',
+        message: message,
         show: true,
         delay: state.toast.delay
       }
@@ -60,7 +62,8 @@ const vuex = new Vuex.Store({
     info (state, message) {
       let toast = {
         color: 'blue',
-        message: '★ ' + message,
+        icon: '★',
+        message: message,
         show: true,
         delay: state.toast.delay
       }
@@ -69,7 +72,8 @@ const vuex = new Vuex.Store({
     error (state, message) {
       let toast = {
         color: 'red',
-        message: '✘ ' + message,
+        icon: '✘',
+        message: message,
         show: true,
         delay: state.toast.delay
       }

@@ -135,7 +135,7 @@
           await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
               let totalTurns = this.amount
-              totalTurns = Math.ceil(totalTurns * (1 - Math.min(0.75, this.user.researchBonus / 100)))
+              totalTurns = Math.ceil(totalTurns * (1 + Math.min(0.75, this.user.researchBonus / 100)))
               research.invested += totalTurns
               if (research.invested >= research.completion) {
                 completed = true
@@ -311,7 +311,7 @@
         return store.state.user
       },
       canCast () {
-        return this.hasTurns() && this.hasGold() && this.hasMana() && this.hasPeople() && this.hasMagic() && !this.data.battle && (this.data.enchantment && this.canEnchant() || !this.data.enchantment)
+        return this.hasTurns && this.hasGold && this.hasMana && this.hasPeople && this.hasMagic && !this.data.battle && (this.data.enchantment && this.canEnchant || !this.data.enchantment)
       },
       hasTurns () {
         return this.data.turns <= this.user.turns
@@ -329,10 +329,10 @@
         return this.data.magic <= this.user.magic
       },
       canBreak () {
-        return this.hasTurns()
+        return this.hasTurns
       },
       canLearn () {
-        return this.hasMagic()
+        return this.hasMagic
       },
       canResearch () {
         return this.amount > 0 && this.amount <= this.user.turns

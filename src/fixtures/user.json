@@ -19,5 +19,8 @@
   "manaPerTurn": 0,
   "terrainPerTurn": 0,
   "magicalDefense": 0,
-  "physicalDefense": 0
+  "physicalDefense": 0,
+  "constructionBonus": 0,
+  "researchBonus": 0,
+  "enchantmentCap": 0
 }

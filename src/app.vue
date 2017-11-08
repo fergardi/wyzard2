@@ -3,7 +3,7 @@
     .background
 
     .toast
-      mu-toast(v-if="toast.show", :message="translate(toast.message)", :class="[toast.color, settings.navbar ? 'left' : 'right']", @close="untoast")
+      mu-toast(v-if="toast.show", :message="toast.icon + ' ' + translate(toast.message)", :class="[toast.color, settings.navbar ? 'left' : 'right']", @close="untoast")
 
     mu-paper(:zDepth="6")
       mu-appbar.topbar(:title="translate(title)", :class="settings.navbar ? 'right' : 'left'")
