@@ -40,7 +40,7 @@
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasGold || !hasTurns || busy")
+          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !hasGold || !hasTurns || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
@@ -266,13 +266,14 @@
       async bid () {
         if (this.hasGold && this.hasTurns) { // user has resources
           if (this.canBid && !this.mine) { // bid accepted
+            await database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
             await checkTurnMaintenances(store.state.uid, this.turns)
             await database.ref('auctions').child(this.data['.key']).transaction(auction => {
               if (auction) {
                 if (auction.bidder) { // if there was a previous bidder
                   database.ref('users').child(auction.bidder).transaction(previous => {
                     if (previous) {
-                      let taxed = auction.bid * 0.9
+                      let taxed = Math.floor(auction.bid * 0.9)
                       previous.gold += taxed // return him/her the bid minus a 10% fee
                       let message = { // create new message
                         color: 'dark',
@@ -280,15 +281,16 @@
                         text: 'lbl_message_auction_outbid_text',
                         timestamp: Date.now(),
                         name: 'lbl_name_auction',
-                        gold: taxed
+                        gold: taxed,
+                        read: false
                       }
-                      previous.ref.child('messages').push(message) // add message to previous bidder
+                      database.ref('users').child(auction.bidder).child('messages').push(message) // add message to previous bidder
                     }
+                    return previous
                   })
                 }
                 auction.bid = this.amount // update the price
                 auction.bidder = store.state.uid // update the bidder
-                database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
               }
               return auction
             })

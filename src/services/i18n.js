@@ -556,6 +556,7 @@ export default {
     // names
     lbl_name_admin: 'Archimago',
     lbl_name_auction: 'Subasta',
+    lbl_name_tavern: 'Taberna',
     // tabs
     lbl_tab_sell: 'Vender',
     lbl_tab_activate: 'Activar',
@@ -644,7 +645,9 @@ export default {
     lbl_message_battle_win: 'Victoria',
     lbl_message_battle_lose: 'Derrota',
     lbl_message_auction_outbid: 'Sobrepuja',
-    lbl_message_auction_outbid_text: 'Otra persona se ha mostrado interesada en la misma subasta que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original, excepto el 10% del importe total en concepto de impuestos.',
+    lbl_message_auction_outbid_text: 'Otra persona se ha mostrado interesada en el mismo Artefacto que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original meno el 10% del importe total en concepto de impuestos.',
+    lbl_message_tavern_outbid: 'Sobrepuja',
+    lbl_message_tavern_outbid_text: 'Otra persona se ha mostrado interesada en el mismo Héroe que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original meno el 10% del importe total en concepto de impuestos.',
     // toasts
     lbl_toast_army_error: 'No puedes almacenar más tropas',
     lbl_toast_firing_ok: 'Despido completado',
