@@ -15,7 +15,7 @@
           mu-thead
             mu-tr
               mu-th(v-tooltip="translate('ttp_census_position')")
-                i.ra.ra-lg.ra-trophy
+                i.ra.ra-lg.ra-podium
               mu-th(v-tooltip="translate('ttp_census_name')")
                 i.ra.ra-lg.ra-player
               mu-th.number(v-tooltip="translate('ttp_census_power')")

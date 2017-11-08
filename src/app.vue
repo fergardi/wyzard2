@@ -16,11 +16,11 @@
           mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
           mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
           mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-if="!logged")
-          mu-icon-button.login(icon=":ra ra-locked-fortress", @click="logout", v-else)
+          mu-icon-button.login(icon=":ra ra-key", @click="logout", v-else)
           mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
         mu-appbar(v-else)
           mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
-          mu-icon-button.login(icon=":ra ra-locked-fortress", @click="logout", v-if="logged")
+          mu-icon-button.login(icon=":ra ra-key", @click="logout", v-if="logged")
           mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-else)
           mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
           mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
@@ -39,7 +39,7 @@
             mu-badge(slot="after")
               span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.gold | minimize }}
-          mu-list-item(:title="translate('lbl_resource_population')", disabled)
+          mu-list-item(:title="translate('lbl_resource_people')", disabled)
             mu-icon(slot="left", value=":ra ra-double-team")
             mu-badge(slot="after")
               span.income(:class="user.peoplePerTurn >= 0 ? 'green' : 'red'") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
@@ -54,6 +54,11 @@
             mu-badge(slot="after")
               span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
               span {{ user.terrain | numeric }}
+          mu-list-item(:title="translate('lbl_resource_magic')", disabled)
+            mu-icon(slot="left", value=":ra ra-trophy")
+            mu-badge(slot="after")
+              span.income(:class="user.magic < 10 ? 'green' : 'red'") {{ user.magic < 10 ? '&#9650;' : '&#9660;' }}
+              span {{ user.magic | numeric }}
 
           template(v-if="blessings && blessings.length")
             mu-sub-header {{ 'lbl_title_blessings' | translate }}
@@ -122,7 +127,7 @@
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-trophy")
+            mu-icon(slot="left", value=":ra ra-key")
         //
           mu-sub-header {{ 'lbl_title_account' | translate }}
           mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")

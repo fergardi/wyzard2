@@ -79,6 +79,12 @@
         mu-chip.triple(v-tooltip="translate('ttp_mana_production')")
           i.ra.ra-burst-blob
           span {{ data.manaProduction | minimize }}
+        mu-chip.double(v-tooltip="translate('ttp_turn_cost')")
+          i.ra.ra-hourglass
+          span {{ data.turns | minimize }}
+        mu-chip.double(v-tooltip="translate('ttp_bonus_ratio')")
+          i.ra.ra-sapphire
+          span {{ data.enchantmentCap || data.magicalDefense || data.construction || data.research || data.physicalDefense | minimize }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")

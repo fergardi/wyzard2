@@ -289,7 +289,7 @@
                     }
                   })
                 }
-                auction.gold = this.amount // update the price
+                auction.bid = this.amount // update the price
                 auction.bidder = store.state.uid // update the bidder
                 database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
               }

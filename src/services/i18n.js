@@ -562,8 +562,9 @@ export default {
     lbl_tab_authentication: 'Autenticarse',
     lbl_tab_registration: 'Registrarse',
     // resources
+    lbl_resource_magic: 'Magia',
     lbl_resource_gold: 'Oro',
-    lbl_resource_population: 'Población',
+    lbl_resource_people: 'Población',
     lbl_resource_turns: 'Turnos',
     lbl_resource_mana: 'Maná',
     lbl_resource_terrain: 'Terrenos',
@@ -700,6 +701,10 @@ export default {
     lbl_toast_message_ok: 'Mensaje borrado',
     lbl_toast_message_error: 'Error al borrar',
     // tooltips
+    ttp_bonus_ratio: 'Proporción',
+    ttp_resource_gold: 'Oro',
+    ttp_resource_people: 'Personas',
+    ttp_resource_mana: 'Maná',
     ttp_terrain_production: 'Producción de Terrenos al Turno',
     ttp_turn_cost: 'Coste de Turnos',
     ttp_gold_bid: 'Puja de Oro actual',
@@ -770,6 +775,7 @@ export default {
     ttp_kingdom_terrain: 'Terreno',
     ttp_kingdom_power: 'Poder',
     // help
+    txt_help_empty: 'Esta lista está vacía por el momento, vuelve más tarde o completa los requisitos necesarios para que se llene',
     txt_help_artifacts: 'Aquí se muestra una lista de todos los Artefactos disponibles en el juego.\nCada uno tiene un efecto distinto, puede ser activado dentro o fuera de Batalla, y pertenece a una Facción determinada.\nAl comenzar, se te otorga un Artefacto de tu color, pero a partir de entonces, se encuentran al azar, en Subasta, y mediante Hechizos.\nPueden ser destruidos y robados.',
     txt_help_buildings: 'Aquí se muestra una lista de todos los Edificios disponibles en el juego.\nCada uno tiene costes y beneficios diferentes, pero todos son importantes.\nConsumen Terrenos libres al ser construidos.\nPueden ser destruidos y robados.',
     txt_help_factions: 'Aquí se muestra una lista de todas las Facciones disponibles en el juego.\nCada una tiene sus propios Hechizos, Héroes, Unidades, Artefactos y Dioses, así como fortalezas y debilidades.',

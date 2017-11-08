@@ -317,13 +317,13 @@
         return this.data.turns <= this.user.turns
       },
       hasGold () {
-        return this.data.gold * this.user.magic <= this.user.gold
+        return this.data.goldCost * this.user.magic <= this.user.gold
       },
       hasMana () {
-        return this.data.mana * this.user.magic <= this.user.mana
+        return this.data.manaCost * this.user.magic <= this.user.mana
       },
       hasPeople () {
-        return this.data.people * this.user.magic <= this.user.people
+        return this.data.peopleCost * this.user.magic <= this.user.people
       },
       hasMagic () {
         return this.data.magic <= this.user.magic
@@ -338,7 +338,7 @@
         return this.amount > 0 && this.amount <= this.user.turns
       },
       canEnchant () {
-        return this.data.enchantment && this.data.support && this.enchantments && this.enchantments.length <= this.user.enchantmentCap
+        return this.enchantments && this.enchantments.length <= this.user.enchantmentCap
       }
     }
   }

@@ -611,8 +611,8 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               attackerArmy.forEach(troop => {
                 attackerUnits += troop.quantity
               })
-              gold = Math.min(def.gold, attackerUnits * 150)
-              people = Math.min(def.people, attackerUnits * 50)
+              gold = Math.min(def.gold, attackerUnits * 25)
+              people = Math.min(def.people, attackerUnits * 5)
               await defender.ref.update({ people: def.people - people, gold: def.gold - gold })
               await defender.ref.update({ people: atk.people + people, gold: atk.gold + gold })
             } else {

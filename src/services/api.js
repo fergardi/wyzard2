@@ -530,7 +530,7 @@ export const createNewUser = async (uid, player) => {
         delete auction['.key']
         auctions.push(auction)
         // TODO DEVELOPMENT ONLY
-        database.ref('users').child(uid).child('relics').push(auction)
+        // database.ref('users').child(uid).child('relics').push(auction)
       })
       // random
       const index = Math.floor(Math.random() * auctions.length)
@@ -547,7 +547,7 @@ export const createNewUser = async (uid, player) => {
         delete contract['.key']
         contracts.push(contract)
         // TODO DEVELOPMENT ONLY
-        database.ref('users').child(uid).child('contracts').push(contract)
+        // database.ref('users').child(uid).child('contracts').push(contract)
       })
       // random
       const index = Math.floor(Math.random() * contracts.length)
@@ -555,6 +555,7 @@ export const createNewUser = async (uid, player) => {
     }
   })
   // TODO DEVELOPMENT ONLY
+  /*
   await database.ref('spells').once('value', spells => {
     if (spells && spells.hasChildren()) {
       spells.forEach(spell => {
@@ -565,6 +566,7 @@ export const createNewUser = async (uid, player) => {
       })
     }
   })
+  +/
   /*
   // TODO DEVELOPMENT ONLY
   await database.ref('spells').orderByChild('enchantment').equalTo(true).once('value', spells => {
@@ -589,6 +591,7 @@ export const createNewUser = async (uid, player) => {
   })
   */
   // TODO DEVELOPMENT ONLY
+  /*
   await database.ref('gods').once('value', gods => {
     if (gods && gods.hasChildren()) {
       gods.forEach(god => {
@@ -596,6 +599,7 @@ export const createNewUser = async (uid, player) => {
       })
     }
   })
+  */
   return await updateGeneralStatus(uid)
 }
 

@@ -1,8 +1,14 @@
 <template lang="pug">
   mu-row
-    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
+
+    transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown", v-if="dispels.length")
       mu-col(width="100", tablet="50", desktop="33", v-for="enchantment, index in dispels", :key="index")
         spell-card.animated.fadeInUp(:data="enchantment", :breaking="true")
+
+    mu-col(width="100", tablet="50", desktop="33", v-else)
+      mu-card.empty.animated.fadeInUp
+        mu-card-text
+          p.card-description {{ 'txt_help_empty' | translate }}
 </template>
 
 <script>
