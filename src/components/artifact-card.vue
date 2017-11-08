@@ -268,13 +268,15 @@
           if (this.canBid && !this.mine) { // bid accepted
             await database.ref('users').child(store.state.uid).update({ gold: this.user.gold - this.amount })
             await checkTurnMaintenances(store.state.uid, this.turns)
-            await database.ref('auctions').child(this.data['.key']).transaction(auction => {
+            await database.ref('auctions').child(this.data['.key']).once('value', async auction => {
               if (auction) {
-                if (auction.bidder) { // if there was a previous bidder
-                  database.ref('users').child(auction.bidder).transaction(previous => {
+                let auc = auction.val()
+                if (auc.bidder) { // if there was a previous bidder
+                  await database.ref('users').child(auc.bidder).once('value', async previous => {
                     if (previous) {
-                      let taxed = Math.floor(auction.bid * 0.9)
-                      previous.gold += taxed // return him/her the bid minus a 10% fee
+                      let prev = previous.val()
+                      let taxed = Math.floor(auc.bid * 0.9)
+                      await database.ref('users').child(auc.bidder).update({ gold: prev.gold + taxed })
                       let message = { // create new message
                         color: 'dark',
                         subject: 'lbl_message_auction_outbid',
@@ -284,15 +286,13 @@
                         gold: taxed,
                         read: false
                       }
-                      database.ref('users').child(auction.bidder).child('messages').push(message) // add message to previous bidder
+                      await database.ref('users').child(auc.bidder).child('messages').push(message) // add message to previous bidder
                     }
                     return previous
                   })
                 }
-                auction.bid = this.amount // update the price
-                auction.bidder = store.state.uid // update the bidder
+                await database.ref('auctions').child(this.data['.key']).update({ bid: this.amount, bidder: store.state.uid }) // update the price
               }
-              return auction
             })
             await updateGeneralStatus(store.state.uid)
             store.commit('success', 'lbl_toast_bid_ok')
