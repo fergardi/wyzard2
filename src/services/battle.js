@@ -85,6 +85,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             })
           }
           let discovered = false
+          let survivors = 0
           if (strategy === 'lbl_strategy_pillage') {
             console.log('PILLAGE')
             let defenderTerrain = 0
@@ -590,6 +591,15 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.random() * defenderArmy.length)
               if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined) break
             }
+            // update original troop quantities
+            defenderArmy.forEach(troop => {
+              console.log(troop)
+            })
+            attackerArmy.forEach(troop => {
+              console.log(troop)
+              survivors += troop.quantity
+            })
+            // check victory condition
             console.log('POWER LOST: ', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
               ? defenderArmy.length > 0 // if he still has army
@@ -607,14 +617,10 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
           if (victory) {
             console.log('VICTORY')
             if (strategy === 'lbl_strategy_pillage') {
-              let attackerUnits = 0
-              attackerArmy.forEach(troop => {
-                attackerUnits += troop.quantity
-              })
-              gold = Math.min(def.gold, attackerUnits * 25)
-              people = Math.min(def.people, attackerUnits * 5)
+              gold = Math.min(def.gold, survivors * 25) // steal gold per unit alive
+              people = Math.min(def.people, survivors * 5) // steal people per unit alive
               await defender.ref.update({ people: def.people - people, gold: def.gold - gold })
-              await defender.ref.update({ people: atk.people + people, gold: atk.gold + gold })
+              await attacker.ref.update({ people: atk.people + people, gold: atk.gold + gold })
             } else {
               let percent = strategy === 'lbl_strategy_conquest' ? 0.03 : 0.06
               sieged = 0

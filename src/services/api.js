@@ -313,7 +313,7 @@ const checkHeroesAffordance = (uid) => {
 // check turns maintenance
 const checkGeneralStatus = (uid) => {
   return database.ref('users').child(uid).transaction(user => { // opens transaction
-    if (user) {
+    if (user && user.turns >= 0) {
       user.goldPerTurn = Math.floor(goldPerTurn)
       user.peoplePerTurn = Math.floor(peoplePerTurn)
       user.manaPerTurn = Math.floor(manaPerTurn)
