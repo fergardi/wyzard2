@@ -1,7 +1,7 @@
 {
   "attack_flask" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_attack_flask.jpg?alt=media",
+    "image" : "img_artifact_attack_flask",
     "name" : "lbl_artifact_attack_flask",
     "description" : "lbl_artifact_attack_flask_description",
     "battle": true,
@@ -28,7 +28,7 @@
   },
   "bonfire" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_bonfire.jpg?alt=media",
+    "image" : "img_artifact_bonfire",
     "name" : "lbl_artifact_bonfire",
     "description" : "lbl_artifact_bonfire_description",
     "battle": false,
@@ -55,7 +55,7 @@
   },
   "necronomicon" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_necronomicon.jpg?alt=media",
+    "image" : "img_artifact_necronomicon",
     "name" : "lbl_artifact_necronomicon",
     "description" : "lbl_artifact_necronomicon_description",
     "battle": false,
@@ -82,7 +82,7 @@
   },
   "broken_mirror" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_broken_mirror.jpg?alt=media",
+    "image" : "img_artifact_broken_mirror",
     "name" : "lbl_artifact_broken_mirror",
     "description" : "lbl_artifact_broken_mirror_description",
     "battle": false,
@@ -109,7 +109,7 @@
   },
   "necromancer_totem" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_necromancer_totem.jpg?alt=media",
+    "image" : "img_artifact_necromancer_totem",
     "name" : "lbl_artifact_necromancer_totem",
     "description" : "lbl_artifact_necromancer_totem_description",
     "battle": true,
@@ -136,7 +136,7 @@
   },
   "defense_remedy" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_defense_remedy.jpg?alt=media",
+    "image" : "img_artifact_defense_remedy",
     "name" : "lbl_artifact_defense_remedy",
     "description" : "lbl_artifact_defense_remedy_description",
     "battle": true,
@@ -163,7 +163,7 @@
   },
   "bottled_evil" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_bottled_evil.jpg?alt=media",
+    "image" : "img_artifact_bottled_evil",
     "name" : "lbl_artifact_bottled_evil",
     "description" : "lbl_artifact_bottled_evil_description",
     "battle": false,
@@ -190,7 +190,7 @@
   },
   "dragon_egg" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_dragon_egg.jpg?alt=media",
+    "image" : "img_artifact_dragon_egg",
     "name" : "lbl_artifact_dragon_egg",
     "description" : "lbl_artifact_dragon_egg_description",
     "battle": false,
@@ -217,7 +217,7 @@
   },
   "elemental_compendium" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_elemental_compendium.jpg?alt=media",
+    "image" : "img_artifact_elemental_compendium",
     "name" : "lbl_artifact_elemental_compendium",
     "description" : "lbl_artifact_elemental_compendium_description",
     "battle": false,
@@ -244,7 +244,7 @@
   },
   "forbidden_book" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_forbidden_book.jpg?alt=media",
+    "image" : "img_artifact_forbidden_book",
     "name" : "lbl_artifact_forbidden_book",
     "description" : "lbl_artifact_forbidden_book_description",
     "battle": false,
@@ -271,7 +271,7 @@
   },
   "hero_manual" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_hero_manual.jpg?alt=media",
+    "image" : "img_artifact_hero_manual",
     "name" : "lbl_artifact_hero_manual",
     "description" : "lbl_artifact_hero_manual_description",
     "battle": false,
@@ -298,7 +298,7 @@
   },
   "live_bait" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_live_bait.jpg?alt=media",
+    "image" : "img_artifact_live_bait",
     "name" : "lbl_artifact_live_bait",
     "description" : "lbl_artifact_live_bait_description",
     "battle": false,
@@ -325,7 +325,7 @@
   },
   "love_elixir" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_love_elixir.jpg?alt=media",
+    "image" : "img_artifact_love_elixir",
     "name" : "lbl_artifact_love_elixir",
     "description" : "lbl_artifact_love_elixir_description",
     "battle": false,
@@ -352,7 +352,7 @@
   },
   "magic_compass" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_magic_compass.jpg?alt=media",
+    "image" : "img_artifact_magic_compass",
     "name" : "lbl_artifact_magic_compass",
     "description" : "lbl_artifact_magic_compass_description",
     "battle": false,
@@ -379,7 +379,7 @@
   },
   "mana_potion" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_mana_potion.jpg?alt=media",
+    "image" : "img_artifact_mana_potion",
     "name" : "lbl_artifact_mana_potion",
     "description" : "lbl_artifact_mana_potion_description",
     "battle": false,
@@ -406,7 +406,7 @@
   },
   "medusa_head" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_medusa_head.jpg?alt=media",
+    "image" : "img_artifact_medusa_head",
     "name" : "lbl_artifact_medusa_head",
     "description" : "lbl_artifact_medusa_head_description",
     "battle": true,
@@ -433,7 +433,7 @@
   },
   "powder_barrel" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_powder_barrel.jpg?alt=media",
+    "image" : "img_artifact_powder_barrel",
     "name" : "lbl_artifact_powder_barrel",
     "description" : "lbl_artifact_powder_barrel_description",
     "battle": true,
@@ -460,7 +460,7 @@
   },
   "holy_codex" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_holy_codex.jpg?alt=media",
+    "image" : "img_artifact_holy_codex",
     "name" : "lbl_artifact_holy_codex",
     "description" : "lbl_artifact_holy_codex_description",
     "battle": false,
@@ -487,7 +487,7 @@
   },
   "treasure_chest" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_treasure_chest.jpg?alt=media",
+    "image" : "img_artifact_treasure_chest",
     "name" : "lbl_artifact_treasure_chest",
     "description" : "lbl_artifact_treasure_chest_description",
     "battle": false,
@@ -514,7 +514,7 @@
   },
   "voodoo_doll" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/artifacts%2Fimg_artifact_voodoo_doll.jpg?alt=media",
+    "image" : "img_artifact_voodoo_doll",
     "name" : "lbl_artifact_voodoo_doll",
     "description" : "lbl_artifact_voodoo_doll_description",
     "battle": true,

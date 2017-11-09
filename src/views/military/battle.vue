@@ -4,7 +4,7 @@
       mu-card.battle.animated.fadeInUp
         form(@submit.stop.prevent="confirm('attack')")
           mu-card-media
-            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/battle.jpg?alt=media", :alt="translate('lbl_label_battle')")
+            img(v-lazy-load="picture('miscellaneous', 'battle')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_battle')")
             .card-extra
               .card-number(v-tooltip="translate('ttp_turn_cost')")
                 i.ra.ra-hourglass
@@ -63,11 +63,11 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import confirm from '../components/confirm-dialog'
-  import { checkTurnMaintenances, updateGeneralStatus, sendUserMessage } from '../services/api' // eslint-disable-line
-  import { battlePlayerVersusPlayer } from '../services/battle'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import confirm from '../../components/confirm-dialog'
+  import { checkTurnMaintenances, updateGeneralStatus, sendUserMessage } from '../../services/api' // eslint-disable-line
+  import { battlePlayerVersusPlayer } from '../../services/battle'
   
   export default {
     components: {

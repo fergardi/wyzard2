@@ -4,7 +4,7 @@
       mu-card.settings.animated.fadeInUp
         form(@submit.stop.prevent="confirm('restore')")
           mu-card-media
-            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/settings.jpg?alt=media", :alt="translate('lbl_label_settings')")
+            img(:v-lazy-load="picture('miscellaneous', 'settings')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_settings')")
             .card-info
               .card-text {{ 'lbl_label_settings' | translate }}
           mu-card-text
@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import confirm from '../components/confirm-dialog'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import confirm from '../../components/confirm-dialog'
   
   export default {
     components: {

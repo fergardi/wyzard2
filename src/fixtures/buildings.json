@@ -1,7 +1,7 @@
 {
   "barrack" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_barrack.jpg?alt=media",
+    "image" : "img_building_barrack",
     "name" : "lbl_building_barrack",
     "description" : "lbl_building_barrack_description",
     "buildable": true,
@@ -29,7 +29,7 @@
   },
   "barrier" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_barrier.jpg?alt=media",
+    "image" : "img_building_barrier",
     "name" : "lbl_building_barrier",
     "description" : "lbl_building_barrier_description",
     "buildable": true,
@@ -57,7 +57,7 @@
   },
   "farm" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_farm.jpg?alt=media",
+    "image" : "img_building_farm",
     "name" : "lbl_building_farm",
     "description" : "lbl_building_farm_description",
     "buildable": true,
@@ -85,7 +85,7 @@
   },
   "fortress" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_fortress.jpg?alt=media",
+    "image" : "img_building_fortress",
     "name" : "lbl_building_fortress",
     "description" : "lbl_building_fortress_description",
     "buildable": true,
@@ -113,7 +113,7 @@
   },
   "guild" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_guild.jpg?alt=media",
+    "image" : "img_building_guild",
     "name" : "lbl_building_guild",
     "description" : "lbl_building_guild_description",
     "buildable": true,
@@ -141,7 +141,7 @@
   },
   "node" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_node.jpg?alt=media",
+    "image" : "img_building_node",
     "name" : "lbl_building_node",
     "description" : "lbl_building_node_description",
     "buildable": true,
@@ -169,7 +169,7 @@
   },
   "terrain" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_terrain.jpg?alt=media",
+    "image" : "img_building_terrain",
     "name" : "lbl_building_terrain",
     "description" : "lbl_building_terrain_description",
     "buildable": false,
@@ -197,7 +197,7 @@
   },
   "village" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_village.jpg?alt=media",
+    "image" : "img_building_village",
     "name" : "lbl_building_village",
     "description" : "lbl_building_village_description",
     "buildable": true,
@@ -225,7 +225,7 @@
   },
   "workshop" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_workshop.jpg?alt=media",
+    "image" : "img_building_workshop",
     "name" : "lbl_building_workshop",
     "description" : "lbl_building_workshop_description",
     "buildable": true,
@@ -253,7 +253,7 @@
   },
   "temple" : {
     "color": "dark",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/buildings%2Fimg_building_temple.jpg?alt=media",
+    "image" : "img_building_temple",
     "name" : "lbl_building_temple",
     "description" : "lbl_building_temple_description",
     "buildable": true,

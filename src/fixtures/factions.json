@@ -1,31 +1,31 @@
 {
   "chaos" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/factions%2Fimg_faction_chaos.jpg?alt=media",
+    "image" : "img_faction_chaos",
     "name" : "lbl_faction_chaos",
     "description" : "lbl_faction_chaos_description"
   },
   "darkness" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/factions%2Fimg_faction_darkness.jpg?alt=media",
+    "image" : "img_faction_darkness",
     "name" : "lbl_faction_darkness",
     "description" : "lbl_faction_darkness_description"
   },
   "holy" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/factions%2Fimg_faction_holy.jpg?alt=media",
+    "image" : "img_faction_holy",
     "name" : "lbl_faction_holy",
     "description" : "lbl_faction_holy_description"
   },
   "mental" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/factions%2Fimg_faction_mental.jpg?alt=media",
+    "image" : "img_faction_mental",
     "name" : "lbl_faction_mental",
     "description" : "lbl_faction_mental_description"
   },
   "nature" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/factions%2Fimg_faction_nature.jpg?alt=media",
+    "image" : "img_faction_nature",
     "name" : "lbl_faction_nature",
     "description" : "lbl_faction_nature_description"
   }

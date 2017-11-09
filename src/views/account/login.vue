@@ -36,9 +36,9 @@
 </template>
 
 <script>
-  import { authenticate, register, database, auth } from '../services/firebase'
-  import store from '../vuex/store'
-  import { createNewUser, updateGeneralStatus } from '../services/api'
+  import { authenticate, register, database, auth } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import { createNewUser, updateGeneralStatus } from '../../services/api'
   import moment from 'moment'
   
   export default {
@@ -144,19 +144,19 @@
       holyday (type) {
         const now = moment()
         if (now.isBetween(moment('15/01/____', 'DD/MM/____'), moment('15/02/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/valentines.jpg?alt=media' : 'lbl_slogan_valentines'
+          return type === 'image' ? this.picture('login', 'valentines') : 'lbl_slogan_valentines'
         } else if (now.isBetween(moment('15/02/____', 'DD/MM/____'), moment('15/03/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/chinese.jpg?alt=media' : 'lbl_slogan_chinese'
+          return type === 'image' ? this.picture('login', 'chinese') : 'lbl_slogan_chinese'
         } else if (now.isBetween(moment('15/03/____', 'DD/MM/____'), moment('15/04/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/carnival.jpg?alt=media' : 'lbl_slogan_carnivale'
+          return type === 'image' ? this.picture('login', 'carnival') : 'lbl_slogan_carnivale'
         } else if (now.isBetween(moment('15/09/____', 'DD/MM/____'), moment('15/10/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/oktoberfest.jpg?alt=media' : 'lbl_slogan_oktoberfest'
+          return type === 'image' ? this.picture('login', 'oktoberfest') : 'lbl_slogan_oktoberfest'
         } else if (now.isBetween(moment('15/10/____', 'DD/MM/____'), moment('15/11/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/halloween.jpg?alt=media' : 'lbl_slogan_halloween'
+          return type === 'image' ? this.picture('login', 'halloween') : 'lbl_slogan_halloween'
         } else if (now.isBetween(moment('01/12/____', 'DD/MM/____'), moment('31/12/____', 'DD/MM/____'), 'days', '[)')) {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/christmas.jpg?alt=media' : 'lbl_slogan_christmas'
+          return type === 'image' ? this.picture('login', 'christmas') : 'lbl_slogan_christmas'
         } else {
-          return type === 'image' ? 'https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/login.jpg?alt=media' : 'lbl_slogan_default'
+          return type === 'image' ? this.picture('login', 'login') : 'lbl_slogan_default'
         }
       }
     },

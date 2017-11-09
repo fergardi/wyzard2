@@ -5,7 +5,7 @@
     mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/conquest.jpg?alt=media", :alt="translate('lbl_label_conquest')")
+          img(v-lazy-load="picture('miscellaneous', 'conquest')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_conquest')")
           .card-info
             .card-text {{ name | translate }}
 

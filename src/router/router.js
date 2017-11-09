@@ -1,44 +1,50 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+// economy
+import kingdom from '@/views/economy/kingdom'
+import taxes from '@/views/economy/taxes'
+import infrastructure from '@/views/economy/infrastructure'
+import exploration from '@/views/economy/exploration'
+// import world from '@/views/world'
+// magic
+import dispel from '@/views/magic/dispel'
+import meditate from '@/views/magic/meditate'
+import relics from '@/views/magic/relics'
+import research from '@/views/magic/research'
+import sorcery from '@/views/magic/sorcery'
+// military
+import troops from '@/views/military/troops'
+import contracts from '@/views/military/contracts'
+import battle from '@/views/military/battle'
+import defense from '@/views/military/defense'
+// import quests from '@/views/quests'
+// diplomacy
+import devotion from '@/views/diplomacy/devotion'
+import census from '@/views/diplomacy/census'
+import tavern from '@/views/diplomacy/tavern'
+import messages from '@/views/diplomacy/messages'
+import auction from '@/views/diplomacy/auction'
+// account
+import login from '@/views/account/login'
+import settings from '@/views/account/settings'
+// knowledge
+import help from '@/views/knowledge/help'
+import factions from '@/views/knowledge/factions'
 import spells from '@/views/knowledge/spells'
 import units from '@/views/knowledge/units'
 import artifacts from '@/views/knowledge/artifacts'
 import buildings from '@/views/knowledge/buildings'
 import heroes from '@/views/knowledge/heroes'
 import gods from '@/views/knowledge/gods'
-import factions from '@/views/knowledge/factions'
-import infrastructure from '@/views/infrastructure'
-import relics from '@/views/relics'
-import research from '@/views/research'
-import census from '@/views/census'
-import sorcery from '@/views/sorcery'
-import tavern from '@/views/tavern'
-import devotion from '@/views/devotion'
-import kingdom from '@/views/kingdom'
-import settings from '@/views/settings'
-import messages from '@/views/messages'
-import exploration from '@/views/exploration'
-import meditate from '@/views/meditate'
-import auction from '@/views/auction'
-import taxes from '@/views/taxes'
-import dispel from '@/views/dispel'
-import troops from '@/views/troops'
-import contracts from '@/views/contracts'
-import battle from '@/views/battle'
-import defense from '@/views/defense'
-import help from '@/views/help'
-import login from '@/views/login'
-// import quests from '@/views/quests'
 // import places from '@/views/knowledge/places'
-// import world from '@/views/world'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', name: 'index', component: login },
+    { path: '/', name: 'index', component: messages },
     { path: '/login', name: 'login', component: login },
     { path: '/spells', name: 'spells', component: spells },
     { path: '/units', name: 'units', component: units },
@@ -66,9 +72,10 @@ export default new Router({
     { path: '/battle', name: 'battle', component: battle },
     { path: '/defense', name: 'defense', component: defense },
     { path: '/help', name: 'help', component: help },
-    { path: '/relics', name: 'relics', component: relics }// ,
+    { path: '/relics', name: 'relics', component: relics },
     // { path: '/quests', name: 'quests', component: quests },
     // { path: '/world', name: 'world', component: world },
     // { path: '/places', name: 'places', component: places }
+    { path: '*', redirect: '/' }
   ]
 })

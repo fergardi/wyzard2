@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.spell
     mu-card-media
-      img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
+      img.lazy(v-lazy-load="picture('spells', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="breaking", v-tooltip="translate('ttp_spell_duration')")
           i.ra.ra-hourglass

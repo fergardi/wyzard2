@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    .background
+    .background(:style="{ 'background-image': 'url(' + picture('miscellaneous', 'background') + ')' }")
 
     .toast
       mu-toast(v-if="toast.show", :message="toast.icon + ' ' + translate(toast.message)", :class="[toast.color, settings.navbar ? 'left' : 'right']", @close="untoast")
@@ -269,7 +269,10 @@
       height 100%
       position absolute
       filter grayscale(100%)
-      background url("https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/background.jpg?alt=media") no-repeat center center fixed
+      //background-image url("https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/miscellaneous/background.jpg?alt=media")
+      background-position center center
+      background-repeat no-repeat
+      background-attachment fixed
       background-size cover
       z-index -9999
     #app

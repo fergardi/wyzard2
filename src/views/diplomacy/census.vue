@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.census.animated.fadeInUp
         mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/census.jpg?alt=media", :alt="translate('lbl_label_users')")
+          img(v-lazy-load="picture('miscellaneous', 'census')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_users')")
           .card-extra
             .card-number(v-tooltip="translate('ttp_census_quantity')")
               i.ra.ra-player
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
   
   export default {
     data () {

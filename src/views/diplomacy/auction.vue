@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import artifact from '../components/artifact-card'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import artifact from '../../components/artifact-card'
   
   export default {
     components: {

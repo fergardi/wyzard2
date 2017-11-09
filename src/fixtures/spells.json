@@ -2,7 +2,7 @@
   "berserker" : {
     "color": "red",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_berserker.jpg?alt=media",
+    "image": "img_spell_berserker",
     "name": "lbl_spell_berserker",
     "description": "lbl_spell_berserker_description",
     "battle": true,
@@ -44,7 +44,7 @@
   "blood_pact" : {
     "color": "red",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_blood_pact.jpg?alt=media",
+    "image": "img_spell_blood_pact",
     "name": "lbl_spell_blood_pact",
     "description": "lbl_spell_blood_pact_description",
     "battle": false,
@@ -86,7 +86,7 @@
   "bone_wall" : {
     "color": "purple",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_bone_wall.jpg?alt=media",
+    "image": "img_spell_bone_wall",
     "name": "lbl_spell_bone_wall",
     "description": "lbl_spell_bone_wall_description",
     "battle": false,
@@ -128,7 +128,7 @@
   "break_enchantment" : {
     "color": "white",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_break_enchantment.jpg?alt=media",
+    "image": "img_spell_break_enchantment",
     "name": "lbl_spell_break_enchantment",
     "description": "lbl_spell_break_enchantment_description",
     "battle": true,
@@ -170,7 +170,7 @@
   "calm" : {
     "color": "white",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_calm.jpg?alt=media",
+    "image": "img_spell_calm",
     "name": "lbl_spell_calm",
     "description": "lbl_spell_calm_description",
     "battle": true,
@@ -212,7 +212,7 @@
   "heaven_doors" : {
     "color": "white",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_heaven_doors.jpg?alt=media",
+    "image": "img_spell_heaven_doors",
     "name": "lbl_spell_heaven_doors",
     "description": "lbl_spell_heaven_doors_description",
     "battle": false,
@@ -254,7 +254,7 @@
   "concentration" : {
     "color": "blue",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_concentration.jpg?alt=media",
+    "image": "img_spell_concentration",
     "name": "lbl_spell_concentration",
     "description": "lbl_spell_concentration_description",
     "battle": false,
@@ -296,7 +296,7 @@
   "corruption" : {
     "color": "purple",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_corruption.jpg?alt=media",
+    "image": "img_spell_corruption",
     "name": "lbl_spell_corruption",
     "description": "lbl_spell_corruption_description",
     "battle": true,
@@ -338,7 +338,7 @@
   "witchcraft" : {
     "color": "purple",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_witchcraft.jpg?alt=media",
+    "image": "img_spell_witchcraft",
     "name": "lbl_spell_witchcraft",
     "description": "lbl_spell_witchcraft_description",
     "battle": true,
@@ -380,7 +380,7 @@
   "create_artifact" : {
     "color": "blue",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_create_artifact.jpg?alt=media",
+    "image": "img_spell_create_artifact",
     "name": "lbl_spell_create_artifact",
     "description": "lbl_spell_create_artifact_description",
     "battle": false,
@@ -422,7 +422,7 @@
   "curse" : {
     "color": "purple",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_curse.jpg?alt=media",
+    "image": "img_spell_curse",
     "name": "lbl_spell_curse",
     "description": "lbl_spell_curse_description",
     "battle": true,
@@ -464,7 +464,7 @@
   "destroy_artifact" : {
     "color": "white",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_destroy_artifact.jpg?alt=media",
+    "image": "img_spell_destroy_artifact",
     "name": "lbl_spell_destroy_artifact",
     "description": "lbl_spell_destroy_artifact_description",
     "battle": true,
@@ -506,7 +506,7 @@
   "divine_protection" : {
     "color": "white",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_divine_protection.jpg?alt=media",
+    "image": "img_spell_divine_protection",
     "name": "lbl_spell_divine_protection",
     "description": "lbl_spell_divine_protection_description",
     "battle": false,
@@ -548,7 +548,7 @@
   "eclipse" : {
     "color": "purple",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_eclipse.jpg?alt=media",
+    "image": "img_spell_eclipse",
     "name": "lbl_spell_eclipse",
     "description": "lbl_spell_eclipse_description",
     "battle": true,
@@ -590,7 +590,7 @@
   "elemental_gathering" : {
     "color": "blue",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_elemental_gathering.jpg?alt=media",
+    "image": "img_spell_elemental_gathering",
     "name": "lbl_spell_elemental_gathering",
     "description": "lbl_spell_elemental_gathering_description",
     "battle": false,
@@ -632,7 +632,7 @@
   "epiphany" : {
     "color": "blue",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_epiphany.jpg?alt=media",
+    "image": "img_spell_epiphany",
     "name": "lbl_spell_epiphany",
     "description": "lbl_spell_epiphany_description",
     "battle": false,
@@ -674,7 +674,7 @@
   "fake_gold" : {
     "color": "blue",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_fake_gold.jpg?alt=media",
+    "image": "img_spell_fake_gold",
     "name": "lbl_spell_fake_gold",
     "description": "lbl_spell_fake_gold_description",
     "battle": true,
@@ -716,7 +716,7 @@
   "fear" : {
     "color": "purple",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_fear.jpg?alt=media",
+    "image": "img_spell_fear",
     "name": "lbl_spell_fear",
     "description": "lbl_spell_fear_description",
     "battle": true,
@@ -758,7 +758,7 @@
   "fire_circle" : {
     "color": "red",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_fire_circle.jpg?alt=media",
+    "image": "img_spell_fire_circle",
     "name": "lbl_spell_fire_circle",
     "description": "lbl_spell_fire_circle_description",
     "battle": false,
@@ -800,7 +800,7 @@
   "fireball" : {
     "color": "red",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_fireball.jpg?alt=media",
+    "image": "img_spell_fireball",
     "name": "lbl_spell_fireball",
     "description": "lbl_spell_fireball_description",
     "battle": true,
@@ -842,7 +842,7 @@
   "flame_shield" : {
     "color": "red",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_flame_shield.jpg?alt=media",
+    "image": "img_spell_flame_shield",
     "name": "lbl_spell_flame_shield",
     "description": "lbl_spell_flame_shield_description",
     "battle": true,
@@ -884,7 +884,7 @@
   "haste" : {
     "color": "blue",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_haste.jpg?alt=media",
+    "image": "img_spell_haste",
     "name": "lbl_spell_haste",
     "description": "lbl_spell_haste_description",
     "battle": true,
@@ -926,7 +926,7 @@
   "healing_hands" : {
     "color": "white",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_healing_hands.jpg?alt=media",
+    "image": "img_spell_healing_hands",
     "name": "lbl_spell_healing_hands",
     "description": "lbl_spell_healing_hands_description",
     "battle": true,
@@ -968,7 +968,7 @@
   "miracle" : {
     "color": "white",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_miracle.jpg?alt=media",
+    "image": "img_spell_miracle",
     "name": "lbl_spell_miracle",
     "description": "lbl_spell_miracle_description",
     "battle": true,
@@ -1010,7 +1010,7 @@
   "inferno" : {
     "color": "red",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_inferno.jpg?alt=media",
+    "image": "img_spell_inferno",
     "name": "lbl_spell_inferno",
     "description": "lbl_spell_inferno_description",
     "battle": true,
@@ -1052,7 +1052,7 @@
   "mana_drain" : {
     "color": "red",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_mana_drain.jpg?alt=media",
+    "image": "img_spell_mana_drain",
     "name": "lbl_spell_mana_drain",
     "description": "lbl_spell_mana_drain_description",
     "battle": true,
@@ -1094,7 +1094,7 @@
   "mana_shield" : {
     "color": "blue",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_mana_shield.jpg?alt=media",
+    "image": "img_spell_mana_shield",
     "name": "lbl_spell_mana_shield",
     "description": "lbl_spell_mana_shield_description",
     "battle": false,
@@ -1136,7 +1136,7 @@
   "meteor_shower" : {
     "color": "red",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_meteor_shower.jpg?alt=media",
+    "image": "img_spell_meteor_shower",
     "name": "lbl_spell_meteor_shower",
     "description": "lbl_spell_meteor_shower_description",
     "battle": true,
@@ -1178,7 +1178,7 @@
   "necromancy" : {
     "color": "purple",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_necromancy.jpg?alt=media",
+    "image": "img_spell_necromancy",
     "name": "lbl_spell_necromancy",
     "description": "lbl_spell_necromancy_description",
     "battle": true,
@@ -1220,7 +1220,7 @@
   "oracle" : {
     "color": "blue",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_oracle.jpg?alt=media",
+    "image": "img_spell_oracle",
     "name": "lbl_spell_oracle",
     "description": "lbl_spell_oracle_description",
     "battle": true,
@@ -1262,7 +1262,7 @@
   "peace" : {
     "color": "white",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_peace.jpg?alt=media",
+    "image": "img_spell_peace",
     "name": "lbl_spell_peace",
     "description": "lbl_spell_peace_description",
     "battle": false,
@@ -1304,7 +1304,7 @@
   "plague" : {
     "color": "purple",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_plague.jpg?alt=media",
+    "image": "img_spell_plague",
     "name": "lbl_spell_plague",
     "description": "lbl_spell_plague_description",
     "battle": true,
@@ -1346,7 +1346,7 @@
   "prosperity" : {
     "color": "white",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_prosperity.jpg?alt=media",
+    "image": "img_spell_prosperity",
     "name": "lbl_spell_prosperity",
     "description": "lbl_spell_prosperity_description",
     "battle": false,
@@ -1388,7 +1388,7 @@
   "resurrection" : {
     "color": "purple",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_resurrection.jpg?alt=media",
+    "image": "img_spell_resurrection",
     "name": "lbl_spell_resurrection",
     "description": "lbl_spell_resurrection_description",
     "battle": false,
@@ -1430,7 +1430,7 @@
   "sunrise" : {
     "color": "white",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_sunrise.jpg?alt=media",
+    "image": "img_spell_sunrise",
     "name": "lbl_spell_sunrise",
     "description": "lbl_spell_sunrise_description",
     "battle": true,
@@ -1472,7 +1472,7 @@
   "tsunami" : {
     "color": "blue",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_tsunami.jpg?alt=media",
+    "image": "img_spell_tsunami",
     "name": "lbl_spell_tsunami",
     "description": "lbl_spell_tsunami_description",
     "battle": true,
@@ -1514,7 +1514,7 @@
   "volcano" : {
     "color": "red",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_volcano.jpg?alt=media",
+    "image": "img_spell_volcano",
     "name": "lbl_spell_volcano",
     "description": "lbl_spell_volcano_description",
     "battle": true,
@@ -1556,7 +1556,7 @@
   "voodoo" : {
     "color": "purple",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_voodoo.jpg?alt=media",
+    "image": "img_spell_voodoo",
     "name": "lbl_spell_voodoo",
     "description": "lbl_spell_voodoo_description",
     "battle": true,
@@ -1598,7 +1598,7 @@
   "war_drums" : {
     "color": "red",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_war_drums.jpg?alt=media",
+    "image": "img_spell_war_drums",
     "name": "lbl_spell_war_drums",
     "description": "lbl_spell_war_drums_description",
     "battle": true,
@@ -1640,7 +1640,7 @@
   "wisdom" : {
     "color": "green",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_wisdom.jpg?alt=media",
+    "image": "img_spell_wisdom",
     "name": "lbl_spell_wisdom",
     "description": "lbl_spell_wisdom_description",
     "battle": false,
@@ -1682,7 +1682,7 @@
   "counter_spell": {
     "color": "blue",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_counter_spell.jpg?alt=media",
+    "image": "img_spell_counter_spell",
     "name": "lbl_spell_counter_spell",
     "description": "lbl_spell_counter_spell_description",
     "battle": true,
@@ -1724,7 +1724,7 @@
   "nature_favor": {
     "color": "green",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_nature_favor.jpg?alt=media",
+    "image": "img_spell_nature_favor",
     "name": "lbl_spell_nature_favor",
     "description": "lbl_spell_nature_favor_description",
     "battle": false,
@@ -1766,7 +1766,7 @@
   "hurricane": {
     "color": "green",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_hurricane.jpg?alt=media",
+    "image": "img_spell_hurricane",
     "name": "lbl_spell_hurricane",
     "description": "lbl_spell_hurricane_description",
     "battle": true,
@@ -1808,7 +1808,7 @@
   "tornado": {
     "color": "green",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_tornado.jpg?alt=media",
+    "image": "img_spell_tornado",
     "name": "lbl_spell_tornado",
     "description": "lbl_spell_tornado_description",
     "battle": true,
@@ -1850,7 +1850,7 @@
   "rust_armor": {
     "color": "green",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_rust_armor.jpg?alt=media",
+    "image": "img_spell_rust_armor",
     "name": "lbl_spell_rust_armor",
     "description": "lbl_spell_rust_armor_description",
     "battle": true,
@@ -1892,7 +1892,7 @@
   "climate_control": {
     "color": "green",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_climate_control.jpg?alt=media",
+    "image": "img_spell_climate_control",
     "name": "lbl_spell_climate_control",
     "description": "lbl_spell_climate_control_description",
     "battle": false,
@@ -1934,7 +1934,7 @@
   "elemental_wrath": {
     "color": "green",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_elemental_wrath.jpg?alt=media",
+    "image": "img_spell_elemental_wrath",
     "name": "lbl_spell_elemental_wrath",
     "description": "lbl_spell_elemental_wrath_description",
     "battle": false,
@@ -1976,7 +1976,7 @@
   "beast_council": {
     "color": "green",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_beast_council.jpg?alt=media",
+    "image": "img_spell_beast_council",
     "name": "lbl_spell_beast_council",
     "description": "lbl_spell_beast_council_description",
     "battle": false,
@@ -2018,7 +2018,7 @@
   "regenerate": {
     "color": "green",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_regenerate.jpg?alt=media",
+    "image": "img_spell_regenerate",
     "name": "lbl_spell_regenerate",
     "description": "lbl_spell_regenerate_description",
     "battle": true,
@@ -2060,7 +2060,7 @@
   "fountain_of_youth": {
     "color": "green",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_fountain_of_youth.jpg?alt=media",
+    "image": "img_spell_fountain_of_youth",
     "name": "lbl_spell_fountain_of_youth",
     "description": "lbl_spell_fountain_of_youth_description",
     "battle": true,
@@ -2102,7 +2102,7 @@
   "summon_air_elemental" : {
     "color": "blue",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_air_elemental.jpg?alt=media",
+    "image": "img_spell_summon_air_elemental",
     "name": "lbl_spell_summon_air_elemental",
     "description": "lbl_spell_summon_air_elemental_description",
     "battle": false,
@@ -2144,7 +2144,7 @@
   "summon_angel" : {
     "color": "white",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_angel.jpg?alt=media",
+    "image": "img_spell_summon_angel",
     "name": "lbl_spell_summon_angel",
     "description": "lbl_spell_summon_angel_description",
     "battle": false,
@@ -2186,7 +2186,7 @@
   "summon_archangel" : {
     "color": "white",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_archangel.jpg?alt=media",
+    "image": "img_spell_summon_archangel",
     "name": "lbl_spell_summon_archangel",
     "description": "lbl_spell_summon_archangel_description",
     "battle": false,
@@ -2228,7 +2228,7 @@
   "summon_basilisk" : {
     "color": "green",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_basilisk.jpg?alt=media",
+    "image": "img_spell_summon_basilisk",
     "name": "lbl_spell_summon_basilisk",
     "description": "lbl_spell_summon_basilisk_description",
     "battle": false,
@@ -2270,7 +2270,7 @@
   "summon_behemoth" : {
     "color": "green",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_behemoth.jpg?alt=media",
+    "image": "img_spell_summon_behemoth",
     "name": "lbl_spell_summon_behemoth",
     "description": "lbl_spell_summon_behemoth_description",
     "battle": false,
@@ -2312,7 +2312,7 @@
   "summon_black_dragon" : {
     "color": "purple",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_black_dragon.jpg?alt=media",
+    "image": "img_spell_summon_black_dragon",
     "name": "lbl_spell_summon_black_dragon",
     "description": "lbl_spell_summon_black_dragon_description",
     "battle": false,
@@ -2354,7 +2354,7 @@
   "summon_blue_dragon" : {
     "color": "blue",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_blue_dragon.jpg?alt=media",
+    "image": "img_spell_summon_blue_dragon",
     "name": "lbl_spell_summon_blue_dragon",
     "description": "lbl_spell_summon_blue_dragon_description",
     "battle": false,
@@ -2396,7 +2396,7 @@
   "summon_cerberus" : {
     "color": "red",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_cerberus.jpg?alt=media",
+    "image": "img_spell_summon_cerberus",
     "name": "lbl_spell_summon_cerberus",
     "description": "lbl_spell_summon_cerberus_description",
     "battle": false,
@@ -2438,7 +2438,7 @@
   "summon_chimera" : {
     "color": "red",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_chimera.jpg?alt=media",
+    "image": "img_spell_summon_chimera",
     "name": "lbl_spell_summon_chimera",
     "description": "lbl_spell_summon_chimera_description",
     "battle": false,
@@ -2480,7 +2480,7 @@
   "summon_griffon" : {
     "color": "white",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_griffon.jpg?alt=media",
+    "image": "img_spell_summon_griffon",
     "name": "lbl_spell_summon_griffon",
     "description": "lbl_spell_summon_griffon_description",
     "battle": false,
@@ -2522,7 +2522,7 @@
   "summon_crusader" : {
     "color": "white",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_crusader.jpg?alt=media",
+    "image": "img_spell_summon_crusader",
     "name": "lbl_spell_summon_crusader",
     "description": "lbl_spell_summon_crusader_description",
     "battle": false,
@@ -2564,7 +2564,7 @@
   "summon_ogre" : {
     "color": "green",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_ogre.jpg?alt=media",
+    "image": "img_spell_summon_ogre",
     "name": "lbl_spell_summon_ogre",
     "description": "lbl_spell_summon_ogre_description",
     "battle": false,
@@ -2606,7 +2606,7 @@
   "summon_death_knight" : {
     "color": "purple",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_death_knight.jpg?alt=media",
+    "image": "img_spell_summon_death_knight",
     "name": "lbl_spell_summon_death_knight",
     "description": "lbl_spell_summon_death_knight_description",
     "battle": false,
@@ -2648,7 +2648,7 @@
   "summon_diablo" : {
     "color": "red",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_diablo.jpg?alt=media",
+    "image": "img_spell_summon_diablo",
     "name": "lbl_spell_summon_diablo",
     "description": "lbl_spell_summon_diablo_description",
     "battle": false,
@@ -2690,7 +2690,7 @@
   "summon_djinn" : {
     "color": "blue",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_djinn.jpg?alt=media",
+    "image": "img_spell_summon_djinn",
     "name": "lbl_spell_summon_djinn",
     "description": "lbl_spell_summon_djinn_description",
     "battle": false,
@@ -2732,7 +2732,7 @@
   "summon_dominion" : {
     "color": "white",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_dominion.jpg?alt=media",
+    "image": "img_spell_summon_dominion",
     "name": "lbl_spell_summon_dominion",
     "description": "lbl_spell_summon_dominion_description",
     "battle": false,
@@ -2774,7 +2774,7 @@
   "summon_earth_elemental" : {
     "color": "green",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_earth_elemental.jpg?alt=media",
+    "image": "img_spell_summon_earth_elemental",
     "name": "lbl_spell_summon_earth_elemental",
     "description": "lbl_spell_summon_earth_elemental_description",
     "battle": false,
@@ -2816,7 +2816,7 @@
   "summon_efreet" : {
     "color": "red",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_efreet.jpg?alt=media",
+    "image": "img_spell_summon_efreet",
     "name": "lbl_spell_summon_efreet",
     "description": "lbl_spell_summon_efreet_description",
     "battle": false,
@@ -2858,7 +2858,7 @@
   "summon_elf" : {
     "color": "green",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_elf.jpg?alt=media",
+    "image": "img_spell_summon_elf",
     "name": "lbl_spell_summon_elf",
     "description": "lbl_spell_summon_elf_description",
     "battle": false,
@@ -2900,7 +2900,7 @@
   "summon_flame_elemental" : {
     "color": "red",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_flame_elemental.jpg?alt=media",
+    "image": "img_spell_summon_flame_elemental",
     "name": "lbl_spell_summon_flame_elemental",
     "description": "lbl_spell_summon_flame_elemental_description",
     "battle": false,
@@ -2942,7 +2942,7 @@
   "summon_goblin" : {
     "color": "red",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_goblin.jpg?alt=media",
+    "image": "img_spell_summon_goblin",
     "name": "lbl_spell_summon_goblin",
     "description": "lbl_spell_summon_goblin_description",
     "battle": false,
@@ -2984,7 +2984,7 @@
   "summon_green_dragon" : {
     "color": "green",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_green_dragon.jpg?alt=media",
+    "image": "img_spell_summon_green_dragon",
     "name": "lbl_spell_summon_green_dragon",
     "description": "lbl_spell_summon_green_dragon_description",
     "battle": false,
@@ -3026,7 +3026,7 @@
   "summon_hydra" : {
     "color": "green",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_hydra.jpg?alt=media",
+    "image": "img_spell_summon_hydra",
     "name": "lbl_spell_summon_hydra",
     "description": "lbl_spell_summon_hydra_description",
     "battle": false,
@@ -3068,7 +3068,7 @@
   "summon_ice_elemental" : {
     "color": "blue",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_ice_elemental.jpg?alt=media",
+    "image": "img_spell_summon_ice_elemental",
     "name": "lbl_spell_summon_ice_elemental",
     "description": "lbl_spell_summon_ice_elemental_description",
     "battle": false,
@@ -3110,7 +3110,7 @@
   "summon_energy_elemental" : {
     "color": "blue",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_energy_elemental.jpg?alt=media",
+    "image": "img_spell_summon_energy_elemental",
     "name": "lbl_spell_summon_energy_elemental",
     "description": "lbl_spell_summon_energy_elemental_description",
     "battle": false,
@@ -3152,7 +3152,7 @@
   "summon_lich" : {
     "color": "purple",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_lich.jpg?alt=media",
+    "image": "img_spell_summon_lich",
     "name": "lbl_spell_summon_lich",
     "description": "lbl_spell_summon_lich_description",
     "battle": false,
@@ -3194,7 +3194,7 @@
   "summon_light_elemental" : {
     "color": "white",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_light_elemental.jpg?alt=media",
+    "image": "img_spell_summon_light_elemental",
     "name": "lbl_spell_summon_light_elemental",
     "description": "lbl_spell_summon_light_elemental_description",
     "battle": false,
@@ -3236,7 +3236,7 @@
   "summon_mage" : {
     "color": "blue",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_mage.jpg?alt=media",
+    "image": "img_spell_summon_mage",
     "name": "lbl_spell_summon_mage",
     "description": "lbl_spell_summon_mage_description",
     "battle": false,
@@ -3278,7 +3278,7 @@
   "summon_medusa" : {
     "color": "blue",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_medusa.jpg?alt=media",
+    "image": "img_spell_summon_medusa",
     "name": "lbl_spell_summon_medusa",
     "description": "lbl_spell_summon_medusa_description",
     "battle": false,
@@ -3320,7 +3320,7 @@
   "summon_minotaur" : {
     "color": "red",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_minotaur.jpg?alt=media",
+    "image": "img_spell_summon_minotaur",
     "name": "lbl_spell_summon_minotaur",
     "description": "lbl_spell_summon_minotaur_description",
     "battle": false,
@@ -3362,7 +3362,7 @@
   "summon_naga" : {
     "color": "blue",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_naga.jpg?alt=media",
+    "image": "img_spell_summon_naga",
     "name": "lbl_spell_summon_naga",
     "description": "lbl_spell_summon_naga_description",
     "battle": false,
@@ -3404,7 +3404,7 @@
   "summon_orc" : {
     "color": "red",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_orc.jpg?alt=media",
+    "image": "img_spell_summon_orc",
     "name": "lbl_spell_summon_orc",
     "description": "lbl_spell_summon_orc_description",
     "battle": false,
@@ -3446,7 +3446,7 @@
   "summon_paladin" : {
     "color": "white",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_paladin.jpg?alt=media",
+    "image": "img_spell_summon_paladin",
     "name": "lbl_spell_summon_paladin",
     "description": "lbl_spell_summon_paladin_description",
     "battle": false,
@@ -3488,7 +3488,7 @@
   "summon_pegasus" : {
     "color": "white",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_pegasus.jpg?alt=media",
+    "image": "img_spell_summon_pegasus",
     "name": "lbl_spell_summon_pegasus",
     "description": "lbl_spell_summon_pegasus_description",
     "battle": false,
@@ -3530,7 +3530,7 @@
   "summon_phoenix" : {
     "color": "red",
     "magic": 10,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_phoenix.jpg?alt=media",
+    "image": "img_spell_summon_phoenix",
     "name": "lbl_spell_summon_phoenix",
     "description": "lbl_spell_summon_phoenix_description",
     "battle": false,
@@ -3572,7 +3572,7 @@
   "summon_red_dragon" : {
     "color": "red",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_red_dragon.jpg?alt=media",
+    "image": "img_spell_summon_red_dragon",
     "name": "lbl_spell_summon_red_dragon",
     "description": "lbl_spell_summon_red_dragon_description",
     "battle": false,
@@ -3614,7 +3614,7 @@
   "summon_skeleton" : {
     "color": "purple",
     "magic": 1,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_skeleton.jpg?alt=media",
+    "image": "img_spell_summon_skeleton",
     "name": "lbl_spell_summon_skeleton",
     "description": "lbl_spell_summon_skeleton_description",
     "battle": false,
@@ -3656,7 +3656,7 @@
   "summon_smoke_elemental" : {
     "color": "purple",
     "magic": 5,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_smoke_elemental.jpg?alt=media",
+    "image": "img_spell_summon_smoke_elemental",
     "name": "lbl_spell_summon_smoke_elemental",
     "description": "lbl_spell_summon_smoke_elemental_description",
     "battle": false,
@@ -3698,7 +3698,7 @@
   "summon_spider" : {
     "color": "purple",
     "magic": 3,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_spider.jpg?alt=media",
+    "image": "img_spell_summon_spider",
     "name": "lbl_spell_summon_spider",
     "description": "lbl_spell_summon_spider_description",
     "battle": false,
@@ -3740,7 +3740,7 @@
   "summon_storm_elemental" : {
     "color": "blue",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_storm_elemental.jpg?alt=media",
+    "image": "img_spell_summon_storm_elemental",
     "name": "lbl_spell_summon_storm_elemental",
     "description": "lbl_spell_summon_storm_elemental_description",
     "battle": false,
@@ -3782,7 +3782,7 @@
   "summon_treant" : {
     "color": "green",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_treant.jpg?alt=media",
+    "image": "img_spell_summon_treant",
     "name": "lbl_spell_summon_treant",
     "description": "lbl_spell_summon_treant_description",
     "battle": false,
@@ -3824,7 +3824,7 @@
   "summon_troll" : {
     "color": "green",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_troll.jpg?alt=media",
+    "image": "img_spell_summon_troll",
     "name": "lbl_spell_summon_troll",
     "description": "lbl_spell_summon_troll_description",
     "battle": false,
@@ -3866,7 +3866,7 @@
   "summon_unicorn" : {
     "color": "white",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_unicorn.jpg?alt=media",
+    "image": "img_spell_summon_unicorn",
     "name": "lbl_spell_summon_unicorn",
     "description": "lbl_spell_summon_unicorn_description",
     "battle": false,
@@ -3908,7 +3908,7 @@
   "summon_vampire" : {
     "color": "purple",
     "magic": 7,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_vampire.jpg?alt=media",
+    "image": "img_spell_summon_vampire",
     "name": "lbl_spell_summon_vampire",
     "description": "lbl_spell_summon_vampire_description",
     "battle": false,
@@ -3950,7 +3950,7 @@
   "summon_water_elemental" : {
     "color": "blue",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_water_elemental.jpg?alt=media",
+    "image": "img_spell_summon_water_elemental",
     "name": "lbl_spell_summon_water_elemental",
     "description": "lbl_spell_summon_water_elemental_description",
     "battle": false,
@@ -3992,7 +3992,7 @@
   "summon_werewolf" : {
     "color": "purple",
     "magic": 6,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_werewolf.jpg?alt=media",
+    "image": "img_spell_summon_werewolf",
     "name": "lbl_spell_summon_werewolf",
     "description": "lbl_spell_summon_werewolf_description",
     "battle": false,
@@ -4034,7 +4034,7 @@
   "summon_white_dragon" : {
     "color": "white",
     "magic": 9,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_white_dragon.jpg?alt=media",
+    "image": "img_spell_summon_white_dragon",
     "name": "lbl_spell_summon_white_dragon",
     "description": "lbl_spell_summon_white_dragon_description",
     "battle": false,
@@ -4076,7 +4076,7 @@
   "summon_wraith" : {
     "color": "purple",
     "magic": 4,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_wraith.jpg?alt=media",
+    "image": "img_spell_summon_wraith",
     "name": "lbl_spell_summon_wraith",
     "description": "lbl_spell_summon_wraith_description",
     "battle": false,
@@ -4118,7 +4118,7 @@
   "summon_wyvern" : {
     "color": "green",
     "magic": 8,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_wyvern.jpg?alt=media",
+    "image": "img_spell_summon_wyvern",
     "name": "lbl_spell_summon_wyvern",
     "description": "lbl_spell_summon_wyvern_description",
     "battle": false,
@@ -4160,7 +4160,7 @@
   "summon_zombie" : {
     "color": "purple",
     "magic": 2,
-    "image": "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/spells%2Fimg_spell_summon_zombie.jpg?alt=media",
+    "image": "img_spell_summon_zombie",
     "name": "lbl_spell_summon_zombie",
     "description": "lbl_spell_summon_zombie_description",
     "battle": false,

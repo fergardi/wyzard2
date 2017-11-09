@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.animated.fadeInUp
         mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/kingdom.jpg?alt=media", :alt="translate('lbl_label_summary')")
+          img(v-lazy-load="picture('miscellaneous', 'kingdom')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_summary')")
           mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-info
             .card-text {{ 'lbl_label_summary' | translate }}
@@ -355,8 +355,8 @@
 </template>
 
 <script>
-  import store from '../vuex/store'
-  import { database } from '../services/firebase'
+  import store from '../../vuex/store'
+  import { database } from '../../services/firebase'
   
   export default {
     created () {

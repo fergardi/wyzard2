@@ -3,16 +3,20 @@ require('firebase/auth')
 require('firebase/database')
 // require('firebase/messaging')
 
-var config = {
+const identifier = 'wyzard-14537'
+
+const config = {
   apiKey: 'AIzaSyDHUJ22pxTxUjRtM9eQYZqPYNuvH2cWg3Q',
-  authDomain: 'wyzard-14537.firebaseapp.com',
-  databaseURL: 'https://wyzard-14537.firebaseio.com',
-  projectId: 'wyzard-14537',
+  authDomain: `${identifier}.firebaseapp.com`,
+  databaseURL: `https://${identifier}.firebaseio.com`,
+  projectId: `${identifier}`,
   storageBucket: '',
   messagingSenderId: '787291880727'
 }
 
 const app = firebase.initializeApp(config)
+
+export const storage = `https://firebasestorage.googleapis.com/v0/b/${identifier}.appspot.com/o`
 
 export const database = app.database()
 

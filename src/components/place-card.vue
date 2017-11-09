@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.place
     mu-card-media
-      img.lazy(v-lazy-load="data.image", src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/loading.jpg?alt=media", :alt="translate(data.name)")
+      img.lazy(v-lazy-load="picture('places', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_place_name')") {{ data.name | translate }}
         .card-number(v-if="adventure", :class="data.color", v-tooltip="translate('ttp_turn_cost')")

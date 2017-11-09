@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import hero from '../components/hero-card'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
+  import hero from '../../components/hero-card'
   
   export default {
     components: {

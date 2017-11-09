@@ -8,7 +8,7 @@ import store from './vuex/store'
 import moment from 'moment'
 import LazyImg from 'v-lazy-img'
 import VTooltip from 'v-tooltip'
-import { database, auth } from './services/firebase'
+import { database, auth, storage } from './services/firebase'
 // theming
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
@@ -85,6 +85,9 @@ Vue.mixin({
     },
     nl2br (string) {
       return nl2br(string)
+    },
+    picture (path, name) {
+      return storage + '/' + path + '%2F' + name + '.jpg?alt=media'
     }
   }
 })

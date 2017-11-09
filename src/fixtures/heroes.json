@@ -1,7 +1,7 @@
 {
   "shaman" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_shaman.jpg?alt=media",
+    "image" : "img_hero_shaman",
     "name" : "lbl_hero_shaman",
     "description" : "lbl_hero_shaman_description",
     "goldProduction": 0,
@@ -26,7 +26,7 @@
   },
   "commander" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_commander.jpg?alt=media",
+    "image" : "img_hero_commander",
     "name" : "lbl_hero_commander",
     "description" : "lbl_hero_commander_description",
     "goldProduction": 0,
@@ -51,7 +51,7 @@
   },
   "demon_king" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_demon_king.jpg?alt=media",
+    "image" : "img_hero_demon_king",
     "name" : "lbl_hero_demon_king",
     "description" : "lbl_hero_demon_king_description",
     "goldProduction": 0,
@@ -76,7 +76,7 @@
   },
   "dragon_rider" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_dragon_rider.jpg?alt=media",
+    "image" : "img_hero_dragon_rider",
     "name" : "lbl_hero_dragon_rider",
     "description" : "lbl_hero_dragon_rider_description",
     "goldProduction": 0,
@@ -101,7 +101,7 @@
   },
   "druid" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_druid.jpg?alt=media",
+    "image" : "img_hero_druid",
     "name" : "lbl_hero_druid",
     "description" : "lbl_hero_druid_description",
     "goldProduction": 0,
@@ -126,7 +126,7 @@
   },
   "lord_of_the_beasts" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_lord_of_the_beasts.jpg?alt=media",
+    "image" : "img_hero_lord_of_the_beasts",
     "name" : "lbl_hero_lord_of_the_beasts",
     "description" : "lbl_hero_lord_of_the_beasts_description",
     "goldProduction": 0,
@@ -151,7 +151,7 @@
   },
   "elementalist" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_elementalist.jpg?alt=media",
+    "image" : "img_hero_elementalist",
     "name" : "lbl_hero_elementalist",
     "description" : "lbl_hero_elementalist_description",
     "goldProduction": 0,
@@ -176,7 +176,7 @@
   },
   "headless_horseman" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_headless_horseman.jpg?alt=media",
+    "image" : "img_hero_headless_horseman",
     "name" : "lbl_hero_headless_horseman",
     "description" : "lbl_hero_headless_horseman_description",
     "goldProduction": 0,
@@ -201,7 +201,7 @@
   },
   "leprechaunt" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_leprechaunt.jpg?alt=media",
+    "image" : "img_hero_leprechaunt",
     "name" : "lbl_hero_leprechaunt",
     "description" : "lbl_hero_leprechaunt_description",
     "goldProduction": 3000,
@@ -226,7 +226,7 @@
   },
   "merchant" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_merchant.jpg?alt=media",
+    "image" : "img_hero_merchant",
     "name" : "lbl_hero_merchant",
     "description" : "lbl_hero_merchant_description",
     "goldProduction": 0,
@@ -251,7 +251,7 @@
   },
   "necromancer" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_necromancer.jpg?alt=media",
+    "image" : "img_hero_necromancer",
     "name" : "lbl_hero_necromancer",
     "description" : "lbl_hero_necromancer_description",
     "goldProduction": 0,
@@ -276,7 +276,7 @@
   },
   "seraph" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_seraph.jpg?alt=media",
+    "image" : "img_hero_seraph",
     "name" : "lbl_hero_seraph",
     "description" : "lbl_hero_seraph_description",
     "goldProduction": 0,
@@ -301,7 +301,7 @@
   },
   "succubus" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_succubus.jpg?alt=media",
+    "image" : "img_hero_succubus",
     "name" : "lbl_hero_succubus",
     "description" : "lbl_hero_succubus_description",
     "goldProduction": 0,
@@ -326,7 +326,7 @@
   },
   "witch" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_witch.jpg?alt=media",
+    "image" : "img_hero_witch",
     "name" : "lbl_hero_witch",
     "description" : "lbl_hero_witch_description",
     "goldProduction": 0,
@@ -351,7 +351,7 @@
   },
   "sage" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/heroes%2Fimg_hero_sage.jpg?alt=media",
+    "image" : "img_hero_sage",
     "name" : "lbl_hero_sage",
     "description" : "lbl_hero_sage_description",
     "goldProduction": 0,

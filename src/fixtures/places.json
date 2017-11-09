@@ -1,31 +1,31 @@
 {
   "crypt" : {
     "color" : "purple",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/places%2Fimg_place_crypt.jpg?alt=media",
+    "image" : "img_place_crypt",
     "name" : "lbl_place_crypt",
     "description" : "lbl_place_crypt_description"
   },
   "dungeon" : {
     "color" : "red",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/places%2Fimg_place_dungeon.jpg?alt=media",
+    "image" : "img_place_dungeon",
     "name" : "lbl_place_dungeon",
     "description" : "lbl_place_dungeon_description"
   },
   "island" : {
     "color" : "blue",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/places%2Fimg_place_island.jpg?alt=media",
+    "image" : "img_place_island",
     "name" : "lbl_place_island",
     "description" : "lbl_place_island_description"
   },
   "ruins" : {
     "color" : "green",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/places%2Fimg_place_ruins.jpg?alt=media",
+    "image" : "img_place_ruins",
     "name" : "lbl_place_ruins",
     "description" : "lbl_place_ruins_description"
   },
   "maze" : {
     "color" : "white",
-    "image" : "https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/places%2Fimg_place_maze.jpg?alt=media",
+    "image" : "img_place_maze",
     "name" : "lbl_place_maze",
     "description" : "lbl_place_maze_description"
   }

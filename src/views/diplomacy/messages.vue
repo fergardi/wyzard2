@@ -3,7 +3,7 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/messages.jpg?alt=media", :alt="translate('lbl_label_messages')")
+          img(v-lazy-load="picture('miscellaneous', 'messages')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_messages')")
           mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
@@ -38,7 +38,7 @@
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
           mu-card-media
-            img(src="https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/message.jpg?alt=media")
+            img(v-lazy-load="picture('miscellaneous', 'message')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_message')")
             .card-extra
               .card-text(:class="selected.color", v-tooltip="translate('ttp_message_name')")
                 i.ra.ra-player
@@ -151,8 +151,8 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
+  import { database } from '../../services/firebase'
+  import store from '../../vuex/store'
   
   export default {
     data () {
@@ -209,7 +209,7 @@
 </script>
 
 <style lang="stylus">
-  @import '../css/colors.styl'
+  @import '../../css/colors.styl'
   .mu-dialog
     .scroll
       max-height 40vh
