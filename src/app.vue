@@ -269,7 +269,6 @@
       height 100%
       position absolute
       filter grayscale(100%)
-      //background-image url("https://firebasestorage.googleapis.com/v0/b/wyzard-14537.appspot.com/o/miscellaneous/background.jpg?alt=media")
       background-position center center
       background-repeat no-repeat
       background-attachment fixed

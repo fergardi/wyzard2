@@ -527,6 +527,7 @@ export const createNewUser = async (uid, player) => {
       artifacts.forEach(artifact => {
         let auction = {...artifact.val()}
         auction.quantity = 1
+        auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
         delete auction['.key']
         auctions.push(auction)
         // TODO DEVELOPMENT ONLY
@@ -544,6 +545,7 @@ export const createNewUser = async (uid, player) => {
       heroes.forEach(hero => {
         let contract = {...hero.val()}
         contract.level = Math.floor(Math.random() * 5) + 1
+        contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
         delete contract['.key']
         contracts.push(contract)
         // TODO DEVELOPMENT ONLY

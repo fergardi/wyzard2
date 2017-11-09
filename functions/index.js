@@ -3,19 +3,100 @@ const admin = require('firebase-admin')
 
 admin.initializeApp(functions.config().firebase)
 
+const TURNS_ADDITION = 1
+const MAX_TURNS = 300
+
+/*
 exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event => { // when turns are updated
   console.log('User ' + event.data.parent.val().name + ' went from ' + event.data.previous.val() + ' turns to ' + event.data.current.val())
   return true
 })
+*/
 
 // https://cron-job.org
-// firebase functions:config:set cron.key="passphrase"
-// https://us-central1-wyzard-14537.cloudfunctions.net/generosity?key=passphrase
+// https://us-central1-wyzard-14537.cloudfunctions.net/avarice
+// creates new auctions
+exports.avarice = functions.https.onRequest((req, res) => {
+  if (req.method === 'GET') {
+    // artifact
+    admin.database().ref('artifacts').once('value', artifacts => {
+      if (artifacts && artifacts.hasChildren()) {
+        let auctions = []
+        artifacts.forEach(artifact => {
+          let auction = Object.assign({}, artifact.val()) // {...artifact.val()}
+          auction.quantity = 1
+          auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+          delete auction['.key']
+          auctions.push(auction)
+        })
+        // random
+        const index = Math.floor(Math.random() * auctions.length)
+        admin.database().ref('auctions').push(auctions[index])
+      }
+    })
+    // contract
+    admin.database().ref('heroes').once('value', heroes => {
+      if (heroes && heroes.hasChildren()) {
+        let contracts = []
+        heroes.forEach(hero => {
+          let contract = Object.assign({}, hero.val()) // {...hero.val()}
+          contract.level = Math.floor(Math.random() * 5) + 1
+          contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+          delete contract['.key']
+          contracts.push(contract)
+        })
+        // random
+        const index = Math.floor(Math.random() * contracts.length)
+        admin.database().ref('tavern').push(contracts[index])
+      }
+    })
+    res.status(200).send()
+  } else {
+    res.status(404).send()
+  }
+})
+
+// https://cron-job.org
+// https://us-central1-wyzard-14537.cloudfunctions.net/generosity
+// update user turns and check auction expirations
 exports.generosity = functions.https.onRequest((req, res) => {
   if (req.method === 'GET') {
-    admin.database().ref('users').once('value', snapshot => {
-      snapshot.forEach(user => {
-        user.ref.child('turns').set(Math.min(300, user.child('turns').val() + 1))
+    // check artifact auctions finished
+    admin.database().ref('auctions').once('value', auctions => {
+      auctions.forEach(auction => {
+        if (auction.val().timestamp <= Date.now()) {
+          if (auction.val().bidder) {
+            let artifact = Object.assign({}, auction.val()) // {...auction.val()}
+            delete artifact['bid']
+            delete artifact['bidder']
+            delete artifact['timestamp']
+            delete artifact['.key']
+            admin.database().ref('users').child(artifact.bidder).child('relics').push(artifact)
+          }
+          auction.ref.remove()
+        }
+      })
+    })
+    // check hero contracts finished
+    admin.database().ref('tavern').once('value', contracts => {
+      contracts.forEach(contract => {
+        if (contract.val().timestamp <= Date.now()) {
+          if (contract.val().bidder) {
+            let hero = Object.assign({}, contract.val()) // {...contract.val()}
+            delete hero['bid']
+            delete hero['bidder']
+            delete hero['timestamp']
+            delete hero['.key']
+            admin.database().ref('users').child(hero.bidder).child('contracts').push(hero)
+          }
+          contract.ref.remove()
+        }
+      })
+    })
+    // check user turns
+    admin.database().ref('users').once('value', users => {
+      users.forEach(user => {
+        user.ref.child('turns').set(Math.min(MAX_TURNS, user.child('turns').val() + TURNS_ADDITION))
       })
     })
     res.status(200).send()

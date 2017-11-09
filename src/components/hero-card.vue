@@ -116,7 +116,11 @@
                     return previous
                   })
                 }
-                await database.ref('tavern').child(this.data['.key']).update({ bid: this.amount, bidder: store.state.uid }) // update the price
+                await database.ref('tavern').child(this.data['.key']).update({
+                  bid: this.amount,
+                  bidder: store.state.uid,
+                  timestamp: this.data.timestamp + 1000 * 60 * 30 // extend the auction 30min
+                }) // update the price
               }
             })
             await updateGeneralStatus(store.state.uid)

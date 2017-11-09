@@ -250,6 +250,7 @@
               auction.bid = this.amount // set minimum price
               auction.quantity = 1 // set quantity
               auction.owner = store.state.uid // set owner
+              auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
               database.ref('auctions').push(auction) // insert the auction
             }
             if (artifact.quantity <= 0) return null
@@ -291,7 +292,11 @@
                     return previous
                   })
                 }
-                await database.ref('auctions').child(this.data['.key']).update({ bid: this.amount, bidder: store.state.uid }) // update the price
+                await database.ref('auctions').child(this.data['.key']).update({
+                  bid: this.amount,
+                  bidder: store.state.uid,
+                  timestamp: this.data.timestamp + 1000 * 60 * 30 // extend the auction 30min
+                }) // update the price
               }
             })
             await updateGeneralStatus(store.state.uid)
