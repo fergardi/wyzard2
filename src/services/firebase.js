@@ -22,6 +22,10 @@ export const database = app.database()
 
 export const auth = app.auth()
 
+export const unregister = () => {
+  return auth.currentUser.delete()
+}
+
 // export const messaging = firebase.messaging()
 
 export const authenticate = (email, password, remember = false) => {
