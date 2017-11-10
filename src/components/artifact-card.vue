@@ -50,7 +50,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addRandomTroopToUser, removeRandomEnchantmentFromUser, sendUserMessage, addRandomPlaceToUser, addLevelToRandomHeroFromUser, addRandomSpellToUser } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -106,73 +106,19 @@
             if (this.data) {
               if (this.data.support) { // ally
                 if (this.data.summon) {
-                  await database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
-                    if (units) {
-                      let summons = []
-                      units.forEach(unit => {
-                        let summon = {...unit.val()}
-                        summon.quantity = this.random(summon.quantity * this.user.magic)
-                        delete summon['.key']
-                        summons.push(summon)
-                      })
-                      const index = Math.floor(Math.random() * summons.length)
-                      let summon = summons[index]
-                      database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(summon.name).once('value', troops => {
-                        if (troops && troops.hasChildren()) {
-                          troops.forEach(troop => {
-                            troop.ref.update({ quantity: troop.val().quantity + summon.quantity })
-                          })
-                        } else {
-                          database.ref('users').child(store.state.uid).child('troops').push(summon)
-                        }
-                      })
-                    }
-                  })
+                  await addRandomTroopToUser(store.state.uid, this.data.family, this.user.magic)
                 } else if (this.data.enchantment) {
-                  await database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
-                    if (enchantments && enchantments.hasChildren()) {
-                      let enchant = []
-                      enchantments.forEach(enchantment => {
-                        enchant.push(enchantment.key)
-                      })
-                      const index = Math.floor(Math.random() * enchant.length)
-                      database.ref('enchantments').child(enchant[index]).remove()
-                    }
-                  })
+                  await removeRandomEnchantmentFromUser(store.state.uid)
                 } else if (this.data.place) {
-                  await database.ref('places').once('value', places => {
-                    let quests = []
-                    places.forEach(place => {
-                      let quest = {...place.val()}
-                      quest.turns = this.random(20)
-                      delete quest['.key']
-                      quests.push(quest)
-                    })
-                    const index = Math.floor(Math.random() * quests.length)
-                    database.ref('users').child(store.state.uid).child('quests').push(quests[index])
-                  })
+                  await addRandomPlaceToUser(store.state.uid)
                 } else if (this.data.level > 0) {
-                  await database.ref('users').child(store.state.uid).child('contracts').once('value', contracts => {
-                    if (contracts && contracts.hasChildren()) {
-                      let heroes = []
-                      contracts.forEach(contract => {
-                        heroes.push(contract.key)
-                      })
-                      const index = Math.floor(Math.random() * heroes.length)
-                      database.ref('users').child(store.state.uid).child('contracts').child(heroes[index]).transaction(hero => {
-                        if (hero) {
-                          hero.level++
-                        }
-                        return hero
-                      })
-                    }
-                  })
+                  await addLevelToRandomHeroFromUser(store.state.uid, this.data.level)
                 } else if (this.data.gold > 0 || this.data.people > 0 || this.data.mana > 0) {
                   await database.ref('users').child(store.state.uid).transaction(user => {
                     if (user) {
-                      user.gold += this.random(this.data.gold)
-                      user.people *= 1 + (this.data.people / 100)
-                      user.mana *= 1 + (this.data.mana / 100)
+                      user.gold = Math.floor(user.gold + this.random(this.data.gold))
+                      user.people = Math.floor(user.people *= (1 + (this.data.people / 100)))
+                      user.mana = Math.floor(user.mana *= (1 + (this.data.mana / 100)))
                     }
                     return user
                   })
@@ -187,37 +133,7 @@
                     }
                   })
                 } else if (this.data.research) {
-                  let known = []
-                  await database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
-                    if (researches) {
-                      researches.forEach(research => {
-                        known.push(research.val().name)
-                      })
-                    }
-                  })
-                  await database.ref('users').child(store.state.uid).child('book').once('value', book => {
-                    if (book) {
-                      book.forEach(page => {
-                        known.push(page.val().name)
-                      })
-                    }
-                  })
-                  let unknown = []
-                  await database.ref('spells').once('value', spells => {
-                    if (spells) {
-                      spells.forEach(spell => {
-                        if (!known.includes(spell.val().name)) {
-                          let research = {...spell.val()}
-                          delete research['.key']
-                          unknown.push(research)
-                        }
-                      })
-                    }
-                  })
-                  if (unknown.length > 0) {
-                    const index = Math.floor(Math.random() * unknown.length)
-                    await database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
-                  }
+                  await addRandomSpellToUser(store.state.uid)
                 }
               }
               await database.ref('users').child(store.state.uid).child('relics').child(this.data['.key']).transaction(artifact => {
@@ -252,8 +168,8 @@
               auction.owner = store.state.uid // set owner
               auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
               database.ref('auctions').push(auction) // insert the auction
+              if (artifact.quantity <= 0) return null
             }
-            if (artifact.quantity <= 0) return null
             return artifact
           })
           await updateGeneralStatus(store.state.uid)
@@ -278,16 +194,7 @@
                       let prev = previous.val()
                       let taxed = Math.floor(auc.bid * 0.9)
                       await database.ref('users').child(auc.bidder).update({ gold: prev.gold + taxed })
-                      let message = { // create new message
-                        color: 'dark',
-                        subject: 'lbl_message_auction_outbid',
-                        text: 'lbl_message_auction_outbid_text',
-                        timestamp: Date.now(),
-                        name: 'lbl_name_auction',
-                        gold: taxed,
-                        read: false
-                      }
-                      await database.ref('users').child(auc.bidder).child('messages').push(message) // add message to previous bidder
+                      await sendUserMessage(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_outbid', 'lbl_message_auction_outbid_text', null, null, taxed)
                     }
                     return previous
                   })

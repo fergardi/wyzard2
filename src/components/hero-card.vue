@@ -49,7 +49,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, sendUserMessage } from '../services/api'
   import confirm from './confirm-dialog'
   
   export default {
@@ -102,16 +102,7 @@
                       let prev = previous.val()
                       let taxed = Math.floor(auc.bid * 0.9)
                       await database.ref('users').child(auc.bidder).update({ gold: prev.gold + taxed })
-                      let message = { // create new message
-                        color: 'dark',
-                        subject: 'lbl_message_tavern_outbid',
-                        text: 'lbl_message_tavern_outbid_text',
-                        timestamp: Date.now(),
-                        name: 'lbl_name_tavern',
-                        gold: taxed,
-                        read: false
-                      }
-                      await database.ref('users').child(auc.bidder).child('messages').push(message) // add message to previous bidder
+                      await sendUserMessage(auc.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_outbid', 'lbl_message_tavern_outbid_text', null, null, taxed)
                     }
                     return previous
                   })

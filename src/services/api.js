@@ -504,8 +504,8 @@ export const createNewUser = async (uid, player) => {
         relics.push(relic)
       })
       // random
-      const index = Math.floor(Math.random() * relics.length)
-      database.ref('users').child(uid).child('relics').push(relics[index])
+      const random = Math.floor(Math.random() * relics.length)
+      database.ref('users').child(uid).child('relics').push(relics[random])
     }
   })
   // places
@@ -534,8 +534,8 @@ export const createNewUser = async (uid, player) => {
         // database.ref('users').child(uid).child('relics').push(auction)
       })
       // random
-      const index = Math.floor(Math.random() * auctions.length)
-      database.ref('auctions').push(auctions[index])
+      const random = Math.floor(Math.random() * auctions.length)
+      database.ref('auctions').push(auctions[random])
     }
   })
   // contract
@@ -552,8 +552,8 @@ export const createNewUser = async (uid, player) => {
         // database.ref('users').child(uid).child('contracts').push(contract)
       })
       // random
-      const index = Math.floor(Math.random() * contracts.length)
-      database.ref('tavern').push(contracts[index])
+      const random = Math.floor(Math.random() * contracts.length)
+      database.ref('tavern').push(contracts[random])
     }
   })
   // TODO DEVELOPMENT ONLY
@@ -737,6 +737,52 @@ export const addEnchantmentToUser = (uid, name, from, magic = 1) => {
           delete enchantment['.key']
           await database.ref('enchantments').push(enchantment)
         }
+      })
+    }
+  })
+}
+
+// remove random enchantment from user
+export const removeRandomEnchantmentFromUser = (uid) => {
+  return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', async enchantments => {
+    if (enchantments && enchantments.hasChildren()) {
+      let enchant = []
+      enchantments.forEach(enchantment => {
+        enchant.push(enchantment.key)
+      })
+      const random = Math.floor(Math.random() * enchant.length)
+      await database.ref('enchantments').child(enchant[random]).remove()
+    }
+  })
+}
+
+// add random place to user
+export const addRandomPlaceToUser = (uid) => {
+  return database.ref('places').once('value', async places => {
+    let quests = []
+    places.forEach(place => {
+      let quest = {...place.val()}
+      quest.turns = random(20)
+      delete quest['.key']
+      quests.push(quest)
+    })
+    const random = Math.floor(Math.random() * quests.length)
+    await database.ref('users').child(uid).child('quests').push(quests[random])
+  })
+}
+
+// add level to random hero user
+export const addLevelToRandomHeroFromUser = (uid, level = 1) => {
+  return database.ref('users').child(uid).child('contracts').once('value', async contracts => {
+    if (contracts && contracts.hasChildren()) {
+      let heroes = []
+      contracts.forEach(contract => {
+        heroes.push(contract.key)
+      })
+      const random = Math.floor(Math.random() * heroes.length)
+      await database.ref('users').child(store.state.uid).child('contracts').child(heroes[random]).transaction(hero => {
+        if (hero) hero.level++
+        return hero
       })
     }
   })
