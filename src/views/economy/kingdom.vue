@@ -357,6 +357,7 @@
 <script>
   import store from '../../vuex/store'
   import { database } from '../../services/firebase'
+  import { updateGeneralStatus } from '../../services/api'
   
   export default {
     created () {
@@ -364,6 +365,7 @@
       store.commit('help', 'txt_help_kingdom')
       this.$bindAsArray('enchantments', database.ref('enchantments'))
       this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
+      updateGeneralStatus(store.state.uid)
     },
     computed: {
       user () {

@@ -15,6 +15,7 @@
   import { database } from '../../services/firebase'
   import store from '../../vuex/store'
   import spell from '../../components/spell-card'
+  import { addEnchantmentToUser } from '../../services/api'
   
   export default {
     components: {
@@ -24,6 +25,7 @@
       store.commit('title', 'lbl_title_dispel')
       store.commit('help', 'txt_help_dispel')
       this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('remaining'))
+      addEnchantmentToUser(store.state.uid, 'bone_wall', store.state.uid, 4)
     },
     computed: {
       dispels () {

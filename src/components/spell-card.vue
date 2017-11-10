@@ -81,7 +81,7 @@
 <script>
   import { database } from '../services/firebase'
   import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUser, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '../services/api'
   import confirm from './confirm-dialog'
 
   export default {
@@ -179,88 +179,27 @@
           await checkTurnMaintenances(store.state.uid, this.data.turns)
           if (this.data.summon) { // summon troops
             if (this.canSummon) {
-              let troops = []
               if (this.data.family) {
-                await database.ref('units').orderByChild('family').equalTo(this.data.family).once('value', units => {
-                  if (units && units.hasChildren()) {
-                    units.forEach(unit => {
-                      troops.push(unit.val().name)
-                    })
-                  }
-                })
+                await addRandomTroopToUser(store.state.uid, this.data.family, this.user.magic)
               } else {
-                troops.push('lbl_unit_' + this.data.unit)
+                await addTroopToUser(store.state.uid, this.data.unit, this.user.magic)
               }
-              const index = Math.floor(Math.random() * troops.length)
-              await database.ref('units').child(troops[index].replace('lbl_unit_', '')).once('value', async unit => {
-                if (unit) {
-                  await database.ref('users').child(store.state.uid).child('troops').orderByChild('name').equalTo(troops[index]).once('value', async units => {
-                    if (units && units.hasChildren()) {
-                      units.forEach(async uni => {
-                        await database.ref('users').child(store.state.uid).child('troops').child(uni.key).update({ quantity: uni.val().quantity + this.random(unit.val().quantity) * this.user.magic })
-                      })
-                    } else {
-                      let summon = {...unit.val()}
-                      summon.quantity = this.random(summon.quantity) * this.user.magic
-                      delete summon['.key']
-                      await database.ref('users').child(store.state.uid).child('troops').push(summon)
-                    }
-                  })
-                }
-              })
             } else {
               store.commit('success', 'lbl_toast_army_error')
             }
           } else if (this.data.enchantment && this.data.support) {
-            await database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', enchantments => {
+            await database.ref('enchantments').orderByChild('target').equalTo(store.state.uid).once('value', async enchantments => {
               if (enchantments && enchantments.numChildren() <= this.user.enchantmentCap) {
-                let enchantment = {...this.data}
-                enchantment.target = store.state.uid
-                enchantment.targetColor = this.user.color
-                enchantment.targetName = this.user.name
-                enchantment.source = store.state.uid
-                enchantment.sourceColor = this.user.color
-                enchantment.sourceName = this.user.name
-                enchantment.magic = this.user.magic
-                enchantment.duration *= enchantment.magic
-                enchantment.remaining = enchantment.duration
-                delete enchantment['.key']
-                database.ref('enchantments').push(enchantment)
+                await addEnchantmentToUser(store.state.uid, this.data.name, store.state.uid, this.user.magic)
               }
             })
           } else if (this.data.spell > 0) {
             if (this.data.spell * this.user.magic >= Math.random() * 100) {
-              let known = []
-              await database.ref('users').child(store.state.uid).child('researches').once('value', researches => {
-                if (researches) {
-                  researches.forEach(research => {
-                    known.push(research.val().name)
-                  })
-                }
-              })
-              await database.ref('users').child(store.state.uid).child('book').once('value', book => {
-                if (book) {
-                  book.forEach(page => {
-                    known.push(page.val().name)
-                  })
-                }
-              })
-              let unknown = []
-              await database.ref('spells').once('value', spells => {
-                if (spells) {
-                  spells.forEach(spell => {
-                    if (!known.includes(spell.val().name)) {
-                      let research = {...spell.val()}
-                      delete research['.key']
-                      unknown.push(research)
-                    }
-                  })
-                }
-              })
-              if (unknown.length > 0) {
-                const index = Math.floor(Math.random() * unknown.length)
-                database.ref('users').child(store.state.uid).child('researches').push(unknown[index])
-              }
+              await addRandomSpellToUser(store.state.uid)
+            }
+          } else if (this.data.artifact > 0) {
+            if (this.data.artifact * this.user.magic >= Math.random() * 100) {
+              await addRandomArtifactToUser(store.state.uid)
             }
           }
           await updateGeneralStatus(store.state.uid)

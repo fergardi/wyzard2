@@ -623,3 +623,184 @@ export const sendUserMessage = (uid, from, color, subject, text = null, battle =
     read: false
   })
 }
+
+// add troops to user
+export const addTroopToUser = (uid, name, magic = 1) => {
+  name = name.includes('lbl_unit_') ? name : 'lbl_unit_' + name
+  return database.ref('units').child(name.replace('lbl_unit_', '')).once('value', async unit => {
+    if (unit) {
+      await database.ref('users').child(uid).child('troops').orderByChild('name').equalTo(name).once('value', async troops => {
+        if (troops && troops.hasChildren()) {
+          troops.forEach(troop => {
+            database.ref('users').child(uid).child('troops').child(troop.key).update({ quantity: troop.val().quantity + random(unit.val().quantity) * magic })
+          })
+        } else {
+          let summon = {...unit.val()}
+          summon.quantity = random(summon.quantity) * magic
+          delete summon['.key']
+          await database.ref('users').child(uid).child('troops').push(summon)
+        }
+      })
+    }
+  })
+}
+
+// add random troop to user
+export const addRandomTroopToUser = (uid, family, magic = 1) => {
+  family = family.includes('lbl_family_') ? family : 'lbl_family_' + family
+  return database.ref('units').orderByChild('family').equalTo(family).once('value', async units => {
+    if (units && units.hasChildren()) {
+      let list = []
+      units.forEach(unit => {
+        list.push(unit.val().name)
+      })
+      const random = Math.floor(Math.random() * list.length)
+      await addTroopToUser(uid, list[random], magic)
+    }
+  })
+}
+
+// add artifact to user
+export const addArtifactToUser = (uid, name, quantity = 1) => {
+  name = name.includes('lbl_artifact_') ? name : 'lbl_artifact_' + name
+  return database.ref('artifacts').child(name.replace('lbl_artifact_', '')).once('value', async artifact => {
+    if (artifact) {
+      await database.ref('users').child(uid).child('relics').orderByChild('name').equalTo(name).once('value', async relics => {
+        if (relics && relics.hasChildren()) {
+          relics.forEach(relic => {
+            database.ref('users').child(uid).child('relics').child(relic.key).update({ quantity: relic.val().quantity + quantity })
+          })
+        } else {
+          let relic = {...artifact.val()}
+          relic.quantity = quantity
+          delete relic['.key']
+          await database.ref('users').child(uid).child('relics').push(relic)
+        }
+      })
+    }
+  })
+}
+
+// add new artifact to user
+export const addRandomArtifactToUser = (uid, quantity = 1) => {
+  return database.ref('artifacts').once('value', async artifacts => {
+    if (artifacts) {
+      let list = []
+      artifacts.forEach(artifact => {
+        list.push(artifact.val().name)
+      })
+      const random = Math.floor(Math.random() * list.length)
+      await addArtifactToUser(uid, list[random], quantity)
+    }
+  })
+}
+
+// add hero to user
+export const addHeroToUser = (uid, name, level = 3) => {
+  name = name.includes('lbl_hero_') ? name : 'lbl_hero_' + name
+  return database.ref('heroes').child(name.replace('lbl_hero_', '')).once('value', async hero => {
+    if (hero) {
+      await database.ref('users').child(uid).child('contracts').orderByChild('name').equalTo(name).once('value', async contracts => {
+        if (contracts && contracts.hasChildren()) {
+          contracts.forEach(contract => {
+            contract.ref.remove()
+          })
+        }
+        let contract = {...hero.val()}
+        contract.level = level
+        delete contract['.key']
+        await database.ref('users').child(uid).child('contracts').push(contract)
+      })
+    }
+  })
+}
+
+// add enchantment to user from user
+export const addEnchantmentToUser = (uid, name, from, magic = 1) => {
+  name = name.includes('lbl_spell_') ? name : 'lbl_spell_' + name
+  return database.ref('spells').child(name.replace('lbl_spell_', '')).once('value', async spell => {
+    if (spell) {
+      await database.ref('enchantments').orderByChild('name').equalTo(name).once('value', async enchantments => {
+        if (enchantments) {
+          enchantments.forEach(enchantment => {
+            if (enchantment) {
+              let enchant = enchantment.val()
+              if (enchant.name === name && enchant.target === uid) enchantment.ref.remove()
+            }
+          })
+          let enchantment = {...spell.val()}
+          enchantment.target = uid
+          enchantment.source = from
+          enchantment.magic = magic
+          enchantment.duration *= enchantment.magic
+          enchantment.remaining = enchantment.duration
+          delete enchantment['.key']
+          await database.ref('enchantments').push(enchantment)
+        }
+      })
+    }
+  })
+}
+
+// add spell to user
+export const addSpellToUser = (uid, name) => {
+  name = name.includes('lbl_spell_') ? name : 'lbl_spell_' + name
+  return database.ref('spells').child(name.replace('lbl_spell_', '')).once('value', async spell => {
+    if (spell) {
+      let known = []
+      await database.ref('users').child(uid).child('researches').once('value', researches => {
+        if (researches) {
+          researches.forEach(research => {
+            known.push(research.val().name)
+          })
+        }
+      })
+      // spells already known
+      await database.ref('users').child(uid).child('book').once('value', book => {
+        if (book) {
+          book.forEach(page => {
+            known.push(page.val().name)
+          })
+        }
+      })
+      // add only if not already known
+      if (!known.includes(spell.val().name)) {
+        let book = {...spell.val()}
+        delete book['.key']
+        await database.ref('users').child(uid).child('researches').push(book)
+      }
+    }
+  })
+}
+
+// add new spell to user
+export const addRandomSpellToUser = async (uid) => {
+  let known = []
+  // spells researching
+  await database.ref('users').child(uid).child('researches').once('value', researches => {
+    if (researches) {
+      researches.forEach(research => {
+        known.push(research.val().name)
+      })
+    }
+  })
+  // spells already known
+  await database.ref('users').child(uid).child('book').once('value', book => {
+    if (book) {
+      book.forEach(page => {
+        known.push(page.val().name)
+      })
+    }
+  })
+  // unknown spells, aka all other ones
+  let unknown = []
+  await database.ref('spells').once('value', spells => {
+    if (spells) {
+      spells.forEach(spell => {
+        if (!known.includes(spell.val().name)) unknown.push(spell.val().name)
+      })
+    }
+  })
+  const random = Math.floor(Math.random() * unknown.length)
+  return unknown.length > 0 ? addSpellToUser(uid, unknown[random]) : false
+}
