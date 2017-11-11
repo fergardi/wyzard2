@@ -1,7 +1,7 @@
-import { database } from './firebase'
-import store from '../vuex/store'
-import i18n from './i18n'
-import { sendUserMessage } from './api'
+import { database } from '@/services/firebase'
+import store from '@/vuex/store'
+import i18n from '@/services/i18n'
+import { sendUserMessage } from '@/services/api'
 
 const rockScissorsPaper = (attacker, defender) => {
   if (attacker === 'lbl_type_fly' && defender === 'lbl_type_melee') return true

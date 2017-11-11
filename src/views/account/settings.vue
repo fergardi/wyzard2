@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import confirm from '../../components/confirm-dialog'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import confirm from '@/components/confirm-dialog'
   
   export default {
     components: {

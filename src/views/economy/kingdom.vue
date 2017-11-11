@@ -355,9 +355,9 @@
 </template>
 
 <script>
-  import store from '../../vuex/store'
-  import { database } from '../../services/firebase'
-  import { updateGeneralStatus } from '../../services/api'
+  import store from '@/vuex/store'
+  import { database } from '@/services/firebase'
+  import { updateGeneralStatus } from '@/services/api'
   
   export default {
     created () {

@@ -47,10 +47,10 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, sendUserMessage } from '../services/api'
-  import confirm from './confirm-dialog'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import { checkTurnMaintenances, updateGeneralStatus, sendUserMessage } from '@/services/api'
+  import confirm from '@/components/confirm-dialog'
   
   export default {
     name: 'hero-card',

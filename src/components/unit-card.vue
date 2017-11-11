@@ -52,10 +52,10 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import confirm from './confirm-dialog'
-  import { updateGeneralStatus } from '../services/api'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import confirm from '@/components/confirm-dialog'
+  import { updateGeneralStatus } from '@/services/api'
 
   export default {
     name: 'unit',

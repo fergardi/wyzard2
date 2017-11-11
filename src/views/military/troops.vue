@@ -12,10 +12,10 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import unit from '../../components/unit-card'
-  import { addTroopToUser, addRandomTroopToUser } from '../../services/api'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import unit from '@/components/unit-card'
+  import { addTroopToUser, addRandomTroopToUser } from '@/services/api'
   
   export default {
     components: {

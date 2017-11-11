@@ -6,9 +6,9 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import faction from '../../components/faction-card'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import faction from '@/components/faction-card'
   
   export default {
     components: {

@@ -19,9 +19,9 @@
 </template>
 
 <script>
-  import store from '../vuex/store'
-  import confirm from './confirm-dialog'
-  import { checkTurnMaintenances, updateGeneralStatus } from '../services/api'
+  import store from '@/vuex/store'
+  import confirm from '@/components/confirm-dialog'
+  import { checkTurnMaintenances, updateGeneralStatus } from '@/services/api'
 
   export default {
     name: 'place-card',

@@ -35,8 +35,8 @@
 <script>
   // import mapbox from 'mapbox-gl-vue'
   // import extent from 'turf-extent'
-  import store from '../vuex/store'
-  import { database } from '../services/firebase'
+  import store from '@/vuex/store'
+  import { database } from '@/services/firebase'
 
   export default {
     name: 'land-card',

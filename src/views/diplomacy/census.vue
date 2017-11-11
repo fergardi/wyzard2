@@ -31,8 +31,8 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
   
   export default {
     data () {

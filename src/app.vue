@@ -162,9 +162,9 @@
 </template>
 
 <script>
-  import store from './vuex/store'
-  import { database, auth } from './services/firebase'
-  import { updateGeneralStatus } from './services/api' // eslint-disable-line
+  import store from '@/vuex/store'
+  import { database, auth } from '@/services/firebase'
+  import { updateGeneralStatus } from '@/services/api' // eslint-disable-line
 
   export default {
     name: 'app',

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import store from '../vuex/store'
+  import store from '@/vuex/store'
 
   export default {
     name: 'confirm-dialog',

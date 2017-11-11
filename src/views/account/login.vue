@@ -36,9 +36,9 @@
 </template>
 
 <script>
-  import { authenticate, register, database, auth } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import { createNewUser, updateGeneralStatus } from '../../services/api'
+  import { authenticate, register, database, auth } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import { createNewUser, updateGeneralStatus } from '@/services/api'
   import moment from 'moment'
   
   export default {

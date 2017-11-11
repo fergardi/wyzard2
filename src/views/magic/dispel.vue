@@ -12,10 +12,10 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import spell from '../../components/spell-card'
-  import { addEnchantmentToUser } from '../../services/api'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import spell from '@/components/spell-card'
+  import { addEnchantmentToUser } from '@/services/api'
   
   export default {
     components: {

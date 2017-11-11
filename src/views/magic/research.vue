@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  import { database } from '../../services/firebase'
-  import store from '../../vuex/store'
-  import spell from '../../components/spell-card'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import spell from '@/components/spell-card'
   
   export default {
     components: {

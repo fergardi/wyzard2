@@ -79,10 +79,10 @@
 </template>
 
 <script>
-  import { database } from '../services/firebase'
-  import store from '../vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUser, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '../services/api'
-  import confirm from './confirm-dialog'
+  import { database } from '@/services/firebase'
+  import store from '@/vuex/store'
+  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUser, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '@/services/api'
+  import confirm from '@/components/confirm-dialog'
 
   export default {
     name: 'spell-card',

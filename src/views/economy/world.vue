@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import store from '../../vuex/store'
-  import land from '../../components/land-card'
+  import store from '@/vuex/store'
+  import land from '@/components/land-card'
   
   export default {
     components: {
