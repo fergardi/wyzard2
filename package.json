@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "deploy": "functions && firebase deploy",
+    "deploy": "npm run functions && firebase deploy",
     "functions": "rimraf functions && babel functionsES6 --out-dir functions --presets=es2015 --copy-files --ignore node_modules && cd functions && npm install",
     "publish": "npm run unit && npm run e2e && npm run build && npm run deploy",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",

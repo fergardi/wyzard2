@@ -4,7 +4,17 @@ var _assign = require('babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _api = require('src/services/api');
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22,6 +32,139 @@ exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event =>
   return true
 })
 */
+
+// add artifact to user
+var addArtifactToUser = function addArtifactToUser(uid, name) {
+  var quantity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+
+  name = name.includes('lbl_artifact_') ? name : 'lbl_artifact_' + name;
+  return admin.database().ref('artifacts').child(name.replace('lbl_artifact_', '')).once('value', function () {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(artifact) {
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              if (!artifact) {
+                _context2.next = 3;
+                break;
+              }
+
+              _context2.next = 3;
+              return admin.database().ref('users').child(uid).child('relics').orderByChild('name').equalTo(name).once('value', function () {
+                var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(relics) {
+                  var relic;
+                  return _regenerator2.default.wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          if (!(relics && relics.hasChildren())) {
+                            _context.next = 4;
+                            break;
+                          }
+
+                          relics.forEach(function (relic) {
+                            admin.database().ref('users').child(uid).child('relics').child(relic.key).update({ quantity: relic.val().quantity + quantity });
+                          });
+                          _context.next = 9;
+                          break;
+
+                        case 4:
+                          relic = (0, _extends3.default)({}, artifact.val());
+
+                          relic.quantity = quantity;
+                          delete relic['.key'];
+                          _context.next = 9;
+                          return admin.database().ref('users').child(uid).child('relics').push(relic);
+
+                        case 9:
+                        case 'end':
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee, undefined);
+                }));
+
+                return function (_x3) {
+                  return _ref2.apply(this, arguments);
+                };
+              }());
+
+            case 3:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, undefined);
+    }));
+
+    return function (_x2) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+};
+
+// add hero to user
+var addHeroToUser = function addHeroToUser(uid, name) {
+  var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
+
+  name = name.includes('lbl_hero_') ? name : 'lbl_hero_' + name;
+  return admin.database().ref('heroes').child(name.replace('lbl_hero_', '')).once('value', function () {
+    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(hero) {
+      return _regenerator2.default.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              if (!hero) {
+                _context4.next = 3;
+                break;
+              }
+
+              _context4.next = 3;
+              return admin.database().ref('users').child(uid).child('contracts').orderByChild('name').equalTo(name).once('value', function () {
+                var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(contracts) {
+                  var contract;
+                  return _regenerator2.default.wrap(function _callee3$(_context3) {
+                    while (1) {
+                      switch (_context3.prev = _context3.next) {
+                        case 0:
+                          if (contracts && contracts.hasChildren()) {
+                            contracts.forEach(function (contract) {
+                              contract.ref.remove();
+                            });
+                          }
+                          contract = (0, _extends3.default)({}, hero.val());
+
+                          contract.level = level;
+                          delete contract['.key'];
+                          _context3.next = 6;
+                          return admin.database().ref('users').child(uid).child('contracts').push(contract);
+
+                        case 6:
+                        case 'end':
+                          return _context3.stop();
+                      }
+                    }
+                  }, _callee3, undefined);
+                }));
+
+                return function (_x6) {
+                  return _ref4.apply(this, arguments);
+                };
+              }());
+
+            case 3:
+            case 'end':
+              return _context4.stop();
+          }
+        }
+      }, _callee4, undefined);
+    }));
+
+    return function (_x5) {
+      return _ref3.apply(this, arguments);
+    };
+  }());
+};
 
 // https://cron-job.org
 // https://us-central1-wyzard-14537.cloudfunctions.net/avarice
@@ -77,7 +220,7 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var auc = auction.val();
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
-            (0, _api.addArtifactToUser)(auc.bidder, auc.name);
+            addArtifactToUser(auc.bidder, auc.name);
           }
           auction.ref.remove();
         }
@@ -89,7 +232,7 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var con = contract.val();
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
-            (0, _api.addHeroToUser)(con.bidder, con.name);
+            addHeroToUser(con.bidder, con.name);
           }
           contract.ref.remove();
         }
