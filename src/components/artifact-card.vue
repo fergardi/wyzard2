@@ -50,7 +50,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, addRandomTroopToUserByFamily, removeRandomEnchantmentFromUser, sendUserMessage, addRandomPlaceToUser, addLevelToRandomHeroFromUser, addRandomSpellToUser } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addRandomTroopToUserByFamily, removeRandomEnchantmentFromUser, sendMessageToUser, addRandomPlaceToUser, addLevelToRandomHeroFromUser, addRandomSpellToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
 
   export default {
@@ -194,7 +194,7 @@
                       let prev = previous.val()
                       let taxed = Math.floor(auc.bid * 0.9)
                       await database.ref('users').child(auc.bidder).update({ gold: prev.gold + taxed })
-                      await sendUserMessage(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_outbid', 'lbl_message_auction_outbid_text', null, null, taxed)
+                      await sendMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_outbid', 'lbl_message_auction_outbid_text', null, null, taxed)
                     }
                     return previous
                   })

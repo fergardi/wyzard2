@@ -11,7 +11,7 @@
           span {{ data.invested | minimize }} / {{ data.completion | minimize }}
         .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_mana_cost')")
           i.ra.ra-burst-blob
-          span {{ data.manaCost * (user.magic || 1) | minimize }}
+          span {{ data.manaCost * user.magic | minimize }}
         .card-number(:class="data.color", v-if="conjuration", v-tooltip="translate('ttp_turn_cost')")
           i.ra.ra-hourglass
           span {{ data.turns | minimize }}
@@ -106,8 +106,8 @@
         dialog: false
       }
     },
-    created () {
-      this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
+    async created () {
+      await this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
     },
     methods: {
       confirm (type) {

@@ -72,8 +72,8 @@
         }
       }
     },
-    created () {
-      this.$bindAsArray('kingdoms', database.ref('users').child(store.state.uid).child('kingdoms'))
+    async created () {
+      await this.$bindAsArray('kingdoms', database.ref('users').child(store.state.uid).child('kingdoms'))
     },
     methods: {
       ready (map) {
@@ -133,7 +133,7 @@
         // show conquered countries
         map.setFilter('countries-conquered', ['in', 'name'].concat(this.countries))
         // show selected country on click
-        map.on('click', 'countries', (e) => {
+        map.on('click', 'countries', async (e) => {
           if (map.getLayoutProperty('country-selected', 'visibility') === 'none') {
             map.setLayoutProperty('country-selected', 'visibility', 'visible')
           }
@@ -142,8 +142,8 @@
             map.setFilter('country-selected', ['==', 'name', name])
             // let bbox = extent(e.features[0].geometry)
             // map.fitBounds(bbox, { padding: 100, linear: true, maxZoom: 20 })
-            this.$bindAsArray('troops', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
-            this.$bindAsObject('rewards', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('rewards'))
+            await this.$bindAsArray('troops', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('troops'))
+            await this.$bindAsObject('rewards', database.ref('countries').child(name.replace(' ', '_').toLowerCase()).child('rewards'))
             this.name = 'lbl_country_' + name.replace(' ', '_').toLowerCase()
             this.dialog = true
           }

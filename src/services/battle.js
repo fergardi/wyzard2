@@ -1,7 +1,7 @@
 import { database } from '@/services/firebase'
 import store from '@/vuex/store'
 import i18n from '@/services/i18n'
-import { sendUserMessage } from '@/services/api'
+import { sendMessageToUser, addEnchantmentToUser, spyInformationToUser } from '@/services/api'
 
 const rockScissorsPaper = (attacker, defender) => {
   if (attacker === 'lbl_type_fly' && defender === 'lbl_type_melee') return true
@@ -334,14 +334,13 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 report.spells.push({ left: true, level: atk.magic, name: attackerSpell.name, color: attackerSpell.color })
                 console.log('ATTACKER SPELL: ' + attackerSpell.name)
                 if (attackerSpell.enchantment && !attackerSpell.support) {
-                  let enchantment = attackerSpell
-                  enchantment.target = target
-                  enchantment.source = uid
-                  enchantment.magic = atk.magic
-                  enchantment.duration *= enchantment.magic
-                  enchantment.remaining = enchantment.duration
-                  delete enchantment['.key']
-                  await database.ref('enchantments').push(enchantment)
+                  await addEnchantmentToUser(target, attackerSpell.name, uid, atk.magic)
+                } else if (attackerSpell.spy > 0) {
+                  let spyChance = Math.random() * 100
+                  if (spyChance <= attackerSpell.spy * atk.magic) {
+                    let spionage = await spyInformationToUser(target)
+                    await sendMessageToUser(uid, 'lbl_name_spy', 'dark', 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+                  }
                 } else {
                   if (attackerSpell.support) {
                     if (attackerSpell.damage > 0) attackerSpellDamageBonus += attackerSpell.damage * def.magic
@@ -628,26 +627,30 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               await database.ref('users').child(target).child('troops').child(wave.troop['.key']).update({ quantity: wave.quantity })
             })
             // remove death waves
-            defenderDeathTroops.forEach(async wave => {
-              await database.ref('users').child(target).child('troops').child(wave).remove()
-              if (def.defense && def.defense.first === wave) await database.ref('users').child(target).child('defense').child('first').remove()
-              if (def.defense && def.defense.second === wave) await database.ref('users').child(target).child('defense').child('second').remove()
-              if (def.defense && def.defense.third === wave) await database.ref('users').child(target).child('defense').child('third').remove()
-              if (def.defense && def.defense.fourth === wave) await database.ref('users').child(target).child('defense').child('fourth').remove()
-              if (def.defense && def.defense.fifth === wave) await database.ref('users').child(target).child('defense').child('fifth').remove()
-            })
+            if (defenderDeathTroops.length > 0) {
+              await database.ref('users').child(target).child('defense').child('first').remove()
+              await database.ref('users').child(target).child('defense').child('second').remove()
+              await database.ref('users').child(target).child('defense').child('third').remove()
+              await database.ref('users').child(target).child('defense').child('fourth').remove()
+              await database.ref('users').child(target).child('defense').child('fifth').remove()
+              defenderDeathTroops.forEach(async wave => {
+                await database.ref('users').child(target).child('troops').child(wave).remove()
+              })
+            }
             attackerArmy.forEach(async wave => {
               await database.ref('users').child(uid).child('troops').child(wave.troop['.key']).update({ quantity: wave.quantity })
               survivors += wave.quantity
             })
-            attackerDeathTroops.forEach(async wave => {
-              await database.ref('users').child(uid).child('troops').child(wave).remove()
-              if (atk.defense && atk.defense.first === wave) await database.ref('users').child(uid).child('defense').child('first').remove()
-              if (atk.defense && atk.defense.second === wave) await database.ref('users').child(uid).child('defense').child('second').remove()
-              if (atk.defense && atk.defense.third === wave) await database.ref('users').child(uid).child('defense').child('third').remove()
-              if (atk.defense && atk.defense.fourth === wave) await database.ref('users').child(uid).child('defense').child('fourth').remove()
-              if (atk.defense && atk.defense.fifth === wave) await database.ref('users').child(uid).child('defense').child('fifth').remove()
-            })
+            if (attackerDeathTroops.length > 0) {
+              await database.ref('users').child(uid).child('defense').child('first').remove()
+              await database.ref('users').child(uid).child('defense').child('second').remove()
+              await database.ref('users').child(uid).child('defense').child('third').remove()
+              await database.ref('users').child(uid).child('defense').child('fourth').remove()
+              await database.ref('users').child(uid).child('defense').child('fifth').remove()
+              attackerDeathTroops.forEach(async wave => {
+                await database.ref('users').child(uid).child('troops').child(wave).remove()
+              })
+            }
           }
           // result
           let conquered = null
@@ -690,12 +693,12 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 })
               }
             }
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await sendMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await sendMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           } else {
             console.log('DEFEAT')
-            await sendUserMessage(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
-            await sendUserMessage(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await sendMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await sendMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           }
         }
       })

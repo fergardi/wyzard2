@@ -14,10 +14,10 @@
     components: {
       'building-card': building
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_infrastructure')
       store.commit('help', 'txt_help_infrastructure')
-      this.$bindAsArray('constructions', database.ref('users').child(store.state.uid).child('constructions').orderByChild('buildable').equalTo(true))
+      await this.$bindAsArray('constructions', database.ref('users').child(store.state.uid).child('constructions').orderByChild('buildable').equalTo(true))
     }
   }
 </script>

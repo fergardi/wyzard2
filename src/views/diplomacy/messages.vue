@@ -101,23 +101,42 @@
                   mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.attacker.quantity | numeric }}
-                  mu-chip.ellipsis(:class="log.attacker.color", v-tooltip="translate('ttp_unit_name')")
+                  mu-chip.ellipsis(:class="[log.attacker.color, {'dead': log.attacker.quantity <= 0}]", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.attacker.name | translate }}
-                  mu-chip(:class="log.attacker.color", v-tooltip="translate('ttp_message_casualties')")
+                  mu-chip(v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.attacker.casualties | translate }}
                 .info(v-if="log.defender", :class="log.defender.left ? 'left' : 'right'")
                   mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_unit_quantity')")
                     i.ra.ra-crossed-axes
                     span {{ log.defender.quantity | numeric }}
-                  mu-chip.ellipsis(:class="log.defender.color", v-tooltip="translate('ttp_unit_name')")
+                  mu-chip.ellipsis(:class="[log.defender.color, {'dead': log.defender.quantity <= 0}]", v-tooltip="translate('ttp_unit_name')")
                     span {{ log.defender.name | translate }}
-                  mu-chip(:class="log.defender.color", v-tooltip="translate('ttp_message_casualties')")
+                  mu-chip(v-tooltip="translate('ttp_message_casualties')")
                     i.ra.ra-death-skull
                     span {{ log.defender.casualties | translate }}
 
               .log
                 .info.title {{ 'lbl_battle_finish' | translate }}
+
+            mu-card-text(v-if="selected.spionage")
+              .log
+                .info.title {{ 'lbl_spionage_buildings' | translate }}
+                .building(v-for="building, index in selected.spionage.buildings", :key="index")
+                  mu-chip(v-tooltip="translate('ttp_building_quantity')")
+                    i.ra.ra-tower
+                    span {{ building.quantity | numeric }}
+                  mu-chip.ellipsis(v-tooltip="translate('ttp_building_name')")
+                    span {{ building.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_spells' | translate }}
+                .building(v-for="spell, index in selected.spionage.spells", :key="index")
+                  mu-chip(v-tooltip="translate('ttp_spell_level')")
+                    i.ra.ra-trophy
+                    span {{ spell.magic | numeric }}
+                  mu-chip.ellipsis(v-tooltip="translate('ttp_spell_name')")
+                    span {{ spell.name | translate }}
               
             mu-card-text.attachments(v-if="attachment")
               .attachment(v-if="selected.gold", v-tooltip="translate('ttp_resource_gold')")
@@ -153,6 +172,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
+  import { sendMessageToUser, spyInformationToUser } from '@/services/api'
   
   export default {
     data () {
@@ -167,6 +187,8 @@
       store.commit('title', 'lbl_title_messages')
       store.commit('help', 'txt_help_messages')
       await this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
+      let spionage = await spyInformationToUser(store.state.uid)
+      await sendMessageToUser(store.state.uid, 'lbl_name_spy', 'dark', 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
     },
     methods: {
       move (page) {
@@ -202,7 +224,10 @@
         return this.selected && (this.selected.gold || this.selected.people || this.selected.kills || this.selected.conquered || this.selected.sieged || this.selected.artifact)
       },
       busy () {
-        return !this.messages || !this.messages.length
+        return !this.messages || this.messages.length === undefined || this.messages.length === null
+      },
+      spionage () {
+        return this.selected && this.selected.spionage
       }
     }
   }
@@ -222,6 +247,7 @@
       .artifact
       .god
       .hero
+      .building
       .spell
       .attachment
         .mu-chip
@@ -232,6 +258,8 @@
             white-space nowrap
             overflow hidden
             text-overflow ellipsis
+          &.dead
+            text-decoration line-through
         .info
           margin 5px
           display flex

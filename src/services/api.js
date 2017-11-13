@@ -519,7 +519,7 @@ export const createNewUser = async (uid, player) => {
     }
   })
   // messages
-  await sendUserMessage(uid, 'lbl_name_admin', 'dark', 'lbl_message_welcome_subject', 'lbl_message_welcome_text')
+  await sendMessageToUser(uid, 'lbl_name_admin', 'dark', 'lbl_message_welcome_subject', 'lbl_message_welcome_text')
   // auction
   await database.ref('artifacts').once('value', artifacts => {
     if (artifacts && artifacts.hasChildren()) {
@@ -606,7 +606,7 @@ export const createNewUser = async (uid, player) => {
 }
 
 // messages
-export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null) => {
+export const sendMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, spionage = null) => {
   return database.ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
@@ -619,9 +619,44 @@ export const sendUserMessage = (uid, from, color, subject, text = null, battle =
     kills: kills,
     conquered: conquered,
     sieged: sieged,
+    mana: mana,
+    spionage: spionage,
     timestamp: Date.now(),
     read: false
   })
+}
+
+export const spyInformationToUser = async (uid) => {
+  let report = {
+    buildings: [],
+    units: [],
+    enchantments: [],
+    artifacts: [],
+    heroes: [],
+    gods: [],
+    spells: [],
+    gold: 0,
+    people: 0,
+    mana: 0,
+    magic: 0
+  }
+  await database.ref('users').child(uid).child('constructions').once('value', constructions => {
+    if (constructions) {
+      constructions.forEach(construction => {
+        let building = construction.val()
+        report.buildings.push({ name: building.name, quantity: building.quantity })
+      })
+    }
+  })
+  await database.ref('users').child(uid).child('book').once('value', pages => {
+    if (pages) {
+      pages.forEach(page => {
+        let spell = page.val()
+        report.spells.push({ name: spell.name, quantity: spell.level })
+      })
+    }
+  })
+  return report
 }
 
 // add troops to user

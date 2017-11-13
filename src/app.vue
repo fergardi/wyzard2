@@ -174,7 +174,7 @@
         blessings: []
       }
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_wyzard')
       store.commit('help', 'txt_help_login')
       // toast
@@ -190,9 +190,9 @@
       // initial
       if (store.state.uid) {
         store.dispatch('user', database.ref('users').child(store.state.uid))
-        this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
-        this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-        database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+        await this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
+        await this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
+        await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
           if (message) {
             store.commit('info', this.translate(message.val().subject))
             message.ref.update({ read: true })

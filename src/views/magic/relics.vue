@@ -14,10 +14,10 @@
     components: {
       'artifact-card': artifact
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_relics')
       store.commit('help', 'txt_help_relics')
-      this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics'))
+      await this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics'))
     }
   }
 </script>

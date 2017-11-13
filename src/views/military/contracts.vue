@@ -20,10 +20,10 @@
     components: {
       'hero-card': hero
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_contracts')
       store.commit('help', 'txt_help_contracts')
-      this.$bindAsArray('contracts', database.ref('users').child(store.state.uid).child('contracts').orderByChild('level'))
+      await this.$bindAsArray('contracts', database.ref('users').child(store.state.uid).child('contracts').orderByChild('level'))
     }
   }
 </script>

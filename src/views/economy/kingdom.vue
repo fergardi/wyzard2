@@ -360,12 +360,12 @@
   import { updateGeneralStatus } from '@/services/api'
   
   export default {
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_kingdom')
       store.commit('help', 'txt_help_kingdom')
-      this.$bindAsArray('enchantments', database.ref('enchantments'))
-      this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-      updateGeneralStatus(store.state.uid)
+      await this.$bindAsArray('enchantments', database.ref('enchantments'))
+      await this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
+      await updateGeneralStatus(store.state.uid)
     },
     computed: {
       user () {

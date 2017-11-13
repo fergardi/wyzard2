@@ -557,6 +557,7 @@ export default {
     lbl_name_admin: 'Archimago',
     lbl_name_auction: 'Subasta',
     lbl_name_tavern: 'Taberna',
+    lbl_name_spy: 'Espía',
     // tabs
     lbl_tab_sell: 'Vender',
     lbl_tab_activate: 'Activar',
@@ -642,6 +643,9 @@ export default {
     // messages
     lbl_message_welcome_subject: 'Bienvenid@',
     lbl_message_welcome_text: 'Bienvenido al juego',
+    lbl_message_spionage: 'Espionaje',
+    lbl_message_spionage_description: 'El Espionaje obtiene información importante y detallada del reino objetivo',
+    lbl_message_enchantment: 'Encantamiento',
     lbl_message_battle_win: 'Victoria',
     lbl_message_battle_lose: 'Derrota',
     lbl_message_auction_outbid: 'Sobrepuja',

@@ -64,13 +64,13 @@
         }
       }
     },
-    created () {
+    async created () {
       store.commit('title', 'lbl_title_defense')
       store.commit('help', 'txt_help_defense')
-      this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('name'))
-      this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
-      this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))
-      database.ref('users').child(store.state.uid).child('defense').once('value', defense => {
+      await this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('name'))
+      await this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
+      await this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))
+      await database.ref('users').child(store.state.uid).child('defense').once('value', defense => {
         if (defense) {
           this.defense = Object.assign(this.defense, defense.val())
         }

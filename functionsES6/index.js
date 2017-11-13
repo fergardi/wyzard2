@@ -13,6 +13,26 @@ exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event =>
 })
 */
 
+// send message to user
+export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, spionage = null) => {
+  return admin.database().ref('users').child(uid).child('messages').push({
+    name: from,
+    color: color,
+    subject: subject,
+    text: text,
+    battle: battle,
+    artifact: artifact,
+    gold: gold,
+    people: people,
+    kills: kills,
+    conquered: conquered,
+    sieged: sieged,
+    spionage: spionage,
+    timestamp: Date.now(),
+    read: false
+  })
+}
+
 // add artifact to user
 const addArtifactToUser = (uid, name, quantity = 1) => {
   name = name.includes('lbl_artifact_') ? name : 'lbl_artifact_' + name
