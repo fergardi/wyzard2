@@ -15,7 +15,7 @@
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
   import unit from '@/components/unit-card'
-  import { addTroopToUser, addRandomTroopToUser } from '@/services/api'
+  import { addRandomTroopToUser } from '@/services/api'
   
   export default {
     components: {
@@ -25,8 +25,7 @@
       store.commit('title', 'lbl_title_troops')
       store.commit('help', 'txt_help_troops')
       this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('color'))
-      addTroopToUser(store.state.uid, 'phoenix')
-      addRandomTroopToUser(store.state.uid, 'undead')
+      addRandomTroopToUser(store.state.uid)
     }
   }
 </script>

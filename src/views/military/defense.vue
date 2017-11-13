@@ -11,16 +11,16 @@
             p {{ 'lbl_label_protection' | translate }}
 
           mu-card-text
-            mu-select-field(v-model="defense.first", :label="translate('lbl_label_army_first')", :fullWidth="true")
+            mu-select-field(v-model="defense.first", :label="translate('lbl_label_army_first')", :fullWidth="true", @change="changeFirst")
               mu-menu-item(v-for="troop, index in first", :key="index", :value="troop['.key']", :title="translate(troop.name)")
           
-            mu-select-field(v-model="defense.second", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond")
+            mu-select-field(v-model="defense.second", :label="translate('lbl_label_army_second')", :fullWidth="true", :disabled="!canSecond", @change="changeSecond")
               mu-menu-item(v-for="troop, index in second", :key="index", :value="troop['.key']", :title="translate(troop.name)")
           
-            mu-select-field(v-model="defense.third", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird")
+            mu-select-field(v-model="defense.third", :label="translate('lbl_label_army_third')", :fullWidth="true", :disabled="!canThird", @change="changeThird")
               mu-menu-item(v-for="troop, index in third", :key="index", :value="troop['.key']", :title="translate(troop.name)")
           
-            mu-select-field(v-model="defense.fourth", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth")
+            mu-select-field(v-model="defense.fourth", :label="translate('lbl_label_army_fourth')", :fullWidth="true", :disabled="!canFourth", @change="changeFourth")
               mu-menu-item(v-for="troop, index in fourth", :key="index", :value="troop['.key']", :title="translate(troop.name)")
           
             mu-select-field(v-model="defense.fifth", :label="translate('lbl_label_army_fifth')", :fullWidth="true", :disabled="!canFifth")
@@ -52,7 +52,16 @@
       return {
         busy: false,
         type: null,
-        dialog: false
+        dialog: false,
+        defense: {
+          first: null,
+          second: null,
+          third: null,
+          fourth: null,
+          fifth: null,
+          spell: null,
+          artifact: null
+        }
       }
     },
     created () {
@@ -61,6 +70,11 @@
       this.$bindAsArray('troops', database.ref('users').child(store.state.uid).child('troops').orderByChild('name'))
       this.$bindAsArray('book', database.ref('users').child(store.state.uid).child('book').orderByChild('battle').equalTo(true))
       this.$bindAsArray('relics', database.ref('users').child(store.state.uid).child('relics').orderByChild('battle').equalTo(true))
+      database.ref('users').child(store.state.uid).child('defense').once('value', defense => {
+        if (defense) {
+          this.defense = Object.assign(this.defense, defense.val())
+        }
+      })
     },
     methods: {
       confirm (type) {
@@ -91,51 +105,72 @@
       },
       async restore () {
         await database.ref('users').child(store.state.uid).child('defense').remove()
+        this.reset()
         store.commit('success', 'lbl_toast_defense_restored')
+      },
+      reset () {
+        this.defense = {
+          first: null,
+          second: null,
+          third: null,
+          fourth: null,
+          fifth: null,
+          spell: null,
+          artifact: null
+        }
       },
       close () {
         this.type = null
         this.dialog = false
         this.busy = false
+      },
+      changeFirst () {
+        console.log('changing first')
+        this.defense.second = null
+        this.defense.third = null
+        this.defense.fourth = null
+        this.defense.fifth = null
+      },
+      changeSecond () {
+        console.log('changing second')
+        this.defense.third = null
+        this.defense.fourth = null
+        this.defense.fifth = null
+      },
+      changeThird () {
+        console.log('changing third')
+        this.defense.fourth = null
+        this.defense.fifth = null
+      },
+      changeFourth () {
+        console.log('changing fourth')
+        this.defense.fifth = null
       }
     },
     computed: {
       user () {
         return store.state.user || {}
       },
-      defense () {
-        return this.user.defense
-          ? this.user.defense
-          : {
-            first: null,
-            second: null,
-            third: null,
-            fourth: null,
-            fifth: null,
-            artifact: null,
-            spell: null
-          }
-      },
       first () {
         return this.troops
       },
       second () {
-        return this.first
+        return this.hasFirst
           ? this.first.filter(t => t['.key'] !== this.defense.first)
           : null
       },
       third () {
-        return this.second
+        return this.hasSecond
           ? this.second.filter(t => t['.key'] !== this.defense.second)
           : null
       },
       fourth () {
-        return this.third
+        return this.hasThird
           ? this.third.filter(t => t['.key'] !== this.defense.third)
           : null
       },
       fifth () {
-        return this.fourth
+        return this.hasFourth
           ? this.fourth.filter(t => t['.key'] !== this.defense.fourth)
           : null
       },
@@ -155,19 +190,19 @@
         return this.canFourth && this.hasFourth
       },
       hasFirst () {
-        return this.defense.first || false
+        return this.defense.first !== undefined && this.defense.first !== null
       },
       hasSecond () {
-        return this.defense.second || false
+        return this.defense.second !== undefined && this.defense.second !== null
       },
       hasThird () {
-        return this.defense.third || false
+        return this.defense.third !== undefined && this.defense.third !== null
       },
       hasFourth () {
-        return this.defense.fourth || false
+        return this.defense.fourth !== undefined && this.defense.fourth !== null
       },
       hasFifth () {
-        return this.defense.fifth || false
+        return this.defense.fifth !== undefined && this.defense.fifth !== null
       }
     }
   }

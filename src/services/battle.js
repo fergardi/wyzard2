@@ -48,27 +48,37 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
           if (def.defense && (def.defense.first || def.defense.second || def.defense.third || def.defense.fourth || def.defense.fifth)) {
             if (def.defense.first) {
               await defender.ref.child('troops').child(def.defense.first).once('value', troop => {
-                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+                let wave = { troop: troop.val(), quantity: troop.val().quantity }
+                wave.troop['.key'] = troop.key
+                defenderArmy.push(wave)
               })
             }
             if (def.defense.second) {
               await defender.ref.child('troops').child(def.defense.second).once('value', troop => {
-                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+                let wave = { troop: troop.val(), quantity: troop.val().quantity }
+                wave.troop['.key'] = troop.key
+                defenderArmy.push(wave)
               })
             }
             if (def.defense.third) {
               await defender.ref.child('troops').child(def.defense.third).once('value', troop => {
-                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+                let wave = { troop: troop.val(), quantity: troop.val().quantity }
+                wave.troop['.key'] = troop.key
+                defenderArmy.push(wave)
               })
             }
             if (def.defense.fourth) {
               await defender.ref.child('troops').child(def.defense.fourth).once('value', troop => {
-                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+                let wave = { troop: troop.val(), quantity: troop.val().quantity }
+                wave.troop['.key'] = troop.key
+                defenderArmy.push(wave)
               })
             }
             if (def.defense.fifth) {
               await defender.ref.child('troops').child(def.defense.fifth).once('value', troop => {
-                defenderArmy.push({ troop: troop.val(), quantity: troop.val().quantity })
+                let wave = { troop: troop.val(), quantity: troop.val().quantity }
+                wave.troop['.key'] = troop.key
+                defenderArmy.push(wave)
               })
             }
           } else {
@@ -76,6 +86,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               if (troops) {
                 troops.forEach(unit => {
                   let troop = unit.val()
+                  troop['.key'] = unit.key
                   defenderArmy.push({
                     troop: troop,
                     quantity: troop.quantity
@@ -91,11 +102,13 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             let defenderTerrain = 0
             let defenderUnits = 0
             let attackerUnits = 0
+            survivors = 0
             defenderArmy.forEach(troop => {
               defenderUnits += troop.quantity
             })
             attackerArmy.forEach(troop => {
               attackerUnits += troop.quantity
+              survivors += troop.quantity
             })
             await defender.ref.child('constructions').once('value', constructions => {
               if (constructions) {
@@ -323,11 +336,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (attackerSpell.enchantment && !attackerSpell.support) {
                   let enchantment = attackerSpell
                   enchantment.target = target
-                  enchantment.targetColor = def.color
-                  enchantment.targetName = def.name
                   enchantment.source = uid
-                  enchantment.sourceColor = atk.color
-                  enchantment.sourceName = atk.name
                   enchantment.magic = atk.magic
                   enchantment.duration *= enchantment.magic
                   enchantment.remaining = enchantment.duration
@@ -379,8 +388,8 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (defenderArtifact.round < 0) rounds += defenderArtifact.round
               }
               if (defenderArtifact.quantity - 1 <= 0) {
-                await database.ref('users').child(target).child('relics').child(def.defense.artifact).remove()
                 await database.ref('users').child(target).child('defense').child('artifact').remove()
+                if (def.defense && def.defense.artifact === defenderArtifact['.key']) await database.ref('users').child(target).child('relics').child(def.defense.artifact).remove()
               } else {
                 await database.ref('users').child(target).child('relics').child(def.defense.artifact).update({ quantity: defenderArtifact.quantity-- })
               }
@@ -404,6 +413,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 }
                 if (attackerArtifact.quantity - 1 <= 0) {
                   await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).remove()
+                  if (atk.defense && atk.defense.artifact === attackerArtifact['.key']) await database.ref('users').child(uid).child('relics').child(atk.defense.artifact).remove()
                 } else {
                   await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).update({ quantity: attackerArtifact.quantity-- })
                 }
@@ -548,6 +558,10 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               console.log('ATTACKER WAVE', wave)
               attackerArmyIndex++
             })
+            // deaths
+            let attackerDeathTroops = []
+            let defenderDeathTroops = []
+            survivors = 0
             // power
             let attackerPowerLost = 0
             let defenderPowerLost = 0
@@ -558,7 +572,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             for (let i = 0; i < rounds; i++) {
               let log = {}
               let attackerTroop = attackerArmy[attackerIndex]
-              let defenderTroop = defenderArmy[attackerIndex]
+              let defenderTroop = defenderArmy[defenderIndex]
               console.log('ROUND ' + parseInt(i + 1) + '/' + rounds)
               console.log(attackerTroop.quantity, translate(attackerTroop.troop.name), translate(attackerTroop.troop.family), translate(attackerTroop.troop.type), '+' + attackerTroop.damage + '% Dmg', '+' + attackerTroop.health + '% Hth', '<== VS ==>', defenderTroop.quantity, translate(defenderTroop.troop.name), translate(defenderTroop.troop.family), translate(defenderTroop.troop.type), '+' + defenderTroop.damage + '% Dmg', '+' + defenderTroop.health + '% Hth')
               if (rockScissorsPaper(attackerTroop.troop.type, defenderTroop.troop.type)) {
@@ -585,20 +599,23 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 console.log('ATTACKER => DEFENDER: ' + defenderCasualties)
               }
               report.logs.push(log)
-              if (attackerTroop.quantity <= 0) attackerArmy.splice(attackerIndex, 1)
-              if (defenderTroop.quantity <= 0) defenderArmy.splice(defenderIndex, 1)
+              // deaths
+              if (attackerTroop.quantity <= 0) {
+                attackerDeathTroops.push(attackerTroop.troop['.key'])
+                attackerArmy.splice(attackerIndex, 1)
+                console.log('ATTACKER TROOP IS DEAD: ', attackerTroop.troop)
+              }
+              if (defenderTroop.quantity <= 0) {
+                defenderDeathTroops.push(defenderTroop.troop['.key'])
+                defenderArmy.splice(defenderIndex, 1)
+                console.log('DEFENDER TROOP IS DEAD: ', defenderTroop.troop)
+              }
               attackerIndex = attackerArmy[attackerIndex + 1] !== undefined ? attackerIndex + 1 : Math.floor(Math.random() * attackerArmy.length)
+              console.log('NEXT ATTACKER WAVE ', attackerArmy[attackerIndex])
               defenderIndex = defenderArmy[defenderIndex + 1] !== undefined ? defenderIndex + 1 : Math.floor(Math.random() * defenderArmy.length)
+              console.log('NEXT DEFENDER WAVE ', defenderArmy[defenderIndex])
               if (attackerArmy[attackerIndex] === undefined || defenderArmy[defenderIndex] === undefined) break
             }
-            // update original troop quantities
-            defenderArmy.forEach(troop => {
-              console.log(troop)
-            })
-            attackerArmy.forEach(troop => {
-              console.log(troop)
-              survivors += troop.quantity
-            })
             // check victory condition
             console.log('POWER LOST: ', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
@@ -606,14 +623,39 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 ? defenderPowerLost > attackerPowerLost * 1.20 // if he loses more than me by > 20%
                 : true
               : false
+            // update original troop quantities
+            defenderArmy.forEach(async wave => {
+              await database.ref('users').child(target).child('troops').child(wave.troop['.key']).update({ quantity: wave.quantity })
+            })
+            // remove death waves
+            defenderDeathTroops.forEach(async wave => {
+              await database.ref('users').child(target).child('troops').child(wave).remove()
+              if (def.defense && def.defense.first === wave) await database.ref('users').child(target).child('defense').child('first').remove()
+              if (def.defense && def.defense.second === wave) await database.ref('users').child(target).child('defense').child('second').remove()
+              if (def.defense && def.defense.third === wave) await database.ref('users').child(target).child('defense').child('third').remove()
+              if (def.defense && def.defense.fourth === wave) await database.ref('users').child(target).child('defense').child('fourth').remove()
+              if (def.defense && def.defense.fifth === wave) await database.ref('users').child(target).child('defense').child('fifth').remove()
+            })
+            attackerArmy.forEach(async wave => {
+              await database.ref('users').child(uid).child('troops').child(wave.troop['.key']).update({ quantity: wave.quantity })
+              survivors += wave.quantity
+            })
+            attackerDeathTroops.forEach(async wave => {
+              await database.ref('users').child(uid).child('troops').child(wave).remove()
+              if (atk.defense && atk.defense.first === wave) await database.ref('users').child(uid).child('defense').child('first').remove()
+              if (atk.defense && atk.defense.second === wave) await database.ref('users').child(uid).child('defense').child('second').remove()
+              if (atk.defense && atk.defense.third === wave) await database.ref('users').child(uid).child('defense').child('third').remove()
+              if (atk.defense && atk.defense.fourth === wave) await database.ref('users').child(uid).child('defense').child('fourth').remove()
+              if (atk.defense && atk.defense.fifth === wave) await database.ref('users').child(uid).child('defense').child('fifth').remove()
+            })
           }
+          // result
           let conquered = null
           let sieged = null
           let gold = null
           let people = null
           let kills = null
           let artifact = null
-          // result
           if (victory) {
             console.log('VICTORY')
             if (strategy === 'lbl_strategy_pillage') {

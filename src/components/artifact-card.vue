@@ -50,7 +50,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, addRandomTroopToUser, removeRandomEnchantmentFromUser, sendUserMessage, addRandomPlaceToUser, addLevelToRandomHeroFromUser, addRandomSpellToUser } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addRandomTroopToUserByFamily, removeRandomEnchantmentFromUser, sendUserMessage, addRandomPlaceToUser, addLevelToRandomHeroFromUser, addRandomSpellToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
 
   export default {
@@ -106,7 +106,7 @@
             if (this.data) {
               if (this.data.support) { // ally
                 if (this.data.summon) {
-                  await addRandomTroopToUser(store.state.uid, this.data.family, this.user.magic)
+                  await addRandomTroopToUserByFamily(store.state.uid, this.data.family, this.user.magic)
                 } else if (this.data.enchantment) {
                   await removeRandomEnchantmentFromUser(store.state.uid)
                 } else if (this.data.place) {

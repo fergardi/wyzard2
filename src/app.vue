@@ -127,7 +127,7 @@
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-key")
+            mu-icon(slot="left", value=":ra ra-podium")
         //
           mu-sub-header {{ 'lbl_title_account' | translate }}
           mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")

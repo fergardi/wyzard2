@@ -646,7 +646,21 @@ export const addTroopToUser = (uid, name, magic = 1) => {
 }
 
 // add random troop to user
-export const addRandomTroopToUser = (uid, family, magic = 1) => {
+export const addRandomTroopToUser = (uid, magic = 1) => {
+  return database.ref('units').once('value', async units => {
+    if (units && units.hasChildren()) {
+      let list = []
+      units.forEach(unit => {
+        list.push(unit.val().name)
+      })
+      const random = Math.floor(Math.random() * list.length)
+      await addTroopToUser(uid, list[random], magic)
+    }
+  })
+}
+
+// add random troop to user by family
+export const addRandomTroopToUserByFamily = (uid, family, magic = 1) => {
   family = family.includes('lbl_family_') ? family : 'lbl_family_' + family
   return database.ref('units').orderByChild('family').equalTo(family).once('value', async units => {
     if (units && units.hasChildren()) {

@@ -139,14 +139,14 @@
       async attack () {
         if (this.hasTurns) {
           if (this.canAttack) {
-            // await updateGeneralStatus(this.target)
+            await updateGeneralStatus(this.target)
             await battlePlayerVersusPlayer(store.state.uid, this.target, this.strategy, this.army, this.spell, this.artifact)
-            // await checkTurnMaintenances(store.state.uid, this.turns)
+            await checkTurnMaintenances(store.state.uid, this.turns)
             await updateGeneralStatus(this.target)
             store.commit('success', 'lbl_toast_battle_ok')
-            // this.reset()
             this.close()
-            // this.$router.push('/messages')
+            // this.reset()
+            this.$router.push('/messages')
           } else {
             store.commit('error', 'lbl_toast_battle_error')
             this.close()
@@ -186,15 +186,35 @@
       },
       changeFirst () {
         this.army.first.quantity = this.army.first.troop.quantity
+        this.army.second.troop = null
+        this.army.second.quantity = 0
+        this.army.third.troop = null
+        this.army.third.quantity = 0
+        this.army.fourth.troop = null
+        this.army.fourth.quantity = 0
+        this.army.fifth.troop = null
+        this.army.fifth.quantity = 0
       },
       changeSecond () {
         this.army.second.quantity = this.army.second.troop.quantity
+        this.army.third.troop = null
+        this.army.third.quantity = 0
+        this.army.fourth.troop = null
+        this.army.fourth.quantity = 0
+        this.army.fifth.troop = null
+        this.army.fifth.quantity = 0
       },
       changeThird () {
         this.army.third.quantity = this.army.third.troop.quantity
+        this.army.fourth.troop = null
+        this.army.fourth.quantity = 0
+        this.army.fifth.troop = null
+        this.army.fifth.quantity = 0
       },
       changeFourth () {
         this.army.fourth.quantity = this.army.fourth.troop.quantity
+        this.army.fifth.troop = null
+        this.army.fifth.quantity = 0
       },
       changeFifth () {
         this.army.fifth.quantity = this.army.fifth.troop.quantity

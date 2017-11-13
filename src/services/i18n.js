@@ -571,7 +571,7 @@ export default {
     lbl_resource_terrain: 'Terrenos',
     // buttons
     lbl_button_fire: 'Despedir',
-    lbl_button_restore: 'Restablecer',
+    lbl_button_restore: 'Restaurar',
     lbl_button_activate: 'Activar',
     lbl_button_demolish_construct: 'Demoler / Construir',
     lbl_button_research: 'Investigar',
@@ -697,7 +697,7 @@ export default {
     lbl_toast_settings_saved: 'Preferencias guardadas',
     lbl_toast_settings_restored: 'Preferencias restauradas',
     lbl_toast_defense_saved: 'Defensa establecida',
-    lbl_toast_defense_restored: 'Defensa desactivada',
+    lbl_toast_defense_restored: 'Defensa restaurada',
     lbl_toast_battle_ok: 'Batalla finalizada',
     lbl_toast_battle_error: 'Error en la batalla',
     lbl_toast_battle_win: 'Victoria',

@@ -81,7 +81,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUser, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUserByFamily, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
 
   export default {
@@ -180,7 +180,7 @@
           if (this.data.summon) { // summon troops
             if (this.canSummon) {
               if (this.data.family) {
-                await addRandomTroopToUser(store.state.uid, this.data.family, this.user.magic)
+                await addRandomTroopToUserByFamily(store.state.uid, this.data.family, this.user.magic)
               } else {
                 await addTroopToUser(store.state.uid, this.data.unit, this.user.magic)
               }
