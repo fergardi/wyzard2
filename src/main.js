@@ -147,12 +147,12 @@ const createApp = async () => {
       store.commit('uid', auth.currentUser.uid)
       store.dispatch('user', database.ref('users').child(store.state.uid))
     }
-    // main app
-    let Main = Vue.component('app', App) // eslint-disable-line
-    Main = new Main({
-      el: '#app',
-      router
-    })
+  })
+  // main app
+  let Main = Vue.component('app', App) // eslint-disable-line
+  Main = new Main({
+    el: '#app',
+    router
   })
 }
 // run

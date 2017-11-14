@@ -1,5 +1,10 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sendUserMessage = undefined;
+
 var _assign = require('babel-runtime/core-js/object/assign');
 
 var _assign2 = _interopRequireDefault(_assign);
@@ -32,6 +37,36 @@ exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event =>
   return true
 })
 */
+
+// send message to user
+var sendUserMessage = exports.sendUserMessage = function sendUserMessage(uid, from, color, subject) {
+  var text = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+  var battle = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+  var artifact = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : null;
+  var gold = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : null;
+  var people = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : null;
+  var kills = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : null;
+  var conquered = arguments.length > 10 && arguments[10] !== undefined ? arguments[10] : null;
+  var sieged = arguments.length > 11 && arguments[11] !== undefined ? arguments[11] : null;
+  var spionage = arguments.length > 12 && arguments[12] !== undefined ? arguments[12] : null;
+
+  return admin.database().ref('users').child(uid).child('messages').push({
+    name: from,
+    color: color,
+    subject: subject,
+    text: text,
+    battle: battle,
+    artifact: artifact,
+    gold: gold,
+    people: people,
+    kills: kills,
+    conquered: conquered,
+    sieged: sieged,
+    spionage: spionage,
+    timestamp: Date.now(),
+    read: false
+  });
+};
 
 // add artifact to user
 var addArtifactToUser = function addArtifactToUser(uid, name) {
@@ -84,7 +119,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
                   }, _callee, undefined);
                 }));
 
-                return function (_x3) {
+                return function (_x12) {
                   return _ref2.apply(this, arguments);
                 };
               }());
@@ -97,7 +132,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
       }, _callee2, undefined);
     }));
 
-    return function (_x2) {
+    return function (_x11) {
       return _ref.apply(this, arguments);
     };
   }());
@@ -147,7 +182,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
                   }, _callee3, undefined);
                 }));
 
-                return function (_x6) {
+                return function (_x15) {
                   return _ref4.apply(this, arguments);
                 };
               }());
@@ -160,7 +195,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
       }, _callee4, undefined);
     }));
 
-    return function (_x5) {
+    return function (_x14) {
       return _ref3.apply(this, arguments);
     };
   }());
