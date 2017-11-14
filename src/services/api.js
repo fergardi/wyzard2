@@ -652,8 +652,57 @@ export const spyInformationToUser = async (uid) => {
     if (pages) {
       pages.forEach(page => {
         let spell = page.val()
-        report.spells.push({ name: spell.name, quantity: spell.level })
+        report.spells.push({ name: spell.name, magic: spell.magic, color: spell.color })
       })
+    }
+  })
+  await database.ref('users').child(uid).child('relics').once('value', relics => {
+    if (relics) {
+      relics.forEach(relic => {
+        let artifact = relic.val()
+        report.artifacts.push({ name: artifact.name, quantity: artifact.quantity, color: artifact.color })
+      })
+    }
+  })
+  await database.ref('users').child(uid).child('troops').once('value', troops => {
+    if (troops) {
+      troops.forEach(troop => {
+        let unit = troop.val()
+        report.units.push({ name: unit.name, quantity: unit.quantity, color: unit.color })
+      })
+    }
+  })
+  await database.ref('users').child(uid).child('contracts').once('value', contracts => {
+    if (contracts) {
+      contracts.forEach(contract => {
+        let hero = contract.val()
+        report.heroes.push({ name: hero.name, level: hero.level, color: hero.color })
+      })
+    }
+  })
+  await database.ref('gods').orderByChild('blessed').equalTo(uid).once('value', blessings => {
+    if (blessings) {
+      blessings.forEach(blessing => {
+        let god = blessing.val()
+        report.gods.push({ name: god.name, color: god.color })
+      })
+    }
+  })
+  await database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
+    if (enchantments) {
+      enchantments.forEach(enchantment => {
+        let enchant = enchantment.val()
+        report.enchantments.push({ name: enchant.name, color: enchant.color, magic: enchant.magic })
+      })
+    }
+  })
+  await database.ref('users').child(uid).once('value', user => {
+    if (user) {
+      let target = user.val()
+      report.gold = target.gold
+      report.mana = target.mana
+      report.people = target.people
+      report.magic = target.magic
     }
   })
   return report

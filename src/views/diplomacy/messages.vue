@@ -82,7 +82,7 @@
                 .info.title {{ 'lbl_battle_spells' | translate }}
                 .spell(v-for="spell, index in selected.battle.spells", :key="index")
                   .info(:class="spell.left ? 'left' : 'right'")
-                    mu-chip(:class="spell.color", v-tooltip="translate('ttp_spell_level')")
+                    mu-chip(:class="spell.color", v-tooltip="translate('ttp_spell_magic')")
                       i.ra.ra-trophy
                       span {{ spell.level | numeric }}
                     mu-chip.ellipsis(:class="spell.color", v-tooltip="translate('ttp_spell_name')")
@@ -131,12 +131,70 @@
 
               .log
                 .info.title {{ 'lbl_spionage_spells' | translate }}
-                .building(v-for="spell, index in selected.spionage.spells", :key="index")
-                  mu-chip(v-tooltip="translate('ttp_spell_level')")
+                .spell(v-for="spell, index in selected.spionage.spells", :key="index")
+                  mu-chip(:class="spell.color", v-tooltip="translate('ttp_spell_magic')")
                     i.ra.ra-trophy
                     span {{ spell.magic | numeric }}
-                  mu-chip.ellipsis(v-tooltip="translate('ttp_spell_name')")
+                  mu-chip.ellipsis(:class="spell.color", v-tooltip="translate('ttp_spell_name')")
                     span {{ spell.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_artifacts' | translate }}
+                .artifact(v-for="artifact, index in selected.spionage.artifacts", :key="index")
+                  mu-chip(:class="artifact.color", v-tooltip="translate('ttp_artifact_quantity')")
+                    i.ra.ra-crystals
+                    span {{ artifact.quantity | numeric }}
+                  mu-chip.ellipsis(:class="artifact.color", v-tooltip="translate('ttp_artifact_name')")
+                    span {{ artifact.name | translate }}
+                
+              .log
+                .info.title {{ 'lbl_spionage_gods' | translate }}
+                .god(v-for="god, index in selected.spionage.gods", :key="index")
+                  mu-chip.ellipsis(:class="god.color", v-tooltip="translate('ttp_god_name')")
+                    span {{ god.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_enchantments' | translate }}
+                .enchantment(v-for="enchantment, index in selected.spionage.enchantments", :key="index")
+                  mu-chip(:class="enchantment.color", v-tooltip="translate('ttp_spell_magic')")
+                    i.ra.ra-trophy
+                    span {{ enchantment.magic | numeric }}
+                  mu-chip.ellipsis(:class="enchantment.color", v-tooltip="translate('ttp_spell_name')")
+                    span {{ enchantment.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_units' | translate }}
+                .unit(v-for="unit, index in selected.spionage.units", :key="index")
+                  mu-chip(:class="unit.color", v-tooltip="translate('ttp_unit_quantity')")
+                    i.ra.ra-crossed-axes
+                    span {{ unit.quantity | numeric }}
+                  mu-chip.ellipsis(:class="unit.color", v-tooltip="translate('ttp_unit_name')")
+                    span {{ unit.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_heroes' | translate }}
+                .hero(v-for="hero, index in selected.spionage.heroes", :key="index")
+                  mu-chip(:class="hero.color", v-tooltip="translate('ttp_hero_level')")
+                    i.ra.ra-trophy
+                    span {{ hero.level | numeric }}
+                  mu-chip.ellipsis(:class="hero.color", v-tooltip="translate('ttp_hero_name')")
+                    span {{ hero.name | translate }}
+
+              .log
+                .info.title {{ 'lbl_spionage_resources' | translate }}
+                .resource
+                  mu-chip(v-tooltip="translate('ttp_resource_gold')")
+                    i.ra.ra-gold-bar
+                    span {{ selected.spionage.gold | numeric }}
+                  mu-chip(v-tooltip="translate('ttp_resource_people')")
+                    i.ra.ra-double-team
+                    span {{ selected.spionage.people | numeric }}
+                  mu-chip(v-tooltip="translate('ttp_resource_mana')")
+                    i.ra.ra-burst-blob
+                    span {{ selected.spionage.mana | numeric }}
+                  mu-chip(v-tooltip="translate('ttp_resource_magic')")
+                    i.ra.ra-trophy
+                    span {{ selected.spionage.magic | numeric }}
               
             mu-card-text.attachments(v-if="attachment")
               .attachment(v-if="selected.gold", v-tooltip="translate('ttp_resource_gold')")

@@ -17,7 +17,7 @@
           span {{ data.turns | minimize }}
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_spell_name')") {{ data.name | translate }}
-        .card-number(:class="data.color", v-if="data.magic != null", v-tooltip="translate('ttp_spell_level')")
+        .card-number(:class="data.color", v-if="data.magic != null", v-tooltip="translate('ttp_spell_magic')")
           i.ra.ra-trophy
           span {{ data.magic | minimize }}
     mu-card-text
