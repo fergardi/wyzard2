@@ -403,6 +403,8 @@ export default {
     lbl_artifact_live_bait_description: 'Invoca un numeroso grupo de Bestias al azar para que se unan a tu ejército',
     lbl_artifact_bonfire: 'Fogata de Campamento',
     lbl_artifact_bonfire_description: 'Invoca un numeroso grupo de Humanos al azar para que se unan a tu ejército',
+    lbl_artifact_crystal_ball: 'Bola de Cristal',
+    lbl_artifact_crystal_ball_description: 'Realiza un Espionaje para obtener información importante y detallada del reino objetivo',
     lbl_artifact_powder_barrel: 'Barril de Pólvora',
     lbl_artifact_powder_barrel_description: 'Destruye un 10% de Unidades de todas las Tropas enemigas en la batalla',
     lbl_artifact_voodoo_doll: 'Muñeca Voodoo',

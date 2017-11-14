@@ -230,7 +230,6 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { sendMessageToUser, spyInformationToUser } from '@/services/api'
   
   export default {
     data () {
@@ -245,8 +244,6 @@
       store.commit('title', 'lbl_title_messages')
       store.commit('help', 'txt_help_messages')
       await this.$bindAsArray('messages', database.ref('users').child(store.state.uid).child('messages').orderByChild('timestamp'))
-      let spionage = await spyInformationToUser(store.state.uid)
-      await sendMessageToUser(store.state.uid, 'lbl_name_spy', 'dark', 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
     },
     methods: {
       move (page) {

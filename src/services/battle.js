@@ -335,11 +335,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 console.log('ATTACKER SPELL: ' + attackerSpell.name)
                 if (attackerSpell.enchantment && !attackerSpell.support) {
                   await addEnchantmentToUser(target, attackerSpell.name, uid, atk.magic)
-                } else if (attackerSpell.spy > 0) {
+                } else if (attackerSpell.spionage > 0) {
                   let spyChance = Math.random() * 100
-                  if (spyChance <= attackerSpell.spy * atk.magic) {
+                  if (spyChance <= attackerSpell.spionage * atk.magic) {
                     let spionage = await spyInformationToUser(target)
-                    await sendMessageToUser(uid, 'lbl_name_spy', 'dark', 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+                    await sendMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
                   }
                 } else {
                   if (attackerSpell.support) {
@@ -386,6 +386,10 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 if (defenderArtifact.troop < 0) attackerArtifactTroops += defenderArtifact.troop
                 if (defenderArtifact.round < 0) rounds += defenderArtifact.round
               }
+              if (defenderArtifact.spionage) {
+                let spionage = await spyInformationToUser(uid)
+                await sendMessageToUser(target, atk.name, atk.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+              }
               if (defenderArtifact.quantity - 1 <= 0) {
                 await database.ref('users').child(target).child('defense').child('artifact').remove()
                 if (def.defense && def.defense.artifact === defenderArtifact['.key']) await database.ref('users').child(target).child('relics').child(def.defense.artifact).remove()
@@ -395,27 +399,28 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             }
             // attacker artifact
             if (attackerArtifact && attackerArtifact.battle) {
-              let artifactChance = Math.random() * 100
-              if (artifactChance > def.magicalDefense) {
-                report.artifacts.push({ left: true, name: attackerArtifact.name, color: attackerArtifact.color })
-                console.log('ATTACKER ARTIFACT: ' + attackerArtifact.name)
-                if (attackerArtifact.support) {
-                  if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
-                  if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
-                  if (attackerArtifact.troop > 0) attackerArtifactTroops += attackerArtifact.troop
-                  if (attackerArtifact.round > 0) rounds += attackerArtifact.round
-                } else {
-                  if (attackerArtifact.damage < 0) defenderArtifactDamageBonus += attackerArtifact.damage
-                  if (attackerArtifact.health < 0) defenderArtifactHealthBonus += attackerArtifact.health
-                  if (attackerArtifact.troop < 0) defenderArtifactTroops += attackerArtifact.troop
-                  if (attackerArtifact.round < 0) rounds += attackerArtifact.round
-                }
-                if (attackerArtifact.quantity - 1 <= 0) {
-                  await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).remove()
-                  if (atk.defense && atk.defense.artifact === attackerArtifact['.key']) await database.ref('users').child(uid).child('relics').child(atk.defense.artifact).remove()
-                } else {
-                  await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).update({ quantity: attackerArtifact.quantity-- })
-                }
+              report.artifacts.push({ left: true, name: attackerArtifact.name, color: attackerArtifact.color })
+              console.log('ATTACKER ARTIFACT: ' + attackerArtifact.name)
+              if (attackerArtifact.support) {
+                if (attackerArtifact.damage > 0) attackerArtifactDamageBonus += attackerArtifact.damage
+                if (attackerArtifact.health > 0) attackerArtifactHealthBonus += attackerArtifact.health
+                if (attackerArtifact.troop > 0) attackerArtifactTroops += attackerArtifact.troop
+                if (attackerArtifact.round > 0) rounds += attackerArtifact.round
+              } else {
+                if (attackerArtifact.damage < 0) defenderArtifactDamageBonus += attackerArtifact.damage
+                if (attackerArtifact.health < 0) defenderArtifactHealthBonus += attackerArtifact.health
+                if (attackerArtifact.troop < 0) defenderArtifactTroops += attackerArtifact.troop
+                if (attackerArtifact.round < 0) rounds += attackerArtifact.round
+              }
+              if (attackerArtifact.spionage) {
+                let spionage = await spyInformationToUser(target)
+                await sendMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+              }
+              if (attackerArtifact.quantity - 1 <= 0) {
+                await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).remove()
+                if (atk.defense && atk.defense.artifact === attackerArtifact['.key']) await database.ref('users').child(uid).child('relics').child(atk.defense.artifact).remove()
+              } else {
+                await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).update({ quantity: attackerArtifact.quantity-- })
               }
             }
             // waves
