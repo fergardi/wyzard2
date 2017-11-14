@@ -13,6 +13,7 @@ const VisualizerPlugin = require('webpack-visualizer-plugin')
 const HtmlCriticalPlugin = require('html-critical-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const JavaScriptObfuscator = require('webpack-obfuscator')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -134,9 +135,39 @@ var webpackConfig = merge(baseWebpackConfig, {
       width: 375,
       height: 565,
       penthouse: {
+        timeout: 600000,
         blockJSRequests: false,
       }
+    }),
+    /*
+    new JavaScriptObfuscator({
+      compact: true,
+      controlFlowFlattening: false,
+      controlFlowFlatteningThreshold: 0.75,
+      deadCodeInjection: false,
+      deadCodeInjectionThreshold: 0.4,
+      debugProtection: true,
+      debugProtectionInterval: true,
+      disableConsoleOutput: true,
+      domainLock: [],
+      log: false,
+      mangle: false,
+      renameGlobals: true,
+      reservedNames: [],
+      rotateStringArray: true,
+      seed: 0,
+      selfDefending: false,
+      sourceMap: false,
+      sourceMapBaseUrl: '',
+      sourceMapFileName: '',
+      sourceMapMode: 'separate',
+      stringArray: false,
+      stringArrayEncoding: false,
+      stringArrayThreshold: 0.75,
+      target: 'browser',
+      unicodeEscapeSequence: false
     })
+    */
   ]
 })
 

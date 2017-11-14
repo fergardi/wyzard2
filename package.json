@@ -110,6 +110,7 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0",
+    "webpack-obfuscator": "^0.12.1",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "engines": {
