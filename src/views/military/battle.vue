@@ -110,7 +110,9 @@
         busy: false,
         dialog: false,
         type: null,
-        turns: 2
+        turns: 2,
+        book: [],
+        relics: []
       }
     },
     async created () {
@@ -223,8 +225,8 @@
     computed: {
       targets () {
         return this.search
-          ? this.users.filter(u => u['.key'] !== store.state.uid && u.name.toLowerCase().includes(this.search.toLowerCase())).map(u => { return { text: u.name, value: u['.key'] } })
-          : this.users.filter(u => u['.key'] !== store.state.uid).map(u => { return { text: u.name, value: u['.key'] } })
+          ? this.users.filter(u => u['.key'] !== store.state.uid && Date.now() >= u.attacked && u.name.toLowerCase().includes(this.search.toLowerCase())).map(u => { return { text: u.name, value: u['.key'] } })
+          : this.users.filter(u => u['.key'] !== store.state.uid && Date.now() >= u.attacked).map(u => { return { text: u.name, value: u['.key'] } })
       },
       canAttack () {
         return this.hasTurns && this.hasMana && this.hasQuantity && this.target !== null && this.hasFirst

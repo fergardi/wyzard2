@@ -3,6 +3,9 @@ import store from '@/vuex/store'
 import i18n from '@/services/i18n'
 import { sendMessageToUser, addEnchantmentToUser, spyInformationToUser } from '@/services/api'
 
+const PERCENT_POWER = 20 // difference of power between attacker and defender to be considered as a victory
+const PROTECTION_HOURS = 8 // hours a target user cannot be attacked from now on
+
 const rockScissorsPaper = (attacker, defender) => {
   if (attacker === 'lbl_type_fly' && defender === 'lbl_type_melee') return true
   if (attacker === 'lbl_type_range' && defender === 'lbl_type_fly') return true
@@ -624,7 +627,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
             console.log('POWER LOST: ', attackerPowerLost, defenderPowerLost)
             victory = attackerArmy.length > 0 // if i still have army
               ? defenderArmy.length > 0 // if he still has army
-                ? defenderPowerLost > attackerPowerLost * 1.20 // if he loses more than me by > 20%
+                ? defenderPowerLost > attackerPowerLost * (1 + (PERCENT_POWER / 100)) // if he loses more than me by > 20%
                 : true
               : false
             // update original troop quantities
@@ -656,7 +659,11 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 await database.ref('users').child(uid).child('troops').child(wave).remove()
               })
             }
+            // mark defender as attacked with now timestamp only if there has been a battle
+            await database.ref('users').child(target).update({ attacked: Date.now() + 1000 * 60 * 60 * PROTECTION_HOURS })
           }
+          // remove attacker attacked timestamp
+          await database.ref('users').child(uid).update({ attacked: 0 })
           // result
           let conquered = null
           let sieged = null

@@ -141,19 +141,17 @@ router.beforeEach((to, from, next) => {
 // production
 Vue.config.productionTip = false
 // login
-const createApp = async () => {
-  auth.onAuthStateChanged(status => {
-    if (auth.currentUser !== null) {
-      store.commit('uid', auth.currentUser.uid)
-      store.dispatch('user', database.ref('users').child(store.state.uid))
-    }
-  })
-  // main app
+
+auth.onAuthStateChanged(status => {
+  console.log('changed', status)
+  if (auth.currentUser !== null) {
+    store.commit('uid', auth.currentUser.uid)
+    store.dispatch('user', database.ref('users').child(store.state.uid))
+  }
+  // run
   let Main = Vue.component('app', App) // eslint-disable-line
   Main = new Main({
     el: '#app',
     router
   })
-}
-// run
-createApp()
+})

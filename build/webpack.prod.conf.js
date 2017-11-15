@@ -139,19 +139,18 @@ var webpackConfig = merge(baseWebpackConfig, {
         blockJSRequests: false,
       }
     }),
-    /*
     new JavaScriptObfuscator({
       compact: true,
       controlFlowFlattening: false,
       controlFlowFlatteningThreshold: 0.75,
       deadCodeInjection: false,
       deadCodeInjectionThreshold: 0.4,
-      debugProtection: true,
-      debugProtectionInterval: true,
+      debugProtection: false,
+      debugProtectionInterval: false,
       disableConsoleOutput: true,
       domainLock: [],
       log: false,
-      mangle: false,
+      mangle: true,
       renameGlobals: true,
       reservedNames: [],
       rotateStringArray: true,
@@ -161,13 +160,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       sourceMapBaseUrl: '',
       sourceMapFileName: '',
       sourceMapMode: 'separate',
-      stringArray: false,
-      stringArrayEncoding: false,
+      stringArray: true,
+      stringArrayEncoding: true,
       stringArrayThreshold: 0.75,
       target: 'browser',
-      unicodeEscapeSequence: false
+      unicodeEscapeSequence: true
     })
-    */
   ]
 })
 
