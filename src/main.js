@@ -13,6 +13,8 @@ import { database, auth, storage } from '@/services/firebase'
 import '../node_modules/muse-ui/dist/muse-ui.css'
 import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
+// tip
+Vue.config.productionTip = false
 // tooltips
 Vue.use(VTooltip, { disposeTimeout: 0 })
 // lazy
@@ -138,12 +140,8 @@ router.beforeEach((to, from, next) => {
     return next()
   }
 })
-// production
-Vue.config.productionTip = false
 // login
-
 auth.onAuthStateChanged(status => {
-  console.log('changed', status)
   if (auth.currentUser !== null) {
     store.commit('uid', auth.currentUser.uid)
     store.dispatch('user', database.ref('users').child(store.state.uid))

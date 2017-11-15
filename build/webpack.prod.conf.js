@@ -55,7 +55,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
     // ignore moment
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),    
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // ^(?!.*(en|es|fr))
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
@@ -147,7 +147,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       deadCodeInjectionThreshold: 0.4,
       debugProtection: false,
       debugProtectionInterval: false,
-      disableConsoleOutput: true,
+      disableConsoleOutput: false,
       domainLock: [],
       log: false,
       mangle: true,
@@ -155,7 +155,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       reservedNames: [],
       rotateStringArray: true,
       seed: 0,
-      selfDefending: false,
+      selfDefending: true,
       sourceMap: false,
       sourceMapBaseUrl: '',
       sourceMapFileName: '',
