@@ -13,8 +13,8 @@ A long long time ago, even before finishing school, I used to play an old web br
 * [VueJS](https://vuejs.org/) as MVVM ***JS*** framework
 * [MuseUI](http://www.muse-ui.org) as Vue ***component*** [Material Design](https://material.io) framework
 * [RPGAwesome](https://nagoshiashumari.github.io/Rpg-Awesome/) as SVG ***icon*** library
-* [Raleway](https://fonts.google.com/specimen/Raleway) as my ***font***
-* [Pixel Art](https://en.wikipedia.org/wiki/Pixel_art) as my ***images***
+* [Raleway](https://fonts.google.com/specimen/Raleway) as ***font***
+* [Pixel Art](https://en.wikipedia.org/wiki/Pixel_art) as ***images***
 * [Firebase](https://firebase.google.com) as [MongoDB](https://www.mongodb.com) NoSQL ***database***
 * [Karma](https://karma-runner.github.iohttps://mochajs.org/) and [Mocha](https://mochajs.org/) as ***testing*** framework
 * [Visual Studio Code](https://code.visualstudio.com/) as ***IDE***
@@ -37,11 +37,11 @@ And finally, the logic. ***Services***, ***APIs***, ***messaging***, real time *
 
 ### 03x05: The Internationalization
 
-This deserves its own chapter. I wanted to make this game as much internationalized as possible. i18n, as you'll know already, can be a really pain in the ass, so I decided to solve it my way.
+This deserves its own chapter. I wanted to make this game as much internationalized as possible. I18n, as you'll know already, can be a really pain in the ass, so I decided to solve it my way.
 
-I created a lang ***json*** file with all my translations on it, and binded it dynamically with translation mixins functions spreads all over my app, ready to be used following the user's personal language settings. Instantly changes, no reload required, and scalable. At this point, I had very reasonable ***English*** knowledge, started to learn ***French*** as a hobby, and my first language was ***Spanish***, so I translated myself all the labels.
+I created a lang ***json*** file with all my translations on it, and binded it dynamically with translation mixins functions spreaded all over my app, ready to be used following the user's personal language settings. Instant changes, no reload required, and scalable. At this point, I had very reasonable ***English*** knowledge, started to learn ***French*** as a hobby, and my first language was ***Spanish***, so I translated myself all the labels.
 
-After dealing with some minor perks, like third party libraries i18n support, this was done. Piece of cake, if you know how to deal with it and you work on it since the start. I could even upload it to Firebase to make use of real time bindings in case of updating, but since that would consume more user data, I rather redeploy the whole app and make sure every user gets the latest version generating new cache-hashed timestamped files.
+After dealing with some minor perks, like third party libraries i18n support, this was done. Piece of cake, if you know how to deal with it and you work on it since the start. I could even upload it to Firebase to make use of real time bindings in case of updating, but since that would consume more user data, I'd rather redeploy the whole app and make sure every user gets the latest version generating new cache-hashed timestamped files.
 
 ### 03x06: The Development
 
@@ -63,7 +63,7 @@ But that meant I should deal with performance myself. Smart data request managem
 
 ***Webpack mastering*** to the limit, actually. Painful at the start. Funny at the end.
 
-### 03x09: The Production
+### 03x09: The Deployment
 
 As I said, I have no backend. ***Firebase*** does, and gaves me a CLI all I need to make production delivery a single-lined ***NPM*** or ***YARN*** command. I just need to start it, and all my other micro tasks chains up one after the other. Unit and e2e testing, production package building, code minifying and obfuscating, database cleaning and finally, if everything goes on well, uploading all to the server. Again, I don't need to worry about the infrastructure. What a relief...
 

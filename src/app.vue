@@ -261,6 +261,7 @@
     width 100%
     box-sizing border-box
     user-select none !important
+  body
     .background
       width 100%
       height 100%
@@ -358,6 +359,10 @@
       margin 5px
       border-radius $radius
       border 1px solid
+      &:hover
+        .mu-card-media img
+          width 300px
+          height 300px
       .mu-card-header
         text-align center
         .mu-card-header-title
@@ -502,6 +507,9 @@
       border-radius $radius
       .mu-tr
         cursor pointer
+        &:hover
+          .mu-chip
+            transform scale(1.1)
       .mu-tfoot
         padding 5px
         border-top 1px solid
