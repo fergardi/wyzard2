@@ -249,9 +249,6 @@
   }
 </script>
 
-<style src="../node_modules/animate.css/animate.min.css"></style>
-<style src="./assets/css/raleway.css"></style>
-
 <style lang="stylus">
   $opacity = 0.975
   $radius = 5px

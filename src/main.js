@@ -13,6 +13,8 @@ import { database, auth, storage } from '@/services/firebase'
 import 'muse-ui/dist/muse-ui.css'
 import 'rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
+import 'animate.css/animate.min.css'
+import '@/assets/css/raleway.css'
 // tip
 Vue.config.productionTip = false
 // tooltips

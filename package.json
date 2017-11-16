@@ -1,7 +1,7 @@
 {
   "name": "wyzard",
-  "version": "2.0.0",
-  "description": "A Vue.js project",
+  "version": "3.0.0",
+  "description": "My Game",
   "author": "fergardi@gmail.com",
   "private": true,
   "scripts": {

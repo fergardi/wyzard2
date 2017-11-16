@@ -55,7 +55,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       exclude: [/\.min\.js$/gi] // skip pre-minified libs
     }),
     // ignore moment
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/), // ^(?!.*(en|es|fr))
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /\b(es|en|fr)$/igm),
+    // new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
@@ -122,9 +123,6 @@ var webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
-    new VisualizerPlugin({
-      filename: './visualizer_production.html'
-    }),
     new HtmlCriticalPlugin({
       base: path.join(path.resolve(__dirname), '../dist/'),
       src: 'index.html',
@@ -145,26 +143,26 @@ var webpackConfig = merge(baseWebpackConfig, {
       controlFlowFlatteningThreshold: 0.75,
       deadCodeInjection: false,
       deadCodeInjectionThreshold: 0.4,
-      debugProtection: false,
-      debugProtectionInterval: false,
-      disableConsoleOutput: false,
+      debugProtection: true,
+      debugProtectionInterval: true,
+      disableConsoleOutput: true,
       domainLock: [],
-      log: false,
-      mangle: true,
+      log: true,
+      mangle: false,
       renameGlobals: true,
       reservedNames: [],
       rotateStringArray: true,
-      seed: 0,
+      seed: Date.now(),
       selfDefending: true,
       sourceMap: false,
-      sourceMapBaseUrl: '',
-      sourceMapFileName: '',
-      sourceMapMode: 'separate',
       stringArray: true,
       stringArrayEncoding: true,
       stringArrayThreshold: 0.75,
       target: 'browser',
-      unicodeEscapeSequence: true
+      unicodeEscapeSequence: false
+    }),
+    new VisualizerPlugin({
+      filename: './visualizer_production.html'
     })
   ]
 })
