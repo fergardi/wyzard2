@@ -110,7 +110,7 @@ describe('user', () => {
 })
 
 describe('user', () => {
-  it('cannot be deleted if doesnt exists', async () => {
+  it('cannot be deleted if does not exists', async () => {
     try {
       await authenticate(random + '@testing.com', 'updatedpassword')
       await unregister()

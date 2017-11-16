@@ -10,8 +10,8 @@ import LazyImg from 'v-lazy-img'
 import VTooltip from 'v-tooltip'
 import { database, auth, storage } from '@/services/firebase'
 // theming
-import '../node_modules/muse-ui/dist/muse-ui.css'
-import '../node_modules/rpg-awesome/css/rpg-awesome.min.css'
+import 'muse-ui/dist/muse-ui.css'
+import 'rpg-awesome/css/rpg-awesome.min.css'
 import '!style-loader!css-loader!less-loader!./css/theme.less'
 // tip
 Vue.config.productionTip = false
