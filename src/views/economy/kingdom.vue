@@ -362,6 +362,12 @@
   import { updateGeneralStatus } from '@/services/api'
   
   export default {
+    data () {
+      return {
+        blessings: [],
+        enchantments: []
+      }
+    },
     async created () {
       store.commit('title', 'lbl_title_kingdom')
       store.commit('help', 'txt_help_kingdom')

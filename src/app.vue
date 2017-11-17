@@ -188,19 +188,28 @@
         }
       })
       // initial
+      store.watch((state) => state.uid, async (uid) => {
+        if (uid) {
+          await this.prepare(uid)
+        }
+      })
       if (store.state.uid) {
-        store.dispatch('user', database.ref('users').child(store.state.uid))
-        await this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(store.state.uid))
-        await this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(store.state.uid))
-        await database.ref('users').child(store.state.uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
+        await this.prepare(store.state.uid)
+      }
+    },
+    methods: {
+      async prepare (uid) {
+        store.dispatch('user', database.ref('users').child(uid))
+        await updateGeneralStatus(uid)
+        await this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(uid))
+        await this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(uid))
+        await database.ref('users').child(uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
           if (message) {
             store.commit('info', this.translate(message.val().subject))
             message.ref.update({ read: true })
           }
         })
-      }
-    },
-    methods: {
+      },
       toggle () {
         store.commit('toggle')
       },

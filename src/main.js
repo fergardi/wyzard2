@@ -145,12 +145,8 @@ router.beforeEach((to, from, next) => {
 // login
 auth.onAuthStateChanged(status => {
   if (auth.currentUser !== null) {
-    if (status.emailVerified) {
-      store.commit('uid', auth.currentUser.uid)
-      store.dispatch('user', database.ref('users').child(store.state.uid))
-    } else {
-      store.commit('info', 'auth/verification-required')
-    }
+    store.commit('uid', auth.currentUser.uid)
+    store.dispatch('user', database.ref('users').child(store.state.uid))
   }
 })
 // run

@@ -548,6 +548,7 @@ export default {
     lbl_description_exploration: 'Generarás más Terrenos cuantos menos tengas y más Turnos inviertas al explorar',
     lbl_description_settings: 'Puedes cambiar las preferencias del juego y guardarlas en tu cuenta',
     // slogans
+    lbl_slogan_season: 'Temporada',
     lbl_slogan_valentines: 'Feliz San Valentín',
     lbl_slogan_chinese: 'Feliz Año Nuevo Chino',
     lbl_slogan_carnivale: 'Feliz Carnaval',
@@ -828,6 +829,7 @@ export default {
     txt_help_troops: 'Aquí se muestra una lista de todas las Tropas que tienes actualmente en tu Reino.\nPuedes desbandar Tropas si no puedes pagar sus mantenimientos.\nDesbandar no consume Turnos.',
     txt_help_world: 'Aquí se muestra un Mapa del mundo para completar Misiones.',
     // firebase
+    'auth/verification-required': 'Verifica tu email',
     'auth/authentication-required': 'Autenticación necesaria',
     'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',
@@ -839,7 +841,7 @@ export default {
     'auth/email-already-exists': 'Ese email ya existe',
     'auth/email-already-in-use': 'Ese email ya existe',
     'auth/password-insecure': 'Contraseña insegura',
-    'auth/password-mismatch': 'Contraseñas incoherentes'// ,
+    'auth/password-mismatch': 'Contraseñas inconcordantes'// ,
     /*
     // countries
     lbl_country_afghanistan: '',

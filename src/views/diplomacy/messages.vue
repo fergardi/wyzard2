@@ -1,10 +1,12 @@
 <template lang="pug">
   mu-row
+
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          img(v-lazy-load="picture('miscellaneous', 'messages')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_messages')")
-          mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
+          .card-image
+            img(v-lazy-load="picture('miscellaneous', 'messages')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_messages')")
+            mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
               i.ra.ra-quill-ink
@@ -38,7 +40,8 @@
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
           mu-card-media
-            img(v-lazy-load="picture('miscellaneous', 'message')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_message')")
+            .card-image
+              img(v-lazy-load="picture('miscellaneous', 'message')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_message')")
             .card-extra
               .card-text(:class="selected.color", v-tooltip="translate('ttp_message_name')")
                 i.ra.ra-player

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { database } from '@/services/firebase'
+  import { auth, database } from '@/services/firebase'
   import store from '@/vuex/store'
   import confirm from '@/components/confirm-dialog'
   
@@ -67,6 +67,7 @@
       async save (value) {
         if (store.state.uid) {
           await database.ref('users').child(store.state.uid).child('settings').set(this.settings)
+          auth.languageCode = this.settings.lang
           store.commit('success', 'lbl_toast_settings_saved')
         }
       },
@@ -77,6 +78,7 @@
               let clone = {...updated}
               delete clone['.key']
               database.ref('users').child(store.state.uid).child('settings').set(clone)
+              auth.languageCode = clone.lang
             } else {
               store.commit('settings', updated)
             }

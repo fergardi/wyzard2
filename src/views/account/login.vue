@@ -8,6 +8,10 @@
             .card-image
               img(:src="image", :alt="translate('slogan')")
               mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
+            .card-extra
+              .card-text
+                i.ra.ra-leaf
+                span {{ 'lbl_slogan_season' | translate }} {{ general.season | numeric }}
             .card-info
               .card-text {{ slogan | translate }}
 
@@ -23,9 +27,9 @@
               mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
                 mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
             .form-row
-              mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", :maxLength="100" required)
+              mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", :maxLength="100", required)
             .form-row
-              mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", required)
+              mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", :maxLength="20", required)
             .form-row
               mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
             .form-row
@@ -33,14 +37,14 @@
 
           mu-card-actions
             mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset", :disabled="busy")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'", :disabled="busy")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="disabled || busy")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'", :disabled="!canLogIn || busy")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="!canSignIn || disabled || busy")
 </template>
 
 <script>
   import { authenticate, register, database, auth } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { createNewUser, updateGeneralStatus } from '@/services/api'
+  import { createNewUser } from '@/services/api'
   import moment from 'moment'
   
   export default {
@@ -51,11 +55,11 @@
         code: null,
         remember: true,
         tab: 'login',
-        username: 'prueba',
-        color: 'red',
-        email: 'prueba@prueba.com',
-        password: 'prueba',
-        confirm_password: 'prueba'
+        username: '',
+        color: null,
+        email: '',
+        password: '',
+        confirm_password: ''
       }
     },
     created () {
@@ -77,6 +81,10 @@
       user: {
         source: database.ref('user'),
         asObject: true
+      },
+      general: {
+        source: database.ref('general'),
+        asObject: true
       }
     },
     methods: {
@@ -92,51 +100,53 @@
         }
       },
       login () {
-        authenticate(this.email, this.password, this.remember)
-        .then(async () => {
-          await updateGeneralStatus(store.state.uid)
-          this.busy = false
-          store.commit('success', 'auth/authentication-ok')
-          this.$router.push('/messages')
-        })
-        .catch(error => {
-          this.error = true
-          this.code = 'invalid'
-          this.busy = false
-          store.commit('error', error.code)
-        })
-      },
-      signin () {
-        if (this.users.find(u => u.name.toLowerCase() === this.username.toLowerCase()) !== undefined) {
-          this.error = true
-          this.code = 'taken'
-          this.busy = false
-          store.commit('error', 'auth/username-already-exists')
-        }
-        if (!this.disabled) {
-          register(this.email, this.password, this.remember)
-          .then(async () => {
-            // player
-            let player = {...this.user}
-            player.name = this.username
-            player.email = this.email
-            player.color = this.color
-            delete player['.key']
-            await this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
-            await createNewUser(auth.currentUser.uid, player)
-            store.commit('uid', auth.currentUser.uid)
-            store.commit('success', 'auth/registration-ok')
+        if (this.canLogIn) {
+          authenticate(this.email, this.password, this.remember)
+          .then(() => {
             this.busy = false
-            this.$router.push('/kingdom')
+            store.commit('success', 'auth/authentication-ok')
+            this.$router.push({ path: '/messages' })
           })
           .catch(error => {
-            if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {
-              this.error = true
-              this.code = 'exists'
-            }
+            this.error = true
+            this.code = 'invalid'
             this.busy = false
             store.commit('error', error.code)
           })
+        }
+      },
+      signin () {
+        if (this.canSignIn) {
+          if (this.users.find(u => u.name.toLowerCase() === this.username.toLowerCase()) !== undefined) {
+            this.error = true
+            this.code = 'taken'
+            this.busy = false
+            store.commit('error', 'auth/username-already-exists')
+          }
+          if (!this.disabled) {
+            register(this.email, this.password, this.remember)
+            .then(async () => {
+              // player
+              let player = {...this.user}
+              player.name = this.username
+              player.email = this.email
+              player.color = this.color
+              delete player['.key']
+              await this.$firebaseRefs.users.child(auth.currentUser.uid).set(player)
+              await createNewUser(auth.currentUser.uid, player)
+              this.busy = false
+              store.commit('success', 'auth/registration-ok')
+              this.$router.push({ path: '/kingdom' })
+            })
+            .catch(error => {
+              if (error.code === 'auth/email-already-exists' || error.code === 'auth/email-already-in-use') {
+                this.error = true
+                this.code = 'exists'
+              }
+              this.busy = false
+              store.commit('error', error.code)
+            })
+          }
         }
       },
       change (value) {
@@ -180,6 +190,12 @@
       },
       slogan () {
         return this.holyday('slogan')
+      },
+      canLogIn () {
+        return this.email !== '' && this.password !== ''
+      },
+      canSignIn () {
+        return this.username !== '' && this.color !== null && this.email !== '' && this.password !== '' && this.confirm_password !== ''
       }
     }
   }
