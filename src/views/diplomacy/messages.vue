@@ -288,8 +288,9 @@
   }
 </script>
 
-<style lang="stylus">
-  @import '../../css/colors.styl'
+
+<style lang="stylus"> // not scoped due to mu-dialog being created outside this template
+  @import '../../assets/css/colors.styl'
   .mu-dialog
     .scroll
       max-height 40vh

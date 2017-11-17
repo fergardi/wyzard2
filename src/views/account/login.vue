@@ -1,11 +1,13 @@
 <template lang="pug">
   mu-row
+  
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.login.animated.fadeInUp
         form(@submit.stop.prevent="accept")
           mu-card-media
-            img(:src="image", :alt="translate('slogan')")
-            mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
+            .card-image
+              img(:src="image", :alt="translate('slogan')")
+              mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
             .card-info
               .card-text {{ slogan | translate }}
 

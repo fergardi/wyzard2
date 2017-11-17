@@ -1,8 +1,10 @@
-# Wyzard 3.0
+### s03x00: The Story
 
 Wyzard is my proudest and favorite personal project. It started many years ago as the final step in obtaining my ***Certificate of Higher Education*** in ***Software Development***. Wyzard 1.0 was [PHP](http://www.php.net/) and [MySQL](https://www.mysql.com/) (long before [Oracle](https://www.oracle.com) and [MariaDB](https://mariadb.org/) showed up), plain and simple. Big, old, unsplitted code. Back then, I didn't even know what an ORM, MVC, i18n or SPA was! I was happy with my monolithic monstruosity up and running. Years later, after finishing my ***Degree*** in ***Software Engineering***, I decided to rework it and using the most modern technologies at the time: frameworks and MVC pattern. So I did it, using PHP [Symfony2](http://symfony.es/) framework and MySQL [Doctrine](http://www.doctrine-project.org/) ORM. That was Wyzard 2.0, and it lasted almost a year in production inside my humble RaspberryPI home server. Then, after my ***Master's Degree*** in ***Intelligent Systems*** and as my skills as a web developer were increasing, my interests in other technologies did too, so the last rework was finally clear. Here it is, Wyzard 3.0 with [JavaScript](https://www.javascript.com/), MVVM and [MongoDB](https://www.mongodb.com). The app a full-stack developer finally deserve. And this article describes it. ***The Third Season*** is here.
 
-### s03x01: The idea
+![VueJS 2.5.3](https://img.shields.io/badge/VueJS-2.5.3-brightgreen.svg) ![MuseUI 2.10.0](https://img.shields.io/badge/MuseUI-2.10.0-brightgreen.svg) ![Firebase 4.6.2](https://img.shields.io/badge/Firebase-4.6.2-brightgreen.svg)
+
+### s03x01: The Idea
 
 A long long time ago, even before finishing school, I used to play an old web browser game called ***Archmage*** with my friends. It has no graphics, no images, only text and numbers. A whole server of registered users tried to kill each other and survive enought time to win being the top1 ranked when the ***apochalypse*** finally arrived. With resource management and a turn based mechanism, spending resources must be done wisely in order to take advantage over other players. I always liked the ***simple-to-learn-but-hard-to-master*** idea of oldschool games. And wanted to do it on my own.
 
@@ -10,20 +12,20 @@ A long long time ago, even before finishing school, I used to play an old web br
 
 * [Pug](https://pugjs.org) (formerly known as Jade) as ***HTML5*** preprocessor
 * [Stylus](http://stylus-lang.com/) as ***CSS3*** preprocessor
-* [VueJS](https://vuejs.org/) as MVVM ***JS*** framework
-* [MuseUI](http://www.muse-ui.org) as Vue ***component*** [Material Design](https://material.io) framework
-* [RPGAwesome](https://nagoshiashumari.github.io/Rpg-Awesome/) as SVG ***icon*** library
-* [Raleway](https://fonts.google.com/specimen/Raleway) as ***font***
-* [Pixel Art](https://en.wikipedia.org/wiki/Pixel_art) as ***images***
+* [VueJS](https://vuejs.org/) as [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) ***JS*** framework
+* [MuseUI](http://www.muse-ui.org) as [Material Design](https://material.io) ***UI*** framework
+* [RPGAwesome](https://nagoshiashumari.github.io/Rpg-Awesome/) as ***icon*** library
+* [Raleway](https://fonts.google.com/specimen/Raleway) as text ***font***
+* [Pixel Art](https://en.wikipedia.org/wiki/Pixel_art) as ***image*** source
 * [Firebase](https://firebase.google.com) as [MongoDB](https://www.mongodb.com) NoSQL ***database***
 * [Karma](https://karma-runner.github.iohttps://mochajs.org/) and [Mocha](https://mochajs.org/) as ***testing*** framework
 * [Visual Studio Code](https://code.visualstudio.com/) as ***IDE***
 
 ### 03x03: The Backend
 
-Actually, I don't have one. For real. Seriously. Stop laughing! When I first discovered ***Firebase*** and its ***Cloud Functions***, I said: "*Wait, what? I don't need to setup a server for my code, not even NodeJS? Or my database? My auth provider? My production deploys? My CI building process? My stored media? My realtime engine? My SSL certificates? My SMPT services?*" Seems I don't. I formatted my old RPI, switched to MongoDB, embraced real time databases, and never looked back. If I really need a backend code, I can rely on Firebase Cloud Functions.
+Actually, I don't have one. For real. Seriously. Stop laughing! When I first discovered ***Firebase*** and its ***Cloud Functions***, I said: "*Wait, what? I don't need to setup a server for my code, not even NodeJS? Or my database? My auth provider? My production deploys? My CI building process? My stored media? My realtime engine? My SSL certificates? My SMPT services?*" Seems I don't. I formatted my old RPI, switched to MongoDB, embraced real time databases, and never looked back. If I really need backend code, I can rely on Firebase Cloud Functions.
 
-I created my collections and filled them with data, uploaded my resources to the storage, and created some extra database rules and permissions. Even the user registration and management was handled entirely by Firebase. I was up to go! Easy. As. Hell.
+I created my collections and filled them with data, uploaded my resources to the storage and created some extra database rules and permissions. Even the user registration and management was handled entirely by Firebase. I was up to go! Easy. As. Hell.
 
 ### 03x04: The Frontend
 
@@ -69,8 +71,8 @@ As I said, I have no backend. ***Firebase*** does, and gaves me a CLI all I need
 
 ### 03x10: The Game
 
-You are the ruler of your own kingdom in a world full of magic. Try to compete with thousands of players for the absolute domination in a race of territorty exploration, infrastructure construction, magic investigation, epic battles, hero reclutation, resource management, artifacts hunting and proud survival until the apocalypse is summoned, holding the first ranking position enought time to become the best ***Archmage*** of them all.
+You are the ruler of your own kingdom in a world full of magic. Try to compete with thousands of players for the absolute domination in a race of territorty exploration, infrastructure construction, magical knowledge, epic battles, hero reputation, resource management, artifact hunting and proud survival until the apocalypse is summoned, holding the first ranking position enought time to ultimately become the best ***Archmage*** of them all. During the current game ***season***, at least.
 
-I usually play with my friends, but you are free to register and play if you want to. I'm always collecting information, rebalancing statistics, fixing bugs, attending to suggestions and thinking of future game expansions, too.
+I usually play with my friends, but you are free to register and play if you want to. I'm always collecting information, rebalancing statistics, fixing bugs, attending to suggestions and thinking of future game ***expansions***, too.
 
 Thanks for reading!

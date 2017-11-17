@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-card.place
     mu-card-media
-      img.lazy(v-lazy-load="picture('places', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
+      .card-image
+        img.lazy(v-lazy-load="picture('places', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_place_name')") {{ data.name | translate }}
         .card-number(v-if="adventure", :class="data.color", v-tooltip="translate('ttp_turn_cost')")

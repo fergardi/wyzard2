@@ -12,7 +12,7 @@ import { database, auth, storage } from '@/services/firebase'
 // theming
 import 'muse-ui/dist/muse-ui.css'
 import 'rpg-awesome/css/rpg-awesome.min.css'
-import '!style-loader!css-loader!less-loader!./css/theme.less'
+import '!style-loader!css-loader!less-loader!./assets/css/theme.less'
 import 'animate.css/animate.min.css'
 import '@/assets/css/raleway.css'
 // tip
@@ -145,13 +145,17 @@ router.beforeEach((to, from, next) => {
 // login
 auth.onAuthStateChanged(status => {
   if (auth.currentUser !== null) {
-    store.commit('uid', auth.currentUser.uid)
-    store.dispatch('user', database.ref('users').child(store.state.uid))
+    if (status.emailVerified) {
+      store.commit('uid', auth.currentUser.uid)
+      store.dispatch('user', database.ref('users').child(store.state.uid))
+    } else {
+      store.commit('info', 'auth/verification-required')
+    }
   }
-  // run
-  let Main = Vue.component('app', App) // eslint-disable-line
-  Main = new Main({
-    el: '#app',
-    router
-  })
+})
+// run
+let Main = Vue.component('app', App) // eslint-disable-line
+Main = new Main({
+  el: '#app',
+  router
 })

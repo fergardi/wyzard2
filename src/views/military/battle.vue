@@ -1,10 +1,12 @@
 <template lang="pug">
   mu-row
+
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.battle.animated.fadeInUp
         form(@submit.stop.prevent="confirm('attack')")
           mu-card-media
-            img(v-lazy-load="picture('miscellaneous', 'battle')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_battle')")
+            .card-image
+              img(v-lazy-load="picture('miscellaneous', 'battle')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_battle')")
             .card-extra
               .card-number(v-tooltip="translate('ttp_turn_cost')")
                 i.ra.ra-hourglass

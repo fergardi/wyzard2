@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-card.building
     mu-card-media
-      img.lazy(v-lazy-load="picture('buildings', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
+      .card-image
+        img.lazy(v-lazy-load="picture('buildings', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         template(v-if="construction || meditation")
           .card-number(v-if="data.name === 'lbl_building_node'", :class="user.mana >= user.manaCap ? 'red' : ''", v-tooltip="translate('ttp_mana_reservation')")

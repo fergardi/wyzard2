@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-card.unit
     mu-card-media
-      img.lazy(v-lazy-load="picture('units', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
+      .card-image
+        img.lazy(v-lazy-load="picture('units', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(v-if="troop", :class="data.color", v-tooltip="translate('ttp_unit_quantity')")
           i.ra.ra-crossed-axes

@@ -250,9 +250,11 @@
 </script>
 
 <style lang="stylus">
-  $opacity = 0.975
+  $opacity = 0.95
   $radius = 5px
-  @import './css/colors.styl'
+  $duration = 0.3s
+
+  @import './assets/css/colors.styl'
   html
   body
     padding 0
@@ -359,10 +361,6 @@
       margin 5px
       border-radius $radius
       border 1px solid
-      &:hover
-        .mu-card-media img
-          width 300px
-          height 300px
       .mu-card-header
         text-align center
         .mu-card-header-title
@@ -370,22 +368,31 @@
       .card-description
         min-height 5vh
       .mu-card-media
-        display flex
-        justify-content center
-        align-items center
-        img
-          border-top-left-radius $radius
-          border-top-right-radius $radius
+        width 100%
+        height 250px
+        .card-image
+          display flex
+          justify-content center
+          align-items center
+          overflow hidden
+          transition transform $duration ease-in-out
           border-bottom 1px solid
-          position relative
-          float left
-          width 250px
-          height 250px
-          background-position 50% 50%
-          background-repeat no-repeat
-          background-size cover
-          object-fit cover
-          object-position 50% 20%
+          img
+            border-top-left-radius $radius
+            border-top-right-radius $radius
+            position relative
+            float left
+            width 100%
+            height 250px
+            background-position 50% 50%
+            background-repeat no-repeat
+            background-size cover
+            object-fit cover
+            object-position 50% 20%
+            transition transform 0.3s ease-in-out
+          &:hover
+            img
+              transform scale(1.1)
         .card-extra
         .card-info
           cursor default
@@ -507,6 +514,7 @@
       border-radius $radius
       .mu-tr
         cursor pointer
+        transition transform $duration ease-in-out
         &:hover
           .mu-chip
             transform scale(1.1)

@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-card.spell
     mu-card-media
-      img.lazy(v-lazy-load="picture('spells', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
+      .card-image
+        img.lazy(v-lazy-load="picture('spells', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="breaking", v-tooltip="translate('ttp_spell_duration')")
           i.ra.ra-hourglass

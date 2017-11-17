@@ -1,9 +1,11 @@
 <template lang="pug">
   mu-row
+    
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.census.animated.fadeInUp
         mu-card-media
-          img(v-lazy-load="picture('miscellaneous', 'census')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_users')")
+          .card-image
+            img(v-lazy-load="picture('miscellaneous', 'census')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_users')")
           .card-extra
             .card-number(v-tooltip="translate('ttp_census_quantity')")
               i.ra.ra-player

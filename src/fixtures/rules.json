@@ -1,0 +1,21 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null",
+    // ".write": true,
+    "gods": {
+      ".indexOn": ["blessed"]
+    },
+  	"enchantments": {
+      ".indexOn": ["target", "source"]
+    },
+  	"units": {
+      ".indexOn": ["family"]
+    },
+    "users": {
+      "messages": {
+      	".indexOn": ["read"]
+      }
+    }
+  }
+}

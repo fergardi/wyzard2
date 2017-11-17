@@ -1,10 +1,12 @@
 <template lang="pug">
   mu-row
+
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.settings.animated.fadeInUp
         form(@submit.stop.prevent="confirm('restore')")
           mu-card-media
-            img(v-lazy-load="picture('miscellaneous', 'settings')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_settings')")
+            .card-image
+              img(v-lazy-load="picture('miscellaneous', 'settings')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_settings')")
             .card-info
               .card-text {{ 'lbl_label_settings' | translate }}
           mu-card-text

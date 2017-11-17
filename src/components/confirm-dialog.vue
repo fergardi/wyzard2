@@ -2,11 +2,12 @@
   mu-dialog(:open="dialog", @close="close", @keyup.esc="close", @keyup.enter="accept")
     mu-card.dialog
       mu-card-media
-        img.lazy(v-lazy-load="picture('miscellaneous', 'confirm')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_confirm')")
-        mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
-        .progress(v-if="user && busy")
-          i.ra.ra-lg.ra-hourglass
-          span {{ user.turns }}
+        .card-image
+          img.lazy(v-lazy-load="picture('miscellaneous', 'confirm')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_confirm')")
+          mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
+          .progress(v-if="user && busy")
+            i.ra.ra-lg.ra-hourglass
+            span {{ user.turns }}
         .card-info
           .card-text {{ 'lbl_label_confirm' | translate }}
       mu-card-text.card-description

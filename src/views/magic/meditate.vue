@@ -1,5 +1,6 @@
 <template lang="pug">
   mu-row
+  
     transition-group.flex(name="card", tag="div", mode="out-in", enter-active-class="animated fadeInUp", leave-active-class="animated fadeOutDown")
       mu-col(width="100", tablet="66", desktop="50", v-for="building, index in buildings", :key="index")
         building-card.animated.fadeInUp(:data="building", :meditation="true")

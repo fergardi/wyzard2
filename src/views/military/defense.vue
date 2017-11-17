@@ -1,10 +1,12 @@
 <template lang="pug">
   mu-row
+
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.defense.animated.fadeInUp
         form(@submit.stop.prevent="confirm('save')")
           mu-card-media
-            img(v-lazy-load="picture('miscellaneous', 'defense')", :src="picture('miscellaneous', 'defense')", :alt="translate('lbl_label_defense')")
+            .card-image
+              img(v-lazy-load="picture('miscellaneous', 'defense')", :src="picture('miscellaneous', 'defense')", :alt="translate('lbl_label_defense')")
             .card-info
               .card-text {{ 'lbl_label_defense' | translate }}
           mu-card-text

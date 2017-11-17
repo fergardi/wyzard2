@@ -1,7 +1,8 @@
 <template lang="pug">
   mu-card.hero
     mu-card-media
-      img.lazy(v-lazy-load="picture('heroes', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
+      .card-image
+        img.lazy(v-lazy-load="picture('heroes', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="contract", v-tooltip="translate('ttp_hero_experience')")
           i.ra.ra-trefoil-lily
