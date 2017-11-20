@@ -21,19 +21,21 @@
               mu-tab(value="signin", :title="translate('lbl_tab_registration')")
 
           mu-card-text
-            .form-row
-              mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", v-if="tab === 'signin'", :errorText="long ? translate('auth/username-too-long') : error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", :maxLength="20", required)
-            .form-row
-              mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", v-if="tab === 'signin'", required)
+            .form-row(v-if="tab === 'signin'")
+              mu-text-field(v-model="username", name="username", :label="translate('lbl_label_username')", :hintText="translate('lbl_label_username')", :fullWidth="true", :errorText="long ? translate('auth/username-too-long') : error && code === 'taken' ? translate('auth/username-already-exists') : ''", @input="error = false", :maxLength="20", required)
+            .form-row(v-if="tab === 'signin'")
+              mu-select-field(v-model="color", name="color", :label="translate('lbl_label_faction')", :fullWidth="true", :errorText="!color ? translate('auth/color-required') : ''", required)
                 mu-menu-item(v-for="faction, index in factions", :key="index", :value="faction.color", :title="translate(faction.name)")
             .form-row
               mu-text-field(v-model="email", name="email", :label="translate('lbl_label_email')", :hintText="translate('lbl_label_email')", :fullWidth="true", type="email", :errorText="error && code === 'exists' ? this.translate('auth/email-already-exists') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", @input="error = false", :maxLength="100", required)
             .form-row
               mu-text-field(v-model="password", name="password", :label="translate('lbl_label_password')", :hintText="translate('lbl_label_password')", :fullWidth="true", type="password", :errorText="insecure ? this.translate('auth/password-insecure') : error && code === 'invalid' ? this.translate('auth/invalid-credentials') : ''", pattern=".{6,}", minlength="6", @input="error = false", :maxLength="20", required)
-            .form-row
-              mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", v-if="tab === 'signin'", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
+            .form-row(v-if="tab === 'signin'")
+              mu-text-field(v-model="confirm_password", name="confirm_password", :label="translate('lbl_label_password_confirm')", :hintText="translate('lbl_label_password_confirm')", :fullWidth="true", type="password", :errorText="mismatch ? translate('auth/password-mismatch') : ''", required)
             .form-row
               mu-checkbox(v-model="remember", :label="translate('lbl_label_remember')")
+            .form-row.recaptcha(v-if="tab === 'signin'")
+              vue-recaptcha(:sitekey="key", ref="recaptcha", @verify="verify", @expired="expired", theme="dark", size="normal")
 
           mu-card-actions
             mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset", :disabled="busy")
@@ -42,12 +44,16 @@
 </template>
 
 <script>
-  import { authenticate, register, database, auth } from '@/services/firebase'
+  import { authenticate, register, database, auth, recaptcha } from '@/services/firebase'
   import store from '@/vuex/store'
   import { createNewUser } from '@/services/api'
   import moment from 'moment'
+  import VueRecaptcha from 'vue-recaptcha'
   
   export default {
+    components: {
+      'vue-recaptcha': VueRecaptcha
+    },
     data () {
       return {
         busy: false,
@@ -59,12 +65,22 @@
         color: null,
         email: '',
         password: '',
-        confirm_password: ''
+        confirm_password: '',
+        captcha: false,
+        key: null
       }
     },
     created () {
       store.commit('title', 'lbl_title_wyzard')
       store.commit('help', 'txt_help_login')
+      this.key = recaptcha
+    },
+    mounted () {
+      let recaptcha = document.createElement('script')
+      recaptcha.setAttribute('src', `https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit&hl=${this.settings.lang}`)
+      recaptcha.setAttribute('defer', '')
+      recaptcha.setAttribute('async', '')
+      document.head.appendChild(recaptcha)
     },
     firebase: {
       factions: database.ref('factions'),
@@ -170,6 +186,12 @@
         } else {
           return type === 'image' ? this.picture('login', 'login') : 'lbl_slogan_default'
         }
+      },
+      verify () {
+        this.captcha = true
+      },
+      expired () {
+        this.captcha = false
       }
     },
     computed: {
@@ -195,7 +217,10 @@
         return this.email !== '' && this.password !== ''
       },
       canSignIn () {
-        return this.username !== '' && this.color !== null && this.email !== '' && this.password !== '' && this.confirm_password !== ''
+        return this.username !== '' && this.color !== null && this.email !== '' && this.password !== '' && this.confirm_password !== '' && this.captcha
+      },
+      settings () {
+        return store.state.user != null && store.state.user.settings != null ? store.state.user.settings : store.state.settings
       }
     }
   }
@@ -211,4 +236,10 @@
         width 100%
       .mu-select-field
         width 100%
+      &.recaptcha
+        display flex
+        width 100%
+        align-items center
+        justify-content center
+        margin-top 1em
 </style>

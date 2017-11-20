@@ -507,7 +507,7 @@ export default {
     lbl_strategy_pillage: 'Pillaje',
     lbl_strategy_pillage_description: 'El Pillaje intenta robar oro y artefactos al reino defensor sin ser descubierto',
     // labels
-    lbl_label_remember: 'Recordar',
+    lbl_label_remember: 'Recordarme en este dispositivo',
     lbl_label_processing_maintenances: 'Gastando turnos y calculando mantenimientos...',
     lbl_label_search: 'Buscar',
     lbl_label_loading: 'Cargando...',
@@ -829,6 +829,7 @@ export default {
     txt_help_troops: 'Aquí se muestra una lista de todas las Tropas que tienes actualmente en tu Reino.\nPuedes desbandar Tropas si no puedes pagar sus mantenimientos.\nDesbandar no consume Turnos.',
     txt_help_world: 'Aquí se muestra un Mapa del mundo para completar Misiones.',
     // firebase
+    'auth/color-required': 'Escoge una facción',
     'auth/verification-required': 'Verifica tu email',
     'auth/authentication-required': 'Autenticación necesaria',
     'auth/username-too-long': 'Nombre de usuario demasiado largo',

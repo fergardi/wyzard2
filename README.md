@@ -33,7 +33,7 @@ Years of working as a developer has tought me one thing: this is what a user see
 
 I started with creating some basic views to list the database items I stored previously. Added cool functionality like css ***animations***, list ***filtering***, ***responsiveness***, ***lazy loading*** images, css ***prefixing***, custom colors ***theme*** overrides, etc. All with none or bit actual code.
 
-After that, security issues. ***Route*** guarding, app ***status*** cycles management, ***redirections***, ***securization***, account ***registration***, credentials ***authentication***, logic ***assertions***, form ***validations*** and so on.
+After that, security issues. ***Route*** guarding, app ***status*** cycle management, ***redirections***, ***securization***, account ***registration***, credentials ***authentication***, logical ***assertions***, form ***validations***, google ***reCaptcha*** behaviour and so on.
 
 And finally, the logic. ***Services***, ***APIs***, ***messaging***, real time ***notifications***, ***i18n***, all the funny stuff.
 

@@ -16,6 +16,8 @@ const config = {
 
 const app = firebase.initializeApp(config)
 
+export const recaptcha = '6LfZjjkUAAAAAM6RMk-HsOcFjoHl-bEMQKllPOdF'
+
 export const storage = `https://firebasestorage.googleapis.com/v0/b/${identifier}.appspot.com/o`
 
 export const database = app.database()
