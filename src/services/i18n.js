@@ -721,7 +721,7 @@ export default {
     lbl_toast_message_ok: 'Mensaje borrado',
     lbl_toast_message_error: 'Error al borrar',
     // tooltips
-    ttp_bonus_ratio: 'Proporción',
+    ttp_bonus_ratio: 'Incremento total o proporción por cada 1%',
     ttp_resource_magic: 'Magic',
     ttp_resource_gold: 'Oro',
     ttp_resource_people: 'Población',
@@ -754,7 +754,7 @@ export default {
     ttp_artifact_name: 'Nombre',
     ttp_building_name: 'Nombre',
     ttp_god_name: 'Nombre',
-    ttp_hero_name: 'Nombre',
+    ttp_hero_experience: 'Experiencia',
     ttp_spell_name: 'Nombre',
     ttp_spell_magic: 'Nivel',
     ttp_spell_research: 'Tiempo de Investigación',

@@ -85,7 +85,7 @@
           span {{ data.turns | minimize }}
         mu-chip.double(v-tooltip="translate('ttp_bonus_ratio')")
           i.ra.ra-sapphire
-          span {{ data.enchantmentCap || data.magicalDefense || data.construction || data.research || data.physicalDefense | minimize }}
+          span {{ data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction || data. armyCap | minimize }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")

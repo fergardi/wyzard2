@@ -15,13 +15,9 @@
         mu-appbar(v-if="!settings.navbar")
           mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
           mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
-          mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-if="!logged")
-          mu-icon-button.login(icon=":ra ra-key", @click="logout", v-else)
           mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
         mu-appbar(v-else)
           mu-icon-button.settings(icon=":ra ra-gears", to="settings", @click="toggle")
-          mu-icon-button.login(icon=":ra ra-key", @click="logout", v-if="logged")
-          mu-icon-button.logout(icon=":ra ra-key", to="login", @click="toggle", v-else)
           mu-icon-button.help(icon=":ra ra-scroll-unfurled", to="help", @click="toggle")
           mu-icon-button.toggler(icon=":ra ra-three-keys", @click="toggle")
 
@@ -128,14 +124,18 @@
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
             mu-icon(slot="left", value=":ra ra-podium")
-        //
-          mu-sub-header {{ 'lbl_title_account' | translate }}
-          mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-gears")
+        
+        mu-sub-header {{ 'lbl_title_account' | translate }}
+        mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")
+          mu-icon(slot="left", value=":ra ra-gears")
+        mu-list-item(:title="translate('lbl_title_login')", to="login", @click="toggle", v-if="!logged")
+          mu-icon(slot="left", value=":ra ra-key")
+        mu-list-item(:title="translate('lbl_title_logout')", @click="logout", v-else)
+          mu-icon(slot="left", value=":ra ra-locked-fortress")
 
         mu-sub-header {{ 'lbl_title_knowledge' | translate }}
         mu-list-item(:title="translate('lbl_title_help')", to="help", @click="toggle")
-          mu-icon(slot="left", value=":ra ra-help")
+          mu-icon(slot="left", value=":ra ra-scroll-unfurled")
         mu-list-item(:title="translate('lbl_title_factions')", to="factions", @click="toggle")
           mu-icon(slot="left", value=":ra ra-doubled")
         mu-list-item(:title="translate('lbl_title_buildings')", to="buildings", @click="toggle")

@@ -148,10 +148,10 @@ auth.onAuthStateChanged(status => {
     store.commit('uid', auth.currentUser.uid)
     store.dispatch('user', database.ref('users').child(store.state.uid))
   }
-})
-// run
-let Main = Vue.component('app', App) // eslint-disable-line
-Main = new Main({
-  el: '#app',
-  router
+  // run
+  let Main = Vue.component('app', App) // eslint-disable-line
+  Main = new Main({
+    el: '#app',
+    router
+  })
 })
