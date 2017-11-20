@@ -26,7 +26,7 @@
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
               mu-td {{ (current - 1) * size + index + 1 | minimize }}
               mu-td
-                i.ra.ra-shield(v-if="protected(user.attacked)")
+                i.ra.ra-shield(v-if="protected(user.attacked)", v-tooltip="translate('ttp_census_attacked')")
                 mu-chip(:class="user.color") {{ user.name }}
               mu-td.number {{ user.power | minimize }}
           mu-tfoot(slot="footer")

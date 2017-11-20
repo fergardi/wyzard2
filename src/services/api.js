@@ -602,7 +602,7 @@ export const createNewUser = async (uid, player) => {
     }
   })
   */
-  return await updateGeneralStatus(uid)
+  return updateGeneralStatus(uid)
 }
 
 // messages

@@ -1,1 +1,22 @@
-{  }
+{
+  "lord_of_chaos": {
+    "name": "lbl_name_lord_of_chaos",
+    "color": "red"
+  },
+  "lord_of_darkness": {
+    "name": "lbl_name_lord_of_darkness",
+    "color": "purple"
+  },
+  "lord_of_mind": {
+    "name": "lbl_name_lord_of_mind",
+    "color": "red"
+  },
+  "lord_of_nature": {
+    "name": "lbl_name_lord_of_nature",
+    "color": "red"
+  },
+  "lord_of_sacred": {
+    "name": "lbl_name_lord_of_sacred",
+    "color": "red"
+  }
+}

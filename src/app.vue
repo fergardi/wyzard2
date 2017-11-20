@@ -657,6 +657,8 @@
         p
           font-size 0.9em
           font-style italic
+          text-align center
+          margin 1em
     .lazy
       width 100%
       transition opacity .5s ease-in
