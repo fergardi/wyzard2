@@ -20,7 +20,7 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="mine")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
+          mu-raised-button(primary, @click="confirm('offer')", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>

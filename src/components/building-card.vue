@@ -48,9 +48,9 @@
           span {{ data.quantity | numeric }}
     mu-card-text
       p.card-description(v-if="!exploration && !meditation && !taxation") {{ data.description | translate }}
-      p.card-description(v-if="exploration") {{ 'lbl_description_exploration' | translate }}
-      p.card-description(v-if="meditation") {{ 'lbl_description_meditation' | translate }}
-      p.card-description(v-if="taxation") {{ 'lbl_description_taxation' | translate }}
+      p.card-description(v-if="exploration") {{ 'lbl_exploration_description' | translate }}
+      p.card-description(v-if="meditation") {{ 'lbl_meditation_description' | translate }}
+      p.card-description(v-if="taxation") {{ 'lbl_taxation_description' | translate }}
       
       .card-stats(v-if="info")
         mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
@@ -92,28 +92,28 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="-data.quantity", :max="user.terrain", required, :label="translate('lbl_label_quantity')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canConstruct || busy") {{ 'lbl_button_demolish_construct' | translate }}
+          mu-raised-button(primary, @click="confirm('construct')", :disabled="!canConstruct || busy") {{ 'lbl_button_demolish_construct' | translate }}
 
     template(v-if="exploration")
       form(@submit.stop.prevent="confirm('explore')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canExplore || busy") {{ 'lbl_button_explore' | translate }}
+          mu-raised-button(primary, @click="confirm('explore')", :disabled="!canExplore || busy") {{ 'lbl_button_explore' | translate }}
 
     template(v-if="meditation")
       form(@submit.stop.prevent="confirm('meditate')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canMeditate || busy") {{ 'lbl_button_meditate' | translate }}
+          mu-raised-button(primary, @click="confirm('meditate')", :disabled="!canMeditate || busy") {{ 'lbl_button_meditate' | translate }}
 
     template(v-if="taxation")
       form(@submit.stop.prevent="confirm('collect')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="user.turns", required, :label="translate('lbl_resource_turns')", :fullWidth="true")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canTax || busy") {{ 'lbl_button_collect' | translate }}
+          mu-raised-button(primary, @click="confirm('collect')", :disabled="!canTax || busy") {{ 'lbl_button_collect' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>

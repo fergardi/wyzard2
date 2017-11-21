@@ -58,8 +58,8 @@
                 mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact", :title="translate(artifact.name)")
                 
           mu-card-actions
-            mu-raised-button(primary, type="reset", :disabled="busy") {{ 'lbl_button_clear' | translate }}
-            mu-raised-button(primary, type="submit", :disabled="!canAttack || busy") {{ 'lbl_button_attack' | translate }}
+            mu-raised-button(primary, @click="reset", :disabled="busy") {{ 'lbl_button_clear' | translate }}
+            mu-raised-button(primary, @click="confirm('attack')", :disabled="!canAttack || busy") {{ 'lbl_button_attack' | translate }}
 
     confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>

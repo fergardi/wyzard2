@@ -61,7 +61,7 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true", :disabled="!canLearn || busy")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canResearch || !canLearn || busy") {{ 'lbl_button_research' | translate }}
+          mu-raised-button(primary, @click="confirm('research')", :disabled="!canResearch || !canLearn || busy") {{ 'lbl_button_research' | translate }}
 
     template(v-if="conjuration")
       form(@submit.stop.prevent="confirm('conjure')")
@@ -69,12 +69,12 @@
           mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canCast || busy") {{ 'lbl_button_cast' | translate }}
+          mu-raised-button(primary, @click="confirm('conjure')", :disabled="!canCast || busy") {{ 'lbl_button_cast' | translate }}
 
     template(v-if="breaking")
       form(@submit.stop.prevent="confirm('disenchant')")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canBreak || busy") {{ 'lbl_button_dispel' | translate }}
+          mu-raised-button(primary, @click="confirm('disenchant')", :disabled="!canBreak || busy") {{ 'lbl_button_dispel' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>

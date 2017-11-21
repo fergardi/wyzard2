@@ -37,12 +37,12 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="data.gold + 1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || busy || !hasTurns", :max="user.gold")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="isMine || !hasGold || !hasTurns || !canBid || busy") {{ 'lbl_button_bid' | translate }}
+          mu-raised-button(primary, @click="confirm('bid')", :disabled="isMine || !hasGold || !hasTurns || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
     template(v-if="contract")
       form(@submit.stop.prevent="confirm('fire')")
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="busy") {{ 'lbl_button_fire' | translate }}
+          mu-raised-button(primary, @click="confirm('fire')", :disabled="busy") {{ 'lbl_button_fire' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>

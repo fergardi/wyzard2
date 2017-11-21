@@ -26,35 +26,35 @@
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
-            mu-icon(slot="left", value=":ra ra-hourglass")
-            mu-badge(slot="after")
-              span.income(:class="user.turns < 300 ? 'green' : 'red'") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
-              span {{ user.turns | minimize }}
+            mu-badge(slot="left", circle, :badgeClass="user.turns < 300 ? 'green' : 'red'")
+              mu-icon(value=':ra ra-hourglass')
+              span(slot="content") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.turns | minimize }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
-            mu-icon(slot="left", value=":ra ra-gold-bar")
-            mu-badge(slot="after")
-              span.income(:class="user.goldPerTurn >= 0 ? 'green' : 'red'") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.gold | minimize }}
+            mu-badge(slot="left", circle, :badgeClass="user.goldPerTurn >= 0 ? 'green' : 'red'")
+              mu-icon(value=":ra ra-gold-bar")
+              span(slot="content") {{ user.goldPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.gold | minimize }}
           mu-list-item(:title="translate('lbl_resource_people')", disabled)
-            mu-icon(slot="left", value=":ra ra-double-team")
-            mu-badge(slot="after")
-              span.income(:class="user.peoplePerTurn >= 0 ? 'green' : 'red'") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.people | minimize }}
+            mu-badge(slot="left", circle, :badgeClass="user.peoplePerTurn >= 0 ? 'green' : 'red'")
+              mu-icon(value=":ra ra-double-team")
+              span(slot="content") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.people | minimize }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
-            mu-icon(slot="left", value=":ra ra-burst-blob")
-            mu-badge(slot="after")
-              span.income(:class="user.manaPerTurn >= 0 ? 'green' : 'red'") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.mana | minimize }}
+            mu-badge(slot="left", circle, :badgeClass="user.manaPerTurn >= 0 ? 'green' : 'red'")
+              mu-icon(value=":ra ra-burst-blob")
+              span(slot="content") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.mana | minimize }}
           mu-list-item(:title="translate('lbl_resource_terrain')", disabled)
-            mu-icon(slot="left", value=":ra ra-tower")
-            mu-badge(slot="after")
-              span.income(:class="user.terrainPerTurn >= 0 ? 'green' : 'red'") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-              span {{ user.terrain | numeric }}
+            mu-badge(slot="left", circle, :badgeClass="user.terrainPerTurn >= 0 ? 'green' : 'red'")
+              mu-icon(value=":ra ra-tower")
+              span(slot="content") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.terrain | numeric }}
           mu-list-item(:title="translate('lbl_resource_magic')", disabled)
-            mu-icon(slot="left", value=":ra ra-trophy")
-            mu-badge(slot="after")
-              span.income(:class="user.magic < 10 ? 'green' : 'red'") {{ user.magic < 10 ? '&#9650;' : '&#9660;' }}
-              span {{ user.magic | numeric }}
+            mu-badge(slot="left", circle, :badgeClass="user.magic < 10 ? 'green' : 'red'")
+              mu-icon(value=":ra ra-trophy")
+              span(slot="content") {{ user.magic < 10 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.magic | numeric }}
 
           template(v-if="blessings && blessings.length")
             mu-sub-header {{ 'lbl_title_blessings' | translate }}
@@ -568,6 +568,7 @@
     .mu-chip
     .mu-card .card-text
     .mu-card .card-number
+    .mu-badge
       background-color $dark !important
       &.red
         background-color $red !important

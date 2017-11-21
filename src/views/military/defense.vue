@@ -35,8 +35,8 @@
               mu-menu-item(v-for="artifact, index in relics", :key="index", :value="artifact['.key']", :title="translate(artifact.name)")
 
           mu-card-actions
-            mu-raised-button(primary, type="reset", @click="restore") {{ 'lbl_button_restore' | translate }}
-            mu-raised-button(primary, type="submit") {{ 'lbl_button_save' | translate }}
+            mu-raised-button(primary, @click="restore") {{ 'lbl_button_restore' | translate }}
+            mu-raised-button(primary, @click="confirm('save')") {{ 'lbl_button_save' | translate }}
 
     confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept") 
 </template>

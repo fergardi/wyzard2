@@ -10,7 +10,7 @@
             .card-info
               .card-text {{ 'lbl_label_settings' | translate }}
           mu-card-text
-            p {{ 'lbl_description_settings' | translate }}
+            p {{ 'lbl_settings_description' | translate }}
 
           mu-card-text
             .form-row
@@ -21,7 +21,7 @@
               mu-checkbox(v-model="settings.navbar", :label="translate('lbl_settings_navbar')", @input="save")
 
           mu-card-actions
-            mu-raised-button(primary, type="submit") {{ 'lbl_button_restore' | translate }}
+            mu-raised-button(primary, @click="confirm('restore')") {{ 'lbl_button_restore' | translate }}
 
     confirm-dialog(:dialog="dialog", :busy="busy", @close="close", @accept="accept") 
 </template>

@@ -3,7 +3,7 @@
   
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.login.animated.fadeInUp
-        form(@submit.stop.prevent="accept")
+        form(@submit.prevent="accept")
           mu-card-media
             .card-image
               img(:src="image", :alt="translate('slogan')")
@@ -38,9 +38,9 @@
               vue-recaptcha(:sitekey="key", ref="recaptcha", @verify="verify", @expired="expired", theme="dark", size="normal")
 
           mu-card-actions
-            mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", type="reset", :disabled="busy")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", type="submit", v-if="tab === 'login'", :disabled="!canLogIn || busy")
-            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", type="submit", v-if="tab === 'signin'", :disabled="!canSignIn || disabled || busy")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_clear')", :label="translate('lbl_button_clear')", :disabled="busy", @click="reset")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_login')", :label="translate('lbl_button_login')", v-if="tab === 'login'", :disabled="!canLogIn || busy", @click="accept")
+            mu-raised-button(primary, :aria-label="translate('lbl_button_signin')", :label="translate('lbl_button_signin')", v-if="tab === 'signin'", :disabled="!canSignIn || disabled || busy", @click="accept")
 </template>
 
 <script>
@@ -192,6 +192,15 @@
       },
       expired () {
         this.captcha = false
+      },
+      reset () {
+        this.username = ''
+        this.password = ''
+        this.confirm_password = ''
+        this.color = null
+        this.email = ''
+        this.error = false
+        this.code = null
       }
     },
     computed: {

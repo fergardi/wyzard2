@@ -47,7 +47,7 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", :max="data.quantity", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
         mu-card-actions
-          mu-raised-button(primary, type="submit", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
+          mu-raised-button(primary, @click="confirm('disband')", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
