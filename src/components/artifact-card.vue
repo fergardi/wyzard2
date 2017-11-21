@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.artifact
+  mu-card.artifact(:class="{ 'forbidden': !info && isMine }")
     mu-card-media
       .card-image
         img.lazy(v-lazy-load="picture('artifacts', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")

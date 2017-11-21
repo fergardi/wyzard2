@@ -8,6 +8,7 @@ import store from '@/vuex/store'
 import moment from 'moment'
 import LazyImg from 'v-lazy-img'
 import VTooltip from 'v-tooltip'
+import VeeValidate from 'vee-validate'
 import { database, auth, storage } from '@/services/firebase'
 // theming
 import 'muse-ui/dist/muse-ui.css'
@@ -17,6 +18,8 @@ import 'animate.css/animate.min.css'
 import '@/assets/css/raleway.css'
 // tip
 Vue.config.productionTip = false
+// validation
+Vue.use(VeeValidate)
 // tooltips
 Vue.use(VTooltip, { disposeTimeout: 0 })
 // lazy

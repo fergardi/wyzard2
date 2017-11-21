@@ -453,6 +453,16 @@
             max-width 75%
           .card-number
             max-width 20%
+      &.forbidden:before
+        position absolute
+        cursor not-allowed
+        pointer-events none
+        width 100%
+        height 100%
+        background-color rgba(0,0,0,0.50)
+        z-index 9999999
+        content ""
+        border-radius $border
       //.mu-card-media + .mu-card-text
         //margin-top 10px
       .mu-card-text + .mu-card-text

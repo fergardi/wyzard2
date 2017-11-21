@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.hero
+  mu-card.hero(:class="{ 'forbidden': !info && isMine }")
     mu-card-media
       .card-image
         img.lazy(v-lazy-load="picture('heroes', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")

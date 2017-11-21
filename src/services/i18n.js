@@ -833,6 +833,7 @@ export default {
     // firebase
     'auth/color-required': 'Escoge una facción',
     'auth/verification-required': 'Verifica tu email',
+    'auth/invalid-email': 'Email no válido',
     'auth/authentication-required': 'Autenticación necesaria',
     'auth/username-too-long': 'Nombre de usuario demasiado largo',
     'auth/authentication-ok': 'Autenticado correctamente',

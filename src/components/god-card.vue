@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.god
+  mu-card.god(:class="{ 'forbidden': !info && isMine }")
     mu-card-media
       .card-image
         img.lazy(v-lazy-load="picture('gods', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
@@ -18,7 +18,7 @@
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="mine")
+          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine")
         mu-card-actions
           mu-raised-button(primary, @click="confirm('offer')", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
 
@@ -112,9 +112,9 @@
         return this.turns <= this.user.turns
       },
       canOffer () {
-        return this.amount > this.data.bid && !this.mine
+        return this.amount > this.data.bid && !this.isMine
       },
-      mine () {
+      isMine () {
         return store.state.uid === this.data.blessed
       }
     }

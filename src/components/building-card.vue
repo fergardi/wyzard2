@@ -185,7 +185,7 @@
         }
       },
       async construct () {
-        if (this.amount < 0) {
+        if (this.amount < 0 && this.data.quantity > 0 && Math.abs(this.amount) <= this.data.quantity) {
           await database.ref('users').child(store.state.uid).child('constructions').child(this.data['.key']).update({ quantity: this.data.quantity - Math.abs(this.amount) })
           await database.ref('users').child(store.state.uid).update({ terrain: this.user.terrain + Math.abs(this.amount) })
           await updateGeneralStatus(store.state.uid)
