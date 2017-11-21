@@ -339,6 +339,7 @@
           &.title
             overflow hidden
             text-align center
+            font-weight bold
             &:before
             &:after
               background-color $gold

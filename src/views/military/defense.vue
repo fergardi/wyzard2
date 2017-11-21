@@ -63,7 +63,10 @@
           fifth: null,
           spell: null,
           artifact: null
-        }
+        },
+        book: [],
+        relics: [],
+        troops: []
       }
     },
     async created () {
