@@ -152,6 +152,7 @@
               await createNewUser(auth.currentUser.uid, player)
               this.busy = false
               store.commit('success', 'auth/registration-ok')
+              store.commit('info', 'auth/verification-required')
               this.$router.push({ path: '/kingdom' })
             })
             .catch(error => {

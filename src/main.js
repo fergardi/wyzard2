@@ -136,8 +136,20 @@ const opened = (route) => {
 }
 // redirect to home if not logged in
 router.beforeEach((to, from, next) => {
-  if (!opened(to.name) && !store.state.logged) {
-    router.push({ path: '/login' })
+  if (!opened(to.name)) {
+    /*
+    if (auth.currentUser && !auth.currentUser.isEmailVerified) {
+      store.commit('info', 'auth/verification-required')
+      router.push({ path: '/login' })
+      return
+    }
+    */
+    if (!store.state.logged) {
+      store.commit('success', 'auth/authentication-required')
+      router.push({ path: '/login' })
+      return
+    }
+    return next()
   } else {
     return next()
   }
@@ -148,10 +160,10 @@ auth.onAuthStateChanged(status => {
     store.commit('uid', auth.currentUser.uid)
     store.dispatch('user', database.ref('users').child(store.state.uid))
   }
-  // run
-  let Main = Vue.component('app', App) // eslint-disable-line
-  Main = new Main({
-    el: '#app',
-    router
-  })
+})
+// run
+let Main = Vue.component('app', App) // eslint-disable-line
+Main = new Main({
+  el: '#app',
+  router
 })
