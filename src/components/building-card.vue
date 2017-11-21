@@ -52,6 +52,23 @@
       p.card-description(v-if="meditation") {{ 'lbl_meditation_description' | translate }}
       p.card-description(v-if="taxation") {{ 'lbl_taxation_description' | translate }}
       
+      .card-stats(v-if="construction")
+        mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
+          i.ra.ra-gold-bar
+          span {{ data.goldCost | minimize }}
+        mu-chip.triple(v-tooltip="translate('ttp_people_cost')")
+          i.ra.ra-double-team
+          span {{ data.peopleCost | minimize }}
+        mu-chip.triple(v-tooltip="translate('ttp_mana_cost')")
+          i.ra.ra-burst-blob
+          span {{ data.manaCost | minimize }}
+        mu-chip.double(v-tooltip="translate('ttp_turn_cost')")
+          i.ra.ra-hourglass
+          span {{ data.turns | minimize }}
+        mu-chip.double(v-tooltip="translate('ttp_bonus_ratio')")
+          i.ra.ra-sapphire
+          span {{ data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction || data. armyCap | minimize }}
+
       .card-stats(v-if="info")
         mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
           i.ra.ra-gold-bar
