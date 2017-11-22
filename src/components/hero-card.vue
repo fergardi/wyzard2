@@ -50,7 +50,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, sendMessageToUser } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addMessageToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
   
   export default {
@@ -100,10 +100,11 @@
                 if (auc.bidder) { // if there was a previous bidder
                   await database.ref('users').child(auc.bidder).once('value', async previous => {
                     if (previous) {
+                      let hero = { name: auc.name, color: auc.color }
                       let prev = previous.val()
                       let taxed = Math.floor(auc.bid * 0.9)
                       await database.ref('users').child(auc.bidder).update({ gold: prev.gold + taxed })
-                      await sendMessageToUser(auc.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_outbid', 'lbl_message_tavern_outbid_text', null, null, taxed)
+                      await addMessageToUser(auc.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_outbid', 'lbl_message_tavern_outbid_description', null, null, taxed, null, null, null, null, null, hero)
                     }
                     return previous
                   })

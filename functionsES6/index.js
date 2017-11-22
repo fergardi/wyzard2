@@ -14,7 +14,7 @@ exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event =>
 */
 
 // send message to user
-export const sendUserMessage = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, spionage = null) => {
+export const addMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, hero = null, spionage = null) => {
   return admin.database().ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
@@ -27,6 +27,8 @@ export const sendUserMessage = (uid, from, color, subject, text = null, battle =
     kills: kills,
     conquered: conquered,
     sieged: sieged,
+    mana: mana,
+    hero: hero,
     spionage: spionage,
     timestamp: Date.now(),
     read: false
@@ -86,7 +88,7 @@ exports.avarice = functions.https.onRequest((req, res) => {
         artifacts.forEach(artifact => {
           let auction = Object.assign({}, artifact.val()) // {...artifact.val()}
           auction.quantity = 1
-          auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+          auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
           delete auction['.key']
           auctions.push(auction)
         })
@@ -102,7 +104,7 @@ exports.avarice = functions.https.onRequest((req, res) => {
         heroes.forEach(hero => {
           let contract = Object.assign({}, hero.val()) // {...hero.val()}
           contract.level = Math.floor(Math.random() * 5) + 1
-          contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+          contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
           delete contract['.key']
           contracts.push(contract)
         })
@@ -128,7 +130,18 @@ exports.generosity = functions.https.onRequest((req, res) => {
         let auc = auction.val()
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
+            let artifact = { name: auc.name, color: auc.color }
             addArtifactToUser(auc.bidder, auc.name)
+            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact)
+            if (auc.owner) {
+              admin.database().ref('users').child(auc.owner).transaction(user => {
+                if (user) {
+                  user.gold += parseInt(auc.bid)
+                  addMessageToUser(user.ref, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid)
+                }
+                return user
+              })
+            }
           }
           auction.ref.remove()
         }
@@ -140,7 +153,9 @@ exports.generosity = functions.https.onRequest((req, res) => {
         let con = contract.val()
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
+            let hero = { name: con.name, color: con.color }
             addHeroToUser(con.bidder, con.name)
+            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, null, null, null, null, null, null, hero)
           }
           contract.ref.remove()
         }

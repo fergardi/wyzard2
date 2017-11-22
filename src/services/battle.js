@@ -1,7 +1,7 @@
 import { database } from '@/services/firebase'
 import store from '@/vuex/store'
 import i18n from '@/services/i18n'
-import { sendMessageToUser, addEnchantmentToUser, spyInformationToUser } from '@/services/api'
+import { addMessageToUser, addEnchantmentToUser, spyInformationToUser } from '@/services/api'
 
 const PERCENT_POWER = 20 // difference of power between attacker and defender to be considered as a victory
 const PROTECTION_HOURS = 8 // hours a target user cannot be attacked from now on
@@ -342,7 +342,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   let spyChance = Math.random() * 100
                   if (spyChance <= attackerSpell.spionage * atk.magic) {
                     let spionage = await spyInformationToUser(target)
-                    await sendMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+                    await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, spionage)
                   }
                 } else {
                   if (attackerSpell.support) {
@@ -391,7 +391,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               }
               if (defenderArtifact.spionage) {
                 let spionage = await spyInformationToUser(uid)
-                await sendMessageToUser(target, atk.name, atk.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+                await addMessageToUser(target, atk.name, atk.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, spionage)
               }
               if (defenderArtifact.quantity - 1 <= 0) {
                 await database.ref('users').child(target).child('defense').child('artifact').remove()
@@ -417,7 +417,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               }
               if (attackerArtifact.spionage) {
                 let spionage = await spyInformationToUser(target)
-                await sendMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, spionage)
+                await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, spionage)
               }
               if (attackerArtifact.quantity - 1 <= 0) {
                 await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).remove()
@@ -705,12 +705,12 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 })
               }
             }
-            await sendMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
-            await sendMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await addMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await addMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           } else {
             console.log('DEFEAT')
-            await sendMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
-            await sendMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await addMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
+            await addMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           }
         }
       })

@@ -208,6 +208,10 @@
                 mu-chip
                   i.ra.ra-double-team
                   span {{ selected.people | numeric }}
+              .attachment(v-if="selected.mana", v-tooltip="translate('ttp_resource_mana')")
+                mu-chip
+                  i.ra.ra-burst-blob
+                  span {{ selected.mana | numeric }}
               .attachment(v-if="selected.kills", v-tooltip="translate('ttp_message_kills')")
                 mu-chip
                   i.ra.ra-decapitation
@@ -224,6 +228,10 @@
                 mu-chip(:class="selected.artifact.color")
                   i.ra.ra-crystals
                   span {{ selected.artifact.name | translate }}
+              .attachment(v-if="selected.hero", v-tooltip="translate('ttp_message_hero')")
+                mu-chip(:class="selected.hero.color")
+                  i.ra.ra-trophy
+                  span {{ selected.hero.name | translate }}
 
           mu-card-actions
             mu-raised-button(primary, @click="remove") {{ 'lbl_button_remove' | translate }}

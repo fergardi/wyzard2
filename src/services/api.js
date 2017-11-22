@@ -124,12 +124,6 @@ const checkHeroesProductionMaintenance = (uid, experience = false) => {
       contracts.forEach(contract => {
         contract.ref.transaction(hero => {
           // console.log('Checking hero production and maintenances... ' + hero.name)
-          if (experience && hero.invested + 1 >= hero.level * hero.experience) {
-            // console.log('Hero leveled up... ' + hero.name)
-            hero.level++
-            hero.invested = 0
-            store.commit('info', 'lbl_toast_hero_levelup')
-          }
           goldPerTurn += hero.level * (hero.goldProduction - hero.goldMaintenance)
           peoplePerTurn += hero.level * (hero.peopleProduction - hero.peopleMaintenance)
           manaPerTurn += hero.level * (hero.manaProduction - hero.manaMaintenance)
@@ -138,6 +132,13 @@ const checkHeroesProductionMaintenance = (uid, experience = false) => {
           researchBonus += hero.level * hero.research
           constructionBonus += hero.level * hero.construction
           power += hero.level * hero.power
+          if (experience) hero.invested++
+          if (hero.invested >= hero.level * hero.experience) {
+            // console.log('Hero leveled up... ' + hero.name)
+            hero.level++
+            hero.invested = 0
+            store.commit('info', 'lbl_toast_hero_levelup')
+          }
           // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
           return hero
         })
@@ -519,7 +520,7 @@ export const createNewUser = async (uid, player) => {
     }
   })
   // messages
-  await sendMessageToUser(uid, 'lbl_name_admin', 'dark', 'lbl_message_welcome_subject', 'lbl_message_welcome_text')
+  await addMessageToUser(uid, 'lbl_name_admin', 'dark', 'lbl_message_welcome', 'lbl_message_welcome_description')
   // auction
   await database.ref('artifacts').once('value', artifacts => {
     if (artifacts && artifacts.hasChildren()) {
@@ -527,7 +528,7 @@ export const createNewUser = async (uid, player) => {
       artifacts.forEach(artifact => {
         let auction = {...artifact.val()}
         auction.quantity = 1
-        auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+        auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
         delete auction['.key']
         auctions.push(auction)
         // TODO DEVELOPMENT ONLY
@@ -545,7 +546,7 @@ export const createNewUser = async (uid, player) => {
       heroes.forEach(hero => {
         let contract = {...hero.val()}
         contract.level = Math.floor(Math.random() * 5) + 1
-        contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24)
+        contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
         delete contract['.key']
         contracts.push(contract)
         // TODO DEVELOPMENT ONLY
@@ -606,7 +607,7 @@ export const createNewUser = async (uid, player) => {
 }
 
 // messages
-export const sendMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, spionage = null) => {
+export const addMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, hero = null, spionage = null) => {
   return database.ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
@@ -620,6 +621,7 @@ export const sendMessageToUser = (uid, from, color, subject, text = null, battle
     conquered: conquered,
     sieged: sieged,
     mana: mana,
+    hero: hero,
     spionage: spionage,
     timestamp: Date.now(),
     read: false
