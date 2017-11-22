@@ -295,12 +295,7 @@ exports.generosity = functions.https.onRequest(function (req, res) {
     // check user turns
     admin.database().ref('users').once('value', function (users) {
       users.forEach(function (user) {
-        user.ref.child('turns').transaction(function (player) {
-          if (player) {
-            player.turns = Math.min(MAX_TURNS, parseInt(player.turns) + TURNS_ADDITION);
-          }
-          return player;
-        });
+        user.ref.child('turns').set(Math.min(MAX_TURNS, parseInt(user.child('turns').val()) + TURNS_ADDITION));
       });
     });
     res.status(200).send();
