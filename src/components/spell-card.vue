@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.spell(:class="{ 'forbidden': !info && (!canLearn || !canCast) }")
+  mu-card.spell(:class="{ 'forbidden': !info && ((investigation && !canLearn) || (conjuration && !canCast)) }")
     mu-card-media
       .card-image
         img.lazy(v-lazy-load="picture('spells', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
