@@ -23,5 +23,6 @@
   "constructionBonus": 0,
   "researchBonus": 0,
   "enchantmentCap": 0,
-  "attacked": 0
+  "attacked": 0,
+  "verified": false
 }

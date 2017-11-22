@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sendUserMessage = undefined;
+exports.addMessageToUser = undefined;
 
 var _assign = require('babel-runtime/core-js/object/assign');
 
@@ -39,7 +39,7 @@ exports.avarice = functions.database.ref('/users/{uid}/turns').onUpdate(event =>
 */
 
 // send message to user
-var sendUserMessage = exports.sendUserMessage = function sendUserMessage(uid, from, color, subject) {
+var addMessageToUser = exports.addMessageToUser = function addMessageToUser(uid, from, color, subject) {
   var text = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
   var battle = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
   var artifact = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : null;
@@ -48,7 +48,9 @@ var sendUserMessage = exports.sendUserMessage = function sendUserMessage(uid, fr
   var kills = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : null;
   var conquered = arguments.length > 10 && arguments[10] !== undefined ? arguments[10] : null;
   var sieged = arguments.length > 11 && arguments[11] !== undefined ? arguments[11] : null;
-  var spionage = arguments.length > 12 && arguments[12] !== undefined ? arguments[12] : null;
+  var mana = arguments.length > 12 && arguments[12] !== undefined ? arguments[12] : null;
+  var hero = arguments.length > 13 && arguments[13] !== undefined ? arguments[13] : null;
+  var spionage = arguments.length > 14 && arguments[14] !== undefined ? arguments[14] : null;
 
   return admin.database().ref('users').child(uid).child('messages').push({
     name: from,
@@ -62,6 +64,8 @@ var sendUserMessage = exports.sendUserMessage = function sendUserMessage(uid, fr
     kills: kills,
     conquered: conquered,
     sieged: sieged,
+    mana: mana,
+    hero: hero,
     spionage: spionage,
     timestamp: Date.now(),
     read: false
@@ -119,7 +123,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
                   }, _callee, undefined);
                 }));
 
-                return function (_x12) {
+                return function (_x14) {
                   return _ref2.apply(this, arguments);
                 };
               }());
@@ -132,7 +136,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
       }, _callee2, undefined);
     }));
 
-    return function (_x11) {
+    return function (_x13) {
       return _ref.apply(this, arguments);
     };
   }());
@@ -182,7 +186,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
                   }, _callee3, undefined);
                 }));
 
-                return function (_x15) {
+                return function (_x17) {
                   return _ref4.apply(this, arguments);
                 };
               }());
@@ -195,7 +199,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
       }, _callee4, undefined);
     }));
 
-    return function (_x14) {
+    return function (_x16) {
       return _ref3.apply(this, arguments);
     };
   }());
@@ -213,7 +217,7 @@ exports.avarice = functions.https.onRequest(function (req, res) {
         artifacts.forEach(function (artifact) {
           var auction = (0, _assign2.default)({}, artifact.val()); // {...artifact.val()}
           auction.quantity = 1;
-          auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24);
+          auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6);
           delete auction['.key'];
           auctions.push(auction);
         });
@@ -229,7 +233,7 @@ exports.avarice = functions.https.onRequest(function (req, res) {
         heroes.forEach(function (hero) {
           var contract = (0, _assign2.default)({}, hero.val()); // {...hero.val()}
           contract.level = Math.floor(Math.random() * 5) + 1;
-          contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (48 - 24 + 1) + 24);
+          contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6);
           delete contract['.key'];
           contracts.push(contract);
         });
@@ -255,7 +259,18 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var auc = auction.val();
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
+            var artifact = { name: auc.name, color: auc.color };
             addArtifactToUser(auc.bidder, auc.name);
+            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact);
+            if (auc.owner) {
+              admin.database().ref('users').child(auc.owner).transaction(function (user) {
+                if (user) {
+                  user.gold += parseInt(auc.bid);
+                  addMessageToUser(user.ref, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid);
+                }
+                return user;
+              });
+            }
           }
           auction.ref.remove();
         }
@@ -267,7 +282,9 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var con = contract.val();
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
+            var hero = { name: con.name, color: con.color };
             addHeroToUser(con.bidder, con.name);
+            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, null, null, null, null, null, null, hero);
           }
           contract.ref.remove();
         }
