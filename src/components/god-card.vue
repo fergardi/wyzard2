@@ -28,7 +28,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addMessageToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
 
   export default {
@@ -71,7 +71,10 @@
             await database.ref('gods').child(this.data['.key']).transaction(offer => {
               if (offer) {
                 offer.bid = this.amount
-                if (offer.blessed) updateGeneralStatus(offer.blessed)
+                if (offer.blessed) {
+                  let god = { name: offer.name, color: offer.color }
+                  addMessageToUser(offer.blessed, 'lbl_name_devotion', 'dark', 'lbl_message_devotion_outbid', 'lbl_message_devotion_outbid_description', null, null, null, null, null, null, null, null, null, god)
+                }
                 offer.blessed = store.state.uid
               }
               return offer

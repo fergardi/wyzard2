@@ -200,15 +200,16 @@
     methods: {
       async prepare (uid) {
         store.dispatch('user', database.ref('users').child(uid))
-        await updateGeneralStatus(uid)
         await this.$bindAsArray('enchantments', database.ref('enchantments').orderByChild('target').equalTo(uid))
         await this.$bindAsArray('blessings', database.ref('gods').orderByChild('blessed').equalTo(uid))
+        await updateGeneralStatus(uid)
         await database.ref('users').child(uid).child('messages').orderByChild('read').equalTo(false).on('child_added', message => {
           if (message) {
             store.commit('info', this.translate(message.val().subject))
             message.ref.update({ read: true })
           }
         })
+        this.$router.push({ path: '/messages' })
       },
       toggle () {
         store.commit('toggle')

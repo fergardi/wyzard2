@@ -232,6 +232,10 @@
                 mu-chip(:class="selected.hero.color")
                   i.ra.ra-trophy
                   span {{ selected.hero.name | translate }}
+              .attachment(v-if="selected.god", v-tooltip="translate('ttp_message_god')")
+                mu-chip(:class="selected.god.color")
+                  i.ra.ra-bleeding-eye
+                  span {{ selected.god.name | translate }}
 
           mu-card-actions
             mu-raised-button(primary, @click="remove") {{ 'lbl_button_remove' | translate }}

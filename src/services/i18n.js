@@ -670,6 +670,8 @@ export default {
     lbl_message_tavern_win_description: 'Has contratado a un Héroe de la Taberna',
     lbl_message_tavern_outbid: 'Sobrepuja',
     lbl_message_tavern_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Héroe que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original menos el 10% del importe total en concepto de impuestos.',
+    lbl_message_devotion_outbid: 'Sobrepuja',
+    lbl_message_devotion_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Dios que tú y te ha superado en ofrenda. Por consiguiente, se ha eliminado su Bendición sobre tu reino, aunque no recuperarás tu ofrenda original.',
     // toasts
     lbl_toast_army_error: 'No puedes almacenar más tropas',
     lbl_toast_firing_ok: 'Despido completado',
@@ -795,6 +797,7 @@ export default {
     ttp_message_kills: 'Asesinado',
     ttp_message_conquered: 'Conquistado',
     ttp_message_hero: 'Héroe',
+    ttp_message_god: 'Dios',
     ttp_message_sieged: 'Destruido',
     ttp_message_artifact: 'Artefacto',
     ttp_kingdom_name: 'Nombre',

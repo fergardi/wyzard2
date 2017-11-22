@@ -607,7 +607,7 @@ export const createNewUser = async (uid, player) => {
 }
 
 // messages
-export const addMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, hero = null, spionage = null) => {
+export const addMessageToUser = (uid, from, color, subject, text = null, battle = null, artifact = null, gold = null, people = null, kills = null, conquered = null, sieged = null, mana = null, hero = null, god = null, spionage = null) => {
   return database.ref('users').child(uid).child('messages').push({
     name: from,
     color: color,
@@ -622,6 +622,7 @@ export const addMessageToUser = (uid, from, color, subject, text = null, battle 
     sieged: sieged,
     mana: mana,
     hero: hero,
+    god: god,
     spionage: spionage,
     timestamp: Date.now(),
     read: false

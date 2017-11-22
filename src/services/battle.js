@@ -342,7 +342,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                   let spyChance = Math.random() * 100
                   if (spyChance <= attackerSpell.spionage * atk.magic) {
                     let spionage = await spyInformationToUser(target)
-                    await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, spionage)
+                    await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, null, spionage)
                   }
                 } else {
                   if (attackerSpell.support) {
@@ -417,7 +417,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
               }
               if (attackerArtifact.spionage) {
                 let spionage = await spyInformationToUser(target)
-                await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, spionage)
+                await addMessageToUser(uid, def.name, def.color, 'lbl_message_spionage', 'lbl_message_spionage_description', null, null, null, null, null, null, null, null, null, null, spionage)
               }
               if (attackerArtifact.quantity - 1 <= 0) {
                 await database.ref('users').child(uid).child('relics').child(attackerArtifact['.key']).remove()
