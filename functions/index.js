@@ -50,7 +50,8 @@ var addMessageToUser = exports.addMessageToUser = function addMessageToUser(uid,
   var sieged = arguments.length > 11 && arguments[11] !== undefined ? arguments[11] : null;
   var mana = arguments.length > 12 && arguments[12] !== undefined ? arguments[12] : null;
   var hero = arguments.length > 13 && arguments[13] !== undefined ? arguments[13] : null;
-  var spionage = arguments.length > 14 && arguments[14] !== undefined ? arguments[14] : null;
+  var god = arguments.length > 14 && arguments[14] !== undefined ? arguments[14] : null;
+  var spionage = arguments.length > 15 && arguments[15] !== undefined ? arguments[15] : null;
 
   return admin.database().ref('users').child(uid).child('messages').push({
     name: from,
@@ -66,6 +67,7 @@ var addMessageToUser = exports.addMessageToUser = function addMessageToUser(uid,
     sieged: sieged,
     mana: mana,
     hero: hero,
+    god: god,
     spionage: spionage,
     timestamp: Date.now(),
     read: false
@@ -123,7 +125,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
                   }, _callee, undefined);
                 }));
 
-                return function (_x14) {
+                return function (_x15) {
                   return _ref2.apply(this, arguments);
                 };
               }());
@@ -136,7 +138,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
       }, _callee2, undefined);
     }));
 
-    return function (_x13) {
+    return function (_x14) {
       return _ref.apply(this, arguments);
     };
   }());
@@ -186,7 +188,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
                   }, _callee3, undefined);
                 }));
 
-                return function (_x17) {
+                return function (_x18) {
                   return _ref4.apply(this, arguments);
                 };
               }());
@@ -199,7 +201,7 @@ var addHeroToUser = function addHeroToUser(uid, name) {
       }, _callee4, undefined);
     }));
 
-    return function (_x16) {
+    return function (_x17) {
       return _ref3.apply(this, arguments);
     };
   }());
@@ -293,7 +295,12 @@ exports.generosity = functions.https.onRequest(function (req, res) {
     // check user turns
     admin.database().ref('users').once('value', function (users) {
       users.forEach(function (user) {
-        user.ref.child('turns').set(Math.min(MAX_TURNS, parseInt(user.child('turns').val()) + TURNS_ADDITION));
+        user.ref.child('turns').transaction(function (player) {
+          if (player) {
+            player.turns = Math.min(MAX_TURNS, parseInt(player.turns) + TURNS_ADDITION);
+          }
+          return player;
+        });
       });
     });
     res.status(200).send();

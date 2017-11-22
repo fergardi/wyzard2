@@ -560,6 +560,7 @@ export default {
     lbl_name_admin: 'Archimago',
     lbl_name_auction: 'Subasta',
     lbl_name_tavern: 'Taberna',
+    lbl_name_devotion: 'Devoción',
     lbl_name_spy: 'Espía',
     // tabs
     lbl_tab_sell: 'Vender',

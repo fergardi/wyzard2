@@ -165,7 +165,12 @@ exports.generosity = functions.https.onRequest((req, res) => {
     // check user turns
     admin.database().ref('users').once('value', users => {
       users.forEach(user => {
-        user.ref.child('turns').set(Math.min(MAX_TURNS, parseInt(user.child('turns').val()) + TURNS_ADDITION))
+        user.ref.child('turns').transaction(player => {
+          if (player) {
+            player.turns = Math.min(MAX_TURNS, parseInt(player.turns) + TURNS_ADDITION)
+          }
+          return player
+        })
       })
     })
     res.status(200).send()
