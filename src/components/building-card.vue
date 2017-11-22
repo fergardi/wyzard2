@@ -67,7 +67,7 @@
           span {{ data.turns | minimize }}
         mu-chip.double(v-tooltip="translate('ttp_bonus_ratio')")
           i.ra.ra-sapphire
-          span {{ data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction || data. armyCap | minimize }}
+          span {{ data.terrainCap || data.armyCap || data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction | minimize }}
 
       .card-stats(v-if="info")
         mu-chip.triple(v-tooltip="translate('ttp_gold_cost')")
@@ -102,7 +102,7 @@
           span {{ data.turns | minimize }}
         mu-chip.double(v-tooltip="translate('ttp_bonus_ratio')")
           i.ra.ra-sapphire
-          span {{ data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction || data. armyCap | minimize }}
+          span {{ data.terrainCap || data.armyCap || data.enchantmentCap || data.magicalDefense || data.physicalDefense || data.construction || data.research || data.goldProduction || data.manaProduction || data.peopleProduction | minimize }}
 
     template(v-if="construction")
       form(@submit.stop.prevent="confirm('construct')")

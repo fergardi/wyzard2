@@ -727,7 +727,7 @@ export default {
     lbl_toast_message_ok: 'Mensaje borrado',
     lbl_toast_message_error: 'Error al borrar',
     // tooltips
-    ttp_bonus_ratio: 'Incremento total o proporción por cada 1%',
+    ttp_bonus_ratio: 'Producción adicional / Incremento total / Proporción requerida para un 1%',
     ttp_resource_magic: 'Magic',
     ttp_resource_gold: 'Oro',
     ttp_resource_people: 'Población',
