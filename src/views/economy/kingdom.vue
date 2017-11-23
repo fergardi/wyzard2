@@ -4,11 +4,12 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.animated.fadeInUp
         mu-card-media
-          .card-image
+          .card-image(v-once)
             img(v-lazy-load="picture('miscellaneous', 'kingdom')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_summary')")
+          .card-spinner
             mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
-            .card-info
-              .card-text {{ 'lbl_label_summary' | translate }}
+          .card-info
+            .card-text {{ 'lbl_label_summary' | translate }}
 
         mu-table.kingdom(:showCheckbox="false", :selectable="false")
           mu-thead

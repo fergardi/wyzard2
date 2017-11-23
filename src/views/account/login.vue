@@ -5,7 +5,7 @@
       mu-card.login.animated.fadeInUp
         form(@submit.prevent="accept")
           mu-card-media
-            .card-image
+            .card-image(v-once)
               img(:src="image", :alt="translate('slogan')")
               mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
             .card-extra

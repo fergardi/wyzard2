@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.hero(:class="{ 'forbidden': !info && isMine }")
     mu-card-media
-      .card-image
+      .card-image(v-once)
         img.lazy(v-lazy-load="picture('heroes', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="contract", v-tooltip="translate('ttp_hero_experience')")

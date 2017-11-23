@@ -303,8 +303,8 @@
         color inherit
     .mu-circular-progress
       position absolute
-      width calc(100% - 2px) !important
-      height calc(100% - 2px) !important
+      width 100% !important
+      height 100% !important
       display flex
       border-radius $radius
       background-color rgba(0,0,0,0.5)
@@ -380,6 +380,12 @@
       .mu-card-media
         width 100%
         height 250px
+        .card-spinner
+          position absolute
+          top 0
+          left 0
+          bottom 0
+          right 0
         .card-image
           display flex
           justify-content center

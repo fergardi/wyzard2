@@ -257,106 +257,40 @@ exports.generosity = functions.https.onRequest(function (req, res) {
   if (req.method === 'GET') {
     // check artifact auctions finished
     admin.database().ref('auctions').once('value', function (auctions) {
-      auctions.forEach(function () {
-        var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(auction) {
-          var auc, artifact;
-          return _regenerator2.default.wrap(function _callee5$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  auc = auction.val();
-
-                  if (!(auc.timestamp <= Date.now())) {
-                    _context5.next = 11;
-                    break;
-                  }
-
-                  if (!auc.bidder) {
-                    _context5.next = 9;
-                    break;
-                  }
-
-                  artifact = { name: auc.name, color: auc.color, quantity: auc.quantity };
-                  _context5.next = 6;
-                  return addArtifactToUser(auc.bidder, auc.name);
-
-                case 6:
-                  _context5.next = 8;
-                  return addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid);
-
-                case 8:
-                  if (auc.owner) {
-                    admin.database().ref('users').child(auc.owner).transaction(function (user) {
-                      if (user) {
-                        user.gold += parseInt(auc.bid);
-                        addMessageToUser(auc.owner, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid);
-                      }
-                      return user;
-                    });
-                  }
-
-                case 9:
-                  _context5.next = 11;
-                  return auction.ref.remove();
-
-                case 11:
-                case 'end':
-                  return _context5.stop();
-              }
+      auctions.forEach(function (auction) {
+        var auc = auction.val();
+        if (auc.timestamp <= Date.now()) {
+          if (auc.bidder) {
+            var artifact = { name: auc.name, color: auc.color, quantity: auc.quantity };
+            addArtifactToUser(auc.bidder, auc.name);
+            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid);
+            if (auc.owner) {
+              admin.database().ref('users').child(auc.owner).transaction(function (user) {
+                if (user) {
+                  user.gold += parseInt(auc.bid);
+                  addMessageToUser(auc.owner, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid);
+                }
+                return user;
+              });
             }
-          }, _callee5, undefined);
-        }));
-
-        return function (_x19) {
-          return _ref5.apply(this, arguments);
-        };
-      }());
+          }
+          auction.ref.remove();
+        }
+      });
     });
     // check hero contracts finished
     admin.database().ref('tavern').once('value', function (contracts) {
-      contracts.forEach(function () {
-        var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(contract) {
-          var con, hero;
-          return _regenerator2.default.wrap(function _callee6$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  con = contract.val();
-
-                  if (!(con.timestamp <= Date.now())) {
-                    _context6.next = 10;
-                    break;
-                  }
-
-                  if (!con.bidder) {
-                    _context6.next = 8;
-                    break;
-                  }
-
-                  hero = { name: con.name, color: con.color, level: con.level };
-                  _context6.next = 6;
-                  return addHeroToUser(con.bidder, con.name);
-
-                case 6:
-                  _context6.next = 8;
-                  return addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, con.bid, null, null, null, null, null, hero);
-
-                case 8:
-                  _context6.next = 10;
-                  return contract.ref.remove();
-
-                case 10:
-                case 'end':
-                  return _context6.stop();
-              }
-            }
-          }, _callee6, undefined);
-        }));
-
-        return function (_x20) {
-          return _ref6.apply(this, arguments);
-        };
-      }());
+      contracts.forEach(function (contract) {
+        var con = contract.val();
+        if (con.timestamp <= Date.now()) {
+          if (con.bidder) {
+            var hero = { name: con.name, color: con.color, level: con.level };
+            addHeroToUser(con.bidder, con.name);
+            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, con.bid, null, null, null, null, null, hero);
+          }
+          contract.ref.remove();
+        }
+      });
     });
     admin.database().ref('users').once('value', function (users) {
       users.forEach(function (user) {

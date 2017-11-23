@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.god(:class="{ 'forbidden': !info && isMine }")
     mu-card-media
-      .card-image
+      .card-image(v-once)
         img.lazy(v-lazy-load="picture('gods', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="pray", v-tooltip="translate('ttp_gold_bid')")

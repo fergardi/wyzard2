@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.place
     mu-card-media
-      .card-image
+      .card-image(v-once)
         img.lazy(v-lazy-load="picture('places', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-info
         .card-text(:class="data.color", v-tooltip="translate('ttp_place_name')") {{ data.name | translate }}

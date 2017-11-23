@@ -4,10 +4,10 @@
     mu-col(width="100", tablet="66", desktop="50")
       mu-card.help.animated.fadeInUp
         mu-card-media
-          .card-image
+          .card-image(v-once)
             img(v-lazy-load="picture('miscellaneous', 'help')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_help')")
-            .card-info
-              .card-text {{ 'lbl_label_help' | translate }}
+          .card-info
+            .card-text {{ 'lbl_label_help' | translate }}
 
         mu-card-text
           .title {{ 'lbl_title_help' | translate }}

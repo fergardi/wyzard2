@@ -148,7 +148,7 @@ router.beforeEach((to, from, next) => {
     }
     */
     if (!store.state.logged) {
-      store.commit('success', 'auth/authentication-required')
+      // store.commit('success', 'auth/authentication-required')
       router.push({ path: '/login' })
       return
     }

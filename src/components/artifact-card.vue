@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.artifact(:class="{ 'forbidden': !info && ((auction && isMine || enable && !canActivate)) }")
     mu-card-media
-      .card-image
+      .card-image(v-once)
         img.lazy(v-lazy-load="picture('artifacts', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="auction", v-tooltip="translate('ttp_gold_bid')")

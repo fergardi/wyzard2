@@ -1,7 +1,7 @@
 <template lang="pug">
   mu-card.spell(:class="{ 'forbidden': !info && ((investigation && !canLearn) || (conjuration && !canCast)) }")
     mu-card-media
-      .card-image
+      .card-image(v-once)
         img.lazy(v-lazy-load="picture('spells', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
       .card-extra
         .card-number(:class="data.color", v-if="breaking", v-tooltip="translate('ttp_spell_duration')")
@@ -132,11 +132,12 @@
       async research () {
         if (this.canResearch) { // user has resources
           let completed = false
+          console.log('cucuc')
           await checkTurnMaintenances(store.state.uid, this.amount)
           await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
               let totalTurns = this.amount
-              totalTurns = Math.floor(totalTurns * (1 + Math.min(0.75, this.user.researchBonus / 100)))
+              totalTurns = Math.ceil(totalTurns * (1 + Math.min(0.75, this.user.researchBonus / 100)))
               research.invested += totalTurns
               if (research.invested >= research.completion) {
                 completed = true

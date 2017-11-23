@@ -4,8 +4,9 @@
     mu-col(width="100", tablet="100", desktop="100")
       mu-card.messages.animated.fadeInUp
         mu-card-media
-          .card-image
+          .card-image(v-once)
             img(v-lazy-load="picture('miscellaneous', 'messages')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_messages')")
+          .card-spinner
             mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .card-extra
             .card-number(v-tooltip="translate('ttp_message_quantity')")
@@ -40,7 +41,7 @@
       mu-dialog(:open="dialog", @close="close")
         mu-card.dialog
           mu-card-media
-            .card-image
+            .card-image(v-once)
               img(v-lazy-load="picture('miscellaneous', 'message')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_message')")
             .card-extra
               .card-text(:class="selected.color", v-tooltip="translate('ttp_message_name')")

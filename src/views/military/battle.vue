@@ -5,7 +5,7 @@
       mu-card.battle.animated.fadeInUp
         form(@submit.stop.prevent="confirm('attack')")
           mu-card-media
-            .card-image
+            .card-image(v-once)
               img(v-lazy-load="picture('miscellaneous', 'battle')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_battle')")
             .card-extra
               .card-number(v-tooltip="translate('ttp_turn_cost')")

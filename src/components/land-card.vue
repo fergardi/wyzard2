@@ -5,7 +5,7 @@
     mu-dialog(:open="dialog")
       mu-card.dialog
         mu-card-media
-          .card-image
+          .card-image(v-once)
             img(v-lazy-load="picture('miscellaneous', 'conquest')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_conquest')")
           .card-info
             .card-text {{ name | translate }}

@@ -5,7 +5,7 @@
       mu-card.settings.animated.fadeInUp
         form(@submit.stop.prevent="confirm('restore')")
           mu-card-media
-            .card-image
+            .card-image(v-once)
               img(v-lazy-load="picture('miscellaneous', 'settings')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_settings')")
             .card-info
               .card-text {{ 'lbl_label_settings' | translate }}

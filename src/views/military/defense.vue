@@ -5,7 +5,7 @@
       mu-card.defense.animated.fadeInUp
         form(@submit.stop.prevent="confirm('save')")
           mu-card-media
-            .card-image
+            .card-image(v-once)
               img(v-lazy-load="picture('miscellaneous', 'defense')", :src="picture('miscellaneous', 'defense')", :alt="translate('lbl_label_defense')")
             .card-info
               .card-text {{ 'lbl_label_defense' | translate }}

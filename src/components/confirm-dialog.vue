@@ -2,8 +2,9 @@
   mu-dialog(:open="dialog", @close="close", @keyup.esc="close", @keyup.enter="accept")
     mu-card.dialog
       mu-card-media
-        .card-image
+        .card-image(v-once)
           img.lazy(v-lazy-load="picture('miscellaneous', 'confirm')", :src="picture('miscellaneous', 'loading')", :alt="translate('lbl_label_confirm')")
+        .card-spinner
           mu-circular-progress(v-if="busy", :size="100", color="#ad835a")
           .progress(v-if="user && busy")
             i.ra.ra-lg.ra-hourglass
