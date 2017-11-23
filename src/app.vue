@@ -25,11 +25,6 @@
         template(v-if="logged")
 
           mu-sub-header {{ 'lbl_title_resources' | translate }}
-          mu-list-item(:title="translate('lbl_resource_turns')", disabled)
-            mu-badge(slot="left", circle, :badgeClass="user.turns < 300 ? 'green' : 'red'")
-              mu-icon(value=':ra ra-hourglass')
-              span(slot="content") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.turns | minimize }}
           mu-list-item(:title="translate('lbl_resource_gold')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.goldPerTurn >= 0 ? 'green' : 'red'")
               mu-icon(value=":ra ra-gold-bar")
@@ -39,22 +34,27 @@
             mu-badge(slot="left", circle, :badgeClass="user.peoplePerTurn >= 0 ? 'green' : 'red'")
               mu-icon(value=":ra ra-double-team")
               span(slot="content") {{ user.peoplePerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.people | minimize }}
+            mu-badge(slot="after") {{ user.people | minimize }} / {{ user.peopleCap | minimize }}
           mu-list-item(:title="translate('lbl_resource_mana')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.manaPerTurn >= 0 ? 'green' : 'red'")
               mu-icon(value=":ra ra-burst-blob")
               span(slot="content") {{ user.manaPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.mana | minimize }}
+            mu-badge(slot="after") {{ user.mana | minimize }} / {{ user.manaCap | minimize }}
           mu-list-item(:title="translate('lbl_resource_terrain')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.terrainPerTurn >= 0 ? 'green' : 'red'")
               mu-icon(value=":ra ra-tower")
               span(slot="content") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.terrain | numeric }} / {{ user.domains | numeric }}
+            mu-badge(slot="after") {{ user.terrain | minimize }} / {{ user.domains | minimize }}
           mu-list-item(:title="translate('lbl_resource_magic')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.magic < 10 ? 'green' : 'red'")
               mu-icon(value=":ra ra-trophy")
               span(slot="content") {{ user.magic < 10 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.magic | numeric }}
+            mu-badge(slot="after") {{ user.magic | numeric }} / {{ 10 | numeric }}
+          mu-list-item(:title="translate('lbl_resource_turns')", disabled)
+            mu-badge(slot="left", circle, :badgeClass="user.turns < 300 ? 'green' : 'red'")
+              mu-icon(value=':ra ra-hourglass')
+              span(slot="content") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
+            mu-badge(slot="after") {{ user.turns | numeric }} / {{ 300 | numeric }}
 
           template(v-if="blessings && blessings.length")
             mu-sub-header {{ 'lbl_title_blessings' | translate }}

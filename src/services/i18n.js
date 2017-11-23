@@ -545,7 +545,7 @@ export default {
     // descriptions
     lbl_meditation_description: 'Generarás más Maná cuantos más Nodos tengas y más Turnos inviertas al meditar.',
     lbl_taxation_description: 'Generarás más Oro cuantas más Granjas tengas y más Turnos inviertas al recaudar.',
-    lbl_exploration_description: 'Generarás más Terrenos cuantos menos tengas y más Turnos inviertas al explorar.',
+    lbl_exploration_description: 'Generarás más Terrenos cuantos menos Terrenos tengas y más Turnos inviertas al explorar.',
     lbl_settings_description: 'Puedes cambiar las preferencias del juego y guardarlas en tu cuenta.',
     // slogans
     lbl_slogan_season: 'Temporada',
