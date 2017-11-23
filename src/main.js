@@ -152,10 +152,8 @@ router.beforeEach((to, from, next) => {
       router.push({ path: '/login' })
       return
     }
-    return next()
-  } else {
-    return next()
   }
+  return next()
 })
 // login
 auth.onAuthStateChanged(status => {

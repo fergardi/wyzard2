@@ -1,5 +1,5 @@
 <template lang="pug">
-  mu-card.artifact(:class="{ 'forbidden': !info && isMine }")
+  mu-card.artifact(:class="{ 'forbidden': !info && ((auction && isMine || enable && !canActivate)) }")
     mu-card-media
       .card-image
         img.lazy(v-lazy-load="picture('artifacts', data.image)", :src="picture('miscellaneous', 'loading')", :alt="translate(data.name)")
@@ -28,22 +28,23 @@
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!hasTurns")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canSell || busy") {{ 'lbl_button_sell' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!canSell || busy") {{ 'lbl_button_sell' | translate }}
 
     template(v-if="enable && tab === 'activate'")
       form(@submit.stop.prevent="confirm('activate')")
-        mu-card-text(v-if="!data.battle && !data.support")
-          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
-            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
+        //
+          mu-card-text(v-if="!data.battle && !data.support")
+            mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
+              mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!hasTurns || !canActivate || busy") {{ 'lbl_button_activate' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!canActivate || busy") {{ 'lbl_button_activate' | translate }}
 
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
           mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="isMine || !hasGold || !hasTurns || !canBid || busy") {{ 'lbl_button_bid' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="isMine || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
     confirm-dialog(v-if="!info", :dialog="dialog", :busy="busy", @close="close", @accept="accept")
 </template>
@@ -244,16 +245,16 @@
         return this.amount <= this.user.gold
       },
       canBid () {
-        return this.amount > this.data.bid
+        return this.amount > this.data.bid && this.hasTurns && this.hasGold && !this.isMine
       },
       hasTurns () {
         return this.turns <= this.user.turns
       },
       canActivate () {
-        return !this.data.battle
+        return !this.data.battle && this.hasTurns
       },
       canSell () {
-        return this.amount > 0
+        return this.amount > 0 && this.hasTurns
       }
     }
   }

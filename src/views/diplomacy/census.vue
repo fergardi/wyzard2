@@ -21,6 +21,7 @@
               mu-th(v-tooltip="translate('ttp_census_name')")
                 i.ra.ra-lg.ra-player
               mu-th.number(v-tooltip="translate('ttp_census_power')")
+                span &#9660;
                 i.ra.ra-lg.ra-fire-symbol
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")

@@ -786,7 +786,7 @@ export default {
     ttp_unit_quantity: 'Cantidad',
     ttp_hero_level: 'Nivel',
     ttp_census_quantity: 'Cantidad',
-    ttp_census_position: 'Posición',
+    ttp_census_domains: 'Dominios',
     ttp_census_name: 'Nombre',
     ttp_census_power: 'Poder',
     ttp_census_attacked: 'Protección',

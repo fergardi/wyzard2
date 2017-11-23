@@ -127,38 +127,38 @@ exports.generosity = functions.https.onRequest((req, res) => {
   if (req.method === 'GET') {
     // check artifact auctions finished
     admin.database().ref('auctions').once('value', auctions => {
-      auctions.forEach(auction => {
+      auctions.forEach(async auction => {
         let auc = auction.val()
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
             let artifact = { name: auc.name, color: auc.color, quantity: auc.quantity }
-            addArtifactToUser(auc.bidder, auc.name)
-            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid)
+            await addArtifactToUser(auc.bidder, auc.name)
+            await addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid)
             if (auc.owner) {
               admin.database().ref('users').child(auc.owner).transaction(user => {
                 if (user) {
                   user.gold += parseInt(auc.bid)
-                  addMessageToUser(user.ref, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid)
+                  addMessageToUser(auc.owner, 'lbl_name_auction', 'dark', 'lbl_message_auction_sold', 'lbl_message_auction_sold_description', null, artifact, auc.bid)
                 }
                 return user
               })
             }
           }
-          auction.ref.remove()
+          await auction.ref.remove()
         }
       })
     })
     // check hero contracts finished
     admin.database().ref('tavern').once('value', contracts => {
-      contracts.forEach(contract => {
+      contracts.forEach(async contract => {
         let con = contract.val()
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
             let hero = { name: con.name, color: con.color, level: con.level }
-            addHeroToUser(con.bidder, con.name)
-            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, auc.bid, null, null, null, null, null, hero)
+            await addHeroToUser(con.bidder, con.name)
+            await addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, con.bid, null, null, null, null, null, hero)
           }
-          contract.ref.remove()
+          await contract.ref.remove()
         }
       })
     })
