@@ -146,7 +146,7 @@ var addArtifactToUser = function addArtifactToUser(uid, name) {
 
 // add hero to user
 var addHeroToUser = function addHeroToUser(uid, name) {
-  var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
+  var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
 
   name = name.includes('lbl_hero_') ? name : 'lbl_hero_' + name;
   return admin.database().ref('heroes').child(name.replace('lbl_hero_', '')).once('value', function () {

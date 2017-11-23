@@ -328,7 +328,7 @@
     "image": "img_unit_djinn",
     "name": "lbl_unit_djinn",
     "description": "lbl_unit_djinn_description",
-    "quantity": 3,
+    "quantity": 50,
     "damage": 50,
     "health": 80,
     "gold": 0,

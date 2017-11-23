@@ -42,6 +42,39 @@ describe('database', () => {
       potency.should.equal(unit.power * 10)
     })
   })
+  it('unit quantity should match exact values', async () => {
+    const quantities = (level) => {
+      switch (level) {
+        case 10:
+          return 1
+        case 9:
+          return 2
+        case 8:
+          return 3
+        case 7:
+          return 5
+        case 6:
+          return 10
+        case 5:
+          return 15
+        case 4:
+          return 25
+        case 3:
+          return 50
+        case 2:
+          return 150
+        case 1:
+          return 500
+        default:
+          return 0
+      }
+    }
+    const items = await database.ref('units').once('value')
+    items.forEach(item => {
+      let unit = item.val()
+      unit.quantity.should.equal(quantities(unit.level))
+    })
+  })
 })
 
 describe('database', () => {
