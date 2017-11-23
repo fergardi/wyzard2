@@ -16,15 +16,15 @@
         mu-table(:showCheckbox="false", :selectable="false")
           mu-thead
             mu-tr
-              mu-th(v-tooltip="translate('ttp_census_position')")
-                i.ra.ra-lg.ra-podium
+              mu-th(v-tooltip="translate('ttp_census_domains')")
+                i.ra.ra-lg.ra-tower
               mu-th(v-tooltip="translate('ttp_census_name')")
                 i.ra.ra-lg.ra-player
               mu-th.number(v-tooltip="translate('ttp_census_power')")
                 i.ra.ra-lg.ra-fire-symbol
           mu-tbody
             mu-tr(v-for="user, index in paginated", :key="index", :selectable="false")
-              mu-td {{ (current - 1) * size + index + 1 | minimize }}
+              mu-td {{ user.domains | minimize }}
               mu-td
                 i.ra.ra-shield(v-if="protected(user.attacked)", v-tooltip="translate('ttp_census_attacked')")
                 mu-chip(:class="user.color") {{ user.name }}

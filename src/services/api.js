@@ -15,6 +15,7 @@ let people = 0
 let mana = 0
 let power = 0
 let terrain = 0
+let domains = 0
 let magicalDefense = 0
 let physicalDefense = 0
 let constructionBonus = 0
@@ -98,6 +99,7 @@ const checkBuildingsProductionMaintenance = (uid) => {
         manaCap += building.quantity * building.manaCap
         armyCap += building.quantity * building.armyCap
         power += building.quantity * building.power
+        domains += building.quantity
         if (building.name === 'lbl_building_terrain') {
           terrain = building.quantity
         } else if (building.name === 'lbl_building_fortress') {
@@ -328,6 +330,7 @@ const checkGeneralStatus = (uid) => {
       user.manaCap = manaCap
       user.armyCap = armyCap
       user.terrain = terrain
+      user.domains = domains
       user.magicalDefense = magicalDefense
       user.physicalDefense = physicalDefense
       user.researchBonus = researchBonus
@@ -413,6 +416,7 @@ export const resetAuxVariables = () => {
   power = 0
   army = 0
   terrain = 0
+  domains = 0
   magicalDefense = 0
   physicalDefense = 0
   constructionBonus = 0
@@ -448,6 +452,7 @@ export const updateGeneralStatus = async (uid) => {
       user.people = Math.min(user.peopleCap, user.people)
       user.mana = Math.min(user.manaCap, user.mana)
       user.terrain = terrain
+      user.domains = domains
       user.magicalDefense = magicalDefense
       user.physicalDefense = physicalDefense
     }

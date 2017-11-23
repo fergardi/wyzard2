@@ -10,6 +10,7 @@
     "navbar" : false
   },
   "terrain" : 0,
+  "domains": 0,
   "turns" : 300,
   "power": 0,
   "army": 0,

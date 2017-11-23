@@ -49,7 +49,7 @@
             mu-badge(slot="left", circle, :badgeClass="user.terrainPerTurn >= 0 ? 'green' : 'red'")
               mu-icon(value=":ra ra-tower")
               span(slot="content") {{ user.terrainPerTurn >= 0 ? '&#9650;' : '&#9660;' }}
-            mu-badge(slot="after") {{ user.terrain | numeric }}
+            mu-badge(slot="after") {{ user.terrain | numeric }} / {{ user.domains | numeric }}
           mu-list-item(:title="translate('lbl_resource_magic')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.magic < 10 ? 'green' : 'red'")
               mu-icon(value=":ra ra-trophy")

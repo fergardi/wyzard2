@@ -131,9 +131,9 @@ exports.generosity = functions.https.onRequest((req, res) => {
         let auc = auction.val()
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
-            let artifact = { name: auc.name, color: auc.color }
+            let artifact = { name: auc.name, color: auc.color, quantity: auc.quantity }
             addArtifactToUser(auc.bidder, auc.name)
-            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact)
+            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid)
             if (auc.owner) {
               admin.database().ref('users').child(auc.owner).transaction(user => {
                 if (user) {
@@ -154,18 +154,22 @@ exports.generosity = functions.https.onRequest((req, res) => {
         let con = contract.val()
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
-            let hero = { name: con.name, color: con.color }
+            let hero = { name: con.name, color: con.color, level: con.level }
             addHeroToUser(con.bidder, con.name)
-            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, null, null, null, null, null, null, hero)
+            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, auc.bid, null, null, null, null, null, hero)
           }
           contract.ref.remove()
         }
       })
     })
-    // check user turns
     admin.database().ref('users').once('value', users => {
       users.forEach(user => {
-        user.ref.child('turns').set(Math.min(MAX_TURNS, parseInt(user.child('turns').val()) + TURNS_ADDITION))
+        user.ref.transaction(player => {
+          if (player) {
+            player.turns = Math.min(MAX_TURNS, player.turns + TURNS_ADDITION)
+          }
+          return player
+        })
       })
     })
     res.status(200).send()

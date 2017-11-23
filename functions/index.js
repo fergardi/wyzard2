@@ -261,9 +261,9 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var auc = auction.val();
         if (auc.timestamp <= Date.now()) {
           if (auc.bidder) {
-            var artifact = { name: auc.name, color: auc.color };
+            var artifact = { name: auc.name, color: auc.color, quantity: auc.quantity };
             addArtifactToUser(auc.bidder, auc.name);
-            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact);
+            addMessageToUser(auc.bidder, 'lbl_name_auction', 'dark', 'lbl_message_auction_win', 'lbl_message_auction_win_description', null, artifact, auc.bid);
             if (auc.owner) {
               admin.database().ref('users').child(auc.owner).transaction(function (user) {
                 if (user) {
@@ -284,18 +284,22 @@ exports.generosity = functions.https.onRequest(function (req, res) {
         var con = contract.val();
         if (con.timestamp <= Date.now()) {
           if (con.bidder) {
-            var hero = { name: con.name, color: con.color };
+            var hero = { name: con.name, color: con.color, level: con.level };
             addHeroToUser(con.bidder, con.name);
-            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, null, null, null, null, null, null, hero);
+            addMessageToUser(con.bidder, 'lbl_name_tavern', 'dark', 'lbl_message_tavern_win', 'lbl_message_tavern_win_description', null, null, auc.bid, null, null, null, null, null, hero);
           }
           contract.ref.remove();
         }
       });
     });
-    // check user turns
     admin.database().ref('users').once('value', function (users) {
       users.forEach(function (user) {
-        user.ref.child('turns').set(Math.min(MAX_TURNS, parseInt(user.child('turns').val()) + TURNS_ADDITION));
+        user.ref.transaction(function (player) {
+          if (player) {
+            player.turns = Math.min(MAX_TURNS, player.turns + TURNS_ADDITION);
+          }
+          return player;
+        });
       });
     });
     res.status(200).send();

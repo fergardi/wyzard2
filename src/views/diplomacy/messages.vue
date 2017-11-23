@@ -291,7 +291,7 @@
         return this.sorted.slice((this.current - 1) * this.size, this.current * this.size)
       },
       attachment () {
-        return this.selected && (this.selected.gold || this.selected.people || this.selected.kills || this.selected.conquered || this.selected.sieged || this.selected.artifact)
+        return this.selected && (this.selected.gold || this.selected.people || this.selected.mana || this.selected.kills || this.selected.conquered || this.selected.sieged || this.selected.artifact || this.selected.hero || this.selected.god)
       },
       busy () {
         return !this.messages || this.messages.length === undefined || this.messages.length === null
