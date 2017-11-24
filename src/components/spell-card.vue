@@ -132,12 +132,11 @@
       async research () {
         if (this.canResearch) { // user has resources
           let completed = false
-          console.log('cucuc')
           await checkTurnMaintenances(store.state.uid, this.amount)
           await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
               let totalTurns = this.amount
-              totalTurns = Math.ceil(totalTurns * (1 + Math.min(0.75, this.user.researchBonus / 100)))
+              totalTurns = Math.ceil(totalTurns * (1 + Math.min(0.75, Math.abs(this.user.researchBonus) / 100)))
               research.invested += totalTurns
               if (research.invested >= research.completion) {
                 completed = true

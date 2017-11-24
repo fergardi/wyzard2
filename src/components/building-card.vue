@@ -194,7 +194,7 @@
         } else if (this.amount > 0) {
           if (this.hasTerrain && this.hasGold && this.hasPeople && this.hasMana) {
             let totalTurns = this.amount * this.data.turns
-            totalTurns = Math.ceil(totalTurns * (1 - Math.min(0.75, this.user.constructionBonus / 100)))
+            totalTurns = Math.ceil(totalTurns * (1 - Math.min(0.75, Math.abs(this.user.constructionBonus) / 100)))
             if (totalTurns <= this.user.turns) {
               await database.ref('users').child(store.state.uid).transaction(user => {
                 if (user) {
