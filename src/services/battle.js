@@ -659,11 +659,7 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 await database.ref('users').child(uid).child('troops').child(wave).remove()
               })
             }
-            // mark defender as attacked with now timestamp only if there has been a battle
-            await database.ref('users').child(target).update({ attacked: Date.now() + 1000 * 60 * 60 * PROTECTION_HOURS })
           }
-          // remove attacker attacked timestamp
-          await database.ref('users').child(uid).update({ attacked: 0 })
           // result
           let conquered = null
           let sieged = null
@@ -705,13 +701,19 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 })
               }
             }
+            // mark defender as attacked with now timestamp only if there has been a battle and he lost it
+            await database.ref('users').child(target).update({ attacked: Date.now() + 1000 * 60 * 60 * PROTECTION_HOURS })
+            // send messages
             await addMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
             await addMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           } else {
             console.log('DEFEAT')
+            // send messages
             await addMessageToUser(attacker.key, def.name, def.color, 'lbl_message_battle_lose', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
             await addMessageToUser(defender.key, atk.name, atk.color, 'lbl_message_battle_win', strategy + '_description', report, artifact, gold, people, kills, conquered, sieged)
           }
+          // remove attacker attacked timestamp
+          await database.ref('users').child(uid).update({ attacked: 0 })
         }
       })
     }

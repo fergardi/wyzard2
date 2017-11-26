@@ -19,7 +19,7 @@
             span +{{ data.quantity / data.physicalDefense | percentage }}
           .card-number(v-if="data.name === 'lbl_building_guild'", v-tooltip="translate('ttp_research_bonus')")
             i.ra.ra-crystal-ball
-            span -{{ data.quantity / data.research | percentage }}
+            span +{{ user.researchBonus | percentage }}
           .card-number(v-if="data.name === 'lbl_building_temple'", v-tooltip="translate('ttp_enchantment_reservation')")
             i.ra.ra-crystals
             span +{{ parseInt(data.quantity / data.enchantmentCap) | minimize }}
@@ -28,7 +28,7 @@
             span {{ user.people | minimize }} / {{ user.peopleCap | minimize }}
           .card-number(v-if="data.name === 'lbl_building_workshop'", v-tooltip="translate('ttp_construction_bonus')")
             i.ra.ra-hourglass
-            span -{{ data.quantity / data.construction | percentage }}
+            span -{{ user.constructionBonus | percentage }}
           .card-number(v-if="data.name === 'lbl_building_farm'", v-tooltip="translate('ttp_gold_reservation')")
             i.ra.ra-gold-bar
             span {{ user.gold | minimize }}
