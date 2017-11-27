@@ -25,6 +25,101 @@ let disbanded = false
 let deserted = false
 let dispeled = false
 
+const resetAuxVariables = () => {
+  goldPerTurn = 0
+  peoplePerTurn = 0
+  manaPerTurn = 0
+  terrainPerTurn = 0
+  peopleCap = 0
+  manaCap = 0
+  armyCap = 0
+  gold = 0
+  people = 0
+  mana = 0
+  power = 0
+  army = 0
+  terrain = 0
+  domains = 0
+  magicalDefense = 0
+  physicalDefense = 0
+  constructionBonus = 0
+  researchBonus = 0
+  enchantmentCap = 0
+  dispeled = false
+  deserted = false
+  disbanded = false
+}
+
+// check turns maintenance
+const checkGeneralStatus = (uid) => {
+  return database.ref('users').child(uid).transaction(user => { // opens transaction
+    if (user && user.turns >= 0) {
+      user.goldPerTurn = Math.floor(goldPerTurn)
+      user.peoplePerTurn = Math.floor(peoplePerTurn)
+      user.manaPerTurn = Math.floor(manaPerTurn)
+      user.terrainPerTurn = terrainPerTurn
+      user.army = army
+      user.power = power
+      user.gold += goldPerTurn
+      user.people += peoplePerTurn
+      user.mana += manaPerTurn
+      user.peopleCap = peopleCap
+      user.manaCap = manaCap
+      user.armyCap = armyCap
+      user.terrain = terrain
+      user.domains = domains
+      user.magicalDefense = Math.abs(magicalDefense)
+      user.physicalDefense = Math.abs(physicalDefense)
+      user.researchBonus = Math.abs(researchBonus)
+      user.constructionBonus = Math.abs(constructionBonus)
+      user.enchantmentCap = enchantmentCap
+      user.turns--
+      gold = user.gold
+      people = user.people
+      mana = user.mana
+      // console.log('Gold this turn... ' + gold)
+      // console.log('People this turn... ' + people)
+      // console.log('Mana this turn... ' + mana)
+    }
+    return user
+  })
+}
+
+// check maintenances
+const checkMaintenances = async (uid) => {
+  resetAuxVariables()
+  await checkTerrainProductionDestruction(uid)
+  await Promise.all([
+    checkBuildingsProductionMaintenance(uid),
+    checkHeroesProductionMaintenance(uid, true),
+    checkEnchantmentsProduction(uid),
+    checkEnchantmentsMaintenance(uid),
+    checkGodsProduction(uid),
+    checkArtifactProduction(uid),
+    checkUnitsMaintenance(uid)
+  ])
+  await checkGeneralStatus(uid)
+  await checkAffordances(uid)
+}
+
+// check maintenances every turn
+export const checkTurnMaintenances = async (uid, turns) => {
+  if (turns && turns > 0) {
+    let iterations = [...Array(turns).keys()]
+    for (let iteration of iterations) { // eslint-disable-line
+      await checkMaintenances(uid)
+    }
+  }
+  return database.ref('users').child(uid).transaction(user => {
+    if (user) {
+      user.gold = Math.max(0, user.gold)
+      user.people = Math.max(0, Math.min(peopleCap, user.people))
+      user.mana = Math.max(0, Math.min(manaCap, user.mana))
+    }
+    return user
+  })
+}
+
 // check terrain production - destruction
 const checkTerrainProductionDestruction = (uid) => {
   return database.ref('enchantments').orderByChild('target').equalTo(uid).once('value', enchantments => {
@@ -103,15 +198,15 @@ const checkBuildingsProductionMaintenance = (uid) => {
         if (building.name === 'lbl_building_terrain') {
           terrain = building.quantity
         } else if (building.name === 'lbl_building_fortress') {
-          physicalDefense = Math.floor(building.quantity / (1 + building.physicalDefense))
+          physicalDefense = Math.floor(building.quantity / (1 + Math.abs(building.physicalDefense)))
         } else if (building.name === 'lbl_building_barrier') {
-          magicalDefense = Math.floor(building.quantity / (1 + building.magicalDefense))
+          magicalDefense = Math.floor(building.quantity / (1 + Math.abs(building.magicalDefense)))
         } else if (building.name === 'lbl_building_workshop') {
-          constructionBonus = Math.floor(building.quantity / (1 + building.construction))
+          constructionBonus = Math.floor(building.quantity / (1 + Math.abs(building.construction)))
         } else if (building.name === 'lbl_building_guild') {
-          researchBonus = Math.floor(building.quantity / (1 + building.research))
+          researchBonus = Math.floor(building.quantity / (1 + Math.abs(building.research)))
         } else if (building.name === 'lbl_building_temple') {
-          enchantmentCap = Math.floor(building.quantity / (1 + building.enchantmentCap))
+          enchantmentCap = Math.floor(building.quantity / (1 + Math.abs(building.enchantmentCap)))
         }
         // console.log(goldPerTurn, peoplePerTurn, manaPerTurn)
       })
@@ -129,10 +224,10 @@ const checkHeroesProductionMaintenance = (uid, experience = false) => {
           goldPerTurn += hero.level * (hero.goldProduction - hero.goldMaintenance)
           peoplePerTurn += hero.level * (hero.peopleProduction - hero.peopleMaintenance)
           manaPerTurn += hero.level * (hero.manaProduction - hero.manaMaintenance)
-          magicalDefense += hero.level * hero.magicalDefense
-          physicalDefense += hero.level * hero.physicalDefense
-          researchBonus += hero.level * hero.research
-          constructionBonus += hero.level * hero.construction
+          magicalDefense += hero.level * Math.abs(hero.magicalDefense)
+          physicalDefense += hero.level * Math.abs(hero.physicalDefense)
+          researchBonus += hero.level * Math.abs(hero.research)
+          constructionBonus += hero.level * Math.abs(hero.construction)
           power += hero.level * hero.power
           if (experience) hero.invested++
           if (hero.invested >= hero.level * hero.experience) {
@@ -161,7 +256,7 @@ const checkEnchantmentsProduction = (uid) => {
         manaPerTurn += spell.magic * spell.manaProduction
         magicalDefense += spell.magic * spell.magicalDefense
         physicalDefense += spell.magic * spell.physicalDefense
-        researchBonus += spell.magic * spell.research
+        researchBonus += spell.magic * Math.abs(spell.research)
         if (spell.source === spell.target === uid) {
           power += spell.magic * spell.power
         }
@@ -274,8 +369,9 @@ const checkEnchantmentsAffordance = (uid) => {
             peoplePerTurn -= spell.magic * (spell.peopleProduction - spell.peopleMaintenance)
             manaPerTurn -= spell.magic * (spell.manaProduction - spell.manaMaintenance)
             terrainPerTurn -= spell.magic * Math.abs(terrainPerTurn)
-            magicalDefense -= spell.magic * spell.magicalDefense
-            physicalDefense -= spell.magic * spell.physicalDefense
+            magicalDefense -= spell.magic * Math.abs(spell.magicalDefense)
+            physicalDefense -= spell.magic * Math.abs(spell.physicalDefense)
+            researchBonus -= spell.magic * Math.abs(spell.research)
             power -= spell.magic * spell.power
           }
           dispeled = true
@@ -300,8 +396,10 @@ const checkHeroesAffordance = (uid) => {
           goldPerTurn -= hero.level * (hero.goldProduction - hero.goldMaintenance)
           peoplePerTurn -= hero.level * (hero.peopleProduction - hero.peopleMaintenance)
           manaPerTurn -= hero.level * (hero.manaProduction - hero.manaMaintenance)
-          magicalDefense -= hero.level * hero.magicalDefense
-          physicalDefense -= hero.level * hero.physicalDefense
+          magicalDefense -= hero.level * Math.abs(hero.magicalDefense)
+          physicalDefense -= hero.level * Math.abs(hero.physicalDefense)
+          researchBonus -= hero.level * Math.abs(hero.research)
+          constructionBonus -= hero.level * Math.abs(hero.construction)
           power -= hero.level * hero.power
           deserted = true
           contract.ref.remove()
@@ -313,79 +411,11 @@ const checkHeroesAffordance = (uid) => {
   })
 }
 
-// check turns maintenance
-const checkGeneralStatus = (uid) => {
-  return database.ref('users').child(uid).transaction(user => { // opens transaction
-    if (user && user.turns >= 0) {
-      user.goldPerTurn = Math.floor(goldPerTurn)
-      user.peoplePerTurn = Math.floor(peoplePerTurn)
-      user.manaPerTurn = Math.floor(manaPerTurn)
-      user.terrainPerTurn = terrainPerTurn
-      user.army = army
-      user.power = power
-      user.gold += goldPerTurn
-      user.people += peoplePerTurn
-      user.mana += manaPerTurn
-      user.peopleCap = peopleCap
-      user.manaCap = manaCap
-      user.armyCap = armyCap
-      user.terrain = terrain
-      user.domains = domains
-      user.magicalDefense = magicalDefense
-      user.physicalDefense = physicalDefense
-      user.researchBonus = researchBonus
-      user.constructionBonus = constructionBonus
-      user.enchantmentCap = enchantmentCap
-      user.turns--
-      gold = user.gold
-      people = user.people
-      mana = user.mana
-      // console.log('Gold this turn... ' + gold)
-      // console.log('People this turn... ' + people)
-      // console.log('Mana this turn... ' + mana)
-    }
-    return user
-  })
-}
-
-// check maintenances
-const checkMaintenances = async (uid) => {
-  resetAuxVariables()
-  await checkTerrainProductionDestruction(uid)
-  await checkBuildingsProductionMaintenance(uid)
-  await checkHeroesProductionMaintenance(uid, true)
-  await checkEnchantmentsProduction(uid)
-  await checkEnchantmentsMaintenance(uid)
-  await checkGodsProduction(uid)
-  await checkArtifactProduction(uid)
-  await checkUnitsMaintenance(uid)
-  await checkGeneralStatus(uid)
-  await checkAffordances(uid)
-}
-
 // check affordances
-export const checkAffordances = async (uid) => {
+const checkAffordances = async (uid) => {
   await checkUnitsAffordance(uid)
   if (!disbanded) await checkEnchantmentsAffordance(uid)
   if (!disbanded && !dispeled) await checkHeroesAffordance(uid)
-}
-
-// check maintenances every turn
-export const checkTurnMaintenances = async (uid, turns) => {
-  if (turns && turns > 0) {
-    let iterations = [...Array(turns).keys()]
-    for (let iteration of iterations) { // eslint-disable-line
-      await checkMaintenances(uid)
-    }
-  }
-  return database.ref('users').child(uid).transaction(user => {
-    if (user) {
-      user.gold = Math.max(0, user.gold)
-      user.people = Math.max(0, Math.min(peopleCap, user.people))
-      user.mana = Math.max(0, Math.min(manaCap, user.mana))
-    }
-    return user
-  })
 }
 
 // check terrain production - maintenance
@@ -402,42 +432,19 @@ const checkTerrainProductionMaintenance = (uid) => {
   })
 }
 
-export const resetAuxVariables = () => {
-  goldPerTurn = 0
-  peoplePerTurn = 0
-  manaPerTurn = 0
-  terrainPerTurn = 0
-  peopleCap = 0
-  manaCap = 0
-  armyCap = 0
-  gold = 0
-  people = 0
-  mana = 0
-  power = 0
-  army = 0
-  terrain = 0
-  domains = 0
-  magicalDefense = 0
-  physicalDefense = 0
-  constructionBonus = 0
-  researchBonus = 0
-  enchantmentCap = 0
-  dispeled = false
-  deserted = false
-  disbanded = false
-}
-
 // check general status
 export const updateGeneralStatus = async (uid) => {
   resetAuxVariables()
   await checkTerrainProductionMaintenance(uid)
-  await checkBuildingsProductionMaintenance(uid)
-  await checkHeroesProductionMaintenance(uid)
-  await checkEnchantmentsProduction(uid)
-  await checkEnchantmentsMaintenance(uid)
-  await checkGodsProduction(uid)
-  await checkArtifactProduction(uid)
-  await checkUnitsMaintenance(uid)
+  await Promise.all([
+    checkBuildingsProductionMaintenance(uid),
+    checkHeroesProductionMaintenance(uid),
+    checkEnchantmentsProduction(uid),
+    checkEnchantmentsMaintenance(uid),
+    checkGodsProduction(uid),
+    checkArtifactProduction(uid),
+    checkUnitsMaintenance(uid)
+  ])
   return database.ref('users').child(uid).transaction(user => {
     if (user) {
       user.goldPerTurn = Math.floor(goldPerTurn)
@@ -453,8 +460,10 @@ export const updateGeneralStatus = async (uid) => {
       user.mana = Math.min(user.manaCap, user.mana)
       user.terrain = terrain
       user.domains = domains
-      user.magicalDefense = magicalDefense
-      user.physicalDefense = physicalDefense
+      user.magicalDefense = Math.abs(magicalDefense)
+      user.physicalDefense = Math.abs(physicalDefense)
+      user.researchBonus = Math.abs(researchBonus)
+      user.constructionBonus = Math.abs(constructionBonus)
     }
     return user
   })

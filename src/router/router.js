@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../vuex/store'
 
 // economy
 import kingdom from '@/views/economy/kingdom'
@@ -41,7 +42,7 @@ import gods from '@/views/knowledge/gods'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     { path: '/', name: 'index', component: messages },
@@ -79,3 +80,43 @@ export default new Router({
     { path: '*', redirect: '/' }
   ]
 })
+
+// security zone
+let open = [
+  'login',
+  'help',
+  'gods',
+  'artifacts',
+  'settings',
+  'buildings',
+  'factions',
+  'heroes',
+  'places',
+  'spells',
+  'units'
+]
+
+const opened = (route) => {
+  return open.includes(route)
+}
+
+// redirect to home if not logged in
+router.beforeEach((to, from, next) => {
+  if (!opened(to.name)) {
+    /*
+    if (auth.currentUser && !auth.currentUser.isEmailVerified) {
+      store.commit('info', 'auth/verification-required')
+      router.push({ path: '/login' })
+      return
+    }
+    */
+    if (!store.state.logged) {
+      // store.commit('success', 'auth/authentication-required')
+      router.push({ path: '/login' })
+      return
+    }
+  }
+  return next()
+})
+
+export default router

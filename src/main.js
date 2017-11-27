@@ -120,41 +120,6 @@ Vue.filter('translate', (label) => {
 Vue.filter('nl2br', (string) => {
   return nl2br(string)
 })
-// security zone
-let open = [
-  'login',
-  'help',
-  'gods',
-  'artifacts',
-  'settings',
-  'buildings',
-  'factions',
-  'heroes',
-  'places',
-  'spells',
-  'units'
-]
-const opened = (route) => {
-  return open.includes(route)
-}
-// redirect to home if not logged in
-router.beforeEach((to, from, next) => {
-  if (!opened(to.name)) {
-    /*
-    if (auth.currentUser && !auth.currentUser.isEmailVerified) {
-      store.commit('info', 'auth/verification-required')
-      router.push({ path: '/login' })
-      return
-    }
-    */
-    if (!store.state.logged) {
-      // store.commit('success', 'auth/authentication-required')
-      router.push({ path: '/login' })
-      return
-    }
-  }
-  return next()
-})
 // login
 auth.onAuthStateChanged(status => {
   if (auth.currentUser !== null) {
