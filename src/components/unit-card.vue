@@ -45,7 +45,7 @@
     template(v-if="troop")
       form(@submit.stop.prevent="confirm('disband')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", :max="data.quantity", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
+          mu-text-field(type="number", name="troop_quantity", v-validate="'required|numeric'", :errorText="errors.has('troop_quantity') ? translate('error_numeric') : ''", v-model.number="amount", min="1", :max="data.quantity", :label="translate('lbl_label_quantity')", :fullWidth="true", required)
         mu-card-actions
           mu-raised-button(primary, @click="confirm('disband')", :disabled="!canDisband || busy") {{ 'lbl_button_disband' | translate }}
 

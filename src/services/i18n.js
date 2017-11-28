@@ -860,7 +860,9 @@ export default {
     'auth/email-already-exists': 'Ese email ya existe',
     'auth/email-already-in-use': 'Ese email ya existe',
     'auth/password-insecure': 'Contraseña insegura',
-    'auth/password-mismatch': 'Contraseñas inconcordantes'
+    'auth/password-mismatch': 'Contraseñas inconexas',
+    // validation
+    error_numeric: 'Debe ser un número entero positivo'
   },
   en: {
   },
