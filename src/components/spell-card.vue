@@ -59,7 +59,7 @@
     template(v-if="investigation")
       form(@submit.stop.prevent="confirm('research')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true", :disabled="!canLearn || busy")
+          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", min="1", required, :label="translate('lbl_resource_turns')", :fullWidth="true", :disabled="!canLearn || busy")
         mu-card-actions
           mu-raised-button(primary, @click="confirm('research')", :disabled="!canResearch || !canLearn || busy") {{ 'lbl_button_research' | translate }}
 

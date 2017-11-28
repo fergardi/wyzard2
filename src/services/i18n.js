@@ -862,7 +862,10 @@ export default {
     'auth/password-insecure': 'Contraseña insegura',
     'auth/password-mismatch': 'Contraseñas inconexas',
     // validation
-    error_numeric: 'Debe ser un número entero positivo'
+    error_numeric: 'Debe ser un número entero',
+    error_numeric_positive: 'Debe ser un número entero positivo',
+    error_numeric_negative: 'Debe ser un número entero negativo',
+    error_string: 'Debe ser una cadena de texto no vacía'
   },
   en: {
   },

@@ -26,23 +26,19 @@
     template(v-if="enable && tab === 'sell'")
       form(@submit.stop.prevent="confirm('sell')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!hasTurns")
+          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", min="1", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="!hasTurns")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="!canSell || busy") {{ 'lbl_button_sell' | translate }}
 
     template(v-if="enable && tab === 'activate'")
       form(@submit.stop.prevent="confirm('activate')")
-        //
-          mu-card-text(v-if="!data.battle && !data.support")
-            mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
-              mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="!canActivate || busy") {{ 'lbl_button_activate' | translate }}
 
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
+          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
