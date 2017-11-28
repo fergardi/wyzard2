@@ -562,6 +562,7 @@ export default {
     lbl_name_tavern: 'Taberna',
     lbl_name_devotion: 'Devoción',
     lbl_name_spy: 'Espía',
+    lbl_name_enchantment: 'Encantamiento',
     // tabs
     lbl_tab_sell: 'Vender',
     lbl_tab_activate: 'Activar',
@@ -673,6 +674,8 @@ export default {
     lbl_message_tavern_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Héroe que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original menos el 10% del importe total en concepto de impuestos.',
     lbl_message_devotion_outbid: 'Sobrepuja',
     lbl_message_devotion_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Dios que tú y te ha superado en ofrenda. Por consiguiente, se ha eliminado su Bendición sobre tu reino, aunque no recuperarás tu ofrenda original.',
+    lbl_message_enchantment_dispel: 'Disipado',
+    lbl_message_enchantment_dispel_description: 'Otro jugador ha logrado romper un Encantamiento de tu propiedad que pesaba sobre su Reino.',
     // toasts
     lbl_toast_army_error: 'No puedes almacenar más tropas',
     lbl_toast_firing_ok: 'Despido completado',
@@ -801,6 +804,7 @@ export default {
     ttp_message_god: 'Dios',
     ttp_message_sieged: 'Destruido',
     ttp_message_artifact: 'Artefacto',
+    ttp_message_spell: 'Hechizo',
     ttp_kingdom_name: 'Nombre',
     ttp_kingdom_quantity: 'Cantidad',
     ttp_kingdom_gold: 'Oro',

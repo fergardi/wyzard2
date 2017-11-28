@@ -237,6 +237,10 @@
                 mu-chip(:class="selected.god.color")
                   i.ra.ra-bleeding-eye
                   span {{ selected.god.name | translate }}
+              .attachment(v-if="selected.spell", v-tooltip="translate('ttp_message_spell')")
+                mu-chip(:class="selected.spell.color")
+                  i.ra.ra-fire-ring
+                  span {{ selected.spell.name | translate }}
 
           mu-card-actions
             mu-raised-button(primary, @click="remove") {{ 'lbl_button_remove' | translate }}

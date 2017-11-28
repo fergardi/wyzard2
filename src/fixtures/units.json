@@ -19,7 +19,7 @@
     "peopleMaintenance": 10,
     "manaMaintenance": 30,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_range",
+    "type": "lbl_type_fly",
     "power": 50
   },
   "angel" : {
@@ -88,7 +88,7 @@
     "peopleMaintenance": 40,
     "manaMaintenance": 10,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_range",
     "power": 80
   },
   "behemoth" : {
@@ -203,7 +203,7 @@
     "peopleMaintenance": 20,
     "manaMaintenance": 20,
     "family": "lbl_family_demon",
-    "type": "lbl_type_fly",
+    "type": "lbl_type_range",
     "power": 80
   },
   "griffon" : {
@@ -410,7 +410,7 @@
     "peopleMaintenance": 110,
     "manaMaintenance": 10,
     "family": "lbl_family_demon",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_fly",
     "power": 170
   },
   "elf" : {
@@ -617,7 +617,7 @@
     "peopleMaintenance": 15,
     "manaMaintenance": 15,
     "family": "lbl_family_elemental",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_range",
     "power": 50
   },
   "mage" : {
@@ -732,7 +732,7 @@
     "peopleMaintenance": 2,
     "manaMaintenance": 1,
     "family": "lbl_family_human",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_range",
     "power": 4
   },
   "paladin" : {
@@ -985,7 +985,7 @@
     "peopleMaintenance": 0,
     "manaMaintenance": 0,
     "family": "lbl_family_beast",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_range",
     "power": 4
   },
   "vampire" : {
@@ -1008,7 +1008,7 @@
     "peopleMaintenance": 80,
     "manaMaintenance": 30,
     "family": "lbl_family_undead",
-    "type": "lbl_type_melee",
+    "type": "lbl_type_fly",
     "power": 170
   },
   "water_elemental" : {

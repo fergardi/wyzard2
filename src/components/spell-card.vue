@@ -82,7 +82,7 @@
 <script>
   import { database } from '@/services/firebase'
   import store from '@/vuex/store'
-  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUserByFamily, addEnchantmentToUser, addRandomSpellToUser, addRandomArtifactToUser } from '@/services/api'
+  import { checkTurnMaintenances, updateGeneralStatus, addTroopToUser, addRandomTroopToUserByFamily, addEnchantmentToUser, addMessageToUser, addRandomSpellToUser, addRandomArtifactToUser } from '@/services/api'
   import confirm from '@/components/confirm-dialog'
 
   export default {
@@ -215,14 +215,17 @@
         if (this.canBreak) { // user has resources
           if (this.data.source === store.state.uid) {
             await database.ref('enchantments').child(this.data['.key']).remove()
-            await updateGeneralStatus(this.data.target)
+            await updateGeneralStatus(store.state.uid)
             store.commit('success', 'lbl_toast_dispel_ok')
             this.close()
           } else {
             await checkTurnMaintenances(store.state.uid, this.data.turns)
             if (Math.random() >= 0.5) { // TODO
+              let spell = { name: this.data.name, color: this.data.color }
               await database.ref('enchantments').child(this.data['.key']).remove()
+              await addMessageToUser(this.data.source, 'lbl_name_enchantment', 'dark', 'lbl_message_enchantment_dispel', 'lbl_message_enchantment_dispel_description', null, null, null, null, null, null, null, null, null, null, spell)
               await updateGeneralStatus(this.data.source)
+              await updateGeneralStatus(store.state.uid)
               store.commit('success', 'lbl_toast_dispel_ok')
               this.close()
             } else {

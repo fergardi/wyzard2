@@ -94,7 +94,14 @@
           await database.ref('users').child(store.state.uid).child('troops').child(this.data['.key']).transaction(unit => {
             if (unit) {
               unit.quantity = Math.max(0, unit.quantity - this.amount)
-              if (unit.quantity <= 0) return null
+              if (unit.quantity <= 0) {
+                database.ref('users').child(store.state.uid).child('defense').child('first').remove()
+                database.ref('users').child(store.state.uid).child('defense').child('second').remove()
+                database.ref('users').child(store.state.uid).child('defense').child('third').remove()
+                database.ref('users').child(store.state.uid).child('defense').child('fourth').remove()
+                database.ref('users').child(store.state.uid).child('defense').child('fifth').remove()
+                return null
+              }
             }
             return unit
           })
