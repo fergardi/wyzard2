@@ -38,7 +38,7 @@
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")
         mu-card-text
-          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
+          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", :min="data.bid * 1.1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine || !hasTurns || busy")
         mu-card-actions
           mu-raised-button(primary, type="primary", :disabled="isMine || !canBid || busy") {{ 'lbl_button_bid' | translate }}
 
@@ -241,7 +241,7 @@
         return this.amount <= this.user.gold
       },
       canBid () {
-        return this.amount > this.data.bid && this.hasTurns && this.hasGold && !this.isMine
+        return this.amount > this.data.bid * 1.1 && this.hasTurns && this.hasGold && !this.isMine
       },
       hasTurns () {
         return this.turns <= this.user.turns
