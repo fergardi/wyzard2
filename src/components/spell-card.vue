@@ -65,9 +65,6 @@
 
     template(v-if="conjuration")
       form(@submit.stop.prevent="confirm('conjure')")
-        //mu-card-text(v-if="!data.support && !data.battle")
-          mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
-            mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
           mu-raised-button(primary, @click="confirm('conjure')", :disabled="!canCast || busy") {{ data.battle ? 'lbl_button_battle' : 'lbl_button_cast' | translate }}
 

@@ -676,6 +676,8 @@ export default {
     lbl_message_tavern_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Héroe que tú y te ha sobrepujado. Por consiguiente, se te ha devuelto el Oro de tu puja original menos el 10% del importe total en concepto de impuestos.',
     lbl_message_devotion_outbid: 'Sobrepuja',
     lbl_message_devotion_outbid_description: 'Otra persona se ha mostrado interesada en el mismo Dios que tú y te ha superado en ofrenda. Por consiguiente, se ha eliminado su Bendición sobre tu reino, aunque no recuperarás tu ofrenda original.',
+    lbl_message_enchantment_bind: 'Encantado',
+    lbl_message_enchantment_bind_description: 'Otro jugador ha logrado conjurar un Encantamiento sobre tu su Reino, y permanecerá activo hasta que se disipe o se desencante.',
     lbl_message_enchantment_dispel: 'Disipado',
     lbl_message_enchantment_dispel_description: 'Otro jugador ha logrado romper un Encantamiento de tu propiedad que pesaba sobre su Reino.',
     // toasts

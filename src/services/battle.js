@@ -338,6 +338,8 @@ export const battlePlayerVersusPlayer = async (uid, target, strategy, army, spel
                 // console.log('ATTACKER SPELL: ' + attackerSpell.name)
                 if (attackerSpell.enchantment && !attackerSpell.support) {
                   await addEnchantmentToUser(target, attackerSpell.name, uid, atk.magic)
+                  let spell = { name: attackerSpell.name, color: attackerSpell.color }
+                  await addMessageToUser(target, 'lbl_name_enchantment', 'dark', 'lbl_message_enchantment_bind', 'lbl_message_enchantment_bind_description', null, null, null, null, null, null, null, null, null, null, spell)
                 } else if (attackerSpell.spionage > 0) {
                   let spyChance = Math.random() * 100
                   if (spyChance <= attackerSpell.spionage * atk.magic) {
