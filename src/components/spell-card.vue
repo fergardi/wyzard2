@@ -69,7 +69,7 @@
           mu-select-field(v-model="selected", :label="translate('lbl_label_target')", :fullWidth="true", required)
             mu-menu-item(v-for="user, index in users", :key="index", :value="user['.key']", :title="user.name", :hintText="translate('lbl_label_target')", v-if="!myself(user['.key'])")
         mu-card-actions
-          mu-raised-button(primary, @click="confirm('conjure')", :disabled="!canCast || busy") {{ 'lbl_button_cast' | translate }}
+          mu-raised-button(primary, @click="confirm('conjure')", :disabled="!canCast || busy") {{ data.battle ? 'lbl_button_battle' : 'lbl_button_cast' | translate }}
 
     template(v-if="breaking")
       form(@submit.stop.prevent="confirm('disenchant')")
@@ -136,7 +136,7 @@
           await database.ref('users').child(store.state.uid).child('researches').child(this.data['.key']).transaction(research => {
             if (research) {
               let totalTurns = this.amount
-              totalTurns = Math.ceil(totalTurns * (1 + Math.min(0.75, Math.abs(this.user.researchBonus) / 100)))
+              totalTurns = Math.floor(totalTurns * (1 + Math.min(0.75, Math.abs(this.user.researchBonus) / 100)))
               research.invested += totalTurns
               if (research.invested >= research.completion) {
                 completed = true

@@ -47,7 +47,7 @@
             mu-badge(slot="after") {{ user.terrain | minimize }} / {{ user.domains | minimize }}
           mu-list-item(:title="translate('lbl_resource_magic')", disabled)
             mu-badge(slot="left", circle, :badgeClass="user.magic < 10 ? 'green' : 'red'")
-              mu-icon(value=":ra ra-trophy")
+              mu-icon(value=":ra ra-crystal-wand")
               span(slot="content") {{ user.magic < 10 ? '&#9650;' : '&#9660;' }}
             mu-badge(slot="after") {{ user.magic | numeric }} / {{ 10 | numeric }}
           mu-list-item(:title="translate('lbl_resource_turns')", disabled)
@@ -55,6 +55,14 @@
               mu-icon(value=':ra ra-hourglass')
               span(slot="content") {{ user.turns < 300 ? '&#9650;' : '&#9660;' }}
             mu-badge(slot="after") {{ user.turns | numeric }} / {{ 300 | numeric }}
+
+          mu-sub-header {{ 'lbl_title_bonuses' | translate }}
+          mu-list-item(:title="translate('lbl_title_infrastructure')", disabled)
+            mu-icon(slot="left", value=":ra ra-anvil")
+            mu-badge(slot="after") {{ user.constructionBonus | percentage }}
+          mu-list-item(:title="translate('lbl_title_research')", disabled)
+            mu-icon(slot="left", value=":ra ra-anvil")
+            mu-badge(slot="after") {{ user.researchBonus | percentage }}
 
           template(v-if="blessings && blessings.length")
             mu-sub-header {{ 'lbl_title_blessings' | translate }}
@@ -80,50 +88,50 @@
           mu-sub-header {{ 'lbl_title_economy' | translate }}
           mu-list-item(:title="translate('lbl_title_kingdom')", to="kingdom", @click="toggle")
             mu-icon(slot="left", value=":ra ra-queen-crown")
-          //mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
-            mu-icon.red(slot="left", value=":ra ra-wooden-sign")
-          mu-list-item(:title="translate('lbl_title_taxes')", to="taxes", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-mining-diamonds")
-          mu-list-item(:title="translate('lbl_title_exploration')", to="exploration", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-compass")
           mu-list-item(:title="translate('lbl_title_infrastructure')", to="infrastructure", @click="toggle")
             mu-icon(slot="left", value=":ra ra-castle-flag")
+          mu-list-item(:title="translate('lbl_title_exploration')", to="exploration", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-compass")
+          mu-list-item(:title="translate('lbl_title_taxes')", to="taxes", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-mining-diamonds")
+          //mu-list-item(:title="translate('lbl_title_world')", to="world", @click="toggle")
+            mu-icon.red(slot="left", value=":ra ra-wooden-sign")
 
           mu-sub-header {{ 'lbl_title_magic' | translate }}
-          mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-burst-blob")
           mu-list-item(:title="translate('lbl_title_research')", to="research", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-crystal-ball")
+            mu-icon(slot="left", value=":ra ra-acid")
           mu-list-item(:title="translate('lbl_title_sorcery')", to="sorcery", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-crystal-wand")
-          mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-mirror")
+            mu-icon(slot="left", value=":ra ra-crystal-ball")
           mu-list-item(:title="translate('lbl_title_relics')", to="relics", @click="toggle")
             mu-icon(slot="left", value=":ra ra-crystals")
+          mu-list-item(:title="translate('lbl_title_meditate')", to="meditate", @click="toggle")
+            mu-icon(slot="left", value=":ra  ra-sun")
+          mu-list-item(:title="translate('lbl_title_dispel')", to="dispel", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-mirror")
 
           mu-sub-header {{ 'lbl_title_military' | translate }}
-          mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-crossed-axes")
           mu-list-item(:title="translate('lbl_title_battle')", to="battle", @click="toggle")
             mu-icon(slot="left", value=":ra ra-dripping-blade")
+          mu-list-item(:title="translate('lbl_title_troops')", to="troops", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-crossed-axes")
           mu-list-item(:title="translate('lbl_title_contracts')", to="contracts", @click="toggle")
             mu-icon(slot="left", value=":ra ra-hood")
-          //mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-torch")
           mu-list-item(:title="translate('lbl_title_defense')", to="defense", @click="toggle")
             mu-icon(slot="left", value=":ra ra-eye-shield")
+          //mu-list-item(:title="translate('lbl_title_quests')", to="quests", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-torch")
 
           mu-sub-header {{ 'lbl_title_diplomacy' | translate }}
+          mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")
+            mu-icon(slot="left", value=":ra ra-ankh")
           mu-list-item(:title="translate('lbl_title_auction')", to="auction", @click="toggle")
             mu-icon(slot="left", value=":ra ra-large-hammer")
           mu-list-item(:title="translate('lbl_title_tavern')", to="tavern", @click="toggle")
             mu-icon(slot="left", value=":ra ra-beer")
-          mu-list-item(:title="translate('lbl_title_devotion')", to="devotion", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-ankh")
           mu-list-item(:title="translate('lbl_title_messages')", to="messages", @click="toggle")
             mu-icon(slot="left", value=":ra ra-quill-ink")
           mu-list-item(:title="translate('lbl_title_census')", to="census", @click="toggle")
-            mu-icon(slot="left", value=":ra ra-podium")
+            mu-icon(slot="left", value=":ra ra-trophy")
         
         mu-sub-header {{ 'lbl_title_account' | translate }}
         mu-list-item(:title="translate('lbl_title_settings')", to="settings", @click="toggle")

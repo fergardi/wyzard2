@@ -33,7 +33,7 @@
     template(v-if="enable && tab === 'activate'")
       form(@submit.stop.prevent="confirm('activate')")
         mu-card-actions
-          mu-raised-button(primary, type="primary", :disabled="!canActivate || busy") {{ 'lbl_button_activate' | translate }}
+          mu-raised-button(primary, type="primary", :disabled="!canActivate || busy") {{ data.battle ? 'lbl_button_battle' : 'lbl_button_activate' | translate }}
 
     template(v-if="auction")
       form(@submit.stop.prevent="confirm('bid')")

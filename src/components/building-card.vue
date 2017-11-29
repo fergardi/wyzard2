@@ -18,7 +18,7 @@
             i.ra.ra-eye-shield
             span +{{ data.quantity / data.physicalDefense | percentage }}
           .card-number(v-if="data.name === 'lbl_building_guild'", v-tooltip="translate('ttp_research_bonus')")
-            i.ra.ra-crystal-ball
+            i.ra.ra-acid
             span +{{ user.researchBonus | percentage }}
           .card-number(v-if="data.name === 'lbl_building_temple'", v-tooltip="translate('ttp_enchantment_reservation')")
             i.ra.ra-crystals

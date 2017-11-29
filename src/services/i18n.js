@@ -454,6 +454,7 @@ export default {
     lbl_building_temple_description: 'Incrementan la capacidad de almacenamiento de Encantamientos de tu reino.',
     // titles
     lbl_title_wyzard: 'Wyzard',
+    lbl_title_bonuses: 'Bonuses',
     lbl_title_contracts: 'Contratos',
     lbl_title_blessings: 'Bendiciones',
     lbl_title_relics: 'Reliquias',
@@ -582,6 +583,7 @@ export default {
     lbl_button_demolish_construct: 'Demoler / Construir',
     lbl_button_research: 'Investigar',
     lbl_button_cast: 'Conjurar',
+    lbl_button_battle: 'Batalla',
     lbl_button_bid: 'Pujar',
     lbl_button_offer: 'Ofrecer',
     lbl_button_close: 'Cerrar',
