@@ -18,7 +18,7 @@
     template(v-if="pray")
       form(@submit.stop.prevent="confirm('offer')")
         mu-card-text
-          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", :min="data.bid + 1", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine")
+          mu-text-field(type="number", name="amount", v-validate="'required|numeric'", :errorText="errors.has('amount') ? translate('error_numeric') : ''", v-model.number="amount", :min="Math.floor(data.bid * 1.1)", :max="user.gold", required, :label="translate('lbl_resource_gold')", :fullWidth="true", :disabled="isMine")
         mu-card-actions
           mu-raised-button(primary, @click="confirm('offer')", :disabled="!canOffer || busy") {{ 'lbl_button_offer' | translate }}
 
@@ -115,7 +115,7 @@
         return this.turns <= this.user.turns
       },
       canOffer () {
-        return this.amount > this.data.bid && !this.isMine
+        return this.amount >= Math.floor(this.data.bid * 1.1) && !this.isMine
       },
       isMine () {
         return store.state.uid === this.data.blessed
