@@ -245,7 +245,7 @@
             if (building) {
               let terrain = building.val()
               for (let i = 0; i < this.amount; i++) {
-                terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - terrain.quantity) / 100))
+                terrain.quantity += Math.max(0, Math.floor((terrain.terrainCap - (this.user.domains - this.user.terrain + terrain.quantity)) / 100))
               }
               building.ref.update({ quantity: terrain.quantity })
               database.ref('users').child(store.state.uid).update({ terrain: terrain.quantity })

@@ -3,7 +3,7 @@ const admin = require('firebase-admin')
 
 admin.initializeApp(functions.config().firebase)
 
-const TURNS_ADDITION = 1
+const TURNS_ADDITION = 5
 const MAX_TURNS = 300
 
 /*
@@ -89,6 +89,7 @@ exports.avarice = functions.https.onRequest((req, res) => {
         artifacts.forEach(artifact => {
           let auction = Object.assign({}, artifact.val()) // {...artifact.val()}
           auction.quantity = 1
+          auction.bid = 1000000
           auction.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
           delete auction['.key']
           auctions.push(auction)
@@ -105,6 +106,7 @@ exports.avarice = functions.https.onRequest((req, res) => {
         heroes.forEach(hero => {
           let contract = Object.assign({}, hero.val()) // {...hero.val()}
           contract.level = Math.floor(Math.random() * 5) + 1
+          contract.bid = 1000000 * contract.level
           contract.timestamp = Date.now() + 1000 * 60 * 60 * Math.floor(Math.random() * (12 - 6 + 1) + 6)
           delete contract['.key']
           contracts.push(contract)
