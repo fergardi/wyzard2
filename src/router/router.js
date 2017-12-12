@@ -2,81 +2,43 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../vuex/store'
 
-// economy
-import kingdom from '@/views/economy/kingdom'
-import taxes from '@/views/economy/taxes'
-import infrastructure from '@/views/economy/infrastructure'
-import exploration from '@/views/economy/exploration'
-// import world from '@/views/world'
-// magic
-import dispel from '@/views/magic/dispel'
-import meditate from '@/views/magic/meditate'
-import relics from '@/views/magic/relics'
-import research from '@/views/magic/research'
-import sorcery from '@/views/magic/sorcery'
-// military
-import troops from '@/views/military/troops'
-import contracts from '@/views/military/contracts'
-import battle from '@/views/military/battle'
-import defense from '@/views/military/defense'
-// import quests from '@/views/quests'
-// diplomacy
-import devotion from '@/views/diplomacy/devotion'
-import census from '@/views/diplomacy/census'
-import tavern from '@/views/diplomacy/tavern'
-import messages from '@/views/diplomacy/messages'
-import auction from '@/views/diplomacy/auction'
-// account
-import login from '@/views/account/login'
-import settings from '@/views/account/settings'
-// knowledge
-import help from '@/views/knowledge/help'
-import factions from '@/views/knowledge/factions'
-import spells from '@/views/knowledge/spells'
-import units from '@/views/knowledge/units'
-import artifacts from '@/views/knowledge/artifacts'
-import buildings from '@/views/knowledge/buildings'
-import heroes from '@/views/knowledge/heroes'
-import gods from '@/views/knowledge/gods'
-// import places from '@/views/knowledge/places'
-
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   routes: [
-    { path: '/', name: 'index', component: messages },
-    { path: '/login', name: 'login', component: login },
-    { path: '/spells', name: 'spells', component: spells },
-    { path: '/units', name: 'units', component: units },
-    { path: '/artifacts', name: 'artifacts', component: artifacts },
-    { path: '/buildings', name: 'buildings', component: buildings },
-    { path: '/heroes', name: 'heroes', component: heroes },
-    { path: '/gods', name: 'gods', component: gods },
-    { path: '/factions', name: 'factions', component: factions },
-    { path: '/infrastructure', name: 'infrastructure', component: infrastructure },
-    { path: '/research', name: 'research', component: research },
-    { path: '/census', name: 'census', component: census },
-    { path: '/sorcery', name: 'sorcery', component: sorcery },
-    { path: '/tavern', name: 'tavern', component: tavern },
-    { path: '/devotion', name: 'devotion', component: devotion },
-    { path: '/kingdom', name: 'kingdom', component: kingdom },
-    { path: '/settings', name: 'settings', component: settings },
-    { path: '/messages', name: 'messages', component: messages },
-    { path: '/meditate', name: 'meditate', component: meditate },
-    { path: '/exploration', name: 'exploration', component: exploration },
-    { path: '/auction', name: 'auction', component: auction },
-    { path: '/contracts', name: 'contracts', component: contracts },
-    { path: '/taxes', name: 'taxes', component: taxes },
-    { path: '/dispel', name: 'dispel', component: dispel },
-    { path: '/troops', name: 'troops', component: troops },
-    { path: '/battle', name: 'battle', component: battle },
-    { path: '/defense', name: 'defense', component: defense },
-    { path: '/help', name: 'help', component: help },
-    { path: '/relics', name: 'relics', component: relics },
-    // { path: '/quests', name: 'quests', component: quests },
-    // { path: '/world', name: 'world', component: world },
-    // { path: '/places', name: 'places', component: places }
+    { path: '/', name: 'index', component: () => import('@/views/diplomacy/messages') },
+    { path: '/login', name: 'login', component: () => import('@/views/account/login') },
+    { path: '/spells', name: 'spells', component: () => import('@/views/knowledge/spells') },
+    { path: '/units', name: 'units', component: () => import('@/views/knowledge/units') },
+    { path: '/artifacts', name: 'artifacts', component: () => import('@/views/knowledge/artifacts') },
+    { path: '/buildings', name: 'buildings', component: () => import('@/views/knowledge/buildings') },
+    { path: '/heroes', name: 'heroes', component: () => import('@/views/knowledge/heroes') },
+    { path: '/gods', name: 'gods', component: () => import('@/views/knowledge/gods') },
+    { path: '/factions', name: 'factions', component: () => import('@/views/knowledge/factions') },
+    { path: '/infrastructure', name: 'infrastructure', component: () => import('@/views/economy/infrastructure') },
+    { path: '/research', name: 'research', component: () => import('@/views/magic/research') },
+    { path: '/census', name: 'census', component: () => import('@/views/diplomacy/census') },
+    { path: '/sorcery', name: 'sorcery', component: () => import('@/views/magic/sorcery') },
+    { path: '/tavern', name: 'tavern', component: () => import('@/views/diplomacy/tavern') },
+    { path: '/devotion', name: 'devotion', component: () => import('@/views/diplomacy/devotion') },
+    { path: '/kingdom', name: 'kingdom', component: () => import('@/views/economy/kingdom') },
+    { path: '/settings', name: 'settings', component: () => import('@/views/account/settings') },
+    { path: '/messages', name: 'messages', component: () => import('@/views/diplomacy/messages') },
+    { path: '/meditate', name: 'meditate', component: () => import('@/views/magic/meditate') },
+    { path: '/exploration', name: 'exploration', component: () => import('@/views/economy/exploration') },
+    { path: '/auction', name: 'auction', component: () => import('@/views/diplomacy/auction') },
+    { path: '/contracts', name: 'contracts', component: () => import('@/views/military/contracts') },
+    { path: '/taxes', name: 'taxes', component: () => import('@/views/economy/taxes') },
+    { path: '/dispel', name: 'dispel', component: () => import('@/views/magic/dispel') },
+    { path: '/troops', name: 'troops', component: () => import('@/views/military/troops') },
+    { path: '/battle', name: 'battle', component: () => import('@/views/military/battle') },
+    { path: '/defense', name: 'defense', component: () => import('@/views/military/battle') },
+    { path: '/help', name: 'help', component: () => import('@/views/knowledge/help') },
+    { path: '/relics', name: 'relics', component: () => import('@/views/magic/relics') },
+    // { path: '/quests', name: 'quests', component: () => import() quests },
+    // { path: '/world', name: 'world', component: () => import() world },
+    // { path: '/places', name: 'places', component: () => import() places }
     { path: '*', redirect: '/' }
   ]
 })
